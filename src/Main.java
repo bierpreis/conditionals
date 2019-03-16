@@ -1,9 +1,6 @@
 import com.twelvemonkeys.util.LinkedSet;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
 
@@ -47,7 +44,7 @@ public class Main {
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                Set setToAdd = new LinkedSet();
+                Set setToAdd = new TreeSet();
                 setToAdd.add(i);
                 setToAdd.add(j);
                 if (setToAdd.size() > 1)
