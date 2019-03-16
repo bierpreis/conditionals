@@ -10,7 +10,10 @@ public class Main {
 
         addOneElements();
         addTwoElements();
+        addThreeElements();
+        addFourElements();
 
+        System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
 
     }
@@ -31,11 +34,30 @@ public class Main {
     }
 
     private static void addTwoElements() {
-        String worldToAdd = "";
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++)
 
                 conditonalsList.add(Integer.toString(i) + ", " + j);
+
+        }
+    }
+
+    private static void addThreeElements() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++)
+                for (int k = 0; k < 4; k++)
+
+                    conditonalsList.add(Integer.toString(i) + ", " + j + ", " + k);
+
+        }
+    }
+
+    private static void addFourElements() {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++)
+                for (int k = 0; k < 4; k++)
+                    for (int l = 0; l < 4; l++)
+                        conditonalsList.add(Integer.toString(i) + ", " + j + ", " + k + ", " + l);
 
         }
     }
