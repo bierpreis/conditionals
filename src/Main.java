@@ -1,17 +1,20 @@
+import com.twelvemonkeys.util.LinkedSet;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
 
-    private static List<List<Integer>> conditonalsList = new LinkedList<>();
+    private static List<Set<Integer>> conditonalsList = new LinkedList<>();
 
     public static void main(String[] args) {
 
 
         addOneElements();
         addTwoElements();
-        //addThreeElements();
+        addThreeElements();
         //addFourElements();
 
         System.out.println("Number of elements: " + conditonalsList.size());
@@ -21,17 +24,18 @@ public class Main {
     }
 
 
-    private static void printList(List<List<Integer>> listList) {
-        for (List<Integer> stringFromList : listList)
+    private static void printList(List<Set<Integer>> listList) {
+        for (Set<Integer> stringFromList : listList)
             System.out.println(stringFromList);
     }
 
     private static void addOneElements() {
 
         for (int i = 0; i < 4; i++) {
-            List<Integer> listToAdd = new LinkedList<>();
-            listToAdd.add(i);
-            conditonalsList.add(listToAdd);
+            Set setToAdd = new LinkedSet();
+            setToAdd.add(i);
+
+            conditonalsList.add(setToAdd);
 
         }
         System.out.println("length with 1 elements: " + conditonalsList.size());
@@ -43,10 +47,11 @@ public class Main {
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                List<Integer> listToAdd = new LinkedList<>();
-                listToAdd.add(i);
-                listToAdd.add(j);
-                conditonalsList.add(listToAdd);
+                Set setToAdd = new LinkedSet();
+                setToAdd.add(i);
+                setToAdd.add(j);
+                if (setToAdd.size() > 1)
+                    conditonalsList.add(setToAdd);
             }
 
         }
@@ -57,9 +62,14 @@ public class Main {
     private static void addThreeElements() {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++)
-                for (int k = 0; k < 4; k++)
-                    if (i != j && i != k && j != k)
-                        System.out.println("lol");
+                for (int k = 0; k < 4; k++) {
+                    Set setToAdd = new LinkedSet();
+                    setToAdd.add(i);
+                    setToAdd.add(j);
+                    setToAdd.add(k);
+                    if (setToAdd.size() > 2)
+                        conditonalsList.add(setToAdd);
+                }
 
         }
         System.out.println("length with 3 elements: " + conditonalsList.size());
@@ -76,13 +86,13 @@ public class Main {
         System.out.println("length with 4 elements: " + conditonalsList.size());
     }
 
-    private void cleanList(){
+    private void cleanList() {
         removeSameValues();
     }
 
-    private void removeSameValues(){
+    private void removeSameValues() {
         //for( List<Integer> intList : conditonalsList)
-            //if(intList.)
+        //if(intList.)
     }
 
 }
