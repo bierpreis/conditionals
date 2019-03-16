@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class Main {
         addFourElements();
 
         System.out.println("Number of elements: " + conditonalsList.size());
+        printList(conditonalsList);
+
+        Collections.sort(conditonalsList);
         printList(conditonalsList);
 
     }
