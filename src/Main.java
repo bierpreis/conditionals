@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Main {
 
-    private static List<String> conditonalsList = new LinkedList<>();
+    private static List<List<String>> conditonalsList = new LinkedList<>();
 
     public static void main(String[] args) {
 
@@ -17,22 +17,22 @@ public class Main {
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
 
-        Collections.sort(conditonalsList);
-        printList(conditonalsList);
 
     }
 
 
-    private static void printList(List<String> stringList) {
-        for (String stringFromList : stringList)
+    private static void printList(List<List<String>> listList) {
+        for (List<String> stringFromList : listList)
             System.out.println(stringFromList);
     }
 
     private static void addOneElements() {
+        List<String> listToAdd = new LinkedList<>();
         for (int i = 0; i < 4; i++) {
-            conditonalsList.add(Integer.toString(i));
+            listToAdd.add(Integer.toString(i));
 
         }
+        conditonalsList.add(listToAdd);
         System.out.println("length with 1 elements: " + conditonalsList.size());
 
     }
