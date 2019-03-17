@@ -1,10 +1,19 @@
+import com.intellij.util.containers.SortedList;
 import com.twelvemonkeys.util.LinkedSet;
 
 import java.util.*;
 
 public class Main {
 
-    private static List<Set<Integer>> conditonalsList = new LinkedList<>();
+    static class ListComparator implements Comparator<Set<?>> {
+
+        @Override
+        public int compare(Set<?> o1, Set<?> o2) {
+            return Integer.valueOf(o1.size()).compareTo(o2.size());
+        }
+    }
+
+    private static List<Set<Integer>> conditonalsList = new SortedList(new ListComparator());
 
     public static void main(String[] args) {
 
@@ -16,6 +25,8 @@ public class Main {
 
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
+        //conditonalsList.sort(new ListComparator());
+        // printList(conditonalsList);
 
 
     }
@@ -60,7 +71,7 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++)
                 for (int k = 0; k < 4; k++) {
-                    Set setToAdd = new LinkedSet();
+                    Set setToAdd = new TreeSet();
                     setToAdd.add(i);
                     setToAdd.add(j);
                     setToAdd.add(k);
