@@ -1,7 +1,7 @@
-import com.intellij.util.containers.SortedList;
-import com.twelvemonkeys.util.LinkedSet;
+
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -13,7 +13,7 @@ public class Main {
         }
     }
 
-    private static List<Set<Integer>> conditonalsList = new SortedList(new ListComparator());
+    private static List<Set<Integer>> conditonalsList = new LinkedList<>();
 
     public static void main(String[] args) {
 
@@ -21,12 +21,10 @@ public class Main {
         addOneElements();
         addTwoElements();
         addThreeElements();
-        //addFourElements();
+        addFourElements();
 
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
-        //conditonalsList.sort(new ListComparator());
-        // printList(conditonalsList);
 
 
     }
@@ -40,10 +38,10 @@ public class Main {
     private static void addOneElements() {
 
         for (int i = 0; i < 4; i++) {
-            Set setToAdd = new LinkedSet();
+            Set setToAdd = new TreeSet();
             setToAdd.add(i);
 
-            conditonalsList.add(setToAdd);
+            addWorldToList(setToAdd);
 
         }
         System.out.println("length with 1 elements: " + conditonalsList.size());
@@ -59,7 +57,7 @@ public class Main {
                 setToAdd.add(i);
                 setToAdd.add(j);
                 if (setToAdd.size() > 1)
-                    conditonalsList.add(setToAdd);
+                    addWorldToList(setToAdd);
             }
 
         }
@@ -76,7 +74,7 @@ public class Main {
                     setToAdd.add(j);
                     setToAdd.add(k);
                     if (setToAdd.size() > 2)
-                        conditonalsList.add(setToAdd);
+                        addWorldToList(setToAdd);
                 }
 
         }
@@ -87,9 +85,15 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++)
                 for (int k = 0; k < 4; k++)
-                    for (int l = 0; l < 4; l++)
-                        if (i != j && i != k && i != l && j != k && j != l && k != l)
-                            System.out.println("lol");
+                    for (int l = 0; l < 4; l++) {
+                        Set setToAdd = new TreeSet();
+                        setToAdd.add(i);
+                        setToAdd.add(j);
+                        setToAdd.add(k);
+                        setToAdd.add(l);
+                        addWorldToList(setToAdd);
+                    }
+
         }
         System.out.println("length with 4 elements: " + conditonalsList.size());
     }
@@ -103,4 +107,10 @@ public class Main {
         //if(intList.)
     }
 
+    private static void addWorldToList(Set setToAdd) {
+        if (!conditonalsList.contains(setToAdd))
+            conditonalsList.add(setToAdd);
+    }
 }
+
+
