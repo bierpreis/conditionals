@@ -1,14 +1,18 @@
+import gui.MainWindow;
+
 import java.util.*;
 
 
 public class Main {
 
-    static int maxNumberOfWorlds = 8;
+    static int maxNumberOfWorlds = 4;
 
 
     private static List<Set<Integer>> conditonalsList = new LinkedList<>();
 
     public static void main(String[] args) {
+
+
 
 
         addOneElements();
@@ -30,6 +34,8 @@ public class Main {
 
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
+
+        new MainWindow(conditonalsList);
 
 
     }
