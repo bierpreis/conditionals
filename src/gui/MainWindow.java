@@ -9,9 +9,12 @@ public class MainWindow extends JFrame {
 
     public MainWindow(List<Set<Integer>> conditonalsList) {
         setTitle("NFC Creator");
+
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
         add(new WorldsPanel());
-        add(new CondTextField(conditonalsList));
-        setSize(new Dimension(500, 500));
+        add(new CondPanel(conditonalsList));
+
+        setMinimumSize(new Dimension(300, 500));
 
 
         pack();
