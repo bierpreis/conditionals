@@ -12,13 +12,21 @@ public class Main {
 
 
         addOneElements();
-        addTwoElements();
-        addThreeElements();
-        addFourElements();
-        addFiveElements();
-        addSixElements();
-        addSevenElements();
-        addEightElements();
+
+        if (maxNumberOfWorlds > 1)
+            addTwoElements();
+        if (maxNumberOfWorlds > 2)
+            addThreeElements();
+        if (maxNumberOfWorlds > 3)
+            addFourElements();
+        if (maxNumberOfWorlds > 4)
+            addFiveElements();
+        if (maxNumberOfWorlds > 5)
+            addSixElements();
+        if (maxNumberOfWorlds > 6)
+            addSevenElements();
+        if (maxNumberOfWorlds > 7)
+            addEightElements();
 
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
