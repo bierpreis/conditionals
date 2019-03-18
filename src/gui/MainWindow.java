@@ -2,9 +2,6 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
 
 public class MainWindow extends JFrame {
 
@@ -17,7 +14,7 @@ public class MainWindow extends JFrame {
 
 
         add(new MenuPanel(condPanel));
-        add(condPanel);
+        getContentPane().add(condPanel);
 
 
         setMinimumSize(new Dimension(300, 500));
