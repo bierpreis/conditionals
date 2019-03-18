@@ -10,7 +10,7 @@ public class StartPanel extends JPanel {
     private CondPanel condPanel;
     private JButton startButton = new JButton("start");
 
-    public StartPanel(CondPanel condPanel) {
+    public StartPanel(CondPanel condPanel, OptionsPanel optionsPanel) {
         this.condPanel = condPanel;
 
         setBorder(BorderFactory.createTitledBorder("start"));

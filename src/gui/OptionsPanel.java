@@ -2,9 +2,9 @@ package gui;
 
 import javax.swing.*;
 
-public class WorldsPanel extends JPanel {
+public class OptionsPanel extends JPanel {
 
-    public WorldsPanel() {
+    public OptionsPanel() {
         add(new JLabel("Cardinality:"));
         add(new JTextField("00"));
         setBorder(BorderFactory.createTitledBorder("Signature"));

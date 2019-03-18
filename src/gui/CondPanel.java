@@ -7,11 +7,17 @@ public class CondPanel extends JPanel {
     CondTextField condTextField;
 
     public CondPanel() {
+
         condTextField = new CondTextField();
-        add(condTextField);
+        JScrollPane scrollPane = new JScrollPane(condTextField);
+        add(scrollPane);
+
     }
 
-    public void printConditionals(){
+    public void printConditionals() {
+        condTextField.setText("");
         condTextField.printConditionals();
+        revalidate();
+        repaint();
     }
 }

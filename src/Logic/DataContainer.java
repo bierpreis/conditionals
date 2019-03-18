@@ -11,7 +11,7 @@ public class DataContainer {
     }
 
     public static void createConditionals(int numberOfWorlds) {
-        NfcCreator nfcCreator = new NfcCreator(4);
+        NfcCreator nfcCreator = new NfcCreator(numberOfWorlds);
         conditonalsList = nfcCreator.getConditonalsList();
     }
 }
