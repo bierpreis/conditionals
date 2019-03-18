@@ -1,17 +1,10 @@
-
-
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class Main {
 
-    static class ListComparator implements Comparator<Set<?>> {
+    static int maxNumberOfWorlds = 4;
 
-        @Override
-        public int compare(Set<?> o1, Set<?> o2) {
-            return Integer.valueOf(o1.size()).compareTo(o2.size());
-        }
-    }
 
     private static List<Set<Integer>> conditonalsList = new LinkedList<>();
 
@@ -37,7 +30,7 @@ public class Main {
 
     private static void addOneElements() {
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
             Set setToAdd = new TreeSet();
             setToAdd.add(i);
 
@@ -51,8 +44,8 @@ public class Main {
     private static void addTwoElements() {
 
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++) {
                 Set setToAdd = new TreeSet();
                 setToAdd.add(i);
                 setToAdd.add(j);
@@ -66,9 +59,9 @@ public class Main {
     }
 
     private static void addThreeElements() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++)
-                for (int k = 0; k < 4; k++) {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++)
+                for (int k = 0; k < maxNumberOfWorlds; k++) {
                     Set setToAdd = new TreeSet();
                     setToAdd.add(i);
                     setToAdd.add(j);
@@ -82,10 +75,10 @@ public class Main {
     }
 
     private static void addFourElements() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++)
-                for (int k = 0; k < 4; k++)
-                    for (int l = 0; l < 4; l++) {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++)
+                for (int k = 0; k < maxNumberOfWorlds; k++)
+                    for (int l = 0; l < maxNumberOfWorlds; l++) {
                         Set setToAdd = new TreeSet();
                         setToAdd.add(i);
                         setToAdd.add(j);
@@ -98,14 +91,6 @@ public class Main {
         System.out.println("length with 4 elements: " + conditonalsList.size());
     }
 
-    private void cleanList() {
-        removeSameValues();
-    }
-
-    private void removeSameValues() {
-        //for( List<Integer> intList : conditonalsList)
-        //if(intList.)
-    }
 
     private static void addWorldToList(Set setToAdd) {
         if (!conditonalsList.contains(setToAdd))
