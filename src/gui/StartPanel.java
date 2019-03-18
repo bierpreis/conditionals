@@ -1,15 +1,17 @@
 package gui;
 
+import Logic.DataContainer;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.EventListener;
 
 public class StartPanel extends JPanel {
-
+    private CondPanel condPanel;
     private JButton startButton = new JButton("start");
 
-    public StartPanel() {
+    public StartPanel(CondPanel condPanel) {
+        this.condPanel = condPanel;
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
@@ -20,10 +22,10 @@ public class StartPanel extends JPanel {
 
     class StartButtonListener implements ActionListener {
 
-
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("startButton clidked");
+            DataContainer.createConditionals(4);
+            condPanel.printConditionals();
 
         }
     }

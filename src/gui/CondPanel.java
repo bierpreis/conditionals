@@ -2,12 +2,16 @@ package gui;
 
 
 import javax.swing.*;
-import java.util.List;
-import java.util.Set;
 
 public class CondPanel extends JPanel {
+    CondTextField condTextField;
 
-    public CondPanel(List<Set<Integer>> conditonalsList) {
-        add(new CondTextField(conditonalsList));
+    public CondPanel() {
+        condTextField = new CondTextField();
+        add(condTextField);
+    }
+
+    public void printConditionals(){
+        condTextField.printConditionals();
     }
 }

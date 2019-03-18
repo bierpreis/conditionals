@@ -1,20 +1,20 @@
 package gui;
 
+import Logic.DataContainer;
+
 import javax.swing.*;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 public class CondTextField extends JTextArea {
-    private List<Set<Integer>> conditonalsList = new LinkedList<>();
+    private List<Set<Integer>> conditonalsList = DataContainer.getCondList();
 
-    public CondTextField(List<Set<Integer>> conditonalsList) {
-        this.conditonalsList = conditonalsList;
-        printConditionals();
+    public CondTextField() {
+
     }
 
-    private void printConditionals() {
-        for (Set<Integer> setToPrint : conditonalsList)
+    public void printConditionals() {
+        for (Set<Integer> setToPrint : DataContainer.getCondList())
             append(setToPrint.toString() + "\n");
         System.out.println("printing...");
     }
