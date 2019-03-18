@@ -15,16 +15,21 @@ public class StartPanel extends JPanel {
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        startButton.addActionListener(new StartButtonListener());
+        startButton.addActionListener(new StartButtonListener(optionsPanel));
         add(startButton);
     }
 
 
     class StartButtonListener implements ActionListener {
+        private OptionsPanel optionsPanel;
+
+        public StartButtonListener(OptionsPanel optionsPanel) {
+            this.optionsPanel = optionsPanel;
+        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataContainer.createConditionals(4);
+            DataContainer.createConditionals(optionsPanel.getCardinality());
             condPanel.printConditionals();
 
         }
