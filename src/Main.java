@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 
-    static int maxNumberOfWorlds = 4;
+    static int maxNumberOfWorlds = 8;
 
 
     private static List<Set<Integer>> conditonalsList = new LinkedList<>();
@@ -15,6 +15,10 @@ public class Main {
         addTwoElements();
         addThreeElements();
         addFourElements();
+        addFiveElements();
+        addSixElements();
+        addSevenElements();
+        addEightElements();
 
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
@@ -89,6 +93,94 @@ public class Main {
 
         }
         System.out.println("length with 4 elements: " + conditonalsList.size());
+    }
+
+    private static void addFiveElements() {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++)
+                for (int k = 0; k < maxNumberOfWorlds; k++)
+                    for (int l = 0; l < maxNumberOfWorlds; l++)
+                        for (int m = 0; m < maxNumberOfWorlds; m++) {
+                            Set setToAdd = new TreeSet();
+                            setToAdd.add(i);
+                            setToAdd.add(j);
+                            setToAdd.add(k);
+                            setToAdd.add(l);
+                            setToAdd.add(m);
+                            addWorldToList(setToAdd);
+                        }
+
+        }
+        System.out.println("length with 5 elements: " + conditonalsList.size());
+    }
+
+    private static void addSixElements() {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++)
+                for (int k = 0; k < maxNumberOfWorlds; k++)
+                    for (int l = 0; l < maxNumberOfWorlds; l++)
+                        for (int m = 0; m < maxNumberOfWorlds; m++)
+                            for (int n = 0; n < maxNumberOfWorlds; n++) {
+                                Set setToAdd = new TreeSet();
+                                setToAdd.add(i);
+                                setToAdd.add(j);
+                                setToAdd.add(k);
+                                setToAdd.add(l);
+                                setToAdd.add(m);
+                                setToAdd.add(n);
+                                addWorldToList(setToAdd);
+                            }
+
+        }
+        System.out.println("length with 6 elements: " + conditonalsList.size());
+    }
+
+    private static void addSevenElements() {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++)
+                for (int k = 0; k < maxNumberOfWorlds; k++)
+                    for (int l = 0; l < maxNumberOfWorlds; l++)
+                        for (int m = 0; m < maxNumberOfWorlds; m++)
+                            for (int n = 0; n < maxNumberOfWorlds; n++)
+                                for (int o = 0; o < maxNumberOfWorlds; o++) {
+                                    Set setToAdd = new TreeSet();
+                                    setToAdd.add(i);
+                                    setToAdd.add(j);
+                                    setToAdd.add(k);
+                                    setToAdd.add(l);
+                                    setToAdd.add(m);
+                                    setToAdd.add(n);
+                                    setToAdd.add(o);
+                                    addWorldToList(setToAdd);
+                                }
+
+        }
+        System.out.println("length with 7 elements: " + conditonalsList.size());
+    }
+
+    private static void addEightElements() {
+        for (int i = 0; i < maxNumberOfWorlds; i++) {
+            for (int j = 0; j < maxNumberOfWorlds; j++)
+                for (int k = 0; k < maxNumberOfWorlds; k++)
+                    for (int l = 0; l < maxNumberOfWorlds; l++)
+                        for (int m = 0; m < maxNumberOfWorlds; m++)
+                            for (int n = 0; n < maxNumberOfWorlds; n++)
+                                for (int o = 0; o < maxNumberOfWorlds; o++)
+                                    for (int p = 0; p < maxNumberOfWorlds; p++) {
+                                        Set setToAdd = new TreeSet();
+                                        setToAdd.add(i);
+                                        setToAdd.add(j);
+                                        setToAdd.add(k);
+                                        setToAdd.add(l);
+                                        setToAdd.add(m);
+                                        setToAdd.add(n);
+                                        setToAdd.add(o);
+                                        setToAdd.add(p);
+                                        addWorldToList(setToAdd);
+                                    }
+
+        }
+        System.out.println("length with 8 elements: " + conditonalsList.size());
     }
 
 
