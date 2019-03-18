@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Main {
 
-    static int maxNumberOfWorlds = 4;
+    static int maxNumberOfWorlds = 6;
 
 
     private static List<Set<Integer>> conditonalsList = new LinkedList<>();

@@ -11,12 +11,13 @@ public class MainWindow extends JFrame {
         setTitle("NFC Creator");
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
-        add(new WorldsPanel());
+        add(new MenuPanel());
         add(new CondPanel(conditonalsList));
+
 
         setMinimumSize(new Dimension(300, 500));
 
-
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
     }
