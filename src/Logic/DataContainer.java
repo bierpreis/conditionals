@@ -1,5 +1,6 @@
 package Logic;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -20,11 +21,16 @@ public class DataContainer {
         NfcCreator nfcCreator = new NfcCreator(4);
         worldsList = nfcCreator.getWorldsList();
         conditionalList = nfcCreator.getConditionalsList();
+        sortConditionalList();
 
 
     }
 
     public static List<Conditional> getConditionalSet() {
         return conditionalList;
+    }
+
+    private static void sortConditionalList() {
+        Collections.sort(conditionalList);
     }
 }
