@@ -56,7 +56,8 @@ public class Conditional implements Comparable {
                 return -1;
             if (thisLeftSum < otherLeftSum)
                 return 1;
-            System.out.println("fak sth was equal!!^^^");
+            //todo: this triggers one tiem?!
+            System.out.println(this + " is equal to " + other.toString() + "!!");
         }
 
 
