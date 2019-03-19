@@ -8,15 +8,15 @@ import java.awt.event.ActionListener;
 
 public class StartPanel extends JPanel {
     private CondPanel condPanel;
-    private JButton startButton = new JButton("start");
+    private JButton createWorldsButton = new JButton("create worlds");
 
     public StartPanel(CondPanel condPanel, OptionsPanel optionsPanel) {
         this.condPanel = condPanel;
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        startButton.addActionListener(new StartButtonListener(optionsPanel));
-        add(startButton);
+        createWorldsButton.addActionListener(new StartButtonListener(optionsPanel));
+        add(createWorldsButton);
     }
 
 
