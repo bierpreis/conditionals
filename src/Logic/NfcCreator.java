@@ -6,7 +6,7 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private List<Set<Integer>> conditonalsList = new LinkedList<>();
+    private List<Set<Integer>> worldsList = new LinkedList<>();
 
     public NfcCreator(int maxNumberOfWorlds) {
 
@@ -28,10 +28,13 @@ public class NfcCreator {
         if (maxNumberOfWorlds > 7)
             addEightElements(maxNumberOfWorlds);
 
-        printSubsets(conditonalsList.get(15));
 
-        System.out.println("Number of elements: " + conditonalsList.size());
-        printList(conditonalsList);
+        System.out.println("Number of elements: " + worldsList.size());
+        printList(worldsList);
+
+        printSubsets(worldsList.get(12));
+
+
     }
 
 
@@ -49,7 +52,7 @@ public class NfcCreator {
             addWorldToList(setToAdd);
 
         }
-        System.out.println("length with 1 elements: " + conditonalsList.size());
+        System.out.println("length with 1 elements: " + worldsList.size());
 
     }
 
@@ -67,7 +70,7 @@ public class NfcCreator {
 
         }
 
-        System.out.println("length with 2 elements: " + conditonalsList.size());
+        System.out.println("length with 2 elements: " + worldsList.size());
     }
 
     private void addThreeElements(int maxNumberOfWorlds) {
@@ -83,7 +86,7 @@ public class NfcCreator {
                 }
 
         }
-        System.out.println("length with 3 elements: " + conditonalsList.size());
+        System.out.println("length with 3 elements: " + worldsList.size());
     }
 
     private void addFourElements(int maxNumberOfWorlds) {
@@ -100,7 +103,7 @@ public class NfcCreator {
                     }
 
         }
-        System.out.println("length with 4 elements: " + conditonalsList.size());
+        System.out.println("length with 4 elements: " + worldsList.size());
     }
 
     private void addFiveElements(int maxNumberOfWorlds) {
@@ -119,7 +122,7 @@ public class NfcCreator {
                         }
 
         }
-        System.out.println("length with 5 elements: " + conditonalsList.size());
+        System.out.println("length with 5 elements: " + worldsList.size());
     }
 
     private void addSixElements(int maxNumberOfWorlds) {
@@ -140,7 +143,7 @@ public class NfcCreator {
                             }
 
         }
-        System.out.println("length with 6 elements: " + conditonalsList.size());
+        System.out.println("length with 6 elements: " + worldsList.size());
     }
 
     private void addSevenElements(int maxNumberOfWorlds) {
@@ -163,7 +166,7 @@ public class NfcCreator {
                                 }
 
         }
-        System.out.println("length with 7 elements: " + conditonalsList.size());
+        System.out.println("length with 7 elements: " + worldsList.size());
     }
 
     private void addEightElements(int maxNumberOfWorlds) {
@@ -188,22 +191,23 @@ public class NfcCreator {
                                     }
 
         }
-        System.out.println("length with 8 elements: " + conditonalsList.size());
+        System.out.println("length with 8 elements: " + worldsList.size());
     }
 
 
     private void addWorldToList(Set setToAdd) {
-        if (!conditonalsList.contains(setToAdd))
-            conditonalsList.add(setToAdd);
+        if (!worldsList.contains(setToAdd))
+            worldsList.add(setToAdd);
     }
 
-    public List getConditonalsList() {
-        return conditonalsList;
+    public List getWorldsList() {
+        return worldsList;
     }
 
     //todo: this is taken from inet?!
     static void printSubsets(Set<Integer> worlds) {
-        System.out.println("subsets of: " + worlds);
+        List<Conditional> conditionalList = new LinkedList<>();
+
 
         Integer[] array = worlds.stream().toArray(Integer[]::new);
 
@@ -212,6 +216,7 @@ public class NfcCreator {
         // Run a loop for printing all 2^n
         // subsets one by obe
         for (int i = 1; i < (1 << n); i++) {
+            List<Integer> worldsList = new LinkedList<>();
             System.out.print("{ ");
 
             // Print current subset
@@ -222,11 +227,21 @@ public class NfcCreator {
                 // subset number we get which numbers
                 // are present in the subset and which
                 // are not
-                if ((i & (1 << j)) > 0)
+                if ((i & (1 << j)) > 0) {
                     System.out.print(array[j] + " ");
+                    worldsList.add(array[j]);
+                    Conditional newConditional = new Conditional();
+                    newConditional.setLeft(worldsList);
+                    newConditional.setRight(worlds);
+                    conditionalList.add(newConditional);
+                }
 
             System.out.println("}");
+            System.out.println("worlds list: " + worldsList);
         }
+        System.out.println("conditionals:");
+        for (Conditional conditional : conditionalList)
+            System.out.println(conditional.toString());
     }
 }
 
