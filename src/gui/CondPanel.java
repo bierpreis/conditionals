@@ -26,7 +26,7 @@ public class CondPanel extends JPanel {
     }
 
     public void printConditionals() {
-        condTextField.setText("");
+        //condTextField.setText("");
         condTextField.printConditionals();
         //scrollPane.setViewportView(condTextField);
         revalidate();

@@ -17,7 +17,6 @@ public class DataContainer {
     }
 
     public static void createConditionals() {
-        System.out.println("trying to create conditionals");
         NfcCreator nfcCreator = new NfcCreator(4);
         worldsList = nfcCreator.getWorldsList();
         conditionalList = nfcCreator.getConditionalsList();
