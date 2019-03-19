@@ -28,6 +28,8 @@ public class NfcCreator {
         if (maxNumberOfWorlds > 7)
             addEightElements(maxNumberOfWorlds);
 
+        printSubsets(conditonalsList.get(15));
+
         System.out.println("Number of elements: " + conditonalsList.size());
         printList(conditonalsList);
     }
@@ -197,6 +199,34 @@ public class NfcCreator {
 
     public List getConditonalsList() {
         return conditonalsList;
+    }
+
+    //todo: this is taken from inet?!
+    static void printSubsets(Set<Integer> worlds) {
+        System.out.println("subsets of: " + worlds);
+
+        Integer[] array = worlds.stream().toArray(Integer[]::new);
+
+        int n = worlds.size();
+
+        // Run a loop for printing all 2^n
+        // subsets one by obe
+        for (int i = 1; i < (1 << n); i++) {
+            System.out.print("{ ");
+
+            // Print current subset
+            for (int j = 0; j < n; j++)
+
+                // (1<<j) is a number with jth bit 1
+                // so when we 'and' them with the
+                // subset number we get which numbers
+                // are present in the subset and which
+                // are not
+                if ((i & (1 << j)) > 0)
+                    System.out.print(array[j] + " ");
+
+            System.out.println("}");
+        }
     }
 }
 
