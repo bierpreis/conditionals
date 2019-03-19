@@ -9,6 +9,7 @@ public class CondPanel extends JPanel {
 
     public CondPanel() {
         setLayout(new BorderLayout());
+        setMinimumSize(new Dimension(200, 200));
         condTextField = new CondTextField();
         scrollPane = new JScrollPane(condTextField);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -28,7 +29,7 @@ public class CondPanel extends JPanel {
     public void printConditionals() {
         //condTextField.setText("");
         condTextField.printConditionals();
-        //scrollPane.setViewportView(condTextField);
+        scrollPane.setViewportView(condTextField);
         revalidate();
         repaint();
     }

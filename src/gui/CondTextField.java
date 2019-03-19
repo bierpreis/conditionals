@@ -4,14 +4,13 @@ import Logic.Conditional;
 import Logic.DataContainer;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Set;
 
 
 public class CondTextField extends JTextArea {
 
     public CondTextField() {
-        setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        super(30, 20);
     }
 
 

@@ -27,15 +27,6 @@ public class Conditional {
         right = newList;
     }
 
-
-    public boolean equals(Conditional c) {
-        if (c.getLeft().equals(left) && c.getRight().equals(right)) {
-            System.out.println("found two equals!");
-            //todo
-        }
-        return true;
-    }
-
     public List<Integer> getLeft() {
         return left;
     }
