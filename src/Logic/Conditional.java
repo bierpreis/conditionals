@@ -22,11 +22,50 @@ public class Conditional implements Comparable {
             return -1;
         else if (right.size() > other.right.size())
             return 1;
-        else if (left.size() < other.left.size())
+        else {
+            int thisRightSum = 0;
+            int otherRightSum = 0;
+
+            for (int thisRightInt : right) {
+                thisRightSum = thisRightSum + thisRightInt;
+            }
+            for (int otherRightInt : other.right) {
+                otherRightSum = otherRightSum + otherRightInt;
+            }
+            if (thisRightSum > otherRightSum)
+                return -1;
+            if (thisRightSum < otherRightSum)
+                return 1;
+        }
+
+        if (left.size() < other.left.size())
             return -1;
         else if (left.size() > other.left.size())
             return 1;
-        else System.out.println("2 were same size!");
+        else {
+            int thisLeftSum = 0;
+            int otherLeftSum = 0;
+
+            for (int thisRightInt : left) {
+                thisLeftSum = thisLeftSum + thisRightInt;
+            }
+            for (int otherRightInt : other.left) {
+                otherLeftSum = otherLeftSum + otherRightInt;
+            }
+            if (thisLeftSum > otherLeftSum)
+                return -1;
+            if (thisLeftSum < otherLeftSum)
+                return 1;
+            System.out.println("fak sth was equal!!^^^");
+        }
+
+
+//        if (left.size() < other.left.size())
+//            return -1;
+//        else if (left.size() > other.left.size())
+//            return 1;
+//        else if (l)*/
+//        System.out.println("was not enought..");
         return 0;
     }
 
