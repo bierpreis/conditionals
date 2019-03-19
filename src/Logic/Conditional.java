@@ -26,4 +26,21 @@ public class Conditional {
     public void setRight(Set<Integer> newList) {
         right = newList;
     }
+
+
+    public boolean equals(Conditional c) {
+        if (c.getLeft().equals(left) && c.getRight().equals(right)) {
+            System.out.println("found two equals!");
+            //todo
+        }
+        return true;
+    }
+
+    public List<Integer> getLeft() {
+        return left;
+    }
+
+    public Set<Integer> getRight() {
+        return right;
+    }
 }

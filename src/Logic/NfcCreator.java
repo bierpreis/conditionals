@@ -30,7 +30,7 @@ public class NfcCreator {
 
 
         System.out.println("Number of elements: " + worldsList.size());
-        printList(worldsList);
+        //printList(worldsList);
 
         printSubsets(worldsList.get(12));
 
@@ -208,6 +208,7 @@ public class NfcCreator {
     static void printSubsets(Set<Integer> worlds) {
         List<Conditional> conditionalList = new LinkedList<>();
 
+        Set<List<Integer>> leftSideList = new HashSet<>();
 
         Integer[] array = worlds.stream().toArray(Integer[]::new);
 
@@ -217,7 +218,6 @@ public class NfcCreator {
         // subsets one by obe
         for (int i = 1; i < (1 << n); i++) {
             List<Integer> worldsList = new LinkedList<>();
-            System.out.print("{ ");
 
             // Print current subset
             for (int j = 0; j < n; j++)
@@ -228,21 +228,24 @@ public class NfcCreator {
                 // are present in the subset and which
                 // are not
                 if ((i & (1 << j)) > 0) {
-                    System.out.print(array[j] + " ");
                     worldsList.add(array[j]);
-                    Conditional newConditional = new Conditional();
-                    newConditional.setLeft(worldsList);
-                    newConditional.setRight(worlds);
-                    conditionalList.add(newConditional);
-                }
 
-            System.out.println("}");
-            System.out.println("worlds list: " + worldsList);
+                    leftSideList.add(worldsList);
+                }
         }
-        System.out.println("conditionals:");
+        for (List<Integer> leftSide : leftSideList) {
+            Conditional newConditional = new Conditional();
+            newConditional.setLeft(leftSide);
+            newConditional.setRight(worlds);
+            conditionalList.add(newConditional);
+        }
+
+        System.out.println("final conditionals: ");
         for (Conditional conditional : conditionalList)
             System.out.println(conditional.toString());
     }
+
+
 }
 
 
