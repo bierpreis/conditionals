@@ -10,8 +10,12 @@ public class DataContainer {
         return conditonalsList;
     }
 
-    public static void createConditionals(int numberOfWorlds) {
+    public static void createWorlds(int numberOfWorlds) {
         NfcCreator nfcCreator = new NfcCreator(numberOfWorlds);
         conditonalsList = nfcCreator.getWorldsList();
+    }
+
+    public static void createConditionals(){
+        //todo NfcCreator nfcCreator = new
     }
 }

@@ -32,7 +32,8 @@ public class NfcCreator {
         System.out.println("Number of elements: " + worldsList.size());
         //printList(worldsList);
 
-        printSubsets(worldsList.get(12));
+        for (Set<Integer> world : worldsList)
+            createConditionals(world);
 
 
     }
@@ -205,7 +206,7 @@ public class NfcCreator {
     }
 
     //todo: this is taken from inet?!
-    static void printSubsets(Set<Integer> worlds) {
+    public void createConditionals(Set<Integer> worlds) {
         List<Conditional> conditionalList = new LinkedList<>();
 
         Set<List<Integer>> leftSideList = new HashSet<>();

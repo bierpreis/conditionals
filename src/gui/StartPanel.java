@@ -9,28 +9,41 @@ import java.awt.event.ActionListener;
 public class StartPanel extends JPanel {
     private CondPanel condPanel;
     private JButton createWorldsButton = new JButton("create worlds");
+    private JButton createConditionalsButton = new JButton("create conditionals");
 
     public StartPanel(CondPanel condPanel, OptionsPanel optionsPanel) {
         this.condPanel = condPanel;
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        createWorldsButton.addActionListener(new StartButtonListener(optionsPanel));
+        createWorldsButton.addActionListener(new CreateWorldsButtonListener(optionsPanel));
         add(createWorldsButton);
     }
 
 
-    class StartButtonListener implements ActionListener {
+    class CreateWorldsButtonListener implements ActionListener {
         private OptionsPanel optionsPanel;
 
-        public StartButtonListener(OptionsPanel optionsPanel) {
+        public CreateWorldsButtonListener(OptionsPanel optionsPanel) {
             this.optionsPanel = optionsPanel;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataContainer.createConditionals(optionsPanel.getCardinality());
+            DataContainer.createWorlds(optionsPanel.getCardinality());
             condPanel.printConditionals();
+
+        }
+    }
+
+    class CreateConditionalsButtonListener implements ActionListener {
+
+        public CreateConditionalsButtonListener(){
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
         }
     }
