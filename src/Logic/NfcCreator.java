@@ -237,7 +237,9 @@ public class NfcCreator {
             Conditional newConditional = new Conditional();
             newConditional.setLeft(leftSide);
             newConditional.setRight(worlds);
-            conditionalList.add(newConditional);
+            //todo
+            if (newConditional.getRight().size() > newConditional.getLeft().size())
+                conditionalList.add(newConditional);
         }
 
         //System.out.println("final conditionals: ");
