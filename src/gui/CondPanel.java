@@ -17,6 +17,14 @@ public class CondPanel extends JPanel {
 
     }
 
+    public void printWorlds() {
+        condTextField.setText("");
+        condTextField.printWorlds();
+        //scrollPane.setViewportView(condTextField);
+        revalidate();
+        repaint();
+    }
+
     public void printConditionals() {
         condTextField.setText("");
         condTextField.printConditionals();

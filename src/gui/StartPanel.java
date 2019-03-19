@@ -18,6 +18,9 @@ public class StartPanel extends JPanel {
 
         createWorldsButton.addActionListener(new CreateWorldsButtonListener(optionsPanel));
         add(createWorldsButton);
+
+        createConditionalsButton.addActionListener(new CreateConditionalsButtonListener());
+        add(createConditionalsButton);
     }
 
 
@@ -31,20 +34,21 @@ public class StartPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             DataContainer.createWorlds(optionsPanel.getCardinality());
-            condPanel.printConditionals();
+            condPanel.printWorlds();
 
         }
     }
 
     class CreateConditionalsButtonListener implements ActionListener {
 
-        public CreateConditionalsButtonListener(){
+        public CreateConditionalsButtonListener() {
 
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            DataContainer.createConditionals();
+            condPanel.printConditionals();
         }
     }
 }

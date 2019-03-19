@@ -7,6 +7,7 @@ import java.util.*;
 public class NfcCreator {
 
     private List<Set<Integer>> worldsList = new LinkedList<>();
+    private List<Conditional> conditionalList = new LinkedList<>();
 
     public NfcCreator(int maxNumberOfWorlds) {
 
@@ -207,7 +208,7 @@ public class NfcCreator {
 
     //todo: this is taken from inet?!
     public void createConditionals(Set<Integer> worlds) {
-        List<Conditional> conditionalList = new LinkedList<>();
+        conditionalList = new LinkedList<>();
 
         Set<List<Integer>> leftSideList = new HashSet<>();
 
@@ -244,6 +245,10 @@ public class NfcCreator {
         System.out.println("final conditionals: ");
         for (Conditional conditional : conditionalList)
             System.out.println(conditional.toString());
+    }
+
+    public List<Conditional> getConditionalsList() {
+        return conditionalList;
     }
 
 
