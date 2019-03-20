@@ -16,6 +16,7 @@ public class NfcCreator {
             addOneElements(4);
             addTwoElements(4);
             addThreeElements(4);
+            addFourElements(4);
         }
 
         if (signature.equals("abc")) {
@@ -31,20 +32,12 @@ public class NfcCreator {
 
 
         System.out.println("Number of worlds: " + (worldsList.size() +1));
-        //printList(worldsList);
 
         for (Set<Integer> world : worldsList)
             createConditionals(world);
 
 
     }
-
-
-    private void printList(List<Set<Integer>> listList) {
-        for (Set<Integer> stringFromList : listList)
-            System.out.println(stringFromList);
-    }
-
     private void addOneElements(int maxNumberOfWorlds) {
 
         for (int i = 0; i < maxNumberOfWorlds; i++) {
