@@ -21,9 +21,7 @@ public class Conditional implements Comparable {
             return 1;
 
         int comparedRight = compareWorlds(right, other.right);
-        if (comparedRight < 0)
-            return comparedRight;
-        if (comparedRight > 0)
+        if (comparedRight != 0)
             return comparedRight;
 
         if (left.size() < other.left.size())
@@ -32,10 +30,9 @@ public class Conditional implements Comparable {
             return 1;
 
         int comparedLeft = compareWorlds(left, other.left);
-        if (comparedLeft < 0)
+        if (comparedLeft != 0)
             return comparedLeft;
-        if (comparedLeft > 0)
-            return comparedLeft;
+
         System.out.println("comparing conditionals failed!!!");
         return 0;
     }
@@ -43,10 +40,9 @@ public class Conditional implements Comparable {
 
     private int compareWorlds(List<Integer> firstList, List<Integer> secondList) {
         for (int i = 0; i < firstList.size(); i++) {
-            //todo: are return values correct?
-            if (firstList.get(i) < secondList.get(i))
-                return -1;
             if (firstList.get(i) > secondList.get(i))
+                return -1;
+            if (firstList.get(i) < secondList.get(i))
                 return 1;
 
         }

@@ -21,8 +21,8 @@ public class CondTextField extends JTextArea {
     }
 
     public void printConditionals() {
-        for (Conditional conditional : DataContainer.getConditionalSet())
-            append(conditional.toString() + "\n");
+        for(int i = 0; i<DataContainer.getConditionalSet().size(); i++)
+            append(i + 1 + "    " + DataContainer.getConditionalSet().get(i).toString() + "\n");
 
         System.out.println("conditionals printed: " + DataContainer.getConditionalSet().size());
     }
