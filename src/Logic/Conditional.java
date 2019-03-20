@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Conditional implements Comparable {
     private List<Integer> left;
-    private Set<Integer> right;
+    private List<Integer> right;
 
     public Conditional() {
         left = new LinkedList<>();
-        right = new TreeSet(Collections.reverseOrder());
+        right = new LinkedList<>();
     }
 
     @Override
@@ -17,53 +17,39 @@ public class Conditional implements Comparable {
 
         if (right.size() < other.right.size())
             return -1;
-        else if (right.size() > other.right.size())
+        if (right.size() > other.right.size())
             return 1;
-        else {
-            int thisRightSum = 0;
-            int otherRightSum = 0;
 
-            for (int thisRightInt : right) {
-                thisRightSum = thisRightSum + thisRightInt;
-            }
-            for (int otherRightInt : other.right) {
-                otherRightSum = otherRightSum + otherRightInt;
-            }
-            if (thisRightSum > otherRightSum)
-                return -1;
-            if (thisRightSum < otherRightSum)
-                return 1;
-        }
+        int comparedRight = compareWorlds(right, other.right);
+        if (comparedRight < 0)
+            return comparedRight;
+        if (comparedRight > 0)
+            return comparedRight;
 
         if (left.size() < other.left.size())
             return -1;
-        else if (left.size() > other.left.size())
+        if (left.size() > other.left.size())
             return 1;
-        else {
-            int thisLeftSum = 0;
-            int otherLeftSum = 0;
 
-            for (int thisRightInt : left) {
-                thisLeftSum = thisLeftSum + thisRightInt;
-            }
-            for (int otherRightInt : other.left) {
-                otherLeftSum = otherLeftSum + otherRightInt;
-            }
-            if (thisLeftSum > otherLeftSum)
+        int comparedLeft = compareWorlds(left, other.left);
+        if (comparedLeft < 0)
+            return comparedLeft;
+        if (comparedLeft > 0)
+            return comparedLeft;
+        System.out.println("comparing conditionals failed!!!");
+        return 0;
+    }
+
+
+    private int compareWorlds(List<Integer> firstList, List<Integer> secondList) {
+        for (int i = 0; i < firstList.size(); i++) {
+            //todo: are return values correct?
+            if (firstList.get(i) < secondList.get(i))
                 return -1;
-            if (thisLeftSum < otherLeftSum)
+            if (firstList.get(i) > secondList.get(i))
                 return 1;
-            //todo: this triggers one tiem?!
-            System.out.println(this + " is equal to " + other.toString() + "!!");
+
         }
-
-
-//        if (left.size() < other.left.size())
-//            return -1;
-//        else if (left.size() > other.left.size())
-//            return 1;
-//        else if (l)*/
-//        System.out.println("was not enought..");
         return 0;
     }
 
@@ -76,7 +62,9 @@ public class Conditional implements Comparable {
         left = newList;
     }
 
-    public void setRight(Set<Integer> newList) {
+    public void setRight(Set<Integer> newSet) {
+        List<Integer> newList = new LinkedList<>();
+        newList.addAll(newSet);
         right = newList;
     }
 
@@ -84,7 +72,7 @@ public class Conditional implements Comparable {
         return left;
     }
 
-    public Set<Integer> getRight() {
+    public List<Integer> getRight() {
         return right;
     }
 
