@@ -17,8 +17,8 @@ public class DataContainer {
         worldsList = nfcCreator.getWorldsList();
     }
 
-    public static void createConditionals() {
-        NfcCreator nfcCreator = new NfcCreator(4);
+    public static void createConditionals(int numberOfWorlds) {
+        NfcCreator nfcCreator = new NfcCreator(numberOfWorlds);
         worldsList = nfcCreator.getWorldsList();
         conditionalList = nfcCreator.getConditionalsList();
         sortConditionalList();
