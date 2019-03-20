@@ -3,7 +3,6 @@ package gui;
 import Logic.DataContainer;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class CondPanel extends JPanel {
     private CondTextField condTextField;
@@ -14,7 +13,6 @@ public class CondPanel extends JPanel {
 
     public CondPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setMinimumSize(new Dimension(200, 200));
         condTextField = new CondTextField();
         scrollPane = new JScrollPane(condTextField);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

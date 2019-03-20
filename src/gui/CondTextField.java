@@ -10,7 +10,7 @@ import java.util.Set;
 public class CondTextField extends JTextArea {
 
     public CondTextField() {
-        super(30, 20);
+        super(40, 40);
     }
 
 
