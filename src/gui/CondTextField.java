@@ -1,6 +1,5 @@
 package gui;
 
-import Logic.Conditional;
 import Logic.DataContainer;
 
 import javax.swing.*;

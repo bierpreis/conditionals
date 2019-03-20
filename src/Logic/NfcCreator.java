@@ -9,28 +9,28 @@ public class NfcCreator {
     private List<Set<Integer>> worldsList = new LinkedList<>();
     private List<Conditional> conditionalList;
 
-    public NfcCreator(int maxNumberOfWorlds) {
+    public NfcCreator(String signature) {
         conditionalList = new LinkedList<>();
 
-        if (maxNumberOfWorlds > 0)
-            addOneElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 1)
-            addTwoElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 2)
-            addThreeElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 3)
-            addFourElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 4)
-            addFiveElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 5)
-            addSixElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 6)
-            addSevenElements(maxNumberOfWorlds);
-        if (maxNumberOfWorlds > 7)
-            addEightElements(maxNumberOfWorlds);
+        if (signature.equals("ab")) {
+            addOneElements(4);
+            addTwoElements(4);
+            addThreeElements(4);
+        }
+
+        if (signature.equals("abc")) {
+            addOneElements(8);
+            addTwoElements(8);
+            addThreeElements(8);
+            addFourElements(8);
+            addFiveElements(8);
+            addSixElements(8);
+            addSevenElements(8);
+            addEightElements(8);
+        }
 
 
-        System.out.println("Number of elements: " + worldsList.size());
+        System.out.println("Number of worlds: " + (worldsList.size() +1));
         //printList(worldsList);
 
         for (Set<Integer> world : worldsList)
@@ -96,7 +96,7 @@ public class NfcCreator {
             for (int j = 0; j < maxNumberOfWorlds; j++)
                 for (int k = 0; k < maxNumberOfWorlds; k++)
                     for (int l = 0; l < maxNumberOfWorlds; l++) {
-                        Set setToAdd =  new TreeSet(Comparator.reverseOrder());
+                        Set setToAdd = new TreeSet(Comparator.reverseOrder());
                         setToAdd.add(i);
                         setToAdd.add(j);
                         setToAdd.add(k);
@@ -114,7 +114,7 @@ public class NfcCreator {
                 for (int k = 0; k < maxNumberOfWorlds; k++)
                     for (int l = 0; l < maxNumberOfWorlds; l++)
                         for (int m = 0; m < maxNumberOfWorlds; m++) {
-                            Set setToAdd =  new TreeSet(Comparator.reverseOrder());
+                            Set setToAdd = new TreeSet(Comparator.reverseOrder());
                             setToAdd.add(i);
                             setToAdd.add(j);
                             setToAdd.add(k);
@@ -134,7 +134,7 @@ public class NfcCreator {
                     for (int l = 0; l < maxNumberOfWorlds; l++)
                         for (int m = 0; m < maxNumberOfWorlds; m++)
                             for (int n = 0; n < maxNumberOfWorlds; n++) {
-                                Set setToAdd =  new TreeSet(Comparator.reverseOrder());
+                                Set setToAdd = new TreeSet(Comparator.reverseOrder());
                                 setToAdd.add(i);
                                 setToAdd.add(j);
                                 setToAdd.add(k);
@@ -156,7 +156,7 @@ public class NfcCreator {
                         for (int m = 0; m < maxNumberOfWorlds; m++)
                             for (int n = 0; n < maxNumberOfWorlds; n++)
                                 for (int o = 0; o < maxNumberOfWorlds; o++) {
-                                    Set setToAdd =  new TreeSet(Comparator.reverseOrder());
+                                    Set setToAdd = new TreeSet(Comparator.reverseOrder());
                                     setToAdd.add(i);
                                     setToAdd.add(j);
                                     setToAdd.add(k);
@@ -180,7 +180,7 @@ public class NfcCreator {
                             for (int n = 0; n < maxNumberOfWorlds; n++)
                                 for (int o = 0; o < maxNumberOfWorlds; o++)
                                     for (int p = 0; p < maxNumberOfWorlds; p++) {
-                                        Set setToAdd =  new TreeSet(Comparator.reverseOrder());
+                                        Set setToAdd = new TreeSet(Comparator.reverseOrder());
                                         setToAdd.add(i);
                                         setToAdd.add(j);
                                         setToAdd.add(k);

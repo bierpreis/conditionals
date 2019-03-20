@@ -33,7 +33,7 @@ public class StartPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataContainer.createWorlds(optionsPanel.getCardinality());
+            DataContainer.createWorlds(optionsPanel.getSignature());
             condPanel.printWorlds();
 
         }
@@ -48,7 +48,7 @@ public class StartPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataContainer.createConditionals(optionsPanel.getCardinality());
+            DataContainer.createConditionals(optionsPanel.getSignature());
             condPanel.printConditionals();
         }
     }
