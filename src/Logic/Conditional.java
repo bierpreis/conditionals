@@ -1,9 +1,6 @@
 package Logic;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Conditional implements Comparable {
     private List<Integer> left;
@@ -11,7 +8,7 @@ public class Conditional implements Comparable {
 
     public Conditional() {
         left = new LinkedList<>();
-        right = new TreeSet<>();
+        right = new TreeSet(Collections.reverseOrder());
     }
 
     @Override
@@ -90,4 +87,6 @@ public class Conditional implements Comparable {
     public Set<Integer> getRight() {
         return right;
     }
+
+
 }
