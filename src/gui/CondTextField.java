@@ -14,13 +14,14 @@ public class CondTextField extends JTextArea {
 
 
     public void printWorlds() {
-
+        setText("");
         for (Set<Integer> setToPrint : DataContainer.getWorldsList())
             append(setToPrint.toString() + "\n");
     }
 
     public void printConditionals() {
-        for(int i = 0; i<DataContainer.getConditionalSet().size(); i++)
+        setText("");
+        for (int i = 0; i < DataContainer.getConditionalSet().size(); i++)
             append(i + 1 + "    " + DataContainer.getConditionalSet().get(i).toString() + "\n");
 
         System.out.println("conditionals printed: " + DataContainer.getConditionalSet().size());
