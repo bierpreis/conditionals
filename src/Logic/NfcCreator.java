@@ -31,13 +31,14 @@ public class NfcCreator {
         }
 
 
-        System.out.println("Number of worlds: " + (worldsList.size() +1));
+        System.out.println("Number of worlds: " + (worldsList.size() + 1));
 
         for (Set<Integer> world : worldsList)
             createConditionals(world);
 
 
     }
+
     private void addOneElements(int maxNumberOfWorlds) {
 
         for (int i = 0; i < maxNumberOfWorlds; i++) {
@@ -165,6 +166,7 @@ public class NfcCreator {
     }
 
     private void addEightElements(int maxNumberOfWorlds) {
+        long startTime = System.currentTimeMillis();
         for (int i = 0; i < maxNumberOfWorlds; i++) {
             for (int j = 0; j < maxNumberOfWorlds; j++)
                 for (int k = 0; k < maxNumberOfWorlds; k++)
@@ -187,6 +189,9 @@ public class NfcCreator {
 
         }
         System.out.println("length with 8 elements: " + worldsList.size());
+        long endTIme = System.currentTimeMillis();
+        long diff = endTIme - startTime;
+        System.out.println("time: " + diff / 1000 + "s");
     }
 
 
