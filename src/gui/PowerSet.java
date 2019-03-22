@@ -1,7 +1,6 @@
 package gui;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class PowerSet {
     public static void main(String[] args) {
@@ -10,16 +9,15 @@ public class PowerSet {
             set[i] = i;
         }
 
-        List<List> sets = new LinkedList<>();
-        sets.add(new LinkedList());
+        List<Set> sets = new LinkedList<>();
+        sets.add(new TreeSet());
 
         for (int currentWorld : set) {
-            for (int i = 0; i < 7; i++) {
-                List newList = new LinkedList<>();
-                newList.add(currentWorld);
-                newList.add(set[i]);
-                sets.add(newList);
-                System.out.println(currentWorld);
+            for (int i = 7; i > 0; i--) {
+                Set newSet = new TreeSet<>(Collections.reverseOrder());
+                newSet.add(currentWorld);
+                newSet.add(set[i]);
+                sets.add(newSet);
             }
 
         }
