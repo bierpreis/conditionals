@@ -14,13 +14,14 @@ public class DataContainer {
     public static void createWorlds(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
         worldsList = nfcCreator.getWorldsList();
+        Collections.sort(worldsList);
     }
 
     public static void createConditionals(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
         worldsList = nfcCreator.getWorldsList();
         conditionalList = nfcCreator.getConditionalsList();
-        sortConditionalList();
+        Collections.sort(conditionalList);
 
 
     }
@@ -29,7 +30,4 @@ public class DataContainer {
         return conditionalList;
     }
 
-    private static void sortConditionalList() {
-        Collections.sort(conditionalList);
-    }
 }

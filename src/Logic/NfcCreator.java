@@ -6,11 +6,11 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private List<List<Integer>> worldsList = new LinkedList<>();
+    private List<List<Integer>> worldsList;
     private List<Conditional> conditionalList;
 
     public NfcCreator(int number) {
-        int numberOfWorlds = (int)Math.pow((double)2 , (double)number);
+        int numberOfWorlds = (int) Math.pow((double) 2, (double) number);
         conditionalList = new LinkedList<>();
 
         List<Integer> initWorldsList = new LinkedList<>();
@@ -32,7 +32,7 @@ public class NfcCreator {
         return worldsList;
     }
 
-    //todo: this is taken from inet?!
+    //todo: this is taken from inet?! maybe use the other subset mehtod?
     public void createConditionals(List<Integer> worlds) {
         Set<List<Integer>> leftSideList = new HashSet<>();
 
