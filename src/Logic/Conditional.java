@@ -58,7 +58,7 @@ public class Conditional implements Comparable {
         left = newList;
     }
 
-    public void setRight(Set<Integer> newSet) {
+    public void setRight(List<Integer> newSet) {
         List<Integer> newList = new LinkedList<>();
         newList.addAll(newSet);
         right = newList;

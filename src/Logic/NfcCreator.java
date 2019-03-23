@@ -21,8 +21,8 @@ public class NfcCreator {
 
         System.out.println("Number of worlds: " + (worldsList.size() + 1));
 
-        //for (List<Integer> world : worldsList)
-        //    createConditionals(world);
+        for (List<Integer> world : worldsList)
+            createConditionals(world);
 
 
     }
@@ -33,7 +33,7 @@ public class NfcCreator {
     }
 
     //todo: this is taken from inet?!
-    public void createConditionals(Set<Integer> worlds) {
+    public void createConditionals(List<Integer> worlds) {
         Set<List<Integer>> leftSideList = new HashSet<>();
 
         Integer[] array = worlds.stream().toArray(Integer[]::new);
