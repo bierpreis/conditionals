@@ -6,202 +6,26 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private List<Set<Integer>> worldsList = new LinkedList<>();
+    private List<List<Integer>> worldsList = new LinkedList<>();
     private List<Conditional> conditionalList;
 
-    public NfcCreator(String signature) {
+    public NfcCreator(int number) {
         conditionalList = new LinkedList<>();
 
-        oldCreateWorlds(signature);
-        //createSubSetList(signature);
+        List<Integer> initWorldsList = new LinkedList<>();
+        for (int i = 0; i < 8; i++) {
+            initWorldsList.add(i);
+        }
+        worldsList = createSubSetList(initWorldsList);
+
         System.out.println("Number of worlds: " + (worldsList.size() + 1));
 
-        for (Set<Integer> world : worldsList)
-            createConditionals(world);
+        //for (List<Integer> world : worldsList)
+        //    createConditionals(world);
 
 
     }
 
-    private void oldCreateWorlds(String signature) {
-        if (signature.equals("ab")) {
-            addOneElements(4);
-            addTwoElements(4);
-            addThreeElements(4);
-            addFourElements(4);
-        }
-
-        if (signature.equals("abc")) {
-            addOneElements(8);
-            addTwoElements(8);
-            addThreeElements(8);
-            addFourElements(8);
-            addFiveElements(8);
-            addSixElements(8);
-            addSevenElements(8);
-            addEightElements(8);
-        }
-    }
-
-    private void addOneElements(int maxNumberOfWorlds) {
-
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            Set setToAdd = new TreeSet();
-            setToAdd.add(i);
-
-            addWorldToList(setToAdd);
-
-        }
-        System.out.println("length with 1 elements: " + worldsList.size());
-
-    }
-
-    private void addTwoElements(int maxNumberOfWorlds) {
-
-
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++) {
-                Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                setToAdd.add(i);
-                setToAdd.add(j);
-                if (setToAdd.size() > 1)
-                    addWorldToList(setToAdd);
-            }
-
-        }
-
-        System.out.println("length with 2 elements: " + worldsList.size());
-    }
-
-    private void addThreeElements(int maxNumberOfWorlds) {
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++)
-                for (int k = 0; k < maxNumberOfWorlds; k++) {
-                    Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                    setToAdd.add(i);
-                    setToAdd.add(j);
-                    setToAdd.add(k);
-                    if (setToAdd.size() > 2)
-                        addWorldToList(setToAdd);
-                }
-
-        }
-        System.out.println("length with 3 elements: " + worldsList.size());
-    }
-
-    private void addFourElements(int maxNumberOfWorlds) {
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++)
-                for (int k = 0; k < maxNumberOfWorlds; k++)
-                    for (int l = 0; l < maxNumberOfWorlds; l++) {
-                        Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                        setToAdd.add(i);
-                        setToAdd.add(j);
-                        setToAdd.add(k);
-                        setToAdd.add(l);
-                        addWorldToList(setToAdd);
-                    }
-
-        }
-        System.out.println("length with 4 elements: " + worldsList.size());
-    }
-
-    private void addFiveElements(int maxNumberOfWorlds) {
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++)
-                for (int k = 0; k < maxNumberOfWorlds; k++)
-                    for (int l = 0; l < maxNumberOfWorlds; l++)
-                        for (int m = 0; m < maxNumberOfWorlds; m++) {
-                            Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                            setToAdd.add(i);
-                            setToAdd.add(j);
-                            setToAdd.add(k);
-                            setToAdd.add(l);
-                            setToAdd.add(m);
-                            addWorldToList(setToAdd);
-                        }
-
-        }
-        System.out.println("length with 5 elements: " + worldsList.size());
-    }
-
-    private void addSixElements(int maxNumberOfWorlds) {
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++)
-                for (int k = 0; k < maxNumberOfWorlds; k++)
-                    for (int l = 0; l < maxNumberOfWorlds; l++)
-                        for (int m = 0; m < maxNumberOfWorlds; m++)
-                            for (int n = 0; n < maxNumberOfWorlds; n++) {
-                                Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                                setToAdd.add(i);
-                                setToAdd.add(j);
-                                setToAdd.add(k);
-                                setToAdd.add(l);
-                                setToAdd.add(m);
-                                setToAdd.add(n);
-                                addWorldToList(setToAdd);
-                            }
-
-        }
-        System.out.println("length with 6 elements: " + worldsList.size());
-    }
-
-    private void addSevenElements(int maxNumberOfWorlds) {
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++)
-                for (int k = 0; k < maxNumberOfWorlds; k++)
-                    for (int l = 0; l < maxNumberOfWorlds; l++)
-                        for (int m = 0; m < maxNumberOfWorlds; m++)
-                            for (int n = 0; n < maxNumberOfWorlds; n++)
-                                for (int o = 0; o < maxNumberOfWorlds; o++) {
-                                    Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                                    setToAdd.add(i);
-                                    setToAdd.add(j);
-                                    setToAdd.add(k);
-                                    setToAdd.add(l);
-                                    setToAdd.add(m);
-                                    setToAdd.add(n);
-                                    setToAdd.add(o);
-                                    addWorldToList(setToAdd);
-                                }
-
-        }
-        System.out.println("length with 7 elements: " + worldsList.size());
-    }
-
-    private void addEightElements(int maxNumberOfWorlds) {
-        long startTime = System.currentTimeMillis();
-        for (int i = 0; i < maxNumberOfWorlds; i++) {
-            for (int j = 0; j < maxNumberOfWorlds; j++)
-                for (int k = 0; k < maxNumberOfWorlds; k++)
-                    for (int l = 0; l < maxNumberOfWorlds; l++)
-                        for (int m = 0; m < maxNumberOfWorlds; m++)
-                            for (int n = 0; n < maxNumberOfWorlds; n++)
-                                for (int o = 0; o < maxNumberOfWorlds; o++)
-                                    for (int p = 0; p < maxNumberOfWorlds; p++) {
-                                        Set setToAdd = new TreeSet(Comparator.reverseOrder());
-                                        setToAdd.add(i);
-                                        setToAdd.add(j);
-                                        setToAdd.add(k);
-                                        setToAdd.add(l);
-                                        setToAdd.add(m);
-                                        setToAdd.add(n);
-                                        setToAdd.add(o);
-                                        setToAdd.add(p);
-                                        addWorldToList(setToAdd);
-                                    }
-
-        }
-        System.out.println("length with 8 elements: " + worldsList.size());
-        long endTIme = System.currentTimeMillis();
-        long diff = endTIme - startTime;
-        System.out.println("time: " + diff / 1000 + "s");
-    }
-
-
-    private void addWorldToList(Set setToAdd) {
-        if (!worldsList.contains(setToAdd))
-            worldsList.add(setToAdd);
-    }
 
     public List getWorldsList() {
         return worldsList;

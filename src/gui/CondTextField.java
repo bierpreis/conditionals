@@ -3,6 +3,7 @@ package gui;
 import Logic.DataContainer;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -15,7 +16,7 @@ public class CondTextField extends JTextArea {
 
     public void printWorlds() {
         setText("");
-        for (Set<Integer> setToPrint : DataContainer.getWorldsList())
+        for (List<Integer> setToPrint : DataContainer.getWorldsList())
             append(setToPrint.toString() + "\n");
     }
 
