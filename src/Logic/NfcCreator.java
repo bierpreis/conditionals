@@ -10,10 +10,11 @@ public class NfcCreator {
     private List<Conditional> conditionalList;
 
     public NfcCreator(int number) {
+        int numberOfWorlds = (int)Math.pow((double)2 , (double)number);
         conditionalList = new LinkedList<>();
 
         List<Integer> initWorldsList = new LinkedList<>();
-        for (int i = 0; i < 8; i++) {
+        for (int i = numberOfWorlds - 1; i > 0; i--) {
             initWorldsList.add(i);
         }
         worldsList = createSubSetList(initWorldsList);

@@ -35,8 +35,8 @@ public class OptionsPanel extends JPanel {
         setVisible(true);
     }
 
-    public String getSignature() {
-        return signatureButtonGroup.getSelection().getActionCommand();
+    public int getSignature() {
+        return signatureButtonGroup.getSelection().getActionCommand().length();
     }
 
     class SignatureRadioButtonListener implements ActionListener {

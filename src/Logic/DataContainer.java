@@ -11,13 +11,13 @@ public class DataContainer {
         return worldsList;
     }
 
-    public static void createWorlds(String signature) {
-        NfcCreator nfcCreator = new NfcCreator(signature.length()); //todo
+    public static void createWorlds(int signatureAmount) {
+        NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
         worldsList = nfcCreator.getWorldsList();
     }
 
-    public static void createConditionals(String signature) {
-        NfcCreator nfcCreator = new NfcCreator(signature.length()); //todo
+    public static void createConditionals(int signatureAmount) {
+        NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
         worldsList = nfcCreator.getWorldsList();
         conditionalList = nfcCreator.getConditionalsList();
         sortConditionalList();
