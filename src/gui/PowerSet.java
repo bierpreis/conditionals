@@ -39,27 +39,7 @@ public class PowerSet {
         System.out.println(sets.size());
     }
 
-    //    public static List<List<Integer>> createPowerSet(List<Integer> base){
-//        List<List<Integer>> listToReturn = new ArrayList<Integer>;
-//
-//        for(Integer world: base){
-//            List<Integer> newList = new ArrayList<>()
-//        }
-//
-//    }
-    public static <T> List<List<T>> powerSet(List<T> input) {
-        List<List<T>> sets = new ArrayList<>();
-        for (T element : input) {
-            for (ListIterator<List<T>> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
-                List<T> newSet = new ArrayList<>(setsIterator.next());
-                newSet.add(element);
-                setsIterator.add(newSet);
-            }
-            sets.add(new ArrayList<>(Arrays.asList(element))); //!!!
-        }
-        sets.add(new ArrayList<>());
-        return sets;
-    }
+
 
     public static  List<List<Integer>> subSet(List<Integer> input) {
         List<List<Integer>> sets = new ArrayList<>();
