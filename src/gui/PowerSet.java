@@ -10,7 +10,7 @@ public class PowerSet {
         niceList.add(3);
 
         //own();
-        List<List<Integer>> betterList = subSet(niceList);
+        List<List<Integer>> betterList = createSubSetList(niceList);
         System.out.println(betterList);
 
     }
@@ -41,7 +41,7 @@ public class PowerSet {
 
 
 
-    public static  List<List<Integer>> subSet(List<Integer> input) {
+    public static  List<List<Integer>> createSubSetList(List<Integer> input) {
         List<List<Integer>> sets = new ArrayList<>();
         for (Integer world : input) {
             for (ListIterator<List<Integer>> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
@@ -51,7 +51,6 @@ public class PowerSet {
             }
             sets.add(new ArrayList<>(Arrays.asList(world)));
         }
-        sets.add(new ArrayList<>());
         return sets;
     }
 }
