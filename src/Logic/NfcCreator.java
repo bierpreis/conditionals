@@ -12,6 +12,17 @@ public class NfcCreator {
     public NfcCreator(String signature) {
         conditionalList = new LinkedList<>();
 
+        oldCreateWorlds(signature);
+        //createSubSetList(signature);
+        System.out.println("Number of worlds: " + (worldsList.size() + 1));
+
+        for (Set<Integer> world : worldsList)
+            createConditionals(world);
+
+
+    }
+
+    private void oldCreateWorlds(String signature) {
         if (signature.equals("ab")) {
             addOneElements(4);
             addTwoElements(4);
@@ -29,14 +40,6 @@ public class NfcCreator {
             addSevenElements(8);
             addEightElements(8);
         }
-
-
-        System.out.println("Number of worlds: " + (worldsList.size() + 1));
-
-        for (Set<Integer> world : worldsList)
-            createConditionals(world);
-
-
     }
 
     private void addOneElements(int maxNumberOfWorlds) {
@@ -247,6 +250,19 @@ public class NfcCreator {
 
     public List<Conditional> getConditionalsList() {
         return conditionalList;
+    }
+
+    public static List<List<Integer>> createSubSetList(List<Integer> input) {
+        List<List<Integer>> sets = new ArrayList<>();
+        for (Integer world : input) {
+            for (ListIterator<List<Integer>> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
+                List<Integer> newSet = new ArrayList<>(setsIterator.next());
+                newSet.add(world);
+                setsIterator.add(newSet);
+            }
+            sets.add(new ArrayList<>(Arrays.asList(world)));
+        }
+        return sets;
     }
 
 
