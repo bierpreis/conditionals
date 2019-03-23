@@ -14,7 +14,7 @@ public class NfcCreator {
         conditionalList = new LinkedList<>();
 
         List<Integer> initWorldsList = new LinkedList<>();
-        for (int i = numberOfWorlds - 1; i > 0; i--) {
+        for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
         }
         worldsList = createSubSetList(initWorldsList);
