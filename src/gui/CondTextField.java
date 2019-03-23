@@ -1,10 +1,10 @@
 package gui;
 
 import Logic.DataContainer;
+import Logic.World;
 
 import javax.swing.*;
 import java.util.List;
-import java.util.Set;
 
 
 public class CondTextField extends JTextArea {
@@ -16,8 +16,8 @@ public class CondTextField extends JTextArea {
 
     public void printWorlds() {
         setText("");
-        for (List<Integer> setToPrint : DataContainer.getWorldsList())
-            append(setToPrint.toString() + "\n");
+        for (World world : DataContainer.getWorldsList())
+            append(world.getWorldsList().toString() + "\n");
     }
 
     public void printConditionals() {

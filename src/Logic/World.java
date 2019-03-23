@@ -1,10 +1,15 @@
 package Logic;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class World implements Comparable {
 
     List<Integer> worlds;
+
+    public World World() {
+        worlds = new LinkedList<>();
+    }
 
     public World(List worlds) {
         this.worlds = worlds;
@@ -37,5 +42,13 @@ public class World implements Comparable {
 
     public List<Integer> getWorldsList() {
         return worlds;
+    }
+
+    public int getSize() {
+        return worlds.size();
+    }
+
+    public void add(int worldToAdd) {
+        worlds.add(worldToAdd);
     }
 }

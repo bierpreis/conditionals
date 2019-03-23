@@ -3,33 +3,33 @@ package Logic;
 import java.util.*;
 
 public class Conditional implements Comparable {
-    private List<Integer> left;
-    private List<Integer> right;
+    private World leftWorld;
+    private World rightWorld;
 
     public Conditional() {
-        left = new LinkedList<>();
-        right = new LinkedList<>();
+        leftWorld = new World();
+        rightWorld = new World();
     }
 
     @Override
     public int compareTo(Object o) {
         Conditional other = (Conditional) o;
 
-        if (right.size() < other.right.size())
+        if (rightWorld.getSize() < other.rightWorld.getSize())
             return -1;
-        if (right.size() > other.right.size())
+        if (rightWorld.getSize() > other.rightWorld.getSize())
             return 1;
 
-        int comparedRight = compareWorldsElements(right, other.right);
+        int comparedRight = compareWorldsElements(rightWorld, other.rightWorld);
         if (comparedRight != 0)
             return comparedRight;
 
-        if (left.size() < other.left.size())
+        if (leftWorld.getSize() < other.leftWorld.getSize())
             return -1;
-        if (left.size() > other.left.size())
+        if (leftWorld.getSize() > other.leftWorld.getSize())
             return 1;
 
-        int comparedLeft = compareWorldsElements(left, other.left);
+        int comparedLeft = compareWorldsElements(leftWorld, other.leftWorld);
         if (comparedLeft != 0)
             return comparedLeft;
 
@@ -51,25 +51,23 @@ public class Conditional implements Comparable {
 
     @Override
     public String toString() {
-        return left.toString() + " | " + right.toString();
+        return leftWorld.toString() + " | " + rightWorld.toString();
     }
 
-    public void setLeft(List<Integer> newList) {
-        left = newList;
+    public void setLeft(World newWorld) {
+        leftWorld = newWorld;
     }
 
-    public void setRight(List<Integer> newSet) {
-        List<Integer> newList = new LinkedList<>();
-        newList.addAll(newSet);
-        right = newList;
+    public void setRight(World newWorld) {
+        rightWorld = newWorld;
     }
 
-    public List<Integer> getLeft() {
-        return left;
+    public World getLeft() {
+        return leftWorld;
     }
 
-    public List<Integer> getRight() {
-        return right;
+    public World getRight() {
+        return rightWorld;
     }
 
 

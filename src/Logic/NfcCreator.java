@@ -6,7 +6,7 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private List<List<Integer>> worldsList;
+    private List<World> worldsList;
     private List<Conditional> conditionalList;
 
     public NfcCreator(int number) {
@@ -21,7 +21,7 @@ public class NfcCreator {
 
         System.out.println("Number of worlds: " + (worldsList.size() + 1));
 
-        for (List<Integer> world : worldsList)
+        for (World world : worldsList)
             createConditionals(world);
 
 
@@ -33,12 +33,12 @@ public class NfcCreator {
     }
 
     //todo: this is taken from inet?! maybe use the other subset mehtod?
-    public void createConditionals(List<Integer> worlds) {
+    public void createConditionals(World currentWorld) {
         Set<List<Integer>> leftSideList = new HashSet<>();
 
-        Integer[] array = worlds.stream().toArray(Integer[]::new);
+        Integer[] array = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
 
-        int n = worlds.size();
+        int n = currentWorld.getWorldsList().size();
 
         // Run a loop for printing all 2^n
         // subsets one by obe
@@ -62,7 +62,7 @@ public class NfcCreator {
         for (List<Integer> leftSide : leftSideList) {
             Conditional newConditional = new Conditional();
             newConditional.setLeft(leftSide);
-            newConditional.setRight(worlds);
+            newConditional.setRight(currentWorld);
             //todo
             if (newConditional.getRight().size() > newConditional.getLeft().size())
                 conditionalList.add(newConditional);
@@ -77,12 +77,12 @@ public class NfcCreator {
         return conditionalList;
     }
 
-    public static List<List<Integer>> createSubSetList(List<Integer> input) {
-        List<List<Integer>> sets = new ArrayList<>();
+    public static List<World> createSubSetList(List<Integer> input) {
+        List<World> sets = new LinkedList<>(); //todo: linked or array??
         for (Integer world : input) {
-            for (ListIterator<List<Integer>> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
-                List<Integer> newSet = new ArrayList<>(setsIterator.next());
-                newSet.add(world);
+            for (ListIterator<World> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
+                World newWorld = new World();
+                newWorld.add(world);
                 setsIterator.add(newSet);
             }
             sets.add(new ArrayList<>(Arrays.asList(world)));

@@ -4,10 +4,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class DataContainer {
-    private static List<List<Integer>> worldsList;
+    private static List<World> worldsList;
     private static List<Conditional> conditionalList;
 
-    public static List<List<Integer>> getWorldsList() {
+    public static List<World> getWorldsList() {
         return worldsList;
     }
 
