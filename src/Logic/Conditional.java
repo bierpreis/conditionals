@@ -20,7 +20,7 @@ public class Conditional implements Comparable {
         if (right.size() > other.right.size())
             return 1;
 
-        int comparedRight = compareWorlds(right, other.right);
+        int comparedRight = compareWorldsElements(right, other.right);
         if (comparedRight != 0)
             return comparedRight;
 
@@ -29,7 +29,7 @@ public class Conditional implements Comparable {
         if (left.size() > other.left.size())
             return 1;
 
-        int comparedLeft = compareWorlds(left, other.left);
+        int comparedLeft = compareWorldsElements(left, other.left);
         if (comparedLeft != 0)
             return comparedLeft;
 
@@ -38,7 +38,7 @@ public class Conditional implements Comparable {
     }
 
 
-    private int compareWorlds(List<Integer> firstList, List<Integer> secondList) {
+    private int compareWorldsElements(List<Integer> firstList, List<Integer> secondList) {
         for (int i = 0; i < firstList.size(); i++) {
             if (firstList.get(i) > secondList.get(i))
                 return -1;
