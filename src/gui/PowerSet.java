@@ -22,7 +22,7 @@ public class PowerSet {
         }
 
         List<Set> sets = new LinkedList<>();
-        //sets.add(new TreeSet());
+        //sets.addInt(new TreeSet());
 
         for (int currentWorld : set) {
             for (int i = 7; i > 0; i--) {

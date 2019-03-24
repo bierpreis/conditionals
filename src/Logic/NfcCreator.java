@@ -54,7 +54,7 @@ public class NfcCreator {
                 // are present in the subset and which
                 // are not
                 if ((i & (1 << j)) > 0) {//todo this was changed
-                    worldsList.get(i).add(array[j]);
+                    worldsList.get(i).addInt(array[j]);
 
                     leftSideList.add(worldsList.get(i));
                 }
@@ -81,14 +81,15 @@ public class NfcCreator {
         List<World> sets = new LinkedList<>(); //todo: linked or array??
         for (Integer world : input) {
             for (ListIterator<World> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
-                World newWorld = new World(); //rly new world?
-                newWorld.add(world);
+                World newWorld = new World();
+                newWorld.addList(setsIterator.next().getWorldsList());
+                newWorld.addInt(world);
                 setsIterator.add(newWorld);
-                setsIterator.next();
+
                 System.out.println("iterating.." + newWorld.getWorldsList());
             }
             World otherWorld = new World();
-            otherWorld.add(world);
+            otherWorld.addInt(world);
             sets.add(otherWorld);
         }
         System.out.println("returned: ");

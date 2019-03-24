@@ -48,8 +48,13 @@ public class World implements Comparable {
         return worlds.size();
     }
 
-    public void add(int worldToAdd) {
+    public void addInt(int worldToAdd) {
         worlds.add(worldToAdd);
+    }
+
+    public void addList(List<Integer> newList) {
+        for (Integer newInt : newList)
+            worlds.add(newInt);
     }
 
     @Override
