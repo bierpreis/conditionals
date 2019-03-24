@@ -10,6 +10,7 @@ public class NfcCreator {
     private List<Conditional> conditionalList;
 
     public NfcCreator(int number) {
+        //todo: this constructor.
         int numberOfWorlds = (int) Math.pow((double) 2, (double) number);
         conditionalList = new LinkedList<>();
 
