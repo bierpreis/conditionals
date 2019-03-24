@@ -2,7 +2,7 @@ package gui;
 
 import java.util.*;
 
-public class PowerSet {
+public class PowerSet {//todo: delete class??
     public static void main(String[] args) {
         List<Integer> niceList = new LinkedList<>();
         niceList.add(1);

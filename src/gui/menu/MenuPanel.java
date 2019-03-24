@@ -1,4 +1,6 @@
-package gui;
+package gui.menu;
+
+import gui.textArea.CondPanel;
 
 import javax.swing.*;
 

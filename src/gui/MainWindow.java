@@ -1,5 +1,8 @@
 package gui;
 
+import gui.menu.MenuPanel;
+import gui.textArea.CondPanel;
+
 import javax.swing.*;
 import java.awt.*;
 

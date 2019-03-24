@@ -1,6 +1,7 @@
-package gui;
+package gui.textArea;
 
 import Logic.DataContainer;
+import gui.CondTextField;
 
 import javax.swing.*;
 

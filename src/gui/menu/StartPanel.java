@@ -1,6 +1,8 @@
-package gui;
+package gui.menu;
 
 import Logic.DataContainer;
+import gui.menu.OptionsPanel;
+import gui.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
