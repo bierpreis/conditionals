@@ -92,8 +92,6 @@ public class NfcCreator {
             otherWorld.addInt(world);
             sets.add(otherWorld);
         }
-        for (World world : sets)
-            System.out.println(world.toString());
         return sets;
     }
 
