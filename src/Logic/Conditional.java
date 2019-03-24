@@ -70,5 +70,9 @@ public class Conditional implements Comparable {
         return rightWorld;
     }
 
+    public boolean isValid() {
+        return rightWorld.getSize() > leftWorld.getSize();
+    }
+
 
 }
