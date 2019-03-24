@@ -18,6 +18,10 @@ public class Utility {
     private static List<List<Conditional>> createBaseGroups(List<Conditional> baseList) {
         List<List<Conditional>> baseGroups = new LinkedList<>();
 
+        for(Conditional conditional: baseList){
+
+        }
+
 
         return baseGroups;
     }
