@@ -1,7 +1,5 @@
 package Logic;
 
-import java.util.*;
-
 public class Conditional implements Comparable {
     private World leftWorld;
     private World rightWorld;

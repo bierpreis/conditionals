@@ -3,7 +3,7 @@ package Logic;
 import java.util.Collections;
 import java.util.List;
 
-public class DataContainer {
+public class DataContainer {//todo: delete this class completely?
     private static List<World> worldsList;
     private static List<Conditional> conditionalList;
 
@@ -12,15 +12,14 @@ public class DataContainer {
     }
 
     public static void createWorlds(int signatureAmount) {
-        NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
+        NfcCreator nfcCreator = new NfcCreator(signatureAmount);
         worldsList = nfcCreator.getWorldsList();
         Collections.sort(worldsList);
     }
 
     public static void createConditionals(int signatureAmount) {
-        NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
+        NfcCreator nfcCreator = new NfcCreator(signatureAmount);
         worldsList = nfcCreator.getWorldsList();
-        nfcCreator.createContiionals();
         conditionalList = nfcCreator.getConditionalsList();
         Collections.sort(conditionalList);
 

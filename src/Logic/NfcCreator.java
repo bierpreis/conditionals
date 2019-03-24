@@ -9,20 +9,11 @@ public class NfcCreator {
     private List<World> worldsList;
     private List<Conditional> conditionalList;
 
-    public NfcCreator(int number) {
-        //todo: this constructor.
-        int numberOfWorlds = (int) Math.pow((double) 2, (double) number);
-        conditionalList = new LinkedList<>();
+    public NfcCreator(int signatureAmount) {
+        initWorlds(signatureAmount);
 
-        List<Integer> initWorldsList = new LinkedList<>();
-        for (int i = numberOfWorlds - 1; i >= 0; i--) {
-            initWorldsList.add(i);
-        }
-        worldsList = createSubSetList(initWorldsList);
-
-        System.out.println("Number of worlds: " + (worldsList.size() + 1));
-
-
+        for (World world : worldsList)
+            createConditionalsForWorld(world);
     }
 
 
@@ -30,12 +21,20 @@ public class NfcCreator {
         return worldsList;
     }
 
-    public void createContiionals() {
-        for (World world : worldsList)
-            createConditionalsForWorld(world);
+    public void initWorlds(int signatureAmount) {
+        int numberOfWorlds = (int) Math.pow((double) 2, (double) signatureAmount);
+        conditionalList = new LinkedList<>();
+
+        List<Integer> initWorldsList = new LinkedList<>();
+        for (int i = numberOfWorlds - 1; i >= 0; i--) {
+            initWorldsList.add(i);
+        }
+
+        worldsList = createSubSetList(initWorldsList);
     }
 
-    //todo: this is taken from inet?! maybe use the other subset mehtod?
+
+    //todo: this is taken from inet?! maybe use the other subset mehtod? or put this in world?
     public void createConditionalsForWorld(World currentWorld) {
         Set<World> listOfConditionalRights = new HashSet<>();
 
@@ -77,7 +76,7 @@ public class NfcCreator {
     }
 
     public static List<World> createSubSetList(List<Integer> inputList) {
-        List<World> subSetList = new LinkedList<>(); //todo: linked or array??
+        List<World> subSetList = new LinkedList<>();
         for (Integer world : inputList) {
             for (ListIterator<World> setsIterator = subSetList.listIterator(); setsIterator.hasNext(); ) {
                 World newWorld = new World();
