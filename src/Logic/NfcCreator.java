@@ -43,8 +43,8 @@ public class NfcCreator {
         int n = currentWorld.getWorldsList().size();
 
         // Run a loop for printing all 2^n
-        // subsets one by obe
-        for (int i = 1; i < (1 << n); i++) {
+        // subsets one by one
+        for (int i = 1; i < (1 << n); i++) { // i = 15 fault is here?!
             World newWorld = new World();
 
             // Print current subset
@@ -55,10 +55,10 @@ public class NfcCreator {
                 // subset number we get which numbers
                 // are present in the subset and which
                 // are not
-                if ((i & (1 << j)) > 0) {//todo this was changed
-                    worldsList.get(i).addInt(array[j]);
+                if ((i & (1 << j)) > 0) {
+                    newWorld.addInt(array[j]);
 
-                    leftSideList.add(worldsList.get(i));
+                    leftSideList.add(newWorld);
                 }
         }
         for (World leftSide : leftSideList) { //todo rename

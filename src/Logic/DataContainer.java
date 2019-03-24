@@ -20,6 +20,7 @@ public class DataContainer {
     public static void createConditionals(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount); //todo
         worldsList = nfcCreator.getWorldsList();
+        nfcCreator.createContiionals();
         conditionalList = nfcCreator.getConditionalsList();
         Collections.sort(conditionalList);
 
