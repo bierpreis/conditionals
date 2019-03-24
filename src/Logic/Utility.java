@@ -1,29 +1,32 @@
 package Logic;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Utility {
 
 
-    public static List getEquivGroups(List<Conditional> baseList) {
+    public static Map getEquivGroups(List<Conditional> baseList) {
 
 
-        List<List<Conditional>> conditionalsSortedByNumber = createBaseGroups(baseList);
+        Map<Cardinality, Conditional> conditionalsSortedByNumber = createBaseGroups(baseList);
 
 
-        return createEquivGroups(conditionalsSortedByNumber);
+        return conditionalsSortedByNumber; //todo return real groups
     }
 
-    private static List<List<Conditional>> createBaseGroups(List<Conditional> baseList) {
-        List<List<Conditional>> baseGroups = new LinkedList<>();
+    private static Map createBaseGroups(List<Conditional> baseList) {
+        Map<Cardinality, Conditional> cardinalityMap = new LinkedHashMap<>();
 
-        for(Conditional conditional: baseList){
+        for (Conditional conditional : baseList) {
+            cardinalityMap.put(conditional.getCardinality(), conditional);
 
         }
 
 
-        return baseGroups;
+        return cardinalityMap;
     }
 
 

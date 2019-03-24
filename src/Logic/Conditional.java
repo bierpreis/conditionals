@@ -4,9 +4,12 @@ public class Conditional implements Comparable {
     private World leftWorld;
     private World rightWorld;
 
+    private Cardinality cardinality;
+
     public Conditional() {
         leftWorld = new World();
         rightWorld = new World();
+        cardinality = new Cardinality(leftWorld.getSize(), rightWorld.getSize());
     }
 
     @Override
@@ -70,6 +73,10 @@ public class Conditional implements Comparable {
 
     public boolean isValid() {
         return rightWorld.getSize() > leftWorld.getSize();
+    }
+
+    public Cardinality getCardinality() {
+        return cardinality;
     }
 
 

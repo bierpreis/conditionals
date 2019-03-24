@@ -1,13 +1,13 @@
 package gui.textArea;
 
 import Logic.DataContainer;
-import gui.CondTextField;
 
 import javax.swing.*;
 
 public class CondPanel extends JPanel {
     private CondTextField condTextField;
     private JScrollPane scrollPane;
+
 
     private JPanel descriptionPanel;
     private JLabel numberOfConditionalsLabel;
@@ -44,5 +44,10 @@ public class CondPanel extends JPanel {
         scrollPane.setViewportView(condTextField);
         revalidate();
         repaint();
+    }
+
+    public void printCnfc(){
+        condTextField.setText("");
+        condTextField.printCnfc();
     }
 }

@@ -1,11 +1,10 @@
-package gui;
+package gui.textArea;
 
+import Logic.Conditional;
 import Logic.DataContainer;
 import Logic.World;
 
 import javax.swing.*;
-import java.util.List;
-
 
 public class CondTextField extends JTextArea {
 
@@ -26,5 +25,11 @@ public class CondTextField extends JTextArea {
             append(i + 1 + "    " + DataContainer.getConditionalSet().get(i).toString() + "\n");
 
         System.out.println("conditionals printed: " + DataContainer.getConditionalSet().size());
+    }
+
+    public void printCnfc() {
+        setText("");
+        for (Object object : DataContainer.getCnfc().values())
+            append(((Conditional) object).toString() + "\n");
     }
 }

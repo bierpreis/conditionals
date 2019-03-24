@@ -12,6 +12,7 @@ public class StartPanel extends JPanel {
     private CondPanel condPanel;
     private JButton createWorldsButton = new JButton("create worlds");
     private JButton createConditionalsButton = new JButton("create conditionals");
+    private JButton createCnfcButton = new JButton("create cNfc");
 
     public StartPanel(CondPanel condPanel, OptionsPanel optionsPanel) {
         this.condPanel = condPanel;
@@ -23,6 +24,23 @@ public class StartPanel extends JPanel {
 
         createConditionalsButton.addActionListener(new CreateConditionalsButtonListener(optionsPanel));
         add(createConditionalsButton);
+
+        createCnfcButton.addActionListener(new CreateCnfcButtonListener(optionsPanel));
+        add(createCnfcButton);
+    }
+
+    class CreateCnfcButtonListener implements ActionListener {
+        OptionsPanel optionsPanel;
+
+        public CreateCnfcButtonListener(OptionsPanel optionsPanel) {
+            this.optionsPanel = optionsPanel;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DataContainer.createCnfc(optionsPanel.getSignature());
+            condPanel.printCnfc();
+        }
     }
 
 
