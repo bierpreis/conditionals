@@ -21,9 +21,6 @@ public class NfcCreator {
 
         System.out.println("Number of worlds: " + (worldsList.size() + 1));
 
-        // for (World world : worldsList)
-        //    createConditionals(world);
-
 
     }
 
@@ -32,8 +29,13 @@ public class NfcCreator {
         return worldsList;
     }
 
+    public void createContiionals() {
+        for (World world : worldsList)
+            createConditionalsForWorld(world);
+    }
+
     //todo: this is taken from inet?! maybe use the other subset mehtod?
-    public void createConditionals(World currentWorld) {
+    public void createConditionalsForWorld(World currentWorld) {
         Set<World> leftSideList = new HashSet<>();
 
         Integer[] array = currentWorld.getWorldsList().stream().toArray(Integer[]::new);

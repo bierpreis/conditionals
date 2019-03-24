@@ -37,7 +37,7 @@ public class CondPanel extends JPanel {
     }
 
     public void printConditionals() {
-        //condTextField.setText("");
+        condTextField.setText("");
         condTextField.printConditionals();
         numberOfConditionalsLabel.setText(Integer.toString(DataContainer.getConditionalSet().size()));
         scrollPane.setViewportView(condTextField);
