@@ -29,7 +29,7 @@ public class World implements Comparable {
         for (int i = 0; i < worlds.size(); i++) {
             if (worlds.get(i) > otherWorld.getWorldsList().get(i))
                 return -1;
-            if (worlds.get(i) < worlds.get(i))
+            if (worlds.get(i) < otherWorld.getWorldsList().get(i))
                 return 1;
 
         }

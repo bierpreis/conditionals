@@ -87,14 +87,11 @@ public class NfcCreator {
                 newWorld.addList(setsIterator.next().getWorldsList());
                 newWorld.addInt(world);
                 setsIterator.add(newWorld);
-
-                System.out.println("iterating.." + newWorld.getWorldsList());
             }
             World otherWorld = new World();
             otherWorld.addInt(world);
             sets.add(otherWorld);
         }
-        System.out.println("returned: ");
         for (World world : sets)
             System.out.println(world.toString());
         return sets;
