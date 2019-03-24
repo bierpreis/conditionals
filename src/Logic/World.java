@@ -7,7 +7,7 @@ public class World implements Comparable {
 
     List<Integer> worlds;
 
-    public World World() {
+    public World() {
         worlds = new LinkedList<>();
     }
 
@@ -33,7 +33,7 @@ public class World implements Comparable {
                 return 1;
 
         }
-        System.out.println("comparing conditionals failed!!!");
+        System.out.println("comparing worlds failed!!! (" + this.toString() + " and " + otherWorld.toString() + " )");
         return 0;
 
 
@@ -50,5 +50,10 @@ public class World implements Comparable {
 
     public void add(int worldToAdd) {
         worlds.add(worldToAdd);
+    }
+
+    @Override
+    public String toString() {
+        return worlds.toString();
     }
 }

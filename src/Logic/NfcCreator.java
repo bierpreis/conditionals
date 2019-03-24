@@ -21,8 +21,8 @@ public class NfcCreator {
 
         System.out.println("Number of worlds: " + (worldsList.size() + 1));
 
-        for (World world : worldsList)
-            createConditionals(world);
+        // for (World world : worldsList)
+        //    createConditionals(world);
 
 
     }
@@ -34,7 +34,7 @@ public class NfcCreator {
 
     //todo: this is taken from inet?! maybe use the other subset mehtod?
     public void createConditionals(World currentWorld) {
-        Set<List<Integer>> leftSideList = new HashSet<>();
+        Set<World> leftSideList = new HashSet<>();
 
         Integer[] array = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
 
@@ -43,7 +43,7 @@ public class NfcCreator {
         // Run a loop for printing all 2^n
         // subsets one by obe
         for (int i = 1; i < (1 << n); i++) {
-            List<Integer> worldsList = new LinkedList<>();
+            World newWorld = new World();
 
             // Print current subset
             for (int j = 0; j < n; j++)
@@ -53,23 +53,23 @@ public class NfcCreator {
                 // subset number we get which numbers
                 // are present in the subset and which
                 // are not
-                if ((i & (1 << j)) > 0) {
-                    worldsList.add(array[j]);
+                if ((i & (1 << j)) > 0) {//todo this was changed
+                    worldsList.get(i).add(array[j]);
 
-                    leftSideList.add(worldsList);
+                    leftSideList.add(worldsList.get(i));
                 }
         }
-        for (List<Integer> leftSide : leftSideList) {
+        for (World leftSide : leftSideList) { //todo rename
             Conditional newConditional = new Conditional();
             newConditional.setLeft(leftSide);
             newConditional.setRight(currentWorld);
-            //todo
-            if (newConditional.getRight().size() > newConditional.getLeft().size())
+            //todo??
+            if (newConditional.getRight().getSize() > newConditional.getLeft().getSize())
                 conditionalList.add(newConditional);
         }
 
         //System.out.println("final conditionals: ");
-        //for (Conditional conditional : conditionalList)
+        //for (Conditional conditional : conditionalList) //todo do this only when creating conditionals not worlds
         //System.out.println(conditional.toString());
     }
 
@@ -81,12 +81,19 @@ public class NfcCreator {
         List<World> sets = new LinkedList<>(); //todo: linked or array??
         for (Integer world : input) {
             for (ListIterator<World> setsIterator = sets.listIterator(); setsIterator.hasNext(); ) {
-                World newWorld = new World();
+                World newWorld = new World(); //rly new world?
                 newWorld.add(world);
-                setsIterator.add(newSet);
+                setsIterator.add(newWorld);
+                setsIterator.next();
+                System.out.println("iterating.." + newWorld.getWorldsList());
             }
-            sets.add(new ArrayList<>(Arrays.asList(world)));
+            World otherWorld = new World();
+            otherWorld.add(world);
+            sets.add(otherWorld);
         }
+        System.out.println("returned: ");
+        for (World world : sets)
+            System.out.println(world.toString());
         return sets;
     }
 

@@ -33,16 +33,16 @@ public class Conditional implements Comparable {
         if (comparedLeft != 0)
             return comparedLeft;
 
-        System.out.println("comparing conditionals failed!!!");
+        System.out.println("comparing failed!!!" + this.toString() + " and " + other.toString());
         return 0;
     }
 
 
-    private int compareWorldsElements(List<Integer> firstList, List<Integer> secondList) {
-        for (int i = 0; i < firstList.size(); i++) {
-            if (firstList.get(i) > secondList.get(i))
+    private int compareWorldsElements(World firstWolrd, World secondWorld) {
+        for (int i = 0; i < firstWolrd.getSize(); i++) {
+            if (firstWolrd.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
                 return -1;
-            if (firstList.get(i) < secondList.get(i))
+            if (firstWolrd.getWorldsList().get(i) < secondWorld.getWorldsList().get(i))
                 return 1;
 
         }
