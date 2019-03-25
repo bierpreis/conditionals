@@ -4,12 +4,12 @@ public class Conditional implements Comparable {
     private World leftWorld;
     private World rightWorld;
 
-    private Cardinality cardinality;
+    private int key;
 
     public Conditional(World leftWorld, World rightWorld) {
         this.leftWorld = leftWorld;
         this.rightWorld = rightWorld;
-        cardinality = new Cardinality(leftWorld.getSize(), rightWorld.getSize());
+        key = generateKey();
     }
 
     @Override
@@ -67,8 +67,14 @@ public class Conditional implements Comparable {
         return rightWorld.getSize() > leftWorld.getSize();
     }
 
-    public Cardinality getCardinality() {
-        return cardinality;
+    private int generateKey() {
+        String stringHash = Integer.toString(leftWorld.getSize()) + Integer.toString(rightWorld.getSize());
+        System.out.println("stringhash" + stringHash);
+        return Integer.parseInt(stringHash);
+    }
+
+    public int getKey() {
+        return key;
     }
 
 
