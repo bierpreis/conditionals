@@ -8,8 +8,13 @@ public class CondPanel extends JPanel {
     private CondTextField condTextField;
     private JScrollPane scrollPane;
 
+    private String currentDescription = "empty";
 
-    private JPanel descriptionPanel;
+    private String worldsDescriptionLabel = "Number of Worlds: ";
+    private String conditionalDescriptionLabel = "Number of Conditionals: ";
+    private String equivClassesDescriptionLabel = "Number of Classes: ";
+
+    private JPanel infoPanel;
     private JLabel numberOfConditionalsLabel;
 
     public CondPanel() {
@@ -20,19 +25,18 @@ public class CondPanel extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scrollPane);
 
-        descriptionPanel = new JPanel();
-        descriptionPanel.add(new JLabel("Number of Conditionals:"));
+        infoPanel = new InfoPanel(this);
 
         numberOfConditionalsLabel = new JLabel("0");
-        descriptionPanel.add(numberOfConditionalsLabel);
-        add(descriptionPanel);
+        add(infoPanel);
 
     }
 
     public void printWorlds() {
         condTextField.setText("");
-        condTextField.printWorlds();
+        int numberOfWorlds = condTextField.printWorlds();
 
+        currentDescription = worldsDescriptionLabel + numberOfWorlds;
         revalidate();
         repaint();
     }
@@ -46,8 +50,12 @@ public class CondPanel extends JPanel {
         repaint();
     }
 
-    public void printCnfc(){
+    public void printCnfc() {
         condTextField.setText("");
         condTextField.printCnfc();
+    }
+
+    public String getDescription() {
+        return currentDescription;
     }
 }
