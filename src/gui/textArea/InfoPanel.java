@@ -14,7 +14,6 @@ public class InfoPanel extends JPanel {
 
     }
 
-    //todo: call this with a listener?
     public void printInfo() {
         descriptionLabel.setText(condPanel.getDescription());
 

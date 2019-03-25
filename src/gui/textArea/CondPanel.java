@@ -10,9 +10,9 @@ public class CondPanel extends JPanel {
 
     private String currentDescription = "empty";
 
-    private String worldsDescriptionLabel = "Number of Worlds: ";
-    private String conditionalDescriptionLabel = "Number of Conditionals: ";
-    private String equivClassesDescriptionLabel = "Number of Classes: ";
+    private final String worldsDescriptionLabel = "Number of Worlds: ";
+    private final String conditionalDescriptionLabel = "Number of Conditionals: ";
+    private final String equivClassesDescriptionLabel = "Number of Classes: ";
 
     private InfoPanel infoPanel;
     private JLabel numberOfConditionalsLabel;
@@ -38,8 +38,7 @@ public class CondPanel extends JPanel {
 
         currentDescription = worldsDescriptionLabel + numberOfWorlds;
         infoPanel.printInfo();
-        revalidate();
-        repaint();
+
     }
 
     public void printConditionals() {
@@ -53,9 +52,6 @@ public class CondPanel extends JPanel {
         currentDescription = conditionalDescriptionLabel + numberOfConditionals;
         infoPanel.printInfo();
 
-        //todo: is this needed?
-        revalidate();
-        repaint();
     }
 
     public void printCnfc() {

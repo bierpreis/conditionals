@@ -55,21 +55,15 @@ public class Conditional implements Comparable {
         return leftWorld.toString() + " | " + rightWorld.toString();
     }
 
-    public void setLeft(World newWorld) {
-        leftWorld = newWorld;
-    }
-
-    public void setRight(World newWorld) {
-        rightWorld = newWorld;
-    }
 
     public boolean isValid() {
         return rightWorld.getSize() > leftWorld.getSize();
     }
 
     private int generateKey() {
+
         String stringHash = Integer.toString(leftWorld.getSize()) + Integer.toString(rightWorld.getSize());
-        System.out.println("stringhash" + stringHash);
+
         return Integer.parseInt(stringHash);
     }
 
