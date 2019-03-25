@@ -1,6 +1,7 @@
 package Logic;
 
-import java.util.Objects;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Cardinality {
 
@@ -29,8 +30,16 @@ public class Cardinality {
     @Override
     public int hashCode() { //todo: create working hash method
 
-        int value = (int) (Math.pow(leftNumber, 2) * rightNumber) / 5;
+        List<Integer> listToHash = new LinkedList<>();
+        listToHash.add(leftNumber);
+        listToHash.add(rightNumber);
+        int value = listToHash.hashCode();
         System.out.println("hashing.." + value); //todo value is always 0?!?!?! left and right numbers are 0!!!
         return value;
     }
+
+     @Override
+    public String toString(){
+        return leftNumber + " " + rightNumber;
+     }
 }

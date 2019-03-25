@@ -30,6 +30,6 @@ public class CondTextField extends JTextArea {
     public void printCnfc() {
         setText("");
         for (Object object : DataContainer.getCnfc().values())
-            append(((Conditional) object).toString() + "\n");
+            append(((Conditional) object).toString() + ((Conditional) object).getCardinality() + "\n");
     }
 }
