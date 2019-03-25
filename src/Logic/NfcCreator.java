@@ -62,9 +62,7 @@ public class NfcCreator {
                 }
         }
         for (World leftSide : listOfConditionalRights) {
-            Conditional newConditional = new Conditional();
-            newConditional.setLeft(leftSide);
-            newConditional.setRight(currentWorld);
+            Conditional newConditional = new Conditional(leftSide, currentWorld);
 
             if (newConditional.isValid())
                 conditionalList.add(newConditional);

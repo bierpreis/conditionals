@@ -11,7 +11,7 @@ public class Utility {
     public static Map getEquivGroups(List<Conditional> baseList) {
 
 
-        Map<Cardinality, Conditional> conditionalsSortedByNumber = createBaseGroups(baseList);
+        Map<Cardinality, Conditional> conditionalsSortedByNumber = createBaseGroups(baseList); //todo: map of list of conditionals?!
 
 
         return conditionalsSortedByNumber; //todo return real groups

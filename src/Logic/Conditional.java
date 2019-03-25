@@ -6,9 +6,9 @@ public class Conditional implements Comparable {
 
     private Cardinality cardinality;
 
-    public Conditional() {
-        leftWorld = new World();
-        rightWorld = new World();
+    public Conditional(World leftWorld, World rightWorld) {
+        this.leftWorld = leftWorld;
+        this.rightWorld = rightWorld;
         cardinality = new Cardinality(leftWorld.getSize(), rightWorld.getSize());
     }
 
@@ -61,14 +61,6 @@ public class Conditional implements Comparable {
 
     public void setRight(World newWorld) {
         rightWorld = newWorld;
-    }
-
-    public World getLeft() {
-        return leftWorld;
-    }
-
-    public World getRight() {
-        return rightWorld;
     }
 
     public boolean isValid() {
