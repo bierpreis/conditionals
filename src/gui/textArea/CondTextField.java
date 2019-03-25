@@ -5,6 +5,7 @@ import Logic.DataContainer;
 import Logic.World;
 
 import javax.swing.*;
+import java.util.List;
 
 public class CondTextField extends JTextArea {
 
@@ -30,6 +31,6 @@ public class CondTextField extends JTextArea {
     public void printCnfc() {
         setText("");
         for (Object object : DataContainer.getCnfc().values())
-            append(((Conditional) object).toString() + ((Conditional) object).getKey() + "\n");
+            append((object).toString() + "\n");
     }
 }

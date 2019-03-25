@@ -7,7 +7,7 @@ import java.util.Map;
 public class DataContainer {//todo: delete this class completely?
     private static List<World> worldsList;
     private static List<Conditional> conditionalList;
-    private static Map<Integer, Conditional> cNfcMap;
+    private static Map<Integer, List<Conditional>> cNfcMap;
 
     public static List<World> getWorldsList() {
         return worldsList;
