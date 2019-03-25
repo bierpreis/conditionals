@@ -18,22 +18,29 @@ public class CondTextField extends JTextArea {
         int numberCounter = 0;
         for (World world : DataContainer.getWorldsList()) {
             append(world.getWorldsList().toString() + "\n");
+            numberCounter++;
 
         }
         return numberCounter;
     }
 
-    public void printConditionals() {
+    public int printConditionals() {
         setText("");
-        for (int i = 0; i < DataContainer.getConditionalSet().size(); i++)
+        int numberOfConditionals = 0;
+        for (int i = 0; i < DataContainer.getConditionalSet().size(); i++) {
             append(i + 1 + "    " + DataContainer.getConditionalSet().get(i).toString() + "\n");
-
-        System.out.println("conditionals printed: " + DataContainer.getConditionalSet().size());
+            numberOfConditionals++;
+        }
+        return numberOfConditionals;
     }
 
-    public void printCnfc() {
+    public int printCnfc() {
+        int numberOfNfc = 0;
         setText("");
-        for (Object object : DataContainer.getCnfc().values())
+        for (Object object : DataContainer.getCnfc().values()) {
             append((object).toString() + "\n");
+            numberOfNfc++;
+        }
+        return numberOfNfc;
     }
 }

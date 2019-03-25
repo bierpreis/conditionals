@@ -14,7 +14,7 @@ public class CondPanel extends JPanel {
     private String conditionalDescriptionLabel = "Number of Conditionals: ";
     private String equivClassesDescriptionLabel = "Number of Classes: ";
 
-    private JPanel infoPanel;
+    private InfoPanel infoPanel;
     private JLabel numberOfConditionalsLabel;
 
     public CondPanel() {
@@ -37,22 +37,33 @@ public class CondPanel extends JPanel {
         int numberOfWorlds = condTextField.printWorlds();
 
         currentDescription = worldsDescriptionLabel + numberOfWorlds;
+        infoPanel.printInfo();
         revalidate();
         repaint();
     }
 
     public void printConditionals() {
         condTextField.setText("");
-        condTextField.printConditionals();
+
+
         numberOfConditionalsLabel.setText(Integer.toString(DataContainer.getConditionalSet().size()));
         scrollPane.setViewportView(condTextField);
+
+        int numberOfConditionals = condTextField.printConditionals();
+        currentDescription = conditionalDescriptionLabel + numberOfConditionals;
+        infoPanel.printInfo();
+
+        //todo: is this needed?
         revalidate();
         repaint();
     }
 
     public void printCnfc() {
         condTextField.setText("");
-        condTextField.printCnfc();
+
+        int numberOfClasses = condTextField.printCnfc();
+        currentDescription = equivClassesDescriptionLabel + numberOfClasses;
+        infoPanel.printInfo();
     }
 
     public String getDescription() {
