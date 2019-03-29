@@ -31,6 +31,9 @@ public class NfcCreator {
         }
 
         worldsList = createSubSetList(initWorldsList);
+
+        for (World currentWorld : worldsList)
+            currentWorld.createEqualWorlds();
     }
 
 

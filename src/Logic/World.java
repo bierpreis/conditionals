@@ -1,11 +1,19 @@
 package Logic;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class World implements Comparable {
 
+    private static String signature = "ab";
+
     List<Integer> worlds;
+
+    List<Integer> equivalenceGroup = Arrays.asList(2, 1);
+
+    List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
+    List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     public World() {
         worlds = new LinkedList<>();
@@ -16,6 +24,63 @@ public class World implements Comparable {
 
     }
 
+    public boolean isEquivalent(World otherWorld) {
+        boolean returnValue = false;
+
+        int counter = 0;
+
+        for (int worldElement : worlds)
+            if (equivalenceGroup1.contains(worldElement))
+                counter++;
+
+        if (counter >= 2) {
+            System.out.println(this.toString() + " is equivalent to" + otherWorld.toString());
+            returnValue = true;
+        }
+
+        counter = 0;
+
+        for (int worldElement : worlds)
+            if (equivalenceGroup2.contains(worldElement))
+                counter++;
+
+        if (counter >= 2) {
+            System.out.println(this.toString() + " is equivalent to" + otherWorld.toString());
+            returnValue = true;
+        }
+
+
+        if (!returnValue)
+            System.out.println("they are not equivalent");
+        return returnValue;
+    }
+
+    public static void setSignature(String requestedSignature) {
+        signature = requestedSignature;
+    }
+
+
+    public List<World> createEqualWorlds() {
+        List<World> equalWorldsList = new LinkedList<>();
+
+        if (signature.equals("ab"))
+            for (Integer world : worlds) {
+                if (equivalenceGroup.contains(world))
+                    System.out.println(this.toString() + " contains " + world);
+            }
+        else if (signature.equals("abc")) {
+            for (Integer world : worlds) {
+                if (equivalenceGroup1.contains(world))
+                    System.out.println(this.toString() + " contains " + world);
+            }
+            for (Integer world : worlds) {
+                if (equivalenceGroup2.contains(world))
+                    System.out.println(this.toString() + " contains " + world);
+            }
+        } else System.out.println("No signature was set!!!");
+
+        return equalWorldsList;
+    }
 
     @Override
     public int compareTo(Object o) {
