@@ -12,6 +12,11 @@ public class Conditional implements Comparable {
         key = generateKey();
     }
 
+    public boolean isEquivalent(Conditional otherConditional) {
+        return leftWorld.isEquivalent(otherConditional.leftWorld) && rightWorld.isEquivalent(otherConditional.rightWorld);
+
+    }
+
     @Override
     public int compareTo(Object o) {
         Conditional other = (Conditional) o;

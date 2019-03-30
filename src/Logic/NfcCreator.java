@@ -32,8 +32,7 @@ public class NfcCreator {
 
         worldsList = createSubSetList(initWorldsList);
 
-        for (World currentWorld : worldsList)
-            currentWorld.createEqualWorlds();
+
     }
 
 
@@ -92,7 +91,21 @@ public class NfcCreator {
         return subSetList;
     }
 
-
+    public List<List<Conditional>> createcNfc() {
+        List<List<Conditional>> cNfc = new LinkedList<>();
+        for (Conditional firstElementInList : conditionalList) {
+            List<Conditional> currentConditionalList = new LinkedList<>();
+            currentConditionalList.add(firstElementInList);
+            for (Conditional currentConditional : conditionalList) {
+                if (currentConditional.isEquivalent(firstElementInList))
+                    currentConditionalList.add(currentConditional);
+            }
+            cNfc.add(currentConditionalList);
+        }
+        //todo: sort sublists
+        return cNfc;
+    }
 }
+
 
 

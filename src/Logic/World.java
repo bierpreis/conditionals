@@ -60,27 +60,6 @@ public class World implements Comparable {
     }
 
 
-    public List<World> createEqualWorlds() {
-        List<World> equalWorldsList = new LinkedList<>();
-
-        if (signature.equals("ab"))
-            for (Integer world : worlds) {
-                if (equivalenceGroup.contains(world))
-                    System.out.println(this.toString() + " contains " + world);
-            }
-        else if (signature.equals("abc")) {
-            for (Integer world : worlds) {
-                if (equivalenceGroup1.contains(world))
-                    System.out.println(this.toString() + " contains " + world);
-            }
-            for (Integer world : worlds) {
-                if (equivalenceGroup2.contains(world))
-                    System.out.println(this.toString() + " contains " + world);
-            }
-        } else System.out.println("No signature was set!!!");
-
-        return equalWorldsList;
-    }
 
     @Override
     public int compareTo(Object o) {
