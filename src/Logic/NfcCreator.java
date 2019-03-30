@@ -7,7 +7,7 @@ import java.util.*;
 public class NfcCreator {
 
     private List<World> worldsList;
-    private List<Conditional> conditionalList;
+    private List<Conditional> basicConditionalList;
 
     private List<ConditionalList> cNfc;
 
@@ -25,7 +25,7 @@ public class NfcCreator {
 
     public void initWorlds(int signatureAmount) {
         int numberOfWorlds = (int) Math.pow((double) 2, (double) signatureAmount);
-        conditionalList = new LinkedList<>();
+        basicConditionalList = new LinkedList<>();
 
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
@@ -69,12 +69,12 @@ public class NfcCreator {
             Conditional newConditional = new Conditional(leftSide, currentWorld);
 
             if (newConditional.isValid())
-                conditionalList.add(newConditional);
+                basicConditionalList.add(newConditional);
         }
     }
 
     public List<Conditional> getConditionalsList() {
-        return conditionalList;
+        return basicConditionalList;
     }
 
     public static List<World> createSubSetList(List<Integer> inputList) {
@@ -96,21 +96,26 @@ public class NfcCreator {
     public List<ConditionalList> createcNfc() {
         cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
-        for (Conditional firstElementInList : conditionalList) {
-            ConditionalList currentConditionalList = new ConditionalList();
-            currentConditionalList.add(firstElementInList);
-            for (Conditional currentConditional : conditionalList) {
-                if (currentConditional.isEquivalent(firstElementInList)) {
-                    if (!currentConditional.equals(firstElementInList)) {
-                        if (!alreadyAddedList.contains(currentConditional))
-                            currentConditionalList.add(currentConditional);
-                        alreadyAddedList.add(currentConditional);
+
+        //iterate basic conditionals
+        for (Conditional conditionalToAdd : basicConditionalList) {
+            //only create new sublist if conditional was not added before as second conditional
+            if (!alreadyAddedList.contains(conditionalToAdd)) {
+                ConditionalList subList = new ConditionalList();
+                subList.add(conditionalToAdd);
+                for (Conditional currentConditional : basicConditionalList) {
+                    if (currentConditional.isEquivalent(conditionalToAdd)) {
+                        if (!currentConditional.equals(conditionalToAdd)) {
+                            if (!alreadyAddedList.contains(currentConditional))
+                                subList.add(currentConditional);
+                            alreadyAddedList.add(currentConditional);
+                        }
                     }
                 }
+                //todo: remove?
+                //Collections.sort(currentConditionalList);
+                cNfc.add(subList);
             }
-            //todo: remove?
-            //Collections.sort(currentConditionalList);
-            cNfc.add(currentConditionalList);
         }
         return cNfc;
     }
