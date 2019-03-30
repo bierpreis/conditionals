@@ -1,13 +1,9 @@
 package gui.textArea;
 
-
-import Logic.Conditional;
 import Logic.ConditionalList;
 import Logic.DataContainer;
-import Logic.World;
 
 import javax.swing.*;
-import java.util.List;
 
 public class CondTextField extends JTextArea {
 
@@ -19,8 +15,8 @@ public class CondTextField extends JTextArea {
     public int printWorlds() {
         setText("");
         int numberCounter = 0;
-        for (World world : DataContainer.getWorldsList()) {
-            append(world.getWorldsList().toString() + "\n");
+        for (int i = 0; i < DataContainer.getWorldsList().size(); i++) {
+            append(i + 1 + "    " + DataContainer.getWorldsList().get(i).toString() + "\n");
             numberCounter++;
 
         }
