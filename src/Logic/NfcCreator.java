@@ -107,14 +107,13 @@ public class NfcCreator {
                 for (Conditional currentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
                     if (currentConditional.isEquivalent(conditionalToAdd)) {
+                        //avoid adding the same base conditionals again
                         if (!currentConditional.equals(conditionalToAdd)) {
                             subList.add(currentConditional);
                             alreadyAddedList.add(currentConditional);
                         }
                     }
                 }
-                //todo: remove?
-                //Collections.sort(currentConditionalList);
                 cNfc.add(subList);
             }
         }
