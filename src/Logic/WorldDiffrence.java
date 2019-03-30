@@ -30,14 +30,16 @@ public class WorldDiffrence {
         }
 
 
-        if (diffrenceList.size() == 0) {
-            areEqual = true;
-            return;
-        }
+
 
         for (WorldsPair worldsPair : diffrenceList) {
             if (worldsPair.isEquivalent())
                 diffrenceList.remove(worldsPair);
+        }
+
+        if (diffrenceList.size() == 0) {
+            areEqual = true;
+            return;
         }
 
 
