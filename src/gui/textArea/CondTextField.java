@@ -41,7 +41,7 @@ public class CondTextField extends JTextArea {
         setText("");
         for (int i = 0; i < DataContainer.getCnfc().size(); i++) {
             List<Conditional> currentList = DataContainer.getCnfc().get(i);
-            append(currentList.toString() + "\n");
+            append(i + 1 + "   " + currentList.toString() + "\n");
             numberOfNfc++;
         }
         return numberOfNfc;
