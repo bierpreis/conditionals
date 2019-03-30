@@ -2,7 +2,6 @@ package Logic;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class DataContainer {//todo: delete this class completely?
     private static List<World> worldsList;

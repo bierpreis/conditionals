@@ -100,7 +100,8 @@ public class NfcCreator {
             currentConditionalList.add(firstElementInList);
             for (Conditional currentConditional : conditionalList) {
                 if (currentConditional.isEquivalent(firstElementInList))
-                    currentConditionalList.add(currentConditional);
+                    if (!currentConditional.equals(firstElementInList))
+                        currentConditionalList.add(currentConditional);
             }
             //todo: check if this works
             Collections.sort(currentConditionalList);
