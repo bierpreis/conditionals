@@ -103,11 +103,12 @@ public class NfcCreator {
             if (!alreadyAddedList.contains(conditionalToAdd)) {
                 ConditionalList subList = new ConditionalList();
                 subList.add(conditionalToAdd);
+                //iterate over base list
                 for (Conditional currentConditional : basicConditionalList) {
+                    //try to find equivalent conditionals
                     if (currentConditional.isEquivalent(conditionalToAdd)) {
                         if (!currentConditional.equals(conditionalToAdd)) {
-                            if (!alreadyAddedList.contains(currentConditional))
-                                subList.add(currentConditional);
+                            subList.add(currentConditional);
                             alreadyAddedList.add(currentConditional);
                         }
                     }
