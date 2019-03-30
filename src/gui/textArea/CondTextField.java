@@ -2,6 +2,7 @@ package gui.textArea;
 
 
 import Logic.Conditional;
+import Logic.ConditionalList;
 import Logic.DataContainer;
 import Logic.World;
 
@@ -40,7 +41,7 @@ public class CondTextField extends JTextArea {
         int numberOfNfc = 0;
         setText("");
         for (int i = 0; i < DataContainer.getCnfc().size(); i++) {
-            List<Conditional> currentList = DataContainer.getCnfc().get(i);
+            ConditionalList currentList = DataContainer.getCnfc().get(i);
             append(i + 1 + "   " + currentList.toString() + "\n");
             numberOfNfc++;
         }

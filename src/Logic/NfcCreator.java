@@ -9,7 +9,7 @@ public class NfcCreator {
     private List<World> worldsList;
     private List<Conditional> conditionalList;
 
-    List<List<Conditional>> cNfc;
+    private List<ConditionalList> cNfc;
 
     public NfcCreator(int signatureAmount) {
         initWorlds(signatureAmount);
@@ -93,11 +93,11 @@ public class NfcCreator {
         return subSetList;
     }
 
-    public List<List<Conditional>> createcNfc() {
+    public List<ConditionalList> createcNfc() {
         cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
         for (Conditional firstElementInList : conditionalList) {
-            List<Conditional> currentConditionalList = new LinkedList<>();
+            ConditionalList currentConditionalList = new ConditionalList();
             currentConditionalList.add(firstElementInList);
             for (Conditional currentConditional : conditionalList) {
                 if (currentConditional.isEquivalent(firstElementInList)) {
@@ -108,8 +108,8 @@ public class NfcCreator {
                     }
                 }
             }
-            //todo: check if this works
-            Collections.sort(currentConditionalList);
+            //todo: remove?
+            //Collections.sort(currentConditionalList);
             cNfc.add(currentConditionalList);
         }
         return cNfc;
