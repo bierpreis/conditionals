@@ -25,6 +25,12 @@ public class World implements Comparable {
     }
 
     public boolean isEquivalent(World otherWorld) {
+        WorldDiffrence worldDiffrence = new WorldDiffrence(this, otherWorld);
+        return worldDiffrence.areEqual();
+
+    }
+
+    public boolean oldIsEquivalent(World otherWorld) {
         boolean returnValue = false;
 
         int counter = 0;
@@ -58,7 +64,6 @@ public class World implements Comparable {
     public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
     }
-
 
 
     @Override
