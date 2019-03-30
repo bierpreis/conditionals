@@ -95,13 +95,18 @@ public class NfcCreator {
 
     public List<List<Conditional>> createcNfc() {
         cNfc = new LinkedList<>();
+        List<Conditional> alreadyAddedList = new LinkedList<>();
         for (Conditional firstElementInList : conditionalList) {
             List<Conditional> currentConditionalList = new LinkedList<>();
             currentConditionalList.add(firstElementInList);
             for (Conditional currentConditional : conditionalList) {
-                if (currentConditional.isEquivalent(firstElementInList))
-                    if (!currentConditional.equals(firstElementInList))
-                        currentConditionalList.add(currentConditional);
+                if (currentConditional.isEquivalent(firstElementInList)) {
+                    if (!currentConditional.equals(firstElementInList)) {
+                        if (!alreadyAddedList.contains(currentConditional))
+                            currentConditionalList.add(currentConditional);
+                        alreadyAddedList.add(currentConditional);
+                    }
+                }
             }
             //todo: check if this works
             Collections.sort(currentConditionalList);

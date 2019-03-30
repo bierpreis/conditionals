@@ -4,6 +4,7 @@ public class Conditional implements Comparable {
     private World leftWorld;
     private World rightWorld;
 
+    //todo: rename. what is key for?? why are all 12??
     private int key;
 
     public Conditional(World leftWorld, World rightWorld) {
