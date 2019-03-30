@@ -57,6 +57,7 @@ public class CondPanel extends JPanel {
     public void printCnfc() {
         condTextField.setText("");
 
+        //todo: rename next method call
         int numberOfClasses = condTextField.printCnfc();
         currentDescription = equivClassesDescriptionLabel + numberOfClasses;
         infoPanel.printInfo();
