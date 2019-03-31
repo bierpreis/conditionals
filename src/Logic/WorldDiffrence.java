@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class WorldDiffrence {
+    private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
+
     private List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
     private List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
@@ -61,7 +63,7 @@ public class WorldDiffrence {
 
         public boolean isEquivalent() {
             if (signature.equals("ab"))
-                return (firstInt == 1 && secondInt == 2) || (firstInt == 2 && secondInt == 1);
+                return (equivalenceGroup.contains(firstInt) && equivalenceGroup.contains(secondInt));
 
 
             if (signature.equals("abc")) {

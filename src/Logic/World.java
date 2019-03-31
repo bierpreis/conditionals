@@ -8,7 +8,7 @@ public class World implements Comparable {
 
     private List<Integer> worlds;
 
-    private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
+
 
 
     public World() {
