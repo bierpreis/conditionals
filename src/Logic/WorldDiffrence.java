@@ -58,20 +58,16 @@ public class WorldDiffrence {
             this.firstInt = firstInt;
             this.secondInt = secondInt;
         }
-        
-        public boolean isEquivalent() {
-            if (signature.equals("ab")) {
 
-                if ((firstInt == 1 && secondInt == 2) || (firstInt == 2 && secondInt == 1))
-                    return true;
-                else return false;
-            }
+        public boolean isEquivalent() {
+            if (signature.equals("ab"))
+                return (firstInt == 1 && secondInt == 2) || (firstInt == 2 && secondInt == 1);
+
+
             if (signature.equals("abc")) {
                 if (equivalenceGroup1.contains(firstInt) && equivalenceGroup1.contains(secondInt))
                     return true;
-                else if (equivalenceGroup2.contains(firstInt) && equivalenceGroup2.contains(secondInt))
-                    return true;
-                else return false;
+                else return (equivalenceGroup2.contains(firstInt) && equivalenceGroup2.contains(secondInt));
             }
 
             System.out.println("wrong signature set!!!");
@@ -85,7 +81,7 @@ public class WorldDiffrence {
         return areEqual;
     }
 
-    public static void setSignature(String requestedSignature){
+    public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
     }
 
