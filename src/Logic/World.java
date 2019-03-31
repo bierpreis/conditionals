@@ -1,14 +1,11 @@
 package Logic;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class World implements Comparable {
 
-    private List<Integer> worlds;
-
-
+    private final List<Integer> worlds;
 
 
     public World() {

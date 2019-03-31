@@ -1,9 +1,7 @@
 package gui.menu;
 
 import Logic.DataContainer;
-import Logic.World;
 import Logic.WorldDiffrence;
-import gui.menu.OptionsPanel;
 import gui.textArea.CondPanel;
 
 import javax.swing.*;
@@ -11,10 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StartPanel extends JPanel {
-    private CondPanel condPanel;
-    private JButton createWorldsButton = new JButton("create worlds");
-    private JButton createConditionalsButton = new JButton("create conditionals");
-    private JButton createCnfcButton = new JButton("create cNfc");
+    private final CondPanel condPanel;
+    private final JButton createWorldsButton = new JButton("create worlds");
+    private final JButton createConditionalsButton = new JButton("create conditionals");
+    private final JButton createCnfcButton = new JButton("create cNfc");
 
     public StartPanel(CondPanel condPanel, OptionsPanel optionsPanel) {
         this.condPanel = condPanel;
@@ -32,7 +30,7 @@ public class StartPanel extends JPanel {
     }
 
     class CreateCnfcButtonListener implements ActionListener {
-        OptionsPanel optionsPanel;
+        private final OptionsPanel optionsPanel;
 
         public CreateCnfcButtonListener(OptionsPanel optionsPanel) {
             this.optionsPanel = optionsPanel;
@@ -47,7 +45,7 @@ public class StartPanel extends JPanel {
 
 
     class CreateWorldsButtonListener implements ActionListener {
-        private OptionsPanel optionsPanel;
+        private final OptionsPanel optionsPanel;
 
         public CreateWorldsButtonListener(OptionsPanel optionsPanel) {
             this.optionsPanel = optionsPanel;
@@ -62,7 +60,7 @@ public class StartPanel extends JPanel {
     }
 
     class CreateConditionalsButtonListener implements ActionListener {
-        private OptionsPanel optionsPanel;
+        private final OptionsPanel optionsPanel;
 
         public CreateConditionalsButtonListener(OptionsPanel optionsPanel) {
             this.optionsPanel = optionsPanel;

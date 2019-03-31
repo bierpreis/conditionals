@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ConditionalList implements Comparable {
-    private List<Conditional> conditionalList;
+    private final List<Conditional> conditionalList;
 
     public ConditionalList() {
         conditionalList = new LinkedList<>();

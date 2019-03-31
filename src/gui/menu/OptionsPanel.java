@@ -1,6 +1,5 @@
 package gui.menu;
 
-import Logic.World;
 import Logic.WorldDiffrence;
 
 import javax.swing.*;
@@ -9,8 +8,8 @@ import java.awt.event.ActionListener;
 
 public class OptionsPanel extends JPanel {
 
-    private JPanel signaturePanel;
-    private ButtonGroup signatureButtonGroup;
+    private final JPanel signaturePanel;
+    private final ButtonGroup signatureButtonGroup;
 
     public OptionsPanel() {
         signaturePanel = new JPanel();

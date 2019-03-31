@@ -3,9 +3,9 @@ package gui.textArea;
 import javax.swing.*;
 
 public class InfoPanel extends JPanel {
-    private CondPanel condPanel;
+    private final CondPanel condPanel;
 
-    private JLabel descriptionLabel = new JLabel("empty");
+    private final JLabel descriptionLabel = new JLabel("empty");
 
 
     public InfoPanel(CondPanel condPanel) {

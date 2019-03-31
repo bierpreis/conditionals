@@ -5,8 +5,8 @@ import Logic.DataContainer;
 import javax.swing.*;
 
 public class CondPanel extends JPanel {
-    private CondTextField condTextField;
-    private JScrollPane scrollPane;
+    private final CondTextField condTextField;
+    private final JScrollPane scrollPane;
 
     private String currentDescription = "empty";
 
@@ -14,8 +14,8 @@ public class CondPanel extends JPanel {
     private final String conditionalDescriptionLabel = "Number of Conditionals: ";
     private final String equivClassesDescriptionLabel = "Number of Classes: ";
 
-    private InfoPanel infoPanel;
-    private JLabel numberOfConditionalsLabel;
+    private final InfoPanel infoPanel;
+    private final JLabel numberOfConditionalsLabel;
 
     public CondPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

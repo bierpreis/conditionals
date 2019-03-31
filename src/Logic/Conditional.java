@@ -1,8 +1,8 @@
 package Logic;
 
 public class Conditional implements Comparable {
-    private World leftWorld;
-    private World rightWorld;
+    private final World leftWorld;
+    private final World rightWorld;
 
     public Conditional(World leftWorld, World rightWorld) {
         this.leftWorld = leftWorld;

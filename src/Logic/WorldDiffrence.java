@@ -7,14 +7,14 @@ import java.util.List;
 public class WorldDiffrence {
     private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
 
-    private List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
-    private List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
+    private final List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
+    private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     private static String signature;
-    private World world1;
-    private World world2;
+    private final World world1;
+    private final World world2;
 
-    private List<WorldsPair> diffrenceList;
+    private final List<WorldsPair> diffrenceList;
 
     private boolean areEqual;
 
@@ -49,8 +49,8 @@ public class WorldDiffrence {
     }
 
     class WorldsPair {
-        int firstInt;
-        int secondInt;
+        private final int firstInt;
+        private final int secondInt;
 
         public WorldsPair(int firstInt, int secondInt) {
             this.firstInt = firstInt;
