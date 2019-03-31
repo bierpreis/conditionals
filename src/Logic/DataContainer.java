@@ -14,14 +14,14 @@ public class DataContainer {//todo: delete this class completely?
 
     public static void createWorlds(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount);
-        nfcCreator.createWorlds(signatureAmount);
+        nfcCreator.createWorlds();
         worldsList = nfcCreator.getWorldsList();
 
     }
 
     public static void createConditionals(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount);
-        nfcCreator.createConditionals(signatureAmount);
+        nfcCreator.createConditionals();
         conditionalList = nfcCreator.getConditionalsList();
 
 
@@ -29,7 +29,7 @@ public class DataContainer {//todo: delete this class completely?
 
     public static void createCnfc(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount);
-        nfcCreator.createcNfc(signatureAmount);
+        nfcCreator.createcNfc();
         cNfc = nfcCreator.getcNfc();
     }
 
