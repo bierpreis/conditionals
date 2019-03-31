@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class OptionsPanel extends JPanel {
 
     private JPanel signaturePanel;
-    ButtonGroup signatureButtonGroup;
+    private ButtonGroup signatureButtonGroup;
 
     public OptionsPanel() {
         signaturePanel = new JPanel();
@@ -33,11 +33,12 @@ public class OptionsPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
         abRadioButton.setSelected(true);
+        World.setSignature(signatureButtonGroup.getSelection().getActionCommand());
 
         setVisible(true);
     }
 
-    public String getSignature() {
+    public String getSignature() { //todo: what is this
         return signatureButtonGroup.getSelection().getActionCommand();
     }
 
