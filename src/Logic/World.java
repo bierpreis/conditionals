@@ -19,13 +19,8 @@ public class World implements Comparable {
         worlds = new LinkedList<>();
     }
 
-    public World(List worlds) {
-        this.worlds = worlds;
-
-    }
-
     public boolean isEquivalent(World otherWorld) {
-        WorldDiffrence worldDiffrence = new WorldDiffrence(this, otherWorld);
+        WorldDiffrence worldDiffrence = new WorldDiffrence(this, otherWorld, signature);
         return worldDiffrence.areEqual();
 
     }

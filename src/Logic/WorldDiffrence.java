@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class WorldDiffrence {
+    private String signature;
     private World world1;
     private World world2;
 
@@ -11,9 +12,11 @@ public class WorldDiffrence {
 
     private boolean areEqual;
 
-    public WorldDiffrence(World world1, World world2) {
+    public WorldDiffrence(World world1, World world2, String signature) {
         this.world1 = world1;
         this.world2 = world2;
+
+        this.signature = signature;
 
         diffrenceList = new LinkedList<>();
         areEqual = false;
@@ -28,8 +31,6 @@ public class WorldDiffrence {
             if (world1.getWorldsList().get(i) != world2.getWorldsList().get(i))
                 diffrenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
         }
-
-
 
 
         for (WorldsPair worldsPair : diffrenceList) {
@@ -54,6 +55,7 @@ public class WorldDiffrence {
             this.secondInt = secondInt;
         }
 
+        //todo: abc
         public boolean isEquivalent() {
             if ((firstInt == 1 && secondInt == 2) || (firstInt == 2 && secondInt == 1))
                 return true;
