@@ -28,6 +28,10 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
+    public List<ConditionalList> getcNfc() {
+        return cNfc;
+    }
+
     //3 creators
 
     public void createWorlds(int signatureAmount) {
@@ -45,7 +49,7 @@ public class NfcCreator {
 
     }
 
-    public List<ConditionalList> createcNfc() {
+    public void createcNfc() {
         cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
 
@@ -70,7 +74,6 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
-        return cNfc;
     }
 
 

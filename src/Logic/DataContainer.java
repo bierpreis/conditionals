@@ -29,7 +29,8 @@ public class DataContainer {//todo: delete this class completely?
 
     public static void createCnfc(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount);
-        cNfc = nfcCreator.createcNfc();
+        nfcCreator.createcNfc();
+        cNfc = nfcCreator.getcNfc();
     }
 
     public static List<ConditionalList> getCnfc() {
