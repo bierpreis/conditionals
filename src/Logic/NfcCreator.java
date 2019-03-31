@@ -117,6 +117,7 @@ public class NfcCreator {
                 cNfc.add(subList);
             }
         }
+        Collections.sort(cNfc);
         return cNfc;
     }
 }
