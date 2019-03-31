@@ -1,6 +1,5 @@
 package Logic;
 
-import java.util.Collections;
 import java.util.List;
 
 public class DataContainer {//todo: delete this class completely?

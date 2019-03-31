@@ -19,7 +19,7 @@ public class NfcCreator {
 
 
     // 3 getters
-    public List getWorldsList() {
+    public List<World> getWorldsList() {
         return worldsList;
     }
 
