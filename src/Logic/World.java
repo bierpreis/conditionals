@@ -30,37 +30,6 @@ public class World implements Comparable {
 
     }
 
-    public boolean oldIsEquivalent(World otherWorld) {
-        boolean returnValue = false;
-
-        int counter = 0;
-
-        for (int worldElement : worlds)
-            if (equivalenceGroup1.contains(worldElement))
-                counter++;
-
-        if (counter >= 2) {
-            System.out.println(this.toString() + " is equivalent to" + otherWorld.toString());
-            returnValue = true;
-        }
-
-        counter = 0;
-
-        for (int worldElement : worlds)
-            if (equivalenceGroup2.contains(worldElement))
-                counter++;
-
-        if (counter >= 2) {
-            System.out.println(this.toString() + " is equivalent to" + otherWorld.toString());
-            returnValue = true;
-        }
-
-
-        if (!returnValue)
-            System.out.println("they are not equivalent");
-        return returnValue;
-    }
-
     public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
     }

@@ -34,7 +34,7 @@ public class NfcCreator {
     //3 creators
 
     public void createWorlds() {
-        
+
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
