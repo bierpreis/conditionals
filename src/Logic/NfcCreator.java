@@ -12,18 +12,25 @@ public class NfcCreator {
     private List<ConditionalList> cNfc;
 
     public NfcCreator(int signatureAmount) {
-        initWorlds(signatureAmount);
+        createWorlds(signatureAmount);
 
         for (World world : worldsList)
             createConditionalsForWorld(world);
     }
 
 
+    // 3 getters
     public List getWorldsList() {
         return worldsList;
     }
 
-    public void initWorlds(int signatureAmount) {
+    public List<Conditional> getConditionalsList() {
+        return basicConditionalList;
+    }
+
+    //3 creators
+
+    public void createWorlds(int signatureAmount) {
         int numberOfWorlds = (int) Math.pow((double) 2, (double) signatureAmount);
         basicConditionalList = new LinkedList<>();
 
@@ -34,10 +41,40 @@ public class NfcCreator {
 
         worldsList = createSubSetList(initWorldsList);
 
+        Collections.sort(worldsList);
 
     }
 
+    public List<ConditionalList> createcNfc() {
+        cNfc = new LinkedList<>();
+        List<Conditional> alreadyAddedList = new LinkedList<>();
 
+        //iterate basic conditionals
+        for (Conditional conditionalToAdd : basicConditionalList) {
+            //only create new sublist if conditional was not added before as second conditional
+            if (!alreadyAddedList.contains(conditionalToAdd)) {
+                ConditionalList subList = new ConditionalList();
+                subList.add(conditionalToAdd);
+                //iterate over base list
+                for (Conditional currentConditional : basicConditionalList) {
+                    //try to find equivalent conditionals
+                    if (currentConditional.isEquivalent(conditionalToAdd)) {
+                        //avoid adding the same base conditionals again
+                        if (!currentConditional.equals(conditionalToAdd)) {
+                            subList.add(currentConditional);
+                            alreadyAddedList.add(currentConditional);
+                        }
+                    }
+                }
+                cNfc.add(subList);
+            }
+        }
+        Collections.sort(cNfc);
+        return cNfc;
+    }
+
+
+    //sub methods
     //todo: this is taken from inet?! maybe use the other subset mehtod? or put this in world?
     public void createConditionalsForWorld(World currentWorld) {
         Set<World> listOfConditionalRights = new HashSet<>();
@@ -73,9 +110,6 @@ public class NfcCreator {
         }
     }
 
-    public List<Conditional> getConditionalsList() {
-        return basicConditionalList;
-    }
 
     public static List<World> createSubSetList(List<Integer> inputList) {
         List<World> subSetList = new LinkedList<>();
@@ -93,33 +127,7 @@ public class NfcCreator {
         return subSetList;
     }
 
-    public List<ConditionalList> createcNfc() {
-        cNfc = new LinkedList<>();
-        List<Conditional> alreadyAddedList = new LinkedList<>();
 
-        //iterate basic conditionals
-        for (Conditional conditionalToAdd : basicConditionalList) {
-            //only create new sublist if conditional was not added before as second conditional
-            if (!alreadyAddedList.contains(conditionalToAdd)) {
-                ConditionalList subList = new ConditionalList();
-                subList.add(conditionalToAdd);
-                //iterate over base list
-                for (Conditional currentConditional : basicConditionalList) {
-                    //try to find equivalent conditionals
-                    if (currentConditional.isEquivalent(conditionalToAdd)) {
-                        //avoid adding the same base conditionals again
-                        if (!currentConditional.equals(conditionalToAdd)) {
-                            subList.add(currentConditional);
-                            alreadyAddedList.add(currentConditional);
-                        }
-                    }
-                }
-                cNfc.add(subList);
-            }
-        }
-        Collections.sort(cNfc);
-        return cNfc;
-    }
 }
 
 

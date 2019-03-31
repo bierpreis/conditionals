@@ -15,7 +15,7 @@ public class DataContainer {//todo: delete this class completely?
     public static void createWorlds(int signatureAmount) {
         NfcCreator nfcCreator = new NfcCreator(signatureAmount);
         worldsList = nfcCreator.getWorldsList();
-        Collections.sort(worldsList);
+
     }
 
     public static void createConditionals(int signatureAmount) {
