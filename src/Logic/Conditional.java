@@ -41,11 +41,11 @@ public class Conditional implements Comparable {
     }
 
 
-    private int compareWorldsElements(World firstWolrd, World secondWorld) {
-        for (int i = 0; i < firstWolrd.getSize(); i++) {
-            if (firstWolrd.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
+    private int compareWorldsElements(World firstWotld, World secondWorld) {
+        for (int i = 0; i < firstWotld.getSize(); i++) {
+            if (firstWotld.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
                 return -1;
-            if (firstWolrd.getWorldsList().get(i) < secondWorld.getWorldsList().get(i))
+            if (firstWotld.getWorldsList().get(i) < secondWorld.getWorldsList().get(i))
                 return 1;
 
         }

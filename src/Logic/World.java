@@ -14,7 +14,7 @@ public class World implements Comparable {
     }
 
     public boolean isEquivalent(World otherWorld) {
-        WorldDiffrence worldDiffrence = new WorldDiffrence(this, otherWorld);
+        WorldDifference worldDiffrence = new WorldDifference(this, otherWorld);
         return worldDiffrence.areEqual();
 
     }

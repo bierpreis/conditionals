@@ -95,7 +95,7 @@ public class NfcCreator {
     private void createConditionalsForWorld(World currentWorld) {
         Set<World> listOfConditionalRights = new HashSet<>();
 
-        Integer[] worldNumersArray = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
+        Integer[] worldNumbersArray = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
 
         int n = currentWorld.getWorldsList().size();
 
@@ -113,7 +113,7 @@ public class NfcCreator {
                 // are present in the subset and which
                 // are not
                 if ((i & (1 << j)) > 0) {
-                    newWorld.addInt(worldNumersArray[j]);
+                    newWorld.addInt(worldNumbersArray[j]);
 
                     listOfConditionalRights.add(newWorld);
                 }
