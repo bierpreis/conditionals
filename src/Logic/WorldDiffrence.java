@@ -58,8 +58,7 @@ public class WorldDiffrence {
             this.firstInt = firstInt;
             this.secondInt = secondInt;
         }
-
-        //todo: abc
+        
         public boolean isEquivalent() {
             if (signature.equals("ab")) {
 

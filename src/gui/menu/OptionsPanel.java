@@ -38,7 +38,7 @@ public class OptionsPanel extends JPanel {
         setVisible(true);
     }
 
-    public String getSignature() { //todo: what is this
+    public String getSignature() { //todo: delte maybe?
         return signatureButtonGroup.getSelection().getActionCommand();
     }
 

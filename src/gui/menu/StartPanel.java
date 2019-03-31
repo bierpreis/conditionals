@@ -70,7 +70,7 @@ public class StartPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             World.setSignature(optionsPanel.getSignature());
-            DataContainer.createConditionals(optionsPanel.getSignature()); //todo: remove
+            DataContainer.createConditionals(optionsPanel.getSignature()); //todo: remove?
             condPanel.printConditionals();
         }
     }

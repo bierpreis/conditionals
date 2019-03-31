@@ -4,13 +4,9 @@ public class Conditional implements Comparable {
     private World leftWorld;
     private World rightWorld;
 
-    //todo: rename. what is key for?? why are all 12??
-    private int key;
-
     public Conditional(World leftWorld, World rightWorld) {
         this.leftWorld = leftWorld;
         this.rightWorld = rightWorld;
-        key = generateKey();
     }
 
     public boolean isEquivalent(Conditional otherConditional) {
@@ -65,17 +61,5 @@ public class Conditional implements Comparable {
     public boolean isValid() {
         return rightWorld.getSize() > leftWorld.getSize();
     }
-
-    private int generateKey() {
-
-        String stringHash = Integer.toString(leftWorld.getSize()) + Integer.toString(rightWorld.getSize());
-
-        return Integer.parseInt(stringHash);
-    }
-
-    public int getKey() {
-        return key;
-    }
-
 
 }
