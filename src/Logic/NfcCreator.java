@@ -6,7 +6,7 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private int signatureAmount;
+    private int numberOfWorlds;
 
     private List<World> worldsList;
     private List<Conditional> basicConditionalList;
@@ -14,7 +14,7 @@ public class NfcCreator {
     private List<ConditionalList> cNfc;
 
     public NfcCreator(int signatureAmount) {
-        this.signatureAmount = signatureAmount;
+        numberOfWorlds = (int) Math.pow((double) 2, (double) signatureAmount);
     }
 
 
@@ -34,9 +34,7 @@ public class NfcCreator {
     //3 creators
 
     public void createWorlds() {
-        int numberOfWorlds = (int) Math.pow((double) 2, (double) signatureAmount);
-
-
+        
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
