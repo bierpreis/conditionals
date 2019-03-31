@@ -6,8 +6,6 @@ import java.util.List;
 
 public class World implements Comparable {
 
-    private static String signature;
-
     private List<Integer> worlds;
 
     private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
@@ -23,12 +21,6 @@ public class World implements Comparable {
         return worldDiffrence.areEqual();
 
     }
-
-    public static void setSignature(String requestedSignature) {
-        signature = requestedSignature;
-        WorldDiffrence.setSignature(requestedSignature);
-    }
-
 
     @Override
     public int compareTo(Object o) {

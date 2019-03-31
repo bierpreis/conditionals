@@ -2,6 +2,7 @@ package gui.menu;
 
 import Logic.DataContainer;
 import Logic.World;
+import Logic.WorldDiffrence;
 import gui.menu.OptionsPanel;
 import gui.textArea.CondPanel;
 
@@ -69,7 +70,7 @@ public class StartPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            World.setSignature(optionsPanel.getSignature());
+            WorldDiffrence.setSignature(optionsPanel.getSignature());
             DataContainer.createConditionals(optionsPanel.getSignature()); //todo: remove?
             condPanel.printConditionals();
         }
