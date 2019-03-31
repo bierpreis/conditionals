@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class WorldDiffrence {
-    private String signature;
+    private static String signature;
     private World world1;
     private World world2;
 
@@ -12,11 +12,11 @@ public class WorldDiffrence {
 
     private boolean areEqual;
 
-    public WorldDiffrence(World world1, World world2, String signature) {
+    public WorldDiffrence(World world1, World world2, String requestedSignature) {
         this.world1 = world1;
         this.world2 = world2;
 
-        this.signature = signature;
+        signature = requestedSignature;
 
         diffrenceList = new LinkedList<>();
         areEqual = false;
@@ -57,9 +57,20 @@ public class WorldDiffrence {
 
         //todo: abc
         public boolean isEquivalent() {
-            if ((firstInt == 1 && secondInt == 2) || (firstInt == 2 && secondInt == 1))
-                return true;
-            else return false;
+            if (signature.equals("ab")) {
+
+                if ((firstInt == 1 && secondInt == 2) || (firstInt == 2 && secondInt == 1))
+                    return true;
+                else return false;
+            }
+            if(signature.equals("abc")){
+                if()
+                    return true;
+                else return false;
+            }
+
+            System.out.println("wrong signature set!!!");
+            return false;
         }
 
 

@@ -44,7 +44,6 @@ public class OptionsPanel extends JPanel {
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println(e.getActionCommand());
             World.setSignature(e.getActionCommand());
         }
     }

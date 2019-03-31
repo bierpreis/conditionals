@@ -6,14 +6,14 @@ import java.util.List;
 
 public class World implements Comparable {
 
-    private static String signature = "ab";
+    private static String signature;
 
-    List<Integer> worlds;
+    private List<Integer> worlds;
 
-    List<Integer> equivalenceGroup = Arrays.asList(2, 1);
+    private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
 
-    List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
-    List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
+    private List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
+    private List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     public World() {
         worlds = new LinkedList<>();
