@@ -12,10 +12,9 @@ public class NfcCreator {
     private List<ConditionalList> cNfc;
 
     public NfcCreator(int signatureAmount) {
-        createWorlds(signatureAmount);
 
-        for (World world : worldsList)
-            createConditionalsForWorld(world);
+
+
     }
 
 
@@ -45,11 +44,24 @@ public class NfcCreator {
 
         worldsList = createSubSetList(initWorldsList);
 
+        for (World world : worldsList)
+            createConditionalsForWorld(world);
+
         Collections.sort(worldsList);
 
     }
 
-    public void createcNfc() {
+    public void createConditionals(int signatureAmount) {
+        createWorlds(signatureAmount);
+
+
+        Collections.sort(basicConditionalList);
+    }
+
+    public void createcNfc(int signatureAmount) {
+        createWorlds(signatureAmount);
+        createConditionals(signatureAmount);
+
         cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
 
