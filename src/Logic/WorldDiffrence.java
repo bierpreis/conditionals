@@ -25,10 +25,10 @@ public class WorldDiffrence {
         diffrenceList = new LinkedList<>();
         areEqual = false;
 
-        calculateDiffrence();
+        calculateDifference();
     }
 
-    private void calculateDiffrence() {
+    private void calculateDifference() {
         if (world1.getSize() != world2.getSize())
             return;
         for (int i = 0; i < world1.getSize(); i++) {
@@ -36,18 +36,14 @@ public class WorldDiffrence {
                 diffrenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
         }
 
-        List<WorldsPair> cleanedDiffrenceList = new LinkedList<>();
+        List<WorldsPair> cleanedDifferenceList = new LinkedList<>();
         for (WorldsPair worldsPair : diffrenceList) {
-            if (!worldsPair.isEquivalent()) {
-                cleanedDiffrenceList.add(worldsPair);
-
-            }
+            if (!worldsPair.isEquivalent())
+                cleanedDifferenceList.add(worldsPair);
         }
 
-        if (cleanedDiffrenceList.size() == 0) {
+        if (cleanedDifferenceList.size() == 0)
             areEqual = true;
-            return;
-        }
 
 
     }
