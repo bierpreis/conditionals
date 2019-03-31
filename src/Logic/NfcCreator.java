@@ -13,8 +13,8 @@ public class NfcCreator {
 
     private List<ConditionalList> cNfc;
 
-    public NfcCreator(int signatureAmount) {
-        numberOfWorlds = (int) Math.pow((double) 2, (double) signatureAmount);
+    public NfcCreator(String signature) {
+        numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
     }
 
 

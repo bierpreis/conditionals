@@ -1,9 +1,13 @@
 package Logic;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public class WorldDiffrence {
+    private List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
+    private List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
+
     private static String signature;
     private World world1;
     private World world2;
@@ -12,11 +16,9 @@ public class WorldDiffrence {
 
     private boolean areEqual;
 
-    public WorldDiffrence(World world1, World world2, String requestedSignature) {
+    public WorldDiffrence(World world1, World world2) {
         this.world1 = world1;
         this.world2 = world2;
-
-        signature = requestedSignature;
 
         diffrenceList = new LinkedList<>();
         areEqual = false;
@@ -32,13 +34,15 @@ public class WorldDiffrence {
                 diffrenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
         }
 
-
+        List<WorldsPair> cleanedDiffrenceList = new LinkedList<>();
         for (WorldsPair worldsPair : diffrenceList) {
-            if (worldsPair.isEquivalent())
-                diffrenceList.remove(worldsPair);
+            if (!worldsPair.isEquivalent()) {
+                cleanedDiffrenceList.add(worldsPair);
+
+            }
         }
 
-        if (diffrenceList.size() == 0) {
+        if (cleanedDiffrenceList.size() == 0) {
             areEqual = true;
             return;
         }
@@ -63,8 +67,10 @@ public class WorldDiffrence {
                     return true;
                 else return false;
             }
-            if(signature.equals("abc")){
-                if()
+            if (signature.equals("abc")) {
+                if (equivalenceGroup1.contains(firstInt) && equivalenceGroup1.contains(secondInt))
+                    return true;
+                else if (equivalenceGroup2.contains(firstInt) && equivalenceGroup2.contains(secondInt))
                     return true;
                 else return false;
             }
@@ -78,6 +84,10 @@ public class WorldDiffrence {
 
     public boolean areEqual() {
         return areEqual;
+    }
+
+    public static void setSignature(String requestedSignature){
+        signature = requestedSignature;
     }
 
 }

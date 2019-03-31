@@ -8,23 +8,23 @@ public class DataContainer {//todo: delete this class completely?
     private static List<ConditionalList> cNfc;
 
 
-    public static void createWorlds(int signatureAmount) {
-        NfcCreator nfcCreator = new NfcCreator(signatureAmount);
+    public static void createWorlds(String signature) {
+        NfcCreator nfcCreator = new NfcCreator(signature);
         nfcCreator.createWorlds();
         worldsList = nfcCreator.getWorldsList();
 
     }
 
-    public static void createConditionals(int signatureAmount) {
-        NfcCreator nfcCreator = new NfcCreator(signatureAmount);
+    public static void createConditionals(String signature) {
+        NfcCreator nfcCreator = new NfcCreator(signature);
         nfcCreator.createConditionals();
         conditionalList = nfcCreator.getConditionalsList();
 
 
     }
 
-    public static void createCnfc(int signatureAmount) {
-        NfcCreator nfcCreator = new NfcCreator(signatureAmount);
+    public static void createCnfc(String signature) {
+        NfcCreator nfcCreator = new NfcCreator(signature);
         nfcCreator.createcNfc();
         cNfc = nfcCreator.getcNfc();
     }

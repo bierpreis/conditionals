@@ -12,21 +12,21 @@ public class World implements Comparable {
 
     private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
 
-    private List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
-    private List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     public World() {
         worlds = new LinkedList<>();
+
     }
 
     public boolean isEquivalent(World otherWorld) {
-        WorldDiffrence worldDiffrence = new WorldDiffrence(this, otherWorld, signature);
+        WorldDiffrence worldDiffrence = new WorldDiffrence(this, otherWorld);
         return worldDiffrence.areEqual();
 
     }
 
     public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
+        WorldDiffrence.setSignature(requestedSignature);
     }
 
 
