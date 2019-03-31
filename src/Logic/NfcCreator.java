@@ -92,7 +92,7 @@ public class NfcCreator {
 
     //sub methods
     //todo: this is taken from inet?! maybe use the other subset mehtod? or put this in world?
-    public void createConditionalsForWorld(World currentWorld) {
+    private void createConditionalsForWorld(World currentWorld) {
         Set<World> listOfConditionalRights = new HashSet<>();
 
         Integer[] worldNumersArray = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
@@ -127,7 +127,7 @@ public class NfcCreator {
     }
 
 
-    public static List<World> createSubSetList(List<Integer> inputList) {
+    private List<World> createSubSetList(List<Integer> inputList) {
         List<World> subSetList = new LinkedList<>();
         for (Integer world : inputList) {
             for (ListIterator<World> setsIterator = subSetList.listIterator(); setsIterator.hasNext(); ) {

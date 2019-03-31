@@ -44,7 +44,7 @@ public class CondTextField extends JTextArea {
         return numberOfNfc;
     }
 
-    public String getLineNumber(int i) {
+    private String getLineNumber(int i) {
         String lineNumber;
         i = i + 1;
         if (i < 10)
