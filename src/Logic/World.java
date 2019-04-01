@@ -101,8 +101,7 @@ public class World implements Comparable {
                         case '7':
                             letterString += "{abc}, ";
                             break;
-                        default: //todo: delete??
-                            System.out.println("error in to String:" + currentChar);
+                        //no default because there are brackets and commas too
                     }
                 }
             if (signature.equals("ab"))
@@ -121,8 +120,7 @@ public class World implements Comparable {
                         case '3':
                             letterString = "{ab}, ";
                             break;
-                        default: //todo: delete??
-                            System.out.println("error in toString: " + currentChar);
+                        //no default because there are brackets and commas too
                     }
                 }
 
@@ -138,7 +136,7 @@ public class World implements Comparable {
             lettersViewMode = false;
     }
 
-    public static void setSignature(String requestedSignature){
+    public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
     }
 }
