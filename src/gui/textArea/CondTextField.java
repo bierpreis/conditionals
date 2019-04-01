@@ -6,9 +6,9 @@ import Logic.DataContainer;
 import javax.swing.*;
 
 public class CondTextField extends JTextArea {
-    private final String numberOfWorlds = "Number of Worlds: ";
-    private final String numberOfConditionals = "Number of Conditionals: ";
-    private final String numberOfEquivalenceClasses = "Number of Equivalence Classes: ";
+    private final String numberOfWorlds = "Worlds: ";
+    private final String numberOfConditionals = "Conditionals: ";
+    private final String numberOfEquivalenceClasses = "Equivalence Classes: ";
 
     private String description;
 
@@ -46,7 +46,7 @@ public class CondTextField extends JTextArea {
             append(getLineNumber(i) + currentList.toString() + "\n");
             numberOfNfc++;
         }
-        description = numberOfEquivalenceClasses + numberOfNfc;
+        description = numberOfEquivalenceClasses + numberOfNfc + System.lineSeparator() + numberOfConditionals + DataContainer.getCnfc().size();
     }
 
     private String getLineNumber(int i) {
