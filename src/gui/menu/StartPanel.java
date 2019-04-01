@@ -68,8 +68,7 @@ public class StartPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            WorldDifference.setSignature(optionsPanel.getSignature());
-            DataContainer.createConditionals(optionsPanel.getSignature()); //todo: remove?
+            DataContainer.createConditionals(optionsPanel.getSignature());
             condPanel.printConditionals();
         }
     }
