@@ -6,6 +6,7 @@ import java.util.List;
 public class World implements Comparable {
 
     private final List<Integer> worlds;
+    private static String signature;
 
     private static boolean lettersViewMode = false;
 
@@ -72,40 +73,62 @@ public class World implements Comparable {
             return stringWithSetBrackets;
 
         } else {
-
-            for (int i = 0; i < worlds.toString().length(); i++) {
-                char currentChar = worlds.toString().charAt(i);
-                switch (currentChar) {
-                    case '0':
-                        letterString += "{!a!b!c}, ";
-                        break;
-                    case '1':
-                        letterString += "{!a!bc}, ";
-                        break;
-                    case '2':
-                        letterString += "{!ab!c}, ";
-                        break;
-                    case '3':
-                        letterString += "{!abc}, ";
-                        break;
-                    case '4':
-                        letterString += "{a!b!c}, ";
-                        break;
-                    case '5':
-                        letterString += "{a!bc}, ";
-                        break;
-                    case '6':
-                        letterString += "{ab!c}, ";
-                        break;
-                    case '7':
-                        letterString += "{abc}, ";
-                        break;
+            if (signature.equals("abc"))
+                for (int i = 0; i < worlds.toString().length(); i++) {
+                    char currentChar = worlds.toString().charAt(i);
+                    switch (currentChar) {
+                        case '0':
+                            letterString += "{!a!b!c}, ";
+                            break;
+                        case '1':
+                            letterString += "{!a!bc}, ";
+                            break;
+                        case '2':
+                            letterString += "{!ab!c}, ";
+                            break;
+                        case '3':
+                            letterString += "{!abc}, ";
+                            break;
+                        case '4':
+                            letterString += "{a!b!c}, ";
+                            break;
+                        case '5':
+                            letterString += "{a!bc}, ";
+                            break;
+                        case '6':
+                            letterString += "{ab!c}, ";
+                            break;
+                        case '7':
+                            letterString += "{abc}, ";
+                            break;
+                        default: //todo: delete??
+                            System.out.println("error in to String:" + currentChar);
+                    }
                 }
-            }
+            if (signature.equals("ab"))
+                for (int i = 0; i < worlds.toString().length(); i++) {
+                    char currentChar = worlds.toString().charAt(i);
+                    switch (currentChar) {
+                        case '0':
+                            letterString = "{!a!b}, ";
+                            break;
+                        case '1':
+                            letterString = "{!ab}, ";
+                            break;
+                        case '2':
+                            letterString = "{a!b}, ";
+                            break;
+                        case '3':
+                            letterString = "{ab}, ";
+                            break;
+                        default: //todo: delete??
+                            System.out.println("error in toString: " + currentChar);
+                    }
+                }
+
+
+            return letterString;
         }
-
-
-        return letterString;
     }
 
     public static void setLettersMode(String actionCommand) {
@@ -115,8 +138,7 @@ public class World implements Comparable {
             lettersViewMode = false;
     }
 
-    public void setSignature(String signature) { //todo: remove
-
-        World.setLettersMode(signature);
+    public static void setSignature(String requestedSignature){
+        signature = requestedSignature;
     }
 }

@@ -1,5 +1,6 @@
 package gui.menu;
 
+import Logic.World;
 import Logic.WorldDifference;
 
 import javax.swing.*;
@@ -31,6 +32,7 @@ public class SignaturePanel extends JPanel {
         abRadioButton.setSelected(true);
 
         WorldDifference.setSignature(signatureButtonGroup.getSelection().getActionCommand());
+        World.setLettersMode(signatureButtonGroup.getSelection().getActionCommand());
 
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
@@ -39,8 +41,10 @@ public class SignaturePanel extends JPanel {
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
+            System.out.println("action performed");
             WorldDifference.setSignature(e.getActionCommand());
-            System.out.println(("set command: " + e.getActionCommand()));
+            World.setSignature(e.getActionCommand());
+            World.setLettersMode(e.getActionCommand());
         }
     }
 
