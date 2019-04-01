@@ -40,10 +40,13 @@ public class SignaturePanel extends JPanel {
 
         public void actionPerformed(ActionEvent e) {
             WorldDifference.setSignature(e.getActionCommand());
+            System.out.println(("set command: " + e.getActionCommand()));
         }
     }
 
-    public ButtonGroup getSignatureButtonGroup(){
+    public ButtonGroup getSignatureButtonGroup() {//todo: remove?
         return signatureButtonGroup;
     }
+
+
 }

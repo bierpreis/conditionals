@@ -109,4 +109,8 @@ public class World implements Comparable {
         if (actionCommand.equals("numbers"))
             lettersViewMode = false;
     }
+    public void setSignature(String signature){
+
+        World.setLettersMode(signature);
+    }
 }

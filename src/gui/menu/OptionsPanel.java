@@ -6,7 +6,7 @@ import javax.swing.*;
 public class OptionsPanel extends JPanel {
 
 
-    private JPanel signaturePanel;
+    private SignaturePanel signaturePanel;
 
 
     public OptionsPanel() {
@@ -18,10 +18,10 @@ public class OptionsPanel extends JPanel {
         setVisible(true);
     }
 
-    public String getSignature() { //todo: delete maybe? FIX THIS!!
+    public String getSignature() { //todo: delete maybe? listener wie optionspanel
 
-        //return signaturePanel.getSignatureButtonGroup().getSelection().getActionCommand();
-        return "ab";
+        return signaturePanel.getSignatureButtonGroup().getSelection().getActionCommand();
+
     }
 
 
