@@ -6,13 +6,18 @@ import Logic.DataContainer;
 import javax.swing.*;
 
 public class CondTextField extends JTextArea {
+    private final String numberOfWorlds = "Number of Worlds: ";
+    private final String numberOfConditionals = "Number of Conditionals: ";
+    private final String numberOfEquivalenceClasses = "Number of Equivalence Classes: ";
+
+    private String description;
 
     public CondTextField() {
         super(40, 40);
     }
 
 
-    public int printWorlds() {
+    public void printWorlds() {
         setText("");
         int numberCounter = 0;
         for (int i = 0; i < DataContainer.getWorldsList().size(); i++) {
@@ -20,20 +25,20 @@ public class CondTextField extends JTextArea {
             numberCounter++;
 
         }
-        return numberCounter;
+        description = numberOfWorlds + numberCounter;
     }
 
-    public int printConditionals() {
+    public void printConditionals() {
         setText("");
-        int numberOfConditionals = 0;
+        int conditionalCounter = 0;
         for (int i = 0; i < DataContainer.getConditionalSet().size(); i++) {
             append(getLineNumber(i) + DataContainer.getConditionalSet().get(i).toString() + "\n");
-            numberOfConditionals++;
+            conditionalCounter++;
         }
-        return numberOfConditionals;
+        description = numberOfConditionals + conditionalCounter;
     }
 
-    public int printCnfc() {
+    public void printCnfc() {
         int numberOfNfc = 0;
         setText("");
         for (int i = 0; i < DataContainer.getCnfc().size(); i++) {
@@ -41,7 +46,7 @@ public class CondTextField extends JTextArea {
             append(getLineNumber(i) + currentList.toString() + "\n");
             numberOfNfc++;
         }
-        return numberOfNfc;
+        description = numberOfEquivalenceClasses + numberOfNfc;
     }
 
     private String getLineNumber(int i) {
@@ -51,5 +56,9 @@ public class CondTextField extends JTextArea {
             lineNumber = "0" + i;
         else lineNumber = Integer.toString(i);
         return lineNumber + "   ";
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

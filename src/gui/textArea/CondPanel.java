@@ -34,10 +34,10 @@ public class CondPanel extends JPanel {
 
     public void printWorlds() {
         condTextField.setText("");
-        int numberOfWorlds = condTextField.printWorlds();
+        condTextField.printWorlds();
 
-        currentDescription = worldsDescriptionLabel + numberOfWorlds;
-        infoPanel.printInfo();
+
+        infoPanel.printInfo(condTextField.getDescription());
 
     }
 
@@ -48,22 +48,17 @@ public class CondPanel extends JPanel {
         numberOfConditionalsLabel.setText(Integer.toString(DataContainer.getConditionalSet().size()));
         scrollPane.setViewportView(condTextField);
 
-        int numberOfConditionals = condTextField.printConditionals();
-        currentDescription = conditionalDescriptionLabel + numberOfConditionals;
-        infoPanel.printInfo();
+        condTextField.printConditionals();
+
+        infoPanel.printInfo(condTextField.getDescription());
 
     }
 
     public void printCnfc() {
         condTextField.setText("");
 
-        //todo: rename next method call
-        int numberOfClasses = condTextField.printCnfc();
-        currentDescription = equivClassesDescriptionLabel + numberOfClasses;
-        infoPanel.printInfo();
-    }
+        condTextField.printCnfc();
 
-    public String getDescription() {
-        return currentDescription;
+        infoPanel.printInfo(condTextField.getDescription());
     }
 }

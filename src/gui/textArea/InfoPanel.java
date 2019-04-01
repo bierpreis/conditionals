@@ -14,8 +14,8 @@ public class InfoPanel extends JPanel {
 
     }
 
-    public void printInfo() {
-        descriptionLabel.setText(condPanel.getDescription());
+    public void printInfo(String description) {
+        descriptionLabel.setText(description);
 
     }
 
