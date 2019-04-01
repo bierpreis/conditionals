@@ -7,6 +7,8 @@ public class World implements Comparable {
 
     private final List<Integer> worlds;
 
+    private static boolean lettersViewMode = false;
+
 
     public World() {
         worlds = new LinkedList<>();
@@ -61,6 +63,50 @@ public class World implements Comparable {
 
     @Override
     public String toString() {
-        return worlds.toString();
+        String letterString = "";
+        if (!lettersViewMode)
+            return worlds.toString();
+        else {
+            for (int i = 0; i < worlds.toString().length(); i++) {
+                char currentChar = worlds.toString().charAt(i);
+
+                switch (currentChar) {
+                    case '0':
+                        letterString += "!a!b!c; ";
+                        break;
+                    case '1':
+                        letterString += "!a!bc; ";
+                        break;
+                    case '2':
+                        letterString += "!ab!c; ";
+                        break;
+                    case '3':
+                        letterString += "!abc; ";
+                        break;
+                    case '4':
+                        letterString += "a!b!c; ";
+                        break;
+                    case '5':
+                        letterString += "a!bc; ";
+                        break;
+                    case '6':
+                        letterString += "ab!c; ";
+                        break;
+                    case '7':
+                        letterString += "abc; ";
+                        break;
+                }
+            }
+        }
+
+
+        return letterString;
+    }
+
+    public static void setLettersMode(String actionCommand) {
+        if (actionCommand.equals("letters"))
+            lettersViewMode = true;
+        if (actionCommand.equals("numbers"))
+            lettersViewMode = false;
     }
 }

@@ -1,51 +1,28 @@
 package gui.menu;
 
-import Logic.WorldDifference;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class OptionsPanel extends JPanel {
 
-    private final JPanel signaturePanel;
-    private final ButtonGroup signatureButtonGroup;
+
+    private JPanel signaturePanel;
+
 
     public OptionsPanel() {
-        signaturePanel = new JPanel();
-        signaturePanel.setBorder(BorderFactory.createTitledBorder("Choose Signature"));
+        setBorder(BorderFactory.createTitledBorder("Options"));
+        add(signaturePanel = new SignaturePanel());
+        add(new ViewPanel());
 
-        JRadioButton abRadioButton = new JRadioButton("ab");
-        JRadioButton abcRadioButton = new JRadioButton("abc");
-
-        abRadioButton.addActionListener(new SignatureRadioButtonListener());
-        abRadioButton.setActionCommand("ab");
-        abcRadioButton.addActionListener(new SignatureRadioButtonListener());
-        abcRadioButton.setActionCommand("abc");
-
-        add(abRadioButton);
-        add(abcRadioButton);
-
-        signatureButtonGroup = new ButtonGroup();
-        signatureButtonGroup.add(abRadioButton);
-        signatureButtonGroup.add(abcRadioButton);
-
-        setBorder(BorderFactory.createTitledBorder("Signature"));
-
-        abRadioButton.setSelected(true);
-        WorldDifference.setSignature(signatureButtonGroup.getSelection().getActionCommand());
 
         setVisible(true);
     }
 
-    public String getSignature() { //todo: delete maybe?
-        return signatureButtonGroup.getSelection().getActionCommand();
+    public String getSignature() { //todo: delete maybe? FIX THIS!!
+
+        //return signaturePanel.getSignatureButtonGroup().getSelection().getActionCommand();
+        return "ab";
     }
 
-    class SignatureRadioButtonListener implements ActionListener {
 
-        public void actionPerformed(ActionEvent e) {
-            WorldDifference.setSignature(e.getActionCommand());
-        }
-    }
 }
