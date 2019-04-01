@@ -64,36 +64,41 @@ public class World implements Comparable {
     @Override
     public String toString() {
         String letterString = "";
-        if (!lettersViewMode)
-            return worlds.toString();
-        else {
+        if (!lettersViewMode) {
+            String originalString = worlds.toString();
+            String stringWithSetBrackets = originalString.replace('[', '{');
+            stringWithSetBrackets = stringWithSetBrackets.replace(']', '}');
+
+            return stringWithSetBrackets;
+
+        } else {
 
             for (int i = 0; i < worlds.toString().length(); i++) {
                 char currentChar = worlds.toString().charAt(i);
                 switch (currentChar) {
                     case '0':
-                        letterString += "[!a!b!c], ";
+                        letterString += "{!a!b!c}, ";
                         break;
                     case '1':
-                        letterString += "[!a!bc], ";
+                        letterString += "{!a!bc}, ";
                         break;
                     case '2':
-                        letterString += "[!ab!c], ";
+                        letterString += "{!ab!c}, ";
                         break;
                     case '3':
-                        letterString += "[!abc], ";
+                        letterString += "{!abc}, ";
                         break;
                     case '4':
-                        letterString += "[a!b!c], ";
+                        letterString += "{a!b!c}, ";
                         break;
                     case '5':
-                        letterString += "[a!bc], ";
+                        letterString += "{a!bc}, ";
                         break;
                     case '6':
-                        letterString += "[ab!c], ";
+                        letterString += "{ab!c}, ";
                         break;
                     case '7':
-                        letterString += "[abc], ";
+                        letterString += "{abc}, ";
                         break;
                 }
             }
@@ -109,7 +114,8 @@ public class World implements Comparable {
         if (actionCommand.equals("numbers"))
             lettersViewMode = false;
     }
-    public void setSignature(String signature){
+
+    public void setSignature(String signature) { //todo: remove
 
         World.setLettersMode(signature);
     }
