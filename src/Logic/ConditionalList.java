@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ConditionalList implements Comparable {
     private final List<Conditional> conditionalList;
+    private int highestConditionalNumber;
 
     public ConditionalList() {
         conditionalList = new LinkedList<>();
@@ -41,5 +42,18 @@ public class ConditionalList implements Comparable {
             stringToReturn = stringToReturn + conditional.toString();
         return stringToReturn;
 
+    }
+
+    public void setNumbers(int firstNumber) {
+        int highestConditionalNumber = 0;
+        for (int i = 0; i < conditionalList.size(); i++) {
+            conditionalList.get(i).setNumber(firstNumber + i);
+            highestConditionalNumber++;
+        }
+        this.highestConditionalNumber = highestConditionalNumber;
+    }
+
+    public int getHighestConditionalNumber() {
+        return highestConditionalNumber;
     }
 }

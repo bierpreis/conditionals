@@ -3,6 +3,9 @@ package Logic;
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
+    static boolean numberMode = false;
+
+    private int number;
 
     public Conditional(World leftWorld, World rightWorld) {
         this.leftWorld = leftWorld;
@@ -58,12 +61,31 @@ public class Conditional implements Comparable {
         String rightWorldString = rightWorld.toString();
         leftWorldString = leftWorldString.replace("},", "}");
         rightWorldString = rightWorldString.replace("},", "}");
-        return "(" + leftWorldString + " | " + rightWorldString + ")";
+        String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
+        if (numberMode)
+            stringToReturn = number + ": " + stringToReturn;
+        return stringToReturn;
     }
 
 
     public boolean isValid() {
         return rightWorld.getSize() > leftWorld.getSize();
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public static void setNumberMode(boolean requestedNumberMode) {
+        numberMode = requestedNumberMode;
+    }
+
+    public static boolean getNumberMode(){ //todo: put this else where
+        return numberMode;
     }
 
 }
