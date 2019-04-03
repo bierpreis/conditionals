@@ -87,12 +87,15 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
+        int counter = 1;
         if (Conditional.getNumberMode()) {
-            int counter = 0;
             for (ConditionalList conditionalList : cNfc) {
-                conditionalList.setNumbers(counter);
+                conditionalList.setNumberToFirstConditional(counter);
+                counter++;
+            }
+            for (ConditionalList conditionalList : cNfc) {
+                conditionalList.setNumbersToEquivalentConditionals(counter-1);
                 counter = counter + conditionalList.getHighestConditionalNumber();
-                System.out.println("counter returned: " + counter);
             }
         }
     }
@@ -154,7 +157,7 @@ public class NfcCreator {
     private List<ConditionalList> setNumbers(List<ConditionalList> conditionalList) {
         int firstNumber = 0;
         for (ConditionalList subList : conditionalList) {
-            subList.setNumbers(firstNumber);
+            subList.setNumbersToEquivalentConditionals(firstNumber);
 
         }
 

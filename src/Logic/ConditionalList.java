@@ -44,9 +44,13 @@ public class ConditionalList implements Comparable {
 
     }
 
-    public void setNumbers(int firstNumber) {
+    public void setNumberToFirstConditional(int number) {
+        conditionalList.get(0).setNumber(number);
+    }
+
+    public void setNumbersToEquivalentConditionals(int firstNumber) {
         int highestConditionalNumber = 0;
-        for (int i = 0; i < conditionalList.size(); i++) {
+        for (int i = 1; i < conditionalList.size(); i++) {
             conditionalList.get(i).setNumber(firstNumber + i);
             highestConditionalNumber++;
         }
