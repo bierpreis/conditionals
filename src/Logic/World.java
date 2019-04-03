@@ -64,42 +64,42 @@ public class World implements Comparable {
 
     @Override
     public String toString() {
+
+
+        String originalString = worlds.toString();
+        String stringWithSetBrackets = originalString.replace('[', '{');
+        stringWithSetBrackets = stringWithSetBrackets.replace(']', '}');
+
         String letterString = "";
-        if (!lettersViewMode) {
-            String originalString = worlds.toString();
-            String stringWithSetBrackets = originalString.replace('[', '{');
-            stringWithSetBrackets = stringWithSetBrackets.replace(']', '}');
+        if (lettersViewMode) {
 
-            return stringWithSetBrackets;
-
-        } else {
             if (signature.equals("abc"))
                 for (int i = 0; i < worlds.toString().length(); i++) {
                     char currentChar = worlds.toString().charAt(i);
                     switch (currentChar) {
                         case '0':
-                            letterString += "{!a!b!c}, ";
+                            letterString += "!a!b!c, ";
                             break;
                         case '1':
-                            letterString += "{!a!bc}, ";
+                            letterString += "!a!bc, ";
                             break;
                         case '2':
-                            letterString += "{!ab!c}, ";
+                            letterString += "!ab!c, ";
                             break;
                         case '3':
-                            letterString += "{!abc}, ";
+                            letterString += "!abc, ";
                             break;
                         case '4':
-                            letterString += "{a!b!c}, ";
+                            letterString += "a!b!c, ";
                             break;
                         case '5':
-                            letterString += "{a!bc}, ";
+                            letterString += "a!bc, ";
                             break;
                         case '6':
-                            letterString += "{ab!c}, ";
+                            letterString += "ab!c, ";
                             break;
                         case '7':
-                            letterString += "{abc}, ";
+                            letterString += "abc, ";
                             break;
                         //no default because there are brackets and commas too
                     }
@@ -109,23 +109,26 @@ public class World implements Comparable {
                     char currentChar = worlds.toString().charAt(i);
                     switch (currentChar) {
                         case '0':
-                            letterString = "{!a!b}, ";
+                            letterString = "!a!b, ";
                             break;
                         case '1':
-                            letterString = "{!ab}, ";
+                            letterString = "!ab, ";
                             break;
                         case '2':
-                            letterString = "{a!b}, ";
+                            letterString = "a!b, ";
                             break;
                         case '3':
-                            letterString = "{ab}, ";
+                            letterString = "ab, ";
                             break;
                         //no default because there are brackets and commas too
                     }
                 }
 
-            return letterString;
+
         }
+        if (lettersViewMode)
+            return letterString;
+        else return stringWithSetBrackets;
     }
 
     public static void setLettersMode(String actionCommand) {
