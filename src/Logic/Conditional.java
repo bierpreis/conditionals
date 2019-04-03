@@ -54,7 +54,11 @@ public class Conditional implements Comparable {
 
     @Override
     public String toString() {
-        return "(" + leftWorld.toString() + " | " + rightWorld.toString() + ")";
+        String leftWorldString = leftWorld.toString();
+        String rightWorldString = rightWorld.toString();
+        leftWorldString = leftWorldString.replace("},", "}");
+        rightWorldString = rightWorldString.replace("},", "}");
+        return "(" + leftWorldString + " | " + rightWorldString + ")";
     }
 
 

@@ -124,7 +124,6 @@ public class World implements Comparable {
                     }
                 }
 
-
             return letterString;
         }
     }
