@@ -64,71 +64,38 @@ public class World implements Comparable {
 
     @Override
     public String toString() {
-
+        //todo: remake this. maybe regex instead of switch??
 
         String originalString = worlds.toString();
-        String stringWithSetBrackets = originalString.replace('[', '{');
-        stringWithSetBrackets = stringWithSetBrackets.replace(']', '}');
+        originalString = originalString.replace('[', '{');
+        originalString = originalString.replace(']', '}');
 
-        String letterString = "";
         if (lettersViewMode) {
+            if (signature.equals("abc")) {
 
-            if (signature.equals("abc"))
-                for (int i = 0; i < worlds.toString().length(); i++) {
-                    char currentChar = worlds.toString().charAt(i);
-                    switch (currentChar) {
-                        case '0':
-                            letterString += "!a!b!c, ";
-                            break;
-                        case '1':
-                            letterString += "!a!bc, ";
-                            break;
-                        case '2':
-                            letterString += "!ab!c, ";
-                            break;
-                        case '3':
-                            letterString += "!abc, ";
-                            break;
-                        case '4':
-                            letterString += "a!b!c, ";
-                            break;
-                        case '5':
-                            letterString += "a!bc, ";
-                            break;
-                        case '6':
-                            letterString += "ab!c, ";
-                            break;
-                        case '7':
-                            letterString += "abc, ";
-                            break;
-                        //no default because there are brackets and commas too
-                    }
-                }
-            if (signature.equals("ab"))
-                for (int i = 0; i < worlds.toString().length(); i++) {
-                    char currentChar = worlds.toString().charAt(i);
-                    switch (currentChar) {
-                        case '0':
-                            letterString = "!a!b, ";
-                            break;
-                        case '1':
-                            letterString = "!ab, ";
-                            break;
-                        case '2':
-                            letterString = "a!b, ";
-                            break;
-                        case '3':
-                            letterString = "ab, ";
-                            break;
-                        //no default because there are brackets and commas too
-                    }
-                }
+                originalString = originalString.replace("0", "!a!b!c");
+                originalString = originalString.replace("1", "!a!bc");
+                originalString = originalString.replace("2", "!ab!c");
+                originalString = originalString.replace("3", "!abc");
+                originalString = originalString.replace("4", "a!b!c");
+                originalString = originalString.replace("5", "a!bc");
+                originalString = originalString.replace("6", "ab!c");
+                originalString = originalString.replace("7", "abc");
+
+            }
 
 
+            if (signature.equals("ab")) {
+                originalString = originalString.replace("0", "!a!b");
+                originalString = originalString.replace("1", "!ab");
+                originalString = originalString.replace("2", "a!b");
+                originalString = originalString.replace("3", "v");
+
+
+            }
         }
-        if (lettersViewMode)
-            return letterString;
-        else return stringWithSetBrackets;
+        return originalString;
+
     }
 
     public static void setLettersMode(String actionCommand) {
