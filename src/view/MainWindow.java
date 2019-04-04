@@ -1,29 +1,32 @@
 package view;
 
+import controller.GuiObserver;
 import view.menu.MenuPanel;
 import view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MainWindow extends JFrame {
+public class MainWindow {
+    JFrame mainWindow;
 
-    public MainWindow() {
-        setTitle("NFC Creator");
+    public MainWindow(GuiObserver observer) {
+        mainWindow = new JFrame();
+        mainWindow.setTitle("NFC Creator");
 
-        setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
+        mainWindow.setLayout(new BoxLayout(mainWindow.getContentPane(), BoxLayout.X_AXIS));
 
         CondPanel condPanel = new CondPanel();
 
 
-        add(new MenuPanel(condPanel));
-        getContentPane().add(condPanel);
+        mainWindow.add(new MenuPanel(condPanel));
+        mainWindow.getContentPane().add(condPanel);
 
 
-        setMinimumSize(new Dimension(300, 500));
+        mainWindow.setMinimumSize(new Dimension(300, 500));
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
-        setVisible(true);
+        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainWindow.pack();
+        mainWindow.setVisible(true);
     }
 }
