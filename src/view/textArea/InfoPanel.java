@@ -1,4 +1,4 @@
-package gui.textArea;
+package view.textArea;
 
 import javax.swing.*;
 

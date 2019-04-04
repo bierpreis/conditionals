@@ -1,4 +1,6 @@
-import gui.MainWindow;
+package controller;
+
+import view.MainWindow;
 
 public class Main {
 

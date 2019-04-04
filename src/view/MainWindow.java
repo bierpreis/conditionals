@@ -1,7 +1,7 @@
-package gui;
+package view;
 
-import gui.menu.MenuPanel;
-import gui.textArea.CondPanel;
+import view.menu.MenuPanel;
+import view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;

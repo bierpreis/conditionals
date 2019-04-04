@@ -1,7 +1,7 @@
-package gui.textArea;
+package view.textArea;
 
-import Logic.ConditionalList;
-import Logic.DataContainer;
+import model.ConditionalList;
+import model.DataContainer;
 
 import javax.swing.*;
 

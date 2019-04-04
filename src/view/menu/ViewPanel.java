@@ -1,6 +1,6 @@
-package gui.menu;
+package view.menu;
 
-import Logic.World;
+import model.World;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

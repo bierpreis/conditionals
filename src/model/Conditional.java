@@ -1,4 +1,4 @@
-package Logic;
+package model;
 
 public class Conditional implements Comparable {
     private final World leftWorld;

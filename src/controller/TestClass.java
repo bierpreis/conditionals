@@ -1,4 +1,4 @@
-import Logic.World;
+package controller;
 
 public class TestClass {
     public static void main(String[] args) {

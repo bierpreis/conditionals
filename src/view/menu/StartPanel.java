@@ -1,8 +1,7 @@
-package gui.menu;
+package view.menu;
 
-import Logic.DataContainer;
-import Logic.WorldDifference;
-import gui.textArea.CondPanel;
+import model.DataContainer;
+import view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

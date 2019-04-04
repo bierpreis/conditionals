@@ -1,7 +1,7 @@
-package gui.menu;
+package view.menu;
 
 
-import Logic.Conditional;
+import model.Conditional;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

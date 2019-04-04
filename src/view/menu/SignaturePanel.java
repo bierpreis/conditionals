@@ -1,7 +1,7 @@
-package gui.menu;
+package view.menu;
 
-import Logic.World;
-import Logic.WorldDifference;
+import model.World;
+import model.WorldDifference;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,6 +1,6 @@
-package gui.textArea;
+package view.textArea;
 
-import Logic.DataContainer;
+import model.DataContainer;
 
 import javax.swing.*;
 
