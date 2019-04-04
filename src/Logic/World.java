@@ -89,7 +89,7 @@ public class World implements Comparable {
                 originalString = originalString.replace("0", "!a!b");
                 originalString = originalString.replace("1", "!ab");
                 originalString = originalString.replace("2", "a!b");
-                originalString = originalString.replace("3", "v");
+                originalString = originalString.replace("3", "ab");
 
 
             }

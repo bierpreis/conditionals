@@ -76,9 +76,6 @@ public class Conditional implements Comparable {
         this.number = number;
     }
 
-    public int getNumber() {
-        return number;
-    }
 
     public static void setNumberMode(boolean requestedNumberMode) {
         numberMode = requestedNumberMode;
