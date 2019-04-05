@@ -12,6 +12,6 @@ public class MenuPanel extends JPanel {
 
         OptionsPanel optionsPanel = new OptionsPanel(observer);
         add(optionsPanel);
-        add(new StartPanel(conditionalsPanel, optionsPanel, observer));
+        add(new StartPanel(conditionalsPanel, observer));
     }
 }

@@ -17,12 +17,12 @@ public class StartPanel extends JPanel {
     private final JButton createConditionalsButton = new JButton("create conditionals");
     private final JButton createCnfcButton = new JButton("create cNfc");
 
-    public StartPanel(CondPanel condPanel, OptionsPanel optionsPanel, GuiObserver observer) {
+    public StartPanel(CondPanel condPanel, GuiObserver observer) {
         this.condPanel = condPanel;
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        createWorldsButton.addActionListener(new CreateWorldsButtonListener(optionsPanel));
+        createWorldsButton.addActionListener(new CreateWorldsButtonListener());
         createWorldsButton.addActionListener(observer);
         createWorldsButton.setActionCommand("worlds");
         add(createWorldsButton);
@@ -65,7 +65,6 @@ public class StartPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("create conditionals..");
             changes.firePropertyChange("conditionals", true, false);
         }
     }
