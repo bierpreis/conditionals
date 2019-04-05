@@ -7,12 +7,14 @@ import model.World;
 import view.MainWindow;
 import view.textArea.CondPanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.List;
 
-public class GuiObserver implements PropertyChangeListener {
+public class GuiObserver implements PropertyChangeListener, ActionListener {
     private HashMap options;
     CondPanel condPanel;
 
@@ -55,5 +57,11 @@ public class GuiObserver implements PropertyChangeListener {
                 condPanel.printCnfc(cNfc);
                 break;
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Action!");
+        e.getActionCommand();
     }
 }

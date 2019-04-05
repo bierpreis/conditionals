@@ -7,12 +7,11 @@ import model.WorldDifference;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class SignaturePanel extends JPanel {
 
-    ButtonGroup signatureButtonGroup;
+    private ButtonGroup signatureButtonGroup;
 
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 

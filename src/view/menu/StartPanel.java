@@ -29,6 +29,7 @@ public class StartPanel extends JPanel {
         add(createConditionalsButton);
 
         createCnfcButton.addActionListener(new CreateCnfcButtonListener());
+        createCnfcButton.addActionListener(observer);
         add(createCnfcButton);
 
         changes.addPropertyChangeListener(observer);
