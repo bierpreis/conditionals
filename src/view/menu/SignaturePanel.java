@@ -42,26 +42,18 @@ public class SignaturePanel extends JPanel {
 
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
-        addPropertyChangedListener(observer);
+        changes.addPropertyChangeListener(observer);
 
     }
 
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            WorldDifference.setSignature(e.getActionCommand());
-            World.setSignature(e.getActionCommand());
-            World.setLettersMode(e.getActionCommand());
+            System.out.println("action");
+            changes.firePropertyChange("signature:" + signatureButtonGroup.getSelection().getActionCommand(), true, false);
         }
     }
 
-    public ButtonGroup getSignatureButtonGroup() {//todo: remove?
-        return signatureButtonGroup;
-    }
-
-    public void addPropertyChangedListener(PropertyChangeListener listener) {
-        changes.addPropertyChangeListener(listener);
-    }
 
 
 }

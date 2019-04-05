@@ -1,16 +1,21 @@
 package view.menu;
 
+import controller.GuiObserver;
 import model.World;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeSupport;
 
 public class ViewPanel extends JPanel {
+    private PropertyChangeSupport changes;
     ButtonGroup viewButtonGroup;
 
-    public ViewPanel() {
+    public ViewPanel(GuiObserver observer) {
         setBorder(BorderFactory.createTitledBorder("View"));
+
+        changes = new PropertyChangeSupport(this);
 
         JRadioButton numbersButton = new JRadioButton("Numbers");
         numbersButton.setActionCommand("numbers");
@@ -29,6 +34,8 @@ public class ViewPanel extends JPanel {
         numbersButton.addActionListener(new ViewPanelListener());
         lettersButton.addActionListener(new ViewPanelListener());
 
+        changes.addPropertyChangeListener(observer);
+
     }
 
     class ViewPanelListener implements ActionListener {
@@ -36,7 +43,7 @@ public class ViewPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            World.setLettersMode(viewButtonGroup.getSelection().getActionCommand());
+            changes.firePropertyChange("view:" + viewButtonGroup.getSelection().getActionCommand(), true, false);
         }
     }
 }

@@ -7,7 +7,6 @@ import model.Conditional;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class NumbersPanel extends JPanel {
@@ -34,7 +33,8 @@ public class NumbersPanel extends JPanel {
         onButton.addActionListener(new NumberListener());
         offButton.addActionListener(new NumberListener());
 
-        addPropertyChangedListener(observer);
+        //addPropertyChangedListener(observer);
+        changes.addPropertyChangeListener(observer);
     }
 
     class NumberListener implements ActionListener {
@@ -44,9 +44,6 @@ public class NumbersPanel extends JPanel {
         }
     }
 
-    public void addPropertyChangedListener(PropertyChangeListener listener) {
-        changes.addPropertyChangeListener(listener);
-    }
 
 
 }

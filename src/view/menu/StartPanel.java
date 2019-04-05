@@ -27,21 +27,17 @@ public class StartPanel extends JPanel {
         createWorldsButton.addActionListener(new CreateWorldsButtonListener(optionsPanel));
         add(createWorldsButton);
 
-        createConditionalsButton.addActionListener(new CreateConditionalsButtonListener(optionsPanel));
+        createConditionalsButton.addActionListener(new CreateConditionalsButtonListener());
         add(createConditionalsButton);
 
-        createCnfcButton.addActionListener(new CreateCnfcButtonListener(optionsPanel));
+        createCnfcButton.addActionListener(new CreateCnfcButtonListener());
         add(createCnfcButton);
 
-        addPropertyChangedListener(observer);
+        changes.addPropertyChangeListener(observer);
     }
 
     class CreateCnfcButtonListener implements ActionListener {
-        private final OptionsPanel optionsPanel;
 
-        public CreateCnfcButtonListener(OptionsPanel optionsPanel) {
-            this.optionsPanel = optionsPanel;
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -59,28 +55,20 @@ public class StartPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataContainer.createWorlds(optionsPanel.getSignature());
-            condPanel.printWorlds();
+            changes.firePropertyChange("worlds", true, true);
 
         }
     }
 
     class CreateConditionalsButtonListener implements ActionListener {
-        private final OptionsPanel optionsPanel;
 
-        public CreateConditionalsButtonListener(OptionsPanel optionsPanel) {
-            this.optionsPanel = optionsPanel;
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            DataContainer.createConditionals(optionsPanel.getSignature());
-            condPanel.printConditionals();
+            System.out.println("create conditionals..");
+            changes.firePropertyChange("conditionals", true, false);
         }
     }
 
-    public void addPropertyChangedListener(PropertyChangeListener listener) {
-        changes.addPropertyChangeListener(listener);
-    }
 }
 

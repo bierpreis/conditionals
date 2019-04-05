@@ -17,18 +17,11 @@ public class OptionsPanel extends JPanel {
         numbersPanel = new NumbersPanel(observer);
         setBorder(BorderFactory.createTitledBorder("Options"));
         add(signaturePanel = new SignaturePanel(observer));
-        add(new ViewPanel());
+        add(new ViewPanel(observer));
         add(numbersPanel);
 
 
         setVisible(true);
     }
-
-    public String getSignature() { //todo: delete maybe? listener wie optionspanel
-
-        return signaturePanel.getSignatureButtonGroup().getSelection().getActionCommand();
-
-    }
-
 
 }
