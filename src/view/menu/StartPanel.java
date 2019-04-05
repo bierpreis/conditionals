@@ -1,13 +1,11 @@
 package view.menu;
 
 import controller.GuiObserver;
-import model.DataContainer;
 import view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class StartPanel extends JPanel {

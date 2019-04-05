@@ -1,6 +1,7 @@
 package view.textArea;
 
-import model.DataContainer;
+import model.Conditional;
+import model.ConditionalList;
 import model.World;
 
 import javax.swing.*;
@@ -36,30 +37,30 @@ public class CondPanel extends JPanel {
 
     public void printWorlds(List<World> worldsList) {
         condTextField.setText("");
-        condTextField.printWorlds(worldsList;
+        condTextField.printWorlds(worldsList);
 
 
         infoPanel.printInfo(condTextField.getDescription());
 
     }
 
-    public void printConditionals() {
+    public void printConditionals(List<Conditional> conditionalList) {
         condTextField.setText("");
 
 
         numberOfConditionalsLabel.setText(Integer.toString(DataContainer.getConditionalSet().size()));
         scrollPane.setViewportView(condTextField);
 
-        condTextField.printConditionals();
+        condTextField.printConditionals(conditionalList);
 
         infoPanel.printInfo(condTextField.getDescription());
 
     }
 
-    public void printCnfc() {
+    public void printCnfc(List<ConditionalList> conditionalLists) {
         condTextField.setText("");
 
-        condTextField.printCnfc();
+        condTextField.printCnfc(conditionalLists);
 
         infoPanel.printInfo(condTextField.getDescription());
     }

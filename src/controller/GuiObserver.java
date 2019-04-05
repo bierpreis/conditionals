@@ -1,5 +1,7 @@
 package controller;
 
+import model.Conditional;
+import model.ConditionalList;
 import model.NfcCreator;
 import model.World;
 import view.MainWindow;
@@ -34,19 +36,23 @@ public class GuiObserver implements PropertyChangeListener {
 
             case WORLDS:
                 nfcCreator.createWorlds();
-                List<World> worldsList;worldsList = nfcCreator.getWorldsList();
+                List<World> worldsList;
+                worldsList = nfcCreator.getWorldsList();
                 condPanel.printWorlds(worldsList);
                 break;
 
             case CONDITIONALS:
                 nfcCreator.createConditionals();
+                List<Conditional> conditionalList;
                 conditionalList = nfcCreator.getConditionalsList();
+                condPanel.printConditionals(conditionalList);
                 break;
 
 
             case NFC:
                 nfcCreator.createcNfc();
-                cNfc = nfcCreator.getcNfc();
+                List<ConditionalList> cNfc = nfcCreator.getcNfc();
+                condPanel.printCnfc(cNfc);
                 break;
         }
     }

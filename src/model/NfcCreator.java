@@ -15,8 +15,12 @@ public class NfcCreator {
 
     private List<ConditionalList> cNfc;
 
-    public NfcCreator(Command command, HashMap optons) {
+    public NfcCreator(Command command, HashMap options) {
         numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
+    }
+
+    private void setOptions(HashMap<String, String> options) {
+
     }
 
 
@@ -96,7 +100,7 @@ public class NfcCreator {
                 counter++;
             }
             for (ConditionalList conditionalList : cNfc) {
-                conditionalList.setNumbersToEquivalentConditionals(counter-1);
+                conditionalList.setNumbersToEquivalentConditionals(counter - 1);
                 counter = counter + conditionalList.getHighestConditionalNumber();
             }
         }

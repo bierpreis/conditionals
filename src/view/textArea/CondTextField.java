@@ -1,7 +1,7 @@
 package view.textArea;
 
+import model.Conditional;
 import model.ConditionalList;
-import model.DataContainer;
 import model.World;
 
 import javax.swing.*;
@@ -30,21 +30,21 @@ public class CondTextField extends JTextArea {
         description = numberOfWorlds + numberCounter;
     }
 
-    public void printConditionals() {
+    public void printConditionals(List<Conditional> conditionalList) {
         setText("");
         int conditionalCounter = 0;
-        for (int i = 0; i < DataContainer.getConditionalSet().size(); i++) {
-            append(getLineNumber(i) + DataContainer.getConditionalSet().get(i).toString() + "\n");
+        for (int i = 0; i < conditionalList.size(); i++) {
+            append(getLineNumber(i) + conditionalList.get(i).toString() + "\n");
             conditionalCounter++;
         }
         description = numberOfConditionals + conditionalCounter;
     }
 
-    public void printCnfc() {
+    public void printCnfc(List<ConditionalList> conditionalList) {
         int numberOfNfc = 0;
         setText("");
-        for (int i = 0; i < DataContainer.getCnfc().size(); i++) {
-            ConditionalList currentList = DataContainer.getCnfc().get(i);
+        for (int i = 0; i < conditionalList.size(); i++) {
+            ConditionalList currentList = conditionalList.get(i);
             append(getLineNumber(i) + currentList.toString() + "\n");
             numberOfNfc++;
         }
