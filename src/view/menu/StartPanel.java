@@ -23,10 +23,15 @@ public class StartPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("start"));
 
         createWorldsButton.addActionListener(new CreateWorldsButtonListener(optionsPanel));
+        createWorldsButton.addActionListener(observer);
+        createWorldsButton.setActionCommand("worlds");
         add(createWorldsButton);
 
         createConditionalsButton.addActionListener(new CreateConditionalsButtonListener());
+        createConditionalsButton.addActionListener(observer);
+        createConditionalsButton.setActionCommand("conditionals");
         add(createConditionalsButton);
+
 
         createCnfcButton.addActionListener(new CreateCnfcButtonListener());
         createCnfcButton.addActionListener(observer);
@@ -47,11 +52,6 @@ public class StartPanel extends JPanel {
 
 
     class CreateWorldsButtonListener implements ActionListener {
-        private final OptionsPanel optionsPanel;
-
-        public CreateWorldsButtonListener(OptionsPanel optionsPanel) {
-            this.optionsPanel = optionsPanel;
-        }
 
         @Override
         public void actionPerformed(ActionEvent e) {
