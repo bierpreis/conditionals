@@ -48,7 +48,7 @@ public class CondPanel extends JPanel {
         condTextField.setText("");
 
 
-        numberOfConditionalsLabel.setText(Integer.toString(conditionalList.size()));  //todo: check if this size is the right info
+        numberOfConditionalsLabel.setText(Integer.toString(conditionalList.size()));
         scrollPane.setViewportView(condTextField);
 
         condTextField.printConditionals(conditionalList);
