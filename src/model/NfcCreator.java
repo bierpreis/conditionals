@@ -8,19 +8,33 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private int numberOfWorlds;
+    private int numberOfWorlds = 4;
 
     private List<World> worldsList;
     private List<Conditional> basicConditionalList;
 
     private List<ConditionalList> cNfc;
 
-    public NfcCreator(Command command, HashMap options) {
-        numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
+    public NfcCreator(HashMap options) {
+        setOptions(options);
     }
 
     private void setOptions(HashMap<String, String> options) {
+        for (String option : options.keySet()) {
+            if (option.equals("signature")) {
+                World.setSignature(option.toString()); //todo: check this
+                numberOfWorlds = (int) Math.pow((double) 2, (double) option.length());
+            }
 
+            if (option.equals("lettermode"))//todo: make better
+                World.setLettersMode("letters");
+            else World.setLettersMode("numbers");
+
+            if (option.equals("numbering"))
+                Conditional.setNumberMode(true); //todo
+
+
+        }
     }
 
 
