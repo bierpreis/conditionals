@@ -48,7 +48,7 @@ public class CondTextField extends JTextArea {
             append(getLineNumber(i) + currentList.toString() + "\n");
             numberOfNfc++;
         }
-        description = numberOfEquivalenceClasses + numberOfNfc + System.lineSeparator() + numberOfConditionals + DataContainer.getCnfc().size(); //line seperator doesnt work?!
+        description = numberOfEquivalenceClasses + numberOfNfc + System.lineSeparator() + numberOfConditionals + conditionalList.size(); //line seperator doesnt work?!
     }
 
     private String getLineNumber(int i) {

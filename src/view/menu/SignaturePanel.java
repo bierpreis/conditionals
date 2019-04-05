@@ -49,7 +49,6 @@ public class SignaturePanel extends JPanel {
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println("action");
             changes.firePropertyChange("signature:" + signatureButtonGroup.getSelection().getActionCommand(), true, false);
         }
     }

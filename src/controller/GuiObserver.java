@@ -25,7 +25,7 @@ public class GuiObserver implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent e) {
         options.put(e.getPropertyName(), e.getNewValue());
         System.out.println(options);
-        execCommand(e.);
+        //execCommand(e.);
 
 
     }
