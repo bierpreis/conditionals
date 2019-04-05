@@ -64,7 +64,6 @@ public class World implements Comparable {
 
     @Override
     public String toString() {
-        //todo: remake this. maybe regex instead of switch??
 
         String originalString = worlds.toString();
         originalString = originalString.replace('[', '{');
