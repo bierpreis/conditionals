@@ -1,5 +1,7 @@
 package view.menu;
 
+import controller.GuiObserver;
+
 import javax.swing.*;
 
 
@@ -10,11 +12,11 @@ public class OptionsPanel extends JPanel {
     private NumbersPanel numbersPanel;
 
 
-    public OptionsPanel() {
+    public OptionsPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        numbersPanel = new NumbersPanel();
+        numbersPanel = new NumbersPanel(observer);
         setBorder(BorderFactory.createTitledBorder("Options"));
-        add(signaturePanel = new SignaturePanel());
+        add(signaturePanel = new SignaturePanel(observer));
         add(new ViewPanel());
         add(numbersPanel);
 

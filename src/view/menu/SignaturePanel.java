@@ -1,17 +1,22 @@
 package view.menu;
 
+import controller.GuiObserver;
 import model.World;
 import model.WorldDifference;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class SignaturePanel extends JPanel {
 
     ButtonGroup signatureButtonGroup;
 
-    public SignaturePanel() {
+    private PropertyChangeSupport changes = new PropertyChangeSupport(this);
+
+    public SignaturePanel(GuiObserver observer) {
         setBorder(BorderFactory.createTitledBorder("Choose Signature"));
 
         signatureButtonGroup = new ButtonGroup();
@@ -37,6 +42,8 @@ public class SignaturePanel extends JPanel {
 
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
+        addPropertyChangedListener(observer);
+
     }
 
     class SignatureRadioButtonListener implements ActionListener {
@@ -50,6 +57,10 @@ public class SignaturePanel extends JPanel {
 
     public ButtonGroup getSignatureButtonGroup() {//todo: remove?
         return signatureButtonGroup;
+    }
+
+    public void addPropertyChangedListener(PropertyChangeListener listener) {
+        changes.addPropertyChangeListener(listener);
     }
 
 

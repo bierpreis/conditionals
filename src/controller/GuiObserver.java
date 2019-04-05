@@ -12,6 +12,7 @@ public class GuiObserver implements PropertyChangeListener {
     }
 
     public void propertyChange(PropertyChangeEvent e) {
-
+        System.out.println("property changed: ");
+        System.out.println(e.getSource());
     }
 }
