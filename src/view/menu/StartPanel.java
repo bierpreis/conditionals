@@ -30,6 +30,7 @@ public class StartPanel extends JPanel {
 
         createCnfcButton.addActionListener(new CreateCnfcButtonListener());
         createCnfcButton.addActionListener(observer);
+        createCnfcButton.setActionCommand("nfc");
         add(createCnfcButton);
 
         changes.addPropertyChangeListener(observer);
