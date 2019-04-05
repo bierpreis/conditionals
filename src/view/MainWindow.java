@@ -20,7 +20,7 @@ public class MainWindow {
         condPanel = new CondPanel();
 
 
-        mainWindow.add(new MenuPanel(condPanel, observer));
+        mainWindow.add(new MenuPanel(observer));
         mainWindow.getContentPane().add(condPanel);
 
 

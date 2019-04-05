@@ -7,11 +7,11 @@ import javax.swing.*;
 
 public class MenuPanel extends JPanel {
 
-    public MenuPanel(CondPanel conditionalsPanel, GuiObserver observer) {
+    public MenuPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         OptionsPanel optionsPanel = new OptionsPanel(observer);
         add(optionsPanel);
-        add(new StartPanel(conditionalsPanel, observer));
+        add(new StartPanel(observer));
     }
 }
