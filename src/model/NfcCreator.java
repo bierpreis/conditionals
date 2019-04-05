@@ -1,6 +1,8 @@
 package model;
 
 
+import controller.Command;
+
 import java.util.*;
 
 
@@ -13,7 +15,7 @@ public class NfcCreator {
 
     private List<ConditionalList> cNfc;
 
-    public NfcCreator(String signature) {
+    public NfcCreator(Command command, HashMap optons) {
         numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
     }
 

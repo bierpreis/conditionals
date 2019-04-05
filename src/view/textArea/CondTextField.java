@@ -2,8 +2,10 @@ package view.textArea;
 
 import model.ConditionalList;
 import model.DataContainer;
+import model.World;
 
 import javax.swing.*;
+import java.util.List;
 
 public class CondTextField extends JTextArea {
     private final String numberOfWorlds = "Worlds: ";
@@ -17,11 +19,11 @@ public class CondTextField extends JTextArea {
     }
 
 
-    public void printWorlds() {
+    public void printWorlds(List<World> worldsList) {
         setText("");
         int numberCounter = 0;
-        for (int i = 0; i < DataContainer.getWorldsList().size(); i++) {
-            append(getLineNumber(i) + DataContainer.getWorldsList().get(i).toString() + "\n");
+        for (int i = 0; i < worldsList.size(); i++) {
+            append(getLineNumber(i) + worldsList.get(i).toString() + "\n");
             numberCounter++;
 
         }

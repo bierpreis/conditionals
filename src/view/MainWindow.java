@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class MainWindow {
     JFrame mainWindow;
+    CondPanel condPanel;
 
     public MainWindow(GuiObserver observer) {
         mainWindow = new JFrame();
@@ -16,7 +17,7 @@ public class MainWindow {
 
         mainWindow.setLayout(new BoxLayout(mainWindow.getContentPane(), BoxLayout.X_AXIS));
 
-        CondPanel condPanel = new CondPanel();
+        condPanel = new CondPanel();
 
 
         mainWindow.add(new MenuPanel(condPanel, observer));
@@ -28,5 +29,9 @@ public class MainWindow {
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();
         mainWindow.setVisible(true);
+    }
+
+    public CondPanel getCondPanel() {
+        return condPanel;
     }
 }

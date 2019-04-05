@@ -1,8 +1,10 @@
 package view.textArea;
 
 import model.DataContainer;
+import model.World;
 
 import javax.swing.*;
+import java.util.List;
 
 public class CondPanel extends JPanel {
     private final CondTextField condTextField;
@@ -32,9 +34,9 @@ public class CondPanel extends JPanel {
 
     }
 
-    public void printWorlds() {
+    public void printWorlds(List<World> worldsList) {
         condTextField.setText("");
-        condTextField.printWorlds();
+        condTextField.printWorlds(worldsList;
 
 
         infoPanel.printInfo(condTextField.getDescription());
