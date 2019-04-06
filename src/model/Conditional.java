@@ -77,7 +77,7 @@ public class Conditional implements Comparable {
             numberOfSpacesToAdd = (longestConditional - stringToReturn.length());
         for (int i = 0; i < numberOfSpacesToAdd; i++)
             stringToReturn = stringToReturn + " ";
-        
+
         return stringToReturn;
     }
 

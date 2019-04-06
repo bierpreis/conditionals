@@ -5,6 +5,7 @@ import model.ConditionalList;
 import model.World;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 
 public class CondTextField extends JTextArea {
@@ -16,6 +17,7 @@ public class CondTextField extends JTextArea {
 
     public CondTextField() {
         super(40, 40);
+        setFont(new Font("monospaced", Font.PLAIN, 12));
     }
 
 
