@@ -36,7 +36,7 @@ public class CondTextField extends JTextArea {
         setText("");
         int conditionalCounter = 0;
         for (int i = 0; i < conditionalList.size(); i++) {
-            append(getLineNumber(i) + conditionalList.get(i).toString() + "\n");
+            append(conditionalList.get(i).toString() + "\n");
             conditionalCounter++;
         }
         description = numberOfConditionals + conditionalCounter;
@@ -47,7 +47,7 @@ public class CondTextField extends JTextArea {
         setText("");
         for (int i = 0; i < conditionalList.size(); i++) {
             ConditionalList currentList = conditionalList.get(i);
-            append(getLineNumber(i) + currentList.toString() + "\n");
+            append(currentList.toString() + "\n");
             numberOfNfc++;
         }
         description = numberOfEquivalenceClasses + numberOfNfc + System.lineSeparator() + numberOfConditionals + conditionalList.size(); //line seperator doesnt work?!
