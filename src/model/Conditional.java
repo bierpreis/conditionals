@@ -79,7 +79,6 @@ public class Conditional implements Comparable {
 
     public static void setNumbeing(String requestedNumbering) {
         numbering = requestedNumbering;
-        System.out.println("numbering set");
     }
 
     public static String getNumbering() {

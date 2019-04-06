@@ -34,7 +34,6 @@ public class GuiObserver implements PropertyChangeListener, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         HashMap<String, String> options = mainWindow.getOptions();
-        System.out.println(options);
         NfcCreator nfcCreator = new NfcCreator(options);
         switch (e.getActionCommand()) {
             case "nfc":
