@@ -23,7 +23,7 @@ public class CondPanel extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scrollPane);
 
-        infoPanel = new InfoPanel(this);
+        infoPanel = new InfoPanel();
 
         numberOfConditionalsLabel = new JLabel("0");
         add(infoPanel);

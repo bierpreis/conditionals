@@ -16,6 +16,7 @@ public class StartPanel extends JPanel {
 
     public StartPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setAlignmentX(100);
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
@@ -32,6 +33,7 @@ public class StartPanel extends JPanel {
         add(createCnfcButton);
 
         changes.addPropertyChangeListener(observer);
+        revalidate();
     }
 
 

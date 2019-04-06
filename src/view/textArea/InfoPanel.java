@@ -3,13 +3,11 @@ package view.textArea;
 import javax.swing.*;
 
 public class InfoPanel extends JPanel {
-    private final CondPanel condPanel;
 
     private final JLabel descriptionLabel = new JLabel("empty");
 
 
-    public InfoPanel(CondPanel condPanel) {
-        this.condPanel = condPanel;
+    public InfoPanel() {
         add(descriptionLabel);
 
     }
