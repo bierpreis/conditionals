@@ -5,11 +5,17 @@ public class Conditional implements Comparable {
     private final World rightWorld;
     private static String numbering;
 
+    //this is needed for porper columns in conditional field
+    private static int longestConditional = 0;
+
     private int number;
 
     public Conditional(World leftWorld, World rightWorld) {
         this.leftWorld = leftWorld;
         this.rightWorld = rightWorld;
+        if (this.toString().length() > longestConditional)
+            longestConditional = this.toString().length();
+
     }
 
     public boolean isEquivalent(Conditional otherConditional) {
@@ -64,6 +70,14 @@ public class Conditional implements Comparable {
         String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
         if (numbering.equals("on"))
             stringToReturn = number + ": " + stringToReturn;
+
+        //this is to calculate whitespaces for colums in cnfc view
+        int numberOfSpacesToAdd = 0;
+        if (stringToReturn.length() < longestConditional)
+            numberOfSpacesToAdd = (longestConditional - stringToReturn.length());
+        for (int i = 0; i < numberOfSpacesToAdd; i++)
+            stringToReturn = stringToReturn + " ";
+        
         return stringToReturn;
     }
 

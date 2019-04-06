@@ -8,6 +8,7 @@ public class ConditionalList implements Comparable {
     private final List<Conditional> conditionalList;
     private int highestConditionalNumber;
 
+
     public ConditionalList() {
         conditionalList = new LinkedList<>();
     }
@@ -15,6 +16,7 @@ public class ConditionalList implements Comparable {
     public void add(Conditional newConditional) {
         conditionalList.add(newConditional);
         Collections.sort(conditionalList);
+
     }
 
     @Override
@@ -39,7 +41,7 @@ public class ConditionalList implements Comparable {
     public String toString() {
         String stringToReturn = "";
         for (Conditional conditional : conditionalList)
-            stringToReturn = stringToReturn + conditional.toString();
+            stringToReturn = stringToReturn + conditional.toString(); //todo: fix here
         return stringToReturn;
 
     }
