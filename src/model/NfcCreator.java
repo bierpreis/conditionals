@@ -28,7 +28,7 @@ public class NfcCreator {
                 World.setView(options.get(option));
 
             if (option.equals("numbering"))
-                Conditional.setNumberMode(options.get(option));
+                Conditional.setNumbeing(options.get(option));
 
 
         }

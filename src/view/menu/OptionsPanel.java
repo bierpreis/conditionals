@@ -31,7 +31,7 @@ public class OptionsPanel extends JPanel {
     public HashMap<String, String> getOptions() {
         HashMap<String, String> options = new HashMap<>();
         options.put("signature", signaturePanel.getOption());
-        options.put("numbers", numbersPanel.getOption());
+        options.put("numbering", numbersPanel.getOption());
         options.put("view", viewPanel.getOption());
         return options;
     }

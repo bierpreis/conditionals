@@ -3,7 +3,7 @@ package model;
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
-    static String numbering;
+    private static String numbering;
 
     private int number;
 
@@ -77,11 +77,12 @@ public class Conditional implements Comparable {
     }
 
 
-    public static void setNumberMode(String requestedNumbering) {
+    public static void setNumbeing(String requestedNumbering) {
         numbering = requestedNumbering;
+        System.out.println("numbering set");
     }
 
-    public static String getNumbering(){
+    public static String getNumbering() {
         return numbering;
     }
 

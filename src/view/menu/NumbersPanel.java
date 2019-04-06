@@ -2,7 +2,6 @@ package view.menu;
 
 
 import controller.GuiObserver;
-import model.Conditional;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -41,7 +40,7 @@ public class NumbersPanel extends JPanel {
 
     class NumberListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {//todo: remove??
             changes.firePropertyChange("isNumbersModeActive", onButton.isSelected(), !onButton.isSelected());
         }
     }
