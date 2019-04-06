@@ -15,6 +15,7 @@ public class StartPanel extends JPanel {
     private final JButton createCnfcButton = new JButton("create cNfc");
 
     public StartPanel(GuiObserver observer) {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
