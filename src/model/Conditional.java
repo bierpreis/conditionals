@@ -3,7 +3,7 @@ package model;
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
-    static boolean numberMode = false;
+    static String numbering;
 
     private int number;
 
@@ -62,7 +62,7 @@ public class Conditional implements Comparable {
         leftWorldString = leftWorldString.replace("},", "}");
         rightWorldString = rightWorldString.replace("},", "}");
         String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
-        if (numberMode)
+        if (numbering.equals("on"))
             stringToReturn = number + ": " + stringToReturn;
         return stringToReturn;
     }
@@ -77,12 +77,13 @@ public class Conditional implements Comparable {
     }
 
 
-    public static void setNumberMode(boolean requestedNumberMode) {
-        numberMode = requestedNumberMode;
+    public static void setNumberMode(String requestedNumbering) {
+        numbering = requestedNumbering;
     }
 
-    public static boolean getNumberMode(){ //todo: put this else where
-        return numberMode;
+    public static String getNumbering(){
+        return numbering;
     }
+
 
 }

@@ -8,7 +8,7 @@ public class World implements Comparable {
     private final List<Integer> worlds;
     private static String signature;
 
-    private static boolean lettersViewMode = false;
+    private static String view;
 
 
     public World() {
@@ -69,7 +69,7 @@ public class World implements Comparable {
         originalString = originalString.replace('[', '{');
         originalString = originalString.replace(']', '}');
 
-        if (lettersViewMode) {
+        if (view.equals("letters")) {
             if (signature.equals("abc")) {
 
                 originalString = originalString.replace("0", "!a!b!c");
@@ -97,15 +97,15 @@ public class World implements Comparable {
 
     }
 
-    public static void setLettersMode(String actionCommand) {
-        if (actionCommand.equals("letters"))
-            lettersViewMode = true;
-        if (actionCommand.equals("numbers"))
-            lettersViewMode = false;
+
+    public static void setView(String requestedView) {
+        view = requestedView;
+        System.out.println("view:" + view);
     }
 
     public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
+        System.out.println("signature:" + signature);
     }
 
 

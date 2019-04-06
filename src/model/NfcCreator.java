@@ -20,16 +20,15 @@ public class NfcCreator {
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
             if (option.equals("signature")) {
-                World.setSignature(option.toString()); //todo: check this
+                World.setSignature(options.get(option));
                 numberOfWorlds = (int) Math.pow((double) 2, (double) option.length());
             }
 
-            if (option.equals("lettermode"))//todo: make better
-                World.setLettersMode("letters");
-            else World.setLettersMode("numbers");
+            if (option.equals("view"))
+                World.setView(options.get(option));
 
             if (option.equals("numbering"))
-                Conditional.setNumberMode(true); //todo
+                Conditional.setNumberMode(options.get(option));
 
 
         }
@@ -106,7 +105,7 @@ public class NfcCreator {
         }
         Collections.sort(cNfc);
         int counter = 1;
-        if (Conditional.getNumberMode()) {
+        if (Conditional.getNumbering().equals("on")) {
             for (ConditionalList conditionalList : cNfc) {
                 conditionalList.setNumberToFirstConditional(counter);
                 counter++;

@@ -35,9 +35,6 @@ public class SignaturePanel extends JPanel {
         signatureButtonGroup.add(abcRadioButton);
         abRadioButton.setSelected(true);
 
-        WorldDifference.setSignature(signatureButtonGroup.getSelection().getActionCommand());
-        World.setSignature(signatureButtonGroup.getSelection().getActionCommand());
-        World.setLettersMode(signatureButtonGroup.getSelection().getActionCommand());
 
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
