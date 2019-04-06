@@ -33,6 +33,8 @@ public class CondPanel extends JPanel {
         numberOfConditionalsLabel = new JLabel("0");
         add(infoPanel);
 
+        revalidate();
+
     }
 
     public void printWorlds(List<World> worldsList) {
@@ -41,7 +43,7 @@ public class CondPanel extends JPanel {
 
 
         infoPanel.printInfo(condTextField.getDescription());
-
+        revalidate();
     }
 
     public void printConditionals(List<Conditional> conditionalList) {
@@ -54,7 +56,7 @@ public class CondPanel extends JPanel {
         condTextField.printConditionals(conditionalList);
 
         infoPanel.printInfo(condTextField.getDescription());
-
+        revalidate();
     }
 
     public void printCnfc(List<ConditionalList> conditionalLists) {
@@ -63,5 +65,6 @@ public class CondPanel extends JPanel {
         condTextField.printCnfc(conditionalLists);
 
         infoPanel.printInfo(condTextField.getDescription());
+        revalidate();
     }
 }

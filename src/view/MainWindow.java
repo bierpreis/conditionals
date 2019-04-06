@@ -8,8 +8,8 @@ import javax.swing.*;
 import java.util.HashMap;
 
 public class MainWindow {
-    JFrame mainWindow;
-    CondPanel condPanel;
+    private JFrame mainWindow;
+    private CondPanel condPanel;
     private MenuPanel menuPanel;
 
     public MainWindow(GuiObserver observer) {
