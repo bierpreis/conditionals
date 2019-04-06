@@ -30,6 +30,8 @@ public class NfcCreator {
             if (option.equals("numbering"))
                 Conditional.setNumbeing(options.get(option));
 
+            if (option.equals("space"))
+                Conditional.setSpaceDot(options.get(option));
 
         }
     }
@@ -174,7 +176,7 @@ public class NfcCreator {
         return subSetList;
     }
 
-    private List<ConditionalList> setNumbers(List<ConditionalList> conditionalList) {
+    private List<ConditionalList> setNumbers(List<ConditionalList> conditionalList) { //todo: delete?
         int firstNumber = 0;
         for (ConditionalList subList : conditionalList) {
             subList.setNumbersToEquivalentConditionals(firstNumber);

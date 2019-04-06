@@ -26,7 +26,7 @@ public class SpacePanel extends JPanel {
 
     }
 
-    public String getCommand() {
+    public String getOption() {
         return buttonGroup.getSelection().getActionCommand();
     }
 }

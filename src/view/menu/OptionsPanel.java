@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.util.HashMap;
 
 
-
 public class OptionsPanel extends JPanel {
 
 
@@ -35,6 +34,7 @@ public class OptionsPanel extends JPanel {
         options.put("signature", signaturePanel.getOption());
         options.put("numbering", numbersPanel.getOption());
         options.put("view", viewPanel.getOption());
+        options.put("space", spacePanel.getOption());
         return options;
     }
 

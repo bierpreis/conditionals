@@ -77,7 +77,7 @@ public class Conditional implements Comparable {
         if (stringToReturn.length() < longestConditional)
             numberOfSpacesToAdd = (longestConditional - stringToReturn.length());
         for (int i = 0; i < numberOfSpacesToAdd; i++)
-            stringToReturn = stringToReturn + "."; //todo
+            stringToReturn = stringToReturn + spaceFillCharacter;
 
         return stringToReturn;
     }
@@ -100,8 +100,8 @@ public class Conditional implements Comparable {
         return numbering;
     }
 
-    public static void setSpaceDot(boolean isDotActive) {
-        if (isDotActive)
+    public static void setSpaceDot(String isDotActive) {
+        if (isDotActive.equals("dot"))
             spaceFillCharacter = ".";
         else spaceFillCharacter = " ";
     }
