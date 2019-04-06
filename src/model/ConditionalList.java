@@ -41,7 +41,7 @@ public class ConditionalList implements Comparable {
     public String toString() {
         String stringToReturn = "";
         for (Conditional conditional : conditionalList)
-            stringToReturn = stringToReturn + conditional.toString(); //todo: fix here
+            stringToReturn = stringToReturn + conditional.toString();
         return stringToReturn;
 
     }

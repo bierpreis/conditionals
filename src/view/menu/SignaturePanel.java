@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeSupport;
 
-public class SignaturePanel extends JPanel { //todo: remove this extend??
+public class SignaturePanel extends JPanel {
 
     private ButtonGroup signatureButtonGroup;
 

@@ -11,11 +11,6 @@ public class CondPanel extends JPanel {
     private final CondTextField condTextField;
     private final JScrollPane scrollPane;
 
-    private String currentDescription = "empty";
-
-    private final String worldsDescriptionLabel = "Number of Worlds: ";
-    private final String conditionalDescriptionLabel = "Number of Conditionals: ";
-    private final String equivClassesDescriptionLabel = "Number of Classes: ";
 
     private final InfoPanel infoPanel;
     private final JLabel numberOfConditionalsLabel;

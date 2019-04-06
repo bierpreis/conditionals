@@ -176,18 +176,6 @@ public class NfcCreator {
         return subSetList;
     }
 
-    private List<ConditionalList> setNumbers(List<ConditionalList> conditionalList) { //todo: delete?
-        int firstNumber = 0;
-        for (ConditionalList subList : conditionalList) {
-            subList.setNumbersToEquivalentConditionals(firstNumber);
-
-        }
-
-        return conditionalList;
-
-    }
-
-
 }
 
 
