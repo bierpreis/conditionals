@@ -23,10 +23,12 @@ public class NumbersPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Numbers"));
 
         onButton = new JRadioButton("on");
+        onButton.setActionCommand("on");
         buttonGroup.add(onButton);
         offButton = new JRadioButton("off");
         buttonGroup.add(offButton);
         offButton.setSelected(true);
+        offButton.setActionCommand("off");
         add(onButton);
         add(offButton);
 
