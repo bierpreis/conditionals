@@ -5,7 +5,6 @@ import view.menu.MenuPanel;
 import view.textArea.CondPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.HashMap;
 
 public class MainWindow {
@@ -24,9 +23,6 @@ public class MainWindow {
 
         mainWindow.add(menuPanel = new MenuPanel(observer));
         mainWindow.getContentPane().add(condPanel);
-
-
-        mainWindow.setMinimumSize(new Dimension(300, 500));
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();

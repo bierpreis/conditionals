@@ -8,7 +8,7 @@ public class SpacePanel extends JPanel {
     private ButtonGroup buttonGroup;
 
     public SpacePanel() {
-        setBorder(BorderFactory.createTitledBorder("space between equivalent conditionals"));
+        setBorder(BorderFactory.createTitledBorder("space char"));
 
         buttonGroup = new ButtonGroup();
 
