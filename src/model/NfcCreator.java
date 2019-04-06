@@ -71,6 +71,12 @@ public class NfcCreator {
 
 
         Collections.sort(basicConditionalList);
+
+        int counter = 1;
+        for (Conditional conditional : basicConditionalList) {
+            conditional.setNumber(counter);
+            counter++;
+        }
     }
 
     public void createcNfc() {
