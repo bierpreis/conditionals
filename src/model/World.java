@@ -100,12 +100,10 @@ public class World implements Comparable {
 
     public static void setView(String requestedView) {
         view = requestedView;
-        System.out.println("view:" + view);
     }
 
     public static void setSignature(String requestedSignature) {
         signature = requestedSignature;
-        System.out.println("signature:" + signature);
     }
 
 

@@ -21,7 +21,7 @@ public class NfcCreator {
         for (String option : options.keySet()) {
             if (option.equals("signature")) {
                 World.setSignature(options.get(option));
-                numberOfWorlds = (int) Math.pow((double) 2, (double) option.length());
+                numberOfWorlds = (int) Math.pow((double) 2, (double) options.get(option).length());
             }
 
             if (option.equals("view"))
@@ -51,7 +51,6 @@ public class NfcCreator {
     //3 creators
 
     public void createWorlds() {
-
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
@@ -59,9 +58,7 @@ public class NfcCreator {
 
         worldsList = createSubSetList(initWorldsList);
 
-
         Collections.sort(worldsList);
-
     }
 
     public void createConditionals() {
