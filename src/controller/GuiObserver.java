@@ -17,9 +17,10 @@ import java.util.List;
 public class GuiObserver implements PropertyChangeListener, ActionListener {
     private HashMap options;
     CondPanel condPanel;
+    private MainWindow mainWindow;
 
     public GuiObserver() {
-        MainWindow mainWindow = new MainWindow(this);
+        mainWindow = new MainWindow(this);
         condPanel = mainWindow.getCondPanel();
         options = new HashMap();
     }
@@ -32,6 +33,8 @@ public class GuiObserver implements PropertyChangeListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        HashMap<String, String> options = mainWindow.getOptions();
+        System.out.println(options);
         NfcCreator nfcCreator = new NfcCreator(options);
         switch (e.getActionCommand()) {
             case "nfc":

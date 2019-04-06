@@ -6,10 +6,12 @@ import view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 
 public class MainWindow {
     JFrame mainWindow;
     CondPanel condPanel;
+    private MenuPanel menuPanel;
 
     public MainWindow(GuiObserver observer) {
         mainWindow = new JFrame();
@@ -20,7 +22,7 @@ public class MainWindow {
         condPanel = new CondPanel();
 
 
-        mainWindow.add(new MenuPanel(observer));
+        mainWindow.add(menuPanel = new MenuPanel(observer));
         mainWindow.getContentPane().add(condPanel);
 
 
@@ -33,5 +35,9 @@ public class MainWindow {
 
     public CondPanel getCondPanel() {
         return condPanel;
+    }
+
+    public HashMap<String, String> getOptions() {
+        return menuPanel.getOptions();
     }
 }

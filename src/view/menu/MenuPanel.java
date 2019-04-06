@@ -1,17 +1,23 @@
 package view.menu;
 
 import controller.GuiObserver;
-import view.textArea.CondPanel;
+
 
 import javax.swing.*;
+import java.util.HashMap;
 
 public class MenuPanel extends JPanel {
+    OptionsPanel optionsPanel;
 
     public MenuPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        OptionsPanel optionsPanel = new OptionsPanel(observer);
+        optionsPanel = new OptionsPanel(observer);
         add(optionsPanel);
         add(new StartPanel(observer));
+    }
+
+    public HashMap<String, String> getOptions() {
+        return optionsPanel.getOptions();
     }
 }

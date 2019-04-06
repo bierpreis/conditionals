@@ -44,6 +44,7 @@ public class NumbersPanel extends JPanel {
         }
     }
 
-
-
+    public String getOption() {
+        return buttonGroup.getSelection().getActionCommand();
+    }
 }

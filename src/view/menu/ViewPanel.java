@@ -46,4 +46,8 @@ public class ViewPanel extends JPanel {
             changes.firePropertyChange("view:" + viewButtonGroup.getSelection().getActionCommand(), true, false);
         }
     }
+
+    public String getOption() {
+        return viewButtonGroup.getSelection().getActionCommand();
+    }
 }

@@ -52,6 +52,9 @@ public class SignaturePanel extends JPanel {
         }
     }
 
+    public String getOption() {
+        return signatureButtonGroup.getSelection().getActionCommand();
+    }
 
 
 }

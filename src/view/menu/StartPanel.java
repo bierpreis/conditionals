@@ -1,7 +1,6 @@
 package view.menu;
 
 import controller.GuiObserver;
-import view.textArea.CondPanel;
 
 import javax.swing.*;
 
