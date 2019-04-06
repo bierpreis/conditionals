@@ -4,45 +4,27 @@ package view.menu;
 import controller.GuiObserver;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.PropertyChangeSupport;
 
 public class NumbersPanel extends JPanel {
     private ButtonGroup buttonGroup;
-    private JRadioButton onButton;
-    private JRadioButton offButton;
-
-    private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
     public NumbersPanel(GuiObserver observer) {
+        PropertyChangeSupport changes = new PropertyChangeSupport(this);
         buttonGroup = new ButtonGroup();
 
-
         setBorder(BorderFactory.createTitledBorder("Numbers"));
-
-        onButton = new JRadioButton("on");
+        JRadioButton onButton = new JRadioButton("on");
         onButton.setActionCommand("on");
         buttonGroup.add(onButton);
-        offButton = new JRadioButton("off");
+        JRadioButton offButton = new JRadioButton("off");
         buttonGroup.add(offButton);
         offButton.setSelected(true);
         offButton.setActionCommand("off");
         add(onButton);
         add(offButton);
 
-        onButton.addActionListener(new NumberListener());
-        offButton.addActionListener(new NumberListener());
-
-        //addPropertyChangedListener(observer);
         changes.addPropertyChangeListener(observer);
-    }
-
-    class NumberListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {//todo: remove??
-            changes.firePropertyChange("isNumbersModeActive", onButton.isSelected(), !onButton.isSelected());
-        }
     }
 
     public String getOption() {
