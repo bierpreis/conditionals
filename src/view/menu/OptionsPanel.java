@@ -4,8 +4,7 @@ import controller.GuiObserver;
 
 import javax.swing.*;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+
 
 
 public class OptionsPanel extends JPanel {
@@ -14,6 +13,7 @@ public class OptionsPanel extends JPanel {
     private SignaturePanel signaturePanel;
     private NumbersPanel numbersPanel;
     private ViewPanel viewPanel;
+    private SpacePanel spacePanel;
 
 
     public OptionsPanel(GuiObserver observer) {
@@ -23,6 +23,8 @@ public class OptionsPanel extends JPanel {
         add(signaturePanel = new SignaturePanel(observer));
         add(viewPanel = new ViewPanel(observer));
         add(numbersPanel);
+
+        add(spacePanel = new SpacePanel());
 
 
         setVisible(true);

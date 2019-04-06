@@ -1,15 +1,13 @@
 package view.menu;
 
 import controller.GuiObserver;
-import model.World;
-import model.WorldDifference;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeSupport;
 
-public class SignaturePanel extends JPanel {
+public class SignaturePanel extends JPanel { //todo: remove this extend??
 
     private ButtonGroup signatureButtonGroup;
 

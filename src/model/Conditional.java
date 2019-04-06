@@ -9,6 +9,7 @@ public class Conditional implements Comparable {
     private static int longestConditional = 0;
 
     private int number;
+    private static String spaceFillCharacter = " ";
 
     public Conditional(World leftWorld, World rightWorld) {
         this.leftWorld = leftWorld;
@@ -76,7 +77,7 @@ public class Conditional implements Comparable {
         if (stringToReturn.length() < longestConditional)
             numberOfSpacesToAdd = (longestConditional - stringToReturn.length());
         for (int i = 0; i < numberOfSpacesToAdd; i++)
-            stringToReturn = stringToReturn + " ";
+            stringToReturn = stringToReturn + "."; //todo
 
         return stringToReturn;
     }
@@ -97,6 +98,12 @@ public class Conditional implements Comparable {
 
     public static String getNumbering() {
         return numbering;
+    }
+
+    public static void setSpaceDot(boolean isDotActive) {
+        if (isDotActive)
+            spaceFillCharacter = ".";
+        else spaceFillCharacter = " ";
     }
 
 
