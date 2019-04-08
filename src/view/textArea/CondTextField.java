@@ -16,7 +16,8 @@ public class CondTextField extends JTextArea {
     private String description;
 
     public CondTextField() {
-        super(40, 40);
+        super(40, 60);
+
         setFont(new Font("monospaced", Font.PLAIN, 12));
     }
 
