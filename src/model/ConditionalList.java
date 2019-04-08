@@ -62,4 +62,8 @@ public class ConditionalList implements Comparable {
     public int getHighestConditionalNumber() {
         return highestConditionalNumber;
     }
+
+    public int getSize() {
+        return conditionalList.size();
+    }
 }
