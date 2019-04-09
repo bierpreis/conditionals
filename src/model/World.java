@@ -107,5 +107,17 @@ public class World implements Comparable {
         WorldDifference.setSignature(requestedSignature);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof World))
+            return false;
+        World worldToCompare = (World) o;
+
+
+        if (this.worlds.equals(worldToCompare.getWorldsList()))
+            return true;
+
+        return false;
+    }
 
 }
