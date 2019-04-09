@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class GuiObserver implements PropertyChangeListener, ActionListener {
-    private HashMap options;
-    CondPanel condPanel;
+    private HashMap options; //todo this waring
+    private CondPanel condPanel;
     private MainWindow mainWindow;
 
     public GuiObserver() {
