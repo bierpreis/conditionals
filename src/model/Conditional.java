@@ -33,14 +33,14 @@ public class Conditional implements Comparable {
         if (rightWorld.getSize() > other.rightWorld.getSize())
             return 1;
 
-        int comparedRight = compareWorldsElements(rightWorld, other.rightWorld);
-        if (comparedRight != 0)
-            return comparedRight;
-
         if (leftWorld.getSize() < other.leftWorld.getSize())
             return -1;
         if (leftWorld.getSize() > other.leftWorld.getSize())
             return 1;
+
+        int comparedRight = compareWorldsElements(rightWorld, other.rightWorld);
+        if (comparedRight != 0)
+            return comparedRight;
 
         int comparedLeft = compareWorldsElements(leftWorld, other.leftWorld);
         if (comparedLeft != 0)
