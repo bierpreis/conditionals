@@ -50,7 +50,7 @@ public class NfcCreator {
         List<Conditional> basicConditionalList = new LinkedList<>();
 
         for (World world : worldsList)
-            basicConditionalList.addAll(newCreateConditionalsForWorld(world));
+            basicConditionalList.addAll(createConditionalsForWorld(world));
 
 
         Collections.sort(basicConditionalList);
@@ -109,54 +109,15 @@ public class NfcCreator {
 
 
     //sub methods
-    //todo: this is taken from inet?! maybe use the other subset mehtod? or put this in world?
-    private List<Conditional> createConditionalsForWorld(World currentWorld) {
-        System.out.println("old input:" + currentWorld);
-        List<Conditional> basicConditionalList = new LinkedList<>();
-        Set<World> listOfConditionalRights = new HashSet<>();
 
-        Integer[] worldNumbersArray = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
-
-        int n = currentWorld.getWorldsList().size();
-
-        // Run a loop for printing all 2^n
-        // subsets one by one
-        for (int i = 1; i < (1 << n); i++) { // i = 15 fault is here?!
-            World newWorld = new World();
-
-            // Print current subset
-            for (int j = 0; j < n; j++)
-
-                // (1<<j) is a number with jth bit 1
-                // so when we 'and' them with the
-                // subset number we get which numbers
-                // are present in the subset and which
-                // are not
-                if ((i & (1 << j)) > 0) {
-                    newWorld.addInt(worldNumbersArray[j]);
-
-                    listOfConditionalRights.add(newWorld);
-                }
-        }
-        for (World leftSide : listOfConditionalRights) {
-            Conditional newConditional = new Conditional(leftSide, currentWorld);
-
-            if (newConditional.isValid())
-                basicConditionalList.add(newConditional);
-        }
-        System.out.println("old return: " + basicConditionalList);
-        return basicConditionalList;
-    }
-
-    public List<Conditional> newCreateConditionalsForWorld(World currentWorld) {
+    public List<Conditional> createConditionalsForWorld(World currentWorld) {
         List<Conditional> currentConditionalList = new LinkedList<>();
 
         List<Integer> currentWorldIntList = currentWorld.getWorldsList();
         List<World> allSubSetsOfCurrentWorld = createSubSetList(new LinkedList(currentWorldIntList));
 
-        //allSubSetsOfCurrentWorld.remove(currentWorldIntList);
-
         for (World currentSubSworld : allSubSetsOfCurrentWorld) {
+            //only add real subsets not equal sets
             if (!currentSubSworld.equals(currentWorld))
                 currentConditionalList.add(new Conditional(currentSubSworld, currentWorld));
         }
