@@ -27,7 +27,6 @@ public class GuiObserver implements PropertyChangeListener, ActionListener {
 
     public void propertyChange(PropertyChangeEvent e) {
         options.put(e.getPropertyName(), e.getNewValue());
-        System.out.println(options);
     }
 
 
@@ -49,9 +48,7 @@ public class GuiObserver implements PropertyChangeListener, ActionListener {
                 condPanel.printConditionals(conditionalList);
                 break;
             case "worlds":
-                nfcCreator.createWorlds(options.get("signature"));
-                List<World> worldsList;
-                worldsList = nfcCreator.getWorldsList();
+                List<World> worldsList = nfcCreator.createWorlds(options.get("signature"));
                 condPanel.printWorlds(worldsList);
                 break;
         }

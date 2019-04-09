@@ -52,7 +52,7 @@ public class NfcCreator {
 
     //3 creators
 
-    public void createWorlds(String signature) {
+    public List<World> createWorlds(String signature) {
         int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
@@ -62,6 +62,8 @@ public class NfcCreator {
         worldsList = createSubSetList(initWorldsList);
 
         Collections.sort(worldsList);
+
+        return worldsList;
     }
 
     public void createConditionals(String signature) {
