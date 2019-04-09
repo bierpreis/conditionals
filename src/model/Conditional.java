@@ -15,7 +15,7 @@ public class Conditional implements Comparable {
         this.leftWorld = leftWorld;
         this.rightWorld = rightWorld;
         if (this.toString().length() > longestConditional)
-            longestConditional = this.toString().length();
+            longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
 
     }
 
