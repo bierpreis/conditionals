@@ -114,10 +114,8 @@ public class World implements Comparable {
         World worldToCompare = (World) o;
 
 
-        if (this.worlds.equals(worldToCompare.getWorldsList()))
-            return true;
+        return this.worlds.equals(worldToCompare.getWorldsList());
 
-        return false;
     }
 
 }
