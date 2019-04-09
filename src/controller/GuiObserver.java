@@ -41,10 +41,7 @@ public class GuiObserver implements PropertyChangeListener, ActionListener {
                 condPanel.printCnfc(cNfc);
                 break;
             case "conditionals":
-
-                nfcCreator.createConditionals(options.get("signature"));
-                List<Conditional> conditionalList;
-                conditionalList = nfcCreator.getConditionalsList();
+                List<Conditional> conditionalList = nfcCreator.createConditionals(options.get("signature"));
                 condPanel.printConditionals(conditionalList);
                 break;
             case "worlds":

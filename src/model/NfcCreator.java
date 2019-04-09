@@ -8,8 +8,6 @@ public class NfcCreator {
 
     private int numberOfWorlds;
 
-    private List<Conditional> basicConditionalList;
-
     private List<ConditionalList> cNfc;
 
     public NfcCreator(HashMap options) {
@@ -38,9 +36,6 @@ public class NfcCreator {
 
     // 3 getters
 
-    public List<Conditional> getConditionalsList() {
-        return basicConditionalList;
-    }
 
     public List<ConditionalList> getcNfc() {
         return cNfc;
@@ -62,13 +57,13 @@ public class NfcCreator {
         return worldsList;
     }
 
-    public void createConditionals(String signature) {
+    public List<Conditional> createConditionals(String signature) {
         List<World> worldsList = createWorlds(signature);
 
-        basicConditionalList = new LinkedList<>();
+        List<Conditional> basicConditionalList = new LinkedList<>();
 
         for (World world : worldsList)
-            createConditionalsForWorld(world);
+            basicConditionalList.addAll(createConditionalsForWorld(world));
 
 
         Collections.sort(basicConditionalList);
@@ -78,11 +73,13 @@ public class NfcCreator {
             conditional.setNumber(counter);
             counter++;
         }
+
+        return basicConditionalList;
     }
 
     public void createcNfc(String signature) {
-        createWorlds(signature);
-        createConditionals(signature);
+        //createWorlds(signature);
+        List<Conditional> basicConditionalList = createConditionals(signature);
 
         cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
@@ -124,7 +121,8 @@ public class NfcCreator {
 
     //sub methods
     //todo: this is taken from inet?! maybe use the other subset mehtod? or put this in world?
-    private void createConditionalsForWorld(World currentWorld) {
+    private List<Conditional> createConditionalsForWorld(World currentWorld) {
+        List<Conditional> basicConditionalList = new LinkedList<>();
         Set<World> listOfConditionalRights = new HashSet<>();
 
         Integer[] worldNumbersArray = currentWorld.getWorldsList().stream().toArray(Integer[]::new);
@@ -156,6 +154,7 @@ public class NfcCreator {
             if (newConditional.isValid())
                 basicConditionalList.add(newConditional);
         }
+        return basicConditionalList;
     }
 
 
