@@ -7,7 +7,7 @@ import java.beans.PropertyChangeSupport;
 
 public class ViewPanel extends JPanel {
     private PropertyChangeSupport changes;
-    ButtonGroup viewButtonGroup;
+    private ButtonGroup viewButtonGroup;
 
     public ViewPanel() {
         setBorder(BorderFactory.createTitledBorder("View"));

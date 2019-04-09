@@ -83,10 +83,6 @@ public class Conditional implements Comparable {
     }
 
 
-    public boolean isValid() {
-        return rightWorld.getSize() > leftWorld.getSize();
-    }
-
     public void setNumber(int number) {
         this.number = number;
     }

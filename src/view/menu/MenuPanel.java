@@ -7,12 +7,12 @@ import javax.swing.*;
 import java.util.HashMap;
 
 public class MenuPanel extends JPanel {
-    OptionsPanel optionsPanel;
+    private OptionsPanel optionsPanel;
 
     public MenuPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        optionsPanel = new OptionsPanel(observer);
+        optionsPanel = new OptionsPanel();
         add(optionsPanel);
         add(new StartPanel(observer));
     }

@@ -1,7 +1,5 @@
 package view.menu;
 
-import controller.GuiObserver;
-
 import javax.swing.*;
 import java.util.HashMap;
 
@@ -15,7 +13,7 @@ public class OptionsPanel extends JPanel {
     private SpacePanel spacePanel;
 
 
-    public OptionsPanel(GuiObserver observer) {
+    public OptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         numbersPanel = new NumbersPanel();
         setBorder(BorderFactory.createTitledBorder("Options"));

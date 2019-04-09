@@ -110,7 +110,7 @@ public class NfcCreator {
 
     //sub methods
 
-    public List<Conditional> createConditionalsForWorld(World currentWorld) {
+    private List<Conditional> createConditionalsForWorld(World currentWorld) {
         List<Conditional> currentConditionalList = new LinkedList<>();
 
         List<Integer> currentWorldIntList = currentWorld.getWorldsList();
