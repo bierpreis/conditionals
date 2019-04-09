@@ -13,7 +13,7 @@ public class SignaturePanel extends JPanel {
 
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
-    public SignaturePanel(GuiObserver observer) {
+    public SignaturePanel() {
         setBorder(BorderFactory.createTitledBorder("Choose Signature"));
 
         signatureButtonGroup = new ButtonGroup();
@@ -35,8 +35,6 @@ public class SignaturePanel extends JPanel {
 
 
         setBorder(BorderFactory.createTitledBorder("Signature"));
-
-        changes.addPropertyChangeListener(observer);
 
     }
 

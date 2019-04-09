@@ -4,11 +4,7 @@ import controller.GuiObserver;
 
 import javax.swing.*;
 
-import java.beans.PropertyChangeSupport;
-
 public class StartPanel extends JPanel {
-
-    private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
     private final JButton createWorldsButton = new JButton("create worlds");
     private final JButton createConditionalsButton = new JButton("create conditionals");
@@ -32,7 +28,6 @@ public class StartPanel extends JPanel {
         createCnfcButton.setActionCommand("nfc");
         add(createCnfcButton);
 
-        changes.addPropertyChangeListener(observer);
         revalidate();
     }
 

@@ -9,25 +9,20 @@ import view.textArea.CondPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+
 import java.util.HashMap;
 import java.util.List;
 
-public class GuiObserver implements PropertyChangeListener, ActionListener {
-    private HashMap options; //todo this waring
+public class GuiObserver implements ActionListener {
     private CondPanel condPanel;
     private MainWindow mainWindow;
 
     public GuiObserver() {
         mainWindow = new MainWindow(this);
         condPanel = mainWindow.getCondPanel();
-        options = new HashMap();
     }
 
-    public void propertyChange(PropertyChangeEvent e) {
-        options.put(e.getPropertyName(), e.getNewValue());
-    }
+
 
 
     @Override

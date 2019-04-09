@@ -1,16 +1,10 @@
 package view.menu;
-
-
-import controller.GuiObserver;
-
 import javax.swing.*;
-import java.beans.PropertyChangeSupport;
 
 public class NumbersPanel extends JPanel {
     private ButtonGroup buttonGroup;
 
-    public NumbersPanel(GuiObserver observer) {
-        PropertyChangeSupport changes = new PropertyChangeSupport(this);
+    public NumbersPanel() {
         buttonGroup = new ButtonGroup();
 
         setBorder(BorderFactory.createTitledBorder("Numbers"));
@@ -23,8 +17,6 @@ public class NumbersPanel extends JPanel {
         offButton.setActionCommand("off");
         add(onButton);
         add(offButton);
-
-        changes.addPropertyChangeListener(observer);
     }
 
     public String getOption() {

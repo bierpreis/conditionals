@@ -17,10 +17,10 @@ public class OptionsPanel extends JPanel {
 
     public OptionsPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        numbersPanel = new NumbersPanel(observer);
+        numbersPanel = new NumbersPanel();
         setBorder(BorderFactory.createTitledBorder("Options"));
-        add(signaturePanel = new SignaturePanel(observer));
-        add(viewPanel = new ViewPanel(observer));
+        add(signaturePanel = new SignaturePanel());
+        add(viewPanel = new ViewPanel());
         add(numbersPanel);
 
         add(spacePanel = new SpacePanel());
