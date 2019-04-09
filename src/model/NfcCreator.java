@@ -6,7 +6,6 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private int numberOfWorlds;
 
     private List<ConditionalList> cNfc;
 
@@ -16,10 +15,6 @@ public class NfcCreator {
 
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
-            if (option.equals("signature")) {
-                World.setSignature(options.get(option));
-                numberOfWorlds = (int) Math.pow((double) 2, (double) options.get(option).length());
-            }
 
             if (option.equals("view"))
                 World.setView(options.get(option));
