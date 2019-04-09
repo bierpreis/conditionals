@@ -6,15 +6,15 @@ import java.util.*;
 
 public class NfcCreator {
 
-
-    private List<ConditionalList> cNfc;
-
     public NfcCreator(HashMap options) {
         setOptions(options);
     }
 
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
+
+            if (option.equals("signature"))
+                World.setSignature(options.get(option));
 
             if (option.equals("view"))
                 World.setView(options.get(option));
@@ -26,14 +26,6 @@ public class NfcCreator {
                 Conditional.setSpaceDot(options.get(option));
 
         }
-    }
-
-
-    // 3 getters
-
-
-    public List<ConditionalList> getcNfc() {
-        return cNfc;
     }
 
     //3 creators
@@ -72,11 +64,11 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
-    public void createcNfc(String signature) {
+    public List<ConditionalList> createcNfc(String signature) {
         //createWorlds(signature);
         List<Conditional> basicConditionalList = createConditionals(signature);
 
-        cNfc = new LinkedList<>();
+        List<ConditionalList> cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
 
         //iterate basic conditionals
@@ -111,6 +103,8 @@ public class NfcCreator {
                 counter = counter + conditionalList.getHighestConditionalNumber();
             }
         }
+
+        return cNfc;
     }
 
 

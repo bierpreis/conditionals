@@ -36,8 +36,7 @@ public class GuiObserver implements PropertyChangeListener, ActionListener {
         NfcCreator nfcCreator = new NfcCreator(options);
         switch (e.getActionCommand()) {
             case "nfc":
-                nfcCreator.createcNfc(options.get("signature"));
-                List<ConditionalList> cNfc = nfcCreator.getcNfc();
+                List<ConditionalList> cNfc = nfcCreator.createcNfc(options.get("signature"));
                 condPanel.printCnfc(cNfc);
                 break;
             case "conditionals":
