@@ -6,7 +6,7 @@ import java.util.*;
 
 public class NfcCreator {
 
-    private int numberOfWorlds = 4;
+    private int numberOfWorlds;
 
     private List<World> worldsList;
     private List<Conditional> basicConditionalList;
@@ -52,7 +52,8 @@ public class NfcCreator {
 
     //3 creators
 
-    public void createWorlds() {
+    public void createWorlds(String signature) {
+        int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
@@ -63,8 +64,8 @@ public class NfcCreator {
         Collections.sort(worldsList);
     }
 
-    public void createConditionals() {
-        createWorlds();
+    public void createConditionals(String signature) {
+        createWorlds(signature);
 
         basicConditionalList = new LinkedList<>();
 
@@ -81,9 +82,9 @@ public class NfcCreator {
         }
     }
 
-    public void createcNfc() {
-        createWorlds();
-        createConditionals();
+    public void createcNfc(String signature) {
+        createWorlds(signature);
+        createConditionals(signature);
 
         cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
