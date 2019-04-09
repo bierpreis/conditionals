@@ -8,7 +8,6 @@ public class NfcCreator {
 
     private int numberOfWorlds;
 
-    private List<World> worldsList;
     private List<Conditional> basicConditionalList;
 
     private List<ConditionalList> cNfc;
@@ -38,9 +37,6 @@ public class NfcCreator {
 
 
     // 3 getters
-    public List<World> getWorldsList() {
-        return worldsList;
-    }
 
     public List<Conditional> getConditionalsList() {
         return basicConditionalList;
@@ -59,7 +55,7 @@ public class NfcCreator {
             initWorldsList.add(i);
         }
 
-        worldsList = createSubSetList(initWorldsList);
+        List<World> worldsList = createSubSetList(initWorldsList);
 
         Collections.sort(worldsList);
 
@@ -67,7 +63,7 @@ public class NfcCreator {
     }
 
     public void createConditionals(String signature) {
-        createWorlds(signature);
+        List<World> worldsList = createWorlds(signature);
 
         basicConditionalList = new LinkedList<>();
 
