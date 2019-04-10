@@ -5,6 +5,7 @@ import view.menu.MenuPanel;
 import view.textArea.CondPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 
 public class MainWindow {
@@ -16,13 +17,13 @@ public class MainWindow {
         mainWindow = new JFrame();
         mainWindow.setTitle("NFC Creator");
 
-        mainWindow.setLayout(new BoxLayout(mainWindow.getContentPane(), BoxLayout.X_AXIS));
+        mainWindow.setLayout(new BorderLayout());
 
         condPanel = new CondPanel();
 
 
-        mainWindow.add(menuPanel = new MenuPanel(observer));
-        mainWindow.getContentPane().add(condPanel);
+        mainWindow.add(menuPanel = new MenuPanel(observer), BorderLayout.WEST);
+        mainWindow.getContentPane().add(condPanel, BorderLayout.CENTER);
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();
