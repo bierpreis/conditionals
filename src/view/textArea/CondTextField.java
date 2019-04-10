@@ -16,7 +16,7 @@ public class CondTextField extends JTextArea {
     private String description;
 
     public CondTextField() {
-        super(40, 60);
+        super(40, 70);
 
         setFont(new Font("monospaced", Font.PLAIN, 12));
     }
@@ -52,7 +52,7 @@ public class CondTextField extends JTextArea {
             append(currentList.toString() + "\n");
             //numberOfEquivalenceClasses++;
         }
-        description = this.numberOfEquivalenceClasses + conditionalList.size() + System.lineSeparator() + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
+        description = this.numberOfEquivalenceClasses + conditionalList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
     }
 
     private String getLineNumber(int i) {

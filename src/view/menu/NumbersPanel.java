@@ -7,7 +7,7 @@ public class NumbersPanel extends JPanel {
     public NumbersPanel() {
         buttonGroup = new ButtonGroup();
 
-        setBorder(BorderFactory.createTitledBorder("Numbers"));
+        setBorder(BorderFactory.createTitledBorder("Show Numbers"));
         JRadioButton onButton = new JRadioButton("on");
         onButton.setActionCommand("on");
         buttonGroup.add(onButton);
