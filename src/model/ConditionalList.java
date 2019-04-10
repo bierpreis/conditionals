@@ -1,5 +1,7 @@
 package model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,9 +22,11 @@ public class ConditionalList implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) { //todo: check for chonditional list object
+    public int compareTo(Object o) {
         if (conditionalList.size() == 0)
             return 0;
+        if (!(o instanceof ConditionalList))
+            throw new RuntimeException("Cant compare this to ConditionalList");
         else {
             ConditionalList otherConditionalList = ((ConditionalList) o);
             Conditional firstConditional = conditionalList.get(0);

@@ -1,5 +1,7 @@
 package model;
 
+import com.twelvemonkeys.util.convert.TypeMismathException;
+
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
@@ -26,6 +28,8 @@ public class Conditional implements Comparable {
 
     @Override
     public int compareTo(Object o) {
+        if (!(o instanceof Conditional))
+            throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
         Conditional other = (Conditional) o;
 
         if (rightWorld.getSize() < other.rightWorld.getSize())

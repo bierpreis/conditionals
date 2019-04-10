@@ -32,7 +32,7 @@ public class WorldDifference {
         if (world1.getSize() != world2.getSize())
             return;
         for (int i = 0; i < world1.getSize(); i++) {
-            if (world1.getWorldsList().get(i) != world2.getWorldsList().get(i))
+            if (!world1.getWorldsList().get(i).equals(world2.getWorldsList().get(i)))
                 differenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
         }
 
