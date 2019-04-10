@@ -5,14 +5,14 @@ import controller.GuiObserver;
 import javax.swing.*;
 
 public class StartPanel extends JPanel {
-
-    private final JButton createWorldsButton = new JButton("create worlds");
-    private final JButton createConditionalsButton = new JButton("create conditionals");
-    private final JButton createCnfcButton = new JButton("create cNfc");
+    
 
     public StartPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setAlignmentX(100);
+
+        JButton createWorldsButton = new JButton("create worlds");
+        JButton createConditionalsButton = new JButton("create conditionals");
+        JButton createCnfcButton = new JButton("create cNfc");
 
         setBorder(BorderFactory.createTitledBorder("start"));
 
@@ -27,8 +27,6 @@ public class StartPanel extends JPanel {
         createCnfcButton.addActionListener(observer);
         createCnfcButton.setActionCommand("nfc");
         add(createCnfcButton);
-
-        revalidate();
     }
 
 
