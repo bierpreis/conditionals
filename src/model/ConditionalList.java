@@ -20,7 +20,7 @@ public class ConditionalList implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Object o) { //todo: check for chonditional list object
         if (conditionalList.size() == 0)
             return 0;
         else {
