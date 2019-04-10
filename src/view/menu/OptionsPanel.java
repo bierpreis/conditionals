@@ -22,9 +22,6 @@ public class OptionsPanel extends JPanel {
         add(numbersPanel);
 
         add(spacePanel = new SpacePanel());
-
-
-        setVisible(true);
     }
 
     public HashMap<String, String> getOptions() {

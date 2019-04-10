@@ -5,7 +5,7 @@ import controller.GuiObserver;
 import javax.swing.*;
 
 public class StartPanel extends JPanel {
-    
+
 
     public StartPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

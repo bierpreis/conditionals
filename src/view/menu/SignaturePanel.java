@@ -1,7 +1,5 @@
 package view.menu;
 
-import controller.GuiObserver;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
