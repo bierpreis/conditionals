@@ -6,7 +6,7 @@ import java.util.*;
 
 public class NfcCreator {
 
-    public NfcCreator(HashMap options) {
+    public NfcCreator(HashMap<String, String> options) {
         setOptions(options);
     }
 
