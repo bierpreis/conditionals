@@ -9,24 +9,26 @@ public class StartPanel extends JPanel {
 
     public StartPanel(GuiObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        JButton createWorldsButton = new JButton("create worlds");
-        JButton createConditionalsButton = new JButton("create conditionals");
-        JButton createCnfcButton = new JButton("create cNfc");
-
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        createWorldsButton.addActionListener(observer);
-        createWorldsButton.setActionCommand("worlds");
-        add(createWorldsButton);
+        JButton createNfcButton = new JButton("NFC");
+        JButton createCnfcButton = new JButton("cNFC");
+        JButton createCnfcEqButton = new JButton("cNFC with EQ");
 
-        createConditionalsButton.addActionListener(observer);
-        createConditionalsButton.setActionCommand("conditionals");
-        add(createConditionalsButton);
+
+        createNfcButton.addActionListener(observer);
+        createNfcButton.setActionCommand("conditionals");
+        add(createNfcButton);
 
         createCnfcButton.addActionListener(observer);
         createCnfcButton.setActionCommand("nfc");
         add(createCnfcButton);
+
+        //todo: create function
+        createCnfcEqButton.addActionListener(observer);
+        createCnfcEqButton.setActionCommand("cnfcEQ");
+        add(createCnfcEqButton);
+
     }
 
 
