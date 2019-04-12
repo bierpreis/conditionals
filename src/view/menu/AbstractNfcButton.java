@@ -13,7 +13,7 @@ public class AbstractNfcButton extends JButton {
         setText(command.toString());
 
     }
-
+    //todo: delete?
     public Command getCommand() {
         return command;
     }

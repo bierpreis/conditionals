@@ -64,7 +64,7 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
-    public List<ConditionalList> createcNfc(String signature) {
+    public List<ConditionalList> createCnfcEq(String signature) {
         //createWorlds(signature);
         List<Conditional> basicConditionalList = createConditionals(signature);
 
