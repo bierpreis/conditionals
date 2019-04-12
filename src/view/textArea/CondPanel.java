@@ -32,14 +32,6 @@ public class CondPanel extends JPanel {
 
     }
 
-    public void printWorlds(List<World> worldsList) {
-        condTextField.setText("");
-        condTextField.printWorlds(worldsList);
-
-
-        infoPanel.printInfo(condTextField.getDescription());
-        revalidate();
-    }
 
     public void printConditionals(List<Conditional> conditionalList) {
         condTextField.setText("");
@@ -54,12 +46,18 @@ public class CondPanel extends JPanel {
         revalidate();
     }
 
+    public void printCnfcEq(List<ConditionalList> conditionalLists) {
+        condTextField.setText("");
+
+        condTextField.printCnfcEq(conditionalLists);
+
+        infoPanel.printInfo(condTextField.getDescription());
+        revalidate();
+    }
+
     public void printCnfc(List<ConditionalList> conditionalLists) {
         condTextField.setText("");
 
         condTextField.printCnfc(conditionalLists);
-
-        infoPanel.printInfo(condTextField.getDescription());
-        revalidate();
     }
 }

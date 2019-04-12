@@ -31,14 +31,16 @@ public class GuiObserver implements ActionListener {
                 List<Conditional> nfc = nfcCreator.createConditionals(options.get("signature"));
                 condPanel.printConditionals(nfc);
                 break;
-            case "CNFCEQ":
+            case "CNFCEQ": { //brackets to create own name scope for cnfc
+                List<ConditionalList> cNfc = nfcCreator.createCnfcEq(options.get("signature"));
+                condPanel.printCnfcEq(cNfc);
+                break;
+            }
+            case "CNFC": {
                 List<ConditionalList> cNfc = nfcCreator.createCnfcEq(options.get("signature"));
                 condPanel.printCnfc(cNfc);
                 break;
-            case "worlds":
-                List<World> worldsList = nfcCreator.createWorlds(options.get("signature"));
-                condPanel.printWorlds(worldsList);
-                break;
+            }
         }
     }
 }

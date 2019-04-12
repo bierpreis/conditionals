@@ -43,14 +43,25 @@ public class CondTextField extends JTextArea {
         description = numberOfConditionals + conditionalCounter;
     }
 
-    public void printCnfc(List<ConditionalList> conditionalList) {
+    public void printCnfcEq(List<ConditionalList> conditionalList) {
         int numberOfConditionals = 0;
         setText("");
         for (int i = 0; i < conditionalList.size(); i++) {
             ConditionalList currentList = conditionalList.get(i);
             numberOfConditionals = numberOfConditionals + currentList.getSize();
             append(currentList.toString() + "\n");
-            //numberOfEquivalenceClasses++;
+        }
+        description = this.numberOfEquivalenceClasses + conditionalList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
+    }
+
+    public void printCnfc(List<ConditionalList> conditionalList) {
+        int numberOfConditionals = 0;
+        setText("");
+        for (int i = 0; i < conditionalList.size(); i++) {
+            ConditionalList currentList = conditionalList.get(i);
+            numberOfConditionals = numberOfConditionals + currentList.getSize();
+            append(currentList.get(0) + "\n");
+
         }
         description = this.numberOfEquivalenceClasses + conditionalList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
     }
