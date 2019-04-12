@@ -1,9 +1,6 @@
 package controller;
 
-import model.Conditional;
-import model.ConditionalList;
-import model.NfcCreator;
-import model.World;
+import model.*;
 import view.MainWindow;
 import view.textArea.CondPanel;
 
@@ -23,20 +20,19 @@ public class GuiObserver implements ActionListener {
     }
 
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         HashMap<String, String> options = mainWindow.getOptions();
         NfcCreator nfcCreator = new NfcCreator(options);
+        //todo: this is not great
         switch (e.getActionCommand()) {
-            case "nfc":
+            case "NFC":
+                List<Conditional> nfc = nfcCreator.createConditionals(options.get("signature"));
+                condPanel.printConditionals(nfc);
+                break;
+            case "CNFC":
                 List<ConditionalList> cNfc = nfcCreator.createcNfc(options.get("signature"));
                 condPanel.printCnfc(cNfc);
-                break;
-            case "conditionals":
-                List<Conditional> conditionalList = nfcCreator.createConditionals(options.get("signature"));
-                condPanel.printConditionals(conditionalList);
                 break;
             case "worlds":
                 List<World> worldsList = nfcCreator.createWorlds(options.get("signature"));

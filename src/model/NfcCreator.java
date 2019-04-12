@@ -12,7 +12,7 @@ public class NfcCreator {
 
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
-
+            //todo: enum
             if (option.equals("signature"))
                 World.setSignature(options.get(option));
 

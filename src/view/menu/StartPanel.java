@@ -1,6 +1,7 @@
 package view.menu;
 
 import controller.GuiObserver;
+import model.Command;
 
 import javax.swing.*;
 
@@ -11,22 +12,19 @@ public class StartPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        JButton createNfcButton = new JButton("NFC");
-        JButton createCnfcButton = new JButton("cNFC");
-        JButton createCnfcEqButton = new JButton("cNFC with EQ");
+        AbstractNfcButton createNfcButton = new AbstractNfcButton(Command.NFC);
+
+        AbstractNfcButton createCnfcButton = new AbstractNfcButton(Command.CNFC);
+        AbstractNfcButton createCnfcEqButton = new AbstractNfcButton(Command.CNFCEQ);
 
 
         createNfcButton.addActionListener(observer);
-        createNfcButton.setActionCommand("conditionals");
         add(createNfcButton);
 
         createCnfcButton.addActionListener(observer);
-        createCnfcButton.setActionCommand("nfc");
         add(createCnfcButton);
 
-        //todo: create function
         createCnfcEqButton.addActionListener(observer);
-        createCnfcEqButton.setActionCommand("cnfcEQ");
         add(createCnfcEqButton);
 
     }
