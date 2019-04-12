@@ -25,6 +25,7 @@ public class GuiObserver implements ActionListener {
         HashMap<String, String> options = mainWindow.getOptions();
         NfcCreator nfcCreator = new NfcCreator(options);
         //todo: this is not great
+        //todo: remove signature
         switch (e.getActionCommand()) {
             case "NFC":
                 List<Conditional> nfc = nfcCreator.createConditionals(options.get("signature"));
