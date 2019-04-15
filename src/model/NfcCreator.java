@@ -142,6 +142,19 @@ public class NfcCreator {
         return subSetList;
     }
 
+    public List<Conditional> getCnfcAsList(String signature) {
+        List<ConditionalList> cnfcEq = createCnfcEq(signature);
+
+        List<Conditional> cnfc = new LinkedList<>();
+
+        for (ConditionalList sublist : cnfcEq)
+            cnfc.add(sublist.get(0));
+
+        System.out.println(cnfc);
+
+        return cnfc;
+    }
+
 }
 
 

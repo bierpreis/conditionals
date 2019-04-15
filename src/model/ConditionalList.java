@@ -70,4 +70,8 @@ public class ConditionalList implements Comparable {
     public int getSize() {
         return conditionalList.size();
     }
+
+    public List<Conditional> getConditionalList() {
+        return conditionalList;
+    }
 }
