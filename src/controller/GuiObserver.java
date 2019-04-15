@@ -39,8 +39,8 @@ public class GuiObserver implements ActionListener {
                 break;
             }
             case "CNFC": {
-                List<ConditionalList> cNfc = nfcCreator.createCnfcEq(options.get("signature"));
-                condPanel.printCnfc(cNfc);
+                List<Conditional> cNfc = nfcCreator.createCnfc(options.get("signature"));
+                condPanel.printConditionals(cNfc);
                 break;
             }
         }
