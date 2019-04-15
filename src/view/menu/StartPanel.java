@@ -10,7 +10,7 @@ public class StartPanel extends JPanel {
 
 
     public StartPanel(GuiObserver observer) {
-        setLayout(new BoxLayout(this,  BoxLayout.Y_AXIS));
+        setLayout(new GridLayout());
         setBorder(BorderFactory.createTitledBorder("start"));
 
         AbstractNfcButton createNfcButton = new AbstractNfcButton(Command.NFC);
