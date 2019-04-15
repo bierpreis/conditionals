@@ -17,7 +17,7 @@ public class MenuPanel extends JPanel {
 
         optionsPanel = new OptionsPanel();
         add(optionsPanel, BorderLayout.CENTER);
-        add(new SafePanel());
+        add(new SafePanel(observer));
         add(new StartPanel(observer), BorderLayout.SOUTH);
     }
 

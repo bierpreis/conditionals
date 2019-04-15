@@ -7,6 +7,9 @@ import view.textArea.CondPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,6 +44,16 @@ public class GuiObserver implements ActionListener {
                 condPanel.printCnfc(cNfc);
                 break;
             }
+        }
+    }
+
+    public void saveFile(File file) {
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            fileWriter.write(condPanel.getContentAsString());
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

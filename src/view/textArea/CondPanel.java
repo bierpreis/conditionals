@@ -60,4 +60,8 @@ public class CondPanel extends JPanel {
 
         condTextField.printCnfc(conditionalLists);
     }
+
+    public String getContentAsString() {
+        return condTextField.getContentAsString();
+    }
 }

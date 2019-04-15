@@ -75,6 +75,10 @@ public class CondTextField extends JTextArea {
         return lineNumber + "   ";
     }
 
+    public String getContentAsString() {
+        return getText();
+    }
+
     public String getDescription() {
         return description;
     }

@@ -4,12 +4,13 @@ import controller.GuiObserver;
 import model.Command;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class StartPanel extends JPanel {
 
 
     public StartPanel(GuiObserver observer) {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BoxLayout(this,  BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("start"));
 
         AbstractNfcButton createNfcButton = new AbstractNfcButton(Command.NFC);

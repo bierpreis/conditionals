@@ -1,14 +1,18 @@
 package view.menu.safe;
 
+import controller.GuiObserver;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SafePanel extends JPanel {
     private JButton safeButton;
+    private GuiObserver observer;
 
-    public SafePanel() {
-        setBorder(BorderFactory.createTitledBorder("Save to File"));
+    public SafePanel(GuiObserver observer) {
+        this.observer = observer;
+        setBorder(BorderFactory.createTitledBorder("Save Text to File"));
         safeButton = new JButton("Save");
         add(safeButton);
         safeButton.addActionListener(new SafeButtonListener());
@@ -21,6 +25,8 @@ public class SafePanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             JFileChooser safeDialog = new JFileChooser();
             safeDialog.showDialog(safeButton, "Save to");
+
+            observer.saveFile(safeDialog.getSelectedFile());
         }
     }
 
