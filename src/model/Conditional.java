@@ -1,6 +1,5 @@
 package model;
 
-import com.twelvemonkeys.util.convert.TypeMismathException;
 
 public class Conditional implements Comparable {
     private final World leftWorld;
