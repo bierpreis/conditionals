@@ -1,6 +1,6 @@
 package nfc.view.menu;
 
-import nfc.controller.GuiObserver;
+import nfc.controller.NfcCreatorObserver;
 import nfc.model.Command;
 
 import javax.swing.*;
@@ -9,7 +9,7 @@ import java.awt.*;
 public class StartPanel extends JPanel {
 
 
-    public StartPanel(GuiObserver observer) {
+    public StartPanel(NfcCreatorObserver observer) {
         setLayout(new GridLayout());
         setBorder(BorderFactory.createTitledBorder("start"));
 

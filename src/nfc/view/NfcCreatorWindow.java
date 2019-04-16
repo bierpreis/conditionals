@@ -1,6 +1,6 @@
 package nfc.view;
 
-import nfc.controller.GuiObserver;
+import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.MenuPanel;
 import nfc.view.textArea.CondPanel;
 
@@ -8,12 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 
-public class MainWindow {
+public class NfcCreatorWindow {
     private JFrame mainWindow;
     private CondPanel condPanel;
     private MenuPanel menuPanel;
 
-    public MainWindow(GuiObserver observer) {
+    public NfcCreatorWindow(NfcCreatorObserver observer) {
         mainWindow = new JFrame();
         mainWindow.setTitle("NFC Creator");
 

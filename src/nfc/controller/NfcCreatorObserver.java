@@ -3,7 +3,7 @@ package nfc.controller;
 import nfc.model.Conditional;
 import nfc.model.ConditionalList;
 import nfc.model.NfcCreator;
-import nfc.view.MainWindow;
+import nfc.view.NfcCreatorWindow;
 import nfc.view.textArea.CondPanel;
 
 import java.awt.event.ActionEvent;
@@ -15,12 +15,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-public class GuiObserver implements ActionListener {
+public class NfcCreatorObserver implements ActionListener {
     private CondPanel condPanel;
-    private MainWindow mainWindow;
+    private NfcCreatorWindow mainWindow;
 
-    public GuiObserver() {
-        mainWindow = new MainWindow(this);
+    public NfcCreatorObserver() {
+        mainWindow = new NfcCreatorWindow(this);
         condPanel = mainWindow.getCondPanel();
     }
 

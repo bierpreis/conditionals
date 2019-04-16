@@ -1,6 +1,6 @@
 package nfc.view.menu;
 
-import nfc.controller.GuiObserver;
+import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.safe.SafePanel;
 
 
@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class MenuPanel extends JPanel {
     private OptionsPanel optionsPanel;
 
-    public MenuPanel(GuiObserver observer) {
+    public MenuPanel(NfcCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         optionsPanel = new OptionsPanel();

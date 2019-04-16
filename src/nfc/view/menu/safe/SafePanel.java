@@ -1,6 +1,6 @@
 package nfc.view.menu.safe;
 
-import nfc.controller.GuiObserver;
+import nfc.controller.NfcCreatorObserver;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 
 public class SafePanel extends JPanel {
     private JButton safeButton;
-    private GuiObserver observer;
+    private NfcCreatorObserver observer;
 
-    public SafePanel(GuiObserver observer) {
+    public SafePanel(NfcCreatorObserver observer) {
         this.observer = observer;
         setBorder(BorderFactory.createTitledBorder("Save Text to File"));
         safeButton = new JButton("Save");
