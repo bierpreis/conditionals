@@ -23,10 +23,12 @@ public class SafePanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFileChooser safeDialog = new JFileChooser();
-            safeDialog.showDialog(safeButton, "Save to");
 
-            observer.saveFile(safeDialog.getSelectedFile());
+            JFileChooser safeDialog = new JFileChooser();
+            int action = safeDialog.showDialog(safeButton, "Save");
+            if (action == JFileChooser.APPROVE_OPTION)
+
+                observer.saveFile(safeDialog.getSelectedFile());
         }
     }
 
