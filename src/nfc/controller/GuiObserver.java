@@ -1,8 +1,10 @@
-package controller;
+package nfc.controller;
 
-import model.*;
-import view.MainWindow;
-import view.textArea.CondPanel;
+import nfc.model.Conditional;
+import nfc.model.ConditionalList;
+import nfc.model.NfcCreator;
+import nfc.view.MainWindow;
+import nfc.view.textArea.CondPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

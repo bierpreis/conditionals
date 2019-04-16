@@ -1,4 +1,4 @@
-package view.textArea;
+package nfc.view.textArea;
 
 import javax.swing.*;
 

@@ -1,4 +1,4 @@
-package controller;
+package nfc.controller;
 
 
 public class Main {

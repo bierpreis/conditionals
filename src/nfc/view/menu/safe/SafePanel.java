@@ -1,6 +1,6 @@
-package view.menu.safe;
+package nfc.view.menu.safe;
 
-import controller.GuiObserver;
+import nfc.controller.GuiObserver;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package model;
+package nfc.model;
 
 
 public class Conditional implements Comparable {
@@ -75,7 +75,7 @@ public class Conditional implements Comparable {
         if (numbering.equals("on"))
             stringToReturn = number + ": " + stringToReturn;
 
-        //this is to calculate whitespaces for colums in cnfc view
+        //this is to calculate whitespaces for colums in cnfc nfc.model.view
         int numberOfSpacesToAdd = 0;
         if (stringToReturn.length() < longestConditional)
             numberOfSpacesToAdd = (longestConditional - stringToReturn.length());

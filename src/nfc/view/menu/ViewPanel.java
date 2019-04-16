@@ -1,4 +1,4 @@
-package view.menu;
+package nfc.view.menu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -37,7 +37,7 @@ public class ViewPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            changes.firePropertyChange("view:" + viewButtonGroup.getSelection().getActionCommand(), true, false);
+            changes.firePropertyChange("nfc.model.view:" + viewButtonGroup.getSelection().getActionCommand(), true, false);
         }
     }
 

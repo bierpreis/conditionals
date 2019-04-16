@@ -1,8 +1,7 @@
-package view.textArea;
+package nfc.view.textArea;
 
-import model.Conditional;
-import model.ConditionalList;
-import model.World;
+import nfc.model.Conditional;
+import nfc.model.ConditionalList;
 
 import javax.swing.*;
 import java.util.List;

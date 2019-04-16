@@ -1,6 +1,6 @@
-package view.menu;
+package nfc.view.menu;
 
-import model.Command;
+import nfc.model.Command;
 
 import javax.swing.*;
 

@@ -1,8 +1,8 @@
-package view;
+package nfc.view;
 
-import controller.GuiObserver;
-import view.menu.MenuPanel;
-import view.textArea.CondPanel;
+import nfc.controller.GuiObserver;
+import nfc.view.menu.MenuPanel;
+import nfc.view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;

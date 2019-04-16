@@ -1,6 +1,4 @@
-package model;
-
-import org.jetbrains.annotations.NotNull;
+package nfc.model;
 
 import java.util.Collections;
 import java.util.LinkedList;

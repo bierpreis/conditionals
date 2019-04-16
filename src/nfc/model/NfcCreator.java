@@ -1,4 +1,4 @@
-package model;
+package nfc.model;
 
 
 import java.util.*;
@@ -16,7 +16,7 @@ public class NfcCreator {
             if (option.equals("signature"))
                 World.setSignature(options.get(option));
 
-            if (option.equals("view"))
+            if (option.equals("nfc/view"))
                 World.setView(options.get(option));
 
             if (option.equals("numbering"))

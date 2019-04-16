@@ -1,11 +1,10 @@
-package view.menu;
+package nfc.view.menu;
 
-import controller.GuiObserver;
-import view.menu.safe.SafePanel;
+import nfc.controller.GuiObserver;
+import nfc.view.menu.safe.SafePanel;
 
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.HashMap;
 

@@ -1,7 +1,7 @@
-package view.menu;
+package nfc.view.menu;
 
-import controller.GuiObserver;
-import model.Command;
+import nfc.controller.GuiObserver;
+import nfc.model.Command;
 
 import javax.swing.*;
 import java.awt.*;

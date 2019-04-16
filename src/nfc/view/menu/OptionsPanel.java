@@ -1,4 +1,4 @@
-package view.menu;
+package nfc.view.menu;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class OptionsPanel extends JPanel {
         HashMap<String, String> options = new HashMap<>();
         options.put("signature", signaturePanel.getOption());
         options.put("numbering", numbersPanel.getOption());
-        options.put("view", viewPanel.getOption());
+        options.put("nfc/view", viewPanel.getOption());
         options.put("space", spacePanel.getOption());
         return options;
     }
