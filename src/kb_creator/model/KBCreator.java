@@ -1,6 +1,6 @@
 package kb_creator.model;
 
-import kb_creator.KBCreatorObserver;
+import kb_creator.Observer.KBCreatorObserver;
 import nfc.model.Conditional;
 
 import java.util.LinkedList;

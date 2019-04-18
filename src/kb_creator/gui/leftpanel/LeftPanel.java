@@ -1,9 +1,8 @@
 package kb_creator.gui.leftpanel;
 
-import kb_creator.KBCreatorObserver;
+import kb_creator.Observer.KBCreatorObserver;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class LeftPanel extends JPanel {
     KBCreatorObserver observer;
@@ -14,7 +13,7 @@ public class LeftPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //setMinimumSize(new Dimension(200, 300));
 
-        add(new ActionPanel());
+        add(new ActionPanel(observer));
         add(new SignaturePanel());
         add(new StatusPanel());
         revalidate();

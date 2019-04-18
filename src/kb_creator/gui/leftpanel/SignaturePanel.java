@@ -1,7 +1,5 @@
 package kb_creator.gui.leftpanel;
 
-import kb_creator.KBCreatorObserver;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

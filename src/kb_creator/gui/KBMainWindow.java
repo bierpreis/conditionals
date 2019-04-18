@@ -1,6 +1,6 @@
 package kb_creator.gui;
 
-import kb_creator.KBCreatorObserver;
+import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.LeftPanel;
 import nfc.view.textArea.CondPanel;
 
