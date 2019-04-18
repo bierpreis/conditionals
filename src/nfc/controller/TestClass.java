@@ -1,10 +1,7 @@
 package nfc.controller;
 
-import kb_creator.SimpleNfcCreator.Observer;
 import nfc.model.Conditional;
 import nfc.model.World;
-
-import java.util.LinkedList;
 
 public class TestClass {
     public static void main(String[] args) {
