@@ -109,8 +109,6 @@ public class Conditional implements Comparable {
     }
 
     public Conditional getCounterConditional() {
-        List otherRightList = new LinkedList(rightWorld.getWorldsList());
-        otherRightList.removeAll(leftWorld.getWorldsList());
 
         World newLeftWorld = new World();
         newLeftWorld.addList(rightWorld.getWorldsList());
@@ -118,14 +116,4 @@ public class Conditional implements Comparable {
         return new Conditional(newLeftWorld, rightWorld);
 
     }
-
-    public World getLeftWorld() {
-        return leftWorld;
-    }
-
-    public World getRightWorld() {
-        return rightWorld;
-    }
-
-
 }
