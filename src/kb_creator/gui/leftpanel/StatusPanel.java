@@ -7,6 +7,6 @@ public class StatusPanel extends JPanel {
 
     public StatusPanel() {
 
-        setBorder(BorderFactory.createTitledBorder("status"));
+        setBorder(BorderFactory.createTitledBorder("Status"));
     }
 }

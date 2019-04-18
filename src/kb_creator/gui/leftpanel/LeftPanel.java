@@ -12,9 +12,10 @@ public class LeftPanel extends JPanel {
     public LeftPanel(KBCreatorObserver observer) {
         this.observer = observer;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setMinimumSize(new Dimension(200, 300));
+        //setMinimumSize(new Dimension(200, 300));
 
         add(new ActionPanel());
+        add(new SignaturePanel());
         add(new StatusPanel());
         revalidate();
     }
