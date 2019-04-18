@@ -15,10 +15,10 @@ public class KBMainWindow {
         JFrame mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
 
-        mainWindow.add(new LeftPanel(), BorderLayout.WEST);
+        mainWindow.add(new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(new CondPanel(), BorderLayout.EAST);
 
-
+        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();
         mainWindow.setVisible(true);
     }

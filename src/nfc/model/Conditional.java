@@ -1,9 +1,6 @@
 package nfc.model;
 
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
@@ -115,5 +112,9 @@ public class Conditional implements Comparable {
         newLeftWorld.removeWorld(leftWorld);
         return new Conditional(newLeftWorld, rightWorld);
 
+    }
+
+    public int getNumber() {
+        return number;
     }
 }
