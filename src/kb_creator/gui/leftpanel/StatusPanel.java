@@ -1,4 +1,4 @@
-package kb_creator.gui;
+package kb_creator.gui.leftpanel;
 
 import javax.swing.*;
 
