@@ -1,10 +1,13 @@
 package nfc.model;
 
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
-    private static String numbering;
+    private static String numbering = "off";
 
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
@@ -103,6 +106,25 @@ public class Conditional implements Comparable {
         if (isDotActive.equals("dot"))
             spaceFillCharacter = ".";
         else spaceFillCharacter = " ";
+    }
+
+    public Conditional getCounterConditional() {
+        List otherRightList = new LinkedList(rightWorld.getWorldsList());
+        otherRightList.removeAll(leftWorld.getWorldsList());
+
+        World newLeftWorld = new World();
+        newLeftWorld.addList(rightWorld.getWorldsList());
+        newLeftWorld.removeWorld(leftWorld);
+        return new Conditional(newLeftWorld, rightWorld);
+
+    }
+
+    public World getLeftWorld() {
+        return leftWorld;
+    }
+
+    public World getRightWorld() {
+        return rightWorld;
     }
 
 

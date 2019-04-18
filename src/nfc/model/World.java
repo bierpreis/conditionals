@@ -8,7 +8,7 @@ public class World implements Comparable {
     private final List<Integer> worlds;
     private static String signature;
 
-    private static String view;
+    private static String view = "numbers";
 
 
     public World() {
@@ -116,6 +116,10 @@ public class World implements Comparable {
 
         return this.worlds.equals(worldToCompare.getWorldsList());
 
+    }
+
+    public void removeWorld(World worldsToRemove) {
+        worlds.removeAll(worldsToRemove.getWorldsList());
     }
 
 }
