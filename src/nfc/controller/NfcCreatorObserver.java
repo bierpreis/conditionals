@@ -28,7 +28,7 @@ public class NfcCreatorObserver implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         HashMap<String, String> options = mainWindow.getOptions();
-        NfcCreator nfcCreator = new NfcCreator(options);
+        NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
         //todo: this is not great
         switch (e.getActionCommand()) {
             case "NFC":

@@ -33,4 +33,8 @@ public class OptionsPanel extends JPanel {
         return options;
     }
 
+    public String getSignature(){
+        return signaturePanel.getOption();
+    }
+
 }

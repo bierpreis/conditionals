@@ -6,16 +6,13 @@ import java.util.*;
 
 public class NfcCreator {
 
-    public NfcCreator(HashMap<String, String> options) {
-        setOptions(options);
+    public NfcCreator(String signature) {
+
+        createWorlds(signature);
     }
 
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
-            //todo: only signature here. rest should be in cond panel!
-            if (option.equals("signature"))
-                World.setSignature(options.get(option));
-
             if (option.equals("nfc/view"))
                 World.setView(options.get(option));
 
@@ -31,6 +28,7 @@ public class NfcCreator {
     //3 creators
 
     public List<World> createWorlds(String signature) {
+        World.setSignature(signature);
         int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {

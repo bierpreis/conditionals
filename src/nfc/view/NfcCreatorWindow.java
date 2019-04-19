@@ -37,4 +37,8 @@ public class NfcCreatorWindow {
     public HashMap<String, String> getOptions() {
         return menuPanel.getOptions();
     }
+
+    public String getSignature(){
+        return menuPanel.getSignature();
+    }
 }

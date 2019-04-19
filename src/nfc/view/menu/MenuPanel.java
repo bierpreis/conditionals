@@ -23,4 +23,8 @@ public class MenuPanel extends JPanel {
     public HashMap<String, String> getOptions() {
         return optionsPanel.getOptions();
     }
+
+    public String getSignature(){
+        return optionsPanel.getSignature();
+    }
 }
