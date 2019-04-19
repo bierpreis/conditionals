@@ -3,12 +3,10 @@ package nfc.view.menu;
 import javax.swing.*;
 
 public class NumbersPanel extends JPanel {
-    private ButtonGroup buttonGroup;
     private JRadioButton onButton;
 
     public NumbersPanel() {
-        buttonGroup = new ButtonGroup();
-        //todo: combine this somehow with conditional panel?
+        ButtonGroup buttonGroup = new ButtonGroup();
         setBorder(BorderFactory.createTitledBorder("Show Numbers"));
         onButton = new JRadioButton("on");
         onButton.setActionCommand("on");

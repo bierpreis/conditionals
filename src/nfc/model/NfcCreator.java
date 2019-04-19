@@ -22,8 +22,6 @@ public class NfcCreator {
     //todo: remove
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
-            if (option.equals("nfc/view"))
-                World.setView(options.get(option));
 
             if (option.equals("space"))
                 Conditional.setSpaceDot(options.get(option));
