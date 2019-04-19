@@ -3,6 +3,7 @@ package nfc.view;
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.MenuPanel;
 import nfc.view.textArea.CondPanel;
+import nfc.view.textArea.ViewOptions;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +35,7 @@ public class NfcCreatorWindow {
         return condPanel;
     }
 
-    public HashMap<String, String> getOptions() {
+    public ViewOptions getOptions() {
         return menuPanel.getOptions();
     }
 

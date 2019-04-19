@@ -32,14 +32,14 @@ public class CondPanel extends JPanel {
     }
 
 
-    public void printConditionals(List<Conditional> conditionalList) {
+    public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
         condTextField.setText("");
 
 
         numberOfConditionalsLabel.setText(Integer.toString(conditionalList.size()));
         scrollPane.setViewportView(condTextField);
 
-        condTextField.printConditionals(conditionalList);
+        condTextField.printConditionals(conditionalList, options);
 
         infoPanel.printInfo(condTextField.getDescription());
         revalidate();

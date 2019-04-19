@@ -1,5 +1,7 @@
 package nfc.view.menu;
 
+import nfc.view.textArea.ViewOptions;
+
 import javax.swing.*;
 import java.util.HashMap;
 
@@ -25,12 +27,15 @@ public class OptionsPanel extends JPanel {
     }
 
     //todo: change this
-    public HashMap<String, String> getOptions() {
-        HashMap<String, String> options = new HashMap<>();
-        options.put("signature", signaturePanel.getOption());
-        options.put("numbering", numbersPanel.getOption());
-        options.put("nfc/view", viewPanel.getOption());
-        options.put("space", spacePanel.getOption());
+    public ViewOptions getOptions() {
+        ViewOptions options = new ViewOptions();
+
+        options.setShowNumbers(numbersPanel.getOption());
+
+        //options.put("signature", signaturePanel.getOption());
+        //options.put("numbering", numbersPanel.getOption());
+        //options.put("nfc/view", viewPanel.getOption());
+        //options.put("space", spacePanel.getOption());
         return options;
     }
 

@@ -33,11 +33,13 @@ public class CondTextField extends JTextArea {
         description = numberOfWorlds + numberCounter;
     }
 
-    public void printConditionals(List<Conditional> conditionalList) {
+    public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
         setText("");
         int conditionalCounter = 0;
         for (int i = 0; i < conditionalList.size(); i++) {
-            append(conditionalList.get(i).toString() + "\n");
+            if (options.showNumbers())
+                append((i + 1) + ": " + conditionalList.get(i).toString() + "\n");
+            else append(conditionalList.get(i).toString() + "\n");
             conditionalCounter++;
         }
         description = numberOfConditionals + conditionalCounter;
@@ -82,4 +84,5 @@ public class CondTextField extends JTextArea {
     public String getDescription() {
         return description;
     }
+
 }

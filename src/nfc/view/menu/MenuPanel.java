@@ -2,6 +2,7 @@ package nfc.view.menu;
 
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.safe.SafePanel;
+import nfc.view.textArea.ViewOptions;
 
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class MenuPanel extends JPanel {
         add(new StartPanel(observer), BorderLayout.SOUTH);
     }
 
-    public HashMap<String, String> getOptions() {
+    public ViewOptions getOptions() {
         return optionsPanel.getOptions();
     }
 

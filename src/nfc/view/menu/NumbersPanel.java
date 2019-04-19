@@ -1,14 +1,16 @@
 package nfc.view.menu;
+
 import javax.swing.*;
 
 public class NumbersPanel extends JPanel {
     private ButtonGroup buttonGroup;
+    private JRadioButton onButton;
 
     public NumbersPanel() {
         buttonGroup = new ButtonGroup();
         //todo: combine this somehow with conditional panel?
         setBorder(BorderFactory.createTitledBorder("Show Numbers"));
-        JRadioButton onButton = new JRadioButton("on");
+        onButton = new JRadioButton("on");
         onButton.setActionCommand("on");
         buttonGroup.add(onButton);
         JRadioButton offButton = new JRadioButton("off");
@@ -19,7 +21,7 @@ public class NumbersPanel extends JPanel {
         add(offButton);
     }
 
-    public String getOption() {
-        return buttonGroup.getSelection().getActionCommand();
+    public boolean getOption() {
+        return onButton.isSelected();
     }
 }
