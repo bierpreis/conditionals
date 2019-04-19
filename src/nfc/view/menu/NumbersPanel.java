@@ -21,7 +21,7 @@ public class NumbersPanel extends JPanel {
         add(offButton);
     }
 
-    public boolean getOption() {
+    public boolean isNumbersActive() {
         return onButton.isSelected();
     }
 }

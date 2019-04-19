@@ -2,7 +2,7 @@ package nfc.view.textArea;
 
 public class ViewOptions {
     private boolean showNumbers;
-    private boolean showLetters;
+    private boolean lettersView;
     private boolean showDots;
     private boolean twoLetters;
 
@@ -14,14 +14,15 @@ public class ViewOptions {
         this.twoLetters = twoLetters;
     }
 
-    public void setShowLetters(boolean showLetters) {
-        this.showLetters = showLetters;
+    public void setLettersView(boolean lettersView) {
+        this.lettersView = lettersView;
     }
 
     public void setShowDots(boolean showDots) {
         this.showDots = showDots;
     }
 
+    //todo: implement
     public boolean showDots() {
         return showDots;
     }
@@ -30,8 +31,8 @@ public class ViewOptions {
         return showNumbers;
     }
 
-    public boolean showLetters() {
-        return showLetters;
+    public boolean isLettersViewActive() {
+        return lettersView;
     }
 
     public boolean isTwoLetters() {

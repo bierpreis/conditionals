@@ -29,18 +29,17 @@ public class OptionsPanel extends JPanel {
     public ViewOptions getOptions() {
         ViewOptions options = new ViewOptions();
 
-        options.setShowNumbers(numbersPanel.getOption());
-        options.setShowDots(dotsPanel.getOption());
-        options.setTwoLetters(signaturePanel.getOption());
-
-        options.setShowLetters(viewPanel.isLettersViewActive());
+        options.setShowNumbers(numbersPanel.isNumbersActive());
+        options.setShowDots(dotsPanel.isDotsViewActive());
+        options.setTwoLetters(signaturePanel.isTwoLettersActive());
+        options.setLettersView(viewPanel.isLettersViewActive());
 
         return options;
     }
 
     //todo: rework
     public String getSignature() {
-        if (signaturePanel.getOption())
+        if (signaturePanel.isTwoLettersActive())
             return "ab";
         else return "abc";
     }

@@ -43,7 +43,7 @@ public class CondTextField extends JTextArea {
             else conditionalString = conditionalList.get(i).toString() + "\n";
             conditionalCounter++;
 
-            if (options.showLetters())
+            if (options.isLettersViewActive())
                 conditionalString = translateNumbersToLetters(conditionalString, options);
 
             append(conditionalString);

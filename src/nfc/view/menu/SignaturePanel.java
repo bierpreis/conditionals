@@ -45,8 +45,7 @@ public class SignaturePanel extends JPanel {
         }
     }
 
-    //todo: rename
-    public boolean getOption() {
+    public boolean isTwoLettersActive() {
         return abRadioButton.isSelected();
     }
 

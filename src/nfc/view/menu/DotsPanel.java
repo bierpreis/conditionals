@@ -27,7 +27,7 @@ public class DotsPanel extends JPanel {
     }
 
     //todo: no listener here. is this better than signature?
-    public boolean getOption() {
+    public boolean isDotsViewActive() {
         return dotButton.isSelected();
     }
 }
