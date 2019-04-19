@@ -6,7 +6,7 @@ public class NumbersPanel extends JPanel {
 
     public NumbersPanel() {
         buttonGroup = new ButtonGroup();
-
+        //todo: combine this somehow with conditional panel?
         setBorder(BorderFactory.createTitledBorder("Show Numbers"));
         JRadioButton onButton = new JRadioButton("on");
         onButton.setActionCommand("on");

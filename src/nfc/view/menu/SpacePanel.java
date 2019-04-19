@@ -25,7 +25,7 @@ public class SpacePanel extends JPanel {
         add(dotButton);
 
     }
-
+    //todo: no listener here. is this better than signature?
     public String getOption() {
         return buttonGroup.getSelection().getActionCommand();
     }

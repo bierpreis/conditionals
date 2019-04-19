@@ -61,7 +61,7 @@ public class World implements Comparable {
         for (Integer newInt : newList)
             worlds.add(newInt);
     }
-
+    //todo: put this in conditional panel or seperate class?
     @Override
     public String toString() {
 

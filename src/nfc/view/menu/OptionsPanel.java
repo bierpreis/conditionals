@@ -24,6 +24,7 @@ public class OptionsPanel extends JPanel {
         add(spacePanel = new SpacePanel());
     }
 
+    //todo: change this
     public HashMap<String, String> getOptions() {
         HashMap<String, String> options = new HashMap<>();
         options.put("signature", signaturePanel.getOption());

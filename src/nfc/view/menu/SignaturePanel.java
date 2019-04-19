@@ -35,7 +35,7 @@ public class SignaturePanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
     }
-
+    //todo: what is this
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
