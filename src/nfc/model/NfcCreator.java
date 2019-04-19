@@ -12,7 +12,6 @@ public class NfcCreator {
 
     public NfcCreator(String signature) {
 
-        //todo: signature
         worlds = createWorlds(signature);
         nfc = createNfc(worlds);
         cnfcEq = createCnfcEq(nfc);
@@ -52,7 +51,7 @@ public class NfcCreator {
         return worldsList;
     }
 
-    //todo: this is called 4 times?!
+
     public List<Conditional> createNfc(List<World> worldsList) {
 
         List<Conditional> basicConditionalList = new LinkedList<>();
@@ -69,7 +68,6 @@ public class NfcCreator {
             counter++;
         }
 
-        System.out.println(basicConditionalList.size());
         return basicConditionalList;
     }
 
@@ -115,6 +113,16 @@ public class NfcCreator {
         return cNfc;
     }
 
+    public List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
+
+        List<Conditional> cnfc = new LinkedList<>();
+
+        for (ConditionalList sublist : cnfcEq)
+            cnfc.add(sublist.get(0));
+
+        return cnfc;
+    }
+
 
     //sub methods
 
@@ -150,16 +158,8 @@ public class NfcCreator {
         return subSetList;
     }
 
-    public List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
 
-        List<Conditional> cnfc = new LinkedList<>();
-
-        for (ConditionalList sublist : cnfcEq)
-            cnfc.add(sublist.get(0));
-
-        return cnfc;
-    }
-
+    //getters
 
     public List<Conditional> getCnfc() {
         return cnfc;

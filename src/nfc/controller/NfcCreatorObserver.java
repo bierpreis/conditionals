@@ -1,7 +1,6 @@
 package nfc.controller;
 
-import nfc.model.Conditional;
-import nfc.model.ConditionalList;
+
 import nfc.model.NfcCreator;
 import nfc.view.NfcCreatorWindow;
 import nfc.view.textArea.CondPanel;
@@ -12,8 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 
 public class NfcCreatorObserver implements ActionListener {
     private CondPanel condPanel;
