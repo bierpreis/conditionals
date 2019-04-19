@@ -36,8 +36,7 @@ public class OptionsPanel extends JPanel {
 
         return options;
     }
-
-    //todo: rework
+    
     public String getSignature() {
         if (signaturePanel.isTwoLettersActive())
             return "ab";
