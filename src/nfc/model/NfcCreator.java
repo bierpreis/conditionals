@@ -51,6 +51,7 @@ public class NfcCreator {
         return worldsList;
     }
 
+    //todo: this is called 4 times?!
     public List<Conditional> createNfc(String signature) {
         List<World> worldsList = createWorlds(signature);
 
@@ -68,6 +69,7 @@ public class NfcCreator {
             counter++;
         }
 
+        System.out.println(basicConditionalList.size());
         return basicConditionalList;
     }
 
