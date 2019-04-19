@@ -32,16 +32,16 @@ public class NfcCreatorObserver implements ActionListener {
         //todo: remove signature and options
         switch (e.getActionCommand()) {
             case "NFC":
-                List<Conditional> nfc = nfcCreator.createNfc(options.get("signature"));
+                List<Conditional> nfc = nfcCreator.getNfc();
                 condPanel.printConditionals(nfc);
                 break;
             case "CNFCEQ": { //brackets to create own name scope for cnfc
-                List<ConditionalList> cNfc = nfcCreator.createCnfcEq(options.get("signature"));
+                List<ConditionalList> cNfc = nfcCreator.getCnfcEq();
                 condPanel.printCnfcEq(cNfc);
                 break;
             }
             case "CNFC": {
-                List<Conditional> cNfc = nfcCreator.createCnfc(options.get("signature"));
+                List<Conditional> cNfc = nfcCreator.getCnfc();
                 condPanel.printConditionals(cNfc);
                 break;
             }

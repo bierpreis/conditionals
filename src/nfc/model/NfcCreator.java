@@ -14,9 +14,10 @@ public class NfcCreator {
 
         //todo: signature
         worlds = createWorlds(signature);
-        cnfcEq = createCnfcEq(signature);
-        cnfc = createCnfc(signature);
-        nfc = createNfc(signature);
+        nfc = createNfc(worlds);
+        cnfcEq = createCnfcEq(nfc);
+        cnfc = createCnfc(cnfcEq);
+
     }
 
     //todo: remove
@@ -52,8 +53,7 @@ public class NfcCreator {
     }
 
     //todo: this is called 4 times?!
-    public List<Conditional> createNfc(String signature) {
-        List<World> worldsList = createWorlds(signature);
+    public List<Conditional> createNfc(List<World> worldsList) {
 
         List<Conditional> basicConditionalList = new LinkedList<>();
 
@@ -73,21 +73,20 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
-    public List<ConditionalList> createCnfcEq(String signature) {
-        //createWorlds(signature);
-        List<Conditional> basicConditionalList = createNfc(signature);
+    public List<ConditionalList> createCnfcEq(List<Conditional> nfc) {
+
 
         List<ConditionalList> cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
 
         //iterate basic conditionals
-        for (Conditional conditionalToAdd : basicConditionalList) {
+        for (Conditional conditionalToAdd : nfc) {
             //only create new sublist if conditional was not added before as second conditional
             if (!alreadyAddedList.contains(conditionalToAdd)) {
                 ConditionalList subList = new ConditionalList();
                 subList.add(conditionalToAdd);
                 //iterate over base list
-                for (Conditional currentConditional : basicConditionalList) {
+                for (Conditional currentConditional : nfc) {
                     //try to find equivalent conditionals
                     if (currentConditional.isEquivalent(conditionalToAdd)) {
                         //avoid adding the same base conditionals again
@@ -151,8 +150,7 @@ public class NfcCreator {
         return subSetList;
     }
 
-    public List<Conditional> createCnfc(String signature) {
-        List<ConditionalList> cnfcEq = createCnfcEq(signature);
+    public List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
 
         List<Conditional> cnfc = new LinkedList<>();
 
@@ -169,6 +167,10 @@ public class NfcCreator {
 
     public List<Conditional> getNfc() {
         return nfc;
+    }
+
+    public List<ConditionalList> getCnfcEq() {
+        return cnfcEq;
     }
 
 }
