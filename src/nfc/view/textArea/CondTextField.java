@@ -44,6 +44,7 @@ public class CondTextField extends JTextArea {
         }
         description = numberOfConditionals + conditionalCounter;
     }
+
     //todo: put shownumbers here somehow
     public void printCnfcEq(List<ConditionalList> conditionalList, ViewOptions options) {
         int numberOfConditionals = 0;
@@ -83,6 +84,34 @@ public class CondTextField extends JTextArea {
 
     public String getDescription() {
         return description;
+    }
+
+    public String translateNumbersToLetters(String string, ViewOptions options) {
+
+
+        if (!options.showNumbers()) {
+            if (!options.isTwoLetters()) {
+
+                string = string.replace("0", "!a!b!c");
+                string = string.replace("1", "!a!bc");
+                string = string.replace("2", "!ab!c");
+                string = string.replace("3", "!abc");
+                string = string.replace("4", "a!b!c");
+                string = string.replace("5", "a!bc");
+                string = string.replace("6", "ab!c");
+                string = string.replace("7", "abc");
+
+            } else {
+                string = string.replace("0", "!a!b");
+                string = string.replace("1", "!ab");
+                string = string.replace("2", "a!b");
+                string = string.replace("3", "ab");
+
+
+            }
+        }
+
+        return string;
     }
 
 }

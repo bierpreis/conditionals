@@ -69,30 +69,7 @@ public class World implements Comparable {
         originalString = originalString.replace('[', '{');
         originalString = originalString.replace(']', '}');
 
-        if (view.equals("letters")) {
-            if (signature.equals("abc")) {
 
-                originalString = originalString.replace("0", "!a!b!c");
-                originalString = originalString.replace("1", "!a!bc");
-                originalString = originalString.replace("2", "!ab!c");
-                originalString = originalString.replace("3", "!abc");
-                originalString = originalString.replace("4", "a!b!c");
-                originalString = originalString.replace("5", "a!bc");
-                originalString = originalString.replace("6", "ab!c");
-                originalString = originalString.replace("7", "abc");
-
-            }
-
-
-            if (signature.equals("ab")) {
-                originalString = originalString.replace("0", "!a!b");
-                originalString = originalString.replace("1", "!ab");
-                originalString = originalString.replace("2", "a!b");
-                originalString = originalString.replace("3", "ab");
-
-
-            }
-        }
         return originalString;
 
     }

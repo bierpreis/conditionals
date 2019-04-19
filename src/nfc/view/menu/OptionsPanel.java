@@ -3,7 +3,6 @@ package nfc.view.menu;
 import nfc.view.textArea.ViewOptions;
 
 import javax.swing.*;
-import java.util.HashMap;
 
 
 public class OptionsPanel extends JPanel {
@@ -12,7 +11,7 @@ public class OptionsPanel extends JPanel {
     private SignaturePanel signaturePanel;
     private NumbersPanel numbersPanel;
     private ViewPanel viewPanel;
-    private SpacePanel spacePanel;
+    private DotsPanel dotsPanel;
 
 
     public OptionsPanel() {
@@ -23,7 +22,7 @@ public class OptionsPanel extends JPanel {
         add(viewPanel = new ViewPanel());
         add(numbersPanel);
 
-        add(spacePanel = new SpacePanel());
+        add(dotsPanel = new DotsPanel());
     }
 
     //todo: change this
@@ -31,6 +30,7 @@ public class OptionsPanel extends JPanel {
         ViewOptions options = new ViewOptions();
 
         options.setShowNumbers(numbersPanel.getOption());
+        options.setShowDots(dotsPanel.getOption());
 
         //options.put("signature", signaturePanel.getOption());
         //options.put("numbering", numbersPanel.getOption());

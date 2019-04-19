@@ -2,12 +2,12 @@ package nfc.view.menu;
 
 import javax.swing.*;
 
-public class SpacePanel extends JPanel {
+public class DotsPanel extends JPanel {
 
-
+    private JRadioButton dotButton;
     private ButtonGroup buttonGroup;
 
-    public SpacePanel() {
+    public DotsPanel() {
         setBorder(BorderFactory.createTitledBorder("Space Char"));
 
         buttonGroup = new ButtonGroup();
@@ -19,14 +19,15 @@ public class SpacePanel extends JPanel {
         spaceButton.setSelected(true);
         add(spaceButton);
 
-        JRadioButton dotButton = new JRadioButton("dot");
+        dotButton = new JRadioButton("dot");
         dotButton.setActionCommand("dot");
         buttonGroup.add(dotButton);
         add(dotButton);
 
     }
+
     //todo: no listener here. is this better than signature?
-    public String getOption() {
-        return buttonGroup.getSelection().getActionCommand();
+    public boolean getOption() {
+        return dotButton.isSelected();
     }
 }

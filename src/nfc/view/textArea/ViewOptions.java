@@ -4,9 +4,14 @@ public class ViewOptions {
     private boolean showNumbers;
     private boolean showLetters;
     private boolean showDots;
+    private boolean twoLetters;
 
     public void setShowNumbers(boolean showNumbers) {
         this.showNumbers = showNumbers;
+    }
+
+    public void setTwoLetters(boolean twoLetters) {
+        this.twoLetters = twoLetters;
     }
 
     public void setShowLetters(boolean showLetters) {
@@ -27,6 +32,10 @@ public class ViewOptions {
 
     public boolean showLetters() {
         return showLetters;
+    }
+
+    public boolean isTwoLetters() {
+        return twoLetters;
     }
 
 }
