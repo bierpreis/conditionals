@@ -8,9 +8,13 @@ public class NfcCreator {
 
     public NfcCreator(String signature) {
 
+        //todo: signature
         createWorlds(signature);
+        createCnfcEq(signature);
+        createCnfc(signature);
     }
 
+    //todo: remove
     private void setOptions(HashMap<String, String> options) {
         for (String option : options.keySet()) {
             if (option.equals("nfc/view"))

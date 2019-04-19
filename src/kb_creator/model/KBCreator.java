@@ -12,8 +12,10 @@ public class KBCreator implements Runnable {
 
     KBCreatorObserver observer;
 
-    public KBCreator(KBCreatorObserver observer) {
+    public KBCreator(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
         this.observer = observer;
+        this.nfc = nfc;
+        this.cNfc = cNfc;
 
     }
 
