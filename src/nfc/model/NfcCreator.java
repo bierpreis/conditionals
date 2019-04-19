@@ -5,13 +5,18 @@ import java.util.*;
 
 
 public class NfcCreator {
+    private List<World> worlds;
+    private List<ConditionalList> cnfcEq;
+    private List<Conditional> nfc;
+    private List<Conditional> cnfc;
 
     public NfcCreator(String signature) {
 
         //todo: signature
-        createWorlds(signature);
-        createCnfcEq(signature);
-        createCnfc(signature);
+        worlds = createWorlds(signature);
+        cnfcEq = createCnfcEq(signature);
+        cnfc = createCnfc(signature);
+        nfc = createNfc(signature);
     }
 
     //todo: remove
@@ -46,7 +51,7 @@ public class NfcCreator {
         return worldsList;
     }
 
-    public List<Conditional> createConditionals(String signature) {
+    public List<Conditional> createNfc(String signature) {
         List<World> worldsList = createWorlds(signature);
 
         List<Conditional> basicConditionalList = new LinkedList<>();
@@ -68,7 +73,7 @@ public class NfcCreator {
 
     public List<ConditionalList> createCnfcEq(String signature) {
         //createWorlds(signature);
-        List<Conditional> basicConditionalList = createConditionals(signature);
+        List<Conditional> basicConditionalList = createNfc(signature);
 
         List<ConditionalList> cNfc = new LinkedList<>();
         List<Conditional> alreadyAddedList = new LinkedList<>();
@@ -153,6 +158,15 @@ public class NfcCreator {
             cnfc.add(sublist.get(0));
 
         return cnfc;
+    }
+
+
+    public List<Conditional> getCnfc() {
+        return cnfc;
+    }
+
+    public List<Conditional> getNfc() {
+        return nfc;
     }
 
 }
