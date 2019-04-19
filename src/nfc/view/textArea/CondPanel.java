@@ -45,10 +45,10 @@ public class CondPanel extends JPanel {
         revalidate();
     }
 
-    public void printCnfcEq(List<ConditionalList> conditionalLists) {
+    public void printCnfcEq(List<ConditionalList> conditionalLists, ViewOptions options) {
         condTextField.setText("");
 
-        condTextField.printCnfcEq(conditionalLists);
+        condTextField.printCnfcEq(conditionalLists, options);
 
         infoPanel.printInfo(condTextField.getDescription());
         revalidate();

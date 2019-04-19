@@ -44,8 +44,8 @@ public class CondTextField extends JTextArea {
         }
         description = numberOfConditionals + conditionalCounter;
     }
-
-    public void printCnfcEq(List<ConditionalList> conditionalList) {
+    //todo: put shownumbers here somehow
+    public void printCnfcEq(List<ConditionalList> conditionalList, ViewOptions options) {
         int numberOfConditionals = 0;
         setText("");
         for (int i = 0; i < conditionalList.size(); i++) {
