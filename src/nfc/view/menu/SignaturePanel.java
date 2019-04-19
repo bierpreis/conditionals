@@ -8,6 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class SignaturePanel extends JPanel {
 
     private ButtonGroup signatureButtonGroup;
+    private JRadioButton abRadioButton;
 
     private PropertyChangeSupport changes = new PropertyChangeSupport(this);
 
@@ -16,7 +17,7 @@ public class SignaturePanel extends JPanel {
 
         signatureButtonGroup = new ButtonGroup();
 
-        JRadioButton abRadioButton = new JRadioButton("ab");
+        abRadioButton = new JRadioButton("ab");
         JRadioButton abcRadioButton = new JRadioButton("abc");
 
         abRadioButton.addActionListener(new SignatureRadioButtonListener());
@@ -35,6 +36,7 @@ public class SignaturePanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Signature"));
 
     }
+
     //todo: what is this
     class SignatureRadioButtonListener implements ActionListener {
 
@@ -43,8 +45,9 @@ public class SignaturePanel extends JPanel {
         }
     }
 
-    public String getOption() {
-        return signatureButtonGroup.getSelection().getActionCommand();
+    //todo: rename
+    public boolean getOption() {
+        return abRadioButton.isSelected();
     }
 
 

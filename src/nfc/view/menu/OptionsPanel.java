@@ -31,6 +31,7 @@ public class OptionsPanel extends JPanel {
 
         options.setShowNumbers(numbersPanel.getOption());
         options.setShowDots(dotsPanel.getOption());
+        options.setTwoLetters(signaturePanel.getOption());
 
         //options.put("signature", signaturePanel.getOption());
         //options.put("numbering", numbersPanel.getOption());
@@ -39,8 +40,11 @@ public class OptionsPanel extends JPanel {
         return options;
     }
 
-    public String getSignature(){
-        return signaturePanel.getOption();
+    //todo: rework
+    public String getSignature() {
+        if (signaturePanel.getOption())
+            return "ab";
+        else return "abc";
     }
 
 }
