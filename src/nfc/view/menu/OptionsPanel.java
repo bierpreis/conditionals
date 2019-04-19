@@ -25,7 +25,6 @@ public class OptionsPanel extends JPanel {
         add(dotsPanel = new DotsPanel());
     }
 
-    //todo: change this
     public ViewOptions getOptions() {
         ViewOptions options = new ViewOptions();
 
@@ -36,7 +35,7 @@ public class OptionsPanel extends JPanel {
 
         return options;
     }
-    
+
     public String getSignature() {
         if (signaturePanel.isTwoLettersActive())
             return "ab";
