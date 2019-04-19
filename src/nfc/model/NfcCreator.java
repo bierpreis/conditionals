@@ -25,9 +25,6 @@ public class NfcCreator {
             if (option.equals("nfc/view"))
                 World.setView(options.get(option));
 
-            if (option.equals("numbering"))
-                Conditional.setNumbeing(options.get(option));
-
             if (option.equals("space"))
                 Conditional.setSpaceDot(options.get(option));
 
@@ -98,17 +95,18 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
-        int counter = 1;
-        if (Conditional.getNumbering().equals("on")) {
-            for (ConditionalList conditionalList : cNfc) {
-                conditionalList.setNumberToFirstConditional(counter);
-                counter++;
-            }
-            for (ConditionalList conditionalList : cNfc) {
-                conditionalList.setNumbersToEquivalentConditionals(counter - 1);
-                counter = counter + conditionalList.getHighestConditionalNumber();
-            }
-        }
+        //todo: this was numbering. implement it new
+//        int counter = 1;
+//        if (Conditional.getNumbering().equals("on")) {
+//            for (ConditionalList conditionalList : cNfc) {
+//                conditionalList.setNumberToFirstConditional(counter);
+//                counter++;
+//            }
+//            for (ConditionalList conditionalList : cNfc) {
+//                conditionalList.setNumbersToEquivalentConditionals(counter - 1);
+//                counter = counter + conditionalList.getHighestConditionalNumber();
+//            }
+//        }
 
         return cNfc;
     }

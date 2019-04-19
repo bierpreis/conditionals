@@ -4,7 +4,6 @@ package nfc.model;
 public class Conditional implements Comparable {
     private final World leftWorld;
     private final World rightWorld;
-    private static String numbering = "off";
 
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
@@ -72,8 +71,6 @@ public class Conditional implements Comparable {
         leftWorldString = leftWorldString.replace("},", "}");
         rightWorldString = rightWorldString.replace("},", "}");
         String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
-        if (numbering.equals("on"))
-            stringToReturn = number + ": " + stringToReturn;
 
         //this is to calculate whitespaces for colums in cnfc nfc.model.view
         int numberOfSpacesToAdd = 0;
@@ -88,15 +85,6 @@ public class Conditional implements Comparable {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-
-    public static void setNumbeing(String requestedNumbering) {
-        numbering = requestedNumbering;
-    }
-
-    public static String getNumbering() {
-        return numbering;
     }
 
     public static void setSpaceDot(String isDotActive) {
