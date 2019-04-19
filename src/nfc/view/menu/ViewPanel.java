@@ -8,13 +8,14 @@ import java.beans.PropertyChangeSupport;
 public class ViewPanel extends JPanel {
     private PropertyChangeSupport changes;
     private ButtonGroup viewButtonGroup;
+    private JRadioButton numbersButton;
 
     public ViewPanel() {
         setBorder(BorderFactory.createTitledBorder("View"));
 
         changes = new PropertyChangeSupport(this);
 
-        JRadioButton numbersButton = new JRadioButton("Numbers");
+        numbersButton = new JRadioButton("Numbers");
         numbersButton.setActionCommand("numbers");
         add(numbersButton);
 
@@ -41,7 +42,7 @@ public class ViewPanel extends JPanel {
         }
     }
 
-    public String getOption() {
-        return viewButtonGroup.getSelection().getActionCommand();
+    public boolean isNumbersViewActive() {
+        return numbersButton.isSelected();
     }
 }

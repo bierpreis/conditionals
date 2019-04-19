@@ -33,10 +33,8 @@ public class OptionsPanel extends JPanel {
         options.setShowDots(dotsPanel.getOption());
         options.setTwoLetters(signaturePanel.getOption());
 
-        //options.put("signature", signaturePanel.getOption());
-        //options.put("numbering", numbersPanel.getOption());
-        //options.put("nfc/view", viewPanel.getOption());
-        //options.put("space", spacePanel.getOption());
+        options.setShowNumbers(viewPanel.isNumbersViewActive());
+
         return options;
     }
 
