@@ -38,13 +38,17 @@ public class CondTextField extends JTextArea {
         String conditionalString = "";
         int conditionalCounter = 0;
         for (int i = 0; i < conditionalList.size(); i++) {
-            if (options.showNumbers())
-                conditionalString = i + 1 + ": " + conditionalList.get(i).toString() + "\n";
-            else conditionalString = conditionalList.get(i).toString() + "\n";
-            conditionalCounter++;
+
+            conditionalString = conditionalList.get(i).toString() + "\n";
 
             if (options.isLettersViewActive())
                 conditionalString = translateNumbersToLetters(conditionalString, options);
+
+
+            if (options.showNumbers())
+                conditionalString = i + 1 + ": " + conditionalString;
+            conditionalCounter++;
+
 
             append(conditionalString);
         }
@@ -57,6 +61,7 @@ public class CondTextField extends JTextArea {
     public void printCnfcEq(List<ConditionalList> conditionalList, ViewOptions options) {
         int numberOfConditionals = 0;
         setText("");
+
         for (int i = 0; i < conditionalList.size(); i++) {
             ConditionalList currentList = conditionalList.get(i);
             numberOfConditionals = numberOfConditionals + currentList.getSize();
@@ -97,26 +102,24 @@ public class CondTextField extends JTextArea {
     public String translateNumbersToLetters(String string, ViewOptions options) {
 
 
-        if (!options.showNumbers()) {
-            if (!options.isTwoLetters()) {
+        if (!options.isTwoLetters()) {
 
-                string = string.replace("0", "!a!b!c");
-                string = string.replace("1", "!a!bc");
-                string = string.replace("2", "!ab!c");
-                string = string.replace("3", "!abc");
-                string = string.replace("4", "a!b!c");
-                string = string.replace("5", "a!bc");
-                string = string.replace("6", "ab!c");
-                string = string.replace("7", "abc");
+            string = string.replace("0", "!a!b!c");
+            string = string.replace("1", "!a!bc");
+            string = string.replace("2", "!ab!c");
+            string = string.replace("3", "!abc");
+            string = string.replace("4", "a!b!c");
+            string = string.replace("5", "a!bc");
+            string = string.replace("6", "ab!c");
+            string = string.replace("7", "abc");
 
-            } else {
-                string = string.replace("0", "!a!b");
-                string = string.replace("1", "!ab");
-                string = string.replace("2", "a!b");
-                string = string.replace("3", "ab");
+        } else {
+            string = string.replace("0", "!a!b");
+            string = string.replace("1", "!ab");
+            string = string.replace("2", "a!b");
+            string = string.replace("3", "ab");
 
 
-            }
         }
 
         return string;
