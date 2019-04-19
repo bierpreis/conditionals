@@ -35,14 +35,22 @@ public class CondTextField extends JTextArea {
 
     public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
         setText("");
+        String conditionalString = "";
         int conditionalCounter = 0;
         for (int i = 0; i < conditionalList.size(); i++) {
             if (options.showNumbers())
-                append((i + 1) + ": " + conditionalList.get(i).toString() + "\n");
-            else append(conditionalList.get(i).toString() + "\n");
+                conditionalString = i + 1 + ": " + conditionalList.get(i).toString() + "\n";
+            else conditionalString = conditionalList.get(i).toString() + "\n";
             conditionalCounter++;
+
+            if (options.showLetters())
+                conditionalString = translateNumbersToLetters(conditionalString, options);
+
+            append(conditionalString);
         }
         description = numberOfConditionals + conditionalCounter;
+
+
     }
 
     //todo: put shownumbers here somehow

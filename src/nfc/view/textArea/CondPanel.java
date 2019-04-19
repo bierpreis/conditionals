@@ -54,6 +54,7 @@ public class CondPanel extends JPanel {
         revalidate();
     }
 
+    //todo: delete?S
     public void printCnfc(List<ConditionalList> conditionalLists) {
         condTextField.setText("");
 
