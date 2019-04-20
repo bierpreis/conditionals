@@ -69,7 +69,7 @@ public class ConditionalList implements Comparable {
         return conditionalList.size();
     }
 
-    public void removeCounter(){
-        //todo
+    public List<Conditional> getList(){
+        return conditionalList;
     }
 }

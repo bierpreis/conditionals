@@ -58,29 +58,23 @@ public class CondTextField extends JTextArea {
     }
 
     //todo: put shownumbers here somehow
-    public void printCnfcEq(List<ConditionalList> conditionalList, ViewOptions options) {
+    public void printCnfcEq(List<ConditionalList> eqClassList, ViewOptions options) {
         int numberOfConditionals = 0;
         setText("");
 
-        for (int i = 0; i < conditionalList.size(); i++) {
-            ConditionalList currentList = conditionalList.get(i);
-            numberOfConditionals = numberOfConditionals + currentList.getSize();
-            append(currentList.toString() + "\n");
+        for (ConditionalList currentEqList : eqClassList) {
+            String currentLine = "";
+
+            for (Conditional currentConditional : currentEqList.getList()) {
+                currentLine = currentLine + currentConditional.toString();
+                numberOfConditionals++;
+
+            }
+            append(currentLine + "\n");
         }
-        description = this.numberOfEquivalenceClasses + conditionalList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
+        description = this.numberOfEquivalenceClasses + eqClassList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
     }
 
-    public void printCnfc(List<ConditionalList> conditionalList) {
-        int numberOfConditionals = 0;
-        setText("");
-        for (int i = 0; i < conditionalList.size(); i++) {
-            ConditionalList currentList = conditionalList.get(i);
-            numberOfConditionals = numberOfConditionals + currentList.getSize();
-            append(currentList.get(0) + "\n");
-
-        }
-        description = this.numberOfEquivalenceClasses + conditionalList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
-    }
 
     private String getLineNumber(int i) {
         String lineNumber;
