@@ -34,6 +34,7 @@ public class CondTextField extends JTextArea {
     }
 
     public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
+
         Conditional.setSpaceDot(options.showDots());
         setText("");
         String conditionalString = "";
@@ -58,7 +59,7 @@ public class CondTextField extends JTextArea {
 
     }
 
-
+    //todo: impelemt letter view here
     public void printCnfcEq(List<ConditionalList> eqClassList, ViewOptions options) {
         Conditional.setSpaceDot(options.showDots());
 
