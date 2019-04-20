@@ -72,7 +72,6 @@ public class Conditional implements Comparable {
         rightWorldString = rightWorldString.replace("},", "}");
         String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
 
-        //todo: put this in cond panel, put longestConditional in cond panel too
         //this is to calculate whitespaces for colums in cnfc nfc.model.view
         int numberOfSpacesToAdd = 0;
         if (stringToReturn.length() < longestConditional)
@@ -88,8 +87,8 @@ public class Conditional implements Comparable {
         this.number = number;
     }
 
-    public static void setSpaceDot(String isDotActive) {
-        if (isDotActive.equals("dot"))
+    public static void setSpaceDot(boolean isDotActive) {
+        if (isDotActive)
             spaceFillCharacter = ".";
         else spaceFillCharacter = " ";
     }

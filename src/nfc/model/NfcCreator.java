@@ -19,16 +19,6 @@ public class NfcCreator {
 
     }
 
-    //todo: remove
-    private void setOptions(HashMap<String, String> options) {
-        for (String option : options.keySet()) {
-
-            if (option.equals("space"))
-                Conditional.setSpaceDot(options.get(option));
-
-        }
-    }
-
     //3 creators
 
     public List<World> createWorlds(String signature) {
