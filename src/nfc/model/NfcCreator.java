@@ -93,18 +93,6 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
-        //todo: this was numbering. implement it new
-//        int counter = 1;
-//        if (Conditional.getNumbering().equals("on")) {
-//            for (ConditionalList conditionalList : cNfc) {
-//                conditionalList.setNumberToFirstConditional(counter);
-//                counter++;
-//            }
-//            for (ConditionalList conditionalList : cNfc) {
-//                conditionalList.setNumbersToEquivalentConditionals(counter - 1);
-//                counter = counter + conditionalList.getHighestConditionalNumber();
-//            }
-//        }
 
         return cNfc;
     }

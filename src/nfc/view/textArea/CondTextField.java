@@ -57,7 +57,7 @@ public class CondTextField extends JTextArea {
 
     }
 
-    //todo: put shownumbers here somehow
+
     public void printCnfcEq(List<ConditionalList> eqClassList, ViewOptions options) {
         int numberOfConditionals = 0;
         setText("");
@@ -66,7 +66,10 @@ public class CondTextField extends JTextArea {
             String currentLine = "";
 
             for (Conditional currentConditional : currentEqList.getList()) {
-                currentLine = currentLine + currentConditional.toString();
+                if (options.showNumbers())
+                    currentLine = currentLine + currentConditional.getNumber() + ": " + currentConditional.toString();
+                else
+                    currentLine = currentLine + currentConditional.toString();
                 numberOfConditionals++;
 
             }
