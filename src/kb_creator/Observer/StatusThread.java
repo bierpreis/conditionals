@@ -4,7 +4,7 @@ import kb_creator.gui.leftpanel.StatusPanel;
 
 public class StatusThread implements Runnable {
     private StatusPanel statusPanel;
-    private Thread statusThread;
+    private boolean running = true;
 
     public StatusThread(StatusPanel statusPanel) {
         this.statusPanel = statusPanel;
@@ -13,10 +13,9 @@ public class StatusThread implements Runnable {
     }
 
 
-
     @Override
     public void run() {
-        while (true) {//todo this
+        while (running) {
             statusPanel.showInfo();
 
             try {
@@ -26,5 +25,9 @@ public class StatusThread implements Runnable {
             }
         }
 
+    }
+s
+    public void stop() {
+        running = false;
     }
 }
