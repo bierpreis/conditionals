@@ -27,11 +27,11 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand() == "Start") {
 
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-            Runnable creator = new KBCreatorThread(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
+            Runnable creatorThread = new KBCreatorThread(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
 
 
-            creatorThread = new Thread(creator);
-            creatorThread.start();
+            this.creatorThread = new Thread(creatorThread);
+            this.creatorThread.start();
 
             Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getStatusPanel()));
             statusThread.start();
