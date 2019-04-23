@@ -29,6 +29,7 @@ public class KBCreator implements Runnable {
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
 
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate))
+                    //todo: main alogithm here
                     knowledgeBaseCounter++;
             }
 
@@ -62,9 +63,9 @@ public class KBCreator implements Runnable {
             for (Conditional currentConditional : cNfc) { //this loop is line 4 and 5
                 List<Conditional> conditionalsToInclude = new LinkedList<>();
                 if (currentConditional.getNumber() > cNfcElement.getNumber())  //this removes D from candidates
-                    if (!currentConditional.equals(counterConditional))         //this removes not(r) from candidates
+                    if (!currentConditional.equals(counterConditional)) {      //this removes not(r) from candidates
                         conditionalsToInclude.add(currentConditional);
-
+                    }
 
                 candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
 
