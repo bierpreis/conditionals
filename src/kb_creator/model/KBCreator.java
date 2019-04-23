@@ -21,10 +21,14 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
-        //todo: check if this is correct
+        //todo: check if this list is correct. but how?
         List<CandidatePair> candidatePairs = initOneElementKBs();
 
-        for (CandidatePair candidatePair : candidatePairs) {
+        for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
+            for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
+
+            }
+
 
         }
 

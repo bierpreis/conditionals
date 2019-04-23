@@ -12,4 +12,12 @@ public class CandidatePair {
         this.knowledgeBase = knowledgeBase;
         this.candidates = candidates;
     }
+
+    public List<Conditional> getCandidates() {
+        return candidates;
+    }
+
+    public List<Conditional> getKnowledgeBase() {
+        return knowledgeBase;
+    }
 }
