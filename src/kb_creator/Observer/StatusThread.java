@@ -19,7 +19,7 @@ public class StatusThread implements Runnable {
     public void run() {
         while (running) {
             statusPanel.showInfo(Integer.toString(creatorThread.getCounter()));
-
+            System.out.println("updating..");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

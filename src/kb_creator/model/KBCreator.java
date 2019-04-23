@@ -24,17 +24,17 @@ public class KBCreator implements Runnable {
     public void run() {
         //todo: check if this list is correct. but how?
         List<CandidatePair> candidatePairs = initOneElementKBs();
-        long counter = 0;
+
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
 
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate))
-                    counter++;
+                    knowledgeBaseCounter++;
             }
 
 
         }
-        System.out.println("iterations in main loop: " + counter);
+
 
     }
 
