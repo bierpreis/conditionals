@@ -36,6 +36,7 @@ public class SignaturePanel extends JPanel {
 
     }
 
+    //todo: is this needed still??
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {

@@ -5,7 +5,7 @@ import kb_creator.Observer.KBCreatorObserver;
 import javax.swing.*;
 
 public class LeftPanel extends JPanel {
-    KBCreatorObserver observer;
+    private KBCreatorObserver observer;
     private SignaturePanel signaturePanel;
     private StatusPanel statusPanel;
 
