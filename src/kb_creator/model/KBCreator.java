@@ -39,15 +39,14 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs() {
-        List<CandidatePair> candidatePairs = new LinkedList<>(); //L
-        for (Conditional cNfcElement : cNfc) { // cNfcElement is r.
+        List<CandidatePair> candidatePairs = new LinkedList<>(); //candidate paris is l in original
+        for (Conditional cNfcElement : cNfc) { // cNfcElement is r in original
             Conditional counterConditional = cNfcElement.getCounterConditional(); //this is not(r)
             List<Conditional> kbToAdd = new LinkedList<>();
             kbToAdd.add(cNfcElement);
 
-            List<Conditional> conditionalsToInclude = new LinkedList<>();
-            for (Conditional currentConditional : cNfc) {
-
+            for (Conditional currentConditional : cNfc) { //this loop is line 4 and 5
+                List<Conditional> conditionalsToInclude = new LinkedList<>();
                 if (currentConditional.getNumber() > cNfcElement.getNumber())
                     if (!currentConditional.equals(counterConditional))
                         conditionalsToInclude.add(currentConditional);
