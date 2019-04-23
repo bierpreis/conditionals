@@ -105,4 +105,26 @@ public class Conditional implements Comparable {
     public int getNumber() {
         return number;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Conditional))
+            return false;
+        else {
+            Conditional otherConditional = (Conditional) o;
+            boolean leftEquals = otherConditional.getLeftWorld().equals(leftWorld);
+            boolean rightEquals = otherConditional.getRightWorld().equals(rightWorld);
+            return leftEquals && rightEquals;
+        }
+
+    }
+
+    public World getRightWorld() {
+        return rightWorld;
+    }
+
+    public World getLeftWorld() {
+        return leftWorld;
+    }
+
 }
