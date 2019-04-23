@@ -1,7 +1,7 @@
 package kb_creator.Observer;
 
 import kb_creator.gui.KBMainWindow;
-import kb_creator.model.KBCreator;
+import kb_creator.model.KBCreatorThread;
 import nfc.model.NfcCreator;
 
 import java.awt.event.ActionEvent;
@@ -27,7 +27,7 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand() == "Start") {
 
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-            Runnable creator = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
+            Runnable creator = new KBCreatorThread(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
 
 
             creatorThread = new Thread(creator);
