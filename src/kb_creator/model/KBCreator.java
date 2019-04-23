@@ -21,6 +21,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
+        //todo: check if this is correct
         List<CandidatePair> candidatePairs = initOneElementKBs();
 
         for (CandidatePair candidatePair : candidatePairs) {
@@ -39,14 +40,14 @@ public class KBCreator implements Runnable {
 
     private List<CandidatePair> initOneElementKBs() {
         List<CandidatePair> candidatePairs = new LinkedList<>(); //L
-        for (Conditional cNfcElement : cNfc) { // r
+        for (Conditional cNfcElement : cNfc) { // cNfcElement is r.
             List<Conditional> kbToAdd = new LinkedList<>();
             kbToAdd.add(cNfcElement);
 
             List<Conditional> conditionalsToInclude = new LinkedList<>();
             for (Conditional currentConditional : cNfc) {
-
-                if (currentConditional.getNumber() > cNfcElement.getNumber()) {//todo: is this correct???
+                //todo: dont add not(r)
+                if (currentConditional.getNumber() > cNfcElement.getNumber()) {
                     conditionalsToInclude.add(currentConditional);
 
 
