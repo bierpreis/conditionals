@@ -14,8 +14,8 @@ public class StatusPanel extends JPanel {
     }
 
 
-    public void showInfo() {
-        infoLabel.setText(Long.toString(System.currentTimeMillis()));
+    public void showInfo(String info) {
+        infoLabel.setText(info);
         repaint();
     }
 

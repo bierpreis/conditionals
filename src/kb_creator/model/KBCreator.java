@@ -6,14 +6,14 @@ import nfc.model.Conditional;
 import java.util.LinkedList;
 import java.util.List;
 
-public class KBCreatorThread implements Runnable {
+public class KBCreator implements Runnable {
     private List<Conditional> nfc; //todo: why is this nerver used??
     private List<Conditional> cNfc;
     private volatile int knowledgeBaseCounter;
 
     private KBCreatorObserver observer;
 
-    public KBCreatorThread(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
+    public KBCreator(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
         this.observer = observer;
         this.nfc = nfc;
         this.cNfc = cNfc;
@@ -27,6 +27,7 @@ public class KBCreatorThread implements Runnable {
         long counter = 0;
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
+
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate))
                     counter++;
             }

@@ -1,14 +1,16 @@
 package kb_creator.Observer;
 
 import kb_creator.gui.leftpanel.StatusPanel;
+import kb_creator.model.KBCreator;
 
 public class StatusThread implements Runnable {
     private StatusPanel statusPanel;
     private boolean running = true;
+    private KBCreator creatorThread;
 
-    public StatusThread(StatusPanel statusPanel) {
+    public StatusThread(StatusPanel statusPanel, KBCreator creatorThread) {
         this.statusPanel = statusPanel;
-
+        this.creatorThread = creatorThread;
 
     }
 
@@ -16,7 +18,7 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (running) {
-            statusPanel.showInfo();
+            statusPanel.showInfo(Integer.toString(creatorThread.getCounter()));
 
             try {
                 Thread.sleep(500);
