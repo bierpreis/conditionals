@@ -1,11 +1,8 @@
 package kb_creator.gui.leftpanel;
 
-import kb_creator.Observer.StatusThread;
-
 import javax.swing.*;
 
 public class StatusPanel extends JPanel {
-    private Runnable statusThread;
     private JLabel infoLabel;
 
     public StatusPanel() {
