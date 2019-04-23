@@ -27,7 +27,7 @@ public class StatusThread implements Runnable {
 
     }
 
-    public void stop() {
+    public void halt() {
         running = false;
     }
 }

@@ -9,27 +9,43 @@ import java.awt.event.ActionListener;
 
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
+    private Thread creatorThread;
+    private StatusThread statusThreadObject;
+
 
     public KBCreatorObserver() {
 
         mainWindow = new KBMainWindow(this);
 
 
-        Thread statusThread = new Thread(new StatusThread(mainWindow.getStatusPanel()));
-        statusThread.start();
     }
+    //todo: connect thread and statuspanel
 
     @Override
 
     public void actionPerformed(ActionEvent e) {
-        NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-        Runnable creator = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
-        Thread creatorThread;
         if (e.getActionCommand() == "Start") {
+
+            NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
+            Runnable creator = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
+
 
             creatorThread = new Thread(creator);
             creatorThread.start();
 
+            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getStatusPanel()));
+            statusThread.start();
+
+        }
+
+        if (e.getActionCommand().equals("Stop")) {
+
+            try {
+                statusThreadObject.halt();
+            } catch (Exception exep) {
+                System.out.println("tried to stop thread, but no thread running");
+
+            }
 
         }
     }

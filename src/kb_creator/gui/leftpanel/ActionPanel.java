@@ -4,8 +4,6 @@ package kb_creator.gui.leftpanel;
 import kb_creator.Observer.KBCreatorObserver;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ActionPanel extends JPanel {
 
@@ -18,26 +16,10 @@ public class ActionPanel extends JPanel {
         add(startButton);
 
         JButton stopButton = new JButton("Stop");
-        stopButton.addActionListener(new StopButtonListener());
+        stopButton.addActionListener(observer);
         add(stopButton);
 
         revalidate();
     }
 
-    class StartButtonListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("startbutton was clicked");
-        }
-
-    }
-
-    class StopButtonListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("stopbutton was clicked");
-        }
-    }
 }
