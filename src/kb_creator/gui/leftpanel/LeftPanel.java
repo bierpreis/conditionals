@@ -7,6 +7,7 @@ import javax.swing.*;
 public class LeftPanel extends JPanel {
     KBCreatorObserver observer;
     private SignaturePanel signaturePanel;
+    private StatusPanel statusPanel;
 
 
     public LeftPanel(KBCreatorObserver observer) {
@@ -16,11 +17,15 @@ public class LeftPanel extends JPanel {
 
         add(new ActionPanel(observer));
         add(signaturePanel = new SignaturePanel());
-        add(new StatusPanel());
+        add(statusPanel = new StatusPanel());
         revalidate();
     }
 
     public String getSignature() {
         return signaturePanel.getOption();
+    }
+
+    public StatusPanel getStatusPanel() {
+        return statusPanel;
     }
 }

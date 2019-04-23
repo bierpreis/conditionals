@@ -7,10 +7,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class KBCreator implements Runnable {
-    List<Conditional> nfc;
-    List<Conditional> cNfc;
+    private List<Conditional> nfc;
+    private List<Conditional> cNfc;
+    private volatile int knowledgeBaseCounter;
 
-    KBCreatorObserver observer;
+    private KBCreatorObserver observer;
 
     public KBCreator(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
         this.observer = observer;
@@ -73,5 +74,9 @@ public class KBCreator implements Runnable {
         }
         System.out.println("candidate pais size: " + candidatePairs.size());
         return candidatePairs;
+    }
+
+    public int getCounter() {
+        return knowledgeBaseCounter;
     }
 }

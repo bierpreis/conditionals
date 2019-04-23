@@ -3,13 +3,14 @@ package kb_creator.gui;
 import com.intellij.ui.ListActions;
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.LeftPanel;
+import kb_creator.gui.leftpanel.StatusPanel;
 import nfc.view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class KBMainWindow {
-    KBCreatorObserver observer;
+    private KBCreatorObserver observer;
     private LeftPanel leftPanel;
 
     public KBMainWindow(KBCreatorObserver observer) {
@@ -27,6 +28,10 @@ public class KBMainWindow {
 
     public String getSignature() {
         return leftPanel.getSignature();
+    }
+
+    public StatusPanel getStatusPanel() {
+        return leftPanel.getStatusPanel();
     }
 
 }
