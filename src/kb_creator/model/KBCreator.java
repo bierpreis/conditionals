@@ -45,14 +45,6 @@ public class KBCreator implements Runnable {
         return true;
     }
 
-    public void setNfc(List<Conditional> nfc) {
-        this.nfc = nfc;
-    }
-
-    public void setcNfc(List<Conditional> cNfc) {
-        this.cNfc = cNfc;
-    }
-
     private List<CandidatePair> initOneElementKBs() {
         List<CandidatePair> candidatePairs = new LinkedList<>(); //candidate pairs is l in original
         for (Conditional cNfcElement : cNfc) { // cNfcElement is r in original
