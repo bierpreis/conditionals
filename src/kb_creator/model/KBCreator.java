@@ -10,6 +10,7 @@ public class KBCreator implements Runnable {
     private List<Conditional> nfc; //todo: why is this nerver used??
     private List<Conditional> cNfc;
     private volatile int knowledgeBaseCounter;
+    private volatile int candidatePairAmount;
 
     private KBCreatorObserver observer;
 
@@ -62,13 +63,17 @@ public class KBCreator implements Runnable {
 
             }
             candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
-
+            candidatePairAmount++;
         }
         System.out.println("candidate pais size: " + candidatePairs.size());
         return candidatePairs;
     }
 
-    public int getCounter() {
+    public int getKBAmount() {
         return knowledgeBaseCounter;
+    }
+
+    public int getCandidatePairAmount() {
+        return candidatePairAmount;
     }
 }

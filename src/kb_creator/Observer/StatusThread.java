@@ -18,7 +18,8 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (running) {
-            statusPanel.showInfo(Integer.toString(creatorThread.getCounter()));
+            statusPanel.showCandidatePairs(creatorThread.getCandidatePairAmount());
+            statusPanel.showKBs(creatorThread.getKBAmount());
             System.out.println("updating..");
             try {
                 Thread.sleep(500);
