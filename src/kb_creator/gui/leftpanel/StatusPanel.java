@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class StatusPanel extends JPanel {
     private JLabel candidatePairsLabel;
@@ -15,8 +16,12 @@ public class StatusPanel extends JPanel {
 
         kbLabel = new JLabel();
         add(kbLabel);
+        
         add(Box.createHorizontalGlue());
         add(Box.createVerticalGlue());
+        setMinimumSize(new Dimension(1500,500));
+
+        //add(new Box.Filler(new Dimension(Short.MAX_VALUE, Short.VALUE)));
     }
 
 
