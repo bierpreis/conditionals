@@ -58,20 +58,18 @@ public class KBCreator implements Runnable {
         for (Conditional cNfcElement : cNfc) { // cNfcElement is r in original
             Conditional counterConditional = cNfcElement.getCounterConditional(); //this is not(r)
             List<Conditional> kbToAdd = new LinkedList<>();
-            kbToAdd.add(cNfcElement);
+            kbToAdd.add(cNfcElement); //this is addring {r} in line 5
+            List<Conditional> conditionalsToInclude = new LinkedList<>();
 
-            for (Conditional currentConditional : cNfc) { //this loop is line 4 and 5
-                List<Conditional> conditionalsToInclude = new LinkedList<>();
+            for (Conditional currentConditional : nfc) { //this loop is line 4 and 5
                 if (currentConditional.getNumber() > cNfcElement.getNumber())  //this removes D from candidates
                     if (!currentConditional.equals(counterConditional)) {      //this removes not(r) from candidates
                         conditionalsToInclude.add(currentConditional);
                     }
 
-                candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
-
 
             }
-
+            candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
 
         }
         System.out.println("candidate pais size: " + candidatePairs.size());
