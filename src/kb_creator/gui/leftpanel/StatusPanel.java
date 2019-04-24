@@ -15,6 +15,8 @@ public class StatusPanel extends JPanel {
 
         kbLabel = new JLabel();
         add(kbLabel);
+        add(Box.createHorizontalGlue());
+        add(Box.createVerticalGlue());
     }
 
 
