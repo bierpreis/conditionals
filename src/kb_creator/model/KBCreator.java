@@ -11,6 +11,7 @@ public class KBCreator implements Runnable {
     private List<Conditional> cNfc;
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
+    private volatile boolean isRunning = false;
 
     private KBCreatorObserver observer;
 
@@ -23,6 +24,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
+        isRunning = true;
         //todo: check if this list is correct. but how?
         List<CandidatePair> candidatePairs = initOneElementKBs();
 
@@ -41,6 +43,7 @@ public class KBCreator implements Runnable {
 
 
         }
+        isRunning = false;
 
 
     }
@@ -80,5 +83,9 @@ public class KBCreator implements Runnable {
 
     public int getCandidatePairAmount() {
         return candidatePairAmount;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
     }
 }

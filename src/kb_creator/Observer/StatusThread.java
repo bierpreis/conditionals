@@ -20,6 +20,7 @@ public class StatusThread implements Runnable {
         while (running) {
             statusPanel.showCandidatePairs(creatorThread.getCandidatePairAmount());
             statusPanel.showKBs(creatorThread.getKBAmount());
+            statusPanel.showIfStillRunning(creatorThread.isRunning());
             System.out.println("updating..");
             try {
                 Thread.sleep(500);
