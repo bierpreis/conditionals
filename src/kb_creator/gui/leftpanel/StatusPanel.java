@@ -2,11 +2,13 @@ package kb_creator.gui.leftpanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.DecimalFormat;
 
 public class StatusPanel extends JPanel {
     private JLabel candidatePairsLabel;
     private JLabel kbLabel;
     private JLabel isRunningLabel;
+    private JLabel progressLabel;
 
     public StatusPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -21,6 +23,8 @@ public class StatusPanel extends JPanel {
         kbLabel = new JLabel();
         add(kbLabel);
 
+        progressLabel = new JLabel();
+        add(progressLabel);
 
 
         add(Box.createHorizontalGlue());
@@ -45,6 +49,14 @@ public class StatusPanel extends JPanel {
         if (isRunning)
             isRunningLabel.setText("running");
         else isRunningLabel.setText("finished");
+    }
+
+    public void showProgress(float progress) {
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(4);
+
+        progressLabel.setText("Total Progress: " + String.format("%.4f", progress) + "%");
+
     }
 
 

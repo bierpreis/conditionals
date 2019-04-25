@@ -13,6 +13,9 @@ public class KBCreator implements Runnable {
     private volatile int candidatePairAmount;
     private volatile boolean isRunning = false;
 
+    private float totalNumberOfCalculations = 1; //to avoid division by zero
+    private float alreadyFinishedCalculations = 0;
+
     private KBCreatorObserver observer;
 
     public KBCreator(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
@@ -29,16 +32,15 @@ public class KBCreator implements Runnable {
         List<CandidatePair> candidatePairs = initOneElementKBs();
 
         //this calculates the total number of calculations needed (will be useful for progress info)
-        int numberOfCalcuclations = 0;
         for (CandidatePair candidatePair : candidatePairs)
             for (Conditional candidate : candidatePair.getCandidates())
-                numberOfCalcuclations++;
-        System.out.println("number of calculations: " + numberOfCalcuclations);
+                totalNumberOfCalculations++;
+        System.out.println("number of calculations: " + totalNumberOfCalculations);
 
 
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
-
+                alreadyFinishedCalculations++;
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
                     knowledgeBaseCounter++;
                     try {
@@ -95,5 +97,9 @@ public class KBCreator implements Runnable {
 
     public boolean isRunning() {
         return isRunning;
+    }
+
+    public float getProgress() {
+        return alreadyFinishedCalculations / totalNumberOfCalculations;
     }
 }
