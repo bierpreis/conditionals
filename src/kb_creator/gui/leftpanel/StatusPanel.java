@@ -16,7 +16,7 @@ public class StatusPanel extends JPanel {
 
         kbLabel = new JLabel();
         add(kbLabel);
-        
+
         add(Box.createHorizontalGlue());
         add(Box.createVerticalGlue());
         setMinimumSize(new Dimension(1500,500));

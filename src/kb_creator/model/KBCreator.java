@@ -29,9 +29,14 @@ public class KBCreator implements Runnable {
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
 
-                if (checkConsistency(candidatePair.getKnowledgeBase(), candidate))
-                    //todo: main alogithm here
+                if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
                     knowledgeBaseCounter++;
+                    try {
+                        Thread.sleep(1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
 
