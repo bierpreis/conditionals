@@ -13,8 +13,8 @@ public class KBCreator implements Runnable {
     private volatile int candidatePairAmount;
     private volatile boolean isRunning = false;
 
-    private float totalNumberOfCalculations = 1; //to avoid division by zero
-    private float alreadyFinishedCalculations = 0;
+    private volatile float totalNumberOfCalculations = 1; //to avoid division by zero
+    private volatile float alreadyFinishedCalculations = 0;
 
     private KBCreatorObserver observer;
 
@@ -99,7 +99,7 @@ public class KBCreator implements Runnable {
         return isRunning;
     }
 
-    public float getProgress() {
-        return alreadyFinishedCalculations / totalNumberOfCalculations;
+    public float getProgressInPercent() {
+        return 100 * (alreadyFinishedCalculations / totalNumberOfCalculations);
     }
 }

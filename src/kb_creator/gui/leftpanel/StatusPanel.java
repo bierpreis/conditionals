@@ -54,7 +54,7 @@ public class StatusPanel extends JPanel {
     public void showProgress(float progress) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(4);
-
+        //todo: why is this jumping?ß
         progressLabel.setText("Total Progress: " + String.format("%.4f", progress) + "%");
 
     }
