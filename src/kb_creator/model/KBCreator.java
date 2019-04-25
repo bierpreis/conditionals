@@ -28,6 +28,14 @@ public class KBCreator implements Runnable {
         //todo: check if this list is correct. but how?
         List<CandidatePair> candidatePairs = initOneElementKBs();
 
+        //this calculates the total number of calculations needed (will be useful for progress info)
+        int numberOfCalcuclations = 0;
+        for (CandidatePair candidatePair : candidatePairs)
+            for (Conditional candidate : candidatePair.getCandidates())
+                numberOfCalcuclations++;
+        System.out.println("number of calculations: " + numberOfCalcuclations);
+
+
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
 
