@@ -35,7 +35,6 @@ public class KBCreator implements Runnable {
         for (CandidatePair candidatePair : candidatePairs)
             for (Conditional candidate : candidatePair.getCandidates())
                 totalNumberOfCalculations++;
-        System.out.println("number of calculations: " + totalNumberOfCalculations);
 
 
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
@@ -83,7 +82,6 @@ public class KBCreator implements Runnable {
             candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
             candidatePairAmount++;
         }
-        System.out.println("candidate pais size: " + candidatePairs.size());
         return candidatePairs;
     }
 
