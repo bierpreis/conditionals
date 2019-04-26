@@ -51,11 +51,12 @@ public class StatusPanel extends JPanel {
         else isRunningLabel.setText("finished");
     }
 
-    public void showProgress(float progress) {
+    public void showProgress(float progressInpercent) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(4);
-        //todo: why is this jumping?ß
-        progressLabel.setText("Total Progress: " + String.format("%.4f", progress) + "%");
+        //todo: why is this jumping??
+        System.out.println("progress: " + progressInpercent);
+        progressLabel.setText("Total Progress: " + String.format("%.4f", progressInpercent) + "%");
 
     }
 
