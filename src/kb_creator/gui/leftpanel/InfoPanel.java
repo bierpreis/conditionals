@@ -8,6 +8,7 @@ public class InfoPanel extends JPanel {
 
     public InfoPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        add(Box.createVerticalGlue());
 
         sizePanel = new SizePanel();
         add(sizePanel);
