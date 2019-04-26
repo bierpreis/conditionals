@@ -1,15 +1,15 @@
 package kb_creator.Observer;
 
-import kb_creator.gui.leftpanel.StatusPanel;
+import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.model.KBCreator;
 
 public class StatusThread implements Runnable {
-    private StatusPanel statusPanel;
+    private InfoPanel infoPanel;
     private boolean running = true;
     private KBCreator creatorThread;
 
-    public StatusThread(StatusPanel statusPanel, KBCreator creatorThread) {
-        this.statusPanel = statusPanel;
+    public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
+        this.infoPanel = infoPanel;
         this.creatorThread = creatorThread;
 
     }
@@ -18,10 +18,10 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (running) {
-            statusPanel.showCandidatePairs(creatorThread.getCandidatePairAmount());
-            statusPanel.showKBs(creatorThread.getKBAmount());
-            statusPanel.showIfStillRunning(creatorThread.isRunning());
-            statusPanel.showProgress(creatorThread.getProgressInPercent());
+            infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
+            infoPanel.showKBAmount(creatorThread.getKBAmount());
+            infoPanel.showIfStillRunning(creatorThread.isRunning());
+            infoPanel.showProgress(creatorThread.getProgressInPercent());
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

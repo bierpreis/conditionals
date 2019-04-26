@@ -1,7 +1,7 @@
 package kb_creator.gui;
 
-import com.intellij.ui.ListActions;
 import kb_creator.Observer.KBCreatorObserver;
+import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
 import kb_creator.gui.leftpanel.StatusPanel;
 import nfc.view.textArea.CondPanel;
@@ -30,8 +30,8 @@ public class KBMainWindow {
         return leftPanel.getSignature();
     }
 
-    public StatusPanel getStatusPanel() {
-        return leftPanel.getStatusPanel();
+    public InfoPanel getInfoPanel(){
+        return leftPanel.getInfoPanel();
     }
 
 }

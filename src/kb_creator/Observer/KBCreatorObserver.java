@@ -33,7 +33,7 @@ public class KBCreatorObserver implements ActionListener {
             this.creatorThread = new Thread(creatorRunnable);
             this.creatorThread.start();
 
-            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getStatusPanel(), creatorRunnable));
+            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorRunnable));
             statusThread.start();
 
         }
