@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class KBCreator implements Runnable {
-    private List<Conditional> nfc; //todo: why is this nerver used??
+    private List<Conditional> nfc;
     private List<Conditional> cNfc;
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
