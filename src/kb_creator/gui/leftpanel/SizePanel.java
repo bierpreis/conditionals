@@ -6,14 +6,15 @@ public class SizePanel extends JPanel {
     private JLabel candidatePairsLabel;
     private JLabel kbLabel;
 
-    public SizePanel(){
-
+    public SizePanel() {
+        Box vbox = Box.createVerticalBox();
         candidatePairsLabel = new JLabel();
-        add(candidatePairsLabel);
+        vbox.add(candidatePairsLabel);
 
         kbLabel = new JLabel();
-        add(kbLabel);
+        vbox.add(kbLabel);
 
+        add(vbox);
         setBorder(BorderFactory.createTitledBorder("Size"));
 
     }

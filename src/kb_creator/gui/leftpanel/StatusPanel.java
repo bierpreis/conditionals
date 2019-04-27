@@ -1,7 +1,6 @@
 package kb_creator.gui.leftpanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.text.DecimalFormat;
 
 public class StatusPanel extends JPanel {
@@ -11,23 +10,17 @@ public class StatusPanel extends JPanel {
 
 
     public StatusPanel() {
+        Box vBox = Box.createVerticalBox();
+        add(vBox);
 
-        //setLayout(new BorderLayout());
-        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Status"));
 
         isRunningLabel = new JLabel();
-        add(isRunningLabel);
+        vBox.add(isRunningLabel);
 
 
         progressLabel = new JLabel();
-        add(progressLabel);
-
-
-        //add(Box.createHorizontalGlue());
-        //add(Box.createVerticalGlue());
-        //setMinimumSize(new Dimension(1500, 500));
-
+        vBox.add(progressLabel);
 
     }
 
@@ -43,7 +36,8 @@ public class StatusPanel extends JPanel {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(4);
         //todo: why is this jumping??
-        progressLabel.setText("Total Progress: " + String.format("%.4f", progressInpercent) + "%");
+        //todo: 100% not 99 when finished. sth manual? or double instead of float?
+        progressLabel.setText("Total Progress: " + String.format("%.2f", progressInpercent) + "%");
 
     }
 
