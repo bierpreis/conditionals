@@ -32,6 +32,7 @@ public class StatusPanel extends JPanel {
     }
 
     public void showProgress(double progressInpercent) {
+        //todo: number jumping when first ab then abc
         progressLabel.setText("Total Progress: " + String.format("%6.2f", progressInpercent) + "%");
 
     }
