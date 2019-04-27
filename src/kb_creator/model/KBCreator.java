@@ -13,8 +13,8 @@ public class KBCreator implements Runnable {
     private volatile int candidatePairAmount;
     private volatile boolean isRunning = false;
 
-    private volatile double totalNumberOfCalculations = 0;
-    private volatile double alreadyFinishedCalculations = 0;
+    private volatile double totalNumberOfCalculations;
+    private volatile double alreadyFinishedCalculations;
 
     private KBCreatorObserver observer;
 
@@ -22,6 +22,9 @@ public class KBCreator implements Runnable {
         this.observer = observer;
         this.nfc = nfc;
         this.cNfc = cNfc;
+
+        totalNumberOfCalculations = 0;
+        alreadyFinishedCalculations = 0;
 
     }
 

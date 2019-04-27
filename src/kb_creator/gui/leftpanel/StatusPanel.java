@@ -1,7 +1,6 @@
 package kb_creator.gui.leftpanel;
 
 import javax.swing.*;
-import java.text.DecimalFormat;
 
 public class StatusPanel extends JPanel {
 
@@ -33,8 +32,6 @@ public class StatusPanel extends JPanel {
     }
 
     public void showProgress(double progressInpercent) {
-        DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(4);
         progressLabel.setText("Total Progress: " + String.format("%.2f", progressInpercent) + "%");
 
     }
