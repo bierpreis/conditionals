@@ -35,7 +35,6 @@ public class StatusPanel extends JPanel {
     public void showProgress(double progressInpercent) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(4);
-        //todo: why is this jumping??
         progressLabel.setText("Total Progress: " + String.format("%.2f", progressInpercent) + "%");
 
     }
