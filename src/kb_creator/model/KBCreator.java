@@ -11,7 +11,7 @@ public class KBCreator implements Runnable {
     private List<Conditional> cNfc;
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
-    private volatile boolean isRunning = false;
+    private volatile boolean isRunning;
 
     private volatile double totalNumberOfCalculations;
     private volatile double alreadyFinishedCalculations;
@@ -25,6 +25,7 @@ public class KBCreator implements Runnable {
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
+        isRunning = false;
 
     }
 
@@ -54,6 +55,11 @@ public class KBCreator implements Runnable {
             }
 
 
+        }
+        try {
+            Thread.sleep(1000); //this is to make sure status thread wont stop too early
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         isRunning = false;
 
@@ -101,7 +107,6 @@ public class KBCreator implements Runnable {
     }
 
     public double getProgressInPercent() {
-        System.out.println("fin: " + alreadyFinishedCalculations + "   tot: " + totalNumberOfCalculations);
         if (totalNumberOfCalculations != 0)
             return 100 * (alreadyFinishedCalculations / totalNumberOfCalculations);
         else return 0;
