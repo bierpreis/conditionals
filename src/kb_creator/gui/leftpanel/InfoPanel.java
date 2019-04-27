@@ -22,7 +22,7 @@ public class InfoPanel extends JPanel {
         statusPanel.showIfStillRunning(isRuning);
     }
 
-    public void showProgress(float progressInPercent) {
+    public void showProgress(double progressInPercent) {
         statusPanel.showProgress(progressInPercent);
     }
 

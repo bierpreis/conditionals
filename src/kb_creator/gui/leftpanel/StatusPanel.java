@@ -32,11 +32,10 @@ public class StatusPanel extends JPanel {
         else isRunningLabel.setText("finished");
     }
 
-    public void showProgress(float progressInpercent) {
+    public void showProgress(double progressInpercent) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(4);
         //todo: why is this jumping??
-        //todo: 100% not 99 when finished. sth manual? or double instead of float?
         progressLabel.setText("Total Progress: " + String.format("%.2f", progressInpercent) + "%");
 
     }
