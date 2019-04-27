@@ -101,6 +101,7 @@ public class KBCreator implements Runnable {
     }
 
     public double getProgressInPercent() {
+        System.out.println("fin: " + alreadyFinishedCalculations + "   tot: " + totalNumberOfCalculations);
         if (totalNumberOfCalculations != 0)
             return 100 * (alreadyFinishedCalculations / totalNumberOfCalculations);
         else return 0;

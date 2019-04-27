@@ -41,6 +41,7 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand().equals("Stop")) {
 
             try {
+
                 statusThreadObject.halt();
             } catch (Exception exep) {
                 System.out.println("tried to stop thread, but no thread running");

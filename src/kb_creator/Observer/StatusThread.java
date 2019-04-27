@@ -18,6 +18,7 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (running) {
+            //todo: stop this if creator thread is stopped
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showIfStillRunning(creatorThread.isRunning());
