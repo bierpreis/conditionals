@@ -67,7 +67,7 @@ public class KBCreator implements Runnable {
     }
 
     private boolean checkConsistency(List<Conditional> knowledgeBase, Conditional candidate) {
-        //todo
+        //todo this test is written in goldszmit/pearl 1996 p 65
 
         return true;
     }
