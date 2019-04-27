@@ -37,5 +37,7 @@ public class StatusPanel extends JPanel {
 
     }
 
+    //todo: maybe later show progress in kb/sec to compare diffrent solutions?
+
 
 }
