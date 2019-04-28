@@ -46,7 +46,7 @@ public class NfcCreator {
 
 
         Collections.sort(basicConditionalList);
-
+        //todo: is this some correct numbering??
         int counter = 1;
         for (Conditional conditional : basicConditionalList) {
             conditional.setNumber(counter);
@@ -83,7 +83,7 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
-
+        //todo: here should be numbering?
         return cNfc;
     }
 
@@ -93,7 +93,7 @@ public class NfcCreator {
 
         for (ConditionalList sublist : cnfcEq)
             cnfc.add(sublist.get(0));
-
+        //todo: numbering here?
         return cnfc;
     }
 
