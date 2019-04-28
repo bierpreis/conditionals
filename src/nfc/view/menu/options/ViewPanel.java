@@ -1,4 +1,4 @@
-package nfc.view.menu;
+package nfc.view.menu.options;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

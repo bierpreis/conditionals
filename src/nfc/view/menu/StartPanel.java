@@ -1,7 +1,7 @@
 package nfc.view.menu;
 
 import nfc.controller.NfcCreatorObserver;
-import nfc.model.Command;
+import nfc.model.Action;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,10 +13,10 @@ public class StartPanel extends JPanel {
         setLayout(new GridLayout());
         setBorder(BorderFactory.createTitledBorder("start"));
 
-        AbstractNfcButton createNfcButton = new AbstractNfcButton(Command.NFC);
+        AbstractActionButton createNfcButton = new AbstractActionButton(Action.NFC);
 
-        AbstractNfcButton createCnfcButton = new AbstractNfcButton(Command.CNFC);
-        AbstractNfcButton createCnfcEqButton = new AbstractNfcButton(Command.CNFCEQ);
+        AbstractActionButton createCnfcButton = new AbstractActionButton(Action.CNFC);
+        AbstractActionButton createCnfcEqButton = new AbstractActionButton(Action.CNFCEQ);
 
 
         createNfcButton.addActionListener(observer);

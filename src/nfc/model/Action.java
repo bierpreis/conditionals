@@ -1,5 +1,5 @@
 package nfc.model;
 
-public enum Command {
+public enum Action {
     NFC, CNFC, CNFCEQ
 }

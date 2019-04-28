@@ -1,13 +1,12 @@
 package nfc.view.menu;
 
 import nfc.controller.NfcCreatorObserver;
-import nfc.view.menu.safe.SafePanel;
+import nfc.view.menu.options.OptionsPanel;
 import nfc.view.textArea.ViewOptions;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
 public class MenuPanel extends JPanel {
     private OptionsPanel optionsPanel;

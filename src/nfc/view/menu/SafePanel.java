@@ -1,4 +1,4 @@
-package nfc.view.menu.safe;
+package nfc.view.menu;
 
 import nfc.controller.NfcCreatorObserver;
 

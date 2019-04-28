@@ -1,4 +1,4 @@
-package nfc.view.menu;
+package nfc.view.menu.options;
 
 import nfc.model.World;
 import nfc.view.textArea.ViewOptions;
