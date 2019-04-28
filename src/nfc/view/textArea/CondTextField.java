@@ -43,9 +43,6 @@ public class CondTextField extends JTextArea {
 
             conditionalString = conditionalList.get(i).toString() + "\n";
 
-            if (options.isLettersViewActive())
-                conditionalString = translateNumbersToLetters(conditionalString, options);
-
 
             if (options.showNumbers())
                 conditionalString = i + 1 + ": " + conditionalString;
@@ -58,8 +55,7 @@ public class CondTextField extends JTextArea {
 
 
     }
-
-    //todo: impelemt letter view here
+    
     public void printCnfcEq(List<ConditionalList> eqClassList, ViewOptions options) {
         Conditional.setSpaceDot(options.showDots());
 
@@ -100,30 +96,5 @@ public class CondTextField extends JTextArea {
         return description;
     }
 
-    public String translateNumbersToLetters(String string, ViewOptions options) {
-
-
-        if (!options.isTwoLetters()) {
-
-            string = string.replace("0", "!a!b!c");
-            string = string.replace("1", "!a!bc");
-            string = string.replace("2", "!ab!c");
-            string = string.replace("3", "!abc");
-            string = string.replace("4", "a!b!c");
-            string = string.replace("5", "a!bc");
-            string = string.replace("6", "ab!c");
-            string = string.replace("7", "abc");
-
-        } else {
-            string = string.replace("0", "!a!b");
-            string = string.replace("1", "!ab");
-            string = string.replace("2", "a!b");
-            string = string.replace("3", "ab");
-
-
-        }
-
-        return string;
-    }
 
 }

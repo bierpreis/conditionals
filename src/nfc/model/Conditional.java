@@ -1,9 +1,12 @@
 package nfc.model;
 
 
+import nfc.view.textArea.ViewOptions;
+
 public class Conditional implements Comparable {
     private final World consequence;
     private final World antecend;
+
 
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
@@ -71,6 +74,7 @@ public class Conditional implements Comparable {
         consequenceString = consequenceString.replace("},", "}");
         antecendString = antecendString.replace("},", "}");
         String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
+
 
         //this is to calculate whitespaces for colums in cnfc nfc.model.view
         int numberOfSpacesToAdd = 0;

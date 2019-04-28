@@ -6,9 +6,12 @@ import java.util.List;
 public class World implements Comparable {
 
     private final List<Integer> worlds;
-    private static String signature;
 
+
+    //todo: unify with enums
     private static String view = "numbers";
+    private static boolean isLetterModeOn = false;
+    private static String signature;
 
 
     public World() {
@@ -69,6 +72,9 @@ public class World implements Comparable {
         originalString = originalString.replace('[', '{');
         originalString = originalString.replace(']', '}');
 
+        if (view.equals("letters"))
+            originalString = translateNumbersToLetters(originalString);
+
 
         return originalString;
 
@@ -97,6 +103,32 @@ public class World implements Comparable {
 
     public void removeWorld(World worldsToRemove) {
         worlds.removeAll(worldsToRemove.getWorldsList());
+    }
+
+    public String translateNumbersToLetters(String string) {
+        System.out.println("translating");
+
+        if (signature.equals("ab")) {
+
+            string = string.replace("0", "!a!b!c");
+            string = string.replace("1", "!a!bc");
+            string = string.replace("2", "!ab!c");
+            string = string.replace("3", "!abc");
+            string = string.replace("4", "a!b!c");
+            string = string.replace("5", "a!bc");
+            string = string.replace("6", "ab!c");
+            string = string.replace("7", "abc");
+
+        } else {
+            string = string.replace("0", "!a!b");
+            string = string.replace("1", "!ab");
+            string = string.replace("2", "a!b");
+            string = string.replace("3", "ab");
+
+
+        }
+
+        return string;
     }
 
 }
