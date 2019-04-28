@@ -1,8 +1,5 @@
 package nfc.model;
 
-
-import nfc.view.textArea.ViewOptions;
-
 public class Conditional implements Comparable {
     private final World consequence;
     private final World antecend;
@@ -11,6 +8,7 @@ public class Conditional implements Comparable {
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
 
+    //todo: improve number?
     private int number;
     private static String spaceFillCharacter = " ";
 

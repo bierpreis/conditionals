@@ -48,6 +48,7 @@ public class ConditionalList implements Comparable {
 
     }
 
+    //todo: much unused stuff
     public void setNumberToFirstConditional(int number) {
         conditionalList.get(0).setNumber(number);
     }
@@ -69,7 +70,7 @@ public class ConditionalList implements Comparable {
         return conditionalList.size();
     }
 
-    public List<Conditional> getList(){
+    public List<Conditional> getList() {
         return conditionalList;
     }
 }
