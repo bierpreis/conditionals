@@ -2,8 +2,8 @@ package nfc.model;
 
 
 public class Conditional implements Comparable {
-    private final World leftWorld; //todo: antecend, consequence
-    private final World rightWorld;
+    private final World consequence;
+    private final World antecend;
 
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
@@ -11,16 +11,16 @@ public class Conditional implements Comparable {
     private int number;
     private static String spaceFillCharacter = " ";
 
-    public Conditional(World leftWorld, World rightWorld) {
-        this.leftWorld = leftWorld;
-        this.rightWorld = rightWorld;
+    public Conditional(World consequence, World antecend) {
+        this.consequence = consequence;
+        this.antecend = antecend;
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
 
     }
 
     public boolean isEquivalent(Conditional otherConditional) {
-        return leftWorld.isEquivalent(otherConditional.leftWorld) && rightWorld.isEquivalent(otherConditional.rightWorld);
+        return consequence.isEquivalent(otherConditional.consequence) && antecend.isEquivalent(otherConditional.antecend);
 
     }
 
@@ -30,21 +30,21 @@ public class Conditional implements Comparable {
             throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
         Conditional other = (Conditional) o;
 
-        if (rightWorld.getSize() < other.rightWorld.getSize())
+        if (antecend.getSize() < other.antecend.getSize())
             return -1;
-        if (rightWorld.getSize() > other.rightWorld.getSize())
+        if (antecend.getSize() > other.antecend.getSize())
             return 1;
 
-        if (leftWorld.getSize() < other.leftWorld.getSize())
+        if (consequence.getSize() < other.consequence.getSize())
             return -1;
-        if (leftWorld.getSize() > other.leftWorld.getSize())
+        if (consequence.getSize() > other.consequence.getSize())
             return 1;
 
-        int comparedRight = compareWorldsElements(rightWorld, other.rightWorld);
+        int comparedRight = compareWorldsElements(antecend, other.antecend);
         if (comparedRight != 0)
             return comparedRight;
 
-        int comparedLeft = compareWorldsElements(leftWorld, other.leftWorld);
+        int comparedLeft = compareWorldsElements(consequence, other.consequence);
         if (comparedLeft != 0)
             return comparedLeft;
 
@@ -66,8 +66,8 @@ public class Conditional implements Comparable {
 
     @Override
     public String toString() {
-        String leftWorldString = leftWorld.toString();
-        String rightWorldString = rightWorld.toString();
+        String leftWorldString = consequence.toString();
+        String rightWorldString = antecend.toString();
         leftWorldString = leftWorldString.replace("},", "}");
         rightWorldString = rightWorldString.replace("},", "}");
         String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
@@ -96,9 +96,9 @@ public class Conditional implements Comparable {
     public Conditional getCounterConditional() {
 
         World newLeftWorld = new World();
-        newLeftWorld.addList(rightWorld.getWorldsList());
-        newLeftWorld.removeWorld(leftWorld);
-        return new Conditional(newLeftWorld, rightWorld);
+        newLeftWorld.addList(antecend.getWorldsList());
+        newLeftWorld.removeWorld(consequence);
+        return new Conditional(newLeftWorld, antecend);
 
     }
 
@@ -112,19 +112,19 @@ public class Conditional implements Comparable {
             return false;
         else {
             Conditional otherConditional = (Conditional) o;
-            boolean leftEquals = otherConditional.getLeftWorld().equals(leftWorld);
-            boolean rightEquals = otherConditional.getRightWorld().equals(rightWorld);
+            boolean leftEquals = otherConditional.getConsequence().equals(consequence);
+            boolean rightEquals = otherConditional.getAntecend().equals(antecend);
             return leftEquals && rightEquals;
         }
 
     }
 
-    public World getRightWorld() {
-        return rightWorld;
+    public World getAntecend() {
+        return antecend;
     }
 
-    public World getLeftWorld() {
-        return leftWorld;
+    public World getConsequence() {
+        return consequence;
     }
 
 }
