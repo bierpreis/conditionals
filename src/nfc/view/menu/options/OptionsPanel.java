@@ -34,6 +34,7 @@ public class OptionsPanel extends JPanel {
         World.setView(viewPanel.getRequestedView());
         World.setSignature(signaturePanel.getRequestedSignature());
         Conditional.setSpaceDot(dotsPanel.isDotsViewActive());
+        Conditional.setNumbersActive(numbersPanel.isNumbersActive());
 
         options.setShowNumbers(numbersPanel.isNumbersActive());
 

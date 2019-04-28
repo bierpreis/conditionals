@@ -4,6 +4,8 @@ public class Conditional implements Comparable {
     private final World consequence;
     private final World antecend;
 
+    private static boolean isNumbersActive;
+
 
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
@@ -127,6 +129,10 @@ public class Conditional implements Comparable {
 
     public World getConsequence() {
         return consequence;
+    }
+
+    public static void setNumbersActive(boolean areNunbersRequested) {
+        isNumbersActive = areNunbersRequested;
     }
 
 }
