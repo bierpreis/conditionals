@@ -31,18 +31,16 @@ public class OptionsPanel extends JPanel {
         ViewOptions options = new ViewOptions();
 
         World.setView(viewPanel.getRequestedView());
+        World.setSignature(signaturePanel.getRequestedSignature());
 
         options.setShowNumbers(numbersPanel.isNumbersActive());
         options.setShowDots(dotsPanel.isDotsViewActive());
-        options.setTwoLetters(signaturePanel.isTwoLettersActive());
 
         return options;
     }
 
     public String getSignature() {
-        if (signaturePanel.isTwoLettersActive())
-            return "ab";
-        else return "abc";
+        return signaturePanel.getRequestedSignature();
     }
 
 }
