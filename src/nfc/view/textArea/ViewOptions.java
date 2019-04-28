@@ -21,8 +21,7 @@ public class ViewOptions {
     public void setShowDots(boolean showDots) {
         this.showDots = showDots;
     }
-
-    //todo: implement
+    
     public boolean showDots() {
         return showDots;
     }
