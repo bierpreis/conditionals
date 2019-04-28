@@ -17,9 +17,10 @@ public class Conditional implements Comparable {
     public Conditional(World consequence, World antecend) {
         this.consequence = consequence;
         this.antecend = antecend;
-        if (this.toString().length() > longestConditional)
+        if (this.toString().length() > longestConditional) {
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
-
+            System.out.println(longestConditional);
+        }
     }
 
     public boolean isEquivalent(Conditional otherConditional) {
@@ -82,6 +83,10 @@ public class Conditional implements Comparable {
             numberOfSpacesToAdd = (longestConditional - stringToReturn.length());
         for (int i = 0; i < numberOfSpacesToAdd; i++)
             stringToReturn = stringToReturn + spaceFillCharacter;
+
+        //todo: this doenst work
+        if (isNumbersActive)
+            stringToReturn = number + stringToReturn;
 
         return stringToReturn;
     }
