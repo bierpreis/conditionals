@@ -1,7 +1,6 @@
 package kb_creator;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.KBMainWindow;
 
 public class Main {
 

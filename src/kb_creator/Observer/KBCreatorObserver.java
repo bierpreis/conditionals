@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
-    private Thread creatorThread;
     private StatusThread statusThreadObject;
 
 
@@ -30,8 +29,8 @@ public class KBCreatorObserver implements ActionListener {
             KBCreator creatorRunnable = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
 
 
-            this.creatorThread = new Thread(creatorRunnable);
-            this.creatorThread.start();
+            Thread creatorThread = new Thread(creatorRunnable);
+            creatorThread.start();
 
             Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorRunnable));
             statusThread.start();
