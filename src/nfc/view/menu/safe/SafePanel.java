@@ -5,7 +5,7 @@ import nfc.controller.NfcCreatorObserver;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//todo: delete package
 public class SafePanel extends JPanel {
     private JButton safeButton;
     private NfcCreatorObserver observer;
