@@ -2,27 +2,26 @@ package nfc.model;
 
 public class Conditional implements Comparable {
     private final World consequence;
-    private final World antecend;
+    private final World antecedent;
 
-    private static boolean isNumbersActive;
-
+    private static boolean isNumberingActive;
 
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
 
-    //todo: improve number?
+
     private int number;
     private static String spaceFillCharacter = " ";
 
-    public Conditional(World consequence, World antecend) {
+    public Conditional(World consequence, World antecedent) {
         this.consequence = consequence;
-        this.antecend = antecend;
+        this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
     }
 
     public boolean isEquivalent(Conditional otherConditional) {
-        return consequence.isEquivalent(otherConditional.consequence) && antecend.isEquivalent(otherConditional.antecend);
+        return consequence.isEquivalent(otherConditional.consequence) && antecedent.isEquivalent(otherConditional.antecedent);
 
     }
 
@@ -32,9 +31,9 @@ public class Conditional implements Comparable {
             throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
         Conditional other = (Conditional) o;
 
-        if (antecend.getSize() < other.antecend.getSize())
+        if (antecedent.getSize() < other.antecedent.getSize())
             return -1;
-        if (antecend.getSize() > other.antecend.getSize())
+        if (antecedent.getSize() > other.antecedent.getSize())
             return 1;
 
         if (consequence.getSize() < other.consequence.getSize())
@@ -42,7 +41,7 @@ public class Conditional implements Comparable {
         if (consequence.getSize() > other.consequence.getSize())
             return 1;
 
-        int comparedRight = compareWorldsElements(antecend, other.antecend);
+        int comparedRight = compareWorldsElements(antecedent, other.antecedent);
         if (comparedRight != 0)
             return comparedRight;
 
@@ -69,12 +68,12 @@ public class Conditional implements Comparable {
     @Override
     public String toString() {
         String consequenceString = consequence.toString();
-        String antecendString = antecend.toString();
+        String antecendString = antecedent.toString();
         consequenceString = consequenceString.replace("},", "}");
         antecendString = antecendString.replace("},", "}");
         String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
 
-        if (isNumbersActive)
+        if (isNumberingActive)
             stringToReturn = number + stringToReturn;
 
         //this is to calculate whitespaces for colums in cnfc nfc.model.view
@@ -102,9 +101,9 @@ public class Conditional implements Comparable {
     public Conditional getCounterConditional() {
 
         World newLeftWorld = new World();
-        newLeftWorld.addList(antecend.getWorldsList());
+        newLeftWorld.addList(antecedent.getWorldsList());
         newLeftWorld.removeWorld(consequence);
-        return new Conditional(newLeftWorld, antecend);
+        return new Conditional(newLeftWorld, antecedent);
 
     }
 
@@ -119,14 +118,14 @@ public class Conditional implements Comparable {
         else {
             Conditional otherConditional = (Conditional) o;
             boolean leftEquals = otherConditional.getConsequence().equals(consequence);
-            boolean rightEquals = otherConditional.getAntecend().equals(antecend);
+            boolean rightEquals = otherConditional.getAntecedent().equals(antecedent);
             return leftEquals && rightEquals;
         }
 
     }
 
-    public World getAntecend() {
-        return antecend;
+    public World getAntecedent() {
+        return antecedent;
     }
 
     public World getConsequence() {
@@ -134,7 +133,7 @@ public class Conditional implements Comparable {
     }
 
     public static void setNumbersActive(boolean areNunbersRequested) {
-        isNumbersActive = areNunbersRequested;
+        isNumberingActive = areNunbersRequested;
     }
 
 }
