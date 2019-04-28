@@ -73,7 +73,7 @@ public class Conditional implements Comparable {
         String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
 
         if (isNumberingActive)
-            stringToReturn = number + stringToReturn;
+            stringToReturn = number + ": " + stringToReturn;
 
         //this is to calculate whitespaces for colums in cnfc nfc.model.view
         int numberOfSpacesToAdd = 0;
