@@ -34,8 +34,9 @@ public class CondTextField extends JTextArea {
     }
 
     public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
-
+        //todo: remove
         Conditional.setSpaceDot(options.showDots());
+        
         setText("");
         String conditionalString = "";
         int conditionalCounter = 0;
