@@ -66,11 +66,11 @@ public class Conditional implements Comparable {
 
     @Override
     public String toString() {
-        String leftWorldString = consequence.toString();
-        String rightWorldString = antecend.toString();
-        leftWorldString = leftWorldString.replace("},", "}");
-        rightWorldString = rightWorldString.replace("},", "}");
-        String stringToReturn = "(" + leftWorldString + " | " + rightWorldString + ")";
+        String consequenceString = consequence.toString();
+        String antecendString = antecend.toString();
+        consequenceString = consequenceString.replace("},", "}");
+        antecendString = antecendString.replace("},", "}");
+        String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
 
         //this is to calculate whitespaces for colums in cnfc nfc.model.view
         int numberOfSpacesToAdd = 0;
