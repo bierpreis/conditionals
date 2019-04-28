@@ -1,5 +1,6 @@
 package nfc.view.menu.options;
 
+import nfc.model.Conditional;
 import nfc.model.World;
 import nfc.view.textArea.ViewOptions;
 
@@ -26,15 +27,16 @@ public class OptionsPanel extends JPanel {
         add(dotsPanel = new DotsPanel());
     }
 
-    //todo: unify
-    public ViewOptions getOptions() {
+    //todo: unify and make void
+    public ViewOptions applySelectedOptions() {
         ViewOptions options = new ViewOptions();
 
         World.setView(viewPanel.getRequestedView());
         World.setSignature(signaturePanel.getRequestedSignature());
+        Conditional.setSpaceDot(dotsPanel.isDotsViewActive());
 
         options.setShowNumbers(numbersPanel.isNumbersActive());
-        options.setShowDots(dotsPanel.isDotsViewActive());
+
 
         return options;
     }

@@ -21,7 +21,7 @@ public class MenuPanel extends JPanel {
     }
 
     public ViewOptions getOptions() {
-        return optionsPanel.getOptions();
+        return optionsPanel.applySelectedOptions();
     }
 
     public String getSignature(){
