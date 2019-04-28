@@ -55,7 +55,7 @@ public class CondTextField extends JTextArea {
 
 
     }
-    
+
     public void printCnfcEq(List<ConditionalList> eqClassList, ViewOptions options) {
         Conditional.setSpaceDot(options.showDots());
 

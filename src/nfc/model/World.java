@@ -10,7 +10,6 @@ public class World implements Comparable {
 
     //todo: unify with enums
     private static String view = "numbers";
-    private static boolean isLetterModeOn = false;
     private static String signature;
 
 
@@ -106,7 +105,6 @@ public class World implements Comparable {
     }
 
     public String translateNumbersToLetters(String string) {
-        System.out.println("translating");
 
         if (signature.equals("ab")) {
 
