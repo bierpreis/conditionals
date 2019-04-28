@@ -7,7 +7,6 @@ import nfc.view.textArea.ViewOptions;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
 public class NfcCreatorWindow {
     private JFrame mainWindow;
