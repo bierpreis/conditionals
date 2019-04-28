@@ -49,8 +49,7 @@ public class Conditional implements Comparable {
         if (comparedLeft != 0)
             return comparedLeft;
 
-        System.out.println("comparing failed!!!" + this.toString() + " and " + other.toString());
-        return 0;
+        throw new RuntimeException("Comparing Conditionals failed!");
     }
 
 
