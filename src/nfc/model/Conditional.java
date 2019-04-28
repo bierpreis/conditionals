@@ -2,7 +2,7 @@ package nfc.model;
 
 
 public class Conditional implements Comparable {
-    private final World leftWorld;
+    private final World leftWorld; //todo: antecend, consequence
     private final World rightWorld;
 
     //this is needed for porper columns in conditional field
