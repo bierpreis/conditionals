@@ -42,7 +42,7 @@ public class ViewPanel extends JPanel {
         }
     }
 
-    public boolean isLettersViewActive() {
-        return lettersButton.isSelected();
+    public String getRequestedView() {
+        return viewButtonGroup.getSelection().getActionCommand();
     }
 }

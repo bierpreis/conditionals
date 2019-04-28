@@ -30,14 +30,11 @@ public class OptionsPanel extends JPanel {
     public ViewOptions getOptions() {
         ViewOptions options = new ViewOptions();
 
-        if (viewPanel.isLettersViewActive())
-            World.setView("letters");
-        else World.setView("numbers");
+        World.setView(viewPanel.getRequestedView());
 
         options.setShowNumbers(numbersPanel.isNumbersActive());
         options.setShowDots(dotsPanel.isDotsViewActive());
         options.setTwoLetters(signaturePanel.isTwoLettersActive());
-        options.setLettersView(viewPanel.isLettersViewActive());
 
         return options;
     }
