@@ -15,6 +15,8 @@ public class CondTextField extends JTextArea {
 
     private String description;
 
+    private static boolean isNumberingActive = false;
+
     public CondTextField() {
         super(40, 70);
 
@@ -43,7 +45,7 @@ public class CondTextField extends JTextArea {
             conditionalString = conditionalList.get(i).toString() + "\n";
 
 
-            if (options.showNumbers())
+            if (isNumberingActive)
                 conditionalString = i + 1 + ": " + conditionalString;
             conditionalCounter++;
 
@@ -64,7 +66,7 @@ public class CondTextField extends JTextArea {
             String currentLine = "";
 
             for (Conditional currentConditional : currentEqList.getList()) {
-                if (options.showNumbers())
+                if (isNumberingActive)
                     currentLine = currentLine + currentConditional.getNumber() + ": " + currentConditional.toString();
                 else
                     currentLine = currentLine + currentConditional.toString();
@@ -94,5 +96,7 @@ public class CondTextField extends JTextArea {
         return description;
     }
 
-
+    public static void setNumberingActive(boolean numberingActive) {
+        isNumberingActive = numberingActive;
+    }
 }

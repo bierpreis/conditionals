@@ -4,8 +4,6 @@ public class Conditional implements Comparable {
     private final World consequence;
     private final World antecedent;
 
-    private static boolean isNumberingActive;
-
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
 
@@ -72,10 +70,8 @@ public class Conditional implements Comparable {
         antecendString = antecendString.replace("},", "}");
         String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
 
-        if (isNumberingActive)
-            stringToReturn = number + ": " + stringToReturn;
 
-        //this is to calculate whitespaces for colums in cnfc nfc.model.view
+        //this is to calculate whitespaces for correct columns
         int numberOfSpacesToAdd = 0;
         if (stringToReturn.length() < longestConditional)
             numberOfSpacesToAdd = (longestConditional - stringToReturn.length());
@@ -129,10 +125,6 @@ public class Conditional implements Comparable {
 
     public World getConsequence() {
         return consequence;
-    }
-
-    public static void setNumbersActive(boolean areNunbersRequested) {
-        isNumberingActive = areNunbersRequested;
     }
 
 }

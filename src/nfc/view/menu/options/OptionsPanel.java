@@ -2,6 +2,7 @@ package nfc.view.menu.options;
 
 import nfc.model.Conditional;
 import nfc.model.World;
+import nfc.view.textArea.CondTextField;
 import nfc.view.textArea.ViewOptions;
 
 import javax.swing.*;
@@ -34,11 +35,8 @@ public class OptionsPanel extends JPanel {
         World.setView(viewPanel.getRequestedView());
         World.setSignature(signaturePanel.getRequestedSignature());
         Conditional.setSpaceDot(dotsPanel.isDotsViewActive());
-        Conditional.setNumbersActive(numbersPanel.isNumbersActive());
-
-        options.setShowNumbers(numbersPanel.isNumbersActive());
-
-
+        CondTextField.setNumberingActive(numbersPanel.isNumbersActive());
+        
         return options;
     }
 
