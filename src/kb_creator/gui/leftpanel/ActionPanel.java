@@ -51,7 +51,10 @@ public class ActionPanel extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                pauseButton.setText("Continue");
+                if (pauseButton.getText().equals("Pause"))
+                    pauseButton.setText("Continue");
+                else if (pauseButton.getText().equals("Continue"))
+                    pauseButton.setText("Pause");
             }
         }
 
