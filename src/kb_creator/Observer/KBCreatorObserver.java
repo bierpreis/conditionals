@@ -49,5 +49,8 @@ public class KBCreatorObserver implements ActionListener {
             }
 
         }
+
+        if(e.getActionCommand().equals("Pause"))
+            creatorThreadObject.pause();
     }
 }

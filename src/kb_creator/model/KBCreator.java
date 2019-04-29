@@ -12,6 +12,7 @@ public class KBCreator implements Runnable {
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
     private volatile boolean isRunning;
+    private volatile boolean pause;
 
     private volatile double totalNumberOfCalculations;
     private volatile double alreadyFinishedCalculations;
@@ -46,15 +47,15 @@ public class KBCreator implements Runnable {
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
                 alreadyFinishedCalculations++;
+                if (pause)
+                    sleep(500);
+
+                if (stopped)
+                    return;
+
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
-                    if (stopped)
-                        return;
                     knowledgeBaseCounter++;
-                    try {
-                        Thread.sleep(1);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+
                 }
             }
 
@@ -74,7 +75,22 @@ public class KBCreator implements Runnable {
         //todo this test is written in goldszmit/pearl 1996 p 65
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
+
+        //this sleep is placeholder. remove when implement sth useful here
+        try {
+            Thread.sleep(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return true;
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private List<CandidatePair> initOneElementKBs() {
@@ -119,5 +135,9 @@ public class KBCreator implements Runnable {
 
     public void stop() {
         stopped = true;
+    }
+
+    public void pause() {
+        pause = true;
     }
 }
