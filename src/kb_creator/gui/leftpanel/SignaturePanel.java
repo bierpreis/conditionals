@@ -36,7 +36,7 @@ public class SignaturePanel extends JPanel {
 
     }
 
-    //todo: is this needed still??
+    //todo: propably useless. delte?
     class SignatureRadioButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
@@ -44,7 +44,7 @@ public class SignaturePanel extends JPanel {
         }
     }
 
-    public String getOption() {//todo: delete?s
+    public String getOption() {
         return signatureButtonGroup.getSelection().getActionCommand();
     }
 
