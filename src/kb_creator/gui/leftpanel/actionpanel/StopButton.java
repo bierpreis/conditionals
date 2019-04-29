@@ -28,13 +28,23 @@ class StopWarning extends JDialog {
         Container pane = getContentPane();
         pane.setLayout(null); //not sure why this
 
+
+        ButtonGroup buttonGroup = new ButtonGroup();
         stopButton = new JButton("Stop");
-        stopButton.setBounds(0, 50, 50, 50);
+        stopButton.setBounds(0, 50, 100, 50);
+        buttonGroup.add(stopButton);
         pane.add(stopButton);
 
         continueButton = new JButton("Continue");
-        continueButton.setBounds(100, 50, 50, 50);
+        continueButton.setBounds(100, 50, 100, 50);
+        buttonGroup.add(continueButton);
         pane.add(continueButton);
+
+        //todo: why this doenst work?
+        JPanel questionPanel = new JPanel();
+        questionPanel.setLayout(new FlowLayout());
+        questionPanel.add(new JLabel("Are you sure you want to stop creating KBs?"));
+        add(questionPanel);
 
 
         setVisible(true);
