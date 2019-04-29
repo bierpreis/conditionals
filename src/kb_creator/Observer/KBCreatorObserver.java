@@ -40,7 +40,6 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand().equals("Stop")) {
 
             try {
-                //todo: stopped works, but doenst kill thread so it starts flickering when new thread starts later. maybe use this for pause function?
                 creatorThreadObject.stop();
                 statusThreadObject.halt();
             } catch (Exception exep) {

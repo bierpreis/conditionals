@@ -51,9 +51,9 @@ public class KBCreator implements Runnable {
                     sleep(500);
                     continue;
                 }
-
+                //todo: status stopped when stopped
                 if (stopped)
-                    return;
+                    break;
 
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
                     knowledgeBaseCounter++;

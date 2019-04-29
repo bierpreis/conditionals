@@ -32,14 +32,30 @@ public class ActionPanel extends JPanel {
     private class PauseButton extends JButton implements ActionListener {
         PauseButton() {
             setText("Pause");
+            addActionListener(new PauseButtonListener(this));
         }
 
         @Override
-        //todo: add not implement listener?
+        //todo: switch to pause after continued
         public void actionPerformed(ActionEvent e) {
             System.out.println("clicked!");
         }
 
+
+        class PauseButtonListener implements ActionListener {
+            PauseButton pauseButton;
+
+            PauseButtonListener(PauseButton pauseButton) {
+                this.pauseButton = pauseButton;
+            }
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pauseButton.setText("Continue");
+            }
+        }
+
     }
+
 
 }
