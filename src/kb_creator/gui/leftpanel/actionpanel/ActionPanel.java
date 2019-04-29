@@ -21,15 +21,13 @@ public class ActionPanel extends JPanel {
         add(pauseButton);
 
         //todo: add waring before stop
-        JButton stopButton = new JButton("Stop");
+        StopButton stopButton = new StopButton();
         stopButton.addActionListener(observer);
         add(stopButton);
 
 
         revalidate();
     }
-
-
 
 
 }
