@@ -17,6 +17,7 @@ public class KBCreator implements Runnable {
     private volatile double alreadyFinishedCalculations;
 
     private KBCreatorObserver observer;
+    private volatile boolean stopped;
 
     public KBCreator(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
         this.observer = observer;
@@ -26,6 +27,7 @@ public class KBCreator implements Runnable {
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
         isRunning = false;
+        stopped = false;
 
     }
 
@@ -45,6 +47,8 @@ public class KBCreator implements Runnable {
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
                 alreadyFinishedCalculations++;
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
+                    if (stopped)
+                        return;
                     knowledgeBaseCounter++;
                     try {
                         Thread.sleep(1);
@@ -111,5 +115,9 @@ public class KBCreator implements Runnable {
         if (totalNumberOfCalculations != 0)
             return 100 * (alreadyFinishedCalculations / totalNumberOfCalculations);
         else return 0;
+    }
+
+    public void stop() {
+        stopped = true;
     }
 }

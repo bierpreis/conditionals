@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
     private StatusThread statusThreadObject;
+    private KBCreator creatorThreadObject;
 
 
     public KBCreatorObserver() {
@@ -25,13 +26,13 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand() == "Start") {
 
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-            KBCreator creatorRunnable = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
+            creatorThreadObject = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
 
 
-            Thread creatorThread = new Thread(creatorRunnable);
+            Thread creatorThread = new Thread(creatorThreadObject);
             creatorThread.start();
 
-            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorRunnable));
+            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
             statusThread.start();
 
         }
@@ -39,10 +40,11 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand().equals("Stop")) {
 
             try {
-                //todo: stop creator thread too!
+                //todo: stopped works, but doenst kill thread so it starts flickering when new thread starts later. maybe use this for pause function?
+                creatorThreadObject.stop();
                 statusThreadObject.halt();
             } catch (Exception exep) {
-                System.out.println("tried to stop thread, but no thread running");
+                exep.printStackTrace();
 
             }
 
