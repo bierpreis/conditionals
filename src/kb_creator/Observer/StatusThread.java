@@ -14,7 +14,7 @@ public class StatusThread implements Runnable {
 
     }
 
-
+    //todo: show status when creating nfc too?s
     @Override
     public void run() {
         while (creatorThread.isRunning()) {
