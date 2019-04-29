@@ -18,7 +18,6 @@ public class KBCreatorObserver implements ActionListener {
 
 
     }
-    //todo: connect thread and statuspanel
 
     @Override
 
