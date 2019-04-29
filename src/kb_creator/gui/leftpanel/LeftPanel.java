@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
+import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
 
