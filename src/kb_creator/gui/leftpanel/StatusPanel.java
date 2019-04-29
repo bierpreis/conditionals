@@ -36,8 +36,7 @@ public class StatusPanel extends JPanel {
         progressLabel.setText("Total Progress: " + String.format("%6.2f", progressInpercent) + "%");
 
     }
-
-    //todo: maybe later show progress in kb/sec to compare diffrent solutions?
+    
 
 
 }
