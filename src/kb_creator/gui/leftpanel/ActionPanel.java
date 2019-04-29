@@ -16,7 +16,7 @@ public class ActionPanel extends JPanel {
         JButton startButton = new JButton("Start");
         startButton.addActionListener(observer);
         add(startButton);
-
+        //todo: status is switching when pause. fix this. but where?
         PauseButton pauseButton = new PauseButton();
         pauseButton.addActionListener(observer);
         add(pauseButton);
@@ -29,16 +29,10 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
-    private class PauseButton extends JButton implements ActionListener {
+    private class PauseButton extends JButton {
         PauseButton() {
             setText("Pause");
             addActionListener(new PauseButtonListener(this));
-        }
-
-        @Override
-        //todo: switch to pause after continued
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("clicked!");
         }
 
 
