@@ -39,7 +39,7 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand().equals("Stop")) {
 
             try {
-
+                //todo: stop creator thread too!
                 statusThreadObject.halt();
             } catch (Exception exep) {
                 System.out.println("tried to stop thread, but no thread running");
