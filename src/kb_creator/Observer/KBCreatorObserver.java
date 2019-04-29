@@ -48,7 +48,7 @@ public class KBCreatorObserver implements ActionListener {
             }
 
         }
-
+        //todo: size of the button switches with the two captions. fix this size.
         if (e.getActionCommand().equals("Pause"))
             try {
                 creatorThreadObject.pause(true);
