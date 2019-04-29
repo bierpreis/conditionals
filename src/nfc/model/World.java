@@ -7,7 +7,7 @@ public class World implements Comparable {
 
     private final List<Integer> worlds;
 
-    private static String view;
+    private static String view = "numbers"; //this default is for kbcreator. maybe delete later
     private static String signature;
 
 
