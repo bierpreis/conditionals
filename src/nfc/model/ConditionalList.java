@@ -54,12 +54,11 @@ public class ConditionalList implements Comparable {
     }
 
     public void setNumbersToEquivalentConditionals(int firstNumber) {
-        int highestConditionalNumber = 0;
         for (int i = 1; i < conditionalList.size(); i++) {
-            conditionalList.get(i).setNumber(firstNumber + i);
-            highestConditionalNumber++;
+            conditionalList.get(i).setNumber(firstNumber + i -1);
+            firstNumber++;
         }
-        this.highestConditionalNumber = highestConditionalNumber;
+        highestConditionalNumber = firstNumber; //todo: rename?
     }
 
     public int getHighestConditionalNumber() {
