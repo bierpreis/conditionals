@@ -46,7 +46,7 @@ public class NfcCreator {
 
 
         Collections.sort(basicConditionalList);
-        //todo: is this useful?
+        //this simple numbering is just for nfc view and not really useful
         int counter = 1;
         for (Conditional conditional : basicConditionalList) {
             conditional.setNumber(counter);
