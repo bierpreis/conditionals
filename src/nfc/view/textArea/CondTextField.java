@@ -35,7 +35,7 @@ public class CondTextField extends JTextArea {
         description = numberOfWorlds + numberCounter;
     }
 
-    public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
+    public void printConditionals(List<Conditional> conditionalList) {
 
         setText("");
         String conditionalString = "";
@@ -57,7 +57,7 @@ public class CondTextField extends JTextArea {
 
     }
 
-    public void printCnfcEq(List<ConditionalList> eqClassList, ViewOptions options) {
+    public void printCnfcEq(List<ConditionalList> eqClassList) {
 
         int numberOfConditionals = 0;
         setText("");

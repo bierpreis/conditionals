@@ -28,16 +28,14 @@ public class OptionsPanel extends JPanel {
         add(dotsPanel = new DotsPanel());
     }
 
-    //todo: unify and make void
-    public ViewOptions applySelectedOptions() {
-        ViewOptions options = new ViewOptions();
+
+    public void applySelectedOptions() {
 
         World.setView(viewPanel.getRequestedView());
         World.setSignature(signaturePanel.getRequestedSignature());
         Conditional.setSpaceDot(dotsPanel.isDotsViewActive());
         CondTextField.setNumberingActive(numbersPanel.isNumbersActive());
-        
-        return options;
+
     }
 
     public String getSignature() {

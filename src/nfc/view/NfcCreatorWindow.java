@@ -3,7 +3,6 @@ package nfc.view;
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.MenuPanel;
 import nfc.view.textArea.CondPanel;
-import nfc.view.textArea.ViewOptions;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,11 +33,12 @@ public class NfcCreatorWindow {
         return condPanel;
     }
 
-    public ViewOptions getOptions() {
-        return menuPanel.getOptions();
-    }
 
     public String getSignature(){
         return menuPanel.getSignature();
+    }
+
+    public void applySelectedOptions(){
+        menuPanel.applySelectedOptions();
     }
 }

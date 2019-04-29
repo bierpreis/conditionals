@@ -2,7 +2,6 @@ package nfc.view.menu;
 
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.options.OptionsPanel;
-import nfc.view.textArea.ViewOptions;
 
 
 import javax.swing.*;
@@ -20,11 +19,12 @@ public class MenuPanel extends JPanel {
         add(new StartPanel(observer), BorderLayout.SOUTH);
     }
 
-    public ViewOptions getOptions() {
-        return optionsPanel.applySelectedOptions();
+
+    public String getSignature() {
+        return optionsPanel.getSignature();
     }
 
-    public String getSignature(){
-        return optionsPanel.getSignature();
+    public void applySelectedOptions() {
+        optionsPanel.applySelectedOptions();
     }
 }

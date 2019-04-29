@@ -4,8 +4,6 @@ package nfc.controller;
 import nfc.model.NfcCreator;
 import nfc.view.NfcCreatorWindow;
 import nfc.view.textArea.CondPanel;
-import nfc.view.textArea.CondTextField;
-import nfc.view.textArea.ViewOptions;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,16 +26,16 @@ public class NfcCreatorObserver implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
 
-        ViewOptions options = mainWindow.getOptions();
+        mainWindow.applySelectedOptions();
         switch (e.getActionCommand()) {
             case "NFC":
-                condPanel.printConditionals(nfcCreator.getNfc(), options);
+                condPanel.printConditionals(nfcCreator.getNfc());
                 break;
             case "CNFCEQ":
-                condPanel.printCnfcEq(nfcCreator.getCnfcEq(), options);
+                condPanel.printCnfcEq(nfcCreator.getCnfcEq());
                 break;
             case "CNFC":
-                condPanel.printConditionals(nfcCreator.getCnfc(), options);
+                condPanel.printConditionals(nfcCreator.getCnfc());
                 break;
 
         }

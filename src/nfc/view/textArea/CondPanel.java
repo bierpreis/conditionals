@@ -32,23 +32,23 @@ public class CondPanel extends JPanel {
     }
 
 
-    public void printConditionals(List<Conditional> conditionalList, ViewOptions options) {
+    public void printConditionals(List<Conditional> conditionalList) {
         condTextField.setText("");
 
 
         numberOfConditionalsLabel.setText(Integer.toString(conditionalList.size()));
         scrollPane.setViewportView(condTextField);
 
-        condTextField.printConditionals(conditionalList, options);
+        condTextField.printConditionals(conditionalList);
 
         infoPanel.printInfo(condTextField.getDescription());
         revalidate();
     }
 
-    public void printCnfcEq(List<ConditionalList> conditionalLists, ViewOptions options) {
+    public void printCnfcEq(List<ConditionalList> conditionalLists) {
         condTextField.setText("");
 
-        condTextField.printCnfcEq(conditionalLists, options);
+        condTextField.printCnfcEq(conditionalLists);
 
         infoPanel.printInfo(condTextField.getDescription());
         revalidate();
