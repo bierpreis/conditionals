@@ -5,7 +5,6 @@ import kb_creator.model.KBCreator;
 
 public class StatusThread implements Runnable {
     private InfoPanel infoPanel;
-    private boolean running = true;
     private KBCreator creatorThread;
 
     public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
@@ -18,6 +17,7 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (creatorThread.isRunning()) {
+            System.out.println(System.currentTimeMillis());
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showIfStillRunning(creatorThread.isRunning());
@@ -29,9 +29,5 @@ public class StatusThread implements Runnable {
             }
         }
 
-    }
-
-    public void halt() {
-        running = false;
     }
 }

@@ -51,7 +51,6 @@ public class ActionPanel extends JPanel {
                     pauseButton.setText("Continue");
                 else if (pauseButton.getText().equals("Continue"))
                     pauseButton.setText("Pause");
-                System.out.println("button size: " + pauseButton.getSize());
             }
         }
 

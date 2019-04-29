@@ -41,7 +41,7 @@ public class KBCreatorObserver implements ActionListener {
 
             try {
                 creatorThreadObject.stop();
-                statusThreadObject.halt();
+                //statusThreadObject.halt();
             } catch (Exception exep) {
                 System.out.println("Click on Stop Button Ignored cause no Thread running.");
 
