@@ -7,9 +7,7 @@ public class World implements Comparable {
 
     private final List<Integer> worlds;
 
-
-    //todo: unify with enums
-    private static String view = "numbers";
+    private static String view;
     private static String signature;
 
 

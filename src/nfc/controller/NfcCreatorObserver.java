@@ -24,9 +24,9 @@ public class NfcCreatorObserver implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        mainWindow.applySelectedOptions();
         NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
 
-        mainWindow.applySelectedOptions();
         switch (e.getActionCommand()) {
             case "NFC":
                 condPanel.printConditionals(nfcCreator.getNfc());

@@ -29,7 +29,6 @@ public class OptionsPanel extends JPanel {
 
 
     public void applySelectedOptions() {
-
         World.setView(viewPanel.getRequestedView());
         World.setSignature(signaturePanel.getRequestedSignature());
         Conditional.setSpaceDot(dotsPanel.isDotsViewActive());
