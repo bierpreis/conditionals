@@ -139,7 +139,7 @@ public class KBCreator implements Runnable {
         stopped = true;
     }
 
-    public void pause() {
-        pause = true;
+    public void pause(boolean pause) {
+        this.pause = pause;
     }
 }
