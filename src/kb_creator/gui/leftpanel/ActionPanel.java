@@ -15,7 +15,7 @@ public class ActionPanel extends JPanel {
         startButton.addActionListener(observer);
         add(startButton);
 
-        JButton pauseButton = new JButton("Pause");
+        PauseButton pauseButton = new PauseButton();
         pauseButton.addActionListener(observer);
         add(pauseButton);
 
@@ -27,4 +27,9 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
+    private class PauseButton extends JButton {
+        PauseButton() {
+            setText("Pause");
+        }
+    }
 }
