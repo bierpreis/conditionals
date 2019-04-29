@@ -44,7 +44,7 @@ public class KBCreatorObserver implements ActionListener {
                 creatorThreadObject.stop();
                 statusThreadObject.halt();
             } catch (Exception exep) {
-                exep.printStackTrace();
+                System.out.println("Click on Stop Button Ignored cause no Thread running.");
 
             }
 
@@ -54,7 +54,7 @@ public class KBCreatorObserver implements ActionListener {
             try {
                 creatorThreadObject.pause();
             } catch (NullPointerException np) {
-                System.out.println("Click on Pause Button Ignored cause no creator Thread is running");
+                System.out.println("Click on Pause Button Ignored cause no creator Thread is running.");
             }
     }
 }
