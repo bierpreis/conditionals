@@ -89,12 +89,10 @@ public class NfcCreator {
             conditionalList.setNumberToFirstConditional(counter);
             counter++;
         }
-        System.out.println("counter after first elements: " + counter);
         for (ConditionalList conditionalList : cNfc) {
             conditionalList.setNumbersToEquivalentConditionals(counter);
             counter = conditionalList.getHighestConditionalNumber();
         }
-        System.out.println("counter after numbering: " + counter);
         return cNfc;
     }
 
