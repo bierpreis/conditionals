@@ -3,7 +3,6 @@ package nfc.view.menu.options;
 import nfc.model.Conditional;
 import nfc.model.World;
 import nfc.view.textArea.CondTextField;
-import nfc.view.textArea.ViewOptions;
 
 import javax.swing.*;
 
