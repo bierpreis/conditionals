@@ -4,6 +4,7 @@ package kb_creator.gui.leftpanel;
 import kb_creator.Observer.KBCreatorObserver;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,6 +32,7 @@ public class ActionPanel extends JPanel {
 
     private class PauseButton extends JButton {
         PauseButton() {
+            this.setPreferredSize(new Dimension(97, 25)); //to avoid switching size when changing label
             setText("Pause");
             addActionListener(new PauseButtonListener(this));
         }
@@ -49,6 +51,7 @@ public class ActionPanel extends JPanel {
                     pauseButton.setText("Continue");
                 else if (pauseButton.getText().equals("Continue"))
                     pauseButton.setText("Pause");
+                System.out.println("button size: " + pauseButton.getSize());
             }
         }
 
