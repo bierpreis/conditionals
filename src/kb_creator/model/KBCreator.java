@@ -47,8 +47,10 @@ public class KBCreator implements Runnable {
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
                 alreadyFinishedCalculations++;
-                if (pause)
+                if (pause) {
                     sleep(500);
+                    continue;
+                }
 
                 if (stopped)
                     return;
