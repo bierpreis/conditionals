@@ -32,7 +32,7 @@ public class ActionPanel extends JPanel {
 
     private class PauseButton extends JButton {
         PauseButton() {
-            this.setPreferredSize(new Dimension(97, 25)); //to avoid switching size when changing label
+            this.setPreferredSize(new Dimension(96, 25)); //to avoid switching size when changing label
             setText("Pause");
             addActionListener(new PauseButtonListener(this));
         }
