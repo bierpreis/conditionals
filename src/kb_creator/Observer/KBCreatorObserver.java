@@ -50,7 +50,7 @@ public class KBCreatorObserver implements ActionListener {
 
         }
 
-        if(e.getActionCommand().equals("Pause"))
-            creatorThreadObject.pause();
+        if (e.getActionCommand().equals("Pause"))
+            creatorThreadObject.pause(); //todo: null pointer if this is clicked and no thread exists. probably the same with above
     }
 }

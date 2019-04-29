@@ -4,6 +4,8 @@ package kb_creator.gui.leftpanel;
 import kb_creator.Observer.KBCreatorObserver;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ActionPanel extends JPanel {
 
@@ -27,9 +29,15 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
-    private class PauseButton extends JButton {
+    private class PauseButton extends JButton implements ActionListener {
         PauseButton() {
             setText("Pause");
+        }
+
+        @Override
+
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("clicked!");
         }
     }
 }
