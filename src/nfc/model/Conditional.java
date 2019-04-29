@@ -52,12 +52,12 @@ public class Conditional implements Comparable {
         throw new RuntimeException("Comparing Conditionals failed!");
     }
 
-    //todo: what is this?? typo in line 1
-    private int compareWorldsElements(World firstWotld, World secondWorld) {
-        for (int i = 0; i < firstWotld.getSize(); i++) {
-            if (firstWotld.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
+
+    private int compareWorldsElements(World firstWorld, World secondWorld) {
+        for (int i = 0; i < firstWorld.getSize(); i++) {
+            if (firstWorld.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
                 return -1;
-            if (firstWotld.getWorldsList().get(i) < secondWorld.getWorldsList().get(i))
+            if (firstWorld.getWorldsList().get(i) < secondWorld.getWorldsList().get(i))
                 return 1;
 
         }
