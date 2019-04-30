@@ -136,12 +136,12 @@ public class KBCreator implements Runnable {
     }
 
     public void pause(boolean pause) {
-        if (status.equals(Status.RUNNING)) {
-            if (pause)
-                status = Status.PAUSE;
-            if (!pause)
-                status = Status.PAUSE;
-        }
+
+        if (pause)
+            status = Status.PAUSE;
+        if (!pause)
+            status = Status.RUNNING;
+
     }
 
 }

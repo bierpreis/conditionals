@@ -14,7 +14,7 @@ public class ActionPanel extends JPanel {
         JButton startButton = new JButton("Start");
         startButton.addActionListener(observer);
         add(startButton);
-        //todo: make pause button work
+
         PauseButton pauseButton = new PauseButton();
         pauseButton.addActionListener(observer);
         add(pauseButton);

@@ -31,7 +31,7 @@ public class KBCreatorObserver implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
-
+        System.out.println("command: " + e.getActionCommand());
         if (e.getActionCommand().equals("Start")) {
 
 
@@ -72,5 +72,6 @@ public class KBCreatorObserver implements ActionListener {
             } catch (NullPointerException np) {
                 System.out.println("Click on Pause Button Ignored cause no creator Thread is running.");
             }
+
     }
 }
