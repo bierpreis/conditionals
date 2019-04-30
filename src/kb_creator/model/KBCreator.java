@@ -1,6 +1,7 @@
 package kb_creator.model;
 
 import kb_creator.Observer.KBCreatorObserver;
+import kb_creator.Observer.Status;
 import nfc.model.Conditional;
 
 import java.util.LinkedList;
@@ -11,14 +12,19 @@ public class KBCreator implements Runnable {
     private List<Conditional> cNfc;
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
-    private volatile boolean isRunning;
+
+    //todo: make to status
     private volatile boolean pause;
 
     private volatile double totalNumberOfCalculations;
     private volatile double alreadyFinishedCalculations;
 
     private KBCreatorObserver observer;
+
+    //todo: delete
     private volatile boolean stopped;
+
+    private volatile Status status;
 
     public KBCreator(KBCreatorObserver observer) {
         this.observer = observer;
@@ -26,9 +32,10 @@ public class KBCreator implements Runnable {
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
-        isRunning = false;
+
         stopped = false;
 
+        status = Status.NOT_STARTED;
     }
 
     public void setConditionals(List<Conditional> nfc, List<Conditional> cNfc) {
@@ -38,7 +45,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
-        isRunning = true;
+        status = Status.RUNNING;
         //todo: check if this list is correct. but how?
         List<CandidatePair> candidatePairs = initOneElementKBs();
 
@@ -72,7 +79,7 @@ public class KBCreator implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        isRunning = false;
+        status = Status.FINISHED;
 
 
     }
@@ -129,8 +136,8 @@ public class KBCreator implements Runnable {
         return candidatePairAmount;
     }
 
-    public boolean isRunning() {
-        return isRunning;
+    public Status getStatus() {
+        return status;
     }
 
     public double getProgressInPercent() {

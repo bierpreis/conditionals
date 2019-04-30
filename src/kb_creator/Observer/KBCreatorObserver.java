@@ -32,9 +32,8 @@ public class KBCreatorObserver implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getActionCommand() == "Start") {
+        if (e.getActionCommand().equals("Start")) {
 
-            //todo: fix null pointer when status thread running and creator not started yet
 
             Thread creatorThread = new Thread(creatorThreadObject);
 

@@ -19,10 +19,9 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (!creatorThread.isStopped()) {
-            infoPanel.showStatus(status);
+            infoPanel.showStatus(creatorThread.getStatus());
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
-            infoPanel.showIfStillRunning(creatorThread.isRunning());
             infoPanel.showProgress(creatorThread.getProgressInPercent());
             try {
                 Thread.sleep(500);

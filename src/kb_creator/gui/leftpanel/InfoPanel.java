@@ -20,10 +20,6 @@ public class InfoPanel extends JPanel {
 
     }
 
-    public void showIfStillRunning(boolean isRuning) {
-        statusPanel.showIfStillRunning(isRuning);
-    }
-
     public void showProgress(double progressInPercent) {
         statusPanel.showProgress(progressInPercent);
     }
