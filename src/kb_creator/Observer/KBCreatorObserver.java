@@ -9,15 +9,23 @@ import java.awt.event.ActionListener;
 
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
+
     private StatusThread statusThreadObject;
     private KBCreator creatorThreadObject;
+
+    Thread statusThread;
 
 
     public KBCreatorObserver() {
 
         mainWindow = new KBMainWindow(this);
 
+        creatorThreadObject = new KBCreator(this);
+        statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
+        statusThread = new Thread(statusThreadObject);
+
+        statusThread.start();
     }
 
     @Override
@@ -27,14 +35,12 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand() == "Start") {
 
             //todo: fix null pointer when status thread running and creator not started yet
-            creatorThreadObject = new KBCreator(this);
+
             Thread creatorThread = new Thread(creatorThreadObject);
 
-            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
-            statusThread.start();
-            System.out.println("status Thread started");
+
             statusThreadObject.setStatus(Status.CREATING_CONDITIONALS);
-            System.out.println("crating ..");
+
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
             creatorThreadObject.setConditionals(nfcCreator.getNfc(), nfcCreator.getCnfc());
 
