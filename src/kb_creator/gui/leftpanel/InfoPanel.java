@@ -1,5 +1,7 @@
 package kb_creator.gui.leftpanel;
 
+import kb_creator.Observer.Status;
+
 import javax.swing.*;
 
 public class InfoPanel extends JPanel {
@@ -34,7 +36,7 @@ public class InfoPanel extends JPanel {
         sizePanel.showKBs(kbAmount);
     }
 
-    public void showStatus(String status){
+    public void showStatus(Status status){
         statusPanel.showStatus(status);
     }
 }

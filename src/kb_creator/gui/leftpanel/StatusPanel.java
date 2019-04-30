@@ -1,5 +1,7 @@
 package kb_creator.gui.leftpanel;
 
+import kb_creator.Observer.Status;
+
 import javax.swing.*;
 
 public class StatusPanel extends JPanel {
@@ -40,8 +42,8 @@ public class StatusPanel extends JPanel {
 
     }
 
-    public void showStatus(String status) {
-        statusLabel.setText("Status: " + status);
+    public void showStatus(Status status) {
+        statusLabel.setText("Status: " + status.toString());
     }
 
 

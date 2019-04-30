@@ -6,13 +6,13 @@ import kb_creator.model.KBCreator;
 public class StatusThread implements Runnable {
     private InfoPanel infoPanel;
     private KBCreator creatorThread;
-    private volatile String status;
+    private volatile Status status;
 
     public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
         System.out.println("status thread created");
         this.infoPanel = infoPanel;
         this.creatorThread = creatorThread;
-        status = "started";
+        status = Status.NOT_STARTED;
     }
 
     //todo: show status when creating nfc too? problem: this thread is started after nfc gets created. fix this?
@@ -33,7 +33,7 @@ public class StatusThread implements Runnable {
 
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 }
