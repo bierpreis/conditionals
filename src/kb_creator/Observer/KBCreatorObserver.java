@@ -6,6 +6,7 @@ import nfc.model.NfcCreator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
@@ -27,13 +28,15 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand() == "Start") {
 
             //todo: fix null pointer when status thread running and creator not started yet
+            creatorThreadObject = new KBCreator(this);
             Thread creatorThread = new Thread(creatorThreadObject);
+
             Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
             statusThread.start();
             statusThreadObject.setStatus("Creating Conditionals");
 
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-            creatorThreadObject = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
+            creatorThreadObject.setConditionals(nfcCreator.getNfc(), nfcCreator.getCnfc());
 
             statusThreadObject.setStatus("Creating Knowledge Bases");
             creatorThread.start();

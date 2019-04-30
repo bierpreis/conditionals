@@ -20,16 +20,20 @@ public class KBCreator implements Runnable {
     private KBCreatorObserver observer;
     private volatile boolean stopped;
 
-    public KBCreator(KBCreatorObserver observer, List<Conditional> nfc, List<Conditional> cNfc) {
+    public KBCreator(KBCreatorObserver observer) {
         this.observer = observer;
-        this.nfc = nfc;
-        this.cNfc = cNfc;
+
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
         isRunning = false;
         stopped = false;
 
+    }
+
+    public void setConditionals(List<Conditional> nfc, List<Conditional> cNfc) {
+        this.nfc = nfc;
+        this.cNfc = cNfc;
     }
 
     @Override
@@ -144,6 +148,6 @@ public class KBCreator implements Runnable {
     }
 
     public boolean isStopped() {
-        return isStopped();
+        return stopped;
     }
 }
