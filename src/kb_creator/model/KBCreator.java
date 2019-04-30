@@ -13,9 +13,6 @@ public class KBCreator implements Runnable {
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
 
-    //todo: make to status
-    private volatile boolean pause;
-
     private volatile double totalNumberOfCalculations;
     private volatile double alreadyFinishedCalculations;
 
@@ -52,23 +49,21 @@ public class KBCreator implements Runnable {
 
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
-                alreadyFinishedCalculations++;
-                if (pause) {
+
+                if (status.equals(Status.PAUSE)) {
                     sleep(500);
                     continue;
-                }
-
-                if (status.equals(Status.STOPPED))
+                } else if (status.equals(Status.STOPPED))
                     break;
-
-                if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
+                else if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
                     knowledgeBaseCounter++;
-
+                    alreadyFinishedCalculations++;
                 }
             }
 
 
         }
+        //todo: is this still needed?
         try {
             Thread.sleep(1000); //this is to make sure status thread wont stop too early
         } catch (InterruptedException e) {
@@ -146,7 +141,12 @@ public class KBCreator implements Runnable {
     }
 
     public void pause(boolean pause) {
-        this.pause = pause;
+        if (status.equals(Status.RUNNING)) {
+            if (pause)
+                status = Status.PAUSE;
+            if (!pause)
+                status = Status.PAUSE;
+        }
     }
 
 }
