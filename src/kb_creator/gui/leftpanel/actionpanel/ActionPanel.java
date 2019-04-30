@@ -10,7 +10,6 @@ public class ActionPanel extends JPanel {
 
 
     public ActionPanel(KBCreatorObserver observer) {
-        setBorder(BorderFactory.createTitledBorder("Actions"));
 
         JButton startButton = new JButton("Start");
         startButton.addActionListener(observer);
@@ -24,6 +23,8 @@ public class ActionPanel extends JPanel {
         StopButton stopButton = new StopButton();
         stopButton.addActionListener(observer);
         add(stopButton);
+
+
 
 
         revalidate();

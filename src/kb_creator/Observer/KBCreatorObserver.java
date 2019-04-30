@@ -23,6 +23,7 @@ public class KBCreatorObserver implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
+        System.out.println("command:" + e.getActionCommand());
         if (e.getActionCommand() == "Start") {
 
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
@@ -38,6 +39,8 @@ public class KBCreatorObserver implements ActionListener {
         }
 
         if (e.getActionCommand().equals("Stop")) {
+
+
 
             try {
                 creatorThreadObject.stop();

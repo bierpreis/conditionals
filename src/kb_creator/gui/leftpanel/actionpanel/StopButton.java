@@ -13,9 +13,13 @@ public class StopButton extends JButton {
         setText("Stop");
 
         addActionListener(new StopButtonListener());
+
+
     }
 
     private class StopButtonListener implements ActionListener {
+
+
         @Override
         public void actionPerformed(ActionEvent e) {
 
@@ -25,9 +29,9 @@ public class StopButton extends JButton {
             int input = JOptionPane.showConfirmDialog(null, "Do you like bacon?", "lol", JOptionPane.YES_NO_OPTION);
 
             if (input == 1)
-                System.out.println("no");
+                setActionCommand("Nothing");
             if (input == 0)
-                System.out.println("yes");
+                setActionCommand("Stoppp");
 
         }
     }
