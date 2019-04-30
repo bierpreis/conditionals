@@ -33,4 +33,8 @@ public class InfoPanel extends JPanel {
     public void showKBAmount(int kbAmount) {
         sizePanel.showKBs(kbAmount);
     }
+
+    public void showStatus(String status){
+        statusPanel.showStatus(status);
+    }
 }

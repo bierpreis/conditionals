@@ -6,6 +6,7 @@ public class StatusPanel extends JPanel {
 
     private JLabel isRunningLabel;
     private JLabel progressLabel;
+    private JLabel statusLabel;
 
 
     public StatusPanel() {
@@ -20,6 +21,9 @@ public class StatusPanel extends JPanel {
 
         progressLabel = new JLabel();
         vBox.add(progressLabel);
+
+        statusLabel = new JLabel();
+        vBox.add(statusLabel);
 
     }
 
@@ -36,6 +40,9 @@ public class StatusPanel extends JPanel {
 
     }
 
+    public void showStatus(String status) {
+        statusLabel.setText("Status: " + status);
+    }
 
 
 }

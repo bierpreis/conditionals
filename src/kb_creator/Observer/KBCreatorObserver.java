@@ -25,7 +25,10 @@ public class KBCreatorObserver implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         System.out.println("command:" + e.getActionCommand());
         if (e.getActionCommand() == "Start") {
-
+            //todo: fix null pointer when status thread running and creator not started yet
+            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
+            statusThread.start();
+            statusThreadObject.setStatus("Creating Conditionals");
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
             creatorThreadObject = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
 
@@ -33,8 +36,7 @@ public class KBCreatorObserver implements ActionListener {
             Thread creatorThread = new Thread(creatorThreadObject);
             creatorThread.start();
 
-            Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
-            statusThread.start();
+
 
         }
 
