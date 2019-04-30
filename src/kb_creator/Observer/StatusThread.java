@@ -9,12 +9,10 @@ public class StatusThread implements Runnable {
 
 
     public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
-        System.out.println("status thread created");
         this.infoPanel = infoPanel;
         this.creatorThread = creatorThread;
     }
 
-    //todo: show status when creating nfc too? problem: this thread is started after nfc gets created. fix this?
     @Override
     public void run() {
         while (!creatorThread.getStatus().equals(Status.STOPPED)) {
@@ -23,7 +21,7 @@ public class StatusThread implements Runnable {
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showProgress(creatorThread.getProgressInPercent());
             try {
-                Thread.sleep(300);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
