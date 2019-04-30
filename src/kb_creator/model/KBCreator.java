@@ -64,12 +64,6 @@ public class KBCreator implements Runnable {
 
 
         }
-        //todo: is this still needed?
-        try {
-            Thread.sleep(1000); //this is to make sure status thread wont stop too early
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         status = Status.FINISHED;
 
 
