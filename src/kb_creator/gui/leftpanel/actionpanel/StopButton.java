@@ -27,14 +27,18 @@ public class StopButton extends JButton {
 
 
 class StopWarning {
+    JButton stopButton;
+    JButton continueButton;
+
+    String buttonAnswer;
+
     StopWarning() {
 
 
     }
 
     public boolean askIfStop() {
-        JButton stopButton;
-        JButton continueButton;
+
 
         JDialog dialog = new JDialog();
         dialog.setLayout(new BorderLayout());
@@ -60,8 +64,6 @@ class StopWarning {
 
         dialog.add(buttonPanel, BorderLayout.SOUTH);
 
-
-        //todo: why this doenst work?
         JPanel questionPanel = new JPanel();
         questionPanel.setLayout(new FlowLayout());
         questionPanel.add(new JLabel("Are you sure you want to stop creating KBs?"));
@@ -71,8 +73,15 @@ class StopWarning {
         dialog.pack();
         dialog.setVisible(true);
 
-        return true;
-
+        int reply = JOptionPane.showConfirmDialog(null, "message", "title", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "HELLO");
+            return true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "GOODBYE");
+            return false;
+        }
     }
 
     private class DialogListener implements ActionListener {
@@ -80,11 +89,9 @@ class StopWarning {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getActionCommand().equals("Continue"))
-                System.out.println("Continue!");
 
-            if (e.getActionCommand().equals("Stop"))
-                System.out.println("Stop");
+            buttonAnswer = e.getActionCommand();
+
         }
     }
 }
