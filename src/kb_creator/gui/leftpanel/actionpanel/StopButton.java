@@ -24,8 +24,13 @@ public class StopButton extends JButton {
             UIManager.put("OptionPane.noButtonText", "No");
 
             JOptionPane.setDefaultLocale(Locale.UK);
-            int input = JOptionPane.showConfirmDialog(null, "Do you like bacon?", "lol",  JOptionPane.YES_NO_OPTION);
-            System.out.println("input: " + input);
+            int input = JOptionPane.showConfirmDialog(null, "Do you like bacon?", "lol", JOptionPane.YES_NO_OPTION);
+
+            if (input == 1)
+                System.out.println("no");
+            if (input == 2)
+                System.out.println("yes");
+
         }
     }
 }
