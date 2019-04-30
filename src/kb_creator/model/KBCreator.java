@@ -30,6 +30,7 @@ public class KBCreator implements Runnable {
         status = Status.NOT_STARTED;
     }
 
+    //todo: put nfc creator here?
     public void setConditionals(List<Conditional> nfc, List<Conditional> cNfc) {
         this.nfc = nfc;
         this.cNfc = cNfc;
