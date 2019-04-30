@@ -23,25 +23,25 @@ public class KBCreatorObserver implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println("command:" + e.getActionCommand());
+
         if (e.getActionCommand() == "Start") {
+
             //todo: fix null pointer when status thread running and creator not started yet
+            Thread creatorThread = new Thread(creatorThreadObject);
             Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
             statusThread.start();
             statusThreadObject.setStatus("Creating Conditionals");
+
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
             creatorThreadObject = new KBCreator(this, nfcCreator.getNfc(), nfcCreator.getCnfc());
 
-
-            Thread creatorThread = new Thread(creatorThreadObject);
+            statusThreadObject.setStatus("Creating Knowledge Bases");
             creatorThread.start();
-
 
 
         }
 
         if (e.getActionCommand().equals("Stop")) {
-
 
 
             try {
