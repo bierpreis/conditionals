@@ -17,7 +17,6 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (creatorThread.isRunning()) {
-            System.out.println(System.currentTimeMillis());
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showIfStillRunning(creatorThread.isRunning());
