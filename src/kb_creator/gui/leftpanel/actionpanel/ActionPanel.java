@@ -14,17 +14,15 @@ public class ActionPanel extends JPanel {
         JButton startButton = new JButton("Start");
         startButton.addActionListener(observer);
         add(startButton);
-        //todo: status is switching when pause. fix this. but where? status switching is when more then 1 treads are running.
+        //todo: make pause button work
         PauseButton pauseButton = new PauseButton();
         pauseButton.addActionListener(observer);
         add(pauseButton);
 
-        //todo: add waring before stop
+        //todo: make stop button and warinng work
         StopButton stopButton = new StopButton();
         stopButton.addActionListener(observer);
         add(stopButton);
-
-
 
 
         revalidate();
