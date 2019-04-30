@@ -24,7 +24,7 @@ public class StatusThread implements Runnable {
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showProgress(creatorThread.getProgressInPercent());
             try {
-                Thread.sleep(500);
+                Thread.sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
