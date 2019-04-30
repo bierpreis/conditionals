@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//todo: why this here?
+
 public class StopButton extends JButton {
 
 
@@ -15,8 +15,16 @@ public class StopButton extends JButton {
         addActionListener(new StopButtonListener());
     }
 
+    private class StopButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
+            StopWarning stopWarning = new StopWarning();
+            System.out.println("answer: " + stopWarning.askIfStop());
+        }
+    }
 }
+
 
 class StopWarning {
     StopWarning() {
@@ -39,11 +47,14 @@ class StopWarning {
         ButtonGroup buttonGroup = new ButtonGroup();
         stopButton = new JButton("Stop");
         stopButton.setBounds(0, 50, 100, 50);
+        stopButton.addActionListener(new DialogListener());
         buttonGroup.add(stopButton);
         buttonPanel.add(stopButton);
 
         continueButton = new JButton("Continue");
         continueButton.setBounds(100, 50, 100, 50);
+        continueButton.addActionListener(new DialogListener());
+        dialog.getRootPane().setDefaultButton(continueButton);
         buttonGroup.add(continueButton);
         buttonPanel.add(continueButton);
 
@@ -63,13 +74,18 @@ class StopWarning {
         return true;
 
     }
-}
 
-class StopButtonListener implements ActionListener {
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    private class DialogListener implements ActionListener {
 
-        StopWarning stopWarning = new StopWarning();
-        System.out.println("answer: " + stopWarning.askIfStop());
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getActionCommand().equals("Continue"))
+                System.out.println("Continue!");
+
+            if (e.getActionCommand().equals("Stop"))
+                System.out.println("Stop");
+        }
     }
 }
+
