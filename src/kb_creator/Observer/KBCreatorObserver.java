@@ -6,7 +6,6 @@ import nfc.model.NfcCreator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
@@ -33,8 +32,9 @@ public class KBCreatorObserver implements ActionListener {
 
             Thread statusThread = new Thread(statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject));
             statusThread.start();
+            System.out.println("status Thread started");
             statusThreadObject.setStatus("Creating Conditionals");
-
+            System.out.println("crating ..");
             NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
             creatorThreadObject.setConditionals(nfcCreator.getNfc(), nfcCreator.getCnfc());
 

@@ -27,7 +27,7 @@ public class StatusPanel extends JPanel {
 
     }
 
-
+    //todo:  combine this and status
     public void showIfStillRunning(boolean isRunning) {
         isRunningLabel.setText("current status: ");
         if (isRunning)
