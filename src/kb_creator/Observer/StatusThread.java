@@ -13,7 +13,7 @@ public class StatusThread implements Runnable {
 
     }
 
-    //todo: show status when creating nfc too?s
+    //todo: show status when creating nfc too? problem: this thread is started after nfc gets created. fix this?
     @Override
     public void run() {
         while (creatorThread.isRunning()) {
