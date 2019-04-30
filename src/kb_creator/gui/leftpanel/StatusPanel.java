@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class StatusPanel extends JPanel {
 
-    private JLabel isRunningLabel;
     private JLabel progressLabel;
     private JLabel statusLabel;
 
@@ -17,9 +16,6 @@ public class StatusPanel extends JPanel {
 
         setBorder(BorderFactory.createTitledBorder("Status"));
 
-        isRunningLabel = new JLabel();
-        vBox.add(isRunningLabel);
-
 
         progressLabel = new JLabel();
         vBox.add(progressLabel);
@@ -27,14 +23,6 @@ public class StatusPanel extends JPanel {
         statusLabel = new JLabel();
         vBox.add(statusLabel);
 
-    }
-
-    //todo:  combine this and status
-    public void showIfStillRunning(boolean isRunning) {
-        isRunningLabel.setText("current status: ");
-        if (isRunning)
-            isRunningLabel.setText("running");
-        else isRunningLabel.setText("finished");
     }
 
     public void showProgress(double progressInpercent) {
