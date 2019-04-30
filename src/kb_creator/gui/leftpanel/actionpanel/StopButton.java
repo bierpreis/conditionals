@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//todo: why this here?
 public class StopButton extends JButton {
 
 
@@ -17,13 +18,19 @@ public class StopButton extends JButton {
 
 }
 
-class StopWarning extends JDialog {
-    private JButton stopButton;
-    private JButton continueButton;
-
+class StopWarning {
     StopWarning() {
-        setLayout(new BorderLayout());
-        setTitle("Warning");
+
+
+    }
+
+    public boolean askIfStop() {
+        JButton stopButton;
+        JButton continueButton;
+
+        JDialog dialog = new JDialog();
+        dialog.setLayout(new BorderLayout());
+        dialog.setTitle("Warning");
 
 
         JPanel buttonPanel = new JPanel();
@@ -39,23 +46,26 @@ class StopWarning extends JDialog {
         continueButton.setBounds(100, 50, 100, 50);
         buttonGroup.add(continueButton);
         buttonPanel.add(continueButton);
-        add(buttonPanel, BorderLayout.SOUTH);
+        dialog.add(buttonPanel, BorderLayout.SOUTH);
 
         //todo: why this doenst work?
         JPanel questionPanel = new JPanel();
         questionPanel.setLayout(new FlowLayout());
         questionPanel.add(new JLabel("Are you sure you want to stop creating KBs?"));
-        add(questionPanel);
-        revalidate();
-        pack();
-        setVisible(true);
+        dialog.add(questionPanel);
+        dialog.revalidate();
+        dialog.pack();
+        dialog.setVisible(true);
 
+        return true;
     }
 }
 
 class StopButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        new StopWarning();
+
+        StopWarning stopWarning = new StopWarning();
+        System.out.println("answer: " + stopWarning.askIfStop());
     }
 }
