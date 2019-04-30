@@ -1,10 +1,9 @@
 package kb_creator.gui.leftpanel.actionpanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
+
 
 
 public class StopButton extends JButton {
@@ -23,12 +22,11 @@ public class StopButton extends JButton {
             UIManager.put("OptionPane.yesButtonText", "Yes");
             UIManager.put("OptionPane.noButtonText", "No");
 
-            JOptionPane.setDefaultLocale(Locale.UK);
             int input = JOptionPane.showConfirmDialog(null, "Do you like bacon?", "lol", JOptionPane.YES_NO_OPTION);
 
             if (input == 1)
                 System.out.println("no");
-            if (input == 2)
+            if (input == 0)
                 System.out.println("yes");
 
         }
