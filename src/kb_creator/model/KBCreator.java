@@ -21,9 +21,6 @@ public class KBCreator implements Runnable {
 
     private KBCreatorObserver observer;
 
-    //todo: delete
-    private volatile boolean stopped;
-
     private volatile Status status;
 
     public KBCreator(KBCreatorObserver observer) {
@@ -32,8 +29,6 @@ public class KBCreator implements Runnable {
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
-
-        stopped = false;
 
         status = Status.NOT_STARTED;
     }
@@ -62,8 +57,8 @@ public class KBCreator implements Runnable {
                     sleep(500);
                     continue;
                 }
-                //todo: status stopped when stopped
-                if (stopped)
+
+                if (status.equals(Status.STOPPED))
                     break;
 
                 if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
@@ -147,14 +142,11 @@ public class KBCreator implements Runnable {
     }
 
     public void stop() {
-        stopped = true;
+        status = Status.STOPPED;
     }
 
     public void pause(boolean pause) {
         this.pause = pause;
     }
 
-    public boolean isStopped() {
-        return stopped;
-    }
 }
