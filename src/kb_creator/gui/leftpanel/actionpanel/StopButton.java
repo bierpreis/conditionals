@@ -46,18 +46,22 @@ class StopWarning {
         continueButton.setBounds(100, 50, 100, 50);
         buttonGroup.add(continueButton);
         buttonPanel.add(continueButton);
+
         dialog.add(buttonPanel, BorderLayout.SOUTH);
+
 
         //todo: why this doenst work?
         JPanel questionPanel = new JPanel();
         questionPanel.setLayout(new FlowLayout());
         questionPanel.add(new JLabel("Are you sure you want to stop creating KBs?"));
+
         dialog.add(questionPanel);
         dialog.revalidate();
         dialog.pack();
         dialog.setVisible(true);
 
         return true;
+
     }
 }
 
