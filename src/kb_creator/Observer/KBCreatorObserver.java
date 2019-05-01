@@ -48,7 +48,7 @@ public class KBCreatorObserver implements ActionListener {
             UIManager.put("OptionPane.yesButtonText", "Yes, Stop.");
             UIManager.put("OptionPane.noButtonText", "No, Continue.");
 
-            int answer = JOptionPane.showConfirmDialog(null, "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
+            int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
             if (answer == 1)
                 return;

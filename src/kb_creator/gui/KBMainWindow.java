@@ -3,7 +3,6 @@ package kb_creator.gui;
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.leftpanel.StatusPanel;
 import nfc.view.textArea.CondPanel;
 
 import javax.swing.*;
@@ -12,10 +11,11 @@ import java.awt.*;
 public class KBMainWindow {
     private KBCreatorObserver observer;
     private LeftPanel leftPanel;
+    private JFrame mainWindow;
 
     public KBMainWindow(KBCreatorObserver observer) {
         this.observer = observer;
-        JFrame mainWindow = new JFrame("Knowledge Base Creator");
+        mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
@@ -34,4 +34,7 @@ public class KBMainWindow {
         return leftPanel.getInfoPanel();
     }
 
+    public JFrame getMainWindow() {
+        return mainWindow;
+    }
 }
