@@ -31,7 +31,6 @@ public class KBCreatorObserver implements ActionListener {
 
             StatusThread statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
-            //todo: a lot of diffrent status thread objects can exists. should only be one.
             Thread statusThread = new Thread(statusThreadObject);
 
             statusThread.start();

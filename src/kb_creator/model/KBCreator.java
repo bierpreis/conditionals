@@ -106,7 +106,6 @@ public class KBCreator implements Runnable {
             candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude)); //this is basically adding to L1 in line 5
             candidatePairAmount++;
         }
-        System.out.println("candidate pairs:" + candidatePairs.size());
         return candidatePairs;
     }
 

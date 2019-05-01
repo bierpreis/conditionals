@@ -16,18 +16,18 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (!creatorThread.getStatus().equals(Status.STOPPED)) {
-            System.out.println("running in: " + this.toString());
-            infoPanel.showStatus(creatorThread.getStatus());
-            infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
-            infoPanel.showKBAmount(creatorThread.getKBAmount());
-            infoPanel.showProgress(creatorThread.getProgressInPercent());
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        infoPanel.showStatus(creatorThread.getStatus());
+            infoPanel.showStatus(creatorThread.getStatus());
+            infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
+            infoPanel.showKBAmount(creatorThread.getKBAmount());
+            infoPanel.showProgress(creatorThread.getProgressInPercent());
 
+            if (creatorThread.getStatus().equals(Status.FINISHED))
+                break;
+        }
     }
 }
