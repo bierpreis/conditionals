@@ -21,7 +21,7 @@ public class ActionPanel extends JPanel {
         pauseButton = new PauseButton();
         pauseButton.addActionListener(observer);
         add(pauseButton);
-
+        //todo: stop does not really work
         stopButton = new StopButton();
         stopButton.addActionListener(observer);
         add(stopButton);
