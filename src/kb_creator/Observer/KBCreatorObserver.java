@@ -52,12 +52,7 @@ public class KBCreatorObserver implements ActionListener {
             if (answer == 1)
                 return;
             if (answer == 0)
-                try {//todo: is this try catch still neede?
-                    creatorThreadObject.stop();
-                } catch (Exception exep) {
-                    System.out.println("Click on Stop Button Ignored cause no Thread running.");
-
-                }
+                creatorThreadObject.stop();
 
         }
         if (e.getActionCommand().equals("Pause"))
