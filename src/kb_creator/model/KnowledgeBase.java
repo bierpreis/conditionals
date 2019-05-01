@@ -2,12 +2,14 @@ package kb_creator.model;
 
 import nfc.model.Conditional;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class KnowledgeBase {
     private List<Conditional> conditionalList;
 
     public KnowledgeBase() {
+        conditionalList = new LinkedList<>();
     }
 
     public boolean isConsistent(Conditional conditional) {
