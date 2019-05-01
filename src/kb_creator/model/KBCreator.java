@@ -15,16 +15,15 @@ public class KBCreator implements Runnable {
 
     private volatile double totalNumberOfCalculations;
     private volatile double alreadyFinishedCalculations;
-    //todo: remove?
-    private KBCreatorObserver observer;
+
 
     private volatile Status status;
 
     private String signature;
 
-    public KBCreator(KBCreatorObserver observer) {
+    public KBCreator() {
         System.out.println("new kb creator");
-        this.observer = observer;
+
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
