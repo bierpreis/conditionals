@@ -30,6 +30,7 @@ public class KBCreatorObserver implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
+        //todo: start only when not running
         if (e.getActionCommand().equals("Start")) {
 
 
