@@ -61,17 +61,12 @@ public class KBCreatorObserver implements ActionListener {
 
         }
         if (e.getActionCommand().equals("Pause"))
-            try {
-                creatorThreadObject.pause(true);
-            } catch (NullPointerException np) {
-                System.out.println("Click on Pause Button Ignored cause no creator Thread is running.");
-            }
+
+            creatorThreadObject.pause(true);
         if (e.getActionCommand().equals("Continue"))
-            try {
-                creatorThreadObject.pause(false);
-            } catch (NullPointerException np) {
-                System.out.println("Click on Pause Button Ignored cause no creator Thread is running.");
-            }
+
+            creatorThreadObject.pause(false);
+
 
     }
 }
