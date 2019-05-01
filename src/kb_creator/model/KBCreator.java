@@ -21,9 +21,7 @@ public class KBCreator implements Runnable {
     private String signature;
 
     public KBCreator() {
-        System.out.println("new kb creator");
-
-
+        
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
 
