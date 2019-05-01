@@ -26,6 +26,7 @@ public class StatusThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        infoPanel.showStatus(creatorThread.getStatus());
 
     }
 }
