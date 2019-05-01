@@ -12,6 +12,12 @@ public class KnowledgeBase {
 
     public boolean checkConsistency(Conditional conditional) {
         //todo: here concistency test
+        //todo this test is written in goldszmit/pearl 1996 p 65
+        //siehe auch infofc s 4 dazu. auch s 9 dort.
+
+
+        //this sleep is placeholder. remove when implement sth useful here
+        sleep(1);
         return true;
     }
 
@@ -22,5 +28,14 @@ public class KnowledgeBase {
 
     public List<Conditional> getConditionalList() {
         return conditionalList;
+    }
+
+    private void sleep(int ms) {
+        try {
+            Thread.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ;
     }
 }

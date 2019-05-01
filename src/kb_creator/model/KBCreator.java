@@ -40,21 +40,24 @@ public class KBCreator implements Runnable {
         NfcCreator nfcCreator = new NfcCreator(signature);
 
         status = Status.RUNNING;
+
         List<CandidatePair> candidatePairs = initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc());
+
+
         //this calculates the total number of calculations needed (will be useful for progress info)
         for (CandidatePair candidatePair : candidatePairs)
             for (Conditional candidate : candidatePair.getCandidates())
                 totalNumberOfCalculations++;
 
-
+        //this is the actual loop where the work is done
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
                 if (status.equals(Status.PAUSE)) {
                     sleep(500);
-                    continue;
+                    continue; //todo: make this easier -> see bookmark for this
                 } else if (status.equals(Status.STOPPED))
                     break;
-                else if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
+                else {//here check consistency if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
                     //todo: add here to kbs. therefore create kb class? or other data type?
                     knowledgeBaseCounter++;
                     alreadyFinishedCalculations++;
@@ -74,15 +77,7 @@ public class KBCreator implements Runnable {
         this.signature = signature;
     }
 
-    private boolean checkConsistency(List<Conditional> knowledgeBase, Conditional candidate) {
-        //todo this test is written in goldszmit/pearl 1996 p 65
-        //siehe auch infofc s 4 dazu. auch s 9 dort.
 
-
-        //this sleep is placeholder. remove when implement sth useful here
-        sleep(1);
-        return true;
-    }
 
     private void sleep(int ms) {
         try {
