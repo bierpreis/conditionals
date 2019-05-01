@@ -17,7 +17,8 @@ public class KBCreatorObserver implements ActionListener {
 
         mainWindow = new KBMainWindow(this);
 
-        creatorThreadObject = new KBCreator();
+        creatorThreadObject = new KBCreator();//todo: always create new cb creator on start? would be better. e.g. number
+        //of knowledge bases increases after creating multiple times ->fix this
 
         StatusThread statusThreadObject;
         statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
