@@ -28,7 +28,7 @@ public class KBCreatorObserver implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
-        //todo: command enum?
+
         System.out.println("command: " + e.getActionCommand());
         if (e.getActionCommand().equals("Start")) {
 

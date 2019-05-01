@@ -1,6 +1,5 @@
 package kb_creator.model;
 
-import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.Observer.Status;
 import nfc.model.Conditional;
 import nfc.model.NfcCreator;
@@ -55,7 +54,7 @@ public class KBCreator implements Runnable {
                 } else if (status.equals(Status.STOPPED))
                     break;
                 else if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
-                    //todo: add here to kbs
+                    //todo: add here to kbs. therefore create kb class? or other data type?
                     knowledgeBaseCounter++;
                     alreadyFinishedCalculations++;
                 }
