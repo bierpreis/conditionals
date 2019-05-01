@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
 
-    private StatusThread statusThreadObject;
     private KBCreator creatorThreadObject;
 
     Thread statusThread;
@@ -21,7 +20,7 @@ public class KBCreatorObserver implements ActionListener {
 
         creatorThreadObject = new KBCreator(this);
 
-        statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
+        StatusThread statusThreadObject; statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
         statusThread = new Thread(statusThreadObject);
 
@@ -49,7 +48,6 @@ public class KBCreatorObserver implements ActionListener {
 
             try {
                 creatorThreadObject.stop();
-                //statusThreadObject.halt();
             } catch (Exception exep) {
                 System.out.println("Click on Stop Button Ignored cause no Thread running.");
 
