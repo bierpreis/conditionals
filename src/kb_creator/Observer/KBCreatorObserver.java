@@ -3,6 +3,7 @@ package kb_creator.Observer;
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.KBCreator;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +19,8 @@ public class KBCreatorObserver implements ActionListener {
 
         creatorThreadObject = new KBCreator();
 
-        StatusThread statusThreadObject; statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
+        StatusThread statusThreadObject;
+        statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
         Thread statusThread = new Thread(statusThreadObject);
 
@@ -43,14 +45,20 @@ public class KBCreatorObserver implements ActionListener {
         }
 
         if (e.getActionCommand().equals("Stop")) {
+            UIManager.put("OptionPane.yesButtonText", "Yes, Stop.");
+            UIManager.put("OptionPane.noButtonText", "No, Continue.");
 
+            int answer = JOptionPane.showConfirmDialog(null, "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
-            try {
-                creatorThreadObject.stop();
-            } catch (Exception exep) {
-                System.out.println("Click on Stop Button Ignored cause no Thread running.");
+            if (answer == 1)
+                return;
+            if (answer == 0)
+                try {
+                    creatorThreadObject.stop();
+                } catch (Exception exep) {
+                    System.out.println("Click on Stop Button Ignored cause no Thread running.");
 
-            }
+                }
 
         }
         if (e.getActionCommand().equals("Pause"))

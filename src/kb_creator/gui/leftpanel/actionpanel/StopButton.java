@@ -23,15 +23,6 @@ public class StopButton extends JButton {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            UIManager.put("OptionPane.yesButtonText", "Yes");
-            UIManager.put("OptionPane.noButtonText", "No");
-
-            int input = JOptionPane.showConfirmDialog(null, "Do you like bacon?", "lol", JOptionPane.YES_NO_OPTION);
-
-            if (input == 1)
-                setActionCommand("Nothing");
-            if (input == 0)
-                setActionCommand("Stoppp");
 
         }
     }
