@@ -20,8 +20,11 @@ public class KBCreator implements Runnable {
 
     private String signature;
 
+    private List<KnowledgeBase> kbList;
+
     public KBCreator() {
-        
+        kbList = new LinkedList<>();
+
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
 
@@ -142,6 +145,10 @@ public class KBCreator implements Runnable {
         if (!pause)
             status = Status.RUNNING;
 
+    }
+
+    public List<KnowledgeBase> getKnowledgeBaseList() {
+        return kbList;
     }
 
 }
