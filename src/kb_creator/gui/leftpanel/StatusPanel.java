@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.Status;
+import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
 
@@ -8,9 +9,11 @@ public class StatusPanel extends JPanel {
 
     private JLabel progressLabel;
     private JLabel statusLabel;
+    private ActionPanel actionPanel;
 
 
-    public StatusPanel() {
+    public StatusPanel(ActionPanel actionPanel) {
+        this.actionPanel = actionPanel;
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
@@ -32,6 +35,7 @@ public class StatusPanel extends JPanel {
 
     public void showStatus(Status status) {
         statusLabel.setText("Status: " + status.toString());
+        actionPanel.setStatus(status);
     }
 
 

@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.Status;
+import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
 
@@ -8,14 +9,14 @@ public class InfoPanel extends JPanel {
     private SizePanel sizePanel;
     private StatusPanel statusPanel;
 
-    public InfoPanel() {
+    public InfoPanel(ActionPanel actionPanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalGlue());
 
         sizePanel = new SizePanel();
         add(sizePanel);
 
-        statusPanel = new StatusPanel();
+        statusPanel = new StatusPanel(actionPanel);
         add(statusPanel);
 
     }
