@@ -14,7 +14,6 @@ public class ActionPanel extends JPanel {
 
     public ActionPanel(KBCreatorObserver observer) {
 
-        //todo: make start work after stop again
         startButton = new JButton("Start");
         startButton.addActionListener(observer);
         add(startButton);

@@ -13,7 +13,6 @@ public class KnowledgeBase {
     }
 
     public boolean isConsistent(Conditional conditional) {
-        //todo: here concistency test
         //todo this test is written in goldszmit/pearl 1996 p 65
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
