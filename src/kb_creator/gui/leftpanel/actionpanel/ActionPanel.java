@@ -32,18 +32,27 @@ public class ActionPanel extends JPanel {
 
     public void setStatus(Status status) {
         switch (status) {
-            case NOT_STARTED:
-                startButton.setEnabled(true);
-                pauseButton.setEnabled(false);
+            case PAUSE:
+                startButton.setEnabled(false);
+                pauseButton.setEnabled(true);
                 stopButton.setEnabled(false);
                 break;
             case CREATING_CONDITIONALS:
+                startButton.setEnabled(false);
+                pauseButton.setEnabled(false);
+                stopButton.setEnabled(false);
                 break;
             case RUNNING:
+                startButton.setEnabled(false);
+                pauseButton.setEnabled(true);
+                stopButton.setEnabled(true);
                 break;
             case FINISHED:
-                break;
+            case NOT_STARTED:
             case STOPPED:
+                startButton.setEnabled(true);
+                pauseButton.setEnabled(false);
+                stopButton.setEnabled(false);
                 break;
             default:
                 throw new RuntimeException("Unknown Status: " + status.toString());
