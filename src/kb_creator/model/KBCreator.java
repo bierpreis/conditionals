@@ -52,17 +52,18 @@ public class KBCreator implements Runnable {
         //this is the actual loop where the work is done
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
-                if (status.equals(Status.PAUSE)) {
-                    sleep(500);
-                    continue; //todo: make this easier -> see bookmark for this
-                } else if (status.equals(Status.STOPPED))
-                    break;
-                else {//here check consistency if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
-                    //todo: add here to kbs. therefore create kb class? or other data type?
-                    knowledgeBaseCounter++;
-                    alreadyFinishedCalculations++;
-                }
 
+                sleep(1);//todo replace with concistecy check
+                //here check consistency if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
+                //todo: add here to kbs. 
+                knowledgeBaseCounter++;
+                alreadyFinishedCalculations++;
+
+
+                while (status.equals(Status.PAUSE))
+                    sleep(500);
+                if (status.equals(Status.STOPPED))
+                    break;
 
             }
 
@@ -76,7 +77,6 @@ public class KBCreator implements Runnable {
     public void setSignature(String signature) {
         this.signature = signature;
     }
-
 
 
     private void sleep(int ms) {
