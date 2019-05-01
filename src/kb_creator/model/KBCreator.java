@@ -15,7 +15,7 @@ public class KBCreator implements Runnable {
 
     private volatile double totalNumberOfCalculations;
     private volatile double alreadyFinishedCalculations;
-
+    //todo: remove?
     private KBCreatorObserver observer;
 
     private volatile Status status;
@@ -25,7 +25,6 @@ public class KBCreator implements Runnable {
     public KBCreator(KBCreatorObserver observer) {
         System.out.println("new kb creator");
         this.observer = observer;
-        this.signature = signature;
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
@@ -36,6 +35,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
+
         status = Status.CREATING_CONDITIONALS;
 
         NfcCreator nfcCreator = new NfcCreator(signature);
@@ -92,8 +92,7 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<Conditional> nfc, List<Conditional> cnfc) {
-        System.out.println("nfc" + nfc.size());
-        System.out.println("cnfc: " + cnfc.size());
+        candidatePairAmount = 0;
         List<CandidatePair> candidatePairs = new LinkedList<>(); //candidate pairs is l in original
         for (Conditional cNfcElement : cnfc) { // cNfcElement is r in original
             Conditional counterConditional = cNfcElement.getCounterConditional(); //this is not(r)
