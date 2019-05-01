@@ -52,14 +52,13 @@ public class KBCreator implements Runnable {
         //this is the actual loop where the work is done
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
+                if (candidatePair.getKnowledgeBase().isConsistent(candidate)) {
 
-                sleep(1);//todo replace with concistecy check
-                //here check consistency if (checkConsistency(candidatePair.getKnowledgeBase(), candidate)) {
-                //todo: add here to kbs. 
-                knowledgeBaseCounter++;
-                alreadyFinishedCalculations++;
+                    //todo: add here to kbs.
+                    knowledgeBaseCounter++;
+                    alreadyFinishedCalculations++;
 
-
+                }
                 while (status.equals(Status.PAUSE))
                     sleep(500);
                 if (status.equals(Status.STOPPED))
@@ -92,7 +91,7 @@ public class KBCreator implements Runnable {
         List<CandidatePair> candidatePairs = new LinkedList<>(); //candidate pairs is L in original
         for (Conditional cNfcElement : cnfc) { // cNfcElement is r in original, line 3 in original
             Conditional counterConditional = cNfcElement.getCounterConditional(); //this is not(r)
-            List<Conditional> kbToAdd = new LinkedList<>();
+            KnowledgeBase kbToAdd = new KnowledgeBase();
             kbToAdd.add(cNfcElement); //this is addring {r} in line 5
             List<Conditional> conditionalsToInclude = new LinkedList<>();
 
@@ -104,7 +103,7 @@ public class KBCreator implements Runnable {
 
 
             }
-            candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
+            candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude)); //this is basically adding to L1 in line 5
             candidatePairAmount++;
         }
         System.out.println("candidate pairs:" + candidatePairs.size());

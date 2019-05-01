@@ -5,10 +5,10 @@ import nfc.model.Conditional;
 import java.util.List;
 
 public class CandidatePair {
-    private List<Conditional> knowledgeBase;
+    private KnowledgeBase knowledgeBase;
     private List<Conditional> candidates;
 
-    public CandidatePair(List<Conditional> knowledgeBase, List<Conditional> candidates) {
+    public CandidatePair(KnowledgeBase knowledgeBase, List<Conditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         this.candidates = candidates;
     }
@@ -17,7 +17,7 @@ public class CandidatePair {
         return candidates;
     }
 
-    public List<Conditional> getKnowledgeBase() {
+    public KnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
 }
