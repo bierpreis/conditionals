@@ -11,8 +11,6 @@ public class KBCreatorObserver implements ActionListener {
 
     private KBCreator creatorThreadObject;
 
-    Thread statusThread;
-
 
     public KBCreatorObserver() {
 
@@ -22,7 +20,7 @@ public class KBCreatorObserver implements ActionListener {
 
         StatusThread statusThreadObject; statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
-        statusThread = new Thread(statusThreadObject);
+        Thread statusThread = new Thread(statusThreadObject);
 
         statusThread.start();
     }
@@ -30,6 +28,7 @@ public class KBCreatorObserver implements ActionListener {
     @Override
 
     public void actionPerformed(ActionEvent e) {
+        //todo: command enum?
         System.out.println("command: " + e.getActionCommand());
         if (e.getActionCommand().equals("Start")) {
 
