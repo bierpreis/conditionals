@@ -22,7 +22,7 @@ public class KBCreator implements Runnable {
 
     private String signature;
 
-    public KBCreator(KBCreatorObserver observer, String signature) {
+    public KBCreator(KBCreatorObserver observer) {
         System.out.println("new kb creator");
         this.observer = observer;
         this.signature = signature;
@@ -67,6 +67,10 @@ public class KBCreator implements Runnable {
         status = Status.FINISHED;
 
 
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 
     private boolean checkConsistency(List<Conditional> knowledgeBase, Conditional candidate) {
