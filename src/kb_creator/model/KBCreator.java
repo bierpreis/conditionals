@@ -3,13 +3,13 @@ package kb_creator.model;
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.Observer.Status;
 import nfc.model.Conditional;
+import nfc.model.NfcCreator;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class KBCreator implements Runnable {
-    private List<Conditional> nfc;
-    private List<Conditional> cNfc;
+
     private volatile int knowledgeBaseCounter;
     private volatile int candidatePairAmount;
 
@@ -20,9 +20,12 @@ public class KBCreator implements Runnable {
 
     private volatile Status status;
 
-    public KBCreator(KBCreatorObserver observer) {
-        this.observer = observer;
+    private String signature;
 
+    public KBCreator(KBCreatorObserver observer, String signature) {
+        System.out.println("new kb creator");
+        this.observer = observer;
+        this.signature = signature;
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
@@ -30,18 +33,15 @@ public class KBCreator implements Runnable {
         status = Status.NOT_STARTED;
     }
 
-    //todo: put nfc creator here?
-    public void setConditionals(List<Conditional> nfc, List<Conditional> cNfc) {
-        this.nfc = nfc;
-        this.cNfc = cNfc;
-    }
 
     @Override
     public void run() {
-        status = Status.RUNNING;
-        //todo: check if this list is correct. but how?
-        List<CandidatePair> candidatePairs = initOneElementKBs();
+        status = Status.CREATING_CONDITIONALS;
 
+        NfcCreator nfcCreator = new NfcCreator(signature);
+
+        status = Status.RUNNING;
+        List<CandidatePair> candidatePairs = initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc());
         //this calculates the total number of calculations needed (will be useful for progress info)
         for (CandidatePair candidatePair : candidatePairs)
             for (Conditional candidate : candidatePair.getCandidates())
@@ -50,7 +50,7 @@ public class KBCreator implements Runnable {
 
         for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
             for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
-
+                //todo: own method for the following
                 if (status.equals(Status.PAUSE)) {
                     sleep(500);
                     continue;
@@ -75,11 +75,7 @@ public class KBCreator implements Runnable {
 
 
         //this sleep is placeholder. remove when implement sth useful here
-        try {
-            Thread.sleep(1);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        sleep(1);
         return true;
     }
 
@@ -91,9 +87,11 @@ public class KBCreator implements Runnable {
         }
     }
 
-    private List<CandidatePair> initOneElementKBs() {
+    private List<CandidatePair> initOneElementKBs(List<Conditional> nfc, List<Conditional> cnfc) {
+        System.out.println("nfc" + nfc.size());
+        System.out.println("cnfc: " + cnfc.size());
         List<CandidatePair> candidatePairs = new LinkedList<>(); //candidate pairs is l in original
-        for (Conditional cNfcElement : cNfc) { // cNfcElement is r in original
+        for (Conditional cNfcElement : cnfc) { // cNfcElement is r in original
             Conditional counterConditional = cNfcElement.getCounterConditional(); //this is not(r)
             List<Conditional> kbToAdd = new LinkedList<>();
             kbToAdd.add(cNfcElement); //this is addring {r} in line 5
@@ -110,6 +108,7 @@ public class KBCreator implements Runnable {
             candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude));
             candidatePairAmount++;
         }
+        System.out.println("candidate pairs:" + candidatePairs.size());
         return candidatePairs;
     }
 

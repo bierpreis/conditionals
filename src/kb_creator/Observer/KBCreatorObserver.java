@@ -20,7 +20,7 @@ public class KBCreatorObserver implements ActionListener {
 
         mainWindow = new KBMainWindow(this);
 
-        creatorThreadObject = new KBCreator(this);
+        creatorThreadObject = new KBCreator(this, mainWindow.getSignature()); //todo: signature is here only one time send
         statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
         statusThread = new Thread(statusThreadObject);
@@ -38,13 +38,7 @@ public class KBCreatorObserver implements ActionListener {
             Thread creatorThread = new Thread(creatorThreadObject);
 
 
-            //todo: put this in kbcreator
-            NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-            creatorThreadObject.setConditionals(nfcCreator.getNfc(), nfcCreator.getCnfc());
-
-
             creatorThread.start();
-
 
         }
 
