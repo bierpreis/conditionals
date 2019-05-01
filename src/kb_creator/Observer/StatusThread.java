@@ -16,6 +16,7 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (!creatorThread.getStatus().equals(Status.STOPPED)) {
+            System.out.println("running in: " + this.toString());
             infoPanel.showStatus(creatorThread.getStatus());
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
