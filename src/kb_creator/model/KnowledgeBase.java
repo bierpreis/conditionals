@@ -2,6 +2,7 @@ package kb_creator.model;
 
 import nfc.model.Conditional;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class KnowledgeBase {
 
     public void add(Conditional conditional) {
         conditionalList.add(conditional);
-        //todo: sort list?
+        Collections.sort(conditionalList);
     }
 
     public List<Conditional> getConditionalList() {
