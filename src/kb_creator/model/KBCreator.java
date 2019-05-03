@@ -37,6 +37,7 @@ public class KBCreator implements Runnable {
         //todo: make alrorithm as close as original as possible
         status = Status.CREATING_CONDITIONALS;
 
+
         NfcCreator nfcCreator = new NfcCreator(signature);
 
         status = Status.RUNNING;
@@ -88,25 +89,25 @@ public class KBCreator implements Runnable {
 
     private List<CandidatePair> initOneElementKBs(List<Conditional> nfc, List<Conditional> cnfc) {
         candidatePairAmount = 0;
-        List<CandidatePair> candidatePairs = new LinkedList<>(); //candidate pairs is L in original
-        for (Conditional cNfcElement : cnfc) { // cNfcElement is r in original, line 3 in original
-            Conditional counterConditional = cNfcElement.getCounterConditional(); //this is not(r)
+        List<CandidatePair> l = new LinkedList<>(); //candidate pairs is L in original
+        for (Conditional r : cnfc) { //line 3 in original
+            Conditional notR = r.getCounterConditional();
             KnowledgeBase kbToAdd = new KnowledgeBase();
-            kbToAdd.add(cNfcElement); //this is addring {r} in line 5
+            kbToAdd.add(r); 
             List<Conditional> conditionalsToInclude = new LinkedList<>();
 
             for (Conditional currentConditional : nfc) { //this loop is line 4 and 5
-                if (currentConditional.getNumber() > cNfcElement.getNumber())  //this removes D from candidates
-                    if (!currentConditional.equals(counterConditional)) {      //this removes not(r) from candidates
+                if (currentConditional.getNumber() > r.getNumber())  //this removes D from candidates
+                    if (!currentConditional.equals(notR)) {      //this removes not(r) from candidates
                         conditionalsToInclude.add(currentConditional);
                     }
 
 
             }
-            candidatePairs.add(new CandidatePair(kbToAdd, conditionalsToInclude)); //this is basically adding to L1 in line 5
+            l.add(new CandidatePair(kbToAdd, conditionalsToInclude)); //this is basically adding to L1 in line 5
             candidatePairAmount++;
         }
-        return candidatePairs;
+        return l;
     }
 
     public int getKBAmount() {
