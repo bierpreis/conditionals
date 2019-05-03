@@ -91,22 +91,17 @@ public class KBCreator implements Runnable {
         candidatePairAmount = 0;
         List<CandidatePair> l = new LinkedList<>(); //candidate pairs is L in original
         for (Conditional r : cnfc) { //line 3 in original
-            Conditional notR = r.getCounterConditional();
-            KnowledgeBase kbToAdd = new KnowledgeBase();
-            kbToAdd.add(r); 
-            List<Conditional> conditionalsToInclude = new LinkedList<>();
+            //Conditional notR = r.getCounterConditional();
 
-            for (Conditional currentConditional : nfc) { //this loop is line 4 and 5
-                if (currentConditional.getNumber() > r.getNumber())  //this removes D from candidates
-                    if (!currentConditional.equals(notR)) {      //this removes not(r) from candidates
-                        conditionalsToInclude.add(currentConditional);
-                    }
-
-
-            }
-            l.add(new CandidatePair(kbToAdd, conditionalsToInclude)); //this is basically adding to L1 in line 5
-            candidatePairAmount++;
+            KnowledgeBase rKB = new KnowledgeBase(); // line 4 and 5
+            rKB.add(r);
+            List<Conditional> conditionalsToAdd = new LinkedList<>();
+            for (Conditional conditional : nfc)
+                if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
+                    conditionalsToAdd.add(conditional);
+            l.add(new CandidatePair(rKB, conditionalsToAdd));
         }
+        System.out.println("l.size: " + l.size());  //compare 1537 with other branch
         return l;
     }
 
