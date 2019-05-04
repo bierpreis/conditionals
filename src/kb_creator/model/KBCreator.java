@@ -41,22 +41,26 @@ public class KBCreator implements Runnable {
         NfcCreator nfcCreator = new NfcCreator(signature);
 
         status = Status.RUNNING;
+        int k = 1;
 
-        List<CandidatePair> l = initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc());
+        List<List<CandidatePair>> l = new LinkedList<>();
+
+        l.add(initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc()));
 
 
         //this calculates the total number of calculations needed (will be useful for progress info)
-        for (CandidatePair candidatePair : l)
-            for (Conditional candidate : candidatePair.getCandidates())
-                totalNumberOfCalculations++;
+        //todo: fit this to new genKB
+        for (List<CandidatePair> sublist : l)
+            for (CandidatePair candidatePair : sublist)
+                for (Conditional candidate : candidatePair.getCandidates())
+                    totalNumberOfCalculations++;
 
-        //todo: implement line 6
-        //this is the actual loop where the work is done
 
-        int k = 0;
+        //the following is the actual loop where the work is done
 
-        while (k <= l.size()+6) {
-            for (CandidatePair candidatePair : l) { //this loop is line 8
+
+        while (k <= l.size()) {//original starts with list(1), but in java list(0) is first. thats why nullpointer
+            for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
 
