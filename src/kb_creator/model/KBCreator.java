@@ -41,7 +41,7 @@ public class KBCreator implements Runnable {
         NfcCreator nfcCreator = new NfcCreator(signature);
 
         status = Status.RUNNING;
-        int k = 1;
+        int k = 0; //to avoid null pointer because java stats list at 0 not at 1 like code in paper
 
         List<List<CandidatePair>> l = new LinkedList<>();
 
@@ -59,7 +59,7 @@ public class KBCreator implements Runnable {
         //the following is the actual loop where the work is done
 
 
-        while (k <= l.size()) {//original starts with list(1), but in java list(0) is first. thats why nullpointer
+        while (k < l.size()) {//not correct. maybe while l(k) has no items?
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
