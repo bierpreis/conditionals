@@ -61,7 +61,6 @@ public class KBCreator implements Runnable {
 
 
         while (!l.get(k).isEmpty()) {
-            CandidatePair emptypair = new CandidatePair(new KnowledgeBase(), new LinkedList<>()); //this is line 7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
@@ -73,9 +72,9 @@ public class KBCreator implements Runnable {
                         for (Conditional conditional : candidatePair.getCandidates())
                             if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                                 conditionalsToAdd.add(conditional);
+                        l.get(k).add(new CandidatePair(knowledgeBaseToAdd, conditionalsToAdd));
 
-                            //todo: what remove?
-                        knowledgeBaseCounter++;
+
                         alreadyFinishedCalculations++;
 
                     }
