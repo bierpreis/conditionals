@@ -59,7 +59,7 @@ public class KBCreator implements Runnable {
         //the following is the actual loop where the work is done
 
 
-        while (k < l.size()) {//not correct. maybe while l(k) has no items?
+        while (!l.get(k).isEmpty()) {
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
