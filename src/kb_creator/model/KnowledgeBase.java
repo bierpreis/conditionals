@@ -19,7 +19,7 @@ public class KnowledgeBase {
 
 
         //this sleep is placeholder. remove when implement sth useful here
-        sleep(1);
+        //sleep(1);
         return true;
     }
 
