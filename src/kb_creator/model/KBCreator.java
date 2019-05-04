@@ -50,6 +50,7 @@ public class KBCreator implements Runnable {
             for (Conditional candidate : candidatePair.getCandidates())
                 totalNumberOfCalculations++;
 
+            //todo: implement line 6
         //this is the actual loop where the work is done
         for (CandidatePair candidatePair : l) { //this loop is line 8
             for (Conditional r : candidatePair.getCandidates()) { //this is line 9
