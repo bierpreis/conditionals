@@ -28,6 +28,12 @@ public class KnowledgeBase {
         Collections.sort(conditionalList);
     }
 
+    public void add(KnowledgeBase knowledgeBaseToAdd) {
+        for (Conditional conditional : knowledgeBaseToAdd.conditionalList) {
+            conditionalList.add(conditional);
+        }
+    }
+
     public List<Conditional> getConditionalList() {
         return conditionalList;
     }
@@ -40,4 +46,6 @@ public class KnowledgeBase {
         }
         ;
     }
+
+
 }

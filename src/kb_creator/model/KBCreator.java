@@ -1,5 +1,6 @@
 package kb_creator.model;
 
+import gherkin.lexer.Kn;
 import kb_creator.Observer.Status;
 import nfc.model.Conditional;
 import nfc.model.NfcCreator;
@@ -60,11 +61,20 @@ public class KBCreator implements Runnable {
 
 
         while (!l.get(k).isEmpty()) {
+            CandidatePair emptypair = new CandidatePair(new KnowledgeBase(), new LinkedList<>()); //this is line 7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(); //this is R and r
+                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
+                        knowledgeBaseToAdd.add(r);
 
-                        //todo: add here to kbs.
+                        List<Conditional> conditionalsToAdd = new LinkedList<>();
+                        for (Conditional conditional : candidatePair.getCandidates())
+                            if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
+                                conditionalsToAdd.add(conditional);
+
+                            //todo: what remove?
                         knowledgeBaseCounter++;
                         alreadyFinishedCalculations++;
 
