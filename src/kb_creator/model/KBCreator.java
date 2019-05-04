@@ -42,18 +42,18 @@ public class KBCreator implements Runnable {
 
         status = Status.RUNNING;
 
-        List<CandidatePair> candidatePairs = initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc());
+        List<CandidatePair> l = initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc());
 
 
         //this calculates the total number of calculations needed (will be useful for progress info)
-        for (CandidatePair candidatePair : candidatePairs)
+        for (CandidatePair candidatePair : l)
             for (Conditional candidate : candidatePair.getCandidates())
                 totalNumberOfCalculations++;
 
         //this is the actual loop where the work is done
-        for (CandidatePair candidatePair : candidatePairs) { //this loop is line 8
-            for (Conditional candidate : candidatePair.getCandidates()) { //this is line 9
-                if (candidatePair.getKnowledgeBase().isConsistent(candidate)) {
+        for (CandidatePair candidatePair : l) { //this loop is line 8
+            for (Conditional r : candidatePair.getCandidates()) { //this is line 9
+                if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
 
                     //todo: add here to kbs.
                     knowledgeBaseCounter++;
