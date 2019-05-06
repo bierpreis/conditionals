@@ -60,22 +60,22 @@ public class KBCreator implements Runnable {
         //the following is the actual loop where the work is done
 
 
-        while (!l.get(k).isEmpty()) {
-            l.add(new LinkedList<>()); //this should be line  7
+        while (!l.get(k).isEmpty()) { //line 6
+            l.add(new LinkedList<>()); //line  7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(); //this is R and r
-                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
-                        knowledgeBaseToAdd.add(r);
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(); //this takes R and r
+                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //R
+                        knowledgeBaseToAdd.add(r); //r
 
-                        List<Conditional> conditionalsToAdd = new LinkedList<>();
+                        List<Conditional> candidatesToAdd = new LinkedList<>();
                         for (Conditional conditional : candidatePair.getCandidates())
                             if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
-                                conditionalsToAdd.add(conditional);
+                                candidatesToAdd.add(conditional);
 
 
-                        l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, conditionalsToAdd));
+                        l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         alreadyFinishedCalculations++;
@@ -90,8 +90,10 @@ public class KBCreator implements Runnable {
 
 
             }
+
             k = k + 1;
             System.out.println("currekt k:" + k);
+            System.out.println("l:" + l.get(k).size());
         }
         status = Status.FINISHED;
 
