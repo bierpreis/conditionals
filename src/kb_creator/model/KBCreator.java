@@ -35,7 +35,6 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
-        //todo: make alrorithm as close as original as possible
         status = Status.CREATING_CONDITIONALS;
 
 
