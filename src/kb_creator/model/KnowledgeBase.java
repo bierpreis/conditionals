@@ -22,7 +22,7 @@ public class KnowledgeBase {
         //sleep(1);
         return true;
     }
-
+    //todo: sort here and not at next? save time by only sorting at the end?
     public void add(Conditional conditional) {
         conditionalList.add(conditional);
         Collections.sort(conditionalList);
