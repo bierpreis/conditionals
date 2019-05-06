@@ -73,10 +73,10 @@ public class KBCreator implements Runnable {
                             if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                                 conditionalsToAdd.add(conditional);
 
-                            //todo: this is strage?
-                        List<CandidatePair> emptyList = new LinkedList<>();
-                        l.add(emptyList);
-                        l.get(k+1).add(new CandidatePair(knowledgeBaseToAdd, conditionalsToAdd));
+
+                        //todo: a new list to l for every iteration? cant be true
+                        l.add(new LinkedList<>()); //this should be line  7
+                        l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, conditionalsToAdd));
 
 
                         alreadyFinishedCalculations++;
