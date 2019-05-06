@@ -68,6 +68,7 @@ public class KBCreator implements Runnable {
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(); //this takes R and r
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //R
                         knowledgeBaseToAdd.add(r); //r
+                        knowledgeBaseToAdd.sort();
 
                         List<Conditional> candidatesToAdd = new LinkedList<>();
                         for (Conditional conditional : candidatePair.getCandidates())
