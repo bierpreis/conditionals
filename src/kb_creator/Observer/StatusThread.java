@@ -8,12 +8,14 @@ public class StatusThread implements Runnable {
     private KBCreator creatorThread;
     private long sleepTime;
     private int lastKBAmount;
+    private long lastTimeStamp;
 
 
     public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
         this.infoPanel = infoPanel;
         this.creatorThread = creatorThread;
         sleepTime = 100;
+        lastTimeStamp = System.currentTimeMillis();
     }
 
     @Override
@@ -37,10 +39,14 @@ public class StatusThread implements Runnable {
 
 
     }
-
+    //todo: make this correct
     private int calcSpeed(int kbAmount) {
-        int speed = (int) (((kbAmount - lastKBAmount) / sleepTime) * (1000 / sleepTime));
+        int kbIncrease = kbAmount - lastKBAmount;
+        long time = System.currentTimeMillis() - lastTimeStamp;
+        int speed = (int) (kbIncrease / time);
+        //int speed = (int) (((kbAmount - lastKBAmount) / ((System.currentTimeMillis() - lastTimeStamp))));
         lastKBAmount = kbAmount;
+        lastTimeStamp = System.currentTimeMillis();
         return speed;
     }
 }
