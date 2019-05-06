@@ -20,4 +20,8 @@ public class CandidatePair {
     public KnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
+
+    public String toString() {
+        return "<" + knowledgeBase + ", " + candidates + ">";
+    }
 }
