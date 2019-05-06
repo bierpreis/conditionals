@@ -77,7 +77,7 @@ public class KBCreator implements Runnable {
 
 
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
-
+                        
                         alreadyFinishedCalculations++;
                         knowledgeBaseCounter++;
                     }

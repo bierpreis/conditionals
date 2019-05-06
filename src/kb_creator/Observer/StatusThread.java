@@ -25,6 +25,7 @@ public class StatusThread implements Runnable {
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showProgress(creatorThread.getProgressInPercent());
+            //todo: show speed in kb/sec
 
             if (creatorThread.getStatus().equals(Status.FINISHED))
                 break;
