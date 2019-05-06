@@ -47,5 +47,10 @@ public class KnowledgeBase {
         ;
     }
 
+    @Override
+    public String toString() {
+        return conditionalList.toString();
+    }
+
 
 }
