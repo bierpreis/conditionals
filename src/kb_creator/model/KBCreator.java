@@ -61,6 +61,7 @@ public class KBCreator implements Runnable {
 
 
         while (!l.get(k).isEmpty()) {
+            l.add(new LinkedList<>()); //this should be line  7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
@@ -74,8 +75,6 @@ public class KBCreator implements Runnable {
                                 conditionalsToAdd.add(conditional);
 
 
-                        //todo: a new list to l for every iteration? cant be true
-                        l.add(new LinkedList<>()); //this should be line  7
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, conditionalsToAdd));
 
 
