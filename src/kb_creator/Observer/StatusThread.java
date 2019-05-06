@@ -14,7 +14,7 @@ public class StatusThread implements Runnable {
     public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
         this.infoPanel = infoPanel;
         this.creatorThread = creatorThread;
-        sleepTime = 500;
+        sleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
     }
 
@@ -46,7 +46,6 @@ public class StatusThread implements Runnable {
         long now = System.currentTimeMillis();
         float timeInMs = (now - lastTimeStamp);
         float timeInSeconds = timeInMs / 1000;
-        System.out.println("time: " + timeInSeconds);
         int speed = (int) (kbIncrease / timeInSeconds);
         //int speed = (int) (((kbAmount - lastKBAmount) / ((System.currentTimeMillis() - lastTimeStamp))));
         lastKBAmount = kbAmount;
