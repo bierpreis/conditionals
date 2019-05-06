@@ -36,4 +36,6 @@ public class InfoPanel extends JPanel {
     public void showStatus(Status status){
         statusPanel.showStatus(status);
     }
+
+    public void showSpeed(int speed){statusPanel.showSpeed(speed);}
 }

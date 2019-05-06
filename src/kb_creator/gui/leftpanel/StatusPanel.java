@@ -10,6 +10,7 @@ public class StatusPanel extends JPanel {
     private JLabel progressLabel;
     private JLabel statusLabel;
     private ActionPanel actionPanel;
+    private JLabel speedLabel;
 
 
     public StatusPanel(ActionPanel actionPanel) {
@@ -26,6 +27,9 @@ public class StatusPanel extends JPanel {
         statusLabel = new JLabel();
         vBox.add(statusLabel);
 
+        speedLabel = new JLabel();
+        vBox.add(speedLabel);
+
     }
 
     public void showProgress(double progressInpercent) {
@@ -36,6 +40,10 @@ public class StatusPanel extends JPanel {
     public void showStatus(Status status) {
         statusLabel.setText("Status: " + status.toString());
         actionPanel.setStatus(status);
+    }
+
+    public void showSpeed(int speed) {
+        speedLabel.setText("Speed:" + speed + "(KnowledgeBases/Sec)");
     }
 
 
