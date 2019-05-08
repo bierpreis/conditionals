@@ -10,7 +10,7 @@ public class Conjunction extends AbstractFormula {
     }
 
     @Override
-    public boolean evaluate() {
-        return firstFormula.evaluate() && secondFormula.evaluate();
+    public boolean evaluate(Interpretation interpretation) {
+        return firstFormula.evaluate(interpretation) && secondFormula.evaluate(interpretation);
     }
 }

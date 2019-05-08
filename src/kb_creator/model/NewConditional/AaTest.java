@@ -1,11 +1,15 @@
 package kb_creator.model.NewConditional;
 
+import cucumber.api.java.ca.I;
+
 public class AaTest {
 
     public static void main(String[] args) {
-        AbstractFormula nice = new Atom(Variable.a);
-        nice = new Negation(nice);
+        Interpretation interpretation = new Interpretation(true, true, true);
 
-        System.out.println(nice.toString());
+        AbstractFormula a = new Atom(Variable.a);
+        a = new Negation(a);
+
+        System.out.println(a.evaluate(interpretation));
     }
 }

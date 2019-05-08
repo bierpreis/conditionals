@@ -2,6 +2,6 @@ package kb_creator.model.NewConditional;
 
 public abstract class AbstractFormula {
 
-    abstract boolean evaluate();
+    abstract boolean evaluate(Interpretation interpretation);
 
 }

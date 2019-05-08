@@ -11,4 +11,16 @@ public class Interpretation {
         this.c = c;
     }
 
+
+    public boolean isA() {
+        return a;
+    }
+
+    public boolean isC() {
+        return c;
+    }
+
+    public boolean isB() {
+        return b;
+    }
 }

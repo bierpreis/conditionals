@@ -15,7 +15,16 @@ public class Atom extends AbstractFormula {
         return variable.toString();
     }
 
-    public boolean evaluate(){
+    public boolean evaluate(Interpretation interpretation) {
+        if (variable.equals(Variable.a))
+            return interpretation.isA();
 
+        if (variable.equals(Variable.a))
+            return interpretation.isA();
+
+        if (variable.equals(Variable.a))
+            return interpretation.isA();
+
+        else throw new RuntimeException("No interpretation found!");
     }
 }
