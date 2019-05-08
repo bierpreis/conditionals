@@ -20,10 +20,10 @@ public class Atom extends AbstractFormula {
             return interpretation.isA();
 
         if (variable.equals(Variable.b))
-            return interpretation.isA();
+            return interpretation.isB();
 
         if (variable.equals(Variable.c))
-            return interpretation.isA();
+            return interpretation.isB();
 
         else throw new RuntimeException("No interpretation found!");
     }
