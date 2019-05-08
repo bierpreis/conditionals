@@ -10,4 +10,9 @@ public class Negation extends AbstractFormula {
     public String toString() {
         return "!" + formula.toString();
     }
+
+    @Override
+    public boolean evaluate() {
+        return !formula.evaluate();
+    }
 }
