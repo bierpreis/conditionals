@@ -40,17 +40,16 @@ public class StatusThread implements Runnable {
 
 
     }
-
-    //todo: check if this is correct
+    
     private int calcSpeed(int kbAmount) {
         int kbIncrease = kbAmount - lastKBAmount;
         lastKBAmount = kbAmount;
 
         float timeInSeconds = (System.currentTimeMillis() - lastTimeStamp) / 1000f;
-        int speed = (int) (kbIncrease / timeInSeconds);
+        int kbPerSecond = (int) (kbIncrease / timeInSeconds);
 
         lastTimeStamp = System.currentTimeMillis();
-        
-        return speed;
+
+        return kbPerSecond;
     }
 }
