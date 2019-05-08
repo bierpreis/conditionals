@@ -94,7 +94,7 @@ public class KBCreator implements Runnable {
             }
 
             k = k + 1;
-            //todo: put this output in gui and not console
+            //todo: put this output in gui and not console. sth like "xy 2 element kbs created. now creating 3 element kbs"
             System.out.println("currekt k:" + k);
             System.out.println("l:" + l.get(k).size());
         }
