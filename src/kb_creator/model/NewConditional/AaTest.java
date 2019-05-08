@@ -1,7 +1,5 @@
 package kb_creator.model.NewConditional;
 
-import cucumber.api.java.ca.I;
-
 public class AaTest {
 
     public static void main(String[] args) {
