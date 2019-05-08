@@ -10,6 +10,11 @@ public class AaTest {
         AbstractFormula a = new Atom(Variable.a);
         a = new Negation(a);
 
-        System.out.println(a.evaluate(interpretation));
+        AbstractFormula b = new Atom(Variable.b);
+
+        AbstractFormula conjunction = new Conjunction(a, b);
+
+
+        System.out.println(conjunction.evaluate(interpretation));
     }
 }
