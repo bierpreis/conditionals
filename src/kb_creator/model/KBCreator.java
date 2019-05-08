@@ -41,7 +41,10 @@ public class KBCreator implements Runnable {
         NfcCreator nfcCreator = new NfcCreator(signature);
 
         status = Status.RUNNING;
-        int k = 0; //to avoid null pointer because java stats list at 0 not at 1 like code in paper
+
+        //k in original paper starts at 1
+        //here it starts at 0 because lists in java start at 0 and not 1
+        int k = 0;
 
         List<List<CandidatePair>> l = new LinkedList<>();
 
@@ -49,7 +52,7 @@ public class KBCreator implements Runnable {
 
 
         //this calculates the total number of calculations needed (will be useful for progress info)
-        //todo: fit this to new genKB
+        //todo: fit this to new genKB or delete
         for (List<CandidatePair> sublist : l)
             for (CandidatePair candidatePair : sublist)
                 for (Conditional candidate : candidatePair.getCandidates())
@@ -76,7 +79,7 @@ public class KBCreator implements Runnable {
 
 
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
-                        
+
                         alreadyFinishedCalculations++;
                         knowledgeBaseCounter++;
                     }
