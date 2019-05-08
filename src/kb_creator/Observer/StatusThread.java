@@ -21,6 +21,7 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (!creatorThread.getStatus().equals(Status.STOPPED)) {
+            //todo: dont sleep fixed time but try variable time??
             try {
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
@@ -44,6 +45,7 @@ public class StatusThread implements Runnable {
     private int calcSpeed(int kbAmount) {
         int kbIncrease = kbAmount - lastKBAmount;
         float timeInSeconds = (System.currentTimeMillis() - lastTimeStamp) / 1000;
+        System.out.println("time:" + timeInSeconds);
         int speed = (int) (kbIncrease / timeInSeconds);
         lastKBAmount = kbAmount;
         lastTimeStamp = System.currentTimeMillis();
