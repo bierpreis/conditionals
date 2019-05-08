@@ -6,11 +6,11 @@ public class AaTest {
         Interpretation interpretation = new Interpretation(true, true, true);
 
         AbstractFormula a = new Atom(Variable.a);
-        a = new Negation(a);
+        //a = a.neg();
 
         AbstractFormula b = new Atom(Variable.b);
 
-        AbstractFormula conjunction = a.and(b);
+        AbstractFormula conjunction = a.or(b);
 
 
         System.out.println(conjunction.evaluate(interpretation));

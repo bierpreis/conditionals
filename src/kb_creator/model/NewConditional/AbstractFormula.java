@@ -12,4 +12,10 @@ public abstract class AbstractFormula {
         return new Disjunction(this, otherFormula);
     }
 
+    public AbstractFormula neg() {
+
+        return new Negation(this);
+
+    }
+
 }
