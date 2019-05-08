@@ -10,7 +10,8 @@ public class Atom extends AbstractFormula {
     public Variable get() {
         return variable;
     }
-
+    //todo: check this
+    @Override
     public String toString() {
         return variable.toString();
     }
