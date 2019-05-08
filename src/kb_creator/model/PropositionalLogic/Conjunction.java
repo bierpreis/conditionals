@@ -1,4 +1,4 @@
-package kb_creator.model.NewConditional;
+package kb_creator.model.PropositionalLogic;
 
 public class Conjunction extends AbstractFormula {
     private AbstractFormula firstFormula;
