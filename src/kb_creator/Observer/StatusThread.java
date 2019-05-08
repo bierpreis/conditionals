@@ -43,11 +43,8 @@ public class StatusThread implements Runnable {
     //todo: check if this is correct
     private int calcSpeed(int kbAmount) {
         int kbIncrease = kbAmount - lastKBAmount;
-        long now = System.currentTimeMillis();
-        float timeInMs = (now - lastTimeStamp);
-        float timeInSeconds = timeInMs / 1000;
+        float timeInSeconds = (System.currentTimeMillis() - lastTimeStamp) / 1000;
         int speed = (int) (kbIncrease / timeInSeconds);
-        //int speed = (int) (((kbAmount - lastKBAmount) / ((System.currentTimeMillis() - lastTimeStamp))));
         lastKBAmount = kbAmount;
         lastTimeStamp = System.currentTimeMillis();
         return speed;
