@@ -67,9 +67,9 @@ public class KBCreator implements Runnable {
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(); //this takes R and r
-                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //R
-                        knowledgeBaseToAdd.add(r); //r
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase();
+                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
+                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
                         knowledgeBaseToAdd.sort();
 
                         List<Conditional> candidatesToAdd = new LinkedList<>();
