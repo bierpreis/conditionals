@@ -10,7 +10,7 @@ public class AaTest {
 
         AbstractFormula b = new Atom(Variable.b);
 
-        AbstractFormula conjunction = new Disjunction(a, b);
+        AbstractFormula conjunction = a.and(b);
 
 
         System.out.println(conjunction.evaluate(interpretation));
