@@ -6,7 +6,7 @@ import kb_creator.model.KBCreator;
 public class StatusThread implements Runnable {
     private InfoPanel infoPanel;
     private KBCreator creatorThread;
-    private long sleepTime;
+    private long idealSleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
 
@@ -14,28 +14,35 @@ public class StatusThread implements Runnable {
     public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
         this.infoPanel = infoPanel;
         this.creatorThread = creatorThread;
-        sleepTime = 200;
+        idealSleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
     }
 
     @Override
     public void run() {
         while (!creatorThread.getStatus().equals(Status.STOPPED)) {
-            //todo: dont sleep fixed time but try variable time??
-            try {
-                Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            long startTime = System.currentTimeMillis();
             infoPanel.showStatus(creatorThread.getStatus());
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
             infoPanel.showKBAmount(creatorThread.getKBAmount());
             infoPanel.showProgress(creatorThread.getProgressInPercent());
             infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
 
-
             if (creatorThread.getStatus().equals(Status.FINISHED))
                 break;
+
+            long iterationTime = System.currentTimeMillis() - startTime;
+            long sleepTime = idealSleepTime - iterationTime;
+            //todo: put sleeptime also in equation. maybe it seeps more then 200ms?
+            System.out.println("sleeptime: " + sleepTime);
+            if (sleepTime > 0)
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
         }
 
 
