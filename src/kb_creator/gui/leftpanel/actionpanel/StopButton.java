@@ -16,7 +16,7 @@ public class StopButton extends JButton {
 
 
     }
-
+    //todo: stop button doenst work. only stops status thread but not creator.
     private class StopButtonListener implements ActionListener {
 
 

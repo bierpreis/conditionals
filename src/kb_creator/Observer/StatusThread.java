@@ -33,8 +33,6 @@ public class StatusThread implements Runnable {
 
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
-            //todo: put sleeptime also in equation. maybe it seeps more then 200ms?
-            System.out.println("sleeptime: " + sleepTime);
             if (sleepTime > 0)
                 try {
                     Thread.sleep(sleepTime);

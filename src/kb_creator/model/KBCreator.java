@@ -151,6 +151,7 @@ public class KBCreator implements Runnable {
     }
 
     public void stop() {
+        System.out.println("Stop in creator");
         status = Status.STOPPED;
     }
 
