@@ -43,7 +43,7 @@ public class KBCreatorObserver implements ActionListener {
             creatorThread.start();
 
         }
-        //todo: stop maybe here?
+
         if (e.getActionCommand().equals("Stop")) {
             UIManager.put("OptionPane.yesButtonText", "Yes, Stop.");
             UIManager.put("OptionPane.noButtonText", "No, Continue.");
