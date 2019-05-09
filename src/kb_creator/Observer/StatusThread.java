@@ -20,7 +20,7 @@ public class StatusThread implements Runnable {
 
     @Override
     public void run() {
-        while (!creatorThread.getStatus().equals(Status.STOPPED)) {
+        while (!creatorThread.getStatus().equals(Status.STOPPED)) { //todo: this causes buttons not to reset when stopped
             long startTime = System.currentTimeMillis();
             infoPanel.showStatus(creatorThread.getStatus());
             infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
@@ -29,7 +29,7 @@ public class StatusThread implements Runnable {
             infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
 
             if (creatorThread.getStatus().equals(Status.FINISHED))
-                break;
+                break; //todo: maybe better return than break?
 
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;

@@ -35,6 +35,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
+
         status = Status.CREATING_CONDITIONALS;
 
 
@@ -87,7 +88,7 @@ public class KBCreator implements Runnable {
                         sleep(500);
                     if (status.equals(Status.STOPPED)) {
                         System.out.println("trying to break");
-                        break;
+                        return;
 
                     }
 
@@ -103,7 +104,7 @@ public class KBCreator implements Runnable {
         }
         status = Status.FINISHED;
 
-
+        System.out.println("finished..");
     }
 
     public void setSignature(String signature) {
@@ -154,7 +155,6 @@ public class KBCreator implements Runnable {
     }
 
     public void stop() {
-        System.out.println("Stop in creator");
         status = Status.STOPPED;
     }
 
