@@ -87,15 +87,15 @@ public class KBCreator implements Runnable {
 
 
             }
+            System.out.println("currekt k:" + k);
+            System.out.println(l.get(k).get(0));
+            System.out.println("l:" + l.get(k).size());
 
             k = k + 1;
             //todo: put this output in gui and not console. sth like "xy 2 element kbs created. now creating 3 element kbs"
-            System.out.println("currekt k:" + k);
-            System.out.println("l:" + l.get(k).size());
+
         }
         status = Status.FINISHED;
-
-        System.out.println("finished..");
     }
 
     public void setSignature(String signature) {
