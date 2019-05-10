@@ -70,7 +70,7 @@ public class Conditional implements Comparable {
         antecendString = antecendString.replace("},", "}");
         String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
 
-
+        //todo: add whitespace in panel not here
         //this is to calculate whitespaces for correct columns
         int numberOfSpacesToAdd = 0;
         if (stringToReturn.length() < longestConditional)
