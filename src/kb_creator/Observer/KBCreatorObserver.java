@@ -11,12 +11,17 @@ public class KBCreatorObserver implements ActionListener {
     private KBMainWindow mainWindow;
 
     private KBCreator creatorThreadObject;
+    private StatusThread statusThreadObject;
 
 
     public KBCreatorObserver() {
 
         mainWindow = new KBMainWindow(this);
+        statusThreadObject = new StatusThread(mainWindow.getInfoPanel());
 
+        Thread statusThread = new Thread(statusThreadObject);
+
+        statusThread.start();
 
     }
 
@@ -27,19 +32,14 @@ public class KBCreatorObserver implements ActionListener {
 
             creatorThreadObject = new KBCreator();
 
-            //todo: status thread should be started at program start not button start?
-            StatusThread statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
-
-            Thread statusThread = new Thread(statusThreadObject);
-
-            statusThread.start();
-
             creatorThreadObject.setSignature(mainWindow.getSignature());
 
             Thread creatorThread = new Thread(creatorThreadObject);
 
 
             creatorThread.start();
+
+            statusThreadObject.setCreatorThread(creatorThreadObject);
 
         }
 

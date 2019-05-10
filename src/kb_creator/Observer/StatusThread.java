@@ -9,12 +9,11 @@ public class StatusThread implements Runnable {
     private long idealSleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
-    private boolean isRunning;
+    private boolean isRunning = true;
 
 
-    public StatusThread(InfoPanel infoPanel, KBCreator creatorThread) {
+    public StatusThread(InfoPanel infoPanel) {
         this.infoPanel = infoPanel;
-        this.creatorThread = creatorThread;
         idealSleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
     }
@@ -24,11 +23,20 @@ public class StatusThread implements Runnable {
         //todo: maybe dont end thread when creator is ended?
         while (isRunning) {
             long startTime = System.currentTimeMillis();
-            infoPanel.showStatus(creatorThread.getStatus());
-            infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
-            infoPanel.showKBAmount(creatorThread.getKBAmount());
-            infoPanel.showProgress(creatorThread.getProgressInPercent());
-            infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
+            if (creatorThread != null) {
+
+                infoPanel.showStatus(creatorThread.getStatus());
+                infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
+                infoPanel.showKBAmount(creatorThread.getKBAmount());
+                infoPanel.showProgress(creatorThread.getProgressInPercent());
+                infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
+            } else {
+                infoPanel.showStatus(Status.NOT_STARTED);
+                infoPanel.showCandidatePairAmount(0);
+                infoPanel.showKBAmount(0); //todo: make variable here like lastKBAmount? when stopped should show last kb amount
+                infoPanel.showProgress(0);
+                infoPanel.showSpeed(0);
+            }
 
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
@@ -41,13 +49,6 @@ public class StatusThread implements Runnable {
 
 
         }
-        //todo: not sure if this is still needed. maybe delelte.
-        //this is to display status correctly when thread finishes
-        infoPanel.showStatus(creatorThread.getStatus());
-        infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
-        infoPanel.showKBAmount(creatorThread.getKBAmount());
-        infoPanel.showProgress(creatorThread.getProgressInPercent());
-        infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
 
 
     }
@@ -64,7 +65,8 @@ public class StatusThread implements Runnable {
         return kbPerSecond;
     }
 
-    public void stopThread() {
-        isRunning = false;
+    public void setCreatorThread(KBCreator kbCreator) {
+        this.creatorThread = kbCreator;
     }
+
 }
