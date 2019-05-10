@@ -26,9 +26,8 @@ public class KBCreatorObserver implements ActionListener {
         if (e.getActionCommand().equals("Start")) {
 
             creatorThreadObject = new KBCreator();
-            //of knowledge bases increases after creating multiple times ->fix this
 
-
+            //todo: status thread should be started at program start not button start?
             StatusThread statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), creatorThreadObject);
 
             Thread statusThread = new Thread(statusThreadObject);

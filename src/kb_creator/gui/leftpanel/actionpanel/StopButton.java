@@ -16,7 +16,7 @@ public class StopButton extends JButton {
 
 
     }
-    //todo: stop button doenst work. only stops status thread but not creator.
+    //todo: stop button is active when not running and can cause null pointer
     private class StopButtonListener implements ActionListener {
 
 
