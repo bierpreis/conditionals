@@ -52,14 +52,6 @@ public class KBCreator implements Runnable {
         l.add(initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc()));
 
 
-        //this calculates the total number of calculations needed (will be useful for progress info)
-        //todo: fit this to new genKB or delete
-        for (List<CandidatePair> sublist : l)
-            for (CandidatePair candidatePair : sublist)
-                for (Conditional candidate : candidatePair.getCandidates())
-                    totalNumberOfCalculations++;
-
-
         //the following is the actual loop where the work is done
 
 
