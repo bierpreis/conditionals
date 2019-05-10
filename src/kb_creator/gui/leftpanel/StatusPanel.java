@@ -8,6 +8,7 @@ import javax.swing.*;
 public class StatusPanel extends JPanel {
 
     private JLabel progressLabel;
+    private JLabel progressLabel2;
     private JLabel statusLabel;
     private ActionPanel actionPanel;
     private JLabel speedDescriptionLabel;
@@ -24,6 +25,9 @@ public class StatusPanel extends JPanel {
 
         progressLabel = new JLabel();
         vBox.add(progressLabel);
+        progressLabel2 = new JLabel();
+        vBox.add(progressLabel2);
+
 
         statusLabel = new JLabel();
         vBox.add(statusLabel);
@@ -36,8 +40,12 @@ public class StatusPanel extends JPanel {
 
     }
 
-    public void showProgress(double progressInpercent) {
-        progressLabel.setText("Total Progress: " + String.format("%6.2f", progressInpercent) + "%");
+    public void showProgress(int finishedKBs) {
+        if (finishedKBs != 0)
+            progressLabel.setText(finishedKBs + " element ");
+        else progressLabel.setText("No");
+        progressLabel2.setText("Knowledge Bases finished.");
+
 
     }
 

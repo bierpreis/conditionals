@@ -21,8 +21,8 @@ public class InfoPanel extends JPanel {
 
     }
 
-    public void showProgress(double progressInPercent) {
-        statusPanel.showProgress(progressInPercent);
+    public void showProgress(int finishedKBs) {
+        statusPanel.showProgress(finishedKBs);
     }
 
     public void showCandidatePairAmount(int candidatePairAmount) {

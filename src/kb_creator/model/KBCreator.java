@@ -22,6 +22,7 @@ public class KBCreator implements Runnable {
     private String signature;
 
     private List<KnowledgeBase> kbList;
+    private int k;
 
     public KBCreator() {
         kbList = new LinkedList<>();
@@ -45,7 +46,7 @@ public class KBCreator implements Runnable {
 
         //k in original paper starts at 1
         //here it starts at 0 because lists in java start at 0 and not 1
-        int k = 0;
+        k = 0;
 
         List<List<CandidatePair>> l = new LinkedList<>();
 
@@ -87,13 +88,6 @@ public class KBCreator implements Runnable {
 
 
             }
-            System.out.println("currekt k:" + k);
-            System.out.println(l.get(k).get(0));
-            System.out.println("l:" + l.get(k).size());
-
-            k = k + 1;
-            //todo: put this output in gui and not console. sth like "xy 2 element kbs created. now creating 3 element kbs"
-
         }
         status = Status.FINISHED;
     }
@@ -139,12 +133,6 @@ public class KBCreator implements Runnable {
         return status;
     }
 
-    public double getProgressInPercent() {
-        if (totalNumberOfCalculations != 0)
-            return 100 * (alreadyFinishedCalculations / totalNumberOfCalculations);
-        else return 0;
-    }
-
     public void stop() {
         status = Status.STOPPED;
     }
@@ -160,6 +148,10 @@ public class KBCreator implements Runnable {
 
     public List<KnowledgeBase> getKnowledgeBaseList() {
         return kbList;
+    }
+
+    public int getK() {
+        return k;
     }
 
 }

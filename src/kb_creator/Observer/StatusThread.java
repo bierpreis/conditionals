@@ -23,11 +23,10 @@ public class StatusThread implements Runnable {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
             if (creatorThread != null) {
-
                 infoPanel.showStatus(creatorThread.getStatus());
                 infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
                 infoPanel.showKBAmount(creatorThread.getKBAmount());
-                infoPanel.showProgress(creatorThread.getProgressInPercent());
+                infoPanel.showProgress(creatorThread.getK());
                 infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
             } else {
                 infoPanel.showStatus(Status.NOT_STARTED);
