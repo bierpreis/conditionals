@@ -66,7 +66,7 @@ public class KBCreator implements Runnable {
         while (!l.get(k).isEmpty()) { //line 6
             l.add(new LinkedList<>()); //line  7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
-                for (Conditional r : candidatePair.getCandidates()) { //this is line 9  //todo: stop break only breaks this not whole loop
+                for (Conditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase();
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
@@ -87,7 +87,6 @@ public class KBCreator implements Runnable {
                     while (status.equals(Status.PAUSE))
                         sleep(500);
                     if (status.equals(Status.STOPPED)) {
-                        System.out.println("trying to break");
                         return;
 
                     }
