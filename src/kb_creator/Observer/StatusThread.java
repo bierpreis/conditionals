@@ -20,7 +20,6 @@ public class StatusThread implements Runnable {
 
     @Override
     public void run() {
-        //todo: maybe dont end thread when creator is ended?
         while (isRunning) {
             long startTime = System.currentTimeMillis();
             if (creatorThread != null) {
@@ -33,7 +32,7 @@ public class StatusThread implements Runnable {
             } else {
                 infoPanel.showStatus(Status.NOT_STARTED);
                 infoPanel.showCandidatePairAmount(0);
-                infoPanel.showKBAmount(0); //todo: make variable here like lastKBAmount? when stopped should show last kb amount
+                infoPanel.showKBAmount(0);
                 infoPanel.showProgress(0);
                 infoPanel.showSpeed(0);
             }

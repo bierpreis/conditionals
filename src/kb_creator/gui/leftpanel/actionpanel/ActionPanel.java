@@ -31,7 +31,6 @@ public class ActionPanel extends JPanel {
     }
 
     public void setStatus(Status status) {
-        System.out.println("status in action panel: " + status.toString());
         switch (status) {
             case PAUSE:
                 startButton.setEnabled(false);
