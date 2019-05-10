@@ -20,6 +20,7 @@ public class StatusThread implements Runnable {
 
     @Override
     public void run() {
+        //todo: maybe dont end thread when creator is ended?
         while (!creatorThread.getStatus().equals(Status.STOPPED) && !creatorThread.getStatus().equals(Status.FINISHED)) {
             long startTime = System.currentTimeMillis();
             infoPanel.showStatus(creatorThread.getStatus());
