@@ -32,17 +32,13 @@ public class ActionPanel extends JPanel {
 
     public void setStatus(Status status) {
         switch (status) {
-            case PAUSE:
-                startButton.setEnabled(false);
-                pauseButton.setEnabled(true);
-                stopButton.setEnabled(false);
-                break;
             case CREATING_CONDITIONALS:
                 startButton.setEnabled(false);
                 pauseButton.setEnabled(false);
                 stopButton.setEnabled(false);
                 break;
             case RUNNING:
+            case PAUSE:
                 startButton.setEnabled(false);
                 pauseButton.setEnabled(true);
                 stopButton.setEnabled(true);
