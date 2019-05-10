@@ -10,7 +10,7 @@ import javax.swing.*;
 public class ActionPanel extends JPanel {
     private JButton startButton;
     private PauseButton pauseButton;
-    private StopButton stopButton;
+    private JButton stopButton;
 
     public ActionPanel(KBCreatorObserver observer) {
 
@@ -22,7 +22,7 @@ public class ActionPanel extends JPanel {
         pauseButton.addActionListener(observer);
         add(pauseButton);
 
-        stopButton = new StopButton();
+        stopButton = new JButton("Stop");
         stopButton.addActionListener(observer);
         add(stopButton);
 
