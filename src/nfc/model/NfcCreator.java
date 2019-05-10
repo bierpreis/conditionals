@@ -37,7 +37,7 @@ public class NfcCreator {
     }
 
 
-    public List<Conditional> createNfc(List<World> worldsList) {
+    private List<Conditional> createNfc(List<World> worldsList) {
 
         List<Conditional> basicConditionalList = new LinkedList<>();
 
@@ -56,7 +56,7 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
-    public List<ConditionalList> createCnfcEq(List<Conditional> nfc) {
+    private List<ConditionalList> createCnfcEq(List<Conditional> nfc) {
 
 
         List<ConditionalList> cNfc = new LinkedList<>();
@@ -96,7 +96,7 @@ public class NfcCreator {
         return cNfc;
     }
 
-    public List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
+    private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
 
         List<Conditional> cnfc = new LinkedList<>();
 
