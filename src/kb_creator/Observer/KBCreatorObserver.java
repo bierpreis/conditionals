@@ -42,7 +42,7 @@ public class KBCreatorObserver implements ActionListener {
             statusThreadObject.setCreatorThread(creatorThreadObject);
 
         }
-
+        //todo: pause when stop
         if (e.getActionCommand().equals("Stop")) {
             UIManager.put("OptionPane.yesButtonText", "Yes, Stop.");
             UIManager.put("OptionPane.noButtonText", "No, Continue.");
