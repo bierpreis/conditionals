@@ -105,7 +105,7 @@ public class World implements Comparable {
     //todo: how to fit this with new conditional?
     public String translateNumbersToLetters(String string) {
 
-        if (signature.equals("ab")) {
+        if (signature.equals("abc")) {
 
             string = string.replace("0", "!a!b!c");
             string = string.replace("1", "!a!bc");
@@ -116,14 +116,14 @@ public class World implements Comparable {
             string = string.replace("6", "ab!c");
             string = string.replace("7", "abc");
 
-        } else {
+        } else if (signature.equals("ab")) {
             string = string.replace("0", "!a!b");
             string = string.replace("1", "!ab");
             string = string.replace("2", "a!b");
             string = string.replace("3", "ab");
 
 
-        }
+        } else throw new RuntimeException("Invalid Signature: " + signature);
 
         return string;
     }
