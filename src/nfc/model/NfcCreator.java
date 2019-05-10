@@ -155,6 +155,10 @@ public class NfcCreator {
         return cnfcEq;
     }
 
+    public List<World> getWorlds() {
+        return worlds;
+    }
+
 }
 
 
