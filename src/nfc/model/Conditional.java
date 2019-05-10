@@ -127,4 +127,8 @@ public class Conditional implements Comparable {
         return consequence;
     }
 
+    public int getLongestConditional() {
+        return longestConditional;
+    }
+
 }
