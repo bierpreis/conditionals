@@ -67,15 +67,24 @@ public class CondTextField extends JTextArea {
 
             for (Conditional currentConditional : currentEqList.getList()) {
                 if (isNumberingActive)
-                    currentLine = currentLine + currentConditional.getNumber() + ": " + currentConditional.toString();
+                    currentLine = currentLine + currentConditional.getNumber() + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length());
                 else
-                    currentLine = currentLine + currentConditional.toString();
+                    currentLine = currentLine + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length());
                 numberOfConditionals++;
 
             }
             append(currentLine + "\n");
         }
         description = this.numberOfEquivalenceClasses + eqClassList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
+    }
+
+    private String createWhiteSpaceString(int conditionalLength) {
+        int numberOfWhiteSpaces = Conditional.getLongestConditional() - conditionalLength;
+        String whiteSpaceString = "";
+        for (int i = 0; i < numberOfWhiteSpaces; i++) {
+            whiteSpaceString = whiteSpaceString + " ";
+        }
+        return whiteSpaceString;
     }
 
 
