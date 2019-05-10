@@ -13,7 +13,6 @@ public abstract class AbstractFormula {
     }
 
     public AbstractFormula neg() {
-
         return new Negation(this);
 
     }
