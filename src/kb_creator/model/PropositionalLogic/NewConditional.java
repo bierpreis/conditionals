@@ -25,9 +25,9 @@ public class NewConditional {
 
 
     private AbstractFormula worldToFormula(World world) {
+        System.out.println("called");
         AbstractFormula formulaToReturn = null;
         for (int worldInt : world.getWorldsList()) {
-            AbstractFormula conjunction = null;
             AbstractFormula firstAtom = new Atom(Variable.a);
             AbstractFormula secondAtom = new Atom(Variable.b);
             switch (worldInt) {
@@ -53,7 +53,7 @@ public class NewConditional {
             }
             if (formulaToReturn == null)
                 formulaToReturn = new Conjunction(firstAtom, secondAtom);
-            else formulaToReturn = formulaToReturn.and(conjunction);
+            else formulaToReturn = formulaToReturn.and(new Conjunction(firstAtom, secondAtom));
 
         }
         return formulaToReturn;
