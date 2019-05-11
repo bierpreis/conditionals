@@ -25,7 +25,6 @@ public class NewConditional {
 
 
     private AbstractFormula worldToFormula(World world) {
-        System.out.println("called");
         AbstractFormula formulaToReturn = null;
         for (int worldInt : world.getWorldsList()) {
             AbstractFormula firstAtom = new Atom(Variable.a);

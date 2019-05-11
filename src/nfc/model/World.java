@@ -38,8 +38,7 @@ public class World implements Comparable {
                 return 1;
 
         }
-        System.out.println("comparing worlds failed!!! (" + this.toString() + " and " + otherWorld.toString() + " )");
-        return 0;
+        throw new RuntimeException("Comparing worlds failed!");
 
 
     }
