@@ -18,12 +18,14 @@ public class NewConditional {
     public NewConditional(Conditional oldConditional) {
         World oldAntecend = oldConditional.getAntecedent();
         World oldConsequence = oldConditional.getConsequence();
+        antecend = worldToFormula(oldAntecend);
+        consequent = worldToFormula(oldConsequence);
 
     }
 
 
     private AbstractFormula worldToFormula(World world) {
-        AbstractFormula disJunctionToReturn = null;
+        AbstractFormula formulaToReturn = null;
         for (int worldInt : world.getWorldsList()) {
             AbstractFormula conjunction = null;
             AbstractFormula firstAtom = new Atom(Variable.a);
@@ -38,9 +40,10 @@ public class NewConditional {
 
                     break;
                 case 1:
-
+                    firstAtom.neg();
                     break;
                 case 2:
+                    secondAtom.neg();
                     break;
                 case 3:
                     break;
@@ -48,11 +51,13 @@ public class NewConditional {
                     throw new RuntimeException("Unknown World: " + worldInt);
 
             }
-            if (disJunctionToReturn == null)
-                disJunctionToReturn = new Conjunction(firstAtom, secondAtom);
-            else disJunctionToReturn = disJunctionToReturn.and(conjunction);
+            if (formulaToReturn == null)
+                formulaToReturn = new Conjunction(firstAtom, secondAtom);
+            else formulaToReturn = formulaToReturn.and(conjunction);
 
         }
-        return disJunctionToReturn;
+        return formulaToReturn;
     }
+
+
 }
