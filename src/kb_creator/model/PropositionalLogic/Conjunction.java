@@ -14,8 +14,8 @@ public class Conjunction extends AbstractFormula {
         return firstFormula.evaluate(interpretation) && secondFormula.evaluate(interpretation);
     }
 
-    public String toString(){
+    public String toString() {
         String stringToReturn = "";
-        return firstFormula.toString() + " (and) " + secondFormula;
+        return "{" + firstFormula.toString() + "(and)" + secondFormula + "}";
     }
 }

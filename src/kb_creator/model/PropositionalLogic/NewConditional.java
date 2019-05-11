@@ -60,7 +60,7 @@ public class NewConditional {
     }
 
     public String toString() {
-        return "(" + consequent + "|" + antecend + ")";
+        return "(" + consequent + " | " + antecend + ")";
     }
 
 

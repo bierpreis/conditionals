@@ -18,6 +18,6 @@ public class Disjunction extends AbstractFormula {
 
     @Override
     public String toString() {
-        return firstFormula + toString() + " (or) " + secondFormula.toString();
+        return "(" + firstFormula + toString() + "(or)" + secondFormula.toString() + ")";
     }
 }
