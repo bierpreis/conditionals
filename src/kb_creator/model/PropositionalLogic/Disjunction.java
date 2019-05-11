@@ -5,13 +5,19 @@ public class Disjunction extends AbstractFormula {
     private AbstractFormula secondFormula;
 
 
-    public Disjunction(AbstractFormula firstFormula, AbstractFormula secondFormula){
+    public Disjunction(AbstractFormula firstFormula, AbstractFormula secondFormula) {
         this.firstFormula = firstFormula;
         this.secondFormula = secondFormula;
     }
+
     @Override
     public boolean evaluate(Interpretation interpretation) {
         return firstFormula.evaluate(interpretation) || secondFormula.evaluate(interpretation);
 
+    }
+
+    @Override
+    public String toString() {
+        return firstFormula + toString() + " (or) " + secondFormula.toString();
     }
 }

@@ -17,4 +17,6 @@ public abstract class AbstractFormula {
 
     }
 
+    public abstract String toString();
+
 }

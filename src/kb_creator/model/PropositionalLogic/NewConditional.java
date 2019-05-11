@@ -59,5 +59,9 @@ public class NewConditional {
         return formulaToReturn;
     }
 
+    public String toString() {
+        return "(" + consequent + "|" + antecend + ")";
+    }
+
 
 }
