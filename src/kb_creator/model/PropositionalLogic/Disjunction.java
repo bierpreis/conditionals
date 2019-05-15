@@ -18,7 +18,7 @@ public class Disjunction extends AbstractFormula {
 
     @Override //todo: should or be a simple comma??
     public String toString() {
-        return "(" + firstFormula.toString() + "(or)" + secondFormula.toString() + ")";
+        return "(" + firstFormula.toString() + "," + secondFormula.toString() + ")";
     }
 
     //todo: test this
