@@ -1,14 +1,11 @@
 package kb_creator.model.PropositionalLogic;
 
-import com.google.errorprone.annotations.Var;
 import nfc.model.Conditional;
 import nfc.model.World;
 
-import java.util.List;
 
 public class NewConditional {
     private int number;
-    private NewConditional counterConditional;
     private AbstractFormula antecend;
     private AbstractFormula consequent;
 
@@ -69,8 +66,15 @@ public class NewConditional {
         return number;
     }
 
+    //todo: equals method
+
+    public void createCounterConditional(Conditional oldConditional){
+
+    }
+
     public NewConditional getCounterConditional(){
-        return
+        //todo: good counter option
+        return new NewConditional(, antecend);
     }
 
 
