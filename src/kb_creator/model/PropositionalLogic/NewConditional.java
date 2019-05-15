@@ -32,13 +32,9 @@ public class NewConditional {
             AbstractFormula firstAtom = new Atom(Variable.a);
             AbstractFormula secondAtom = new Atom(Variable.b);
             switch (worldInt) {
-
-
                 case 0:
-
                     firstAtom.neg();
                     secondAtom.neg();
-
                     break;
                 case 1:
                     firstAtom.neg();
@@ -54,7 +50,7 @@ public class NewConditional {
             }
             if (formulaToReturn == null)
                 formulaToReturn = new Conjunction(firstAtom, secondAtom);
-            else formulaToReturn = formulaToReturn.and(new Conjunction(firstAtom, secondAtom));
+            else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
 
         }
         return formulaToReturn;
