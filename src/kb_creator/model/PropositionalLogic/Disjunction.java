@@ -16,7 +16,7 @@ public class Disjunction extends AbstractFormula {
 
     }
 
-    @Override //todo: should or be a simple comma??
+    @Override //todo: braces only when not atom?
     public String toString() {
         return "(" + firstFormula.toString() + "," + secondFormula.toString() + ")";
     }

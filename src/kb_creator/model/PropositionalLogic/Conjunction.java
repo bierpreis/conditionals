@@ -15,10 +15,10 @@ public class Conjunction extends AbstractFormula {
     }
 
     @Override
-    public String toString() { //todo: no such braces for all cunjunctions??
+    public String toString() {
         if (firstFormula.isAtom() && secondFormula.isAtom())
             return firstFormula.toString() + secondFormula.toString();
-        return "{" + firstFormula.toString() + "(and)" + secondFormula.toString() + "}";
+        return "(" + firstFormula.toString() + "(and)" + secondFormula.toString() + ")";
     }
 
 
