@@ -1,5 +1,6 @@
 package kb_creator.model.PropositionalLogic;
 
+import com.intellij.refactoring.changeClassSignature.TypeParameterInfo;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -8,6 +9,8 @@ public class NewConditional {
     private int number;
     private AbstractFormula antecend;
     private AbstractFormula consequent;
+
+    private NewConditional counterConditional;
 
     public NewConditional(AbstractFormula antecend, AbstractFormula consequent) {
         this.antecend = antecend;
@@ -68,13 +71,12 @@ public class NewConditional {
 
     //todo: equals method
 
-    public void createCounterConditional(Conditional oldConditional){
-
+    public void createCounterConditional(Conditional oldConditional) {
+        counterConditional = new NewConditional(oldConditional);
     }
 
-    public NewConditional getCounterConditional(){
-        //todo: good counter option
-        return new NewConditional(, antecend);
+    public NewConditional getCounterConditional() {
+        return counterConditional;
     }
 
 

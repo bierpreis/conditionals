@@ -116,7 +116,7 @@ public class KBCreator implements Runnable {
             rKB.add(r); // rKB is r as 1 element kb
             List<Conditional> conditionalsToAdd = new LinkedList<>();
             for (Conditional conditional : nfc)
-                if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
+                if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional())) //todo
                     conditionalsToAdd.add(conditional);
             l.add(new CandidatePair(rKB, conditionalsToAdd));
         }
