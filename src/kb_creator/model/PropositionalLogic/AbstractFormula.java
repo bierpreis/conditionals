@@ -7,7 +7,7 @@ public abstract class AbstractFormula {
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }
-
+    //todo: why is this never used?
     public AbstractFormula or(AbstractFormula otherFormula) {
         return new Disjunction(this, otherFormula);
     }
