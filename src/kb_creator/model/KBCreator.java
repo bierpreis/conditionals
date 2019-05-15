@@ -52,7 +52,9 @@ public class KBCreator implements Runnable {
         //todo: new conditional in here?
         List<List<CandidatePair>> l = new LinkedList<>();
 
-        l.add(initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc()));
+        List<NewConditional> nfc = nfcCreator.getNewNfc();
+        List<NewConditional> cnfc = nfcCreator.getNewCnfc();
+        l.add(initOneElementKBs(nfc, cnfc);
 
 
         //the following is the actual loop where the work is done
@@ -107,15 +109,15 @@ public class KBCreator implements Runnable {
         }
     }
 
-    private List<CandidatePair> initOneElementKBs(List<Conditional> nfc, List<Conditional> cnfc) {
+    private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
         candidatePairAmount = 0;
         List<CandidatePair> l = new LinkedList<>();
-        for (Conditional r : cnfc) { //line 3 in original
+        for (NewConditional r : cnfc) { //line 3 in original
 
-            KnowledgeBase rKB = new KnowledgeBase(); //line 4 and 5
+            NewKnowledgeBase rKB = new NewKnowledgeBase(); //line 4 and 5
             rKB.add(r); // rKB is r as 1 element kb
             List<Conditional> conditionalsToAdd = new LinkedList<>();
-            for (Conditional conditional : nfc)
+            for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional())) //todo
                     conditionalsToAdd.add(conditional);
             l.add(new CandidatePair(rKB, conditionalsToAdd));
@@ -151,7 +153,6 @@ public class KBCreator implements Runnable {
     public int getK() {
         return k;
     }
-
 
 
 }
