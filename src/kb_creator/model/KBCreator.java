@@ -49,12 +49,12 @@ public class KBCreator implements Runnable {
         //k in original paper starts at 1
         //here it starts at 0 because lists in java start at 0 and not 1
         k = 0;
-        //todo: new conditional in here?
+
         List<List<CandidatePair>> l = new LinkedList<>();
 
         List<NewConditional> nfc = nfcCreator.getNewNfc();
         List<NewConditional> cnfc = nfcCreator.getNewCnfc();
-        l.add(initOneElementKBs(nfc, cnfc);
+        l.add(initOneElementKBs(nfc, cnfc));
 
 
         //the following is the actual loop where the work is done
@@ -116,9 +116,9 @@ public class KBCreator implements Runnable {
 
             NewKnowledgeBase rKB = new NewKnowledgeBase(); //line 4 and 5
             rKB.add(r); // rKB is r as 1 element kb
-            List<Conditional> conditionalsToAdd = new LinkedList<>();
+            List<NewConditional> conditionalsToAdd = new LinkedList<>();
             for (NewConditional conditional : nfc)
-                if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional())) //todo
+                if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
             l.add(new CandidatePair(rKB, conditionalsToAdd));
         }
