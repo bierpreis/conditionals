@@ -1,6 +1,7 @@
 package kb_creator.Observer;
 
 import kb_creator.gui.leftpanel.InfoPanel;
+import kb_creator.gui.leftpanel.MemoryPanel;
 import kb_creator.model.KBCreator;
 
 public class StatusThread implements Runnable {
@@ -9,28 +10,28 @@ public class StatusThread implements Runnable {
     private long idealSleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
+    private MemoryPanel memoryPanel;
     private boolean isRunning = true;
 
 
-    public StatusThread(InfoPanel infoPanel) {
+    public StatusThread(InfoPanel infoPanel, MemoryPanel memoryPanel) {
         this.infoPanel = infoPanel;
         idealSleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
+        this.memoryPanel = memoryPanel;
     }
 
     @Override
     public void run() {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
-            //todo: put this into status
-            //maybe auto pause when low mem
-            System.out.println(":free: " + Runtime.getRuntime().freeMemory() / 1_000_000 + "m");
             if (creatorThread != null) {
                 infoPanel.showStatus(creatorThread.getStatus());
                 infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
                 infoPanel.showKBAmount(creatorThread.getKBAmount());
                 infoPanel.showProgress(creatorThread.getK());
                 infoPanel.showSpeed(calcSpeed(creatorThread.getKBAmount()));
+
             } else {
                 infoPanel.showStatus(Status.NOT_STARTED);
                 infoPanel.showCandidatePairAmount(0);
@@ -39,6 +40,7 @@ public class StatusThread implements Runnable {
                 infoPanel.showSpeed(0);
             }
 
+            memoryPanel.showFreeMemory();
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
             if (sleepTime > 0)

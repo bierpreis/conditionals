@@ -3,6 +3,7 @@ package kb_creator.gui;
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
+import kb_creator.gui.leftpanel.MemoryPanel;
 import nfc.view.textArea.CondPanel;
 
 import javax.swing.*;
@@ -36,5 +37,9 @@ public class KBMainWindow {
 
     public JFrame getMainWindow() {
         return mainWindow;
+    }
+
+    public MemoryPanel getMemoryPanel(){
+        return leftPanel.getMemoryPanel();
     }
 }

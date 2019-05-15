@@ -10,16 +10,18 @@ public class LeftPanel extends JPanel {
     private SignaturePanel signaturePanel;
     private InfoPanel infoPanel;
     private ActionPanel actionPanel;
+    private MemoryPanel memoryPanel;
 
 
     public LeftPanel(KBCreatorObserver observer) {
         this.observer = observer;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        //setMinimumSize(new Dimension(200, 300));
+
 
         add(actionPanel = new ActionPanel(observer));
         add(signaturePanel = new SignaturePanel());
         add(infoPanel = new InfoPanel(actionPanel));
+        add(memoryPanel = new MemoryPanel());
         revalidate();
     }
 
@@ -29,5 +31,9 @@ public class LeftPanel extends JPanel {
 
     public InfoPanel getInfoPanel() {
         return infoPanel;
+    }
+
+    public MemoryPanel getMemoryPanel(){
+        return memoryPanel;
     }
 }
