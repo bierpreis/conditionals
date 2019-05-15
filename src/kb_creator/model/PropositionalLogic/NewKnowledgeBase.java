@@ -13,7 +13,7 @@ public class NewKnowledgeBase {
         conditionalList = new LinkedList<>();
     }
 
-    public boolean isConsistent(Conditional conditional) {
+    public boolean isConsistent(NewConditional conditional) {
         //todo this test is written in goldszmit/pearl 1996 p 65
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 

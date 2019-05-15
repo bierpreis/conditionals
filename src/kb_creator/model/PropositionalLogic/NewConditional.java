@@ -8,6 +8,7 @@ import java.util.List;
 
 public class NewConditional {
     private int number;
+    private NewConditional counterConditional;
     private AbstractFormula antecend;
     private AbstractFormula consequent;
 
@@ -66,6 +67,10 @@ public class NewConditional {
 
     public int getNumber() {
         return number;
+    }
+
+    public NewConditional getCounterConditional(){
+        return
     }
 
 
