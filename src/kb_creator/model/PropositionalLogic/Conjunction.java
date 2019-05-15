@@ -15,7 +15,27 @@ public class Conjunction extends AbstractFormula {
     }
 
     public String toString() {
-        String stringToReturn = "";
         return "{" + firstFormula.toString() + "(and)" + secondFormula + "}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Conjunction))
+            return false;
+        Conjunction otherConjunction = (Conjunction) o;
+
+        if(otherConjunction.getFirstFormula().equals(firstFormula) && otherConjunction.getSecondFormula().equals(secondFormula))
+            return true;
+        if(otherConjunction.getFirstFormula().equals(secondFormula) && otherConjunction.getSecondFormula().equals(firstFormula))
+            return true;
+        return false;
+    }
+
+    public AbstractFormula getFirstFormula() {
+        return firstFormula;
+    }
+
+    public AbstractFormula getSecondFormula() {
+        return secondFormula;
     }
 }
