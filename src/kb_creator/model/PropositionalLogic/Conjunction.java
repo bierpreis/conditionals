@@ -15,7 +15,9 @@ public class Conjunction extends AbstractFormula {
     }
 
     @Override
-    public String toString() {//todo: (and) only when formulas not atom or negation of atom
+    public String toString() {//todo: this for negations too
+        if (firstFormula instanceof Atom && secondFormula instanceof Atom)
+            return "{" + firstFormula.toString() + secondFormula.toString() + "}";
         return "{" + firstFormula.toString() + "(and)" + secondFormula.toString() + "}";
     }
 
