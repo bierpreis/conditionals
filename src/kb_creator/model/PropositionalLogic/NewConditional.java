@@ -33,14 +33,14 @@ public class NewConditional {
             AbstractFormula secondAtom = new Atom(Variable.b);
             switch (worldInt) {
                 case 0:
-                    firstAtom.neg();
-                    secondAtom.neg();
+                    firstAtom = firstAtom.neg();
+                    secondAtom = secondAtom.neg();
                     break;
                 case 1:
-                    firstAtom.neg();
+                    firstAtom = firstAtom.neg();
                     break;
                 case 2:
-                    secondAtom.neg();
+                    secondAtom = secondAtom.neg();
                     break;
                 case 3:
                     break;
