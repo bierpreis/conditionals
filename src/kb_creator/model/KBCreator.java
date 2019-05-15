@@ -91,8 +91,8 @@ public class KBCreator implements Runnable {
 
                 }
 
-
             }
+            k = k+1;
         }
         status = Status.FINISHED;
     }
