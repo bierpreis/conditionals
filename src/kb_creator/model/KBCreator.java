@@ -49,7 +49,7 @@ public class KBCreator implements Runnable {
         //k in original paper starts at 1
         //here it starts at 0 because lists in java start at 0 and not 1
         k = 0;
-
+        //todo: new conditional in here?
         List<List<CandidatePair>> l = new LinkedList<>();
 
         l.add(initOneElementKBs(nfcCreator.getNfc(), nfcCreator.getCnfc()));
