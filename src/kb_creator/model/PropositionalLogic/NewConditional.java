@@ -7,6 +7,7 @@ import nfc.model.World;
 import java.util.List;
 
 public class NewConditional {
+    private int number;
     private AbstractFormula antecend;
     private AbstractFormula consequent;
 
@@ -20,6 +21,7 @@ public class NewConditional {
         World oldConsequence = oldConditional.getConsequence();
         antecend = worldToFormula(oldAntecend);
         consequent = worldToFormula(oldConsequence);
+        this.number = oldConditional.getNumber();
 
     }
 
@@ -60,6 +62,10 @@ public class NewConditional {
 
     public String toString() {
         return "(" + consequent + " | " + antecend + ")";
+    }
+
+    public int getNumber() {
+        return number;
     }
 
 
