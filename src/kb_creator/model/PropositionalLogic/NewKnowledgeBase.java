@@ -48,7 +48,7 @@ public class NewKnowledgeBase {
 
     @Override
     public String toString() {
-        return conditionalList.toString();
+        return conditionalList.toString() + "\n";
     }
 
 }
