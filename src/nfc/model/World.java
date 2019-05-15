@@ -6,8 +6,8 @@ import java.util.List;
 public class World implements Comparable {
 
     private final List<Integer> worlds;
-    //todo: enum for view
-    private static String view = "numbers"; //this default is for kbcreator. maybe delete later
+
+    private static View view = View.NUMBERS; //this default is for kbcreator. maybe delete later
     private static String signature;
 
 
@@ -68,7 +68,7 @@ public class World implements Comparable {
         originalString = originalString.replace('[', '{');
         originalString = originalString.replace(']', '}');
 
-        if (view.equals("letters"))
+        if (view.equals(View.LETTERS))
             originalString = translateNumbersToLetters(originalString);
 
 
@@ -77,7 +77,7 @@ public class World implements Comparable {
     }
 
 
-    public static void setView(String requestedView) {
+    public static void setView(View requestedView) {
         view = requestedView;
     }
 
@@ -100,7 +100,7 @@ public class World implements Comparable {
     public void removeWorld(World worldsToRemove) {
         worlds.removeAll(worldsToRemove.getWorldsList());
     }
-    
+
     public String translateNumbersToLetters(String string) {
 
         if (signature.equals("abc")) {
@@ -124,6 +124,10 @@ public class World implements Comparable {
         } else throw new RuntimeException("Invalid Signature: " + signature);
 
         return string;
+    }
+
+    public enum View {
+        NUMBERS, LETTERS;
     }
 
 }
