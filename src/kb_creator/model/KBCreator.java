@@ -38,7 +38,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
-
+        System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
 
 
@@ -54,6 +54,7 @@ public class KBCreator implements Runnable {
 
         List<NewConditional> nfc = nfcCreator.getNewNfc();
         List<NewConditional> cnfc = nfcCreator.getNewCnfc();
+        System.out.println("creating one element knowledgeBases");
         l.add(initOneElementKBs(nfc, cnfc));
 
 
