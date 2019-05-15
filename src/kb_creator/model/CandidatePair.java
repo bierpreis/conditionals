@@ -2,7 +2,6 @@ package kb_creator.model;
 
 import kb_creator.model.PropositionalLogic.NewConditional;
 import kb_creator.model.PropositionalLogic.NewKnowledgeBase;
-import nfc.model.Conditional;
 
 import java.util.List;
 
@@ -24,6 +23,6 @@ public class CandidatePair {
     }
 
     public String toString() {
-        return "<" + knowledgeBase + ", " + candidates + ">";
+        return "<" + knowledgeBase + ", " + candidates + ">\n";
     }
 }

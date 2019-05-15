@@ -93,6 +93,7 @@ public class KBCreator implements Runnable {
 
             }
             k = k+1;
+            System.out.println(l.get(k));
         }
         status = Status.FINISHED;
     }
