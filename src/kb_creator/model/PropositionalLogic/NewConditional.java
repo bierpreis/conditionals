@@ -68,7 +68,7 @@ public class NewConditional {
         return number;
     }
 
-    //todo: check if equals works properly
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof NewConditional))
