@@ -24,7 +24,7 @@ public class ConditionalList implements Comparable {
         if (conditionalList.size() == 0)
             return 0;
         if (!(o instanceof ConditionalList))
-            throw new RuntimeException("Cant compare this to ConditionalList");  //todo this is shit
+            throw new RuntimeException("Cant compare this to ConditionalList");
         else {
             ConditionalList otherConditionalList = ((ConditionalList) o);
             Conditional firstConditional = conditionalList.get(0);
