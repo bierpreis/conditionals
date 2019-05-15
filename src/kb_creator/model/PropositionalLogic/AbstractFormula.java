@@ -3,8 +3,7 @@ package kb_creator.model.PropositionalLogic;
 public abstract class AbstractFormula {
 
     abstract boolean evaluate(Interpretation interpretation);
-
-    //todo: why is this never used
+    
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }

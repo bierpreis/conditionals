@@ -16,9 +16,9 @@ public class Disjunction extends AbstractFormula {
 
     }
 
-    @Override //todo: braces only when not atom?
+
     public String toString() {
-        return "(" + firstFormula.toString() + "," + secondFormula.toString() + ")";
+        return firstFormula.toString() + "," + secondFormula.toString();
     }
 
     //todo: test this
