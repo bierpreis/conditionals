@@ -100,8 +100,7 @@ public class World implements Comparable {
     public void removeWorld(World worldsToRemove) {
         worlds.removeAll(worldsToRemove.getWorldsList());
     }
-
-    //todo: how to fit this with new conditional?
+    
     public String translateNumbersToLetters(String string) {
 
         if (signature.equals("abc")) {
