@@ -7,6 +7,8 @@ public class Negation extends AbstractFormula {
         this.formula = formula;
     }
 
+    //todo: why is this never visible?
+    @Override
     public String toString() {
         return "!" + formula.toString();
     }
@@ -32,4 +34,5 @@ public class Negation extends AbstractFormula {
     public AbstractFormula getFormula() {
         return formula;
     }
+
 }
