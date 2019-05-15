@@ -1,6 +1,8 @@
 package nfc.model;
 
 
+import kb_creator.model.PropositionalLogic.NewConditional;
+
 import java.util.*;
 
 
@@ -10,12 +12,18 @@ public class NfcCreator {
     private List<Conditional> nfc;
     private List<Conditional> cnfc;
 
+    private List<NewConditional> newNfc;
+    private List<NewConditional> newCnfc;
+
     public NfcCreator(String signature) {
 
         worlds = createWorlds(signature);
         nfc = createNfc(worlds);
         cnfcEq = createCnfcEq(nfc);
         cnfc = createCnfc(cnfcEq);
+
+        newNfc = translateConditionals(nfc);
+        newCnfc = translateConditionals(cnfc);
 
     }
 
@@ -157,6 +165,27 @@ public class NfcCreator {
 
     public List<World> getWorlds() {
         return worlds;
+    }
+
+    private List<NewConditional> translateConditionals(List<Conditional> oldConditionals) {
+        List<NewConditional> newConditionals = new LinkedList<>();
+
+        for (Conditional oldConditional : oldConditionals) {
+            NewConditional newConditional = new NewConditional(oldConditional);
+            newConditional.createCounterConditional(oldConditional);
+            newConditional.setNumber(oldConditional.getNumber());
+            newConditionals.add(newConditional);
+
+        }
+        return newConditionals;
+    }
+
+    public List<NewConditional> getNewNfc() {
+        return newNfc;
+    }
+
+    public List<NewConditional> getNewCnfc() {
+        return newCnfc;
     }
 
 }

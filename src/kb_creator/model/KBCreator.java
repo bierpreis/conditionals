@@ -148,12 +148,10 @@ public class KBCreator implements Runnable {
 
     }
 
-    public List<KnowledgeBase> getKnowledgeBaseList() {
-        return kbList;
-    }
-
     public int getK() {
         return k;
     }
+
+
 
 }

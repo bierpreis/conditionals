@@ -79,5 +79,9 @@ public class NewConditional {
         return counterConditional;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
 
 }
