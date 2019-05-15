@@ -15,11 +15,12 @@ public class Conjunction extends AbstractFormula {
     }
 
     @Override
-    public String toString() {//todo: this for negations too
-        if (firstFormula instanceof Atom && secondFormula instanceof Atom)
+    public String toString() {
+        if (firstFormula.isAtom() && secondFormula.isAtom())
             return "{" + firstFormula.toString() + secondFormula.toString() + "}";
         return "{" + firstFormula.toString() + "(and)" + secondFormula.toString() + "}";
     }
+
 
     @Override
     public boolean equals(Object o) {

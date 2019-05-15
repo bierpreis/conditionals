@@ -35,4 +35,8 @@ public class Negation extends AbstractFormula {
         return formula;
     }
 
+    public boolean isNegatedAtom() {
+        return formula instanceof Atom;
+    }
+
 }
