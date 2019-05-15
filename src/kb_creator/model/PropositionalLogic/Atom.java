@@ -28,4 +28,12 @@ public class Atom extends AbstractFormula {
 
         else throw new RuntimeException("No interpretation found!");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Atom))
+            return false;
+        Atom otherAtom = (Atom) o;
+        return otherAtom.get().equals(variable);
+    }
 }
