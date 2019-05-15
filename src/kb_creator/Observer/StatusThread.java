@@ -22,6 +22,9 @@ public class StatusThread implements Runnable {
     public void run() {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
+            //todo: put this into status
+            //maybe auto pause when low mem
+            System.out.println(":free: " + Runtime.getRuntime().freeMemory() / 1_000_000 + "m");
             if (creatorThread != null) {
                 infoPanel.showStatus(creatorThread.getStatus());
                 infoPanel.showCandidatePairAmount(creatorThread.getCandidatePairAmount());
