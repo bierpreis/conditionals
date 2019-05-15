@@ -2,6 +2,8 @@ package kb_creator.model;
 
 import gherkin.lexer.Kn;
 import kb_creator.Observer.Status;
+import kb_creator.model.PropositionalLogic.NewConditional;
+import kb_creator.model.PropositionalLogic.NewKnowledgeBase;
 import nfc.model.Conditional;
 import nfc.model.NfcCreator;
 
@@ -21,7 +23,7 @@ public class KBCreator implements Runnable {
 
     private String signature;
 
-    private List<KnowledgeBase> kbList;
+    private List<NewKnowledgeBase> kbList;
     private int k;
 
     public KBCreator() {
@@ -59,12 +61,12 @@ public class KBCreator implements Runnable {
         while (!l.get(k).isEmpty()) { //line 6
             l.add(new LinkedList<>()); //line  7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
-                for (Conditional r : candidatePair.getCandidates()) { //this is line 9
+                for (NewConditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase();
+                        NewKnowledgeBase knowledgeBaseToAdd = new NewKnowledgeBase();
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
-                        knowledgeBaseToAdd.sort();
+                        //knowledgeBaseToAdd.sort(); ??
 
                         List<Conditional> candidatesToAdd = new LinkedList<>();
                         for (Conditional conditional : candidatePair.getCandidates())

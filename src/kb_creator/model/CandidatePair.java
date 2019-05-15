@@ -1,23 +1,25 @@
 package kb_creator.model;
 
+import kb_creator.model.PropositionalLogic.NewConditional;
+import kb_creator.model.PropositionalLogic.NewKnowledgeBase;
 import nfc.model.Conditional;
 
 import java.util.List;
 
 public class CandidatePair {
-    private KnowledgeBase knowledgeBase;
-    private List<Conditional> candidates;
+    private NewKnowledgeBase knowledgeBase;
+    private List<NewConditional> candidates;
 
-    public CandidatePair(KnowledgeBase knowledgeBase, List<Conditional> candidates) {
+    public CandidatePair(NewKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         this.candidates = candidates;
     }
 
-    public List<Conditional> getCandidates() {
+    public List<NewConditional> getCandidates() {
         return candidates;
     }
 
-    public KnowledgeBase getKnowledgeBase() {
+    public NewKnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
 
