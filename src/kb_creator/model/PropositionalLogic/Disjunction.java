@@ -21,7 +21,7 @@ public class Disjunction extends AbstractFormula {
         return firstFormula.toString() + "," + secondFormula.toString();
     }
 
-    //todo: test this
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Disjunction))
