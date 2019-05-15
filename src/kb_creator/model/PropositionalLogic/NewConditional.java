@@ -1,6 +1,5 @@
 package kb_creator.model.PropositionalLogic;
 
-import com.intellij.refactoring.changeClassSignature.TypeParameterInfo;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -8,20 +7,20 @@ import nfc.model.World;
 public class NewConditional {
     private int number;
     private AbstractFormula antecend;
-    private AbstractFormula consequent;
+    private AbstractFormula consequence;
 
     private NewConditional counterConditional;
 
-    public NewConditional(AbstractFormula antecend, AbstractFormula consequent) {
+    public NewConditional(AbstractFormula antecend, AbstractFormula consequence) {
         this.antecend = antecend;
-        this.consequent = consequent;
+        this.consequence = consequence;
     }
 
     public NewConditional(Conditional oldConditional) {
         World oldAntecend = oldConditional.getAntecedent();
         World oldConsequence = oldConditional.getConsequence();
         antecend = worldToFormula(oldAntecend);
-        consequent = worldToFormula(oldConsequence);
+        consequence = worldToFormula(oldConsequence);
         this.number = oldConditional.getNumber();
 
     }
@@ -62,14 +61,22 @@ public class NewConditional {
     }
 
     public String toString() {
-        return "(" + consequent + "|" + antecend + ")";
+        return "(" + consequence + "|" + antecend + ")";
     }
 
     public int getNumber() {
         return number;
     }
 
-    //todo: equals method
+    //todo: check if equals works properly
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof NewConditional))
+            return false;
+        NewConditional otherConditional = (NewConditional) o;
+        return this.antecend.equals(otherConditional.getAntecend()) && this.consequence.equals(otherConditional.getConsequence());
+
+    }
 
     public void createCounterConditional(Conditional oldConditional) {
         counterConditional = new NewConditional(oldConditional);
@@ -83,5 +90,11 @@ public class NewConditional {
         this.number = number;
     }
 
+    public AbstractFormula getAntecend() {
+        return antecend;
+    }
 
+    public AbstractFormula getConsequence() {
+        return consequence;
+    }
 }
