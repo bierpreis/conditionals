@@ -5,6 +5,7 @@ import java.util.List;
 
 public class NewKnowledgeBase {
     private List<NewConditional> conditionalList;
+    private String name = "";
 
     public NewKnowledgeBase() {
         conditionalList = new LinkedList<>();
@@ -48,9 +49,20 @@ public class NewKnowledgeBase {
         return conditionalList.toString();
     }
 
-    //todo:
+
     public String toFileString() {
-        return "";
+        String stringToReturn = "signature\n";
+        //todo: add signature to string + "\n"
+
+        stringToReturn = stringToReturn + "\n";
+        stringToReturn = stringToReturn + "conditionals\n";
+        stringToReturn = stringToReturn + this.name + "{";
+
+        for (NewConditional conditional : conditionalList)
+            stringToReturn = stringToReturn + conditional.toString() + ",\n";
+
+        stringToReturn = stringToReturn + "}";
+        return stringToReturn;
     }
 
 }
