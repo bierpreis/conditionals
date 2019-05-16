@@ -11,8 +11,10 @@ public class NewKnowledgeBase {
     }
 
     public boolean isConsistent(NewConditional conditional) {
-        //todo this test is written in goldszmit/pearl 1996 p 65
+        //todo this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
+
+
 
 
         return true;
@@ -35,6 +37,11 @@ public class NewKnowledgeBase {
     @Override
     public String toString() {
         return conditionalList.toString();
+    }
+
+    //todo:
+    public String toFileString() {
+        return "";
     }
 
 }
