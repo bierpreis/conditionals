@@ -21,8 +21,12 @@ public class NewKnowledgeBase {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecend().neg().or(conditionalFromList.getConsequence()));
         }
 
+        //here sth like:
 
+        //for(interpretation interpretation)
+        //if conditional.antecend && conditional consequence && consictencyofKB
         return true;
+        //else return false;
     }
 
     public void add(NewConditional conditional) {
