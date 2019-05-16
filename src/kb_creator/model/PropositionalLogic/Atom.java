@@ -24,7 +24,7 @@ public class Atom extends AbstractFormula {
             return interpretation.isB();
 
         if (variable.equals(Variable.c))
-            return interpretation.isB();
+            return interpretation.isC();
 
         else throw new RuntimeException("No interpretation found!");
     }
