@@ -1,6 +1,10 @@
 package kb_creator.model.PropositionalLogic;
 
 public class Interpretation {
+
+    //todo: this is useless.
+    //make maybe enum for signature
+    //or some abstract and concrete signature?
     private boolean a;
     private boolean b;
     private boolean c;
