@@ -23,10 +23,10 @@ public class NewKnowledgeBase {
 
         //here sth like:
 
-        //for(interpretation interpretation)
-        //if conditional.antecend && conditional consequence && consictencyofKB
+        //for(interpretation interpretation){
+        //if conditional.antecend.ev(interpretation) && conditional.consequence.evaluate(interpretation) && consictencyofKB.ev(interpretation)
         return true;
-        //else return false;
+        //}else return false;
     }
 
     public void add(NewConditional conditional) {
