@@ -14,7 +14,12 @@ public class NewKnowledgeBase {
         //todo this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
+        //todo: rename
+        AbstractFormula listFormula = new Tautology();
 
+        for (NewConditional conditionalFromList : conditionalList) {
+            listFormula = listFormula.and(conditionalFromList.getAntecend().neg().or(conditionalFromList.getConsequence()));
+        }
 
 
         return true;
