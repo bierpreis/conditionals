@@ -18,7 +18,7 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        Interpretation interpretation = new Interpretation(true, true, true);
+        Interpretation interpretation = new Interpretation(false, true, true);
 
         AbstractFormula formula = new Tautology();
 
