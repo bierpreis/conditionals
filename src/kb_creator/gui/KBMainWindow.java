@@ -20,6 +20,7 @@ public class KBMainWindow {
         mainWindow.setLayout(new BorderLayout());
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
+        //todo: maybe here no cond panel but something useful about what is done already?
         mainWindow.add(new CondPanel(), BorderLayout.EAST);
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +32,7 @@ public class KBMainWindow {
         return leftPanel.getSignature();
     }
 
-    public InfoPanel getInfoPanel(){
+    public InfoPanel getInfoPanel() {
         return leftPanel.getInfoPanel();
     }
 
@@ -39,7 +40,7 @@ public class KBMainWindow {
         return mainWindow;
     }
 
-    public MemoryPanel getMemoryPanel(){
+    public MemoryPanel getMemoryPanel() {
         return leftPanel.getMemoryPanel();
     }
 }

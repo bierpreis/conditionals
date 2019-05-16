@@ -2,7 +2,7 @@ package kb_creator.model.PropositionalLogic;
 
 public class Interpretation {
 
-    //todo: this . combine with some signature
+    //todo: this . combine with some signature. maybe abstract interpretation, one for ab and one for abc?
     private boolean a;
     private boolean b;
     private boolean c;
