@@ -1,7 +1,6 @@
 package kb_creator.model.Signature;
 
 
-
 import java.util.List;
 
 public abstract class AbstractSignature {
