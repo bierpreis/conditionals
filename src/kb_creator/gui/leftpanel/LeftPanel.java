@@ -30,9 +30,9 @@ public class LeftPanel extends JPanel {
 
     public AbstractSignature getSignature() {
         String signature = signaturePanel.getOption();
-        if (signature.equals("AB"))
+        if (signature.equals("ab"))
             return new AB();
-        if (signature.equals("ABC"))
+        if (signature.equals("abc"))
             return new ABC();
         throw new RuntimeException("No valid signature:" + signature);
     }
