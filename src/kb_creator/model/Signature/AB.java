@@ -1,12 +1,11 @@
 package kb_creator.model.Signature;
 
-import java.util.List;
 
 public class AB extends AbstractSignature {
 
 
     public AB() {
-        //todo: create possible worlds
+        possibleWorlds.add(new PossibleWorld(true, true));
     }
 
 }
