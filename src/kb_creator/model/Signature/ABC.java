@@ -5,6 +5,7 @@ public class ABC extends AbstractSignature {
 
 
     public ABC() {
+        //todo: create all possibel worlds
 
     }
 
