@@ -1,5 +1,6 @@
 package nfc.view.menu;
 
+import kb_creator.model.Signature.AbstractSignature;
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.options.OptionsPanel;
 
@@ -20,7 +21,7 @@ public class MenuPanel extends JPanel {
     }
 
 
-    public String getSignature() {
+    public AbstractSignature getSignature() {
         return optionsPanel.getSignature();
     }
 

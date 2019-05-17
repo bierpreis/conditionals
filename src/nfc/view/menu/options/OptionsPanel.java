@@ -1,5 +1,6 @@
 package nfc.view.menu.options;
 
+import kb_creator.model.Signature.AbstractSignature;
 import nfc.model.Conditional;
 import nfc.model.World;
 import nfc.view.textArea.CondTextField;
@@ -36,7 +37,7 @@ public class OptionsPanel extends JPanel {
 
     }
 
-    public String getSignature() {
+    public AbstractSignature getSignature() {
         return signaturePanel.getRequestedSignature();
     }
 

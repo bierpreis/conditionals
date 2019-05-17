@@ -1,5 +1,7 @@
 package nfc.view.menu.options;
 
+import kb_creator.model.Signature.AB;
+import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
@@ -32,7 +34,13 @@ public class SignaturePanel extends JPanel {
     }
 
     public AbstractSignature getRequestedSignature() {
-        return signatureButtonGroup.getSelection().getActionCommand();
+        String signature = signatureButtonGroup.getSelection().getActionCommand();
+
+        if (signature.equals("AB"))
+            return new AB();
+        if (signature.equals("ABC"))
+            return new ABC();
+        else throw new RuntimeException("No valid signature: " + signature);
     }
 
 

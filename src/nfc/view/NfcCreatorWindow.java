@@ -1,5 +1,6 @@
 package nfc.view;
 
+import kb_creator.model.Signature.AbstractSignature;
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.MenuPanel;
 import nfc.view.textArea.CondPanel;
@@ -34,7 +35,7 @@ public class NfcCreatorWindow {
     }
 
 
-    public String getSignature(){
+    public AbstractSignature getSignature(){
         return menuPanel.getSignature();
     }
 
