@@ -14,7 +14,7 @@ public class Negation extends AbstractFormula {
     }
 
     @Override
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PossibleWorldABC interpretation) {
         return !formula.evaluate(interpretation);
     }
 

@@ -16,7 +16,7 @@ public class Atom extends AbstractFormula {
         return variable.toString();
     }
 
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PossibleWorldABC interpretation) {
         if (variable.equals(Variable.a))
             return interpretation.isA();
 

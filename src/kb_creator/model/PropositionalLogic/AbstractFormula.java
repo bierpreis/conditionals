@@ -2,7 +2,7 @@ package kb_creator.model.PropositionalLogic;
 
 public abstract class AbstractFormula {
 
-    abstract public boolean evaluate(Interpretation interpretation);
+    abstract public boolean evaluate(PossibleWorldABC interpretation);
 
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);

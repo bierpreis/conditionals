@@ -3,7 +3,7 @@ package kb_creator.model.PropositionalLogic;
 public class Tautology extends AbstractFormula {
 
     @Override
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PossibleWorldABC interpretation) {
         return true;
     }
 

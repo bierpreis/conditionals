@@ -1,6 +1,5 @@
 package kb_creator;
 
-import com.google.errorprone.annotations.Var;
 import kb_creator.model.PropositionalLogic.*;
 import nfc.model.Conditional;
 import nfc.model.World;
@@ -18,7 +17,7 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        Interpretation interpretation = new Interpretation(false, true, true);
+        PossibleWorldABC interpretation = new PossibleWorldABC(false, true, true);
 
         AbstractFormula formula = new Tautology();
 

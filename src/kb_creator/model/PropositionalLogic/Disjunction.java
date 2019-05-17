@@ -11,7 +11,7 @@ public class Disjunction extends AbstractFormula {
     }
 
     @Override
-    public boolean evaluate(Interpretation interpretation) {
+    public boolean evaluate(PossibleWorldABC interpretation) {
         return firstFormula.evaluate(interpretation) || secondFormula.evaluate(interpretation);
 
     }
