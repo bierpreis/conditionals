@@ -1,5 +1,7 @@
 package nfc.view.menu.options;
 
+import kb_creator.model.Signature.AbstractSignature;
+
 import javax.swing.*;
 
 public class SignaturePanel extends JPanel {
@@ -29,7 +31,7 @@ public class SignaturePanel extends JPanel {
 
     }
 
-    public String getRequestedSignature() {
+    public AbstractSignature getRequestedSignature() {
         return signatureButtonGroup.getSelection().getActionCommand();
     }
 

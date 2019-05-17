@@ -19,7 +19,8 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        ABC interpretation = new ABC(false, true, true);
+        //this should be a world not abc
+        ABC interpretation = new ABC();
 
         AbstractFormula formula = new Tautology();
 
