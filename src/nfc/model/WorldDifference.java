@@ -1,5 +1,7 @@
 package nfc.model;
 
+import kb_creator.model.Signature.AB;
+import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import java.util.Arrays;
@@ -60,18 +62,18 @@ public class WorldDifference {
         }
 
         public boolean isEquivalent() {
-            if (signature.equals("ab"))
+            if (signature instanceof AB)
                 return (equivalenceGroup.contains(firstInt) && equivalenceGroup.contains(secondInt));
 
 
-            if (signature.equals("abc")) {
+            if (signature instanceof ABC) {
                 if (equivalenceGroup1.contains(firstInt) && equivalenceGroup1.contains(secondInt))
                     return true;
                 else return (equivalenceGroup2.contains(firstInt) && equivalenceGroup2.contains(secondInt));
             }
 
-            System.out.println("wrong signature set!!!");
-            return false;
+            throw new RuntimeException("Wrong Signature: " + signature);
+
         }
 
 

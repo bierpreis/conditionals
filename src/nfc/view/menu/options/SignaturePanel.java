@@ -36,9 +36,9 @@ public class SignaturePanel extends JPanel {
     public AbstractSignature getRequestedSignature() {
         String signature = signatureButtonGroup.getSelection().getActionCommand();
 
-        if (signature.equals("AB"))
+        if (signature.equals("ab"))
             return new AB();
-        if (signature.equals("ABC"))
+        if (signature.equals("abc"))
             return new ABC();
         else throw new RuntimeException("No valid signature: " + signature);
     }

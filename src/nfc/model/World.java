@@ -1,5 +1,7 @@
 package nfc.model;
 
+import kb_creator.model.Signature.AB;
+import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import java.util.LinkedList;
@@ -105,7 +107,7 @@ public class World implements Comparable {
 
     public String translateNumbersToLetters(String string) {
 
-        if (signature.equals("abc")) {
+        if (signature instanceof ABC) {
 
             string = string.replace("0", "!a!b!c");
             string = string.replace("1", "!a!bc");
@@ -116,7 +118,7 @@ public class World implements Comparable {
             string = string.replace("6", "ab!c");
             string = string.replace("7", "abc");
 
-        } else if (signature.equals("ab")) {
+        } else if (signature instanceof AB) {
             string = string.replace("0", "!a!b");
             string = string.replace("1", "!ab");
             string = string.replace("2", "a!b");
