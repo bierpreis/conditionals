@@ -1,4 +1,4 @@
-package kb_creator.model.PropositionalLogic.Signature;
+package kb_creator.model.Signature;
 
 //todo: rename and do sth with other interpretation named parameters in project
 public class ABC extends AbstractSignature {

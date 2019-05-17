@@ -1,4 +1,7 @@
-package kb_creator.model.PropositionalLogic;
+package kb_creator.model.Conditionals;
+
+import kb_creator.model.PropositionalLogic.AbstractFormula;
+import kb_creator.model.PropositionalLogic.Tautology;
 
 import java.util.LinkedList;
 import java.util.List;

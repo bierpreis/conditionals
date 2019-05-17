@@ -1,7 +1,7 @@
 package kb_creator.Observer;
 
 import kb_creator.gui.KBMainWindow;
-import kb_creator.model.KBCreator;
+import kb_creator.model.Conditionals.KBCreator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

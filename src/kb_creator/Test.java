@@ -1,7 +1,8 @@
 package kb_creator;
 
+import kb_creator.model.Conditionals.NewConditional;
 import kb_creator.model.PropositionalLogic.*;
-import kb_creator.model.PropositionalLogic.Signature.ABC;
+import kb_creator.model.Signature.ABC;
 import nfc.model.Conditional;
 import nfc.model.World;
 

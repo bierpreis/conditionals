@@ -1,6 +1,6 @@
 package kb_creator.model.PropositionalLogic;
 
-import kb_creator.model.PropositionalLogic.Signature.ABC;
+import kb_creator.model.Signature.ABC;
 
 public class Negation extends AbstractFormula {
     private AbstractFormula formula;

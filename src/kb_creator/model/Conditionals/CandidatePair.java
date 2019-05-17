@@ -1,7 +1,4 @@
-package kb_creator.model;
-
-import kb_creator.model.PropositionalLogic.NewConditional;
-import kb_creator.model.PropositionalLogic.NewKnowledgeBase;
+package kb_creator.model.Conditionals;
 
 import java.util.List;
 

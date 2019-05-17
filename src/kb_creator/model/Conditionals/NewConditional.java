@@ -1,5 +1,9 @@
-package kb_creator.model.PropositionalLogic;
+package kb_creator.model.Conditionals;
 
+import kb_creator.model.PropositionalLogic.AbstractFormula;
+import kb_creator.model.PropositionalLogic.Atom;
+import kb_creator.model.PropositionalLogic.Conjunction;
+import kb_creator.model.PropositionalLogic.Variable;
 import nfc.model.Conditional;
 import nfc.model.World;
 

@@ -2,7 +2,7 @@ package kb_creator.Observer;
 
 import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.gui.leftpanel.MemoryPanel;
-import kb_creator.model.KBCreator;
+import kb_creator.model.Conditionals.KBCreator;
 
 public class StatusThread implements Runnable {
     private InfoPanel infoPanel;

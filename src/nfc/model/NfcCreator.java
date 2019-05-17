@@ -1,7 +1,7 @@
 package nfc.model;
 
 
-import kb_creator.model.PropositionalLogic.NewConditional;
+import kb_creator.model.Conditionals.NewConditional;
 
 import java.util.*;
 
