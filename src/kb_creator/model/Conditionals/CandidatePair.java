@@ -3,10 +3,10 @@ package kb_creator.model.Conditionals;
 import java.util.List;
 
 public class CandidatePair {
-    private NewKnowledgeBase knowledgeBase;
+    private KnowledgeBase knowledgeBase;
     private List<NewConditional> candidates;
 
-    public CandidatePair(NewKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+    public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         this.candidates = candidates;
     }
@@ -15,7 +15,7 @@ public class CandidatePair {
         return candidates;
     }
 
-    public NewKnowledgeBase getKnowledgeBase() {
+    public KnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
 

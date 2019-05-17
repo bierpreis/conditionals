@@ -7,12 +7,12 @@ import kb_creator.model.Signature.AbstractSignature;
 import java.util.LinkedList;
 import java.util.List;
 
-public class NewKnowledgeBase {
+public class KnowledgeBase {
     private AbstractSignature signature;
     private List<NewConditional> conditionalList;
     private String name = "";
 
-    public NewKnowledgeBase(AbstractSignature signature) {
+    public KnowledgeBase(AbstractSignature signature) {
         conditionalList = new LinkedList<>();
         this.signature = signature;
     }
@@ -40,7 +40,7 @@ public class NewKnowledgeBase {
         conditionalList.add(conditional);
     }
 
-    public void add(NewKnowledgeBase knowledgeBaseToAdd) {
+    public void add(KnowledgeBase knowledgeBaseToAdd) {
         for (NewConditional conditional : knowledgeBaseToAdd.conditionalList) {
             conditionalList.add(conditional);
         }
@@ -58,7 +58,7 @@ public class NewKnowledgeBase {
 
     public String toFileString() {
         String stringToReturn = "signature\n";
-        //todo: add signature to string + "\n"
+        stringToReturn = stringToReturn + signature.toString().toLowerCase();
 
         stringToReturn = stringToReturn + "\n";
         stringToReturn = stringToReturn + "conditionals\n";

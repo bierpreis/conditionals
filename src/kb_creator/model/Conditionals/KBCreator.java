@@ -20,7 +20,7 @@ public class KBCreator implements Runnable {
 
     private AbstractSignature signature;
 
-    private List<NewKnowledgeBase> kbList;
+    private List<KnowledgeBase> kbList;
     private int k;
 
     public KBCreator(AbstractSignature signature) {
@@ -64,7 +64,7 @@ public class KBCreator implements Runnable {
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (NewConditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
-                        NewKnowledgeBase knowledgeBaseToAdd = new NewKnowledgeBase(signature);
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
                         //knowledgeBaseToAdd.sort(); ??
@@ -115,7 +115,7 @@ public class KBCreator implements Runnable {
         List<CandidatePair> l = new LinkedList<>();
         for (NewConditional r : cnfc) { //line 3 in original
 
-            NewKnowledgeBase rKB = new NewKnowledgeBase(signature); //line 4 and 5
+            KnowledgeBase rKB = new KnowledgeBase(signature); //line 4 and 5
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new LinkedList<>();
             for (NewConditional conditional : nfc)
