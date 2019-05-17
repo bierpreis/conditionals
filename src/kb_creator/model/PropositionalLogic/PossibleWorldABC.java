@@ -26,4 +26,7 @@ public class PossibleWorldABC {
     public boolean isB() {
         return b;
     }
+
+    //todo:
+    //public List<PossibleWorld> getPossibleWorlds
 }
