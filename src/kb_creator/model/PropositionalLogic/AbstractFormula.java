@@ -1,8 +1,10 @@
 package kb_creator.model.PropositionalLogic;
 
+import kb_creator.model.PropositionalLogic.Signature.ABC;
+
 public abstract class AbstractFormula {
 
-    abstract public boolean evaluate(PossibleWorldABC interpretation);
+    abstract public boolean evaluate(ABC interpretation);
 
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);

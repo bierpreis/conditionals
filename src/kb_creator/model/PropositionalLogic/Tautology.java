@@ -1,9 +1,11 @@
 package kb_creator.model.PropositionalLogic;
 
+import kb_creator.model.PropositionalLogic.Signature.ABC;
+
 public class Tautology extends AbstractFormula {
 
     @Override
-    public boolean evaluate(PossibleWorldABC interpretation) {
+    public boolean evaluate(ABC interpretation) {
         return true;
     }
 

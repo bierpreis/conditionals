@@ -1,5 +1,7 @@
 package kb_creator.model.PropositionalLogic;
 
+import kb_creator.model.PropositionalLogic.Signature.ABC;
+
 public class Atom extends AbstractFormula {
     private Variable variable;
 
@@ -16,7 +18,7 @@ public class Atom extends AbstractFormula {
         return variable.toString();
     }
 
-    public boolean evaluate(PossibleWorldABC interpretation) {
+    public boolean evaluate(ABC interpretation) {
         if (variable.equals(Variable.a))
             return interpretation.isA();
 

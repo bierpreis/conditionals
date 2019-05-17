@@ -1,6 +1,7 @@
 package kb_creator;
 
 import kb_creator.model.PropositionalLogic.*;
+import kb_creator.model.PropositionalLogic.Signature.ABC;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -17,7 +18,7 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        PossibleWorldABC interpretation = new PossibleWorldABC(false, true, true);
+        ABC interpretation = new ABC(false, true, true);
 
         AbstractFormula formula = new Tautology();
 

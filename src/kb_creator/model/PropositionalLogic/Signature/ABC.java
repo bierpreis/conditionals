@@ -1,6 +1,7 @@
-package kb_creator.model.PropositionalLogic;
+package kb_creator.model.PropositionalLogic.Signature;
+
 //todo: rename and do sth with other interpretation named parameters in project
-public class PossibleWorldABC {
+public class ABC extends AbstractSignature {
 
     //todo: this . combine with some signature. maybe abstract interpretation, one for ab and one for abc?
     //evaluate method should be here and not in abstractformula. maybe signature as abstract formula and then ab and abc concrete?
@@ -8,7 +9,7 @@ public class PossibleWorldABC {
     private boolean b;
     private boolean c;
 
-    public PossibleWorldABC(boolean a, boolean b, boolean c) {
+    public ABC(boolean a, boolean b, boolean c) {
         this.a = a;
         this.b = b;
         this.c = c;
