@@ -1,6 +1,7 @@
 package kb_creator.model.PropositionalLogic;
 
 import kb_creator.model.Signature.ABC;
+import kb_creator.model.Signature.PossibleWorld;
 
 public class Negation extends AbstractFormula {
     private AbstractFormula formula;
@@ -16,8 +17,8 @@ public class Negation extends AbstractFormula {
     }
 
     @Override
-    public boolean evaluate(ABC interpretation) {
-        return !formula.evaluate(interpretation);
+    public boolean evaluate(PossibleWorld world) {
+        return !formula.evaluate(world);
     }
 
     @Override

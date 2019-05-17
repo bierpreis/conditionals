@@ -3,6 +3,7 @@ package kb_creator;
 import kb_creator.model.Conditionals.NewConditional;
 import kb_creator.model.PropositionalLogic.*;
 import kb_creator.model.Signature.ABC;
+import kb_creator.model.Signature.PossibleWorld;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -19,12 +20,11 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        //this should be a world not abc
-        ABC interpretation = new ABC();
+        PossibleWorld world = new PossibleWorld(true, true, true);
 
         AbstractFormula formula = new Tautology();
 
-        System.out.println("formula: " + formula.and(a).and(b).and(c).evaluate(interpretation));
+        System.out.println("formula: " + formula.and(a).and(b).and(c).evaluate(world));
 
     }
 

@@ -1,6 +1,7 @@
 package kb_creator.model.PropositionalLogic;
 
 import kb_creator.model.Signature.ABC;
+import kb_creator.model.Signature.PossibleWorld;
 
 public class Atom extends AbstractFormula {
     private Variable variable;
@@ -19,17 +20,17 @@ public class Atom extends AbstractFormula {
     }
 
     //todo: here not abc but possible world
-    public boolean evaluate(ABC interpretation) {
+    public boolean evaluate(PossibleWorld world) {
         if (variable.equals(Variable.a))
-            return interpretation.isA();
+            return world.isA();
 
         if (variable.equals(Variable.b))
-            return interpretation.isB();
+            return world.isB();
 
         if (variable.equals(Variable.c))
-            return interpretation.isC();
+            return world.isC();
 
-        else throw new RuntimeException("No interpretation found!");
+        else throw new RuntimeException("No possibleWorld found!");
     }
 
     @Override

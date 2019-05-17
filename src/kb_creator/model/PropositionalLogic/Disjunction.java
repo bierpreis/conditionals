@@ -1,6 +1,7 @@
 package kb_creator.model.PropositionalLogic;
 
 import kb_creator.model.Signature.ABC;
+import kb_creator.model.Signature.PossibleWorld;
 
 public class Disjunction extends AbstractFormula {
     private AbstractFormula firstFormula;
@@ -13,8 +14,8 @@ public class Disjunction extends AbstractFormula {
     }
 
     @Override
-    public boolean evaluate(ABC interpretation) {
-        return firstFormula.evaluate(interpretation) || secondFormula.evaluate(interpretation);
+    public boolean evaluate(PossibleWorld world) {
+        return firstFormula.evaluate(world) || secondFormula.evaluate(world);
 
     }
 
