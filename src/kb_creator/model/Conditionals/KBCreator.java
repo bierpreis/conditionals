@@ -77,6 +77,7 @@ public class KBCreator implements Runnable {
 
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
+                        //todo: why 2 "same" variables?
                         alreadyFinishedCalculations++;
                         knowledgeBaseCounter++;
                     }
@@ -91,8 +92,8 @@ public class KBCreator implements Runnable {
 
             }
             k = k + 1;
-            //if (k == 1)
-            //System.out.println(l.get(0));
+            if (k == 1)
+                System.out.println(l.get(0));
         }
         status = Status.FINISHED;
     }
