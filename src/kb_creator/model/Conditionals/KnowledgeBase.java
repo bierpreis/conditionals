@@ -3,6 +3,7 @@ package kb_creator.model.Conditionals;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.Signature.AbstractSignature;
+import kb_creator.model.Signature.PossibleWorld;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -30,10 +31,13 @@ public class KnowledgeBase {
 
         //here sth like:
 
-        //for(interpretation interpretation){
-        //if conditional.antecend.ev(interpretation) && conditional.consequence.evaluate(interpretation) && consictencyofKB.ev(interpretation)
-        return true;
-        //}else return false;
+        for (PossibleWorld world : signature.getPossibleWorlds()) {
+            if (conditional.getAntecend().evaluate(world) && conditional.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world))
+                return true;
+
+
+        }
+        return false;
     }
 
     public void add(NewConditional conditional) {
