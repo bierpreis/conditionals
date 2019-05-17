@@ -13,7 +13,6 @@ public class KBCreator implements Runnable {
     private volatile int candidatePairAmount;
 
     private volatile double totalNumberOfCalculations;
-    private volatile double alreadyFinishedCalculations;
 
 
     private volatile Status status;
@@ -27,7 +26,6 @@ public class KBCreator implements Runnable {
         kbList = new LinkedList<>();
 
         totalNumberOfCalculations = 0;
-        alreadyFinishedCalculations = 0;
 
         status = Status.NOT_STARTED;
         this.signature = signature;
@@ -77,8 +75,6 @@ public class KBCreator implements Runnable {
 
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
-                        //todo: why 2 "same" variables?
-                        alreadyFinishedCalculations++;
                         knowledgeBaseCounter++;
                     }
                     while (status.equals(Status.PAUSE))
