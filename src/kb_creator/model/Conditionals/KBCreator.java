@@ -66,7 +66,7 @@ public class KBCreator implements Runnable {
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
-                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
+                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase //todo: this is the concistent kb. why dont add it to real kbs?
                         //knowledgeBaseToAdd.sort(); ??
 
                         List<NewConditional> candidatesToAdd = new LinkedList<>();
