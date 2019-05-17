@@ -4,6 +4,7 @@ import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
 import kb_creator.gui.leftpanel.MemoryPanel;
+import kb_creator.model.Signature.AbstractSignature;
 import nfc.view.textArea.CondPanel;
 
 import javax.swing.*;
@@ -28,7 +29,7 @@ public class KBMainWindow {
         mainWindow.setVisible(true);
     }
 
-    public String getSignature() {
+    public AbstractSignature getSignature() {
         return leftPanel.getSignature();
     }
 

@@ -8,8 +8,8 @@ public class ABC extends AbstractSignature {
     private boolean a;
     private boolean b;
     private boolean c;
-
-    public ABC(boolean a, boolean b, boolean c) {
+    //todo: put this in possible world class not here
+    public ABC() {
         this.a = a;
         this.b = b;
         this.c = c;

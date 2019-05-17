@@ -1,5 +1,7 @@
 package nfc.model;
 
+import kb_creator.model.Signature.AbstractSignature;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +10,7 @@ public class World implements Comparable {
     private final List<Integer> worlds;
 
     private static View view = View.NUMBERS; //this default is for kbcreator. maybe delete later
-    private static String signature;
+    private static AbstractSignature signature;
 
 
     public World() {
@@ -81,7 +83,7 @@ public class World implements Comparable {
         view = requestedView;
     }
 
-    public static void setSignature(String requestedSignature) {
+    public static void setSignature(AbstractSignature requestedSignature) {
         signature = requestedSignature;
         WorldDifference.setSignature(requestedSignature);
     }

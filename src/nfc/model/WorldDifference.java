@@ -1,5 +1,7 @@
 package nfc.model;
 
+import kb_creator.model.Signature.AbstractSignature;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class WorldDifference {
     private final List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
     private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
-    private static String signature;
+    private static AbstractSignature signature;
     private final World world1;
     private final World world2;
 
@@ -79,7 +81,7 @@ public class WorldDifference {
         return areEqual;
     }
 
-    public static void setSignature(String requestedSignature) {
+    public static void setSignature(AbstractSignature requestedSignature) {
         signature = requestedSignature;
     }
 

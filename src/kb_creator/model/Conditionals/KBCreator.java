@@ -1,6 +1,7 @@
 package kb_creator.model.Conditionals;
 
 import kb_creator.Observer.Status;
+import kb_creator.model.Signature.AbstractSignature;
 import nfc.model.NfcCreator;
 
 import java.util.LinkedList;
@@ -17,18 +18,19 @@ public class KBCreator implements Runnable {
 
     private volatile Status status;
 
-    private String signature;
+    private AbstractSignature signature;
 
     private List<NewKnowledgeBase> kbList;
     private int k;
 
-    public KBCreator() {
+    public KBCreator(AbstractSignature signature) {
         kbList = new LinkedList<>();
 
         totalNumberOfCalculations = 0;
         alreadyFinishedCalculations = 0;
 
         status = Status.NOT_STARTED;
+        this.signature = signature;
     }
 
 
@@ -62,7 +64,7 @@ public class KBCreator implements Runnable {
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
                 for (NewConditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
-                        NewKnowledgeBase knowledgeBaseToAdd = new NewKnowledgeBase();
+                        NewKnowledgeBase knowledgeBaseToAdd = new NewKnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
                         //knowledgeBaseToAdd.sort(); ??
@@ -90,12 +92,12 @@ public class KBCreator implements Runnable {
             }
             k = k + 1;
             //if (k == 1)
-                //System.out.println(l.get(0));
+            //System.out.println(l.get(0));
         }
         status = Status.FINISHED;
     }
 
-    public void setSignature(String signature) {
+    public void setSignature(AbstractSignature signature) {
         this.signature = signature;
     }
 
@@ -113,7 +115,7 @@ public class KBCreator implements Runnable {
         List<CandidatePair> l = new LinkedList<>();
         for (NewConditional r : cnfc) { //line 3 in original
 
-            NewKnowledgeBase rKB = new NewKnowledgeBase(); //line 4 and 5
+            NewKnowledgeBase rKB = new NewKnowledgeBase(signature); //line 4 and 5
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new LinkedList<>();
             for (NewConditional conditional : nfc)

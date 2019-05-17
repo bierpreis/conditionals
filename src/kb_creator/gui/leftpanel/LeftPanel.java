@@ -2,6 +2,9 @@ package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+import kb_creator.model.Signature.AB;
+import kb_creator.model.Signature.ABC;
+import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
 
@@ -25,15 +28,20 @@ public class LeftPanel extends JPanel {
         revalidate();
     }
 
-    public String getSignature() {
-        return signaturePanel.getOption();
+    public AbstractSignature getSignature() {
+        String signature = signaturePanel.getOption();
+        if (signature.equals("AB"))
+            return new AB();
+        if (signature.equals("ABC"))
+            return new ABC();
+        throw new RuntimeException("No valid signature:" + signature);
     }
 
     public InfoPanel getInfoPanel() {
         return infoPanel;
     }
 
-    public MemoryPanel getMemoryPanel(){
+    public MemoryPanel getMemoryPanel() {
         return memoryPanel;
     }
 }

@@ -2,16 +2,19 @@ package kb_creator.model.Conditionals;
 
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
+import kb_creator.model.Signature.AbstractSignature;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class NewKnowledgeBase {
+    private AbstractSignature signature;
     private List<NewConditional> conditionalList;
     private String name = "";
 
-    public NewKnowledgeBase() {
+    public NewKnowledgeBase(AbstractSignature signature) {
         conditionalList = new LinkedList<>();
+        this.signature = signature;
     }
 
     public boolean isConsistent(NewConditional conditional) {

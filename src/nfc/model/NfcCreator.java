@@ -2,6 +2,7 @@ package nfc.model;
 
 
 import kb_creator.model.Conditionals.NewConditional;
+import kb_creator.model.Signature.AbstractSignature;
 
 import java.util.*;
 
@@ -15,7 +16,7 @@ public class NfcCreator {
     private List<NewConditional> newNfc;
     private List<NewConditional> newCnfc;
 
-    public NfcCreator(String signature) {
+    public NfcCreator(AbstractSignature signature) {
 
         worlds = createWorlds(signature);
         nfc = createNfc(worlds);
@@ -29,9 +30,9 @@ public class NfcCreator {
 
     //3 creators
 
-    public List<World> createWorlds(String signature) {
+    public List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
-        int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.length());
+        int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.toString().length());
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
