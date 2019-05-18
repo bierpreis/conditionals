@@ -73,6 +73,7 @@ public class KBCreator implements Runnable {
                     //line 10
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
+                        //todo: maybe implement line 11 and 12 exactly as in original
                         //line 11
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
