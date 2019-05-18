@@ -67,7 +67,7 @@ public class KBCreator implements Runnable {
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
-                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase 
+                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
                         //knowledgeBaseToAdd.sort(); ??
 
                         List<NewConditional> candidatesToAdd = new LinkedList<>();
@@ -75,7 +75,7 @@ public class KBCreator implements Runnable {
                             if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditional);
 
-
+                        //todo: really add new candidate pair for every element of former candidate pair? this causes the growth
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
                         knowledgeBaseCounter++;
