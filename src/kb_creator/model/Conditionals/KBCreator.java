@@ -56,15 +56,24 @@ public class KBCreator implements Runnable {
 
         //the following is the actual loop where the work is done
 
+        //line 6
+        while (!l.get(k).isEmpty()) {  //todo: really this? not iterate simply over all l?
 
-        while (!l.get(k).isEmpty()) { //line 6 //todo: really this? not iterate simply over all l?
-            //todo: number of candidates is always increaising. this should not be?
-            System.out.println("candidates: " + l.get(k).size());
-            l.add(new LinkedList<>()); //line  7
-            for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
+            System.out.println("candidates: " + l.get(k).size()); //todo: number of candidates is always increaising. this should not be?
 
-                for (NewConditional r : candidatePair.getCandidates()) { //this is line 9
-                    if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
+            //line  7
+            l.add(new LinkedList<>());
+
+            //this loop is line 8
+            for (CandidatePair candidatePair : l.get(k)) {
+
+                //line 9
+                for (NewConditional r : candidatePair.getCandidates()) {
+
+                    //line 10
+                    if (candidatePair.getKnowledgeBase().isConsistent(r)) {
+
+                        //line 11
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
