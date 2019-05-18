@@ -58,13 +58,16 @@ public class KBCreator implements Runnable {
 
 
         while (!l.get(k).isEmpty()) { //line 6
+            //todo: number of candidates is always increaising. this should not be?
+            System.out.println("candidates: " + l.get(k).size());
             l.add(new LinkedList<>()); //line  7
             for (CandidatePair candidatePair : l.get(k)) { //this loop is line 8
+
                 for (NewConditional r : candidatePair.getCandidates()) { //this is line 9
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) { //line 10
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
-                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase //todo: this is the concistent kb. why dont add it to real kbs?
+                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase 
                         //knowledgeBaseToAdd.sort(); ??
 
                         List<NewConditional> candidatesToAdd = new LinkedList<>();
