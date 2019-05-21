@@ -104,7 +104,6 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
                 //todo: delete this and delete written stuff
-                //todo: why only 1 kb is written with 1 element kbs???
                 if (k < 3)
                     kbWriter.writeToFile(candidatePair.getKnowledgeBase());
             }
@@ -144,6 +143,7 @@ public class KBCreator implements Runnable {
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
             l.add(new CandidatePair(rKB, conditionalsToAdd));
+            iterationNumberOfKBs++;
         }
         return l;
     }
