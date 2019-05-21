@@ -18,6 +18,7 @@ public class InfoPanel extends JPanel {
 
         iterationStatusPanel = new IterationStatusPanel();
         add(iterationStatusPanel);
+        revalidate();
 
     }
 

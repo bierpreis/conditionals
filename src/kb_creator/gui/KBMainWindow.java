@@ -5,7 +5,7 @@ import kb_creator.gui.leftpanel.InfoPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
 import kb_creator.gui.leftpanel.MemoryPanel;
 import kb_creator.model.Signature.AbstractSignature;
-import nfc.view.textArea.CondPanel;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,12 +22,13 @@ public class KBMainWindow {
         mainWindow.setLayout(new BorderLayout());
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
-        //todo: maybe here no cond panel but something useful about what is done already?
-        mainWindow.add(new CondPanel(), BorderLayout.EAST);
+
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.pack();
         mainWindow.setVisible(true);
+        mainWindow.pack();
+
     }
 
     public AbstractSignature getSignature() {

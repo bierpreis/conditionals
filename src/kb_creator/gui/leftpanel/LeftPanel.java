@@ -10,7 +10,6 @@ import javax.swing.*;
 import java.io.File;
 
 public class LeftPanel extends JPanel {
-    private KBCreatorObserver observer;
     private SignaturePanel signaturePanel;
     private InfoPanel infoPanel;
     private ActionPanel actionPanel;
@@ -19,7 +18,6 @@ public class LeftPanel extends JPanel {
 
 
     public LeftPanel(KBCreatorObserver observer) {
-        this.observer = observer;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(signaturePanel = new SignaturePanel());
@@ -28,7 +26,8 @@ public class LeftPanel extends JPanel {
 
         add(infoPanel = new InfoPanel(actionPanel));
         add(memoryPanel = new MemoryPanel());
-        revalidate();
+        //todo: good window size
+
     }
 
     public AbstractSignature getSignature() {
@@ -48,7 +47,7 @@ public class LeftPanel extends JPanel {
         return memoryPanel;
     }
 
-    public File getFilePath(){
+    public File getFilePath() {
         return fileLocationPanel.getFilePath();
     }
 }
