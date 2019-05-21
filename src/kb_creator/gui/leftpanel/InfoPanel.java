@@ -7,7 +7,8 @@ import javax.swing.*;
 
 public class InfoPanel extends JPanel {
     private SizePanel sizePanel;
-    private StatusPanel statusPanel;
+    private OverallStatusPanel overallStatusPanel;
+    private IterationStatusPanel iterationStatusPanel;
 
     public InfoPanel(ActionPanel actionPanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -16,13 +17,16 @@ public class InfoPanel extends JPanel {
         sizePanel = new SizePanel();
         add(sizePanel);
 
-        statusPanel = new StatusPanel(actionPanel);
-        add(statusPanel);
+        overallStatusPanel = new OverallStatusPanel(actionPanel);
+        add(overallStatusPanel);
+
+        iterationStatusPanel = new IterationStatusPanel();
+        add(iterationStatusPanel);
 
     }
 
     public void showProgress(int finishedKBs) {
-        statusPanel.showProgress(finishedKBs);
+        iterationStatusPanel.showOverallProgress(finishedKBs);
     }
 
     public void showCandidatePairAmount(int candidatePairAmount) {
@@ -33,9 +37,11 @@ public class InfoPanel extends JPanel {
         sizePanel.showKBs(kbAmount);
     }
 
-    public void showStatus(Status status){
-        statusPanel.showStatus(status);
+    public void showStatus(Status status) {
+        overallStatusPanel.showStatus(status);
     }
 
-    public void showSpeed(int speed){statusPanel.showSpeed(speed);}
+    public void showSpeed(int speed) {
+        iterationStatusPanel.showSpeed(speed);
+    }
 }
