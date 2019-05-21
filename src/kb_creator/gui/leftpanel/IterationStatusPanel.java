@@ -1,6 +1,8 @@
 package kb_creator.gui.leftpanel;
 
 import javax.swing.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class IterationStatusPanel extends JPanel {
     private JLabel iterationKBLabel;
@@ -32,7 +34,6 @@ public class IterationStatusPanel extends JPanel {
 
     }
 
-
     public void showOverallProgress(int finishedKBs) {
         if (finishedKBs != -1)
             progressLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
@@ -50,6 +51,7 @@ public class IterationStatusPanel extends JPanel {
     }
 
     public void showCandidatePairs(int canditatePairs) {
-        candidatePairslabel.setText("Candidate Pairs: " + canditatePairs);
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        candidatePairslabel.setText("Candidate Pairs: " + formatter.format(canditatePairs));
     }
 }

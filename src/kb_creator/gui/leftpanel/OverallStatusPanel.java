@@ -4,6 +4,8 @@ import kb_creator.Observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class OverallStatusPanel extends JPanel {
 
@@ -37,7 +39,9 @@ public class OverallStatusPanel extends JPanel {
     }
 
     public void showKBs(int amount) {
-        kbLabel.setText("Knowledge Bases: " + amount + "\n");
+
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        kbLabel.setText("Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
 
