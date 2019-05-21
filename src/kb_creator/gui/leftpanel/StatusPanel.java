@@ -39,12 +39,11 @@ public class StatusPanel extends JPanel {
         vBox.add(speedLabel);
 
     }
-
+    //todo: maybe show finished kbs in current iteration
     public void showProgress(int finishedKBs) {
-        if (finishedKBs != 0)
-            progressLabel.setText(finishedKBs + " element ");
-        else progressLabel.setText("No");
-        progressLabel2.setText("Knowledge Bases finished.");
+        if (finishedKBs != -1)
+            progressLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
+        else progressLabel.setText("");
 
 
     }

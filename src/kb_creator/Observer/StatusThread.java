@@ -36,7 +36,7 @@ public class StatusThread implements Runnable {
                 infoPanel.showStatus(Status.NOT_STARTED);
                 infoPanel.showCandidatePairAmount(0);
                 infoPanel.showKBAmount(0);
-                infoPanel.showProgress(0);
+                infoPanel.showProgress(-1);
                 infoPanel.showSpeed(0);
             }
 
