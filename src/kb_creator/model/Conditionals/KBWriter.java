@@ -12,12 +12,14 @@ public class KBWriter {
 
     }
 
-    public void writeToFile(KnowledgeBase knowledgeBase, int number) {
-        System.out.println("filepath: " + filePathToSave);
-        File dir = new File("folder");
-        dir.mkdir();
+    public void writeToFile(KnowledgeBase knowledgeBase) {
+        //System.out.println("filepath: " + filePathToSave);
+        File dir = new File("./folder/" + knowledgeBase.getConditionalList().size() + "/");
+
+        System.out.println("file: " + dir.mkdirs());
+
         try {
-            PrintWriter writer = new PrintWriter("./" + "folder/" + number + ".txt", "UTF-8");
+            PrintWriter writer = new PrintWriter(dir.toString() + knowledgeBase.getNumber() + ".txt", "UTF-8");
             writer.print(knowledgeBase.toFileString());
             writer.close();
         } catch (IOException e) {

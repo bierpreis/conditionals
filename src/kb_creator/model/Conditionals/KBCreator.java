@@ -102,8 +102,10 @@ public class KBCreator implements Runnable {
                 }
                 //delete old candidates to save some memory
                 candidatePair.deleteCandidates();
-                if (k == 0)
-                    kbWriter.writeToFile(candidatePair.getKnowledgeBase(), 1);
+
+                //todo: delete this and delete written stuff
+                if (k < 2)
+                    kbWriter.writeToFile(candidatePair.getKnowledgeBase());
             }
             k = k + 1;
             //if (k == 1)
