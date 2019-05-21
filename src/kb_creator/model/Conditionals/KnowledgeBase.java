@@ -11,11 +11,12 @@ import java.util.List;
 public class KnowledgeBase {
     private AbstractSignature signature;
     private List<NewConditional> conditionalList;
-    private String name = "";
+    private int number;
 
-    public KnowledgeBase(AbstractSignature signature) {
+    public KnowledgeBase(AbstractSignature signature, int number) {
         conditionalList = new LinkedList<>();
         this.signature = signature;
+        this.number = number;
     }
 
     public boolean isConsistent(NewConditional conditional) {
@@ -38,6 +39,10 @@ public class KnowledgeBase {
 
         }
         return false;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public void add(NewConditional conditional) {
@@ -66,7 +71,7 @@ public class KnowledgeBase {
 
         stringToReturn = stringToReturn + "\n";
         stringToReturn = stringToReturn + "conditionals\n";
-        stringToReturn = stringToReturn + this.name + "{";
+        stringToReturn = stringToReturn + this.number + "{";
 
         for (NewConditional conditional : conditionalList)
             stringToReturn = stringToReturn + conditional.toString() + ",\n";

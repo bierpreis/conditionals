@@ -4,6 +4,7 @@ import kb_creator.Observer.Status;
 import kb_creator.model.Signature.AbstractSignature;
 import nfc.model.NfcCreator;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,12 +22,13 @@ public class KBCreator implements Runnable {
 
     private KBWriter kbWriter;
 
-    public KBCreator(AbstractSignature signature) {
+    public KBCreator(AbstractSignature signature, File fileToSave) {
+        System.out.println("new kb creator");
         kbList = new LinkedList<>();
 
         status = Status.NOT_STARTED;
         this.signature = signature;
-        kbWriter = new KBWriter();
+        kbWriter = new KBWriter(fileToSave);
     }
 
 
@@ -74,7 +76,7 @@ public class KBCreator implements Runnable {
 
                         //next part is line 11 and 12
                         //first create knowledge base
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature);
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature, iterationNumberOfKBs);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
 
@@ -101,7 +103,7 @@ public class KBCreator implements Runnable {
                 //delete old candidates to save some memory
                 candidatePair.deleteCandidates();
                 if (k == 0)
-                    kbWriter.writeToFile(candidatePair.getKnowledgeBase());
+                    kbWriter.writeToFile(candidatePair.getKnowledgeBase(), 1);
             }
             k = k + 1;
             //if (k == 1)
@@ -132,7 +134,7 @@ public class KBCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            KnowledgeBase rKB = new KnowledgeBase(signature);
+            KnowledgeBase rKB = new KnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new LinkedList<>();
             for (NewConditional conditional : nfc)

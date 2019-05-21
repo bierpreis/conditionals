@@ -9,6 +9,7 @@ import nfc.view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class KBMainWindow {
     private KBCreatorObserver observer;
@@ -43,5 +44,9 @@ public class KBMainWindow {
 
     public MemoryPanel getMemoryPanel() {
         return leftPanel.getMemoryPanel();
+    }
+
+    public File getFilePath() {
+        return leftPanel.getFilePath();
     }
 }

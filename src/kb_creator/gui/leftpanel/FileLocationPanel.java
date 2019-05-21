@@ -4,9 +4,11 @@ package kb_creator.gui.leftpanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class FileLocationPanel extends JPanel {
     private JButton saveButton;
+    private File file;
 
     public FileLocationPanel() {
         setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
@@ -26,7 +28,12 @@ public class FileLocationPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.showDialog(fileLocationPanel, "Choose Folder");
+            file = fileChooser.getSelectedFile();
         }
 
+    }
+
+    File getFilePath() {
+        return file;
     }
 }

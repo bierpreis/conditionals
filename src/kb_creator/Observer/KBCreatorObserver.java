@@ -30,7 +30,7 @@ public class KBCreatorObserver implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
 
-            creatorThreadObject = new KBCreator(mainWindow.getSignature());
+            creatorThreadObject = new KBCreator(mainWindow.getSignature(), mainWindow.getFilePath());
 
             creatorThreadObject.setSignature(mainWindow.getSignature());
 

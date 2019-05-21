@@ -7,6 +7,7 @@ import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
+import java.io.File;
 
 public class LeftPanel extends JPanel {
     private KBCreatorObserver observer;
@@ -45,5 +46,9 @@ public class LeftPanel extends JPanel {
 
     public MemoryPanel getMemoryPanel() {
         return memoryPanel;
+    }
+
+    public File getFilePath(){
+        return fileLocationPanel.getFilePath();
     }
 }
