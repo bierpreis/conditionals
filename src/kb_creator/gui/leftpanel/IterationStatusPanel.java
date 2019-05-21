@@ -7,7 +7,7 @@ public class IterationStatusPanel extends JPanel {
     private JLabel speedLabel;
     private JLabel progressLabel;
 
-    public IterationStatusPanel(){
+    public IterationStatusPanel() {
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
@@ -16,6 +16,9 @@ public class IterationStatusPanel extends JPanel {
 
         speedLabel = new JLabel();
         vBox.add(speedLabel);
+
+        progressLabel = new JLabel();
+        vBox.add(progressLabel);
 
     }
 
