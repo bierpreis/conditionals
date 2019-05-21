@@ -23,7 +23,11 @@ public class CandidatePair {
         return "<" + knowledgeBase + ", " + candidates + ">\n";
     }
 
-    public void deleteCandidates(){
+    public void deleteCandidates() {
         candidates = null;
+    }
+
+    public void deleteKB() {
+        knowledgeBase = null;
     }
 }

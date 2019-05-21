@@ -40,6 +40,7 @@ public class IterationStatusPanel extends JPanel {
         speedLabel.setText(Integer.toString(speed));
     }
 
+    //todo: is this knowledge bases or candidate pairs?
     public void showCandidatePairs(int amount) {
         candidatePairsLabel.setText("KBs: " + amount + "\n");
         repaint();
