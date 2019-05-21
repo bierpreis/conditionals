@@ -98,7 +98,7 @@ public class KBCreator implements Runnable {
 
                     }
 
-
+                //todo: maybe delete old candidates here already?
                 }
 
 
