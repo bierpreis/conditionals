@@ -13,6 +13,7 @@ public class KBWriter {
     }
 
     public void writeToFile(KnowledgeBase knowledgeBase) {
+        //todo: fit filechooser in here
         //System.out.println("filepath: " + filePathToSave);
         File dir = new File("./folder/" + knowledgeBase.getConditionalList().size() + "/");
 
