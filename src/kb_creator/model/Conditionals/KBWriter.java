@@ -16,7 +16,7 @@ public class KBWriter {
         //System.out.println("filepath: " + filePathToSave);
         File dir = new File("./folder/" + knowledgeBase.getConditionalList().size() + "/");
 
-        System.out.println("file: " + dir.mkdirs());
+        dir.mkdirs();
 
         try {
             PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");

@@ -104,7 +104,8 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
                 //todo: delete this and delete written stuff
-                if (k < 2)
+                //todo: why only 1 kb is written with 1 element kbs???
+                if (k < 3)
                     kbWriter.writeToFile(candidatePair.getKnowledgeBase());
             }
             k = k + 1;
