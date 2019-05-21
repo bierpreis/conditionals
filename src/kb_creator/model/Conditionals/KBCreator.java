@@ -86,7 +86,6 @@ public class KBCreator implements Runnable {
                                 candidatesToAdd.add(conditional);
 
                         //line 12
-                        //todo: really add new candidate pair for every element of former candidate pair? this causes the growth
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
                         knowledgeBaseCounter++;
