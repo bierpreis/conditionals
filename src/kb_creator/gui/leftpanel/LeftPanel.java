@@ -14,6 +14,7 @@ public class LeftPanel extends JPanel {
     private InfoPanel infoPanel;
     private ActionPanel actionPanel;
     private MemoryPanel memoryPanel;
+    private FileLocationPanel fileLocationPanel;
 
 
     public LeftPanel(KBCreatorObserver observer) {
@@ -22,6 +23,7 @@ public class LeftPanel extends JPanel {
 
         add(signaturePanel = new SignaturePanel());
         add(actionPanel = new ActionPanel(observer));
+        add(fileLocationPanel = new FileLocationPanel());
 
         add(infoPanel = new InfoPanel(actionPanel));
         add(memoryPanel = new MemoryPanel());

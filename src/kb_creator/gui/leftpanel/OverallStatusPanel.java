@@ -28,7 +28,7 @@ public class OverallStatusPanel extends JPanel {
 
         kbLabel = new JLabel();
         vBox.add(kbLabel);
-        
+
     }
 
     public void showStatus(Status status) {

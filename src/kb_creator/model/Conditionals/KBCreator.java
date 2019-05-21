@@ -19,11 +19,14 @@ public class KBCreator implements Runnable {
     private List<KnowledgeBase> kbList;
     private int k;
 
+    private KBWriter kbWriter;
+
     public KBCreator(AbstractSignature signature) {
         kbList = new LinkedList<>();
 
         status = Status.NOT_STARTED;
         this.signature = signature;
+        kbWriter = new KBWriter();
     }
 
 
@@ -97,6 +100,8 @@ public class KBCreator implements Runnable {
                 }
                 //delete old candidates to save some memory
                 candidatePair.deleteCandidates();
+                if (k == 0)
+                    kbWriter.writeToFile(candidatePair.getKnowledgeBase());
             }
             k = k + 1;
             //if (k == 1)
