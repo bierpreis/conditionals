@@ -98,17 +98,10 @@ public class KBCreator implements Runnable {
 
                     }
 
-                //todo: maybe delete old candidates here already?
                 }
-
-
+                //delete old candidates to save some memory
+                candidatePair.deleteCandidates();
             }
-
-            //delete old candidates to save some memory
-            for (CandidatePair candidatePairToClean : l.get(k))
-                candidatePairToClean.deleteCandidates();
-
-            
             k = k + 1;
             //if (k == 1)
             //System.out.println(l.get(0));
