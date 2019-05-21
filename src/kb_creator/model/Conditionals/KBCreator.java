@@ -124,9 +124,12 @@ public class KBCreator implements Runnable {
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
         candidatePairAmount = 0;
         List<CandidatePair> l = new LinkedList<>();
-        for (NewConditional r : cnfc) { //line 3 in original
 
-            KnowledgeBase rKB = new KnowledgeBase(signature); //line 4 and 5
+        //line 3
+        for (NewConditional r : cnfc) {
+
+            //line 4 and 5
+            KnowledgeBase rKB = new KnowledgeBase(signature);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new LinkedList<>();
             for (NewConditional conditional : nfc)
