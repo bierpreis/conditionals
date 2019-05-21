@@ -18,7 +18,7 @@ public class SizePanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Size"));
 
     }
-
+    //todo: make this work again
     public void showCandidatePairs(int amount) {
         candidatePairsLabel.setText("Candidate Pairs: " + amount + "\n");
         repaint();

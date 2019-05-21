@@ -59,7 +59,8 @@ public class KBCreator implements Runnable {
         //line 6
         while (!l.get(k).isEmpty()) {  //todo: really this? not iterate simply over all l?
 
-            System.out.println("candidates: " + l.get(k).size()); //todo: number of candidates is always increaising. this should not be?
+            System.out.println("candidates: " + l.get(k).size() + "  size:" + l.get(k).get(0).getKnowledgeBase().getConditionalList().size()); //todo: put this info in gui
+
 
             //line  7
             l.add(new LinkedList<>());
