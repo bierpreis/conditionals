@@ -8,6 +8,7 @@ public class IterationStatusPanel extends JPanel {
     private JLabel progressLabel;
 
     public IterationStatusPanel() {
+        setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
         Box vBox = Box.createVerticalBox();
         add(vBox);
 

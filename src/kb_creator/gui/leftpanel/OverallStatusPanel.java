@@ -16,7 +16,7 @@ public class OverallStatusPanel extends JPanel {
         this.actionPanel = actionPanel;
 
 
-        setBorder(BorderFactory.createTitledBorder("Status"));
+        setBorder(BorderFactory.createTitledBorder("Overall Status"));
 
         Box vBox = Box.createVerticalBox();
         add(vBox);

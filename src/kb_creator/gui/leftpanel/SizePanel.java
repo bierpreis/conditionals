@@ -5,7 +5,7 @@ import javax.swing.*;
 public class SizePanel extends JPanel {
     private JLabel candidatePairsLabel;
     private JLabel kbLabel;
-
+    //todo: put this in status panels
     public SizePanel() {
         Box vbox = Box.createVerticalBox();
         candidatePairsLabel = new JLabel();
