@@ -1,6 +1,6 @@
 package kb_creator.model.Signature;
 
-//todo: this class
+
 public class PossibleWorld {
     private boolean a;
     private boolean b;
