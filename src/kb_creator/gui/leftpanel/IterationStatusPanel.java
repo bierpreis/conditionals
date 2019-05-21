@@ -7,6 +7,7 @@ public class IterationStatusPanel extends JPanel {
     private JLabel speedDescriptionLabel;
     private JLabel speedLabel;
     private JLabel progressLabel;
+    private JLabel candidatePairslabel;
 
     public IterationStatusPanel() {
         setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
@@ -26,6 +27,9 @@ public class IterationStatusPanel extends JPanel {
         iterationKBLabel = new JLabel();
         vBox.add(iterationKBLabel);
 
+        candidatePairslabel = new JLabel();
+        vBox.add(candidatePairslabel);
+
     }
 
 
@@ -41,7 +45,11 @@ public class IterationStatusPanel extends JPanel {
 
 
     public void showIterationKBs(int amount) {
-        iterationKBLabel.setText("lel KBs: " + amount + "\n");
+        iterationKBLabel.setText("KBs: " + amount + "\n");
         repaint();
+    }
+
+    public void showCandidatePairs(int canditatePairs) {
+        candidatePairslabel.setText("Candidate Pairs: " + canditatePairs);
     }
 }

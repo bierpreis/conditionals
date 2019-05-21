@@ -25,7 +25,7 @@ public class InfoPanel extends JPanel {
         iterationStatusPanel.showOverallProgress(finishedKBs);
     }
 
-    public void showCandidatePairAmount(int candidatePairAmount) {
+    public void showIterationKBs(int candidatePairAmount) {
         iterationStatusPanel.showIterationKBs(candidatePairAmount);
     }
 
@@ -39,5 +39,9 @@ public class InfoPanel extends JPanel {
 
     public void showSpeed(int speed) {
         iterationStatusPanel.showSpeed(speed);
+    }
+
+    public void showCandidatePairs(int candidatePairs) {
+        iterationStatusPanel.showCandidatePairs(candidatePairs);
     }
 }
