@@ -10,6 +10,7 @@ public class OverallStatusPanel extends JPanel {
 
     private JLabel statusLabel;
     private ActionPanel actionPanel;
+    private JLabel kbLabel;
 
 
     public OverallStatusPanel(ActionPanel actionPanel) {
@@ -25,17 +26,24 @@ public class OverallStatusPanel extends JPanel {
         statusLabel = new JLabel();
         vBox.add(statusLabel);
 
+        kbLabel = new JLabel();
+        vBox.add(kbLabel);
+
 
     }
 
 
     public void showCurrentInterationProgress(int finishedKbsInIteration) {
-    //todo: implement
+        //todo: implement
     }
 
     public void showStatus(Status status) {
         statusLabel.setText("Status: " + status.toString());
         actionPanel.setStatus(status);
+    }
+
+    public void showKBs(int amount) {
+        kbLabel.setText("Knowledge Bases: " + amount + "\n");
     }
 
 

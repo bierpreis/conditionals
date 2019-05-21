@@ -6,16 +6,12 @@ import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import javax.swing.*;
 
 public class InfoPanel extends JPanel {
-    private SizePanel sizePanel;
     private OverallStatusPanel overallStatusPanel;
     private IterationStatusPanel iterationStatusPanel;
 
     public InfoPanel(ActionPanel actionPanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalGlue());
-
-        sizePanel = new SizePanel();
-        add(sizePanel);
 
         overallStatusPanel = new OverallStatusPanel(actionPanel);
         add(overallStatusPanel);
@@ -34,7 +30,7 @@ public class InfoPanel extends JPanel {
     }
 
     public void showKBAmount(int kbAmount) {
-        sizePanel.showKBs(kbAmount);
+        overallStatusPanel.showKBs(kbAmount);
     }
 
     public void showStatus(Status status) {
