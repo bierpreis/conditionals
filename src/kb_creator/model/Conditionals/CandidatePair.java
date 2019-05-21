@@ -22,4 +22,8 @@ public class CandidatePair {
     public String toString() {
         return "<" + knowledgeBase + ", " + candidates + ">\n";
     }
+
+    public void deleteCandidates(){
+        candidates = null;
+    }
 }

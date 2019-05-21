@@ -88,6 +88,7 @@ public class KBCreator implements Runnable {
                         //line 12
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
+
                         knowledgeBaseCounter++;
                     }
                     while (status.equals(Status.PAUSE))
@@ -97,12 +98,21 @@ public class KBCreator implements Runnable {
 
                     }
 
+
                 }
 
+
             }
+
+            //delete old candidates to save some memory
+            for (CandidatePair candidatePairToClean : l.get(k))
+                candidatePairToClean.deleteCandidates();
+
+            
             k = k + 1;
             //if (k == 1)
-                //System.out.println(l.get(0));
+            //System.out.println(l.get(0));
+
         }
         status = Status.FINISHED;
     }
