@@ -3,7 +3,7 @@ package kb_creator.gui.leftpanel;
 import javax.swing.*;
 
 public class IterationStatusPanel extends JPanel {
-    private JLabel candidatePairsLabel;
+    private JLabel iterationKBLabel;
     private JLabel speedDescriptionLabel;
     private JLabel speedLabel;
     private JLabel progressLabel;
@@ -23,9 +23,8 @@ public class IterationStatusPanel extends JPanel {
         vBox.add(speedLabel);
 
 
-
-        candidatePairsLabel = new JLabel();
-        vBox.add(candidatePairsLabel);
+        iterationKBLabel = new JLabel();
+        vBox.add(iterationKBLabel);
 
     }
 
@@ -40,9 +39,9 @@ public class IterationStatusPanel extends JPanel {
         speedLabel.setText(Integer.toString(speed));
     }
 
-    //todo: is this knowledge bases or candidate pairs?
-    public void showCandidatePairs(int amount) {
-        candidatePairsLabel.setText("KBs: " + amount + "\n");
+
+    public void showIterationKBs(int amount) {
+        iterationKBLabel.setText("lel KBs: " + amount + "\n");
         repaint();
     }
 }

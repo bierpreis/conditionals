@@ -19,6 +19,7 @@ public class KBCreator implements Runnable {
 
     private List<KnowledgeBase> kbList;
     private int k;
+    private int candidatePairAmount;
 
     private KBWriter kbWriter;
 
@@ -59,8 +60,7 @@ public class KBCreator implements Runnable {
         //line 6
         while (!l.get(k).isEmpty()) {  //todo: really this? not iterate simply over all l?
 
-            System.out.println("candidates: " + l.get(k).size() + "  size:" + l.get(k).get(0).getKnowledgeBase().getConditionalList().size()); //todo: put this info in gui
-
+            candidatePairAmount = l.get(k).size();
 
             //line  7
             l.add(new LinkedList<>());
@@ -150,7 +150,7 @@ public class KBCreator implements Runnable {
         return l;
     }
 
-    public int getKBAmount() {
+    public int getTotalKbAmount() {
         return totalNumberOfKBs;
     }
 
@@ -175,8 +175,12 @@ public class KBCreator implements Runnable {
 
     }
 
-    public int getK() {
+    public int getCurrentK() {
         return k;
+    }
+
+    public int getCurrentCandidatepairAmount() {
+        return candidatePairAmount;
     }
 
 
