@@ -3,6 +3,7 @@ package kb_creator.gui.leftpanel;
 import javax.swing.*;
 
 public class IterationStatusPanel extends JPanel {
+    private JLabel candidatePairsLabel;
     private JLabel speedDescriptionLabel;
     private JLabel speedLabel;
     private JLabel progressLabel;
@@ -21,6 +22,9 @@ public class IterationStatusPanel extends JPanel {
         progressLabel = new JLabel();
         vBox.add(progressLabel);
 
+        candidatePairsLabel = new JLabel();
+        vBox.add(candidatePairsLabel);
+
     }
 
 
@@ -32,5 +36,10 @@ public class IterationStatusPanel extends JPanel {
 
     public void showSpeed(int speed) {
         speedLabel.setText(Integer.toString(speed));
+    }
+
+    public void showCandidatePairs(int amount) {
+        candidatePairsLabel.setText("Candidate Pairs: " + amount + "\n");
+        repaint();
     }
 }

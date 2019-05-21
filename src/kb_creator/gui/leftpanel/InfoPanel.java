@@ -30,7 +30,7 @@ public class InfoPanel extends JPanel {
     }
 
     public void showCandidatePairAmount(int candidatePairAmount) {
-        sizePanel.showCandidatePairs(candidatePairAmount);
+        iterationStatusPanel.showCandidatePairs(candidatePairAmount);
     }
 
     public void showKBAmount(int kbAmount) {
