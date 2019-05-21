@@ -28,13 +28,7 @@ public class OverallStatusPanel extends JPanel {
 
         kbLabel = new JLabel();
         vBox.add(kbLabel);
-
-
-    }
-
-
-    public void showCurrentInterationProgress(int finishedKbsInIteration) {
-        //todo: implement
+        
     }
 
     public void showStatus(Status status) {

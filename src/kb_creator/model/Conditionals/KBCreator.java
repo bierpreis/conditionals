@@ -9,11 +9,8 @@ import java.util.List;
 
 public class KBCreator implements Runnable {
 
-    private volatile int knowledgeBaseCounter;
-    private volatile int candidatePairAmount;
-
-    private volatile double totalNumberOfCalculations;
-
+    private volatile int totalNumberOfKBs;
+    private volatile int iterationNumberOfKBs;
 
     private volatile Status status;
 
@@ -24,8 +21,6 @@ public class KBCreator implements Runnable {
 
     public KBCreator(AbstractSignature signature) {
         kbList = new LinkedList<>();
-
-        totalNumberOfCalculations = 0;
 
         status = Status.NOT_STARTED;
         this.signature = signature;
@@ -64,7 +59,7 @@ public class KBCreator implements Runnable {
 
             //line  7
             l.add(new LinkedList<>());
-
+            iterationNumberOfKBs = 0;
             //this loop is line 8
             for (CandidatePair candidatePair : l.get(k)) {
 
@@ -89,8 +84,8 @@ public class KBCreator implements Runnable {
                         //line 12
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
-
-                        knowledgeBaseCounter++;
+                        iterationNumberOfKBs++;
+                        totalNumberOfKBs++;
                     }
                     while (status.equals(Status.PAUSE))
                         sleep(500);
@@ -125,7 +120,7 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
-        candidatePairAmount = 0;
+        iterationNumberOfKBs = 0;
         List<CandidatePair> l = new LinkedList<>();
 
         //line 3
@@ -144,11 +139,11 @@ public class KBCreator implements Runnable {
     }
 
     public int getKBAmount() {
-        return knowledgeBaseCounter;
+        return totalNumberOfKBs;
     }
 
-    public int getCandidatePairAmount() {
-        return candidatePairAmount;
+    public int getIterationNumberOfKBs() {
+        return iterationNumberOfKBs;
     }
 
     public Status getStatus() {

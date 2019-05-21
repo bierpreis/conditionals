@@ -13,14 +13,16 @@ public class IterationStatusPanel extends JPanel {
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
-        speedDescriptionLabel = new JLabel("Speed: (KnowledgeBases/Second)");
+        progressLabel = new JLabel();
+        vBox.add(progressLabel);
+
+        speedDescriptionLabel = new JLabel("Speed: (KBs/Second)");
         vBox.add(speedDescriptionLabel);
 
         speedLabel = new JLabel();
         vBox.add(speedLabel);
 
-        progressLabel = new JLabel();
-        vBox.add(progressLabel);
+
 
         candidatePairsLabel = new JLabel();
         vBox.add(candidatePairsLabel);
@@ -39,7 +41,7 @@ public class IterationStatusPanel extends JPanel {
     }
 
     public void showCandidatePairs(int amount) {
-        candidatePairsLabel.setText("Candidate Pairs: " + amount + "\n");
+        candidatePairsLabel.setText("KBs: " + amount + "\n");
         repaint();
     }
 }

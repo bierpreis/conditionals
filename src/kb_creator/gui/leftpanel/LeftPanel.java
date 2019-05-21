@@ -20,9 +20,9 @@ public class LeftPanel extends JPanel {
         this.observer = observer;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-
-        add(actionPanel = new ActionPanel(observer));
         add(signaturePanel = new SignaturePanel());
+        add(actionPanel = new ActionPanel(observer));
+
         add(infoPanel = new InfoPanel(actionPanel));
         add(memoryPanel = new MemoryPanel());
         revalidate();
