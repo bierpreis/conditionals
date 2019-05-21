@@ -19,7 +19,7 @@ public class KnowledgeBase {
     }
 
     public boolean isConsistent(NewConditional conditional) {
-        //todo this test is written in goldszmit/pearl 1996 p 64 (tolerance)
+        //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
 
