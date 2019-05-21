@@ -19,7 +19,7 @@ public class KBWriter {
         System.out.println("file: " + dir.mkdirs());
 
         try {
-            PrintWriter writer = new PrintWriter(dir.toString() + knowledgeBase.getNumber() + ".txt", "UTF-8");
+            PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");
             writer.print(knowledgeBase.toFileString());
             writer.close();
         } catch (IOException e) {
