@@ -29,7 +29,7 @@ public class NfcCreator {
     }
 
     //3 creators
-
+    //todo: this is still shit
     public List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
         int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.getClass().getSimpleName().length());

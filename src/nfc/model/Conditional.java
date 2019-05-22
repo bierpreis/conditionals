@@ -70,7 +70,7 @@ public class Conditional implements Comparable {
         antecendString = antecendString.replace("},", "}");
         String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
 
-
+        //todo: improve above
         return stringToReturn;
     }
 
