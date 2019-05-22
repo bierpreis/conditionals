@@ -70,12 +70,16 @@ public class KnowledgeBase {
         stringToReturn = stringToReturn + signature.toString().toLowerCase();
 
         stringToReturn = stringToReturn + "\n";
-        stringToReturn = stringToReturn + "conditionals\n";
+        stringToReturn = stringToReturn + "conditionals\n\n";
         stringToReturn = stringToReturn + this.number + "{\n";
 
-        for (NewConditional conditional : conditionalList) { //todo: this is not good better use stringbuilder
-            stringToReturn = stringToReturn + conditional.toString() + ",\n";
-            //todo: no comma for last conditional
+        //todo: this is not good better use stringbuilder
+
+        for (int i = 0; i < conditionalList.size(); i++) {
+            stringToReturn = stringToReturn + conditionalList.get(i);
+            if (i != conditionalList.size() - 1)
+                stringToReturn = stringToReturn + ",\n";
+            else stringToReturn = stringToReturn + "";
         }
 
         stringToReturn = stringToReturn + "\n}";
