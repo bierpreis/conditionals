@@ -8,6 +8,7 @@ public class KBWriter {
     File filePathToSave;
 
     public KBWriter(File filePathToSave) {
+        System.out.println("kbwriter: " + filePathToSave);
         this.filePathToSave = filePathToSave;
 
     }

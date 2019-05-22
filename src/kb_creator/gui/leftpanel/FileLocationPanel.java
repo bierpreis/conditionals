@@ -27,6 +27,7 @@ public class FileLocationPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.showDialog(fileLocationPanel, "Choose Folder");
             file = fileChooser.getSelectedFile();
         }
