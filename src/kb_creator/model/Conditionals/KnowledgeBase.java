@@ -71,12 +71,14 @@ public class KnowledgeBase {
 
         stringToReturn = stringToReturn + "\n";
         stringToReturn = stringToReturn + "conditionals\n";
-        stringToReturn = stringToReturn + this.number + "{";
+        stringToReturn = stringToReturn + this.number + "{\n";
 
-        for (NewConditional conditional : conditionalList)
+        for (NewConditional conditional : conditionalList) { //todo: this is not good better use stringbuilder
             stringToReturn = stringToReturn + conditional.toString() + ",\n";
+            //todo: no comma for last conditional
+        }
 
-        stringToReturn = stringToReturn + "}";
+        stringToReturn = stringToReturn + "\n}";
         return stringToReturn;
     }
 
