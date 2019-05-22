@@ -24,7 +24,7 @@ public class KBWriter {
 
         try {
             PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");
-            writer.print(knowledgeBase.toFileString());
+            writer.print(knowledgeBase.newToFileString());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

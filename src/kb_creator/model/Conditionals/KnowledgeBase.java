@@ -65,6 +65,8 @@ public class KnowledgeBase {
     }
 
 
+    //this is old and unused for performance reasons
+    //maybe use it to compare new stringbuilder with this old versions
     public String toFileString() {
         String stringToReturn = "signature\n";
         stringToReturn = stringToReturn + signature.toString().toLowerCase();
@@ -73,17 +75,33 @@ public class KnowledgeBase {
         stringToReturn = stringToReturn + "conditionals\n\n";
         stringToReturn = stringToReturn + this.number + "{\n";
 
-        //todo: this is not good better use stringbuilder
-
         for (int i = 0; i < conditionalList.size(); i++) {
             stringToReturn = stringToReturn + conditionalList.get(i);
             if (i != conditionalList.size() - 1)
                 stringToReturn = stringToReturn + ",\n";
-            else stringToReturn = stringToReturn + "";
         }
 
         stringToReturn = stringToReturn + "\n}";
         return stringToReturn;
+    }
+
+    public String newToFileString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(signature.toString().toLowerCase());
+        sb.append("\n");
+        sb.append("conditionals\n\n");
+        sb.append(this.number);
+        sb.append("{\n");
+
+        for (int i = 0; i < conditionalList.size(); i++) {
+            sb.append(conditionalList.get(i));
+            if (i != conditionalList.size() - 1)
+                sb.append(",\n");
+
+        }
+        sb.append("\n}");
+        return sb.toString();
+
     }
 
 }

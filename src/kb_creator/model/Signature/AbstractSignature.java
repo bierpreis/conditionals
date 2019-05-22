@@ -11,6 +11,7 @@ public abstract class AbstractSignature {
         possibleWorlds = new LinkedList<>();
     }
 
+    //todo: return this with commas and lowerCase
     @Override
     public String toString() {
         return this.getClass().getSimpleName();
