@@ -17,7 +17,6 @@ public class KBCreator implements Runnable {
 
     private AbstractSignature signature;
 
-    private List<KnowledgeBase> kbList;
     private int k;
     private int candidatePairAmount;
 
@@ -25,7 +24,6 @@ public class KBCreator implements Runnable {
 
     public KBCreator(AbstractSignature signature, File fileToSave) {
         System.out.println("new kb creator");
-        kbList = new LinkedList<>();
 
         status = Status.NOT_STARTED;
         this.signature = signature;
