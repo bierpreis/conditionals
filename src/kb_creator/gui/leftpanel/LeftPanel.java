@@ -7,6 +7,7 @@ import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 
 public class LeftPanel extends JPanel {
@@ -19,6 +20,7 @@ public class LeftPanel extends JPanel {
 
     public LeftPanel(KBCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //setLayout(new BorderLayout());
 
         add(signaturePanel = new SignaturePanel());
         add(actionPanel = new ActionPanel(observer));
@@ -26,8 +28,10 @@ public class LeftPanel extends JPanel {
 
         add(infoPanel = new InfoPanel(actionPanel));
         add(memoryPanel = new MemoryPanel());
-        //todo: good window size
 
+
+        setPreferredSize(new Dimension(400, 700));
+        revalidate();
     }
 
     public AbstractSignature getSignature() {
