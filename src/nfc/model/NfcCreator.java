@@ -32,7 +32,7 @@ public class NfcCreator {
 
     public List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
-        int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.toString().length());
+        int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.getClass().getSimpleName().length()); //todo: fix bug here
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);

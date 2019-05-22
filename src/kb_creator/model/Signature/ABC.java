@@ -9,4 +9,10 @@ public class ABC extends AbstractSignature {
 
     }
 
+
+    @Override
+    public String toString() {
+        return "a,b,c";
+    }
+
 }

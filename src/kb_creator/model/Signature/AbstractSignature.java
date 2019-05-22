@@ -7,15 +7,13 @@ import java.util.List;
 public abstract class AbstractSignature {
     protected List<PossibleWorld> possibleWorlds;
 
-    public AbstractSignature(){
+    public AbstractSignature() {
         possibleWorlds = new LinkedList<>();
     }
 
-    //todo: return this with commas and lowerCase
+
     @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
-    }
+    abstract public String toString();
 
     public List<PossibleWorld> getPossibleWorlds() {
         return possibleWorlds;

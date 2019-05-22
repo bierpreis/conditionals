@@ -12,4 +12,9 @@ public class AB extends AbstractSignature {
         possibleWorlds.add(new PossibleWorld(false, false));
     }
 
+    @Override
+    public String toString() {
+        return "a,b";
+    }
+
 }
