@@ -68,10 +68,7 @@ public class Conditional implements Comparable {
         String antecendString = antecedent.toString();
         consequenceString = consequenceString.replace("},", "}");
         antecendString = antecendString.replace("},", "}");
-        String stringToReturn = "(" + consequenceString + " | " + antecendString + ")";
-
-        //todo: improve above
-        return stringToReturn;
+        return "(" + consequenceString + " | " + antecendString + ")";
     }
 
 
