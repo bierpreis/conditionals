@@ -29,7 +29,7 @@ public class NewConditional {
 
     }
 
-
+    //todo: this fucks up when creating nfc with abc signature
     private AbstractFormula worldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
         for (int worldInt : world.getWorldsList()) {
