@@ -13,6 +13,12 @@ public class PossibleWorld {
         this.c = c;
     }
 
+    public PossibleWorld(boolean a, boolean b, boolean c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
     public boolean isA() {
         return a;
     }
