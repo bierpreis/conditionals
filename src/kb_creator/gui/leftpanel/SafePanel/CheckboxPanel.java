@@ -17,11 +17,6 @@ public class CheckboxPanel extends JPanel {
 
     }
 
-    //todo: delete?
-    boolean isSavingRequested() {
-        return checkBox.isEnabled();
-    }
-
     class CheckboxListener implements ActionListener {
 
         @Override

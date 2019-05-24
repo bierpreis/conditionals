@@ -19,9 +19,8 @@ public class SafePanel extends JPanel {
     }
 
     public File getFileLocation() {
-        if (checkboxPanel.isSavingRequested())
-            return fileLocationPanel.getFilePath();
-        else return null;
+        return fileLocationPanel.getFilePath();
+
     }
 
 
