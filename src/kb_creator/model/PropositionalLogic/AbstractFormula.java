@@ -25,6 +25,7 @@ public abstract class AbstractFormula {
     @Override
     public abstract boolean equals(Object o);
 
+
     public boolean isAtom() {
         if (this instanceof Atom) return true;
         if (this instanceof Negation)
