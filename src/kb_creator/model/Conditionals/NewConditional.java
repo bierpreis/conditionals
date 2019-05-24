@@ -61,7 +61,7 @@ public class NewConditional {
     }
 
     public String toString() {
-        return "(" + consequence + "|" + antecend + ")";
+        return "(" + consequence + " | " + antecend + ")";
     }
 
     public int getNumber() {
