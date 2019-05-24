@@ -2,6 +2,7 @@ package nfc.view.textArea;
 
 import nfc.model.Conditional;
 import nfc.model.ConditionalList;
+import nfc.model.World;
 
 import javax.swing.*;
 import java.util.List;
@@ -52,6 +53,12 @@ public class CondPanel extends JPanel {
 
         infoPanel.printInfo(condTextField.getDescription());
         revalidate();
+    }
+
+    public void printWorlds(List<World> worldsList){
+        condTextField.setText("");
+        condTextField.printWorlds(worldsList);
+        infoPanel.printInfo(condTextField.getDescription());
     }
 
 

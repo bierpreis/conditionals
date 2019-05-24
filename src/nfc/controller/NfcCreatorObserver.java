@@ -28,6 +28,9 @@ public class NfcCreatorObserver implements ActionListener {
         NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
 
         switch (e.getActionCommand()) {
+            case "WORLDS":
+                condPanel.printWorlds(nfcCreator.getWorlds());
+                break;
             case "NFC":
                 condPanel.printConditionals(nfcCreator.getNfc());
                 break;
@@ -37,6 +40,8 @@ public class NfcCreatorObserver implements ActionListener {
             case "CNFC":
                 condPanel.printConditionals(nfcCreator.getCnfc());
                 break;
+            default:
+                throw new RuntimeException("Unknown command: " + e.getActionCommand());
 
         }
     }
