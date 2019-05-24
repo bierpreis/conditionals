@@ -29,7 +29,7 @@ public class NewConditional {
 
     }
 
-    //todo: this fucks up when creating nfc with abc signature
+    //todo: implement abc signature. maybe put into signature?
     private AbstractFormula worldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
         for (int worldInt : world.getWorldsList()) {
@@ -54,7 +54,7 @@ public class NewConditional {
             }
             if (formulaToReturn == null)
                 formulaToReturn = new Conjunction(firstAtom, secondAtom);
-            //todo: this cant be correct. or ???
+                //todo: this cant be correct. or ???
             else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
 
         }

@@ -30,10 +30,9 @@ public class NfcCreator {
     }
 
     //3 creators
-    //todo: this is still shit. use signature.getNumberOfWorlds or sth
     public List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
-        int numberOfWorlds = (int) Math.pow((double) 2, (double) signature.getClass().getSimpleName().length());
+        int numberOfWorlds = signature.getPossibleWorlds().size();
         List<Integer> initWorldsList = new LinkedList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
