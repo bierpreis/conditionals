@@ -46,7 +46,6 @@ public class ViewPanel extends JPanel {
 
     public World.View getRequestedView() {
         String command = viewButtonGroup.getSelection().getActionCommand();
-        System.out.println("command: " + command);
         if (viewButtonGroup.getSelection().getActionCommand().equals("letters"))
             return World.View.LETTERS;
         if (viewButtonGroup.getSelection().getActionCommand().equals("numbers"))

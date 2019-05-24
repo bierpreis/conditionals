@@ -19,7 +19,6 @@ public class NfcCreator {
     public NfcCreator(AbstractSignature signature) {
 
         worlds = createWorlds(signature);
-        System.out.println("size: " + worlds.size());
         nfc = createNfc(worlds);
         cnfcEq = createCnfcEq(nfc);
         cnfc = createCnfc(cnfcEq);
