@@ -1,4 +1,4 @@
-package kb_creator.gui.leftpanel;
+package kb_creator.gui.leftpanel.SafePanel;
 
 
 import javax.swing.*;
@@ -11,7 +11,7 @@ public class FileLocationPanel extends JPanel {
     private File file;
 
     public FileLocationPanel() {
-        setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
+        //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new SaveButtonListener(this));
         add(saveButton);

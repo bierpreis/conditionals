@@ -1,6 +1,8 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
+import kb_creator.gui.leftpanel.SafePanel.FileLocationPanel;
+import kb_creator.gui.leftpanel.SafePanel.SafePanel;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import kb_creator.model.Signature.AB;
 import kb_creator.model.Signature.ABC;
@@ -15,7 +17,7 @@ public class LeftPanel extends JPanel {
     private InfoPanel infoPanel;
     private ActionPanel actionPanel;
     private MemoryPanel memoryPanel;
-    private FileLocationPanel fileLocationPanel;
+    private SafePanel safePanel;
 
 
     public LeftPanel(KBCreatorObserver observer) {
@@ -24,7 +26,7 @@ public class LeftPanel extends JPanel {
 
         add(signaturePanel = new SignaturePanel());
         add(actionPanel = new ActionPanel(observer));
-        add(fileLocationPanel = new FileLocationPanel());
+        add(safePanel = new SafePanel());
 
         add(infoPanel = new InfoPanel(actionPanel));
         add(memoryPanel = new MemoryPanel());
@@ -52,6 +54,6 @@ public class LeftPanel extends JPanel {
     }
 
     public File getFilePath() {
-        return fileLocationPanel.getFilePath();
+        return safePanel.getFileLocation();
     }
 }

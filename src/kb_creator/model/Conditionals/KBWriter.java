@@ -14,19 +14,18 @@ public class KBWriter {
 
     public void writeToFile(KnowledgeBase knowledgeBase) {
         File dir;
-        if (filePathToSave == null)
-            dir = new File("./KBs/" + knowledgeBase.getConditionalList().size() + "/");
-        else
+        if (filePathToSave != null) {
             dir = new File(filePathToSave.getAbsolutePath() + "/KBs/" + knowledgeBase.getConditionalList().size() + "/");
 
-        dir.mkdirs();
+            dir.mkdirs();
 
-        try {
-            PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");
-            writer.print(knowledgeBase.newToFileString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");
+                writer.print(knowledgeBase.newToFileString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
