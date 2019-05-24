@@ -36,18 +36,23 @@ public class KnowledgeBase {
         //here sth like:
         for (PossibleWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
+
                 System.out.println("consistent: " + world.toString());
                 System.out.println(conditionalToTest);
                 System.out.println(concistecyOfKB);
                 System.out.println();
+
                 return true;
 
             }
 
         }
+
         System.out.println("inconsistent: ");
         System.out.println(conditionalToTest);
         System.out.println(concistecyOfKB);
+        System.out.println();
+
         return false;
     }
 

@@ -11,9 +11,10 @@ public class SafePanel extends JPanel {
     //todo: only activate location button when checkbox is checked
     public SafePanel() {
         setBorder(BorderFactory.createTitledBorder("Safe Options"));
-        checkboxPanel = new CheckboxPanel();
-        add(checkboxPanel);
         fileLocationPanel = new FileLocationPanel();
+        checkboxPanel = new CheckboxPanel(fileLocationPanel);
+        add(checkboxPanel);
+
         add(fileLocationPanel);
     }
 
@@ -22,4 +23,6 @@ public class SafePanel extends JPanel {
             return fileLocationPanel.getFilePath();
         else return null;
     }
+
+
 }

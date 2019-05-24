@@ -32,6 +32,12 @@ public class FileLocationPanel extends JPanel {
             file = fileChooser.getSelectedFile();
         }
 
+
+
+    }
+
+    public void setActive(boolean active) {
+        saveButton.setEnabled(active);
     }
 
     File getFilePath() {

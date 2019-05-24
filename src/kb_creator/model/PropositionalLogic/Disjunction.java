@@ -19,9 +19,9 @@ public class Disjunction extends AbstractFormula {
 
     }
 
-    //todo: use brackets to improve readability
+
     public String toString() {
-        return firstFormula.toString() + "," + secondFormula.toString();
+        return "(" + firstFormula.toString() + "," + secondFormula.toString() + ")";
     }
 
 
