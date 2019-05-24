@@ -1,9 +1,12 @@
 package kb_creator.model.Conditionals;
 
+import com.google.errorprone.annotations.Var;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Atom;
 import kb_creator.model.PropositionalLogic.Conjunction;
 import kb_creator.model.PropositionalLogic.Variable;
+import kb_creator.model.Signature.AB;
+import kb_creator.model.Signature.ABC;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -33,32 +36,92 @@ public class NewConditional {
 
     private AbstractFormula worldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
-        for (int worldInt : world.getWorldsList()) {
-            AbstractFormula firstAtom = new Atom(Variable.a);
-            AbstractFormula secondAtom = new Atom(Variable.b);
-            switch (worldInt) {
-                case 0:
-                    firstAtom = firstAtom.neg();
-                    secondAtom = secondAtom.neg();
-                    break;
-                case 1:
-                    firstAtom = firstAtom.neg();
-                    break;
-                case 2:
-                    secondAtom = secondAtom.neg();
-                    break;
-                case 3:
-                    break;
-                default:
-                    throw new RuntimeException("Unknown World: " + worldInt);
+
+        if (world.getSignature() instanceof AB) {
+
+            for (int worldInt : world.getWorldsList()) {
+                AbstractFormula firstAtom = new Atom(Variable.a);
+                AbstractFormula secondAtom = new Atom(Variable.b);
+                switch (worldInt) {
+                    case 0:
+                        firstAtom = firstAtom.neg();
+                        secondAtom = secondAtom.neg();
+                        break;
+                    case 1:
+                        firstAtom = firstAtom.neg();
+                        break;
+                    case 2:
+                        secondAtom = secondAtom.neg();
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        throw new RuntimeException("Unknown World: " + worldInt);
+
+                }
+                if (formulaToReturn == null)
+                    formulaToReturn = new Conjunction(firstAtom, secondAtom);
+                    //todo: this cant be correct. or ???
+                else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
+            }
+
+        } else if (world.getSignature() instanceof ABC) {
+            //todo: this
+            for (int worldInt : world.getWorldsList()) {
+                AbstractFormula firstAtom = new Atom(Variable.a);
+                AbstractFormula secondAtom = new Atom(Variable.b);
+                AbstractFormula thirdAtom = new Atom(Variable.c);
+
+                switch (worldInt) {
+                    case 0:
+                        firstAtom = firstAtom.neg();
+                        secondAtom = secondAtom.neg();
+                        thirdAtom = thirdAtom.neg();
+                        break;
+                    case 1:
+                        firstAtom = firstAtom.neg();
+                        secondAtom = secondAtom.neg();
+                        break;
+                    case 2:
+                        firstAtom = firstAtom.neg();
+                        thirdAtom = thirdAtom.neg();
+
+                        break;
+                    case 3:
+                        firstAtom = firstAtom.neg();
+                        break;
+
+                    case 4:
+                        secondAtom = secondAtom.neg();
+                        thirdAtom = thirdAtom.neg();
+                        break;
+                    case 5:
+                        secondAtom = secondAtom.neg();
+                        break;
+                    case 6:
+                        thirdAtom = thirdAtom.neg();
+                        break;
+                    case 7:
+                        break;
+                    default:
+                        throw new RuntimeException("Unknown World: " + worldInt);
+
+                }
+
+                //todo: check this again
+                AbstractFormula formulaToAdd = firstAtom.and(secondAtom).and(thirdAtom);
+                if (formulaToReturn == null) {
+                    formulaToReturn = formulaToAdd;
+                } else {
+                    formulaToReturn = formulaToReturn.or(formulaToAdd);
+
+                }
 
             }
-            if (formulaToReturn == null)
-                formulaToReturn = new Conjunction(firstAtom, secondAtom);
-                //todo: this cant be correct. or ???
-            else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
 
         }
+
+
         return formulaToReturn;
     }
 

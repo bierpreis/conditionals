@@ -134,4 +134,8 @@ public class World implements Comparable {
         NUMBERS, LETTERS;
     }
 
+    public AbstractSignature getSignature() {
+        return signature;
+    }
+
 }
