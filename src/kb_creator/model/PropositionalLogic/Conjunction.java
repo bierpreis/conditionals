@@ -1,8 +1,9 @@
 package kb_creator.model.PropositionalLogic;
 
-import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
+
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
+//todo: conjunction needs to work with 3 formulas at least. this with parameter...
 public class Conjunction extends AbstractFormula {
     private AbstractFormula firstFormula;
     private AbstractFormula secondFormula;

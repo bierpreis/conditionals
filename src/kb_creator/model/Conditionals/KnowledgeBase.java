@@ -4,7 +4,7 @@ import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 import kb_creator.model.Signature.AbstractSignature;
-import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -38,10 +38,10 @@ public class KnowledgeBase {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
 
-                System.out.println("consistent: " + world.toString());
-                System.out.println(conditionalToTest);
-                System.out.println(concistecyOfKB);
-                System.out.println();
+//                System.out.println("consistent: " + world.toString());
+//                System.out.println(conditionalToTest);
+//                System.out.println(concistecyOfKB);
+//                System.out.println();
 
                 return true;
 
@@ -49,10 +49,10 @@ public class KnowledgeBase {
 
         }
 
-        System.out.println("inconsistent: ");
-        System.out.println(conditionalToTest);
-        System.out.println(concistecyOfKB);
-        System.out.println();
+//        System.out.println("inconsistent: ");
+//        System.out.println(conditionalToTest);
+//        System.out.println(concistecyOfKB);
+//        System.out.println();
 
         return false;
     }

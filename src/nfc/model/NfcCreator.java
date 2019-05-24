@@ -22,7 +22,7 @@ public class NfcCreator {
         nfc = createNfc(worlds);
         cnfcEq = createCnfcEq(nfc);
         cnfc = createCnfc(cnfcEq);
-        
+
         newNfc = translateConditionals(nfc);
         newCnfc = translateConditionals(cnfc);
 
