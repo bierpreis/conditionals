@@ -19,7 +19,7 @@ public class KnowledgeBase {
         this.number = number;
     }
 
-    public boolean isConsistent(NewConditional conditional) {
+    public boolean isConsistent(NewConditional conditionalToTest) {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
@@ -31,9 +31,9 @@ public class KnowledgeBase {
         }
 
         //here sth like:
-
+        //todo: here rly && ? not better and?
         for (PossibleWorld world : signature.getPossibleWorlds()) {
-            if (conditional.getAntecend().evaluate(world) && conditional.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world))
+            if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world))
                 return true;
 
 
