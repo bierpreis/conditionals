@@ -25,4 +25,9 @@ public class PossibleWorld {
         return b;
     }
 
+    public String toString() {
+        return a + " " + b;
+    }
+
+
 }

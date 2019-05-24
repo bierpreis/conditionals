@@ -31,10 +31,10 @@ public class KnowledgeBase {
         }
 
         //here sth like:
-        //todo: here rly && ? not better and?
         for (PossibleWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
-                System.out.println("consistent: " + conditionalToTest);
+                System.out.println("consistent: " + world.toString());
+                System.out.println(conditionalToTest);
                 System.out.println(concistecyOfKB);
                 System.out.println();
                 return true;
@@ -42,7 +42,8 @@ public class KnowledgeBase {
             }
 
         }
-        System.out.println("inconsistent: " + conditionalToTest);
+        System.out.println("inconsistent: ");
+        System.out.println(conditionalToTest);
         System.out.println(concistecyOfKB);
         return false;
     }
