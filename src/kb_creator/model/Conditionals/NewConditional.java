@@ -30,6 +30,7 @@ public class NewConditional {
     }
 
     //todo: implement abc signature. maybe put into signature?
+    //todo: why is this called in nfcCreator create nfceq with abc? should not be
     private AbstractFormula worldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
         for (int worldInt : world.getWorldsList()) {

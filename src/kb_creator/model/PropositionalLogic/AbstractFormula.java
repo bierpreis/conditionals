@@ -1,10 +1,11 @@
 package kb_creator.model.PropositionalLogic;
 
-import kb_creator.model.Signature.PossibleWorld;
+import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
+import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
 public abstract class AbstractFormula {
 
-    abstract public boolean evaluate(PossibleWorld world);
+    abstract public boolean evaluate(AbstractWorld world);
 
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);

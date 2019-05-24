@@ -2,8 +2,9 @@ package kb_creator.model.Conditionals;
 
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
+import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 import kb_creator.model.Signature.AbstractSignature;
-import kb_creator.model.Signature.PossibleWorld;
+import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class KnowledgeBase {
         }
 
         //here sth like:
-        for (PossibleWorld world : signature.getPossibleWorlds()) {
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
 
                 System.out.println("consistent: " + world.toString());

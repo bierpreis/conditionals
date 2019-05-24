@@ -1,7 +1,8 @@
 package kb_creator.model.PropositionalLogic;
 
-import kb_creator.model.Signature.ABC;
-import kb_creator.model.Signature.PossibleWorld;
+import kb_creator.model.PropositionalLogic.Worlds.ABCWorld;
+import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
+import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
 public class Atom extends AbstractFormula {
     private Variable variable;
@@ -19,17 +20,30 @@ public class Atom extends AbstractFormula {
         return variable.toString();
     }
 
-    public boolean evaluate(PossibleWorld world) {
-        if (variable.equals(Variable.a))
-            return world.isA();
+    public boolean evaluate(AbstractWorld world) {
 
-        if (variable.equals(Variable.b))
-            return world.isB();
+        if (world instanceof ABCWorld) {
+            ABCWorld abcWorld = (ABCWorld) world;
+            if (variable.equals(Variable.a))
+                return abcWorld.isA();
 
-        if (variable.equals(Variable.c))
-            return world.isC();
+            if (variable.equals(Variable.b))
+                return abcWorld.isB();
 
-        else throw new RuntimeException("No possibleWorld found!");
+            if (variable.equals(Variable.c))
+                return abcWorld.isC();
+
+        }
+
+        if (world instanceof ABWorld) {
+            ABWorld abWorld = (ABWorld) world;
+            if (variable.equals(Variable.a))
+                return abWorld.isA();
+
+            if (variable.equals(Variable.b))
+                return abWorld.isB();
+        }
+        throw new RuntimeException("No possibleWorld found!");
     }
 
     @Override

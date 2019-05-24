@@ -2,8 +2,7 @@ package kb_creator;
 
 import kb_creator.model.Conditionals.NewConditional;
 import kb_creator.model.PropositionalLogic.*;
-import kb_creator.model.Signature.ABC;
-import kb_creator.model.Signature.PossibleWorld;
+import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -20,7 +19,7 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        PossibleWorld world = new PossibleWorld(true, true);
+        ABWorld world = new ABWorld(true, true);
 
         AbstractFormula formula = new Tautology();
 
