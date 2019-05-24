@@ -54,6 +54,7 @@ public class NewConditional {
             }
             if (formulaToReturn == null)
                 formulaToReturn = new Conjunction(firstAtom, secondAtom);
+            //todo: this cant be correct. or ???
             else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
 
         }

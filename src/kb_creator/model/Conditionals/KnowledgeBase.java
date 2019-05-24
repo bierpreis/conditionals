@@ -8,6 +8,7 @@ import kb_creator.model.Signature.PossibleWorld;
 import java.util.LinkedList;
 import java.util.List;
 
+//todo: a kb with numbers instead of real conditionals to save memory. numbers can be mapped to conditionals by hashmap.
 public class KnowledgeBase {
     private AbstractSignature signature;
     private List<NewConditional> conditionalList;
