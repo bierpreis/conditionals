@@ -1,6 +1,5 @@
 package kb_creator.model.PropositionalLogic;
 
-import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
 public abstract class AbstractFormula {

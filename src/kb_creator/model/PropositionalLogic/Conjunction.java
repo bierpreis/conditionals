@@ -4,16 +4,20 @@ package kb_creator.model.PropositionalLogic;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
-//todo: conjunction needs to work with 3 formulas at least. this with parameter...
 public class Conjunction extends AbstractFormula {
     private HashSet<AbstractFormula> formulas;
 
     public Conjunction(AbstractFormula... formulasToAdd) {
-        formulas = new HashSet();
-        for (AbstractFormula formula : formulasToAdd)
+
+        //with hash set they are not sorted anymore?!
+        formulas = new LinkedHashSet<>();
+        for (AbstractFormula formula : formulasToAdd) {
             formulas.add(formula);
+
+        }
     }
 
     @Override

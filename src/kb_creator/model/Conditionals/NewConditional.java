@@ -1,6 +1,5 @@
 package kb_creator.model.Conditionals;
 
-import com.google.errorprone.annotations.Var;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Atom;
 import kb_creator.model.PropositionalLogic.Conjunction;
@@ -28,7 +27,7 @@ public class NewConditional {
         World oldConsequence = oldConditional.getConsequence();
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
-        this.number = oldConditional.getNumber(); //todo: make comparable with this number. then sort kbs to see possible problems?
+        number = oldConditional.getNumber(); //todo: make comparable with this number. then sort kbs to see possible problems?
 
     }
 

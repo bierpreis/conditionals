@@ -48,8 +48,9 @@ public class KBCreator implements Runnable {
         List<List<CandidatePair>> l = new LinkedList<>();
 
         List<NewConditional> nfc = nfcCreator.getNewNfc();
+
         List<NewConditional> cnfc = nfcCreator.getNewCnfc();
-        System.out.println("creating one element knowledgeBases");
+
         l.add(initOneElementKBs(nfc, cnfc));
 
 

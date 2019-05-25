@@ -24,6 +24,7 @@ public class NfcCreator {
         cnfc = createCnfc(cnfcEq);
 
         newNfc = translateConditionals(nfc);
+        
         newCnfc = translateConditionals(cnfc);
 
     }
