@@ -43,7 +43,7 @@ public class Atom extends AbstractFormula {
             if (variable.equals(Variable.b))
                 return abWorld.isB();
         }
-        throw new RuntimeException("No possibleWorld found!");
+        throw new RuntimeException("No possible World found!" + world);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class Conjunction extends AbstractFormula {
 
     public Conjunction(AbstractFormula... formulasToAdd) {
 
-        //with hash set they are not sorted anymore?!
+
         formulas = new LinkedList<>();
         for (AbstractFormula formula : formulasToAdd) {
             formulas.add(formula);
