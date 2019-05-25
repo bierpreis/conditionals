@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-//todo: nextIterationPanel, with infos about iteration pairs k+1
+
 public class CurrentIterationPanel extends JPanel {
     private JLabel iterationKBLabel;
     private JLabel speedDescriptionLabel;
