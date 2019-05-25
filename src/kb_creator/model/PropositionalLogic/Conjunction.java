@@ -3,17 +3,15 @@ package kb_creator.model.PropositionalLogic;
 
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Conjunction extends AbstractFormula {
-    private HashSet<AbstractFormula> formulas;
+    private LinkedList<AbstractFormula> formulas;
 
     public Conjunction(AbstractFormula... formulasToAdd) {
 
         //with hash set they are not sorted anymore?!
-        formulas = new LinkedHashSet<>();
+        formulas = new LinkedList<>();
         for (AbstractFormula formula : formulasToAdd) {
             formulas.add(formula);
 
@@ -37,13 +35,15 @@ public class Conjunction extends AbstractFormula {
         }
         return sb.toString();
     }
-
-    //todo: equals doenst work
+    
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Conjunction))
             return false;
+
+
         Conjunction otherConjunction = (Conjunction) o;
+
         boolean equals;
         if (formulas.size() == otherConjunction.getFormulas().size()) {
             equals = true;
@@ -53,21 +53,10 @@ public class Conjunction extends AbstractFormula {
             }
         } else equals = false;
 
-
-        if (equals) {
-            System.out.println("equals:");
-            System.out.println(formulas);
-            System.out.println(otherConjunction.getFormulas());
-
-        } else {
-//            System.out.println("not equals: ");
-//            System.out.println(formulas);
-//            System.out.println(otherConjunction.getFormulas());
-        }
         return equals;
     }
 
-    public Set<AbstractFormula> getFormulas() {
+    public List<AbstractFormula> getFormulas() {
         return formulas;
     }
 }
