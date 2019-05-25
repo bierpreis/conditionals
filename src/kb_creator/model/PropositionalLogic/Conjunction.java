@@ -3,26 +3,35 @@ package kb_creator.model.PropositionalLogic;
 
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
+import java.util.HashSet;
+import java.util.Set;
+
 //todo: conjunction needs to work with 3 formulas at least. this with parameter...
 public class Conjunction extends AbstractFormula {
-    private AbstractFormula firstFormula;
-    private AbstractFormula secondFormula;
+    private HashSet<AbstractFormula> formulas;
 
-    public Conjunction(AbstractFormula firstFormula, AbstractFormula secondFormula) {
-        this.firstFormula = firstFormula;
-        this.secondFormula = secondFormula;
+    public Conjunction(AbstractFormula... formulasToAdd) {
+        formulas = new HashSet();
+        for (AbstractFormula formula : formulasToAdd)
+            formulas.add(formula);
     }
 
     @Override
     public boolean evaluate(AbstractWorld world) {
-        return firstFormula.evaluate(world) && secondFormula.evaluate(world);
+        boolean evaluation = true;
+        for (AbstractFormula formula : formulas) {
+            evaluation = evaluation && formula.evaluate(world);
+        }
+        return evaluation;
     }
 
     @Override
     public String toString() {
-        if (firstFormula.isAtom() && secondFormula.isAtom())
-            return firstFormula.toString() + secondFormula.toString();
-        return "(" + firstFormula.toString() + "(and)" + secondFormula.toString() + ")";
+        StringBuilder sb = new StringBuilder();
+        for (AbstractFormula formula : formulas) {
+            sb.append(formula.toString());
+        }
+        return sb.toString();
     }
 
 
@@ -32,18 +41,11 @@ public class Conjunction extends AbstractFormula {
             return false;
         Conjunction otherConjunction = (Conjunction) o;
 
-        if (otherConjunction.getFirstFormula().equals(firstFormula) && otherConjunction.getSecondFormula().equals(secondFormula))
-            return true;
-        if (otherConjunction.getFirstFormula().equals(secondFormula) && otherConjunction.getSecondFormula().equals(firstFormula))
-            return true;
-        return false;
+        //todo: check if this could work
+        return (otherConjunction.getFormulas().equals(formulas));
     }
 
-    public AbstractFormula getFirstFormula() {
-        return firstFormula;
-    }
-
-    public AbstractFormula getSecondFormula() {
-        return secondFormula;
+    public Set<AbstractFormula> getFormulas() {
+        return formulas;
     }
 }

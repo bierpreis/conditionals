@@ -106,14 +106,10 @@ public class NewConditional {
 
                 }
 
-                //todo: check this again
-                AbstractFormula formulaToAdd = firstAtom.and(secondAtom).and(thirdAtom);
-                if (formulaToReturn == null) {
-                    formulaToReturn = formulaToAdd;
-                } else {
-                    formulaToReturn = formulaToReturn.or(formulaToAdd);
-
-                }
+                Conjunction conjunctionToAdd = new Conjunction(firstAtom, secondAtom, thirdAtom);
+                if (formulaToReturn == null)
+                    formulaToReturn = conjunctionToAdd;
+                else formulaToReturn.and(conjunctionToAdd);
 
             }
 
