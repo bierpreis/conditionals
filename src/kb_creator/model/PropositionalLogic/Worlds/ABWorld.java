@@ -20,7 +20,7 @@ public class ABWorld extends AbstractWorld {
     }
 
     public String toString() {
-        return a + " " + b;
+        return "a,b";
     }
 
 
