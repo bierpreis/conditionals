@@ -27,7 +27,7 @@ public class NewConditional {
         World oldConsequence = oldConditional.getConsequence();
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
-        number = oldConditional.getNumber(); //todo: make comparable with this number. then sort kbs to see possible problems?
+        number = oldConditional.getNumber();
 
     }
 
