@@ -91,6 +91,7 @@ public class KnowledgeBase {
         stringToReturn = stringToReturn + "conditionals\n\n";
         stringToReturn = stringToReturn + this.number + "{\n";
 
+        //todo: this is shit
         for (int i = 0; i < conditionalList.size(); i++) {
             stringToReturn = stringToReturn + conditionalList.get(i);
             if (i != conditionalList.size() - 1)
