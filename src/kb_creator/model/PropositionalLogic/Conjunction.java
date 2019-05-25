@@ -45,8 +45,18 @@ public class Conjunction extends AbstractFormula {
             return false;
         Conjunction otherConjunction = (Conjunction) o;
 
-        //todo: check if this could work
-        return (otherConjunction.getFormulas().equals(formulas));
+        //todo: equals doenst work
+        boolean equals = (otherConjunction.getFormulas().equals(formulas));
+        if (equals) {
+            System.out.println("equals:");
+            System.out.println(formulas);
+
+        } else {
+            System.out.println("not equals: ");
+            System.out.println(formulas);
+            System.out.println(otherConjunction.getFormulas());
+        }
+        return equals;
     }
 
     public Set<AbstractFormula> getFormulas() {
