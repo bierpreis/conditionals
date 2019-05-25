@@ -15,7 +15,7 @@ public class KBWriter {
     public void writeToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {
-            dir = new File(filePathToSave.getAbsolutePath() + "/KBs/" + knowledgeBase.getConditionalList().size() + "/");
+            dir = new File(filePathToSave.getAbsolutePath() + "/KBs/" + knowledgeBase.getSize() + "/");
 
             dir.mkdirs();
 

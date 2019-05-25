@@ -71,8 +71,8 @@ public class KnowledgeBase {
         }
     }
 
-    public List<NewConditional> getConditionalList() {
-        return conditionalList;
+    public int getSize() {
+        return conditionalList.size();
     }
 
     @Override
