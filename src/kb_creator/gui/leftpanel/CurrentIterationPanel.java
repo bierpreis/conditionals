@@ -5,14 +5,14 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 //todo: nextIterationPanel, with infos about iteration pairs k+1
-public class IterationStatusPanel extends JPanel {
+public class CurrentIterationPanel extends JPanel {
     private JLabel iterationKBLabel;
     private JLabel speedDescriptionLabel;
     private JLabel speedLabel;
     private JLabel progressLabel;
     private JLabel candidatePairslabel;
 
-    public IterationStatusPanel() {
+    public CurrentIterationPanel() {
         setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
         Box vBox = Box.createVerticalBox();
         add(vBox);

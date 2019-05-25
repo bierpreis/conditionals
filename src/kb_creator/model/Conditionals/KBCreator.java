@@ -19,6 +19,7 @@ public class KBCreator implements Runnable {
 
     private int k;
     private int candidatePairAmount;
+    private int nextCandidatePairAmount;
 
     private KBWriter kbWriter;
 
@@ -58,7 +59,7 @@ public class KBCreator implements Runnable {
 
         //line 6
         while (!l.get(k).isEmpty()) {
-
+            nextCandidatePairAmount = 0;
             candidatePairAmount = l.get(k).size();
 
             //line  7
@@ -87,6 +88,7 @@ public class KBCreator implements Runnable {
 
                         //line 12
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
+                        nextCandidatePairAmount++;
 
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
@@ -180,6 +182,10 @@ public class KBCreator implements Runnable {
 
     public int getCurrentCandidatepairAmount() {
         return candidatePairAmount;
+    }
+
+    public int getNextCandidatePairAmount() {
+        return nextCandidatePairAmount;
     }
 
 

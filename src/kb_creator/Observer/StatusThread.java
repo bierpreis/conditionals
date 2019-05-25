@@ -31,7 +31,8 @@ public class StatusThread implements Runnable {
                 infoPanel.showKBAmount(creatorThread.getTotalKbAmount());
                 infoPanel.showProgress(creatorThread.getCurrentK());
                 infoPanel.showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-                infoPanel.showCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
+                infoPanel.showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
+                infoPanel.showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
 
             } else {
                 infoPanel.showStatus(Status.NOT_STARTED);

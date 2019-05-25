@@ -7,7 +7,8 @@ import javax.swing.*;
 
 public class InfoPanel extends JPanel {
     private OverallStatusPanel overallStatusPanel;
-    private IterationStatusPanel iterationStatusPanel;
+    private CurrentIterationPanel currentIterationPanel;
+    private NextIterationPanel nextIterationPanel;
 
     public InfoPanel(ActionPanel actionPanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -16,18 +17,20 @@ public class InfoPanel extends JPanel {
         overallStatusPanel = new OverallStatusPanel(actionPanel);
         add(overallStatusPanel);
 
-        iterationStatusPanel = new IterationStatusPanel();
-        add(iterationStatusPanel);
-        revalidate();
+        currentIterationPanel = new CurrentIterationPanel();
+        add(currentIterationPanel);
+
+        nextIterationPanel = new NextIterationPanel();
+        add(nextIterationPanel);
 
     }
 
     public void showProgress(int finishedKBs) {
-        iterationStatusPanel.showOverallProgress(finishedKBs);
+        currentIterationPanel.showOverallProgress(finishedKBs);
     }
 
     public void showIterationKBs(int candidatePairAmount) {
-        iterationStatusPanel.showIterationKBs(candidatePairAmount);
+        currentIterationPanel.showIterationKBs(candidatePairAmount);
     }
 
     public void showKBAmount(int kbAmount) {
@@ -39,10 +42,14 @@ public class InfoPanel extends JPanel {
     }
 
     public void showSpeed(int speed) {
-        iterationStatusPanel.showSpeed(speed);
+        currentIterationPanel.showSpeed(speed);
     }
 
-    public void showCandidatePairs(int candidatePairs) {
-        iterationStatusPanel.showCandidatePairs(candidatePairs);
+    public void showCurrentCandidatePairs(int candidatePairs) {
+        currentIterationPanel.showCandidatePairs(candidatePairs);
+    }
+
+    public void showNextCandidatePairs(int nextCandidatepairs) {
+        nextIterationPanel.showCandidates(nextCandidatepairs);
     }
 }
