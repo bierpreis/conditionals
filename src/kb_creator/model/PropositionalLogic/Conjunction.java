@@ -38,23 +38,31 @@ public class Conjunction extends AbstractFormula {
         return sb.toString();
     }
 
-
+    //todo: equals doenst work
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Conjunction))
             return false;
         Conjunction otherConjunction = (Conjunction) o;
+        boolean equals;
+        if (formulas.size() == otherConjunction.getFormulas().size()) {
+            equals = true;
+            for (AbstractFormula formula : formulas) {
+                if (!otherConjunction.getFormulas().contains(formula))
+                    equals = false;
+            }
+        } else equals = false;
 
-        //todo: equals doenst work
-        boolean equals = (otherConjunction.getFormulas().equals(formulas));
+
         if (equals) {
             System.out.println("equals:");
             System.out.println(formulas);
+            System.out.println(otherConjunction.getFormulas());
 
         } else {
-            System.out.println("not equals: ");
-            System.out.println(formulas);
-            System.out.println(otherConjunction.getFormulas());
+//            System.out.println("not equals: ");
+//            System.out.println(formulas);
+//            System.out.println(otherConjunction.getFormulas());
         }
         return equals;
     }
