@@ -7,23 +7,23 @@ import java.util.Map;
 //todo: here conditionals map
 public class CandidatePair {
     private KnowledgeBase knowledgeBase;
-    private List<Integer> candidates;
+    private List<Integer> candidatesList;
 
     private static Map<Integer, NewConditional> conditionalMap;
 
     public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
-        candidates = new LinkedList<>();
+        candidatesList = new LinkedList<>();
 
         for (NewConditional conditionalToAdd : candidates) {
-            this.candidates.add(conditionalToAdd.getNumber());
+            this.candidatesList.add(conditionalToAdd.getNumber());
         }
     }
 
     //todo: only use this when really needed. maybe delete?
     public List<NewConditional> getCandidates() {
         List<NewConditional> candidatesList = new LinkedList<>();
-        for (Integer candidateNumber : candidates) {
+        for (Integer candidateNumber : this.candidatesList) {
             candidatesList.add(conditionalMap.get(candidateNumber));
         }
 
@@ -31,7 +31,7 @@ public class CandidatePair {
     }
 
     public List<Integer> getCandidatesNumbers() {
-        return candidates;
+        return candidatesList;
     }
 
     public KnowledgeBase getKnowledgeBase() {
@@ -39,11 +39,11 @@ public class CandidatePair {
     }
 
     public String toString() {
-        return "<" + knowledgeBase + ", " + candidates + ">\n";
+        return "<" + knowledgeBase + ", " + candidatesList + ">\n";
     }
 
     public void deleteCandidates() {
-        candidates = null;
+        candidatesList = null;
     }
 
     public void deleteKB() {
