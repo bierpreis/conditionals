@@ -1,5 +1,8 @@
 package kb_creator.model.Conditionals;
 
+import cucumber.api.java.cs.A;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +15,7 @@ public class CandidatePair {
 
     public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
-        candidatesNumbersList = new LinkedList<>();
+        candidatesNumbersList = new ArrayList<>();
 
         for (NewConditional conditionalToAdd : candidates) {
             this.candidatesNumbersList.add(conditionalToAdd.getNumber());
@@ -21,7 +24,7 @@ public class CandidatePair {
 
     //todo: only use this when really needed. maybe delete?
     public List<NewConditional> getCandidatesList() {
-        List<NewConditional> candidatesList = new LinkedList<>();
+        List<NewConditional> candidatesList = new ArrayList<>();
         for (Integer candidateNumber : this.candidatesNumbersList) {
             candidatesList.add(conditionalMap.get(candidateNumber));
         }

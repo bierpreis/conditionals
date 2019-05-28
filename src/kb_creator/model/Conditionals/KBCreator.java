@@ -5,10 +5,7 @@ import kb_creator.model.Signature.AbstractSignature;
 import nfc.model.NfcCreator;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class KBCreator implements Runnable {
 
@@ -48,7 +45,7 @@ public class KBCreator implements Runnable {
         //here it starts at 0 because lists in java start at 0 and not 1
         k = 0;
         //todo: here conditionals map
-        List<List<CandidatePair>> l = new LinkedList<>();
+        List<List<CandidatePair>> l = new ArrayList<>();
 
         List<NewConditional> nfc = nfcCreator.getNewNfc();
         Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
