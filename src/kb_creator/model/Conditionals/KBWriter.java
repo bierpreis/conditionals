@@ -11,7 +11,7 @@ public class KBWriter {
         this.filePathToSave = filePathToSave;
 
     }
-
+    //todo: here conditionals map
     public void writeToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {

@@ -1,7 +1,7 @@
 package kb_creator.model.Conditionals;
 
 import java.util.List;
-
+//todo: here conditionals map
 public class CandidatePair {
     private KnowledgeBase knowledgeBase;
     private List<NewConditional> candidates;
