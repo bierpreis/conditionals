@@ -76,7 +76,7 @@ public class KBCreator implements Runnable {
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
 
-                    //line 10 //todo: save inconsistent kbs too
+                    //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
                         //next part is line 11 and 12
@@ -112,9 +112,8 @@ public class KBCreator implements Runnable {
                     sleep(500);
                 if (status.equals(Status.STOPPED)) {
                     return;
-
-
                 }
+
                 //delete old candidates to save some memory
                 candidatePair.deleteCandidates();
 
