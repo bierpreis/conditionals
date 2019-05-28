@@ -14,7 +14,7 @@ public class KBWriter {
 
 
     }
-    
+
     public void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {
