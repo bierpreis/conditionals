@@ -47,7 +47,9 @@ public class CurrentIterationPanel extends JPanel {
 
 
     public void showIterationKBs(int amount) {
-        iterationKBLabel.setText("KBs: " + amount + "\n");
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+
+        iterationKBLabel.setText("KBs: " + formatter.format(amount) + "\n");
         repaint();
     }
 
