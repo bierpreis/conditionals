@@ -103,8 +103,8 @@ public class KnowledgeBase {
     }
 
     public String newToFileString() {
-        //todo: builder
-        StringBuffer sb = new StringBuffer();
+
+        StringBuilder sb = new StringBuilder();
         sb.append(signature.toString().toLowerCase());
         sb.append("\n");
         sb.append("conditionals\n\n");
