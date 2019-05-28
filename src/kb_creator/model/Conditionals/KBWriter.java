@@ -3,16 +3,18 @@ package kb_creator.model.Conditionals;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 public class KBWriter {
     File filePathToSave;
+    private Map<Integer, NewConditional> nfcMap;
 
     public KBWriter(File filePathToSave) {
         this.filePathToSave = filePathToSave;
 
-    }
 
-    //todo: here conditionals map
+    }
+    
     public void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {
@@ -46,4 +48,9 @@ public class KBWriter {
             }
         }
     }
+
+    public void setNfcMap(Map<Integer, NewConditional> nfcMap) {
+        this.nfcMap = nfcMap;
+    }
 }
+

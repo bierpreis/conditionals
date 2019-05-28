@@ -54,10 +54,12 @@ public class KBCreator implements Runnable {
         Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
 
         List<NewConditional> cnfc = nfcCreator.getNewCnfc();
-        Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
+        //Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
 
         CandidatePair.setNfc(nfcMap);
         KnowledgeBase.setNfcMap(nfcMap);
+        kbWriter.setNfcMap(nfcMap);
+
         l.add(initOneElementKBs(nfc, cnfc));
 
 
@@ -118,7 +120,7 @@ public class KBCreator implements Runnable {
                 //delete old candidates to save some memory
                 candidatePair.deleteCandidates();
 
-                //todo: should this not be in inner loop??
+                //todo: could this not be in inner loop??
                 //comment the following out for testing
                 kbWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
