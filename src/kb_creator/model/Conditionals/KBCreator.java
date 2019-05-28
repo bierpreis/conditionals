@@ -97,13 +97,22 @@ public class KBCreator implements Runnable {
 
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
-                    }
-                    while (status.equals(Status.PAUSE))
-                        sleep(500);
-                    if (status.equals(Status.STOPPED)) {
-                        return;
 
+                        //todo: inconsistent kbs get useless numbers. what to do with this?
+                        //it should write r to there also
+                    } else {
+                        KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
+                        inconsistentKB.add(candidatePair.getKnowledgeBase());
+                        inconsistentKB.add(r);
+                        kbWriter.writeInconsistentKBToFile(inconsistentKB);
                     }
+                }
+
+                while (status.equals(Status.PAUSE))
+                    sleep(500);
+                if (status.equals(Status.STOPPED)) {
+                    return;
+
 
                 }
                 //delete old candidates to save some memory
@@ -121,6 +130,7 @@ public class KBCreator implements Runnable {
             //System.out.println(l.get(0));
 
         }
+
         status = Status.FINISHED;
     }
 
