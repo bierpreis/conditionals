@@ -6,6 +6,7 @@ import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 import kb_creator.model.Signature.AbstractSignature;
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ public class KnowledgeBase {
     private static Map<Integer, NewConditional> nfcMap;
 
     public KnowledgeBase(AbstractSignature signature, int kbNumber) {
-        conditionalNumbersList = new LinkedList<>();
+        conditionalNumbersList = new ArrayList<>();
         this.signature = signature;
         this.kbNumber = kbNumber;
     }
