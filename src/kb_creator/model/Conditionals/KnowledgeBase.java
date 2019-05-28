@@ -8,15 +8,18 @@ import kb_creator.model.Signature.AbstractSignature;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 //todo: a kb with numbers instead of real conditionals to save memory. numbers can be mapped to conditionals by hashmap.
 public class KnowledgeBase {
     private AbstractSignature signature;
-    private List<NewConditional> conditionalList;
+    private List<Integer> conditionalNumbersList;
     private int number;
 
+    private static Map<Integer, NewConditional> nfcMap;
+
     public KnowledgeBase(AbstractSignature signature, int number) {
-        conditionalList = new LinkedList<>();
+        conditionalNumbersList = new LinkedList<>();
         this.signature = signature;
         this.number = number;
     }
@@ -26,6 +29,11 @@ public class KnowledgeBase {
     public boolean isConsistent(NewConditional conditionalToTest) {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
+
+        List<NewConditional> conditionalList = new LinkedList<>();
+        for (Integer conditionalNumber : conditionalNumbersList) {
+            conditionalList.add(nfcMap.get(conditionalNumber));
+        }
 
 
         AbstractFormula concistecyOfKB = new Tautology();
@@ -61,46 +69,41 @@ public class KnowledgeBase {
         return number;
     }
 
-    public void add(NewConditional conditional) {
-        conditionalList.add(conditional);
+    public void add(Integer conditionalNumberToAdd) {
+        conditionalNumbersList.add(conditionalNumberToAdd);
+    }
+
+    public static void setNfcMap(Map<Integer, NewConditional> nfcMapToAdd) {
+        nfcMap = nfcMapToAdd;
     }
 
     public void add(KnowledgeBase knowledgeBaseToAdd) {
-        for (NewConditional conditional : knowledgeBaseToAdd.conditionalList) {
-            conditionalList.add(conditional);
+        for (Integer conditionalNumber : knowledgeBaseToAdd.getConditionalNumbersList()) {
+            conditionalNumbersList.add(conditionalNumber);
         }
     }
 
+    public List<Integer> getConditionalNumbersList() {
+        return conditionalNumbersList;
+    }
+
     public int getSize() {
-        return conditionalList.size();
+        return conditionalNumbersList.size();
     }
 
     @Override
     public String toString() {
-        return conditionalList.toString();
+        return getConditionalList().toString();
     }
 
-
-    //this is old and unused for performance reasons
-    //maybe use it to compare new stringbuilder with this old versions
-    public String toFileString() {
-        String stringToReturn = "signature\n";
-        stringToReturn = stringToReturn + signature.toString().toLowerCase();
-
-        stringToReturn = stringToReturn + "\n";
-        stringToReturn = stringToReturn + "conditionals\n\n";
-        stringToReturn = stringToReturn + this.number + "{\n";
-
-
-        for (int i = 0; i < conditionalList.size(); i++) {
-            stringToReturn = stringToReturn + conditionalList.get(i);
-            if (i != conditionalList.size() - 1)
-                stringToReturn = stringToReturn + ",\n";
+    public List<NewConditional> getConditionalList() {
+        List<NewConditional> conditionalList = new LinkedList<>();
+        for (Integer conditionalNumber : conditionalNumbersList) {
+            conditionalList.add(nfcMap.get(conditionalNumber));
         }
-
-        stringToReturn = stringToReturn + "\n}";
-        return stringToReturn;
+        return conditionalList;
     }
+
 
     public String newToFileString() {
 
@@ -111,6 +114,7 @@ public class KnowledgeBase {
         sb.append(this.number);
         sb.append("{\n");
 
+        List<NewConditional> conditionalList = getConditionalList();
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i));
             if (i != conditionalList.size() - 1)

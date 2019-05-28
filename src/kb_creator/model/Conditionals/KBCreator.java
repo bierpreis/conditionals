@@ -57,6 +57,7 @@ public class KBCreator implements Runnable {
         Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
 
         CandidatePair.setNfc(nfcMap);
+        KnowledgeBase.setNfcMap(nfcMap);
         l.add(initOneElementKBs(nfc, cnfc));
 
 
@@ -83,7 +84,7 @@ public class KBCreator implements Runnable {
                         //first create knowledge base
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature, iterationNumberOfKBs);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
-                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
+                        knowledgeBaseToAdd.add(r.getNumber()); // add r to new KnowledgeBase
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new LinkedList<>();
@@ -103,7 +104,7 @@ public class KBCreator implements Runnable {
                     } else {
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
-                        inconsistentKB.add(r);
+                        inconsistentKB.add(r.getNumber());
                         kbWriter.writeInconsistentKBToFile(inconsistentKB);
                     }
                 }
@@ -155,7 +156,7 @@ public class KBCreator implements Runnable {
 
             //line 4 and 5
             KnowledgeBase rKB = new KnowledgeBase(signature, iterationNumberOfKBs);
-            rKB.add(r); // rKB is r as 1 element kb
+            rKB.add(r.getNumber()); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new LinkedList<>();
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
