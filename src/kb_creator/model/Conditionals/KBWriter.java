@@ -12,7 +12,7 @@ public class KBWriter {
 
     }
     //todo: here conditionals map
-    public void writeToFile(KnowledgeBase knowledgeBase) {
+    public void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {
             dir = new File(filePathToSave.getAbsolutePath() + "/KBs/" + knowledgeBase.getSize() + "/");

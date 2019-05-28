@@ -2,7 +2,6 @@ package kb_creator.model.Conditionals;
 
 import kb_creator.Observer.Status;
 import kb_creator.model.Signature.AbstractSignature;
-import nfc.model.Conditional;
 import nfc.model.NfcCreator;
 
 import java.io.File;
@@ -75,7 +74,7 @@ public class KBCreator implements Runnable {
             for (CandidatePair candidatePair : l.get(k)) {
 
                 //line 9
-                for (NewConditional r : candidatePair.getCandidates()) {
+                for (NewConditional r : candidatePair.getCandidatesList()) {
 
                     //line 10 //todo: save inconsistent kbs too
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
@@ -88,7 +87,7 @@ public class KBCreator implements Runnable {
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new LinkedList<>();
-                        for (NewConditional conditional : candidatePair.getCandidates())
+                        for (NewConditional conditional : candidatePair.getCandidatesList())
                             if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditional);
 
@@ -111,7 +110,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
                 //comment the following out for testing
-                kbWriter.writeToFile(candidatePair.getKnowledgeBase());
+                kbWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
                 candidatePair.deleteKB();

@@ -7,31 +7,31 @@ import java.util.Map;
 //todo: here conditionals map
 public class CandidatePair {
     private KnowledgeBase knowledgeBase;
-    private List<Integer> candidatesList;
+    private List<Integer> candidatesNumbersList;
 
     private static Map<Integer, NewConditional> conditionalMap;
 
     public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
-        candidatesList = new LinkedList<>();
+        candidatesNumbersList = new LinkedList<>();
 
         for (NewConditional conditionalToAdd : candidates) {
-            this.candidatesList.add(conditionalToAdd.getNumber());
+            this.candidatesNumbersList.add(conditionalToAdd.getNumber());
         }
     }
 
     //todo: only use this when really needed. maybe delete?
-    public List<NewConditional> getCandidates() {
+    public List<NewConditional> getCandidatesList() {
         List<NewConditional> candidatesList = new LinkedList<>();
-        for (Integer candidateNumber : this.candidatesList) {
+        for (Integer candidateNumber : this.candidatesNumbersList) {
             candidatesList.add(conditionalMap.get(candidateNumber));
         }
 
         return candidatesList;
     }
 
-    public List<Integer> getCandidatesNumbers() {
-        return candidatesList;
+    public List<Integer> getCandidatesNumbersList() {
+        return candidatesNumbersList;
     }
 
     public KnowledgeBase getKnowledgeBase() {
@@ -39,11 +39,11 @@ public class CandidatePair {
     }
 
     public String toString() {
-        return "<" + knowledgeBase + ", " + candidatesList + ">\n";
+        return "<" + knowledgeBase + ", " + candidatesNumbersList + ">\n";
     }
 
     public void deleteCandidates() {
-        candidatesList = null;
+        candidatesNumbersList = null;
     }
 
     public void deleteKB() {
