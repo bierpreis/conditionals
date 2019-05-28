@@ -23,7 +23,7 @@ public class KBWriter {
             dir.mkdirs();
 
             try {
-                PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");
+                PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.newToFileString());
                 writer.close();
             } catch (IOException e) {
@@ -40,7 +40,7 @@ public class KBWriter {
             dir.mkdirs();
 
             try {
-                PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getNumber() + ".txt", "UTF-8");
+                PrintWriter writer = new PrintWriter(dir.toString() + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.newToFileString());
                 writer.close();
             } catch (IOException e) {

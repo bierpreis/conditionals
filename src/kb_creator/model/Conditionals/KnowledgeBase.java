@@ -14,14 +14,14 @@ import java.util.Map;
 public class KnowledgeBase {
     private AbstractSignature signature;
     private List<Integer> conditionalNumbersList;
-    private int number;
+    private int kbNumber;
 
     private static Map<Integer, NewConditional> nfcMap;
 
-    public KnowledgeBase(AbstractSignature signature, int number) {
+    public KnowledgeBase(AbstractSignature signature, int kbNumber) {
         conditionalNumbersList = new LinkedList<>();
         this.signature = signature;
-        this.number = number;
+        this.kbNumber = kbNumber;
     }
 
 
@@ -65,8 +65,8 @@ public class KnowledgeBase {
         return false;
     }
 
-    public int getNumber() {
-        return number;
+    public int getKbNumber() {
+        return kbNumber;
     }
 
     public void add(Integer conditionalNumberToAdd) {
@@ -111,7 +111,7 @@ public class KnowledgeBase {
         sb.append(signature.toString().toLowerCase());
         sb.append("\n");
         sb.append("conditionals\n\n");
-        sb.append(this.number);
+        sb.append(this.kbNumber);
         sb.append("{\n");
 
         List<NewConditional> conditionalList = getConditionalList();
