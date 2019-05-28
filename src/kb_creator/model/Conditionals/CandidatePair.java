@@ -9,10 +9,11 @@ public class CandidatePair {
     private KnowledgeBase knowledgeBase;
     private List<Integer> candidates;
 
-    private Map<Integer, NewConditional> conditionalMap;
+    private static Map<Integer, NewConditional> conditionalMap;
 
     public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
+        candidates = new LinkedList<>();
 
         for (NewConditional conditionalToAdd : candidates) {
             this.candidates.add(conditionalToAdd.getNumber());
@@ -49,7 +50,11 @@ public class CandidatePair {
         knowledgeBase = null;
     }
 
-    public void setMap(Map<Integer, NewConditional> conditionalMap) {
+    public void setConditionalMap(Map<Integer, NewConditional> conditionalMap) {
         this.conditionalMap = conditionalMap;
+    }
+
+    public static void setNfc(Map<Integer, NewConditional> nfc) {
+        conditionalMap = nfc;
     }
 }

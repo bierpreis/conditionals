@@ -2,11 +2,14 @@ package kb_creator.model.Conditionals;
 
 import kb_creator.Observer.Status;
 import kb_creator.model.Signature.AbstractSignature;
+import nfc.model.Conditional;
 import nfc.model.NfcCreator;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class KBCreator implements Runnable {
 
@@ -49,9 +52,12 @@ public class KBCreator implements Runnable {
         List<List<CandidatePair>> l = new LinkedList<>();
 
         List<NewConditional> nfc = nfcCreator.getNewNfc();
+        Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
 
         List<NewConditional> cnfc = nfcCreator.getNewCnfc();
+        Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
 
+        CandidatePair.setNfc(nfcMap);
         l.add(initOneElementKBs(nfc, cnfc));
 
 
@@ -186,6 +192,24 @@ public class KBCreator implements Runnable {
 
     public int getNextCandidatePairAmount() {
         return nextCandidatePairAmount;
+    }
+
+    private Map<Integer, NewConditional> createNfcMap(List<NewConditional> nfc) {
+        Map<Integer, NewConditional> conditionalMap = new HashMap<>();
+        for (NewConditional conditional : nfc) {
+            conditionalMap.put(conditional.getNumber(), conditional);
+        }
+
+        return conditionalMap;
+    }
+
+    private Map<Integer, NewConditional> createCnfcMap(List<NewConditional> cnfc) {
+        Map<Integer, NewConditional> conditionalMap = new HashMap<>();
+        for (NewConditional conditional : cnfc) {
+            conditionalMap.put(conditional.getNumber(), conditional);
+        }
+
+        return conditionalMap;
     }
 
 
