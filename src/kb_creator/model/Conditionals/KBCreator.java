@@ -5,6 +5,7 @@ import kb_creator.model.Signature.AbstractSignature;
 import nfc.model.NfcCreator;
 
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class KBCreator implements Runnable {
@@ -86,7 +87,7 @@ public class KBCreator implements Runnable {
                         knowledgeBaseToAdd.add(r.getNumber()); // add r to new KnowledgeBase
 
                         //then create candidates
-                        List<NewConditional> candidatesToAdd = new LinkedList<>();
+                        List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditional : candidatePair.getCandidatesList())
                             if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditional);
@@ -156,7 +157,7 @@ public class KBCreator implements Runnable {
             //line 4 and 5
             KnowledgeBase rKB = new KnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r.getNumber()); // rKB is r as 1 element kb
-            List<NewConditional> conditionalsToAdd = new LinkedList<>();
+            List<NewConditional> conditionalsToAdd = new ArrayList<>();
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);

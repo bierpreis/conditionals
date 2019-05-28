@@ -2,14 +2,14 @@ package kb_creator.model.Signature;
 
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSignature {
     protected List<AbstractWorld> possibleWorlds;
 
     public AbstractSignature() {
-        possibleWorlds = new LinkedList<>();
+        possibleWorlds = new ArrayList<>();
     }
 
 

@@ -6,12 +6,12 @@ import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 import java.util.*;
 
 public class Conjunction extends AbstractFormula {
-    private LinkedList<AbstractFormula> formulas;
+    private List<AbstractFormula> formulas;
 
     public Conjunction(AbstractFormula... formulasToAdd) {
 
 
-        formulas = new LinkedList<>();
+        formulas = new ArrayList<>();
         for (AbstractFormula formula : formulasToAdd) {
             formulas.add(formula);
 
@@ -35,7 +35,7 @@ public class Conjunction extends AbstractFormula {
         }
         return sb.toString();
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Conjunction))

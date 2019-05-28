@@ -31,7 +31,7 @@ public class KnowledgeBase {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        List<NewConditional> conditionalList = new LinkedList<>();
+        List<NewConditional> conditionalList = new ArrayList<>();
         for (Integer conditionalNumber : conditionalNumbersList) {
             conditionalList.add(nfcMap.get(conditionalNumber));
         }

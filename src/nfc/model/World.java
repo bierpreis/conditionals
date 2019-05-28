@@ -4,6 +4,7 @@ import kb_creator.model.Signature.AB;
 import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class World implements Comparable {
 
 
     public World() {
-        worlds = new LinkedList<>();
+        worlds = new ArrayList<>();
 
     }
 

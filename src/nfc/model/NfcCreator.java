@@ -34,7 +34,7 @@ public class NfcCreator {
     public List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
         int numberOfWorlds = signature.getPossibleWorlds().size();
-        List<Integer> initWorldsList = new LinkedList<>();
+        List<Integer> initWorldsList = new ArrayList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
         }
@@ -49,7 +49,7 @@ public class NfcCreator {
 
     private List<Conditional> createNfc(List<World> worldsList) {
 
-        List<Conditional> basicConditionalList = new LinkedList<>();
+        List<Conditional> basicConditionalList = new ArrayList<>();
 
         for (World world : worldsList)
             basicConditionalList.addAll(createConditionalsForWorld(world));
@@ -69,8 +69,8 @@ public class NfcCreator {
     private List<ConditionalList> createCnfcEq(List<Conditional> nfc) {
 
 
-        List<ConditionalList> cNfc = new LinkedList<>();
-        List<Conditional> alreadyAddedList = new LinkedList<>();
+        List<ConditionalList> cNfc = new ArrayList<>();
+        List<Conditional> alreadyAddedList = new ArrayList<>();
 
         //iterate basic conditionals
         for (Conditional conditionalToAdd : nfc) {
@@ -108,7 +108,7 @@ public class NfcCreator {
 
     private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
 
-        List<Conditional> cnfc = new LinkedList<>();
+        List<Conditional> cnfc = new ArrayList<>();
 
         for (ConditionalList sublist : cnfcEq)
             cnfc.add(sublist.get(0));
@@ -119,10 +119,10 @@ public class NfcCreator {
     //sub methods
 
     private List<Conditional> createConditionalsForWorld(World currentWorld) {
-        List<Conditional> currentConditionalList = new LinkedList<>();
+        List<Conditional> currentConditionalList = new ArrayList<>();
 
         List<Integer> currentWorldIntList = currentWorld.getWorldsList();
-        List<World> allSubSetsOfCurrentWorld = createSubSetList(new LinkedList(currentWorldIntList));
+        List<World> allSubSetsOfCurrentWorld = createSubSetList(new ArrayList<>(currentWorldIntList));
 
         for (World currentSubSworld : allSubSetsOfCurrentWorld) {
             //only add real subsets not equal sets
@@ -135,7 +135,7 @@ public class NfcCreator {
 
 
     private List<World> createSubSetList(List<Integer> inputList) {
-        List<World> subSetList = new LinkedList<>();
+        List<World> subSetList = new ArrayList<>();
         for (Integer world : inputList) {
             for (ListIterator<World> setsIterator = subSetList.listIterator(); setsIterator.hasNext(); ) {
                 World newWorld = new World();
@@ -170,7 +170,7 @@ public class NfcCreator {
     }
 
     private List<NewConditional> translateConditionals(List<Conditional> oldConditionals) {
-        List<NewConditional> newConditionals = new LinkedList<>();
+        List<NewConditional> newConditionals = new ArrayList<>();
 
         for (Conditional oldConditional : oldConditionals) {
             NewConditional newConditional = new NewConditional(oldConditional);
