@@ -17,14 +17,14 @@ public class CandidatePair {
         candidatesNumbersList = new ArrayList<>();
 
         for (NewConditional conditionalToAdd : candidates) {
-            //todo: here they are still ordered
             this.candidatesNumbersList.add(conditionalToAdd.getNumber());
+            //System.out.println("added: " + candidatesNumbersList);
         }
     }
 
     //todo: only use this when really needed. maybe delete?
     public List<NewConditional> getCandidatesList() {
-        //todo: here candidatesNumbersList is not ordered anymore
+        //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
         for (Integer candidateNumber : this.candidatesNumbersList) {
             candidatesList.add(nfcMap.get(candidateNumber));
@@ -65,7 +65,6 @@ public class CandidatePair {
         return knowledgeBase.getKbNumber();
     }
 
-    //todo: candidatesNumbersList is not ordered. why?
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("CandidatePair");

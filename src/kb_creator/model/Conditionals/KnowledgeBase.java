@@ -77,9 +77,11 @@ public class KnowledgeBase {
     }
 
     public void add(KnowledgeBase knowledgeBaseToAdd) {
+        System.out.println("adding to bk:" + knowledgeBaseToAdd.getConditionalNumbersList());
         for (Integer conditionalNumber : knowledgeBaseToAdd.getConditionalNumbersList()) {
             conditionalNumbersList.add(conditionalNumber);
         }
+        System.out.println("added to kb: " + conditionalNumbersList);
     }
 
     public List<Integer> getConditionalNumbersList() {

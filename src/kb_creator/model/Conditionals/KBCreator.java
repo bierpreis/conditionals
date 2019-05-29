@@ -69,6 +69,7 @@ public class KBCreator implements Runnable {
             candidatePairAmount = l.get(k).size();
 
             //todo: here new FileWriter
+            System.out.println("creating " + k + "element kbs");
 
             //line  7
             l.add(new ArrayList<>());
@@ -154,12 +155,14 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
+        System.out.println("creating 1 element kbs");
         fileWriter = new FileWriter(filePath, 1);
         iterationNumberOfKBs = 0;
         List<CandidatePair> l = new ArrayList<>();
 
         //line 3
         for (NewConditional r : cnfc) {
+            System.out.println("processing conditional number: " + r.getNumber());
 
             //line 4 and 5
             KnowledgeBase rKB = new KnowledgeBase(signature, iterationNumberOfKBs);
@@ -178,7 +181,7 @@ public class KBCreator implements Runnable {
             fileWriter.writeCandidatePair(candidatePair);
         }
 
-
+        System.out.println("finished 1 element kbs");
         return l;
     }
 

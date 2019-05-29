@@ -8,13 +8,13 @@ import java.util.*;
 
 
 public class NfcCreator {
-    private List<World> worlds;
-    private List<ConditionalList> cnfcEq;
-    private List<Conditional> nfc;
-    private List<Conditional> cnfc;
+    private final List<World> worlds;
+    private final List<ConditionalList> cnfcEq;
+    private final List<Conditional> nfc;
+    private final List<Conditional> cnfc;
 
-    private List<NewConditional> newNfc;
-    private List<NewConditional> newCnfc;
+    private final List<NewConditional> newNfc;
+    private final List<NewConditional> newCnfc;
 
     public NfcCreator(AbstractSignature signature) {
 
@@ -66,7 +66,7 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
-    private List<ConditionalList> createCnfcEq(List<Conditional> nfc) {
+    private List<ConditionalList> createCnfcEq(final List<Conditional> nfc) {
 
 
         List<ConditionalList> cNfc = new ArrayList<>();
@@ -93,7 +93,7 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
-
+        //todo: this fucks up numbering in nfc!!
         int counter = 1;
         for (ConditionalList conditionalList : cNfc) {
             conditionalList.setNumberToFirstConditional(counter);
