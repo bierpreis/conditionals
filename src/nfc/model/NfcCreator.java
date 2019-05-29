@@ -93,7 +93,7 @@ public class NfcCreator {
             }
         }
         Collections.sort(cNfc);
-        //todo: this fucks up numbering in nfc!!
+
         int counter = 1;
         for (ConditionalList conditionalList : cNfc) {
             conditionalList.setNumberToFirstConditional(counter);

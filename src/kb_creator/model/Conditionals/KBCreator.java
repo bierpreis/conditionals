@@ -20,8 +20,6 @@ public class KBCreator implements Runnable {
     private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
-    //todo: writer should not be public but created in method iterations
-
     private String filePath;
 
     public KBCreator(AbstractSignature signature, String filePath) {
@@ -106,9 +104,10 @@ public class KBCreator implements Runnable {
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
 
-                        //todo: inconsistent kbs get useless numbers. what to do with this?
+
                         //it should write r to there also
                     } else {
+                        //todo: inconsistent kbs get useless numbers. what to do with this?
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
