@@ -18,7 +18,7 @@ public class SafePanel extends JPanel {
         add(fileLocationPanel);
     }
 
-    public File getFileLocation() {
+    public String getFileLocation() {
         return fileLocationPanel.getFilePath();
 
     }

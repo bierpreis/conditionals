@@ -53,7 +53,7 @@ public class LeftPanel extends JPanel {
         return memoryPanel;
     }
 
-    public File getFilePath() {
+    public String getFilePath() {
         return safePanel.getFileLocation();
     }
 }

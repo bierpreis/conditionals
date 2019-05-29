@@ -47,7 +47,7 @@ public class KBMainWindow {
         return leftPanel.getMemoryPanel();
     }
 
-    public File getFilePath() {
+    public String getFilePath() {
         return leftPanel.getFilePath();
     }
 }

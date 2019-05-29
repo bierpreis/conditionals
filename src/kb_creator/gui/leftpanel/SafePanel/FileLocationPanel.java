@@ -8,7 +8,7 @@ import java.io.File;
 
 public class FileLocationPanel extends JPanel {
     private JButton saveButton;
-    private File file;
+    private String filePathToSave;
 
     public FileLocationPanel() {
         //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
@@ -29,9 +29,8 @@ public class FileLocationPanel extends JPanel {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.showDialog(fileLocationPanel, "Choose Folder");
-            file = fileChooser.getSelectedFile();
+            filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
         }
-
 
 
     }
@@ -40,7 +39,7 @@ public class FileLocationPanel extends JPanel {
         saveButton.setEnabled(active);
     }
 
-    File getFilePath() {
-        return file;
+    String getFilePath() {
+        return filePathToSave;
     }
 }

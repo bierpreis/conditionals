@@ -22,12 +22,14 @@ public class KBCreator implements Runnable {
 
     private FileWriter fileWriter;
 
-    public KBCreator(AbstractSignature signature, File fileToSave) {
+    private String filePath;
+
+    public KBCreator(AbstractSignature signature, String filePath) {
         System.out.println("new kb creator");
 
         status = Status.NOT_STARTED;
         this.signature = signature;
-        fileWriter = new FileWriter(fileToSave);
+        this.filePath = filePath;
     }
 
 
@@ -66,6 +68,8 @@ public class KBCreator implements Runnable {
         while (!l.get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.get(k).size();
+
+            //todo: here new FileWriter
 
             //line  7
             l.add(new ArrayList<>());
@@ -151,6 +155,7 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
+        fileWriter = new FileWriter(filePath, 1);
         iterationNumberOfKBs = 0;
         List<CandidatePair> l = new ArrayList<>();
 
@@ -167,6 +172,14 @@ public class KBCreator implements Runnable {
             l.add(new CandidatePair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
+
+
+        for (CandidatePair candidatePair : l) {
+            fileWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
+            fileWriter.writeCandidatePair(candidatePair);
+        }
+
+
         return l;
     }
 

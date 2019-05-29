@@ -11,11 +11,11 @@ public class CandidatePair {
 
     private static Map<Integer, NewConditional> nfcMap;
 
+
     public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         candidatesNumbersList = new ArrayList<>();
 
-        //todo: maybe array?
         for (NewConditional conditionalToAdd : candidates) {
             this.candidatesNumbersList.add(conditionalToAdd.getNumber());
         }
@@ -59,5 +59,21 @@ public class CandidatePair {
         return "CP: <" + knowledgeBase.getSize() + ", " + candidatesNumbersList.size();
     }
 
+    public int getNumber() {
+        return knowledgeBase.getKbNumber();
+    }
+
     //todo: toFileString and method to create from string for saving memory
+    public String toFileString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("CandidatePair");
+        sb.append(knowledgeBase.getKbNumber());
+        sb.append("\n");
+        sb.append("KB:");
+        sb.append(knowledgeBase.newToFileString());
+        sb.append(candidatesNumbersList);
+        sb.append("EOF");
+
+        return sb.toString();
+    }
 }
