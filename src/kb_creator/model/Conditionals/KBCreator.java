@@ -5,7 +5,6 @@ import kb_creator.model.Signature.AbstractSignature;
 import nfc.model.NfcCreator;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class KBCreator implements Runnable {
@@ -69,7 +68,7 @@ public class KBCreator implements Runnable {
             candidatePairAmount = l.get(k).size();
 
             //line  7
-            l.add(new LinkedList<>());
+            l.add(new ArrayList<>());
             iterationNumberOfKBs = 0;
             //this loop is line 8
             for (CandidatePair candidatePair : l.get(k)) {
@@ -149,7 +148,7 @@ public class KBCreator implements Runnable {
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
         iterationNumberOfKBs = 0;
-        List<CandidatePair> l = new LinkedList<>();
+        List<CandidatePair> l = new ArrayList<>();
 
         //line 3
         for (NewConditional r : cnfc) {
