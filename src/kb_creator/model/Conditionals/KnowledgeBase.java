@@ -90,12 +90,13 @@ public class KnowledgeBase {
         return conditionalNumbersList.size();
     }
 
+
     @Override
     public String toString() {
         return getConditionalList().toString();
     }
 
-    //todo: remove this?
+
     public List<NewConditional> getConditionalList() {
         List<NewConditional> conditionalList = new ArrayList<>();
         for (Integer conditionalNumber : conditionalNumbersList) {

@@ -74,21 +74,21 @@ public class KBCreator implements Runnable {
             for (CandidatePair candidatePair : l.get(k)) {
 
                 //line 9
-                for (NewConditional r : candidatePair.getCandidatesList()) {
-
+                for (Integer r : candidatePair.getCandidatesNumbersList()) {
+                    NewConditional candidate = nfcMap.get(r);
                     //line 10 //
-                    if (candidatePair.getKnowledgeBase().isConsistent(r)) {
+                    if (candidatePair.getKnowledgeBase().isConsistent(candidate)) {
 
                         //next part is line 11 and 12
                         //first create knowledge base
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature, iterationNumberOfKBs);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
-                        knowledgeBaseToAdd.add(r.getNumber()); // add r to new KnowledgeBase
+                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditional : candidatePair.getCandidatesList())
-                            if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
+                            if (conditional.getNumber() > r && !conditional.equals(candidate.getCounterConditional()))
                                 candidatesToAdd.add(conditional);
 
                         //line 12
@@ -103,7 +103,7 @@ public class KBCreator implements Runnable {
                     } else {
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
-                        inconsistentKB.add(r.getNumber());
+                        inconsistentKB.add(r);
                         kbWriter.writeInconsistentKBToFile(inconsistentKB);
                     }
                 }
