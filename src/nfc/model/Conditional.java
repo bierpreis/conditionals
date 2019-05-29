@@ -73,6 +73,8 @@ public class Conditional implements Comparable {
 
 
     public void setNumber(int number) {
+        if (this.number != 0)
+            System.out.println("number " + this.number + "will be overwritten by " + number);
         this.number = number;
     }
 
@@ -118,6 +120,10 @@ public class Conditional implements Comparable {
 
     public static int getLongestConditional() {
         return longestConditional;
+    }
+
+    public Conditional createCopy() {
+        return new Conditional(this.consequence, this.antecedent);
     }
 
 }
