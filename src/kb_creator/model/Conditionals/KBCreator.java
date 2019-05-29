@@ -20,6 +20,7 @@ public class KBCreator implements Runnable {
     private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
+    //todo: writer should not be public but created in method iterations
     private FileWriter fileWriter;
 
     private String filePath;
@@ -73,7 +74,7 @@ public class KBCreator implements Runnable {
 
             //line  7
             l.add(new ArrayList<>());
-            iterationNumberOfKBs = 0;
+            iterationNumberOfKBs = 1;
             //this loop is line 8
             for (CandidatePair candidatePair : l.get(k)) {
 
