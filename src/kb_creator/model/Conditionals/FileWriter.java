@@ -26,9 +26,15 @@ public class FileWriter {
             candidatePairFolder = filePathToSave + "/CandidatePair/";
 
             //create folders
-            new File(consistentKbFolder);
-            new File(inconsistentKbFolder);
-            new File(candidatePairFolder);
+
+            File consistentFolder = new File(consistentKbFolder);
+            consistentFolder.mkdirs();
+
+            File inconsistentFolder = new File(inconsistentKbFolder);
+            inconsistentFolder.mkdirs();
+
+            File candidatepairFolder = new File(candidatePairFolder);
+            candidatepairFolder.mkdirs();
 
 
         }
@@ -38,8 +44,7 @@ public class FileWriter {
 
         if (consistentKbFolder != null)
             try {
-                File dir = new File(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt");
-                dir.mkdirs();
+
 
                 PrintWriter writer = new PrintWriter(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.newToFileString());
