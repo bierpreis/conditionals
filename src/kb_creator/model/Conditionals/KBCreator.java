@@ -162,7 +162,6 @@ public class KBCreator implements Runnable {
 
         //line 3
         for (NewConditional r : cnfc) {
-            System.out.println("processing conditional number: " + r.getNumber());
 
             //line 4 and 5
             KnowledgeBase rKB = new KnowledgeBase(signature, iterationNumberOfKBs);
