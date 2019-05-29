@@ -21,7 +21,6 @@ public class KBCreator implements Runnable {
     private int nextCandidatePairAmount;
 
     //todo: writer should not be public but created in method iterations
-    private FileWriter fileWriter;
 
     private String filePath;
 
@@ -69,7 +68,7 @@ public class KBCreator implements Runnable {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.get(k).size();
 
-            //todo: here new FileWriter
+            FileWriter fileWriter = new FileWriter(filePath, k + 1);
             System.out.println("creating " + k + "element kbs");
 
             //line  7
@@ -156,8 +155,9 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
+        FileWriter fileWriter = new FileWriter(filePath, 1);
         System.out.println("creating 1 element kbs");
-        fileWriter = new FileWriter(filePath, 1);
+
         iterationNumberOfKBs = 0;
         List<CandidatePair> l = new ArrayList<>();
 
