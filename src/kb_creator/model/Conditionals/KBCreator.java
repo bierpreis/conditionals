@@ -130,6 +130,7 @@ public class KBCreator implements Runnable {
                 fileWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
+                fileWriter.writeCandidatePair(candidatePair);
                 candidatePair.deleteKB();
             }
             k = k + 1;
