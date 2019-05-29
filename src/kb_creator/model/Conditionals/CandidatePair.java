@@ -9,7 +9,7 @@ public class CandidatePair {
     private KnowledgeBase knowledgeBase;
     private List<Integer> candidatesNumbersList;
 
-    private static Map<Integer, NewConditional> conditionalMap;
+    private static Map<Integer, NewConditional> nfcMap;
 
     public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
@@ -25,7 +25,7 @@ public class CandidatePair {
     public List<NewConditional> getCandidatesList() {
         List<NewConditional> candidatesList = new ArrayList<>();
         for (Integer candidateNumber : this.candidatesNumbersList) {
-            candidatesList.add(conditionalMap.get(candidateNumber));
+            candidatesList.add(nfcMap.get(candidateNumber));
         }
 
         return candidatesList;
@@ -51,16 +51,13 @@ public class CandidatePair {
         knowledgeBase = null;
     }
 
-    //todo: what is this?
-    public void setConditionalMap(Map<Integer, NewConditional> conditionalMap) {
-        this.conditionalMap = conditionalMap;
-    }
-
     public static void setNfc(Map<Integer, NewConditional> nfc) {
-        conditionalMap = nfc;
+        nfcMap = nfc;
     }
 
     public String toShortString() {
         return "CP: <" + knowledgeBase.getSize() + ", " + candidatesNumbersList.size();
     }
+
+    //todo: toFileString and method to create from string for saving memory
 }
