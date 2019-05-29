@@ -14,7 +14,7 @@ public class KBWriter {
 
 
     }
-
+    //todo: make faster?
     public void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {

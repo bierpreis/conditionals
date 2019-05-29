@@ -7,7 +7,6 @@ import kb_creator.model.Signature.AbstractSignature;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -97,8 +96,9 @@ public class KnowledgeBase {
         return getConditionalList().toString();
     }
 
+    //todo: remove this?
     public List<NewConditional> getConditionalList() {
-        List<NewConditional> conditionalList = new LinkedList<>();
+        List<NewConditional> conditionalList = new ArrayList<>();
         for (Integer conditionalNumber : conditionalNumbersList) {
             conditionalList.add(nfcMap.get(conditionalNumber));
         }
