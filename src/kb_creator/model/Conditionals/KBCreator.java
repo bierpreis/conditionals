@@ -122,15 +122,17 @@ public class KBCreator implements Runnable {
                     return;
                 }
 
-                //delete old candidates to save some memory
+
+                fileWriter.writeCandidatePair(candidatePair);
+
+                //delete to save some memory
                 candidatePair.deleteCandidates();
 
                 //todo: could this not be in inner loop??
-                //comment the following out for testing
+
                 fileWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
-                fileWriter.writeCandidatePair(candidatePair);
                 candidatePair.deleteKB();
             }
             k = k + 1;
