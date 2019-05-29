@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//todo: a kb with numbers instead of real conditionals to save memory. numbers can be mapped to conditionals by hashmap.
 public class KnowledgeBase {
     private AbstractSignature signature;
     private List<Integer> conditionalNumbersList;
