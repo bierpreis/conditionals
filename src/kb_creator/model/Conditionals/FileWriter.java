@@ -18,7 +18,7 @@ public class FileWriter {
 
         //if filepath is null nothing should be saved so nothing should happen here
         if (filePathToSave != null) {
-            filePathToSave = filePathToSave + "/" + kbAmount + "/";
+            filePathToSave = filePathToSave + "/" + kbAmount;
 
 
             consistentKbFolder = filePathToSave + "/Consistent/";
@@ -29,6 +29,8 @@ public class FileWriter {
             new File(consistentKbFolder);
             new File(inconsistentKbFolder);
             new File(candidatePairFolder);
+
+
         }
     }
 
@@ -36,6 +38,9 @@ public class FileWriter {
 
         if (consistentKbFolder != null)
             try {
+                File dir = new File(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt");
+                dir.mkdirs();
+
                 PrintWriter writer = new PrintWriter(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.newToFileString());
                 writer.close();
