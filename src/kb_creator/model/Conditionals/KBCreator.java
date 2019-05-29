@@ -47,10 +47,10 @@ public class KBCreator implements Runnable {
 
         List<List<CandidatePair>> l = new ArrayList<>();
 
-        List<NewConditional> nfc = nfcCreator.getNewNfc();
-        Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
+        final List<NewConditional> nfc = nfcCreator.getNewNfc();
+        final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
 
-        List<NewConditional> cnfc = nfcCreator.getNewCnfc();
+        final List<NewConditional> cnfc = nfcCreator.getNewCnfc();
         //Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
 
         CandidatePair.setNfc(nfcMap);

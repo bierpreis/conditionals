@@ -15,7 +15,7 @@ public class CandidatePair {
         this.knowledgeBase = knowledgeBase;
         candidatesNumbersList = new ArrayList<>();
 
-        //todo: maybe array. or use short instead of int?
+        //todo: maybe array?
         for (NewConditional conditionalToAdd : candidates) {
             this.candidatesNumbersList.add(conditionalToAdd.getNumber());
         }
@@ -51,6 +51,7 @@ public class CandidatePair {
         knowledgeBase = null;
     }
 
+    //todo: what is this?
     public void setConditionalMap(Map<Integer, NewConditional> conditionalMap) {
         this.conditionalMap = conditionalMap;
     }
