@@ -77,7 +77,7 @@ public class NfcCreator {
             //only create new sublist if conditional was not added before as second conditional
             if (!alreadyAddedList.contains(conditionalToAdd)) {
                 ConditionalList subList = new ConditionalList();
-                subList.add(conditionalToAdd.createCopy()); //todo: here not add conditional but copy of it
+                subList.add(conditionalToAdd.createCopy());
                 //iterate over base list
                 for (Conditional currentConditional : nfc) {
                     //try to find equivalent conditionals

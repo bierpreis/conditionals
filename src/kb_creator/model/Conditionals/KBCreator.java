@@ -121,13 +121,13 @@ public class KBCreator implements Runnable {
                     return;
                 }
 
+                //todo: could this and next not be in inner loop??
 
                 fileWriter.writeCandidatePair(candidatePair);
 
                 //delete to save some memory
                 candidatePair.deleteCandidates();
 
-                //todo: could this not be in inner loop??
 
                 fileWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
@@ -135,8 +135,6 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteKB();
             }
             k = k + 1;
-
-            //System.out.println(l.get(0));
 
         }
 
