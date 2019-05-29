@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
+//todo: make faster: 1 kb writer for n element kbs. then open the 2 folders for those kbs ant write and not open for every file.
 public class KBWriter {
     File filePathToSave;
     private Map<Integer, NewConditional> nfcMap;
@@ -14,7 +15,7 @@ public class KBWriter {
 
 
     }
-    //todo: make faster?
+
     public void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         File dir;
         if (filePathToSave != null) {
