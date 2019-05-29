@@ -63,16 +63,18 @@ public class CandidatePair {
         return knowledgeBase.getKbNumber();
     }
 
-    //todo: toFileString and method to create from string for saving memory
+    //todo: candidatesNumbersList is not ordered. why?
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("CandidatePair");
         sb.append(knowledgeBase.getKbNumber());
-        sb.append("\n");
-        sb.append("KB:");
+        sb.append("\n\n");
+        sb.append("KB:\n");
         sb.append(knowledgeBase.newToFileString());
+        sb.append("\n\n");
+        sb.append("Candidates:\n");
         sb.append(candidatesNumbersList);
-        sb.append("EOF");
+        sb.append("\n\nEOF");
 
         return sb.toString();
     }
