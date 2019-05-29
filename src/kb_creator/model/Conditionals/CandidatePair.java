@@ -17,12 +17,14 @@ public class CandidatePair {
         candidatesNumbersList = new ArrayList<>();
 
         for (NewConditional conditionalToAdd : candidates) {
+            //todo: here they are still ordered
             this.candidatesNumbersList.add(conditionalToAdd.getNumber());
         }
     }
 
     //todo: only use this when really needed. maybe delete?
     public List<NewConditional> getCandidatesList() {
+        //todo: here candidatesNumbersList is not ordered anymore
         List<NewConditional> candidatesList = new ArrayList<>();
         for (Integer candidateNumber : this.candidatesNumbersList) {
             candidatesList.add(nfcMap.get(candidateNumber));
