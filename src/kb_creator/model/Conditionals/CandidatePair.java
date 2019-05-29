@@ -1,9 +1,7 @@
 package kb_creator.model.Conditionals;
 
-import cucumber.api.java.cs.A;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
