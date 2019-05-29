@@ -57,4 +57,8 @@ public class CandidatePair {
     public static void setNfc(Map<Integer, NewConditional> nfc) {
         conditionalMap = nfc;
     }
+
+    public String toShortString() {
+        return "CP: <" + knowledgeBase.getSize() + ", " + candidatesNumbersList.size();
+    }
 }

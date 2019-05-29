@@ -92,7 +92,11 @@ public class KBCreator implements Runnable {
                                 candidatesToAdd.add(conditional);
 
                         //line 12
+
+                        //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
+
+
                         nextCandidatePairAmount++;
 
                         iterationNumberOfKBs++;
