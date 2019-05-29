@@ -1,7 +1,7 @@
 package nfc.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 public class ConditionalList implements Comparable {
@@ -10,7 +10,7 @@ public class ConditionalList implements Comparable {
 
 
     public ConditionalList() {
-        conditionalList = new LinkedList<>();
+        conditionalList = new ArrayList<>();
     }
 
     public void add(Conditional newConditional) {

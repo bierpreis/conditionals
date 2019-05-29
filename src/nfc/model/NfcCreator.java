@@ -29,7 +29,7 @@ public class NfcCreator {
 
     }
 
-    //todo: array lists here
+
     //3 creators
     public List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
