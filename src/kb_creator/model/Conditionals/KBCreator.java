@@ -57,7 +57,6 @@ public class KBCreator implements Runnable {
 
         CandidatePair.setNfc(nfcMap);
         KnowledgeBase.setNfcMap(nfcMap);
-        fileWriter.setNfcMap(nfcMap);
 
         l.add(initOneElementKBs(nfc, cnfc));
 
