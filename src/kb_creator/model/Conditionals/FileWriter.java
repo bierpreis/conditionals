@@ -6,11 +6,11 @@ import java.io.PrintWriter;
 import java.util.Map;
 
 //todo: make faster: 1 kb writer for n element kbs. then open the 2 folders for those kbs ant write and not open for every file.
-public class KBWriter {
+public class FileWriter {
     File filePathToSave;
     private Map<Integer, NewConditional> nfcMap;
 
-    public KBWriter(File filePathToSave) {
+    public FileWriter(File filePathToSave) {
         this.filePathToSave = filePathToSave;
 
 

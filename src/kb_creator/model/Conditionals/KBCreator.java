@@ -20,14 +20,14 @@ public class KBCreator implements Runnable {
     private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
-    private KBWriter kbWriter;
+    private FileWriter fileWriter;
 
     public KBCreator(AbstractSignature signature, File fileToSave) {
         System.out.println("new kb creator");
 
         status = Status.NOT_STARTED;
         this.signature = signature;
-        kbWriter = new KBWriter(fileToSave);
+        fileWriter = new FileWriter(fileToSave);
     }
 
 
@@ -55,7 +55,7 @@ public class KBCreator implements Runnable {
 
         CandidatePair.setNfc(nfcMap);
         KnowledgeBase.setNfcMap(nfcMap);
-        kbWriter.setNfcMap(nfcMap);
+        fileWriter.setNfcMap(nfcMap);
 
         l.add(initOneElementKBs(nfc, cnfc));
 
@@ -108,7 +108,7 @@ public class KBCreator implements Runnable {
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
-                        kbWriter.writeInconsistentKBToFile(inconsistentKB);
+                        fileWriter.writeInconsistentKBToFile(inconsistentKB);
                     }
                 }
 
@@ -123,7 +123,7 @@ public class KBCreator implements Runnable {
 
                 //todo: could this not be in inner loop??
                 //comment the following out for testing
-                kbWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
+                fileWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
