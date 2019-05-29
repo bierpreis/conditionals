@@ -15,6 +15,7 @@ public class CandidatePair {
         this.knowledgeBase = knowledgeBase;
         candidatesNumbersList = new ArrayList<>();
 
+        //todo: maybe array. or use short instead of int?
         for (NewConditional conditionalToAdd : candidates) {
             this.candidatesNumbersList.add(conditionalToAdd.getNumber());
         }
