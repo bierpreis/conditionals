@@ -15,42 +15,46 @@ public class FileWriter {
     private String candidatePairFolder;
 
     public FileWriter(String filePathToSave, int kbAmount) {
-        filePathToSave = filePathToSave + "/" + kbAmount + "/";
+
+        //if filepath is null nothing should be saved so nothing should happen here
+        if (filePathToSave != null) {
+            filePathToSave = filePathToSave + "/" + kbAmount + "/";
 
 
-        consistentKbFolder = filePathToSave + "/Consistent/";
-        inconsistentKbFolder = filePathToSave + "/Inconsistent/";
-        candidatePairFolder = filePathToSave + "/CandidatePair/";
+            consistentKbFolder = filePathToSave + "/Consistent/";
+            inconsistentKbFolder = filePathToSave + "/Inconsistent/";
+            candidatePairFolder = filePathToSave + "/CandidatePair/";
 
-        //create folders
-        new File(consistentKbFolder);
-        new File(inconsistentKbFolder);
-        new File(candidatePairFolder);
+            //create folders
+            new File(consistentKbFolder);
+            new File(inconsistentKbFolder);
+            new File(candidatePairFolder);
+        }
     }
 
     public void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
 
-
-        try {
-            PrintWriter writer = new PrintWriter(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-            writer.print(knowledgeBase.newToFileString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if (consistentKbFolder != null)
+            try {
+                PrintWriter writer = new PrintWriter(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+                writer.print(knowledgeBase.newToFileString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
 
     public void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
 
-
-        try {
-            PrintWriter writer = new PrintWriter(inconsistentKbFolder + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-            writer.print(knowledgeBase.newToFileString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if (inconsistentKbFolder != null)
+            try {
+                PrintWriter writer = new PrintWriter(inconsistentKbFolder + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+                writer.print(knowledgeBase.newToFileString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 
 
@@ -60,13 +64,14 @@ public class FileWriter {
 
     public void writeCandidatePair(CandidatePair candidatePair) {
         //todo: this
-        try {
-            PrintWriter writer = new PrintWriter(inconsistentKbFolder + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
-            writer.print(candidatePair.toFileString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if (candidatePairFolder != null)
+            try {
+                PrintWriter writer = new PrintWriter(candidatePairFolder + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
+                writer.print(candidatePair.toFileString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
 }
 
