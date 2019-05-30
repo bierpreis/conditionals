@@ -108,6 +108,7 @@ public class KBCreator implements Runnable {
                         //it should write r to there also
                     } else {
                         //todo: inconsistent kbs get useless numbers. what to do with this?
+                        //todo: inconsistent kbs get written in wrong number file (file n-1). why?
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
