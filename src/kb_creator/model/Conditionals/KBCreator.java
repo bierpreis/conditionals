@@ -65,7 +65,7 @@ public class KBCreator implements Runnable {
         while (!l.get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.get(k).size();
-
+            //todo: k is 0 at start. so the 2 element kbs are written in file 1. fix this.
             FileWriter fileWriter = new FileWriter(filePath, k + 1);
             System.out.println("creating " + k + "element kbs");
 
