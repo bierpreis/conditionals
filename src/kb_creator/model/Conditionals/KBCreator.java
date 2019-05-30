@@ -65,9 +65,7 @@ public class KBCreator implements Runnable {
         while (!l.get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.get(k).size();
-            //todo: k is 0 at start. so the 2 element kbs are written in file 1. fix this.
             FileWriter fileWriter = new FileWriter(filePath, k + 1);
-            System.out.println("creating " + k + "element kbs");
 
             //line  7
             l.add(new ArrayList<>());
@@ -107,12 +105,12 @@ public class KBCreator implements Runnable {
 
                         //it should write r to there also
                     } else {
-                        //todo: inconsistent kbs get useless numbers. what to do with this?
-                        //todo: inconsistent kbs get written in wrong number file (file n-1). why?
+                        //todo: not sure if this writer k+2 is a good idea
+                        FileWriter inconsistentFileWriter = new FileWriter(filePath, k + 2);
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
-                        fileWriter.writeInconsistentKBToFile(inconsistentKB);
+                        inconsistentFileWriter.writeInconsistentKBToFile(inconsistentKB);
                     }
                 }
 
@@ -123,7 +121,7 @@ public class KBCreator implements Runnable {
                 }
 
                 //todo: could this and next not be in inner loop??
-
+                //this gets written when candidatepair+1 is finished.
                 fileWriter.writeCandidatePair(candidatePair);
 
                 //delete to save some memory
