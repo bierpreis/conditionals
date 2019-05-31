@@ -136,10 +136,12 @@ public class NewConditional {
 
     }
 
+    //todo: dont save this thing but create to save memory?
     public void createCounterConditional(Conditional oldConditional) {
         counterConditional = new NewConditional(oldConditional);
     }
 
+    //this is sometimes null. this fucks up algorithm
     public NewConditional getCounterConditional() {
         return counterConditional;
     }
