@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class FileWriter {
     //todo: maybel delete
+    //todo: own thread for this
     private Map<Integer, NewConditional> nfcMap;
 
     private String consistentKbFolder;
