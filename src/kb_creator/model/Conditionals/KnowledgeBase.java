@@ -3,6 +3,8 @@ package kb_creator.model.Conditionals;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
+import kb_creator.model.Signature.AB;
+import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 
@@ -26,6 +28,14 @@ public class KnowledgeBase {
     public KnowledgeBase(String stringFromFile) {
         //todo
         System.out.println("string in kb: " + stringFromFile);
+        stringFromFile.replace("signature\n", "");
+        if (stringFromFile.matches("^a,b")) {
+            signature = new AB();
+            stringFromFile.replace("^a,b\n", "");
+        } else if (stringFromFile.matches("^a,b,c")) {
+            stringFromFile.replace("^a,b,c\n", "");
+            signature = new ABC();
+        } else throw new RuntimeException("No valid signature found in file");
     }
 
 
@@ -111,9 +121,10 @@ public class KnowledgeBase {
     }
 
 
-    public String newToFileString() {
+    public String toFileString() {
 
         StringBuilder sb = new StringBuilder();
+        sb.append("signature\n");
         sb.append(signature.toString().toLowerCase());
         sb.append("\n");
         sb.append("conditionals\n\n");

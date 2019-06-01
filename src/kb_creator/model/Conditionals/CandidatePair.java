@@ -25,9 +25,13 @@ public class CandidatePair {
 
     public CandidatePair(String stringFromFile) {
         //todo
+        String[] splitString = stringFromFile.split("Candidates:");
+        if (splitString.length != 2)
+            throw new RuntimeException("Invalid Candidate Pair File");
         //divide string into kb and candidates
         //create both from subString
-        System.out.println("string in cp: " + stringFromFile);
+        knowledgeBase = new KnowledgeBase(splitString[0]);
+        candidatesNumbersList = createCandidatesListFromString(splitString[1]);
     }
 
     //todo:
@@ -86,7 +90,7 @@ public class CandidatePair {
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB:\n");
-        sb.append(knowledgeBase.newToFileString());
+        sb.append(knowledgeBase.toFileString());
         sb.append("\n\n");
         sb.append("Candidates:\n");
         sb.append(candidatesNumbersList);

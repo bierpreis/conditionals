@@ -41,7 +41,7 @@ public class KBWriter {
 
 
                 PrintWriter writer = new PrintWriter(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-                writer.print(knowledgeBase.newToFileString());
+                writer.print(knowledgeBase.toFileString());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -53,7 +53,7 @@ public class KBWriter {
         if (inconsistentKbFolder != null)
             try {
                 PrintWriter writer = new PrintWriter(inconsistentKbFolder + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-                writer.print(knowledgeBase.newToFileString());
+                writer.print(knowledgeBase.toFileString());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
