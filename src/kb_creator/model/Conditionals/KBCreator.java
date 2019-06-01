@@ -2,6 +2,7 @@ package kb_creator.model.Conditionals;
 
 import kb_creator.Observer.Status;
 import kb_creator.model.Signature.AbstractSignature;
+import kb_creator.model.Writers.CPWriter;
 import kb_creator.model.Writers.KBWriter;
 import nfc.model.NfcCreator;
 
@@ -22,12 +23,16 @@ public class KBCreator implements Runnable {
 
     private String filePath;
 
+    private CPWriter cpWriter;
+
     public KBCreator(AbstractSignature signature, String filePath) {
         System.out.println("new kb creator");
 
         status = Status.NOT_STARTED;
         this.signature = signature;
         this.filePath = filePath;
+
+        cpWriter = new CPWriter(filePath);
     }
 
 
@@ -122,8 +127,9 @@ public class KBCreator implements Runnable {
                 }
 
                 //todo: could this and next not be in inner loop??
+                //todo: all pairs get written. even the incosistent?
                 //this gets written when candidatepair+1 is finished.
-                KBWriter.writeCandidatePair(candidatePair);
+                cpWriter.writePair(candidatePair);
 
                 //delete to save some memory
                 candidatePair.deleteCandidates();
@@ -178,7 +184,7 @@ public class KBCreator implements Runnable {
 
         for (CandidatePair candidatePair : l) {
             KBWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
-            KBWriter.writeCandidatePair(candidatePair);
+            cpWriter.writePair(candidatePair);
         }
 
         System.out.println("finished 1 element kbs");
