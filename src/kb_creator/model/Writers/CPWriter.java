@@ -10,23 +10,20 @@ import java.io.PrintWriter;
 public class CPWriter {
     private String folderToSave;
 
-    public CPWriter(String folderToSave) {
-        if (folderToSave != null) {
-            this.folderToSave = folderToSave + "/tmp/";
+    public CPWriter(String filePath) {
+        if (filePath != null) {
+            this.folderToSave = filePath + "/tmp/";
 
-            File tmpFile = new File(folderToSave);
+            File tmpFile = new File(this.folderToSave);
             tmpFile.mkdirs();
         }
     }
 
-    //todo
     public void writePair(CandidatePair candidatePair) {
 
-
-        //todo: this
         if (folderToSave != null)
             try {
-                PrintWriter writer = new PrintWriter(folderToSave + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
+                PrintWriter writer = new PrintWriter(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
                 writer.print(candidatePair.toFileString());
                 writer.close();
             } catch (IOException e) {

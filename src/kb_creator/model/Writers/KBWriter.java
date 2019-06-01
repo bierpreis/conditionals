@@ -1,6 +1,5 @@
 package kb_creator.model.Writers;
 
-import kb_creator.model.Conditionals.CandidatePair;
 import kb_creator.model.Conditionals.KnowledgeBase;
 
 import java.io.File;
@@ -13,7 +12,6 @@ public class KBWriter {
 
     private String consistentKbFolder;
     private String inconsistentKbFolder;
-    private String candidatePairFolder;
 
     public KBWriter(String filePathToSave, int kbAmount) {
 
@@ -24,7 +22,6 @@ public class KBWriter {
 
             consistentKbFolder = filePathToSave + "/Consistent/";
             inconsistentKbFolder = filePathToSave + "/Inconsistent/";
-            candidatePairFolder = filePathToSave + "/CandidatePair/";
 
             //create folders
 
@@ -33,10 +30,6 @@ public class KBWriter {
 
             File inconsistentFolder = new File(inconsistentKbFolder);
             inconsistentFolder.mkdirs();
-
-            File candidatepairFolder = new File(candidatePairFolder);
-            candidatepairFolder.mkdirs();
-
 
         }
     }
@@ -54,7 +47,7 @@ public class KBWriter {
                 e.printStackTrace();
             }
     }
-    
+
     public void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
 
         if (inconsistentKbFolder != null)
