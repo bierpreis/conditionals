@@ -38,14 +38,18 @@ public class CPWriter {
 
     //todo: this somehow doenst work
     public void deleteFiles(int numberOfConditionals) {
+        System.out.println("trying to delete " + numberOfConditionals + " element pairs");
         File fileToDelete = new File(folderToSave + "/" + numberOfConditionals + "/");
+        try {
+            for (File file : fileToDelete.listFiles()) {
+                if (!file.isDirectory()) {
+                    file.delete();
 
-        for (File file : fileToDelete.listFiles()) {
-            if (!file.isDirectory()) {
-                System.out.println("deleting " + file.toString() + " " + file.delete());
+                }
 
             }
-
+        } catch (NullPointerException e) {
+            System.out.println("no " + numberOfConditionals + " element pairs found for deleting");
         }
     }
 

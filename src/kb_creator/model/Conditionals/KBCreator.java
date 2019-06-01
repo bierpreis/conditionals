@@ -184,11 +184,11 @@ public class KBCreator implements Runnable {
 
         for (CandidatePair candidatePair : l) {
             KBWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
-            cpWriter.writePair(candidatePair);
+           // cpWriter.writePair(candidatePair);
         }
 
         System.out.println("finished 1 element kbs");
-        cpWriter.deleteFiles(1);
+        //cpWriter.deleteFiles(1);
         return l;
     }
 
