@@ -58,6 +58,7 @@ public class StatusThread implements Runnable {
 
     }
 
+    //todo: improve to average speed
     private int calcSpeed(int kbAmount) {
         int kbIncrease = kbAmount - lastKBAmount;
         lastKBAmount = kbAmount;

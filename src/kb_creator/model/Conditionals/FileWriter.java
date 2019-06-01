@@ -7,9 +7,7 @@ import java.util.Map;
 
 
 public class FileWriter {
-    //todo: maybel delete
     //todo: own thread for this
-    private Map<Integer, NewConditional> nfcMap;
 
     private String consistentKbFolder;
     private String inconsistentKbFolder;
@@ -66,11 +64,6 @@ public class FileWriter {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    }
-
-
-    public void setNfcMap(Map<Integer, NewConditional> nfcMap) {
-        this.nfcMap = nfcMap;
     }
 
     public void writeCandidatePair(CandidatePair candidatePair) {

@@ -41,7 +41,6 @@ public class CurrentIterationPanel extends JPanel {
         else progressLabel.setText("");
     }
 
-    //todo: calculate some average speed over time
     public void showSpeed(int speed) {
         speedLabel.setText(Integer.toString(speed));
     }
