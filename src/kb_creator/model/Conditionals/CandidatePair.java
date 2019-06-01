@@ -27,12 +27,13 @@ public class CandidatePair {
         //todo
         //divide string into kb and candidates
         //create both from subString
+        System.out.println("string in cp: " + stringFromFile);
     }
 
     //todo:
     private List<Integer> createCandidatesListFromString(String candidatesString) {
         List<Integer> candidatesList = new LinkedList<>();
-
+        System.out.println("string for creating candidates: " + candidatesString);
 
         return candidatesList;
     }

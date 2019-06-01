@@ -25,6 +25,7 @@ public class KnowledgeBase {
 
     public KnowledgeBase(String stringFromFile) {
         //todo
+        System.out.println("string in kb: " + stringFromFile);
     }
 
 
