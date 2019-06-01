@@ -1,5 +1,6 @@
 package kb_creator.model.Writers;
 
+import gherkin.lexer.Fi;
 import kb_creator.model.Conditionals.CandidatePair;
 
 import java.io.File;
@@ -20,10 +21,12 @@ public class CPWriter {
     }
 
     public void writePair(CandidatePair candidatePair) {
-
+        File subFolder = new File(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
+        if (!subFolder.exists())
+            subFolder.mkdirs();
         if (folderToSave != null)
             try {
-                PrintWriter writer = new PrintWriter(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
+                PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
                 writer.print(candidatePair.toFileString());
                 writer.close();
             } catch (IOException e) {
