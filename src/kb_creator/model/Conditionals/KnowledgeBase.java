@@ -29,13 +29,21 @@ public class KnowledgeBase {
         //todo
         System.out.println("string in kb: " + stringFromFile);
         stringFromFile.replace("signature\n", "");
-        if (stringFromFile.matches("^a,b")) {
+
+        if (stringFromFile.matches("^a,b"))
             signature = new AB();
-            stringFromFile.replace("^a,b\n", "");
-        } else if (stringFromFile.matches("^a,b,c")) {
-            stringFromFile.replace("^a,b,c\n", "");
+        else if (stringFromFile.matches("^a,b,c"))
             signature = new ABC();
-        } else throw new RuntimeException("No valid signature found in file");
+        else throw new RuntimeException("No valid signature found in file");
+
+        stringFromFile.replace(".*conditionals\n\n", "");
+        String[] conditionalStringArray = stringFromFile.split("\n");
+        for (String conditonalstring : conditionalStringArray) {
+            if (!conditonalstring.equals("\\}"))
+                //todo: how to create conditional number from string?
+                System.out.println("lol");
+
+        }
     }
 
 
