@@ -188,6 +188,8 @@ public class KBCreator implements Runnable {
         }
 
         System.out.println("finished 1 element kbs");
+        //todo: better k + 1 or earlier?
+        cpWriter.deleteFiles(k);
         return l;
     }
 
