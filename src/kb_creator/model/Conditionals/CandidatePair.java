@@ -22,6 +22,10 @@ public class CandidatePair {
         }
     }
 
+    public CandidatePair(String stringFromFile) {
+        //todo
+    }
+
     public List<NewConditional> getCandidatesList() {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();

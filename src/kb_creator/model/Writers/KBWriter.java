@@ -68,16 +68,6 @@ public class KBWriter {
             }
     }
 
-    public void writeCandidatePair(CandidatePair candidatePair) {
-        //todo: this
-        if (candidatePairFolder != null)
-            try {
-                PrintWriter writer = new PrintWriter(candidatePairFolder + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
-                writer.print(candidatePair.toFileString());
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-    }
+
 }
 
