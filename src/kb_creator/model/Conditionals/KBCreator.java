@@ -87,9 +87,9 @@ public class KBCreator implements Runnable {
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
-                        for (NewConditional conditional : candidatePair.getCandidatesList())
-                            if (conditional.getNumber() > r && !conditional.equals(candidate.getCounterConditional()))
-                                candidatesToAdd.add(conditional);
+                        for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
+                            if (conditionalFromCandidates.getNumber() > r && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional()))
+                                candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
 

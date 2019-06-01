@@ -174,7 +174,6 @@ public class NfcCreator {
 
         for (Conditional oldConditional : oldConditionals) {
             NewConditional newConditional = new NewConditional(oldConditional);
-            newConditional.createCounterConditional(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
             newConditionals.add(newConditional);
 

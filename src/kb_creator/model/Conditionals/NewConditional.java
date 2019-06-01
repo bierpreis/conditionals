@@ -15,8 +15,6 @@ public class NewConditional {
     private AbstractFormula antecend;
     private AbstractFormula consequence;
 
-    private NewConditional counterConditional;
-
     public NewConditional(AbstractFormula antecend, AbstractFormula consequence) {
         this.antecend = antecend;
         this.consequence = consequence;
@@ -136,14 +134,10 @@ public class NewConditional {
 
     }
 
-    //todo: dont save this thing but create to save memory?
-    public void createCounterConditional(Conditional oldConditional) {
-        counterConditional = new NewConditional(oldConditional);
-    }
 
-    //this is sometimes null. this fucks up algorithm
+
     public NewConditional getCounterConditional() {
-        return counterConditional;
+        return new NewConditional(this.consequence.neg(), this.antecend);
     }
 
     public void setNumber(int number) {
