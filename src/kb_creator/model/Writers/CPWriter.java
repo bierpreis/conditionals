@@ -37,9 +37,11 @@ public class CPWriter {
 
     //todo: test
     public void deleteFiles(int numberOfConditionals) {
-        File fileToDelete = new File(folderToSave + numberOfConditionals);
-        boolean succsess = fileToDelete.delete();
-        if (succsess)
+        File fileToDelete = new File(folderToSave + "/" + numberOfConditionals + "/");
+        //todo: this only works with empty dir. delete stuff in it before
+        boolean success = fileToDelete.delete();
+        System.out.println("file exists: " + fileToDelete.exists());
+        if (success)
             System.out.println("temp files for " + numberOfConditionals + " element pairs successfully deleted");
         else System.out.println("deleting " + numberOfConditionals + " element pairs failed");
     }
