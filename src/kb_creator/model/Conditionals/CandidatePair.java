@@ -21,7 +21,7 @@ public class CandidatePair {
             //System.out.println("added: " + candidatesNumbersList);
         }
     }
-    
+
     public List<NewConditional> getCandidatesList() {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
