@@ -21,8 +21,7 @@ public class CandidatePair {
             //System.out.println("added: " + candidatesNumbersList);
         }
     }
-
-    //todo: only use this when really needed. maybe delete?
+    
     public List<NewConditional> getCandidatesList() {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
