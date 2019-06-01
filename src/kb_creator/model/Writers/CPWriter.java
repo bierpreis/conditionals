@@ -2,6 +2,7 @@ package kb_creator.model.Writers;
 
 import gherkin.lexer.Fi;
 import kb_creator.model.Conditionals.CandidatePair;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,15 +36,17 @@ public class CPWriter {
 
     }
 
-    //todo: test
+    //todo: this somehow doenst work
     public void deleteFiles(int numberOfConditionals) {
         File fileToDelete = new File(folderToSave + "/" + numberOfConditionals + "/");
-        //todo: this only works with empty dir. delete stuff in it before
-        boolean success = fileToDelete.delete();
-        System.out.println("file exists: " + fileToDelete.exists());
-        if (success)
-            System.out.println("temp files for " + numberOfConditionals + " element pairs successfully deleted");
-        else System.out.println("deleting " + numberOfConditionals + " element pairs failed");
+
+        for (File file : fileToDelete.listFiles()) {
+            if (!file.isDirectory()) {
+                System.out.println("deleting " + file.toString() + " " + file.delete());
+
+            }
+
+        }
     }
 
     //todo

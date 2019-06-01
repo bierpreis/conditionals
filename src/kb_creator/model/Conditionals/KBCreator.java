@@ -70,7 +70,7 @@ public class KBCreator implements Runnable {
         while (!l.get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.get(k).size();
-            KBWriter KBWriter = new KBWriter(filePath, k + 1);
+            KBWriter kbWriter = new KBWriter(filePath, k + 1);
 
             //line  7
             l.add(new ArrayList<>());
@@ -135,7 +135,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
 
-                KBWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
+                kbWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
