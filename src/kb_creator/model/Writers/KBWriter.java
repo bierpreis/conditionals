@@ -1,19 +1,21 @@
-package kb_creator.model.Conditionals;
+package kb_creator.model.Writers;
+
+import kb_creator.model.Conditionals.CandidatePair;
+import kb_creator.model.Conditionals.KnowledgeBase;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
 
 
-public class FileWriter {
+public class KBWriter {
     //todo: own thread for this
 
     private String consistentKbFolder;
     private String inconsistentKbFolder;
     private String candidatePairFolder;
 
-    public FileWriter(String filePathToSave, int kbAmount) {
+    public KBWriter(String filePathToSave, int kbAmount) {
 
         //if filepath is null nothing should be saved so nothing should happen here
         if (filePathToSave != null) {
