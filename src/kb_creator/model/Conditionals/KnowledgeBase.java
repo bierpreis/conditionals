@@ -23,6 +23,10 @@ public class KnowledgeBase {
         this.kbNumber = kbNumber;
     }
 
+    public KnowledgeBase(String stringFromFile) {
+        //todo
+    }
+
 
     //todo: this
     public boolean isConsistent(NewConditional conditionalToTest) {

@@ -2,6 +2,7 @@ package kb_creator.model.Conditionals;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,16 @@ public class CandidatePair {
 
     public CandidatePair(String stringFromFile) {
         //todo
+        //divide string into kb and candidates
+        //create both from subString
+    }
+
+    //todo:
+    private List<Integer> createCandidatesListFromString(String candidatesString) {
+        List<Integer> candidatesList = new LinkedList<>();
+
+
+        return candidatesList;
     }
 
     public List<NewConditional> getCandidatesList() {

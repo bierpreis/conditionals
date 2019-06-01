@@ -56,7 +56,7 @@ public class CPWriter {
     //todo
     public CandidatePair readNextPair(int numberOfConditionals) {
         //read String
-        //create Pair from String
+
         CandidatePair candidatePair = new CandidatePair("test");
 
         return candidatePair;
