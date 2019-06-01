@@ -109,9 +109,8 @@ public class KBCreator implements Runnable {
                         totalNumberOfKBs++;
 
 
-                        //it should write r to there also
+                        //todo: inconsistens get here written much earlier then consistens and pairs. could the other be written earlier too?
                     } else {
-                        //todo: not sure if this writer k+2 is a good idea
                         KBWriter inconsistentKBWriter = new KBWriter(filePath, k + 2);
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
