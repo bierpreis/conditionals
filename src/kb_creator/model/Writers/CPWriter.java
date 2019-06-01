@@ -35,8 +35,13 @@ public class CPWriter {
 
     }
 
-    public void deletePairs(int numberOfConditionals) {
-        //todo
+    //todo: test
+    public void deleteFiles(int numberOfConditionals) {
+        File fileToDelete = new File(folderToSave + numberOfConditionals);
+        boolean succsess = fileToDelete.delete();
+        if (succsess)
+            System.out.println("temp files for " + numberOfConditionals + " element pairs successfully deleted");
+        else System.out.println("deleting " + numberOfConditionals + " element pairs failed");
     }
 
     //todo
