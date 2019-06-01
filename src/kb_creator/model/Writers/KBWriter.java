@@ -54,8 +54,7 @@ public class KBWriter {
                 e.printStackTrace();
             }
     }
-
-    //todo: theese get written in wrong folder (folder for k -1)
+    
     public void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
 
         if (inconsistentKbFolder != null)
