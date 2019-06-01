@@ -135,7 +135,7 @@ public class NewConditional {
     }
 
 
-
+    //todo: does this really work? does this counter and the real counter equal??
     public NewConditional getCounterConditional() {
         return new NewConditional(this.consequence.neg(), this.antecend);
     }
