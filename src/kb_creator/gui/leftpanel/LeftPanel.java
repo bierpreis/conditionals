@@ -28,14 +28,16 @@ public class LeftPanel extends JPanel {
     public LeftPanel(KBCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //setLayout(new BorderLayout());
+        add(actionPanel = new ActionPanel(observer));
 
+
+
+
+        //todo: optionspanel
         add(signaturePanel = new SignaturePanel());
         add(bufferPanel = new BufferPanel());
-        add(actionPanel = new ActionPanel(observer));
+
         add(kbSafePanel = new KBSafePanel());
-
-
-        //todo: this in main status panel
 
 
         setPreferredSize(new Dimension(400, 700));
