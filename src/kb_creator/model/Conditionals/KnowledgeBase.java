@@ -151,4 +151,19 @@ public class KnowledgeBase {
 
     }
 
+    public String toShortFileString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("signature");
+        sb.append(signature.toString());
+        sb.append("\n\n");
+        sb.append("conditionals: \n\n");
+        for (Integer conditionalInt : conditionalNumbersList) {
+            sb.append(conditionalInt);
+            sb.append(", ");
+        }
+
+
+        return sb.toString();
+    }
+
 }

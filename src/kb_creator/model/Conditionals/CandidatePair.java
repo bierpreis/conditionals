@@ -90,7 +90,7 @@ public class CandidatePair {
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB:\n");
-        sb.append(knowledgeBase.toFileString());
+        sb.append(knowledgeBase.toShortFileString());
         sb.append("\n\n");
         sb.append("Candidates:\n");
         sb.append(candidatesNumbersList);

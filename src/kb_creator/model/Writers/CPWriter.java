@@ -1,8 +1,6 @@
 package kb_creator.model.Writers;
 
-import gherkin.lexer.Fi;
 import kb_creator.model.Conditionals.CandidatePair;
-import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
