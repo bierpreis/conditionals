@@ -75,6 +75,7 @@ public class KBCreator implements Runnable {
             candidatePairAmount = l.getList().get(k).size();
 
             //todo: only start kb writer when writing is requested?
+            //or maybe abstractwriter and one real one fake?
             KBWriter kbWriter = new KBWriter(filePath, k + 1);
 
             //line  7
