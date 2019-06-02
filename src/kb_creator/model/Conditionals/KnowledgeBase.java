@@ -40,7 +40,7 @@ public class KnowledgeBase {
         String[] conditionalStringArray = stringFromFile.split("\n");
         for (String conditonalstring : conditionalStringArray) {
             if (!conditonalstring.equals("\\}"))
-                //todo: how to create conditional number from string?
+                //todo: write conditional in cp as number for better readability
                 System.out.println("lol");
 
         }
