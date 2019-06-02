@@ -24,6 +24,7 @@ public class FileLocationPanel extends JPanel {
             this.fileLocationPanel = fileLocationPanel;
         }
 
+        //todo: null pointer when cancel
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
