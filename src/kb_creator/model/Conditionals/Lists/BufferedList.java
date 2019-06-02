@@ -1,7 +1,9 @@
 package kb_creator.model.Conditionals.Lists;
 
-public class BufferedList {
 
+//todo
+public class BufferedList extends AbstractCandidateList {
+    //maybe use queue for buffering?
 
 
 }
