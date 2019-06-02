@@ -1,11 +1,10 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.leftpanel.BufferPanel.BufferPanel;
-import kb_creator.gui.leftpanel.KBSavePanel.KBSafePanel;
-import kb_creator.gui.leftpanel.statusPanel.MainStatusPanel;
-import kb_creator.gui.leftpanel.statusPanel.MemoryPanel;
+import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.BufferPanel;
+import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.KBSafePanel;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+import kb_creator.gui.leftpanel.optionsPanel.SignaturePanel;
 import kb_creator.model.Signature.AB;
 import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
