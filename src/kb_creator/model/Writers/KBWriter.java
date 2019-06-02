@@ -12,20 +12,22 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class KBWriter implements Runnable {
     private Queue<KnowledgeBase> consistentQueue;
     private Queue<KnowledgeBase> inconsistentQueue;
-    //todo: own thread for this
 
     public void run() {
+
         while (true) {
-            if (!consistentQueue.isEmpty())
-                writeConsistentKBToFile(consistentQueue.element());
-            else if (!inconsistentQueue.isEmpty())
-                writeInconsistentKBToFile(inconsistentQueue.element());
-            else try {
-                    System.out.println("sleeping...");
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            //todo: this sucks
+            if (inconsistentQueue != null)
+                if (!consistentQueue.isEmpty())
+                    writeConsistentKBToFile(consistentQueue.element());
+                else if (!inconsistentQueue.isEmpty())
+                    writeInconsistentKBToFile(inconsistentQueue.element());
+                else try {
+                        System.out.println("sleeping...");
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
 
         }
