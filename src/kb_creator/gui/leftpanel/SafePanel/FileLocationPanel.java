@@ -4,7 +4,6 @@ package kb_creator.gui.leftpanel.SafePanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 public class FileLocationPanel extends JPanel {
     private JButton saveButton;
@@ -24,13 +23,16 @@ public class FileLocationPanel extends JPanel {
             this.fileLocationPanel = fileLocationPanel;
         }
 
-        //todo: null pointer when cancel
+        //todo: maybe deactivate start button when saving is on and no file selected
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.showDialog(fileLocationPanel, "Choose Folder");
-            filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
+
+            //avoid null pointer exception when no file gets selected
+            if (fileChooser.getSelectedFile() != null)
+                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
         }
 
 
