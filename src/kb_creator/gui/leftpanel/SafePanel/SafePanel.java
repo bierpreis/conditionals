@@ -2,7 +2,6 @@ package kb_creator.gui.leftpanel.SafePanel;
 
 
 import javax.swing.*;
-import java.io.File;
 
 public class SafePanel extends JPanel {
     private CheckboxPanel checkboxPanel;

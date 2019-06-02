@@ -39,7 +39,7 @@ public class FileLocationPanel extends JPanel {
         saveButton.setEnabled(active);
     }
 
-    String getFilePath() {
+    public String getFilePath() {
         return filePathToSave;
     }
 }
