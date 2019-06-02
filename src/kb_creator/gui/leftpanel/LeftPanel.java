@@ -57,7 +57,7 @@ public class LeftPanel extends JPanel {
         return safePanel.getFileLocation();
     }
 
-    public String getCPPath() {
+    public String getCpFilePath() {
         return bufferPanel.getPath();
     }
 

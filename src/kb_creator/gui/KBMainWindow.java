@@ -46,11 +46,15 @@ public class KBMainWindow {
         return leftPanel.getMemoryPanel();
     }
 
-    public String getFilePath() {
+    public String getKbFilePath() {
         return leftPanel.getKBPath();
     }
 
     public boolean isBufferingRequested() {
         return leftPanel.isBufferingRequested();
+    }
+
+    public String getCpFilePath() {
+        return leftPanel.getCpFilePath();
     }
 }

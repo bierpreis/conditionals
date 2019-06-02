@@ -2,6 +2,7 @@ package kb_creator.model.Conditionals;
 
 import cucumber.api.java.lv.Un;
 import kb_creator.Observer.Status;
+import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Lists.UnbufferedList;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
@@ -27,6 +28,8 @@ public class KBCreator implements Runnable {
 
     private CPWriter cpWriter;
 
+    AbstractCandidateList l;
+
     public KBCreator(AbstractSignature signature, String filePath) {
         System.out.println("new kb creator");
 
@@ -51,8 +54,6 @@ public class KBCreator implements Runnable {
         //k in original paper starts at 1
         //here it starts at 0 because lists in java start at 0 and not 1
         k = 0;
-
-        UnbufferedList l = new UnbufferedList();
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
@@ -161,6 +162,10 @@ public class KBCreator implements Runnable {
         }
     }
 
+    public void setList(AbstractCandidateList requestedList) {
+        l = requestedList;
+    }
+
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
         KBWriter KBWriter = new KBWriter(filePath, 1);
         System.out.println("creating 1 element kbs");
@@ -185,7 +190,7 @@ public class KBCreator implements Runnable {
 
         for (CandidatePair candidatePair : l) {
             KBWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
-           // cpWriter.writePair(candidatePair);
+            // cpWriter.writePair(candidatePair);
         }
 
         System.out.println("finished 1 element kbs");
