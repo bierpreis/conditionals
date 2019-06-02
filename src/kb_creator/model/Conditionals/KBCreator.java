@@ -73,6 +73,8 @@ public class KBCreator implements Runnable {
         while (!l.getList().get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.getList().get(k).size();
+
+            //todo: only start kb writer when writing is requested?
             KBWriter kbWriter = new KBWriter(filePath, k + 1);
 
             //line  7
@@ -118,7 +120,7 @@ public class KBCreator implements Runnable {
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
-                        inconsistentKBWriter.writeInconsistentKBToFile(inconsistentKB);
+                        inconsistentKBWriter.addInconsistentKB(inconsistentKB);
                     }
                 }
 
@@ -137,7 +139,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
 
-                kbWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
+                kbWriter.addConsistentKB(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
@@ -167,7 +169,10 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
-        KBWriter KBWriter = new KBWriter(filePath, 1);
+        KBWriter kbWriter = new KBWriter(filePath, 1);
+        Thread kbWriterThread = new Thread(kbWriter);
+        kbWriterThread.start();
+
         System.out.println("creating 1 element kbs");
 
         iterationNumberOfKBs = 0;
@@ -189,7 +194,7 @@ public class KBCreator implements Runnable {
 
 
         for (CandidatePair candidatePair : l) {
-            KBWriter.writeConsistentKBToFile(candidatePair.getKnowledgeBase());
+            kbWriter.addConsistentKB(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }
 

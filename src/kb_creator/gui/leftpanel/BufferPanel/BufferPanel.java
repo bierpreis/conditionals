@@ -1,8 +1,6 @@
-package kb_creator.gui.leftpanel;
+package kb_creator.gui.leftpanel.BufferPanel;
 
-import groovyjarjarantlr.actions.cpp.ActionLexer;
-import kb_creator.gui.leftpanel.SafePanel.FileLocationPanel;
-import kb_creator.gui.leftpanel.SafePanel.SafePanel;
+import kb_creator.gui.leftpanel.KBSavePanel.KBLocationPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +9,7 @@ import java.awt.event.ActionListener;
 public class BufferPanel extends JPanel {
     private ButtonGroup buttonGroup;
     private String requestedPath = null;
-    private FileLocationPanel fileLocationPanel;
+    private KBLocationPanel KBLocationPanel;
 
     public BufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
@@ -30,7 +28,7 @@ public class BufferPanel extends JPanel {
         buttonGroup.add(onButton);
         buttonGroup.add(offButton);
 
-        add(fileLocationPanel = new FileLocationPanel());
+        add(KBLocationPanel = new KBLocationPanel());
 
         //JButton chooseFolderButton = new JButton("Choose Folder");
         //add(chooseFolderButton);
@@ -40,14 +38,14 @@ public class BufferPanel extends JPanel {
     public boolean isBufferingRequested() {
         if (buttonGroup.getSelection().getActionCommand().equals("off"))
             return false;
-        else if (buttonGroup.getSelection().getActionCommand().equals("on") && fileLocationPanel.getFilePath() == null) {
+        else if (buttonGroup.getSelection().getActionCommand().equals("on") && KBLocationPanel.getFilePath() == null) {
             new NoFilePathWarning();
             return false;
         } else return true;
     }
 
     public String getPath() {
-        return fileLocationPanel.getFilePath();
+        return KBLocationPanel.getFilePath();
     }
 
     private class NoFilePathWarning {

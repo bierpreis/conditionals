@@ -1,19 +1,19 @@
-package kb_creator.gui.leftpanel.SafePanel;
+package kb_creator.gui.leftpanel.KBSavePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CheckboxPanel extends JPanel {
+public class KBCheckboxPanel extends JPanel {
     private JCheckBox checkBox;
-    private FileLocationPanel fileLocationPanel;
+    private KBLocationPanel KBLocationPanel;
 
-    public CheckboxPanel(FileLocationPanel safePanel) {
+    public KBCheckboxPanel(KBLocationPanel safePanel) {
         checkBox = new JCheckBox("Save KBs to File");
         add(checkBox);
-        this.fileLocationPanel = safePanel;
+        this.KBLocationPanel = safePanel;
         checkBox.addActionListener(new CheckboxListener());
-        fileLocationPanel.setActive(checkBox.isSelected());
+        KBLocationPanel.setActive(checkBox.isSelected());
 
     }
 
@@ -21,7 +21,7 @@ public class CheckboxPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            fileLocationPanel.setActive(checkBox.isSelected());
+            KBLocationPanel.setActive(checkBox.isSelected());
 
         }
     }

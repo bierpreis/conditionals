@@ -1,26 +1,27 @@
-package kb_creator.gui.leftpanel.SafePanel;
+package kb_creator.gui.leftpanel.BufferPanel;
 
+import kb_creator.gui.leftpanel.KBSavePanel.KBLocationPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FileLocationPanel extends JPanel {
+public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
 
-    public FileLocationPanel() {
+    public BufferLocationPanel() {
         //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
         saveButton = new JButton("Choose Folder");
-        saveButton.addActionListener(new SaveButtonListener(this));
+        saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);
     }
 
-    private class SaveButtonListener implements ActionListener {
-        FileLocationPanel fileLocationPanel;
+    private class BufferSaveButtonListener implements ActionListener {
+        BufferLocationPanel bufferLocationPanel;
 
-        public SaveButtonListener(FileLocationPanel fileLocationPanel) {
-            this.fileLocationPanel = fileLocationPanel;
+        public BufferSaveButtonListener(BufferLocationPanel bufferLocationPanel) {
+            this.bufferLocationPanel = bufferLocationPanel;
         }
 
         //todo: some dialog when buffering requested but no location available
@@ -28,7 +29,7 @@ public class FileLocationPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            fileChooser.showDialog(fileLocationPanel, "Choose Folder");
+            fileChooser.showDialog(bufferLocationPanel, "Choose Folder");
 
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null)
