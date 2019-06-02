@@ -23,7 +23,7 @@ public class FileLocationPanel extends JPanel {
             this.fileLocationPanel = fileLocationPanel;
         }
 
-        //todo: maybe deactivate start button when saving is on and no file selected
+        //todo: some dialog when buffering requested but no location available
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
