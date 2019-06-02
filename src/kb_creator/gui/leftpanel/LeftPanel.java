@@ -10,13 +10,12 @@ import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
-import java.awt.*;
 
-//todo: refact
+
 public class LeftPanel extends JPanel {
     private SignaturePanel signaturePanel;
 
-    //todo: action panel in own panel
+
     private ActionPanel actionPanel;
 
 
@@ -30,16 +29,11 @@ public class LeftPanel extends JPanel {
         add(actionPanel = new ActionPanel(observer));
 
 
-
-
         //todo: optionspanel
         add(signaturePanel = new SignaturePanel());
         add(bufferPanel = new BufferPanel());
-
         add(kbSafePanel = new KBSafePanel());
 
-
-        setPreferredSize(new Dimension(400, 700));
         revalidate();
     }
 
