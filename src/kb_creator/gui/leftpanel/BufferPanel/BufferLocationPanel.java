@@ -13,6 +13,7 @@ public class BufferLocationPanel extends JPanel {
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);
+        saveButton.setEnabled(false);
     }
 
     private class BufferSaveButtonListener implements ActionListener {
@@ -40,5 +41,9 @@ public class BufferLocationPanel extends JPanel {
 
     public String getFilePath() {
         return filePathToSave;
+    }
+
+    public void setActive(boolean active) {
+        saveButton.setEnabled(active);
     }
 }

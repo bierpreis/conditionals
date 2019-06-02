@@ -10,14 +10,16 @@ public class BufferPanel extends JPanel {
     private ButtonGroup buttonGroup;
     private String requestedPath = null;
     private BufferLocationPanel bufferLocationPanel;
+    private BufferCheckboxPanel bufferCheckboxPanel;
 
     public BufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
-
-
-
+        //todo: maybe tur this. but how?
         add(bufferLocationPanel = new BufferLocationPanel());
+
+        add(bufferCheckboxPanel = new BufferCheckboxPanel(bufferLocationPanel));
+
 
         //JButton chooseFolderButton = new JButton("Choose Folder");
         //add(chooseFolderButton);
