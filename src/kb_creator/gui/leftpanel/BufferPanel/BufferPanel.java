@@ -1,13 +1,13 @@
 package kb_creator.gui.leftpanel.BufferPanel;
 
-import kb_creator.gui.leftpanel.KBSavePanel.KBLocationPanel;
+
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BufferPanel extends JPanel {
-    private ButtonGroup buttonGroup;
+
     private String requestedPath = null;
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
@@ -15,24 +15,17 @@ public class BufferPanel extends JPanel {
     public BufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
-        //todo: maybe tur this. but how?
-        add(bufferLocationPanel = new BufferLocationPanel());
+        bufferLocationPanel = new BufferLocationPanel();
 
-        add(bufferCheckboxPanel = new BufferCheckboxPanel(bufferLocationPanel));
+        bufferCheckboxPanel = new BufferCheckboxPanel(bufferLocationPanel);
 
 
-        //JButton chooseFolderButton = new JButton("Choose Folder");
-        //add(chooseFolderButton);
-
+        add(bufferCheckboxPanel);
+        add(bufferLocationPanel);
     }
 
     public boolean isBufferingRequested() {
-        if (buttonGroup.getSelection().getActionCommand().equals("off"))
-            return false;
-        else if (buttonGroup.getSelection().getActionCommand().equals("on") && bufferLocationPanel.getFilePath() == null) {
-            new NoFilePathWarning();
-            return false;
-        } else return true;
+        return bufferCheckboxPanel.isSelected();
     }
 
     public String getPath() {

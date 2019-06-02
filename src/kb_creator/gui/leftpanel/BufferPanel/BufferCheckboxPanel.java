@@ -24,4 +24,8 @@ public class BufferCheckboxPanel extends JPanel {
             bufferLocationPanel.setActive(saveCheckBox.isSelected());
         }
     }
+
+    public boolean isSelected() {
+        return saveCheckBox.isSelected();
+    }
 }
