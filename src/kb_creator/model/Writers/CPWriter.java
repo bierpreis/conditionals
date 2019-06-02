@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-//todo: thread for this
+//todo: thread for this and combine with bufferedList
 public class CPWriter {
     private String folderToSave;
 

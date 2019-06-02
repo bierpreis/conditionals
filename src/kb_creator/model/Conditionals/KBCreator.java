@@ -1,6 +1,8 @@
 package kb_creator.model.Conditionals;
 
+import cucumber.api.java.lv.Un;
 import kb_creator.Observer.Status;
+import kb_creator.model.Conditionals.Lists.UnbufferedList;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
 import kb_creator.model.Writers.KBWriter;
@@ -50,7 +52,7 @@ public class KBCreator implements Runnable {
         //here it starts at 0 because lists in java start at 0 and not 1
         k = 0;
 
-        List<List<CandidatePair>> l = new ArrayList<>();
+        UnbufferedList l = new UnbufferedList();
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
@@ -61,22 +63,22 @@ public class KBCreator implements Runnable {
         CandidatePair.setNfc(nfcMap);
         KnowledgeBase.setNfcMap(nfcMap);
 
-        l.add(initOneElementKBs(nfc, cnfc));
+        l.getList().add(initOneElementKBs(nfc, cnfc));
 
 
         //the following is the actual loop where the work is done
 
         //line 6
-        while (!l.get(k).isEmpty()) {
+        while (!l.getList().get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
-            candidatePairAmount = l.get(k).size();
+            candidatePairAmount = l.getList().get(k).size();
             KBWriter kbWriter = new KBWriter(filePath, k + 1);
 
             //line  7
-            l.add(new ArrayList<>());
+            l.getList().add(new ArrayList<>());
             iterationNumberOfKBs = 1;
             //this loop is line 8
-            for (CandidatePair candidatePair : l.get(k)) {
+            for (CandidatePair candidatePair : l.getList().get(k)) {
 
                 //line 9
                 for (Integer r : candidatePair.getCandidatesNumbersList()) {
@@ -100,7 +102,7 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
-                        l.get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.getList().get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
