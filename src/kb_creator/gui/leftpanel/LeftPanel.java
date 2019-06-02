@@ -17,9 +17,6 @@ import java.awt.*;
 public class LeftPanel extends JPanel {
     private SignaturePanel signaturePanel;
 
-    //todo: status panel in own panel
-    private MainStatusPanel mainStatusPanel;
-
     //todo: action panel in own panel
     private ActionPanel actionPanel;
 
@@ -37,10 +34,8 @@ public class LeftPanel extends JPanel {
         add(actionPanel = new ActionPanel(observer));
         add(kbSafePanel = new KBSafePanel());
 
-        add(mainStatusPanel = new MainStatusPanel(actionPanel));
 
         //todo: this in main status panel
-
 
 
         setPreferredSize(new Dimension(400, 700));
@@ -56,13 +51,6 @@ public class LeftPanel extends JPanel {
         throw new RuntimeException("No valid signature:" + signature);
     }
 
-    public MainStatusPanel getMainStatusPanel() {
-        return mainStatusPanel;
-    }
-
-    public MemoryPanel getMemoryPanel() {
-        return mainStatusPanel.getMemoryPanel();
-    }
 
     public String getKBPath() {
         return kbSafePanel.getFileLocation();
@@ -74,5 +62,9 @@ public class LeftPanel extends JPanel {
 
     public boolean isBufferingRequested() {
         return bufferPanel.isBufferingRequested();
+    }
+
+    public ActionPanel getActionPanel() {
+        return actionPanel;
     }
 }

@@ -14,6 +14,7 @@ public class KBMainWindow {
     private KBCreatorObserver observer;
     private LeftPanel leftPanel;
     private JFrame mainWindow;
+    private MainStatusPanel mainStatusPanel;
 
     public KBMainWindow(KBCreatorObserver observer) {
         this.observer = observer;
@@ -21,6 +22,7 @@ public class KBMainWindow {
         mainWindow.setLayout(new BorderLayout());
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
+        mainWindow.add(mainStatusPanel = new MainStatusPanel(leftPanel.getActionPanel()));
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +37,7 @@ public class KBMainWindow {
     }
 
     public MainStatusPanel getInfoPanel() {
-        return leftPanel.getMainStatusPanel();
+        return mainStatusPanel;
     }
 
     public JFrame getMainWindow() {
@@ -43,7 +45,7 @@ public class KBMainWindow {
     }
 
     public MemoryPanel getMemoryPanel() {
-        return leftPanel.getMemoryPanel();
+        return mainStatusPanel.getMemoryPanel();
     }
 
     public String getKbFilePath() {
