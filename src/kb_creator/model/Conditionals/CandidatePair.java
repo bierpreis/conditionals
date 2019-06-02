@@ -25,7 +25,7 @@ public class CandidatePair {
 
     public CandidatePair(String stringFromFile) {
         //todo
-        String[] splitString = stringFromFile.split("Candidates:");
+        String[] splitString = stringFromFile.split("candidates:");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File");
         //divide string into kb and candidates
@@ -92,7 +92,7 @@ public class CandidatePair {
         sb.append("KB:\n");
         sb.append(knowledgeBase.toShortFileString());
         sb.append("\n\n");
-        sb.append("Candidates:\n");
+        sb.append("candidates:\n");
         sb.append(candidatesNumbersList);
         sb.append("\n\nEOF");
 

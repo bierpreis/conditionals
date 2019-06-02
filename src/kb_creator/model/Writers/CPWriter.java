@@ -54,9 +54,20 @@ public class CPWriter {
     //todo
     public CandidatePair readNextPair(int numberOfConditionals) {
         //read String
+        File fileToRead = new File(folderToSave + "/" + numberOfConditionals + "/");
+        System.out.println("files to read: ");
 
+        //todo: candidate pairs should be in order. check this
         CandidatePair candidatePair = new CandidatePair("test");
+        for (File file : fileToRead.listFiles()) {
+            if (!file.isDirectory()) {
+                System.out.println(file.getName());
 
-        return candidatePair;
+            }
+
+
+        }
+        return new CandidatePair("test");
+
     }
 }

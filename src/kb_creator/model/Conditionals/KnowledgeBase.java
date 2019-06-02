@@ -1,5 +1,6 @@
 package kb_creator.model.Conditionals;
 
+import gherkin.lexer.Kn;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
@@ -36,14 +37,12 @@ public class KnowledgeBase {
             signature = new ABC();
         else throw new RuntimeException("No valid signature found in file");
 
+        conditionalNumbersList = new ArrayList<>();
         stringFromFile.replace(".*conditionals\n\n", "");
-        String[] conditionalStringArray = stringFromFile.split("\n");
-        for (String conditonalstring : conditionalStringArray) {
-            if (!conditonalstring.equals("\\}"))
-                //todo: write conditional in cp as number for better readability
-                System.out.println("lol");
+        String[] conditionalStringArray = stringFromFile.split(", ");
+        //todo: parse ints like in test
 
-        }
+
     }
 
 

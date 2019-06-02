@@ -9,7 +9,14 @@ import nfc.model.World;
 public class Test {
 
     public static void main(String[] args) {
-        signatureTest();
+        String niceString = "1, 5, 15, 20";
+
+        String[] splitString = niceString.split(", ");
+
+        for (String string : splitString)
+            System.out.println(Integer.parseInt(string));
+
+        //System.out.println(Integer.parseInt(niceString));
 
     }
 
