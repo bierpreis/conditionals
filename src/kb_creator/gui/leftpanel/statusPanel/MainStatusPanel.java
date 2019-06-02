@@ -6,9 +6,12 @@ import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import javax.swing.*;
 
 public class MainStatusPanel extends JPanel {
+    //todo:
+
     private OverallStatusPanel overallStatusPanel;
     private CurrentIterationPanel currentIterationPanel;
     private NextIterationPanel nextIterationPanel;
+    private MemoryPanel memoryPanel;
 
     public MainStatusPanel(ActionPanel actionPanel) {
         setBorder(BorderFactory.createTitledBorder("Status"));
@@ -23,6 +26,8 @@ public class MainStatusPanel extends JPanel {
 
         nextIterationPanel = new NextIterationPanel();
         add(nextIterationPanel);
+
+        add(memoryPanel = new MemoryPanel());
 
     }
 
@@ -52,5 +57,9 @@ public class MainStatusPanel extends JPanel {
 
     public void showNextCandidatePairs(int nextCandidatepairs) {
         nextIterationPanel.showCandidates(nextCandidatepairs);
+    }
+
+    public MemoryPanel getMemoryPanel() {
+        return memoryPanel;
     }
 }

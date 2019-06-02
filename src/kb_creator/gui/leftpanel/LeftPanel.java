@@ -16,9 +16,14 @@ import java.awt.*;
 //todo: refact
 public class LeftPanel extends JPanel {
     private SignaturePanel signaturePanel;
+
+    //todo: status panel in own panel
     private MainStatusPanel mainStatusPanel;
+
+    //todo: action panel in own panel
     private ActionPanel actionPanel;
-    private MemoryPanel memoryPanel;
+
+
     private KBSafePanel kbSafePanel;
     private BufferPanel bufferPanel;
 
@@ -33,7 +38,9 @@ public class LeftPanel extends JPanel {
         add(kbSafePanel = new KBSafePanel());
 
         add(mainStatusPanel = new MainStatusPanel(actionPanel));
-        add(memoryPanel = new MemoryPanel());
+
+        //todo: this in main status panel
+
 
 
         setPreferredSize(new Dimension(400, 700));
@@ -54,7 +61,7 @@ public class LeftPanel extends JPanel {
     }
 
     public MemoryPanel getMemoryPanel() {
-        return memoryPanel;
+        return mainStatusPanel.getMemoryPanel();
     }
 
     public String getKBPath() {
