@@ -34,7 +34,7 @@ public class CPWriter {
 
     }
 
-    //todo: this somehow doenst work
+
     public void deleteFiles(int numberOfConditionals) {
         System.out.println("trying to delete " + numberOfConditionals + " element pairs");
         File fileToDelete = new File(folderToSave + "/" + numberOfConditionals + "/");
