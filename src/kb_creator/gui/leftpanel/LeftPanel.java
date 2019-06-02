@@ -1,7 +1,6 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.leftpanel.SafePanel.FileLocationPanel;
 import kb_creator.gui.leftpanel.SafePanel.SafePanel;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import kb_creator.model.Signature.AB;
@@ -10,7 +9,6 @@ import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class LeftPanel extends JPanel {
     private SignaturePanel signaturePanel;
@@ -20,7 +18,7 @@ public class LeftPanel extends JPanel {
     private SafePanel safePanel;
     private BufferPanel bufferPanel;
 
-    //todo: panel for buffering candidate pairs
+
     public LeftPanel(KBCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //setLayout(new BorderLayout());
@@ -55,7 +53,15 @@ public class LeftPanel extends JPanel {
         return memoryPanel;
     }
 
-    public String getFilePath() {
+    public String getKBPath() {
         return safePanel.getFileLocation();
+    }
+
+    public String getCPPath() {
+        return bufferPanel.getPath();
+    }
+
+    public boolean isBufferingRequested() {
+        return bufferPanel.isBufferingRequested();
     }
 }

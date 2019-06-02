@@ -9,7 +9,6 @@ import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 public class KBMainWindow {
     private KBCreatorObserver observer;
@@ -48,6 +47,10 @@ public class KBMainWindow {
     }
 
     public String getFilePath() {
-        return leftPanel.getFilePath();
+        return leftPanel.getKBPath();
+    }
+
+    public boolean isBufferingRequested() {
+        return leftPanel.isBufferingRequested();
     }
 }

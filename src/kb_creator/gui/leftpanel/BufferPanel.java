@@ -38,7 +38,7 @@ public class BufferPanel extends JPanel {
         } else return true;
     }
 
-    private String getPath() {
+    public String getPath() {
         return requestedPath;
     }
 
