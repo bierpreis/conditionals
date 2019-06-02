@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class BufferPanel extends JPanel {
     private ButtonGroup buttonGroup;
     private String requestedPath = null;
-    private KBLocationPanel KBLocationPanel;
+    private BufferLocationPanel bufferLocationPanel;
 
     public BufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
@@ -28,7 +28,7 @@ public class BufferPanel extends JPanel {
         buttonGroup.add(onButton);
         buttonGroup.add(offButton);
 
-        add(KBLocationPanel = new KBLocationPanel());
+        add(bufferLocationPanel = new BufferLocationPanel());
 
         //JButton chooseFolderButton = new JButton("Choose Folder");
         //add(chooseFolderButton);
@@ -38,14 +38,14 @@ public class BufferPanel extends JPanel {
     public boolean isBufferingRequested() {
         if (buttonGroup.getSelection().getActionCommand().equals("off"))
             return false;
-        else if (buttonGroup.getSelection().getActionCommand().equals("on") && KBLocationPanel.getFilePath() == null) {
+        else if (buttonGroup.getSelection().getActionCommand().equals("on") && bufferLocationPanel.getFilePath() == null) {
             new NoFilePathWarning();
             return false;
         } else return true;
     }
 
     public String getPath() {
-        return KBLocationPanel.getFilePath();
+        return bufferLocationPanel.getFilePath();
     }
 
     private class NoFilePathWarning {
