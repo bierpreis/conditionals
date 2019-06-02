@@ -3,6 +3,8 @@ package kb_creator.gui.leftpanel;
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.BufferPanel.BufferPanel;
 import kb_creator.gui.leftpanel.KBSavePanel.KBSafePanel;
+import kb_creator.gui.leftpanel.statusPanel.MainStatusPanel;
+import kb_creator.gui.leftpanel.statusPanel.MemoryPanel;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import kb_creator.model.Signature.AB;
 import kb_creator.model.Signature.ABC;
@@ -11,9 +13,10 @@ import kb_creator.model.Signature.AbstractSignature;
 import javax.swing.*;
 import java.awt.*;
 
+//todo: refact
 public class LeftPanel extends JPanel {
     private SignaturePanel signaturePanel;
-    private InfoPanel infoPanel;
+    private MainStatusPanel mainStatusPanel;
     private ActionPanel actionPanel;
     private MemoryPanel memoryPanel;
     private KBSafePanel kbSafePanel;
@@ -29,7 +32,7 @@ public class LeftPanel extends JPanel {
         add(actionPanel = new ActionPanel(observer));
         add(kbSafePanel = new KBSafePanel());
 
-        add(infoPanel = new InfoPanel(actionPanel));
+        add(mainStatusPanel = new MainStatusPanel(actionPanel));
         add(memoryPanel = new MemoryPanel());
 
 
@@ -46,8 +49,8 @@ public class LeftPanel extends JPanel {
         throw new RuntimeException("No valid signature:" + signature);
     }
 
-    public InfoPanel getInfoPanel() {
-        return infoPanel;
+    public MainStatusPanel getMainStatusPanel() {
+        return mainStatusPanel;
     }
 
     public MemoryPanel getMemoryPanel() {

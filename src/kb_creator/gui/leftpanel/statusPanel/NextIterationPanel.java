@@ -1,4 +1,4 @@
-package kb_creator.gui.leftpanel;
+package kb_creator.gui.leftpanel.statusPanel;
 
 import com.intellij.ui.components.JBPanel;
 

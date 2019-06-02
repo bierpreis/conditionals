@@ -1,9 +1,9 @@
 package kb_creator.gui;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.leftpanel.InfoPanel;
+import kb_creator.gui.leftpanel.statusPanel.MainStatusPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.leftpanel.MemoryPanel;
+import kb_creator.gui.leftpanel.statusPanel.MemoryPanel;
 import kb_creator.model.Signature.AbstractSignature;
 
 
@@ -34,8 +34,8 @@ public class KBMainWindow {
         return leftPanel.getSignature();
     }
 
-    public InfoPanel getInfoPanel() {
-        return leftPanel.getInfoPanel();
+    public MainStatusPanel getInfoPanel() {
+        return leftPanel.getMainStatusPanel();
     }
 
     public JFrame getMainWindow() {

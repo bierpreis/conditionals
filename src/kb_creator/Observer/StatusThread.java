@@ -1,11 +1,11 @@
 package kb_creator.Observer;
 
-import kb_creator.gui.leftpanel.InfoPanel;
-import kb_creator.gui.leftpanel.MemoryPanel;
+import kb_creator.gui.leftpanel.statusPanel.MainStatusPanel;
+import kb_creator.gui.leftpanel.statusPanel.MemoryPanel;
 import kb_creator.model.Conditionals.KBCreator;
 
 public class StatusThread implements Runnable {
-    private InfoPanel infoPanel;
+    private MainStatusPanel mainStatusPanel;
     private KBCreator creatorThread;
     private long idealSleepTime;
     private int lastKBAmount;
@@ -14,8 +14,8 @@ public class StatusThread implements Runnable {
     private boolean isRunning = true;
 
 
-    public StatusThread(InfoPanel infoPanel, MemoryPanel memoryPanel) {
-        this.infoPanel = infoPanel;
+    public StatusThread(MainStatusPanel mainStatusPanel, MemoryPanel memoryPanel) {
+        this.mainStatusPanel = mainStatusPanel;
         idealSleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
         this.memoryPanel = memoryPanel;
@@ -26,20 +26,20 @@ public class StatusThread implements Runnable {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
             if (creatorThread != null) {
-                infoPanel.showStatus(creatorThread.getStatus());
-                infoPanel.showIterationKBs(creatorThread.getIterationNumberOfKBs());
-                infoPanel.showKBAmount(creatorThread.getTotalKbAmount());
-                infoPanel.showProgress(creatorThread.getCurrentK());
-                infoPanel.showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-                infoPanel.showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
-                infoPanel.showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+                mainStatusPanel.showStatus(creatorThread.getStatus());
+                mainStatusPanel.showIterationKBs(creatorThread.getIterationNumberOfKBs());
+                mainStatusPanel.showKBAmount(creatorThread.getTotalKbAmount());
+                mainStatusPanel.showProgress(creatorThread.getCurrentK());
+                mainStatusPanel.showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
+                mainStatusPanel.showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
+                mainStatusPanel.showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
 
             } else {
-                infoPanel.showStatus(Status.NOT_STARTED);
-                infoPanel.showIterationKBs(0);
-                infoPanel.showKBAmount(0);
-                infoPanel.showProgress(-1);
-                infoPanel.showSpeed(0);
+                mainStatusPanel.showStatus(Status.NOT_STARTED);
+                mainStatusPanel.showIterationKBs(0);
+                mainStatusPanel.showKBAmount(0);
+                mainStatusPanel.showProgress(-1);
+                mainStatusPanel.showSpeed(0);
             }
 
             memoryPanel.showFreeMemory();

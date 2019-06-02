@@ -1,4 +1,4 @@
-package kb_creator.gui.leftpanel;
+package kb_creator.gui.leftpanel.statusPanel;
 
 import javax.swing.*;
 import java.text.NumberFormat;

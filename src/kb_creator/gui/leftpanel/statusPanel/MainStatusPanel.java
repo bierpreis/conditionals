@@ -1,16 +1,17 @@
-package kb_creator.gui.leftpanel;
+package kb_creator.gui.leftpanel.statusPanel;
 
 import kb_creator.Observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
 
-public class InfoPanel extends JPanel {
+public class MainStatusPanel extends JPanel {
     private OverallStatusPanel overallStatusPanel;
     private CurrentIterationPanel currentIterationPanel;
     private NextIterationPanel nextIterationPanel;
 
-    public InfoPanel(ActionPanel actionPanel) {
+    public MainStatusPanel(ActionPanel actionPanel) {
+        setBorder(BorderFactory.createTitledBorder("Status"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalGlue());
 
