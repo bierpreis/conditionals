@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 
 public class KBCheckboxPanel extends JPanel {
     private JCheckBox checkBox;
-    private KBLocationPanel KBLocationPanel;
+    private KBLocationPanel kbLocationPanel;
 
     public KBCheckboxPanel(KBLocationPanel safePanel) {
         checkBox = new JCheckBox("Save KBs to File");
         add(checkBox);
-        this.KBLocationPanel = safePanel;
+        this.kbLocationPanel = safePanel;
         checkBox.addActionListener(new CheckboxListener());
-        KBLocationPanel.setActive(checkBox.isSelected());
+        kbLocationPanel.setActive(checkBox.isSelected());
 
     }
 
@@ -21,7 +21,7 @@ public class KBCheckboxPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            KBLocationPanel.setActive(checkBox.isSelected());
+            kbLocationPanel.setActive(checkBox.isSelected());
 
         }
     }

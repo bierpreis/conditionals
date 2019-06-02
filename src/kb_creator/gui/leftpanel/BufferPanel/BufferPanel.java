@@ -15,18 +15,7 @@ public class BufferPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
 
-        JRadioButton offButton = new JRadioButton("off");
-        add(offButton);
-        offButton.setSelected(true);
-        offButton.setActionCommand("off");
 
-        JRadioButton onButton = new JRadioButton("on");
-        add(onButton);
-        onButton.setActionCommand("on");
-
-        buttonGroup = new ButtonGroup();
-        buttonGroup.add(onButton);
-        buttonGroup.add(offButton);
 
         add(bufferLocationPanel = new BufferLocationPanel());
 

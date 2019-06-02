@@ -4,21 +4,21 @@ package kb_creator.gui.leftpanel.KBSavePanel;
 import javax.swing.*;
 
 public class KBSafePanel extends JPanel {
-    private KBCheckboxPanel KBCheckboxPanel;
-    private KBLocationPanel KBLocationPanel;
+    private KBCheckboxPanel kbCheckboxPanel;
+    private KBLocationPanel kbLocationPanel;
 
 
     public KBSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Safe Options"));
-        KBLocationPanel = new KBLocationPanel();
-        KBCheckboxPanel = new KBCheckboxPanel(KBLocationPanel);
-        add(KBCheckboxPanel);
+        kbLocationPanel = new KBLocationPanel();
+        kbCheckboxPanel = new KBCheckboxPanel(kbLocationPanel);
+        add(kbCheckboxPanel);
 
-        add(KBLocationPanel);
+        add(kbLocationPanel);
     }
 
     public String getFileLocation() {
-        return KBLocationPanel.getFilePath();
+        return kbLocationPanel.getFilePath();
 
     }
 

@@ -1,7 +1,5 @@
 package kb_creator.gui.leftpanel.BufferPanel;
 
-import kb_creator.gui.leftpanel.KBSavePanel.KBLocationPanel;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +9,7 @@ public class BufferLocationPanel extends JPanel {
     private String filePathToSave;
 
     public BufferLocationPanel() {
-        //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
+
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);
@@ -39,9 +37,6 @@ public class BufferLocationPanel extends JPanel {
 
     }
 
-    public void setActive(boolean active) {
-        saveButton.setEnabled(active);
-    }
 
     public String getFilePath() {
         return filePathToSave;
