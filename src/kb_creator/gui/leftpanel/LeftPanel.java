@@ -18,6 +18,7 @@ public class LeftPanel extends JPanel {
     private ActionPanel actionPanel;
     private MemoryPanel memoryPanel;
     private SafePanel safePanel;
+    private BufferPanel bufferPanel;
 
     //todo: panel for buffering candidate pairs
     public LeftPanel(KBCreatorObserver observer) {
@@ -25,6 +26,7 @@ public class LeftPanel extends JPanel {
         //setLayout(new BorderLayout());
 
         add(signaturePanel = new SignaturePanel());
+        add(bufferPanel = new BufferPanel());
         add(actionPanel = new ActionPanel(observer));
         add(safePanel = new SafePanel());
 
