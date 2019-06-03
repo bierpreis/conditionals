@@ -1,6 +1,6 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+
 
 import javax.swing.*;
 
@@ -8,9 +8,9 @@ public class KbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
     private KBLocationPanel kbLocationPanel;
 
-    public KbSafePanel(MainKbSafePanel mainKbSafePanel, ActionPanel actionPanel) {
+    public KbSafePanel(MainKbSafePanel mainKbSafePanel) {
 
-        kbCheckboxPanel = new KBCheckboxPanel(mainKbSafePanel, actionPanel);
+        kbCheckboxPanel = new KBCheckboxPanel(mainKbSafePanel);
         kbLocationPanel = new KBLocationPanel(kbCheckboxPanel);
 
 

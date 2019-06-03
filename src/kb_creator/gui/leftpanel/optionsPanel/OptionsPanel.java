@@ -13,17 +13,14 @@ public class OptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private BufferPanel bufferPanel;
     private SignaturePanel signaturePanel;
-    private ActionPanel actionPanel;
 
-    public OptionsPanel(ActionPanel actionPanel) {
+    public OptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
 
         add(signaturePanel = new SignaturePanel());
-        add(bufferPanel = new BufferPanel(actionPanel));
-        add(mainKbSafePanel = new MainKbSafePanel(actionPanel));
-
-        this.actionPanel = actionPanel;
+        add(bufferPanel = new BufferPanel());
+        add(mainKbSafePanel = new MainKbSafePanel());
     }
 
     public AbstractSignature getSignature() {

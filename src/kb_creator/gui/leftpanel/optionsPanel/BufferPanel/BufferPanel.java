@@ -5,8 +5,7 @@ package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class BufferPanel extends JPanel {
 
@@ -14,7 +13,7 @@ public class BufferPanel extends JPanel {
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
 
-    public BufferPanel(ActionPanel actionPanel) {
+    public BufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
         bufferLocationPanel = new BufferLocationPanel();

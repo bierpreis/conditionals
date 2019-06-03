@@ -17,10 +17,9 @@ public class LeftPanel extends JPanel {
 
     public LeftPanel(KBCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        //setLayout(new BorderLayout());
 
         actionPanel = new ActionPanel(observer);
-        optionsPanel = new OptionsPanel(actionPanel);
+        optionsPanel = new OptionsPanel();
 
 
         add(optionsPanel);

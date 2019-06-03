@@ -1,7 +1,5 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +8,7 @@ public class KBCheckboxPanel extends JPanel {
     private JCheckBox checkBox;
     private MainKbSafePanel mainKbSafePanel;
 
-    public KBCheckboxPanel(MainKbSafePanel mainKbSafePanel, ActionPanel actionPanel) {
+    public KBCheckboxPanel(MainKbSafePanel mainKbSafePanel) {
         checkBox = new JCheckBox("Save KBs to File");
         add(checkBox);
         this.mainKbSafePanel = mainKbSafePanel;

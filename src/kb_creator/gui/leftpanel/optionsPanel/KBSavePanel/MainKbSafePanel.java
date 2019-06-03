@@ -11,13 +11,13 @@ public class MainKbSafePanel extends JPanel {
     private KbSafePanel kbSafePanel;
 
 
-    public MainKbSafePanel(ActionPanel actionPanel) {
+    public MainKbSafePanel() {
         System.out.println("create mainsafepanel");
-        //todo: action panel
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Safe Options"));
-        //System.out.println(this);
-        this.kbSafePanel = new KbSafePanel(this, actionPanel);
+
+        this.kbSafePanel = new KbSafePanel(this);
         add(kbSafePanel);
 
     }
