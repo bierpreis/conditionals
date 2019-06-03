@@ -80,7 +80,7 @@ public class KBCreator implements Runnable {
         while (!l.getList().get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.getList().get(k).size();
-
+            //todo: 1 kb writer for every k. then they got the same paths and can append files faster
             //line  7
             l.getList().add(new ArrayList<>());
             iterationNumberOfKBs = 1;

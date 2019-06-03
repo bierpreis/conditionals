@@ -20,8 +20,11 @@ public class KBWriter implements Runnable {
     private long nextSpeedcalculationTime;
     private final long SPEED_CALCULATION_INTERVAL = 5000;
 
+    private int consistentSpeed;
+    private int inconsistentSpeed;
+
     public void run() {
-        //todo: why is this so slow??
+
         while (true) {
             //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
             if (rootFilePath != null) {
