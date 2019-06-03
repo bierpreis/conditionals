@@ -28,7 +28,6 @@ public class KBLocationPanel extends JPanel {
             this.kbLocationPanel = kbLocationPanel;
         }
 
-        //todo: some dialog when saving requested but no location available
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();

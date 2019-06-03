@@ -7,13 +7,14 @@ import java.awt.event.ActionListener;
 public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
+    private BufferCheckboxPanel bufferCheckboxPanel;
 
-    public BufferLocationPanel() {
+    public BufferLocationPanel(BufferCheckboxPanel bufferCheckboxPanel) {
 
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);
-        saveButton.setEnabled(false);
+        this.bufferCheckboxPanel = bufferCheckboxPanel;
     }
 
     private class BufferSaveButtonListener implements ActionListener {
@@ -23,7 +24,6 @@ public class BufferLocationPanel extends JPanel {
             this.bufferLocationPanel = bufferLocationPanel;
         }
 
-        //todo: some dialog when buffering requested but no location available
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
@@ -31,8 +31,11 @@ public class BufferLocationPanel extends JPanel {
             fileChooser.showDialog(bufferLocationPanel, "Choose Folder");
 
             //avoid null pointer exception when no file gets selected
-            if (fileChooser.getSelectedFile() != null)
+            if (fileChooser.getSelectedFile() != null) {
+                bufferCheckboxPanel.setActive(true);
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
+
+            }
         }
 
 

@@ -9,20 +9,20 @@ import javax.swing.*;
 
 public class BufferPanel extends JPanel {
 
-    private String requestedPath = null;
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
 
     public BufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
-        bufferLocationPanel = new BufferLocationPanel();
+        bufferCheckboxPanel = new BufferCheckboxPanel();
 
-        bufferCheckboxPanel = new BufferCheckboxPanel(bufferLocationPanel);
+        bufferLocationPanel = new BufferLocationPanel(bufferCheckboxPanel);
 
 
-        add(bufferCheckboxPanel);
+
         add(bufferLocationPanel);
+        add(bufferCheckboxPanel);
     }
 
     public boolean isBufferingRequested() {
