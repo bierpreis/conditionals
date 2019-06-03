@@ -1,4 +1,4 @@
-package kb_creator.gui.leftpanel.statusPanel;
+package kb_creator.gui.statusPanel;
 
 import kb_creator.Observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;

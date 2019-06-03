@@ -1,9 +1,9 @@
 package kb_creator.gui;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.leftpanel.statusPanel.MainStatusPanel;
+import kb_creator.gui.statusPanel.MainStatusPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.leftpanel.statusPanel.MemoryPanel;
+import kb_creator.gui.statusPanel.MemoryPanel;
 import kb_creator.model.Signature.AbstractSignature;
 
 

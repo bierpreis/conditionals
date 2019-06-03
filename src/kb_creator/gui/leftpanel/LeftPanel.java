@@ -10,6 +10,7 @@ import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class LeftPanel extends JPanel {
@@ -33,6 +34,7 @@ public class LeftPanel extends JPanel {
         add(signaturePanel = new SignaturePanel());
         add(bufferPanel = new BufferPanel());
         add(kbSafePanel = new KBSafePanel());
+
 
         revalidate();
     }
