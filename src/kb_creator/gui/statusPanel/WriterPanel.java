@@ -1,6 +1,8 @@
 package kb_creator.gui.statusPanel;
 
 import javax.swing.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class WriterPanel extends JPanel {
     JLabel queueLengthLabel;
@@ -13,6 +15,7 @@ public class WriterPanel extends JPanel {
     }
 
     public void showQueueLength(int queueLength) {
-        queueLengthLabel.setText("Queue length: " + queueLength);
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        queueLengthLabel.setText("Queue length: " + formatter.format(queueLength));
     }
 }
