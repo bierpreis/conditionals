@@ -34,10 +34,13 @@ public class CandidatePair {
         candidatesNumbersList = createCandidatesListFromString(splitString[1]);
     }
 
-    //todo:
-    private List<Integer> createCandidatesListFromString(String candidatesString) {
-        List<Integer> candidatesList = new LinkedList<>();
-        System.out.println("string for creating candidates: " + candidatesString);
+    //todo: test
+    private List<Integer> createCandidatesListFromString(String inputString) {
+        List<Integer> candidatesList = new ArrayList<>();
+        String[] candidatesStringArray = inputString.split(",");
+
+        for (String candidateString : candidatesStringArray)
+            candidatesList.add(Integer.parseInt(candidateString));
 
         return candidatesList;
     }

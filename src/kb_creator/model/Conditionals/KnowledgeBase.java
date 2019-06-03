@@ -10,6 +10,7 @@ import kb_creator.model.Signature.AbstractSignature;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,7 @@ public class KnowledgeBase {
     }
 
     public KnowledgeBase(String stringFromFile) {
-        //todo
+        //todo: test
         System.out.println("string in kb: " + stringFromFile);
         stringFromFile.replace("signature\n", "");
 
@@ -40,8 +41,9 @@ public class KnowledgeBase {
         conditionalNumbersList = new ArrayList<>();
         stringFromFile.replace(".*conditionals\n\n", "");
         String[] conditionalStringArray = stringFromFile.split(", ");
-        //todo: parse ints like in test
 
+        for (String candidateString : conditionalStringArray)
+            conditionalNumbersList.add(Integer.parseInt(candidateString));
 
     }
 
