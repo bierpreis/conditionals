@@ -115,7 +115,7 @@ public class KBCreator implements Runnable {
                         totalNumberOfKBs++;
 
 
-                        //todo: inconsistens get here written much earlier then consistens and pairs. could the other be written earlier too?
+                        //todo: inconsistens get here written much earlier then consistents and pairs. could the other be written earlier too?
                     } else {
                         KBWriter inconsistentKBWriter = new KBWriter(filePath, k + 2);
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
@@ -131,15 +131,13 @@ public class KBCreator implements Runnable {
                     return;
                 }
 
-                //todo: could this and next not be in inner loop??
-                //todo: all pairs get written. even the incosistent?
-                //this gets written when candidatepair+1 is finished.
+                //todo: all pairs get written. even the incosistent!?
                 cpWriter.writePair(candidatePair);
 
                 //delete to save some memory
                 candidatePair.deleteCandidates();
 
-
+                //todo: this cant be correct.
                 kbWriter.addConsistentKB(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
