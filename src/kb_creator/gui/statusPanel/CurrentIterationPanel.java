@@ -38,8 +38,11 @@ public class CurrentIterationPanel extends JPanel {
         else progressLabel.setText("");
     }
 
+
     public void showSpeed(int speed) {
-        speedLabel.setText("Speed (KBs/Second): " + Integer.toString(speed));
+
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        speedLabel.setText("Speed (KBs/Second): " + formatter.format(speed));
     }
 
 
@@ -47,7 +50,6 @@ public class CurrentIterationPanel extends JPanel {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
-        repaint();
     }
 
     public void showCandidatePairs(int canditatePairs) {
