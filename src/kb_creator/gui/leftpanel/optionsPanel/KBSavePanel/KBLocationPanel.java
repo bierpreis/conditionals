@@ -10,11 +10,9 @@ import java.awt.event.ActionListener;
 public class KBLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
-    private MainKbSafePanel kbSafePanel;
     private KBCheckboxPanel checkboxPanel;
 
     public KBLocationPanel(KBCheckboxPanel checkboxPanel) {
-        //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new SaveButtonListener(this));
         add(saveButton);

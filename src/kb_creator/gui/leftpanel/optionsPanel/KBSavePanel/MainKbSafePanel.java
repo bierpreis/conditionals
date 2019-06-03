@@ -7,28 +7,30 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainKbSafePanel extends JPanel {
-
-    private KbSafePanel kbSafePanel;
+    private KBCheckboxPanel kbCheckboxPanel;
+    private KBLocationPanel kbLocationPanel;
 
 
     public MainKbSafePanel() {
-        System.out.println("create mainsafepanel");
+        setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(BorderFactory.createTitledBorder("Safe Options"));
 
-        this.kbSafePanel = new KbSafePanel(this);
-        add(kbSafePanel);
+        kbCheckboxPanel = new KBCheckboxPanel(this);
+        kbLocationPanel = new KBLocationPanel(kbCheckboxPanel);
+
+
+        add(kbLocationPanel);
+        add(kbCheckboxPanel);
 
     }
 
     public String getFileLocation() {
-        return kbSafePanel.getFilePath();
+        return kbLocationPanel.getFilePath();
 
     }
 
     public void setButtonActive(boolean active) {
-        this.kbSafePanel.setButtonActive(active);
+        kbCheckboxPanel.setActive(active);
     }
 
 }
