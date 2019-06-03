@@ -35,7 +35,6 @@ public class StatusThread implements Runnable {
                 mainStatusPanel.showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
                 mainStatusPanel.showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
                 mainStatusPanel.showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
-                System.out.println("using writer");
                 mainStatusPanel.showConsistentQueue(kbWriter.getConsistentQueue());
                 mainStatusPanel.showInconsistentQueue(kbWriter.getInconsistetnQueue());
 

@@ -19,7 +19,7 @@ public class KBMainWindow {
     public KBMainWindow(KBCreatorObserver observer) {
         this.observer = observer;
         mainWindow = new JFrame("Knowledge Base Creator");
-        //mainWindow.setLayout(new BorderLayout());
+
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(mainStatusPanel = new MainStatusPanel(leftPanel.getActionPanel()));

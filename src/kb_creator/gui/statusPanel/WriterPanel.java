@@ -9,7 +9,7 @@ public class WriterPanel extends JPanel {
     private JLabel consistentSpeedlabel;
 
     private JLabel inconsistentLabel;
-    private JLabel inconsistentSpeedlabel;
+    private JLabel inconsistentSpeedLabel;
 
     private long nextConsistentSpeedCalculation;
     private long nextInconsistentSpeedCalculation;
@@ -20,18 +20,22 @@ public class WriterPanel extends JPanel {
     private final int SPEED_CALCULATION_MS = 5000;
 
     public WriterPanel() {
+
+        Box vBox = Box.createVerticalBox();
+        add(vBox);
+
         setBorder(BorderFactory.createTitledBorder("KB Writer)"));
         consistentLabel = new JLabel();
-        add(consistentLabel);
+        vBox.add(consistentLabel);
 
         consistentSpeedlabel = new JLabel();
-        add(consistentSpeedlabel);
+        vBox.add(consistentSpeedlabel);
 
         inconsistentLabel = new JLabel();
-        add(inconsistentLabel);
+        vBox.add(inconsistentLabel);
 
-        inconsistentSpeedlabel = new JLabel();
-        add(inconsistentLabel);
+        inconsistentSpeedLabel = new JLabel();
+        vBox.add(inconsistentSpeedLabel);
 
         showConsistentQueue(0);
         showInconsistentQueue(0);
@@ -39,9 +43,12 @@ public class WriterPanel extends JPanel {
         showConsistentSpeed(0);
         showInconsistentSpeed(0);
 
-        nextConsistentSpeedCalculation = System.currentTimeMillis() + 10_000;
+        nextConsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
+        nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
     }
 
+    //todo: queue cant be used for calculating speed. must count written stuff?!
+    //3 consistent kb speed methods
     public void showConsistentQueue(int consistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
@@ -51,10 +58,6 @@ public class WriterPanel extends JPanel {
         }
     }
 
-    public void showInconsistentQueue(int inConsistentQueue) {
-        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
-    }
 
     public void showConsistentSpeed(int speed) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
@@ -72,16 +75,29 @@ public class WriterPanel extends JPanel {
         return speed;
     }
 
+
+    //3 inconsistent speed methods
+    public void showInconsistentQueue(int inConsistentQueue) {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
+
+        if (nextInconsistentSpeedCalculation < System.currentTimeMillis()) {
+            showInconsistentSpeed(calculateInconsistentSpeed(inConsistentQueue));
+        }
+    }
+
     private int calculateInconsistentSpeed(int currentQueue) {
+
         nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
         int speed = currentQueue - lastInconsistentQueue;
-        lastConsistentQueue = currentQueue;
+        lastInconsistentQueue = currentQueue;
         return speed;
     }
 
     private void showInconsistentSpeed(int speed) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        inconsistentSpeedlabel.setText("Speed: " + formatter.format(speed) + "KB/s");
+        inconsistentSpeedLabel.setText("Speed: " + formatter.format(speed) + "KB/s");
+
     }
 
 }
