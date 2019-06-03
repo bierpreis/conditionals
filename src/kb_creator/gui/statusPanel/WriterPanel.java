@@ -5,17 +5,27 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class WriterPanel extends JPanel {
-    JLabel queueLengthLabel;
+    private JLabel consistentLabel;
+    private JLabel inconsistentLabel;
 
     public WriterPanel() {
         setBorder(BorderFactory.createTitledBorder("KB Writer)"));
-        queueLengthLabel = new JLabel();
-        add(queueLengthLabel);
-        showQueueLength(0);
+        consistentLabel = new JLabel();
+        add(consistentLabel);
+
+        inconsistentLabel = new JLabel();
+        add(inconsistentLabel);
+        showConsistentQueue(0);
+        showInconsistentQueue(0);
     }
 
-    public void showQueueLength(int queueLength) {
+    public void showConsistentQueue(int consistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        queueLengthLabel.setText("Queue length: " + formatter.format(queueLength));
+        consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
+    }
+
+    public void showInconsistentQueue(int inConsistentQueue) {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
     }
 }

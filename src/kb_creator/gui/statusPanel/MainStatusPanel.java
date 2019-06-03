@@ -70,7 +70,11 @@ public class MainStatusPanel extends JPanel {
         return memoryPanel;
     }
 
-    public void showWriterQueue(int queueLength) {
-        writerPanel.showQueueLength(queueLength);
+    public void showConsistentQueue(int consistentLength) {
+        writerPanel.showConsistentQueue((consistentLength));
+    }
+
+    public void showInconsistentQueue(int inconsistentleghth) {
+        writerPanel.showInconsistentQueue(inconsistentleghth);
     }
 }
