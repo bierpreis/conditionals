@@ -2,6 +2,8 @@ package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 
 
+import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +14,7 @@ public class BufferPanel extends JPanel {
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
 
-    public BufferPanel() {
+    public BufferPanel(ActionPanel actionPanel) {
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
         bufferLocationPanel = new BufferLocationPanel();
@@ -32,38 +34,6 @@ public class BufferPanel extends JPanel {
         return bufferLocationPanel.getFilePath();
     }
 
-    private class NoFilePathWarning {
-        JDialog warningDialog;
-
-        NoFilePathWarning() {
-            warningDialog = new JDialog();
-
-            warningDialog.add(new JLabel("No Path for Buffering was chosen"));
-            warningDialog.add(new JLabel("Continuing without Buffering"));
 
 
-            JButton okButton = new JButton("ok");
-            warningDialog.add(okButton);
-            okButton.addActionListener(new OKButtonListener(this));
-
-
-        }
-
-        void dispose() {
-            warningDialog.dispose();
-        }
-    }
-
-    private class OKButtonListener implements ActionListener {
-        NoFilePathWarning noFilePathWarning;
-
-        OKButtonListener(NoFilePathWarning warningDialog) {
-            noFilePathWarning = warningDialog;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            noFilePathWarning.dispose();
-        }
-    }
 }

@@ -19,8 +19,12 @@ public class LeftPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //setLayout(new BorderLayout());
 
-        add(optionsPanel = new OptionsPanel());
-        add(actionPanel = new ActionPanel(observer));
+        actionPanel = new ActionPanel(observer);
+        optionsPanel = new OptionsPanel(actionPanel);
+
+
+        add(optionsPanel);
+        add(actionPanel);
 
 
         revalidate();

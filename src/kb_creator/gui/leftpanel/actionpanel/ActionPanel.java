@@ -58,5 +58,7 @@ public class ActionPanel extends JPanel {
         }
     }
 
-
+    public void activateStartButton(boolean active) {
+        startButton.setEnabled(active);
+    }
 }

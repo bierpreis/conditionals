@@ -1,7 +1,8 @@
 package kb_creator.gui.leftpanel.optionsPanel;
 
+import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.BufferPanel;
-import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.KBSafePanel;
+import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.MainKbSafePanel;
 import kb_creator.model.Signature.AB;
 import kb_creator.model.Signature.ABC;
 import kb_creator.model.Signature.AbstractSignature;
@@ -9,18 +10,20 @@ import kb_creator.model.Signature.AbstractSignature;
 import javax.swing.*;
 
 public class OptionsPanel extends JPanel {
-    private KBSafePanel kbSafePanel;
+    private MainKbSafePanel mainKbSafePanel;
     private BufferPanel bufferPanel;
     private SignaturePanel signaturePanel;
+    private ActionPanel actionPanel;
 
-    public OptionsPanel() {
+    public OptionsPanel(ActionPanel actionPanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
 
         add(signaturePanel = new SignaturePanel());
-        add(bufferPanel = new BufferPanel());
-        add(kbSafePanel = new KBSafePanel());
+        add(bufferPanel = new BufferPanel(actionPanel));
+        add(mainKbSafePanel = new MainKbSafePanel(actionPanel));
 
+        this.actionPanel = actionPanel;
     }
 
     public AbstractSignature getSignature() {
@@ -34,7 +37,7 @@ public class OptionsPanel extends JPanel {
     }
 
     public String getKbPath() {
-        return kbSafePanel.getFileLocation();
+        return mainKbSafePanel.getFileLocation();
     }
 
     public String getBufferPath() {

@@ -1,6 +1,8 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
 
+import kb_creator.gui.KBMainWindow;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,12 +10,15 @@ import java.awt.event.ActionListener;
 public class KBLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
+    private MainKbSafePanel kbSafePanel;
 
     public KBLocationPanel() {
         //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new SaveButtonListener(this));
         add(saveButton);
+
+        saveButton.setEnabled(false);
     }
 
     private class SaveButtonListener implements ActionListener {
@@ -33,6 +38,8 @@ public class KBLocationPanel extends JPanel {
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null)
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
+            kbSafePanel.showWarning(true);
+
         }
 
 
