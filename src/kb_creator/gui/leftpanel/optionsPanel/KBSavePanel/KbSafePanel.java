@@ -9,11 +9,13 @@ public class KbSafePanel extends JPanel {
     private KBLocationPanel kbLocationPanel;
 
     public KbSafePanel(MainKbSafePanel mainKbSafePanel, ActionPanel actionPanel) {
-        kbLocationPanel = new KBLocationPanel();
+
         kbCheckboxPanel = new KBCheckboxPanel(mainKbSafePanel, actionPanel);
-        add(kbCheckboxPanel);
+        kbLocationPanel = new KBLocationPanel(kbCheckboxPanel);
+
 
         add(kbLocationPanel);
+        add(kbCheckboxPanel);
     }
 
     public String getFilePath() {

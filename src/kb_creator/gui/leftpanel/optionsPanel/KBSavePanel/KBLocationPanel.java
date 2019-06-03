@@ -11,14 +11,16 @@ public class KBLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
     private MainKbSafePanel kbSafePanel;
+    private KBCheckboxPanel checkboxPanel;
 
-    public KBLocationPanel() {
+    public KBLocationPanel(KBCheckboxPanel checkboxPanel) {
         //setBorder(BorderFactory.createTitledBorder("Choose Location to save Files"));
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new SaveButtonListener(this));
         add(saveButton);
 
-        saveButton.setEnabled(false);
+        saveButton.setEnabled(true);
+        this.checkboxPanel = checkboxPanel;
     }
 
     private class SaveButtonListener implements ActionListener {
@@ -37,6 +39,7 @@ public class KBLocationPanel extends JPanel {
 
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
+                checkboxPanel.setActive(true);
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
 
             }
