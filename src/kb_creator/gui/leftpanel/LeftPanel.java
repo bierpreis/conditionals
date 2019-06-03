@@ -1,64 +1,46 @@
 package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.BufferPanel;
-import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.KBSafePanel;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-import kb_creator.gui.leftpanel.optionsPanel.SignaturePanel;
-import kb_creator.model.Signature.AB;
-import kb_creator.model.Signature.ABC;
+import kb_creator.gui.leftpanel.optionsPanel.OptionsPanel;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
-import java.awt.*;
 
 
 public class LeftPanel extends JPanel {
-    private SignaturePanel signaturePanel;
 
 
     private ActionPanel actionPanel;
-
-
-    private KBSafePanel kbSafePanel;
-    private BufferPanel bufferPanel;
+    private OptionsPanel optionsPanel;
 
 
     public LeftPanel(KBCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //setLayout(new BorderLayout());
+
+        add(optionsPanel = new OptionsPanel());
         add(actionPanel = new ActionPanel(observer));
-
-
-        //todo: optionspanel
-        add(signaturePanel = new SignaturePanel());
-        add(bufferPanel = new BufferPanel());
-        add(kbSafePanel = new KBSafePanel());
 
 
         revalidate();
     }
 
     public AbstractSignature getSignature() {
-        String signature = signaturePanel.getOption();
-        if (signature.equals("ab"))
-            return new AB();
-        if (signature.equals("abc"))
-            return new ABC();
-        throw new RuntimeException("No valid signature:" + signature);
+        return optionsPanel.getSignature();
     }
 
 
     public String getKBPath() {
-        return kbSafePanel.getFileLocation();
+        return optionsPanel.getKbPath();
     }
 
     public String getCpFilePath() {
-        return bufferPanel.getPath();
+        return optionsPanel.getBufferPath();
     }
 
     public boolean isBufferingRequested() {
-        return bufferPanel.isBufferingRequested();
+        return optionsPanel.isBufferingRequested();
     }
 
     public ActionPanel getActionPanel() {
