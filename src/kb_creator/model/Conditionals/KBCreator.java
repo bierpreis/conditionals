@@ -118,7 +118,7 @@ public class KBCreator implements Runnable {
                         totalNumberOfKBs++;
 
 
-                        //todo: why writer k+2 here?
+                        //todo: why writer k+2 here? and stop permanently kb creator creating
                     } else {
                         KBWriter inconsistentKBWriter = new KBWriter(filePath, k + 2);
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);

@@ -23,7 +23,8 @@ public class KBWriter implements Runnable {
                 else if (!inconsistentQueue.isEmpty())
                     writeInconsistentKBToFile(inconsistentQueue.poll());
                 else try {
-                        System.out.println("sleeping...");
+                        System.out.println("sleep cons" + consistentQueue.size());
+                        System.out.println("sleep inc" + inconsistentQueue.size());
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -37,7 +38,7 @@ public class KBWriter implements Runnable {
     private String inconsistentKbFolder;
 
     public KBWriter(String filePathToSave, int kbAmount) {
-
+        System.out.println("kbwriter: " + kbAmount);
         //if filepath is null nothing should be saved so nothing should happen here
         if (filePathToSave != null) {
             filePathToSave = filePathToSave + "/" + kbAmount;
