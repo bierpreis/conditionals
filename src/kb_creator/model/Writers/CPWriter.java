@@ -19,6 +19,7 @@ public class CPWriter {
         }
     }
 
+    //todo: this is shit. better 2 cp writers, one empty and one real writer?
     public void writePair(CandidatePair candidatePair) {
         File subFolder = new File(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
