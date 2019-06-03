@@ -76,7 +76,9 @@ public class KBCreator implements Runnable {
 
             //todo: only start kb writer when writing is requested?
             //or maybe abstractwriter and one real one fake?
-            KBWriter kbWriter = new KBWriter(filePath, k + 1);
+            KBWriter kbWriter = new KBWriter(filePath, k + 2);
+            Thread kbWriterThread = new Thread(kbWriter);
+            kbWriterThread.start();
 
             //line  7
             l.getList().add(new ArrayList<>());
