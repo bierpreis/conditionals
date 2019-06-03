@@ -8,7 +8,6 @@ import java.io.PrintWriter;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-//todo: there should be 1 writer for all amounts
 public class KBWriter implements Runnable {
     private Queue<KnowledgeBase> consistentQueue;
     private Queue<KnowledgeBase> inconsistentQueue;
@@ -17,8 +16,8 @@ public class KBWriter implements Runnable {
     public void run() {
 
         while (true) {
-            //todo: this sucks
-            if (inconsistentQueue != null) {
+            //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
+            if (rootFilePath != null) {
                 if (!consistentQueue.isEmpty())
                     writeConsistentKBToFile(consistentQueue.poll());
                 if (!inconsistentQueue.isEmpty())
@@ -59,8 +58,6 @@ public class KBWriter implements Runnable {
     }
 
     public void addConsistentKB(KnowledgeBase kbToAdd) {
-        //System.out.println("addinc inconsistent");
-        //todo: this sucks
         if (consistentQueue != null)
             consistentQueue.add(kbToAdd);
     }
@@ -89,7 +86,6 @@ public class KBWriter implements Runnable {
     }
 
     private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
-        System.out.println("writing inconsistent");
         if (rootFilePath != null) {
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "inconsistent/";
 
