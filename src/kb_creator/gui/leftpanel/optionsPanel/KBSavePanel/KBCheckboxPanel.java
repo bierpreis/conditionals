@@ -24,8 +24,6 @@ public class KBCheckboxPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             mainKbSafePanel.setButtonActive(checkBox.isSelected());
 
-            if (mainKbSafePanel.getFileLocation() == null)
-                mainKbSafePanel.showWarning(checkBox.isSelected());
 
         }
     }
