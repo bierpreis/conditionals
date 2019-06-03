@@ -70,16 +70,20 @@ public class KBWriter implements Runnable {
     }
 
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
-
+        long beginningTime = 0;
         if (rootFilePath != null) {
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
             try {
+
                 File consistentFolder = new File(filePath);
                 consistentFolder.mkdirs();
 
                 PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+
                 writer.print(knowledgeBase.toFileString());
-                writer.close();
+                beginningTime = System.currentTimeMillis();
+                writer.close(); //todo: this takes about 120 ms. fix it!
+
                 System.out.println("written consistent kb");
                 consitentCounter++;
 
@@ -87,6 +91,7 @@ public class KBWriter implements Runnable {
                 e.printStackTrace();
             }
         }
+        System.out.println("writing time: " + (System.currentTimeMillis() - beginningTime));
     }
 
     private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
