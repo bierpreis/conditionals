@@ -256,7 +256,6 @@ public class KBCreator implements Runnable {
     }
 
     public KBWriter getWriterThread() {
-        System.out.println("returned writer: " + kbWriter);
         return kbWriter;
     }
 
