@@ -96,6 +96,8 @@ public class KBCreator implements Runnable {
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
 
+                        kbWriter.addConsistentKB(knowledgeBaseToAdd);
+
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
@@ -106,6 +108,7 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
+                        //todo: k+1 is in org algo where k starts at 1. but here k starts at 0?!
                         l.getList().get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
 
@@ -115,7 +118,7 @@ public class KBCreator implements Runnable {
                         totalNumberOfKBs++;
 
 
-                        //todo: inconsistens get here written much earlier then consistents and pairs. could the other be written earlier too?
+                        //todo: why writer k+2 here?
                     } else {
                         KBWriter inconsistentKBWriter = new KBWriter(filePath, k + 2);
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
@@ -137,6 +140,7 @@ public class KBCreator implements Runnable {
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
             }
+
             k = k + 1;
 
         }

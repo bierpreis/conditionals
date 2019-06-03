@@ -19,9 +19,9 @@ public class KBWriter implements Runnable {
             //todo: this sucks
             if (inconsistentQueue != null)
                 if (!consistentQueue.isEmpty())
-                    writeConsistentKBToFile(consistentQueue.element());
+                    writeConsistentKBToFile(consistentQueue.poll());
                 else if (!inconsistentQueue.isEmpty())
-                    writeInconsistentKBToFile(inconsistentQueue.element());
+                    writeInconsistentKBToFile(inconsistentQueue.poll());
                 else try {
                         System.out.println("sleeping...");
                         Thread.sleep(500);
@@ -72,7 +72,7 @@ public class KBWriter implements Runnable {
     }
 
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
-        System.out.println("writing consistent...");
+        System.out.println("writing consistent..." + knowledgeBase.toString());
         if (consistentKbFolder != null)
             try {
 
