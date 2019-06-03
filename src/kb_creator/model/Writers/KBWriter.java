@@ -103,6 +103,9 @@ public class KBWriter implements Runnable {
         }
     }
 
+    public int getQueueLength() {
+        return consistentQueue.size() + inconsistentQueue.size();
+    }
 
 }
 

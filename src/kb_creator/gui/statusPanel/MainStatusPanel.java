@@ -12,6 +12,7 @@ public class MainStatusPanel extends JPanel {
     private CurrentIterationPanel currentIterationPanel;
     private NextIterationPanel nextIterationPanel;
     private MemoryPanel memoryPanel;
+    private WriterPanel writerPanel;
 
     public MainStatusPanel(ActionPanel actionPanel) {
         setBorder(BorderFactory.createTitledBorder("Status"));
@@ -28,6 +29,9 @@ public class MainStatusPanel extends JPanel {
         add(nextIterationPanel);
 
         add(memoryPanel = new MemoryPanel());
+
+        writerPanel = new WriterPanel();
+        add(writerPanel);
 
         setPreferredSize(new Dimension(400, 500));
 
@@ -64,5 +68,9 @@ public class MainStatusPanel extends JPanel {
 
     public MemoryPanel getMemoryPanel() {
         return memoryPanel;
+    }
+
+    public void showWriterQueue(int queueLength) {
+        writerPanel.showQueueLength(queueLength);
     }
 }

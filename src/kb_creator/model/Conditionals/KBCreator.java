@@ -40,6 +40,8 @@ public class KBCreator implements Runnable {
         this.filePath = filePath;
 
         cpWriter = new CPWriter(filePath);
+
+        kbWriter = new KBWriter(filePath);
     }
 
 
@@ -48,7 +50,7 @@ public class KBCreator implements Runnable {
         System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
 
-        kbWriter = new KBWriter(filePath);
+
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();
 
@@ -251,6 +253,11 @@ public class KBCreator implements Runnable {
         }
 
         return conditionalMap;
+    }
+
+    public KBWriter getWriterThread() {
+        System.out.println("returned writer: " + kbWriter);
+        return kbWriter;
     }
 
 

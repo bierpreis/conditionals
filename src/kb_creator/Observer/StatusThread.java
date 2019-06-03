@@ -3,6 +3,7 @@ package kb_creator.Observer;
 import kb_creator.gui.statusPanel.MainStatusPanel;
 import kb_creator.gui.statusPanel.MemoryPanel;
 import kb_creator.model.Conditionals.KBCreator;
+import kb_creator.model.Writers.KBWriter;
 
 public class StatusThread implements Runnable {
     private MainStatusPanel mainStatusPanel;
@@ -12,6 +13,7 @@ public class StatusThread implements Runnable {
     private long lastTimeStamp;
     private MemoryPanel memoryPanel;
     private boolean isRunning = true;
+    private KBWriter kbWriter;
 
 
     public StatusThread(MainStatusPanel mainStatusPanel, MemoryPanel memoryPanel) {
@@ -33,6 +35,8 @@ public class StatusThread implements Runnable {
                 mainStatusPanel.showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
                 mainStatusPanel.showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
                 mainStatusPanel.showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+                System.out.println("using writer");
+                mainStatusPanel.showWriterQueue(kbWriter.getQueueLength());
 
             } else {
                 mainStatusPanel.showStatus(Status.NOT_STARTED);
@@ -72,6 +76,9 @@ public class StatusThread implements Runnable {
 
     public void setCreatorThread(KBCreator kbCreator) {
         this.creatorThread = kbCreator;
+        System.out.println("setting writer");
+        this.kbWriter = creatorThread.getWriterThread();
     }
+
 
 }
