@@ -28,7 +28,9 @@ public class KBCreator implements Runnable {
 
     private CPWriter cpWriter;
 
-    AbstractCandidateList l;
+    private KBWriter kbWriter;
+
+    private AbstractCandidateList l;
 
     public KBCreator(AbstractSignature signature, String filePath) {
         System.out.println("new kb creator");
@@ -46,6 +48,9 @@ public class KBCreator implements Runnable {
         System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
 
+        kbWriter = new KBWriter(filePath);
+        Thread kbWriterThread = new Thread(kbWriter);
+        kbWriterThread.start();
 
         NfcCreator nfcCreator = new NfcCreator(signature);
 
@@ -73,12 +78,6 @@ public class KBCreator implements Runnable {
         while (!l.getList().get(k).isEmpty()) {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.getList().get(k).size();
-
-            //todo: only start kb writer when writing is requested?
-            //or maybe abstractwriter and one real one fake?
-            KBWriter kbWriter = new KBWriter(filePath, k + 2);
-            Thread kbWriterThread = new Thread(kbWriter);
-            kbWriterThread.start();
 
             //line  7
             l.getList().add(new ArrayList<>());
@@ -167,9 +166,7 @@ public class KBCreator implements Runnable {
     }
 
     private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
-        KBWriter kbWriter = new KBWriter(filePath, 1);
-        Thread kbWriterThread = new Thread(kbWriter);
-        kbWriterThread.start();
+
 
         System.out.println("creating 1 element kbs");
 

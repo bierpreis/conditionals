@@ -12,6 +12,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class KBWriter implements Runnable {
     private Queue<KnowledgeBase> consistentQueue;
     private Queue<KnowledgeBase> inconsistentQueue;
+    private String rootFilePath;
 
     public void run() {
 
@@ -34,17 +35,13 @@ public class KBWriter implements Runnable {
         }
     }
 
-    private String consistentKbFolder;
-    private String inconsistentKbFolder;
 
-    public KBWriter(String filePathToSave, int kbAmount) {
-        System.out.println("kbwriter: " + kbAmount);
+    public KBWriter(String filePathToSave) {
+
         //if filepath is null nothing should be saved so nothing should happen here
         if (filePathToSave != null) {
-            filePathToSave = filePathToSave + "/" + kbAmount;
-
-
-            consistentKbFolder = filePathToSave + "/Consistent/";
+            rootFilePath = filePathToSave;
+/*            consistentKbFolder = filePathToSave + "/Consistent/";
             inconsistentKbFolder = filePathToSave + "/Inconsistent/";
 
             //create folders
@@ -53,7 +50,7 @@ public class KBWriter implements Runnable {
             consistentFolder.mkdirs();
 
             File inconsistentFolder = new File(inconsistentKbFolder);
-            inconsistentFolder.mkdirs();
+            inconsistentFolder.mkdirs();*/
 
             consistentQueue = new ConcurrentLinkedQueue();
             inconsistentQueue = new ConcurrentLinkedQueue();
@@ -75,29 +72,39 @@ public class KBWriter implements Runnable {
     }
 
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
-        System.out.println("writing consistent..." + knowledgeBase.toString());
-        if (consistentKbFolder != null)
+
+        if (rootFilePath != null) {
+            String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
             try {
+                File consistentFolder = new File(filePath);
+                consistentFolder.mkdirs();
 
-
-                PrintWriter writer = new PrintWriter(consistentKbFolder + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+                PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.toFileString());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
     }
 
     private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
         System.out.println("writing inconsistent");
-        if (inconsistentKbFolder != null)
+        if (rootFilePath != null) {
+            String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "inconsistent/";
+
+            File inconsistentFolder = new File(filePath);
+            inconsistentFolder.mkdirs();
+
             try {
-                PrintWriter writer = new PrintWriter(inconsistentKbFolder + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+
+                PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.toFileString());
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
     }
 
 
