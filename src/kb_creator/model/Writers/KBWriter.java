@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-
+//todo: there should be 1 writer for all amounts
 public class KBWriter implements Runnable {
     private Queue<KnowledgeBase> consistentQueue;
     private Queue<KnowledgeBase> inconsistentQueue;
