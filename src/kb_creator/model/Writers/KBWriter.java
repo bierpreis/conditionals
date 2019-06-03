@@ -17,18 +17,18 @@ public class KBWriter implements Runnable {
 
         while (true) {
             //todo: this sucks
-            if (inconsistentQueue != null)
+            if (inconsistentQueue != null) {
                 if (!consistentQueue.isEmpty())
                     writeConsistentKBToFile(consistentQueue.poll());
-                else if (!inconsistentQueue.isEmpty())
+                if (!inconsistentQueue.isEmpty())
                     writeInconsistentKBToFile(inconsistentQueue.poll());
-                else try {
-                        System.out.println("sleep cons" + consistentQueue.size());
-                        System.out.println("sleep inc" + inconsistentQueue.size());
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
+                    System.out.println("sleep inc: " + inconsistentQueue.size() + " cons: " + consistentQueue.size());
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
 
         }
@@ -62,12 +62,14 @@ public class KBWriter implements Runnable {
     }
 
     public void addConsistentKB(KnowledgeBase kbToAdd) {
+        //System.out.println("addinc inconsistent");
         //todo: this sucks
         if (consistentQueue != null)
             consistentQueue.add(kbToAdd);
     }
 
     public void addInconsistentKB(KnowledgeBase kbToAdd) {
+        //System.out.println("adding inConsistent");
         if (inconsistentQueue != null)
             inconsistentQueue.add(kbToAdd);
     }
@@ -87,7 +89,7 @@ public class KBWriter implements Runnable {
     }
 
     private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
-
+        System.out.println("writing inconsistent");
         if (inconsistentKbFolder != null)
             try {
                 PrintWriter writer = new PrintWriter(inconsistentKbFolder + "/" + knowledgeBase.getKbNumber() + ".txt", "UTF-8");

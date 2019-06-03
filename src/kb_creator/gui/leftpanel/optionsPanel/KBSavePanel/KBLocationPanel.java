@@ -44,10 +44,6 @@ public class KBLocationPanel extends JPanel {
 
     }
 
-    public void setActive(boolean active) {
-        saveButton.setEnabled(active);
-    }
-
     public String getFilePath() {
         return filePathToSave;
     }

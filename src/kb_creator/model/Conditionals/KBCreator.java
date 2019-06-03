@@ -118,13 +118,12 @@ public class KBCreator implements Runnable {
                         totalNumberOfKBs++;
 
 
-                        //todo: why writer k+2 here? and stop permanently kb creator creating
                     } else {
-                        KBWriter inconsistentKBWriter = new KBWriter(filePath, k + 2);
+
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
-                        inconsistentKBWriter.addInconsistentKB(inconsistentKB);
+                        kbWriter.addInconsistentKB(inconsistentKB);
                     }
                 }
 
