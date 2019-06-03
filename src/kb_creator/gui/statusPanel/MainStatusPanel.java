@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainStatusPanel extends JPanel {
-    //todo:
 
     private OverallStatusPanel overallStatusPanel;
     private CurrentIterationPanel currentIterationPanel;
