@@ -131,14 +131,8 @@ public class KBCreator implements Runnable {
                     return;
                 }
 
-                //todo: all pairs get written. even the incosistent!?
-                cpWriter.writePair(candidatePair);
-
                 //delete to save some memory
                 candidatePair.deleteCandidates();
-
-                //todo: this cant be correct.
-                kbWriter.addConsistentKB(candidatePair.getKnowledgeBase());
 
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
