@@ -9,15 +9,12 @@ import java.awt.event.ActionListener;
 public class KBCheckboxPanel extends JPanel {
     private JCheckBox checkBox;
     private MainKbSafePanel mainKbSafePanel;
-    private ActionPanel actionPanel;
 
     public KBCheckboxPanel(MainKbSafePanel mainKbSafePanel, ActionPanel actionPanel) {
         checkBox = new JCheckBox("Save KBs to File");
         add(checkBox);
         this.mainKbSafePanel = mainKbSafePanel;
         checkBox.addActionListener(new CheckboxListener());
-        //mainKbSafePanel.setButtonActive(false);
-        this.actionPanel = actionPanel;
 
     }
 

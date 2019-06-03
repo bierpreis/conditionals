@@ -7,7 +7,6 @@ import javax.swing.*;
 public class KbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
     private KBLocationPanel kbLocationPanel;
-    private ActionPanel actionPanel;
 
     public KbSafePanel(MainKbSafePanel mainKbSafePanel, ActionPanel actionPanel) {
         kbLocationPanel = new KBLocationPanel();

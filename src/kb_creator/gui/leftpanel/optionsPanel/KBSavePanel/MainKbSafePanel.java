@@ -9,7 +9,7 @@ import java.awt.*;
 public class MainKbSafePanel extends JPanel {
 
     private KbSafePanel kbSafePanel;
-    private JLabel noFileWarningLabel;
+    private JLabel noFileWarningLabel1;
 
 
     public MainKbSafePanel(ActionPanel actionPanel) {
@@ -20,12 +20,18 @@ public class MainKbSafePanel extends JPanel {
         //System.out.println(this);
         this.kbSafePanel = new KbSafePanel(this, actionPanel);
         add(kbSafePanel);
+        //todo: warning takes too much h space
+        noFileWarningLabel1 = new JLabel("Warning. No File set. Choose File or deactivate.");
 
-        noFileWarningLabel = new JLabel("Warning. No File set. Choose File or deactivate.");
-        add(noFileWarningLabel);
-        noFileWarningLabel.setForeground(Color.RED);
-        noFileWarningLabel.setVisible(false);
+        add(noFileWarningLabel1);
 
+        noFileWarningLabel1.setAlignmentX(1);
+
+        noFileWarningLabel1.setForeground(Color.RED);
+
+        noFileWarningLabel1.setVisible(false);
+
+        revalidate();
 
     }
 
@@ -35,7 +41,7 @@ public class MainKbSafePanel extends JPanel {
     }
 
     public void showWarning(boolean showWarning) {
-        noFileWarningLabel.setVisible(showWarning);
+        noFileWarningLabel1.setVisible(showWarning);
     }
 
     public void setButtonActive(boolean active) {
