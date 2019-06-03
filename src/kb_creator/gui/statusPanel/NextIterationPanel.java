@@ -13,6 +13,7 @@ public class NextIterationPanel extends JBPanel {
         setBorder(BorderFactory.createTitledBorder("Next Iteration"));
         candidatePairsLabel = new JLabel();
         add(candidatePairsLabel);
+        showCandidates(0);
     }
 
     public void showCandidates(int candidatePairsAmount) {

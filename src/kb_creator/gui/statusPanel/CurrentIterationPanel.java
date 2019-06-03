@@ -7,7 +7,6 @@ import java.util.Locale;
 
 public class CurrentIterationPanel extends JPanel {
     private JLabel iterationKBLabel;
-    private JLabel speedDescriptionLabel;
     private JLabel speedLabel;
     private JLabel progressLabel;
     private JLabel candidatePairslabel;
@@ -20,8 +19,6 @@ public class CurrentIterationPanel extends JPanel {
         progressLabel = new JLabel();
         vBox.add(progressLabel);
 
-        speedDescriptionLabel = new JLabel("Speed: (KBs/Second)");
-        vBox.add(speedDescriptionLabel);
 
         speedLabel = new JLabel();
         vBox.add(speedLabel);
@@ -42,14 +39,14 @@ public class CurrentIterationPanel extends JPanel {
     }
 
     public void showSpeed(int speed) {
-        speedLabel.setText(Integer.toString(speed));
+        speedLabel.setText("Speed (KBs/Second): " + Integer.toString(speed));
     }
 
 
     public void showIterationKBs(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
-        iterationKBLabel.setText("KBs: " + formatter.format(amount) + "\n");
+        iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
         repaint();
     }
 
