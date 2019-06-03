@@ -13,18 +13,27 @@ public class KBWriter implements Runnable {
     private Queue<KnowledgeBase> inconsistentQueue;
     private String rootFilePath;
 
-    public void run() {
+    private int consitentCounter;
+    private int inconsistentCounter;
 
+    private int lastConsitentAmount;
+    private long nextSpeedcalculationTime;
+    private final long SPEED_CALCULATION_INTERVAL = 5000;
+
+    public void run() {
+        //todo: why is this so slow??
         while (true) {
             //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
             if (rootFilePath != null) {
+                System.out.println("iteration");
+                calculateConsistentSpeed();
                 if (!consistentQueue.isEmpty())
                     writeConsistentKBToFile(consistentQueue.poll());
                 if (!inconsistentQueue.isEmpty())
                     writeInconsistentKBToFile(inconsistentQueue.poll());
                 if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
                     System.out.println("sleep inc: " + inconsistentQueue.size() + " cons: " + consistentQueue.size());
-                    Thread.sleep(500);
+                    Thread.sleep(1500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -36,20 +45,12 @@ public class KBWriter implements Runnable {
 
 
     public KBWriter(String filePathToSave) {
+        consitentCounter = 0;
+        inconsistentCounter = 0;
+        nextSpeedcalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
 
-        //if filepath is null nothing should be saved so nothing should happen here
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
-/*            consistentKbFolder = filePathToSave + "/Consistent/";
-            inconsistentKbFolder = filePathToSave + "/Inconsistent/";
-
-            //create folders
-
-            File consistentFolder = new File(consistentKbFolder);
-            consistentFolder.mkdirs();
-
-            File inconsistentFolder = new File(inconsistentKbFolder);
-            inconsistentFolder.mkdirs();*/
 
             consistentQueue = new ConcurrentLinkedQueue();
             inconsistentQueue = new ConcurrentLinkedQueue();
@@ -79,6 +80,9 @@ public class KBWriter implements Runnable {
                 PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.toFileString());
                 writer.close();
+                System.out.println("written consistent kb");
+                consitentCounter++;
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -91,12 +95,13 @@ public class KBWriter implements Runnable {
 
             File inconsistentFolder = new File(filePath);
             inconsistentFolder.mkdirs();
-
+            System.out.println("written inconsistent kb");
             try {
 
                 PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
                 writer.print(knowledgeBase.toFileString());
                 writer.close();
+                inconsistentCounter++;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -107,9 +112,18 @@ public class KBWriter implements Runnable {
         return consistentQueue.size();
     }
 
-    public int getInconsistetnQueue(){
+    public int getInconsistetnQueue() {
         return inconsistentQueue.size();
     }
 
+    private void calculateConsistentSpeed() {
+        if (System.currentTimeMillis() > nextSpeedcalculationTime) {
+            int kbsSinceLastCalculation = consitentCounter - lastConsitentAmount;
+            int speed = kbsSinceLastCalculation / (int) (SPEED_CALCULATION_INTERVAL / 1000);
+            lastConsitentAmount = consitentCounter;
+            nextSpeedcalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
+            System.out.println("Speed: " + speed);
+        }
+    }
 }
 
