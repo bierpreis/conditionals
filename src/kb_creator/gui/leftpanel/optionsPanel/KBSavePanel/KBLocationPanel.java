@@ -1,8 +1,6 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
 
-import kb_creator.gui.KBMainWindow;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,7 +35,7 @@ public class KBLocationPanel extends JPanel {
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
                 checkboxPanel.setActive(true);
-                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
+                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/kbs/";
 
             }
 
