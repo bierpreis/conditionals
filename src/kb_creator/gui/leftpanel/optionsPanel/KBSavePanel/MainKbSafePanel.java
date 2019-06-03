@@ -47,4 +47,5 @@ public class MainKbSafePanel extends JPanel {
     public void setButtonActive(boolean active) {
         this.kbSafePanel.setButtonActive(active);
     }
+
 }

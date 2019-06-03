@@ -36,9 +36,10 @@ public class KBLocationPanel extends JPanel {
             fileChooser.showDialog(kbLocationPanel, "Choose Folder");
 
             //avoid null pointer exception when no file gets selected
-            if (fileChooser.getSelectedFile() != null)
+            if (fileChooser.getSelectedFile() != null) {
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
-            kbSafePanel.showWarning(true);
+
+            }
 
         }
 
