@@ -1,7 +1,7 @@
 package kb_creator.gui;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.creatorPanel.MainStatusPanel;
+import kb_creator.gui.creatorPanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
 import kb_creator.gui.creatorPanel.MemoryPanel;
 import kb_creator.model.Signature.AbstractSignature;
@@ -14,15 +14,15 @@ public class KBMainWindow {
     private KBCreatorObserver observer;
     private LeftPanel leftPanel;
     private JFrame mainWindow;
-    private MainStatusPanel mainStatusPanel;
+    private MainCreatorPanel mainCreatorPanel;
 
     public KBMainWindow(KBCreatorObserver observer) {
         this.observer = observer;
         mainWindow = new JFrame("Knowledge Base Creator");
 
-
+        //todo: here add mainWriter Panel. layout should be sth with xAxis.
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
-        mainWindow.add(mainStatusPanel = new MainStatusPanel(leftPanel.getActionPanel()));
+        mainWindow.add(mainCreatorPanel = new MainCreatorPanel(leftPanel.getActionPanel()));
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,8 +36,8 @@ public class KBMainWindow {
         return leftPanel.getSignature();
     }
 
-    public MainStatusPanel getInfoPanel() {
-        return mainStatusPanel;
+    public MainCreatorPanel getInfoPanel() {
+        return mainCreatorPanel;
     }
 
     public JFrame getMainWindow() {
@@ -45,7 +45,7 @@ public class KBMainWindow {
     }
 
     public MemoryPanel getMemoryPanel() {
-        return mainStatusPanel.getMemoryPanel();
+        return mainCreatorPanel.getMemoryPanel();
     }
 
     public String getKbFilePath() {

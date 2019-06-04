@@ -8,7 +8,7 @@ import kb_creator.gui.writerPanel.WriterPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainStatusPanel extends JPanel {
+public class MainCreatorPanel extends JPanel {
 
     private OverallStatusPanel overallStatusPanel;
     private CurrentIterationPanel currentIterationPanel;
@@ -16,8 +16,8 @@ public class MainStatusPanel extends JPanel {
     private MemoryPanel memoryPanel;
     private MainWriterPanel mainWriterPanel;
 
-    public MainStatusPanel(ActionPanel actionPanel) {
-        setBorder(BorderFactory.createTitledBorder("Status"));
+    public MainCreatorPanel(ActionPanel actionPanel) {
+        setBorder(BorderFactory.createTitledBorder("Creator"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(Box.createVerticalGlue());
 
@@ -35,7 +35,7 @@ public class MainStatusPanel extends JPanel {
         mainWriterPanel = new MainWriterPanel();
         add(mainWriterPanel);
 
-        setPreferredSize(new Dimension(400, 500));
+        //setPreferredSize(new Dimension(400, 500));
 
 
     }
