@@ -123,7 +123,7 @@ public class KBWriter implements Runnable {
 
     private void calculateConsistentSpeed() {
         if (System.currentTimeMillis() > nextSpeedcalculationTime) {
-            int kbsSinceLastCalculation = consitentCounter - lastConsitentAmount; //todo: null pointer here when no saving is requested by user
+            int kbsSinceLastCalculation = consitentCounter - lastConsitentAmount;
             int speed = kbsSinceLastCalculation / (int) (SPEED_CALCULATION_INTERVAL / 1000);
             lastConsitentAmount = consitentCounter;
             nextSpeedcalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
