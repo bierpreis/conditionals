@@ -54,9 +54,6 @@ public class WriterPanel extends JPanel {
     }
 
 
-
-
-
     public void showConsistentSpeed(int speed) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         consistentSpeedlabel.setText("Speed: " + formatter.format(speed) + "KB/s");
@@ -66,17 +63,16 @@ public class WriterPanel extends JPanel {
 
     private int calculateConsistentSpeed(int currentQueue) {
         nextConsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        int speed = currentQueue - lastConsistentAmount;
+        int speed = (currentQueue - lastConsistentAmount) / (SPEED_CALCULATION_MS / 1000);
         lastConsistentAmount = currentQueue;
         return speed;
     }
 
 
-
     private int calculateInconsistentSpeed(int inconsistentAmount) {
 
         nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        int speed = inconsistentAmount - lastInconsistentAmount;
+        int speed = (inconsistentAmount - lastInconsistentAmount) / (SPEED_CALCULATION_MS / 1000);
         lastInconsistentAmount = inconsistentAmount;
         return speed;
     }
