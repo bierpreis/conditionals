@@ -60,14 +60,13 @@ public class WriterPanel extends JPanel {
     }
 
     //todo: queue cant be used for calculating speed. must count written stuff?!
+    //todo: speed calculation is wrong
     //3 consistent kb speed methods
     public void showConsistentQueue(int consistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
 
-        if (nextConsistentSpeedCalculation < System.currentTimeMillis()) {
-            showConsistentSpeed(calculateConsistentSpeed(consistentQueue));
-        }
+
     }
 
 
@@ -75,9 +74,7 @@ public class WriterPanel extends JPanel {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         consistentSpeedlabel.setText("Speed: " + formatter.format(speed) + "KB/s");
 
-        if (nextConsistentSpeedCalculation < System.currentTimeMillis()) {
-            showConsistentSpeed(calculateInconsistentSpeed(speed));
-        }
+
     }
 
     private int calculateConsistentSpeed(int currentQueue) {
@@ -114,10 +111,18 @@ public class WriterPanel extends JPanel {
 
     public void showConsistentConter(int consistentCounter) {
         consistentCounterLabel.setText("Written Consistent KBs: " + consistentCounter);
+
+        if (nextConsistentSpeedCalculation < System.currentTimeMillis()) {
+            showConsistentSpeed(calculateConsistentSpeed(consistentCounter));
+        }
     }
 
     public void showIncosnsistentCounter(int inconsistetnCounter) {
         inconsistentCounterLabel.setText("Written Inconsistent KBs: " + inconsistetnCounter);
+
+        if (nextConsistentSpeedCalculation < System.currentTimeMillis()) {
+            showConsistentSpeed(calculateInconsistentSpeed(inconsistetnCounter));
+        }
     }
 
 }
