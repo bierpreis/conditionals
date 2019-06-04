@@ -14,7 +14,7 @@ public class WriterPanel extends JPanel {
 
     private int lastTotalWrites;
 
-    private final int SPEED_CALCULATION_MS = 2000;
+    private final int SPEED_CALCULATION_MS = 1000;
 
     private JLabel counterLabel;
     private JLabel inconsistentCounterLabel;
@@ -52,10 +52,10 @@ public class WriterPanel extends JPanel {
 
         if (nextSpeedCalculation < System.currentTimeMillis()) {
             NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-
-            //todo: speed is somehow wrong
+            
             speedLabel.setText("Total Speed: " + formatter.format((totalWrites - lastTotalWrites) / (SPEED_CALCULATION_MS / 1000)) + "Files/s");
             lastTotalWrites = totalWrites;
+            nextSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
         }
 
     }
