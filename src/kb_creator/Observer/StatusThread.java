@@ -1,7 +1,7 @@
 package kb_creator.Observer;
 
-import kb_creator.gui.statusPanel.MainStatusPanel;
-import kb_creator.gui.statusPanel.MemoryPanel;
+import kb_creator.gui.creatorPanel.MainStatusPanel;
+import kb_creator.gui.creatorPanel.MemoryPanel;
 import kb_creator.model.Conditionals.KBCreator;
 import kb_creator.model.Writers.KBWriter;
 

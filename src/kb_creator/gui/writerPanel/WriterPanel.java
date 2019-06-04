@@ -1,14 +1,14 @@
-package kb_creator.gui.statusPanel;
+package kb_creator.gui.writerPanel;
 
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
 public class WriterPanel extends JPanel {
-    private JLabel consistentLabel;
+
     private JLabel consistentSpeedlabel;
 
-    private JLabel inconsistentLabel;
+
     private JLabel inconsistentSpeedLabel;
 
     private long nextConsistentSpeedCalculation;
@@ -28,20 +28,14 @@ public class WriterPanel extends JPanel {
         add(vBox);
 
         setBorder(BorderFactory.createTitledBorder("KB Writer)"));
-        consistentLabel = new JLabel();
-        vBox.add(consistentLabel);
 
         consistentSpeedlabel = new JLabel();
         vBox.add(consistentSpeedlabel);
 
-        inconsistentLabel = new JLabel();
-        vBox.add(inconsistentLabel);
 
         inconsistentSpeedLabel = new JLabel();
         vBox.add(inconsistentSpeedLabel);
 
-        showConsistentQueue(0);
-        showInconsistentQueue(0);
 
         showConsistentSpeed(0);
         showInconsistentSpeed(0);
@@ -60,12 +54,7 @@ public class WriterPanel extends JPanel {
     }
 
 
-    public void showConsistentQueue(int consistentQueue) {
-        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
 
-
-    }
 
 
     public void showConsistentSpeed(int speed) {
@@ -83,12 +72,6 @@ public class WriterPanel extends JPanel {
     }
 
 
-    public void showInconsistentQueue(int inConsistentQueue) {
-        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
-
-
-    }
 
     private int calculateInconsistentSpeed(int inconsistentAmount) {
 

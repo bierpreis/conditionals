@@ -1,7 +1,9 @@
-package kb_creator.gui.statusPanel;
+package kb_creator.gui.creatorPanel;
 
 import kb_creator.Observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+import kb_creator.gui.writerPanel.MainWriterPanel;
+import kb_creator.gui.writerPanel.WriterPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +14,7 @@ public class MainStatusPanel extends JPanel {
     private CurrentIterationPanel currentIterationPanel;
     private NextIterationPanel nextIterationPanel;
     private MemoryPanel memoryPanel;
-    private WriterPanel writerPanel;
+    private MainWriterPanel mainWriterPanel;
 
     public MainStatusPanel(ActionPanel actionPanel) {
         setBorder(BorderFactory.createTitledBorder("Status"));
@@ -30,8 +32,8 @@ public class MainStatusPanel extends JPanel {
 
         add(memoryPanel = new MemoryPanel());
 
-        writerPanel = new WriterPanel();
-        add(writerPanel);
+        mainWriterPanel = new MainWriterPanel();
+        add(mainWriterPanel);
 
         setPreferredSize(new Dimension(400, 500));
 
@@ -71,18 +73,18 @@ public class MainStatusPanel extends JPanel {
     }
 
     public void showConsistentQueue(int consistentLength) {
-        writerPanel.showConsistentQueue((consistentLength));
+        mainWriterPanel.getQueuePanel().showConsistentQueue((consistentLength));
     }
 
     public void showInconsistentQueue(int inconsistentleghth) {
-        writerPanel.showInconsistentQueue(inconsistentleghth);
+        mainWriterPanel.getQueuePanel().showInconsistentQueue(inconsistentleghth);
     }
 
     public void showConsistentCounter(int consistentCounter){
-        writerPanel.showConsistentConter(consistentCounter);
+        mainWriterPanel.getMainWriterPanel().showConsistentConter(consistentCounter);
     }
 
     public void showInconsistentCounter(int inconsistentCounter){
-        writerPanel.showIncosnsistentCounter(inconsistentCounter);
+        mainWriterPanel.getMainWriterPanel().showIncosnsistentCounter(inconsistentCounter);
     }
 }
