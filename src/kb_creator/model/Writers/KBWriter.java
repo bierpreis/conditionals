@@ -26,15 +26,13 @@ public class KBWriter implements Runnable {
         while (true) {
             //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
             if (rootFilePath != null) {
-                System.out.println("iteration");
                 calculateConsistentSpeed();
                 if (!consistentQueue.isEmpty())
                     writeConsistentKBToFile(consistentQueue.poll());
                 if (!inconsistentQueue.isEmpty())
                     writeInconsistentKBToFile(inconsistentQueue.poll());
                 if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
-                    System.out.println("sleep inc: " + inconsistentQueue.size() + " cons: " + consistentQueue.size());
-                    Thread.sleep(1500);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -84,8 +82,6 @@ public class KBWriter implements Runnable {
                 writer.print(knowledgeBase.toFileString());
                 beginningTime = System.currentTimeMillis();
                 writer.close(); //todo: this takes about 120 ms. fix it!
-
-                System.out.println("written consistent kb");
                 consitentCounter++;
 
             } catch (IOException e) {
@@ -101,7 +97,6 @@ public class KBWriter implements Runnable {
 
             File inconsistentFolder = new File(filePath);
             inconsistentFolder.mkdirs();
-            System.out.println("written inconsistent kb");
             try {
 
                 PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
@@ -118,7 +113,7 @@ public class KBWriter implements Runnable {
         return consistentQueue.size();
     }
 
-    public int getInconsistetnQueue() {
+    public int getInconsistentQueue() {
         return inconsistentQueue.size();
     }
 

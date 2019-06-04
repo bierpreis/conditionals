@@ -33,7 +33,7 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
                 mainWindow.getWriterPanel().getQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
-                mainWindow.getWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistetnQueue());
+                mainWindow.getWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
                 mainWindow.getWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsitentCounter());
                 mainWindow.getWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
