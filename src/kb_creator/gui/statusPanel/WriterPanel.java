@@ -14,8 +14,8 @@ public class WriterPanel extends JPanel {
     private long nextConsistentSpeedCalculation;
     private long nextInconsistentSpeedCalculation;
 
-    private int lastConsistentQueue;
-    private int lastInconsistentQueue;
+    private int lastConsistentAmount;
+    private int lastInconsistentAmount;
 
     private final int SPEED_CALCULATION_MS = 5000;
 
@@ -59,9 +59,7 @@ public class WriterPanel extends JPanel {
 
     }
 
-    //todo: queue cant be used for calculating speed. must count written stuff?!
-    //todo: speed calculation is wrong
-    //3 consistent kb speed methods
+
     public void showConsistentQueue(int consistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
@@ -79,27 +77,24 @@ public class WriterPanel extends JPanel {
 
     private int calculateConsistentSpeed(int currentQueue) {
         nextConsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        int speed = currentQueue - lastConsistentQueue;
-        lastConsistentQueue = currentQueue;
+        int speed = currentQueue - lastConsistentAmount;
+        lastConsistentAmount = currentQueue;
         return speed;
     }
 
 
-    //3 inconsistent speed methods
     public void showInconsistentQueue(int inConsistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
 
-        if (nextInconsistentSpeedCalculation < System.currentTimeMillis()) {
-            showInconsistentSpeed(calculateInconsistentSpeed(inConsistentQueue));
-        }
+
     }
 
-    private int calculateInconsistentSpeed(int currentQueue) {
+    private int calculateInconsistentSpeed(int inconsistentAmount) {
 
         nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        int speed = currentQueue - lastInconsistentQueue;
-        lastInconsistentQueue = currentQueue;
+        int speed = inconsistentAmount - lastInconsistentAmount;
+        lastInconsistentAmount = inconsistentAmount;
         return speed;
     }
 
@@ -120,8 +115,8 @@ public class WriterPanel extends JPanel {
     public void showIncosnsistentCounter(int inconsistetnCounter) {
         inconsistentCounterLabel.setText("Written Inconsistent KBs: " + inconsistetnCounter);
 
-        if (nextConsistentSpeedCalculation < System.currentTimeMillis()) {
-            showConsistentSpeed(calculateInconsistentSpeed(inconsistetnCounter));
+        if (nextInconsistentSpeedCalculation < System.currentTimeMillis()) {
+            showInconsistentSpeed(calculateInconsistentSpeed(inconsistetnCounter));
         }
     }
 
