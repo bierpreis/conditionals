@@ -6,46 +6,39 @@ import java.util.Locale;
 
 public class WriterPanel extends JPanel {
 
-    private JLabel consistentSpeedlabel;
+    private JLabel speedLabel;
 
 
-    private JLabel inconsistentSpeedLabel;
+    private long nextSpeedCalculation;
 
-    private long nextConsistentSpeedCalculation;
-    private long nextInconsistentSpeedCalculation;
 
-    private int lastConsistentAmount;
-    private int lastInconsistentAmount;
+    private int lastTotalWrites;
 
-    private final int SPEED_CALCULATION_MS = 5000;
+    private final int SPEED_CALCULATION_MS = 2000;
 
-    private JLabel consistentCounterLabel;
+    private JLabel counterLabel;
     private JLabel inconsistentCounterLabel;
 
     public WriterPanel() {
 
-        //todo: show total file writes instead of useless split stuff
+
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
         setBorder(BorderFactory.createTitledBorder("KB Writer)"));
 
-        consistentSpeedlabel = new JLabel();
-        vBox.add(consistentSpeedlabel);
+        speedLabel = new JLabel();
+        vBox.add(speedLabel);
 
 
-        inconsistentSpeedLabel = new JLabel();
-        vBox.add(inconsistentSpeedLabel);
+        showSpeed(0);
 
 
-        showConsistentSpeed(0);
-        showInconsistentSpeed(0);
+        nextSpeedCalculation = System.currentTimeMillis();
 
-        nextConsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
+        counterLabel = new JLabel();
+        vBox.add(counterLabel);
 
-        consistentCounterLabel = new JLabel();
-        vBox.add(consistentCounterLabel);
         inconsistentCounterLabel = new JLabel();
         vBox.add(inconsistentCounterLabel);
 
@@ -54,50 +47,30 @@ public class WriterPanel extends JPanel {
 
     }
 
+    //todo: compare total writes with files in folder amount
+    public void showSpeed(int totalWrites) {
 
-    public void showConsistentSpeed(int speed) {
-        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        consistentSpeedlabel.setText("Speed: " + formatter.format(speed) + "KB/s");
+        if (nextSpeedCalculation < System.currentTimeMillis()) {
+            NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
-
-    }
-
-    private int calculateConsistentSpeed(int currentQueue) {
-        nextConsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        int speed = (currentQueue - lastConsistentAmount) / (SPEED_CALCULATION_MS / 1000);
-        lastConsistentAmount = currentQueue;
-        return speed;
-    }
-
-
-    private int calculateInconsistentSpeed(int inconsistentAmount) {
-
-        nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
-        int speed = (inconsistentAmount - lastInconsistentAmount) / (SPEED_CALCULATION_MS / 1000);
-        lastInconsistentAmount = inconsistentAmount;
-        return speed;
-    }
-
-    private void showInconsistentSpeed(int speed) {
-        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        inconsistentSpeedLabel.setText("Speed: " + formatter.format(speed) + "KB/s");
+            //todo: speed is somehow wrong
+            speedLabel.setText("Total Speed: " + formatter.format((totalWrites - lastTotalWrites) / (SPEED_CALCULATION_MS / 1000)) + "Files/s");
+            lastTotalWrites = totalWrites;
+        }
 
     }
+
 
     public void showConsistentConter(int consistentCounter) {
-        consistentCounterLabel.setText("Written Consistent KBs: " + consistentCounter);
+        counterLabel.setText("Written Consistent KBs: " + consistentCounter);
 
-        if (nextConsistentSpeedCalculation < System.currentTimeMillis()) {
-            showConsistentSpeed(calculateConsistentSpeed(consistentCounter));
-        }
+
     }
 
     public void showIncosnsistentCounter(int inconsistetnCounter) {
         inconsistentCounterLabel.setText("Written Inconsistent KBs: " + inconsistetnCounter);
 
-        if (nextInconsistentSpeedCalculation < System.currentTimeMillis()) {
-            showInconsistentSpeed(calculateInconsistentSpeed(inconsistetnCounter));
-        }
+
     }
 
 }

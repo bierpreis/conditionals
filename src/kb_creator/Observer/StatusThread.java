@@ -35,6 +35,9 @@ public class StatusThread implements Runnable {
                 mainWindow.getWriterPanel().getQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
                 mainWindow.getWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
+
+                //todo:this sucks
+                mainWindow.getWriterPanel().getWriterPanel().showSpeed(kbWriter.getConsitentCounter() + kbWriter.getInconsistentCounter());
                 mainWindow.getWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsitentCounter());
                 mainWindow.getWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
 
