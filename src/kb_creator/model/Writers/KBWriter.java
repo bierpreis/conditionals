@@ -67,7 +67,7 @@ public class KBWriter implements Runnable {
         if (inconsistentQueue != null)
             inconsistentQueue.add(kbToAdd);
     }
-    
+
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         long beginningTime = 0;
         beginningTime = System.currentTimeMillis();

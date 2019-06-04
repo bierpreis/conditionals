@@ -26,7 +26,7 @@ public class NewConditional {
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
         number = oldConditional.getNumber();
-
+        //todo: maybe here set counter conditional again?
     }
 
 
