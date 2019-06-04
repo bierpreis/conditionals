@@ -9,14 +9,7 @@ import nfc.model.World;
 public class Test {
 
     public static void main(String[] args) {
-        String niceString = "1, 5, 15, 20";
-
-        String[] splitString = niceString.split(", ");
-
-        for (String string : splitString)
-            System.out.println(Integer.parseInt(string));
-
-        //System.out.println(Integer.parseInt(niceString));
+        counterConditionalTest();
 
     }
 
@@ -59,5 +52,22 @@ public class Test {
         NewConditional otherNewConditional = new NewConditional(otherConditional);
 
         System.out.println(newConditional + "equals: " + otherNewConditional + newConditional.equals(otherNewConditional));
+    }
+
+    private static void counterConditionalTest() {
+        World antecend = new World();
+        antecend.addInt(1);
+        antecend.addInt(2);
+
+        World consequence = new World();
+        consequence.addInt(2);
+
+        Conditional firsConditonal = new Conditional(consequence, antecend);
+
+        NewConditional newFirstConditional = new NewConditional(firsConditonal);
+
+        System.out.println(newFirstConditional);
+
+        System.out.println(newFirstConditional.getCounterConditional());
     }
 }
