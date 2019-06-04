@@ -67,8 +67,7 @@ public class KBWriter implements Runnable {
         if (inconsistentQueue != null)
             inconsistentQueue.add(kbToAdd);
     }
-
-    //todo: maybe own threads for files? 1 consistent and 1 unconsistent?
+    
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         long beginningTime = 0;
         beginningTime = System.currentTimeMillis();

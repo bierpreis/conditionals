@@ -47,12 +47,12 @@ public class WriterPanel extends JPanel {
 
     }
 
-    //todo: compare total writes with files in folder amount
+
     public void showSpeed(int totalWrites) {
 
         if (nextSpeedCalculation < System.currentTimeMillis()) {
             NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-            
+
             speedLabel.setText("Total Speed: " + formatter.format((totalWrites - lastTotalWrites) / (SPEED_CALCULATION_MS / 1000)) + "Files/s");
             lastTotalWrites = totalWrites;
             nextSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
