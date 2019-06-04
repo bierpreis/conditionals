@@ -33,9 +33,14 @@ public class MainCreatorPanel extends JPanel {
         add(memoryPanel = new MemoryPanel());
         revalidate();
 
+        showStatus(Status.NOT_STARTED);
+
+        showKBAmount(0);
+
+
     }
 
-    public void showProgress(int finishedKBs) {
+    public void showFinishedKbs(int finishedKBs) {
         currentIterationPanel.showOverallProgress(finishedKBs);
     }
 

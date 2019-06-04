@@ -30,6 +30,8 @@ public class CurrentIterationPanel extends JPanel {
         candidatePairslabel = new JLabel();
         vBox.add(candidatePairslabel);
 
+        showIterationKBs(0);
+        showIterationKBs(0);
     }
 
     public void showOverallProgress(int finishedKBs) {

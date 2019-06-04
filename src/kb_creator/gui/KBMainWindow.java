@@ -32,6 +32,7 @@ public class KBMainWindow {
 
         mainWindow.setVisible(true);
 
+
         mainWindow.pack();
     }
 

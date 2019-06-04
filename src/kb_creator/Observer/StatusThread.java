@@ -28,7 +28,7 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showStatus(creatorThread.getStatus());
                 mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
                 mainWindow.getCreatorPanel().showKBAmount(creatorThread.getTotalKbAmount());
-                mainWindow.getCreatorPanel().showProgress(creatorThread.getCurrentK());
+                mainWindow.getCreatorPanel().showFinishedKbs(creatorThread.getCurrentK());
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
                 mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
@@ -38,12 +38,6 @@ public class StatusThread implements Runnable {
                 mainWindow.getMainWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsitentCounter());
                 mainWindow.getMainWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
 
-            } else {
-                mainWindow.getCreatorPanel().showStatus(Status.NOT_STARTED);
-                mainWindow.getCreatorPanel().showIterationKBs(0);
-                mainWindow.getCreatorPanel().showKBAmount(0);
-                mainWindow.getCreatorPanel().showProgress(-1);
-                mainWindow.getCreatorPanel().showSpeed(0);
             }
 
             mainWindow.getCreatorPanel().getMemoryPanel().showFreeMemory();
