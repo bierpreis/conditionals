@@ -32,14 +32,11 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
                 mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
-                mainWindow.getWriterPanel().getQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
-                mainWindow.getWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
-
-
-                //todo:this sucks
-                mainWindow.getWriterPanel().getWriterPanel().showSpeed(kbWriter.getConsitentCounter() + kbWriter.getInconsistentCounter());
-                mainWindow.getWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsitentCounter());
-                mainWindow.getWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
+                mainWindow.getMainWriterPanel().getQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
+                mainWindow.getMainWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+                mainWindow.getMainWriterPanel().getWriterPanel().showSpeed(kbWriter.getConsitentCounter() + kbWriter.getInconsistentCounter());
+                mainWindow.getMainWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsitentCounter());
+                mainWindow.getMainWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
 
             } else {
                 mainWindow.getCreatorPanel().showStatus(Status.NOT_STARTED);

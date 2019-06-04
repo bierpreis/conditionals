@@ -56,7 +56,7 @@ public class KBMainWindow {
     }
 
 
-    public MainWriterPanel getWriterPanel() {
+    public MainWriterPanel getMainWriterPanel() {
         return mainWriterPanel;
     }
 
