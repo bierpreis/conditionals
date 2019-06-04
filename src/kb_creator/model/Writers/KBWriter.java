@@ -68,8 +68,10 @@ public class KBWriter implements Runnable {
             inconsistentQueue.add(kbToAdd);
     }
 
+    //todo: maybe own threads for files? 1 consistent and 1 unconsistent?
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
         long beginningTime = 0;
+        beginningTime = System.currentTimeMillis();
         if (rootFilePath != null) {
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
             try {
@@ -80,8 +82,8 @@ public class KBWriter implements Runnable {
                 PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
 
                 writer.print(knowledgeBase.toFileString());
-                beginningTime = System.currentTimeMillis();
-                writer.close(); //todo: this takes about 120 ms. fix it!
+
+                writer.close();
                 consitentCounter++;
 
             } catch (IOException e) {
