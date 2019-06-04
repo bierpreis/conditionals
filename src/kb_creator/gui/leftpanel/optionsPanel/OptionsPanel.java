@@ -1,6 +1,5 @@
 package kb_creator.gui.leftpanel.optionsPanel;
 
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.BufferPanel;
 import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.MainKbSafePanel;
 import kb_creator.model.Signature.AB;

@@ -16,7 +16,8 @@ public class MainCreatorPanel extends JPanel {
     private MemoryPanel memoryPanel;
 
     public MainCreatorPanel(ActionPanel actionPanel) {
-        setBorder(BorderFactory.createTitledBorder("Creator"));
+        setPreferredSize(new Dimension(350, 300));
+        setBorder(BorderFactory.createTitledBorder("KB Creator"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //add(Box.createVerticalGlue());
 
