@@ -19,6 +19,9 @@ public class WriterPanel extends JPanel {
 
     private final int SPEED_CALCULATION_MS = 5000;
 
+    private JLabel consistentCounterLabel;
+    private JLabel inconsistentCounterLabel;
+
     public WriterPanel() {
 
         Box vBox = Box.createVerticalBox();
@@ -45,6 +48,15 @@ public class WriterPanel extends JPanel {
 
         nextConsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
         nextInconsistentSpeedCalculation = System.currentTimeMillis() + SPEED_CALCULATION_MS;
+
+        consistentCounterLabel = new JLabel();
+        vBox.add(consistentCounterLabel);
+        inconsistentCounterLabel = new JLabel();
+        vBox.add(inconsistentCounterLabel);
+
+        showConsistentConter(0);
+        showIncosnsistentCounter(0);
+
     }
 
     //todo: queue cant be used for calculating speed. must count written stuff?!
@@ -98,6 +110,14 @@ public class WriterPanel extends JPanel {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentSpeedLabel.setText("Speed: " + formatter.format(speed) + "KB/s");
 
+    }
+
+    public void showConsistentConter(int consistentCounter) {
+        consistentCounterLabel.setText("Written Consistent KBs: " + consistentCounter);
+    }
+
+    public void showIncosnsistentCounter(int inconsistetnCounter) {
+        inconsistentCounterLabel.setText("Written Inconsistent KBs: " + inconsistetnCounter);
     }
 
 }

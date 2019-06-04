@@ -77,4 +77,12 @@ public class MainStatusPanel extends JPanel {
     public void showInconsistentQueue(int inconsistentleghth) {
         writerPanel.showInconsistentQueue(inconsistentleghth);
     }
+
+    public void showConsistentCounter(int consistentCounter){
+        writerPanel.showConsistentConter(consistentCounter);
+    }
+
+    public void showInconsistentCounter(int inconsistentCounter){
+        writerPanel.showIncosnsistentCounter(inconsistentCounter);
+    }
 }

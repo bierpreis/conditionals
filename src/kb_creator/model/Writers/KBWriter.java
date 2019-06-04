@@ -133,5 +133,14 @@ public class KBWriter implements Runnable {
             System.out.println("Speed: " + speed);
         }
     }
+
+    public int getConsitentCounter() {
+        return consitentCounter;
+    }
+
+    public int getInconsistentCounter() {
+        return inconsistentCounter;
+    }
+
 }
 

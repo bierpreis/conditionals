@@ -38,6 +38,9 @@ public class StatusThread implements Runnable {
                 mainStatusPanel.showConsistentQueue(kbWriter.getConsistentQueue());
                 mainStatusPanel.showInconsistentQueue(kbWriter.getInconsistetnQueue());
 
+                mainStatusPanel.showConsistentCounter(kbWriter.getConsitentCounter());
+                mainStatusPanel.showInconsistentCounter(kbWriter.getInconsistentCounter());
+
             } else {
                 mainStatusPanel.showStatus(Status.NOT_STARTED);
                 mainStatusPanel.showIterationKBs(0);
