@@ -1,26 +1,23 @@
 package kb_creator.Observer;
 
-import kb_creator.gui.creatorPanel.MainCreatorPanel;
-import kb_creator.gui.creatorPanel.MemoryPanel;
+import kb_creator.gui.KBMainWindow;
 import kb_creator.model.Conditionals.KBCreator;
 import kb_creator.model.Writers.KBWriter;
 
 public class StatusThread implements Runnable {
-    private MainCreatorPanel mainCreatorPanel;
     private KBCreator creatorThread;
     private long idealSleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
-    private MemoryPanel memoryPanel;
     private boolean isRunning = true;
     private KBWriter kbWriter;
+    private KBMainWindow mainWindow;
 
 
-    public StatusThread(MainCreatorPanel mainCreatorPanel, MemoryPanel memoryPanel) {
-        this.mainCreatorPanel = mainCreatorPanel;
+    public StatusThread(KBMainWindow mainWindow) {
+        this.mainWindow = mainWindow;
         idealSleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
-        this.memoryPanel = memoryPanel;
     }
 
     @Override
@@ -28,28 +25,28 @@ public class StatusThread implements Runnable {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
             if (creatorThread != null) {
-                mainCreatorPanel.showStatus(creatorThread.getStatus());
-                mainCreatorPanel.showIterationKBs(creatorThread.getIterationNumberOfKBs());
-                mainCreatorPanel.showKBAmount(creatorThread.getTotalKbAmount());
-                mainCreatorPanel.showProgress(creatorThread.getCurrentK());
-                mainCreatorPanel.showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-                mainCreatorPanel.showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
-                mainCreatorPanel.showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
-                mainCreatorPanel.showConsistentQueue(kbWriter.getConsistentQueue());
-                mainCreatorPanel.showInconsistentQueue(kbWriter.getInconsistetnQueue());
+                mainWindow.getCreatorPanel().showStatus(creatorThread.getStatus());
+                mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
+                mainWindow.getCreatorPanel().showKBAmount(creatorThread.getTotalKbAmount());
+                mainWindow.getCreatorPanel().showProgress(creatorThread.getCurrentK());
+                mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
+                mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
+                mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+                mainWindow.getWriterPanel().getQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
+                mainWindow.getWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistetnQueue());
 
-                mainCreatorPanel.showConsistentCounter(kbWriter.getConsitentCounter());
-                mainCreatorPanel.showInconsistentCounter(kbWriter.getInconsistentCounter());
+                mainWindow.getWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsitentCounter());
+                mainWindow.getWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
 
             } else {
-                mainCreatorPanel.showStatus(Status.NOT_STARTED);
-                mainCreatorPanel.showIterationKBs(0);
-                mainCreatorPanel.showKBAmount(0);
-                mainCreatorPanel.showProgress(-1);
-                mainCreatorPanel.showSpeed(0);
+                mainWindow.getCreatorPanel().showStatus(Status.NOT_STARTED);
+                mainWindow.getCreatorPanel().showIterationKBs(0);
+                mainWindow.getCreatorPanel().showKBAmount(0);
+                mainWindow.getCreatorPanel().showProgress(-1);
+                mainWindow.getCreatorPanel().showSpeed(0);
             }
 
-            memoryPanel.showFreeMemory();
+            mainWindow.getCreatorPanel().getMemoryPanel().showFreeMemory();
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
             if (sleepTime > 0)

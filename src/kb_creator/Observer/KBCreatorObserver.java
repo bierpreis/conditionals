@@ -19,7 +19,7 @@ public class KBCreatorObserver implements ActionListener {
     public KBCreatorObserver() {
 
         mainWindow = new KBMainWindow(this);
-        statusThreadObject = new StatusThread(mainWindow.getInfoPanel(), mainWindow.getMemoryPanel());
+        statusThreadObject = new StatusThread(mainWindow);
 
         Thread statusThread = new Thread(statusThreadObject);
 

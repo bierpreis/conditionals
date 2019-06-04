@@ -21,7 +21,7 @@ public class MainWriterPanel extends JPanel {
         return queuePanel;
     }
 
-    public WriterPanel getMainWriterPanel() {
+    public WriterPanel getWriterPanel() {
         return writerPanel;
     }
 }
