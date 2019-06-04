@@ -110,10 +110,14 @@ public class KBWriter implements Runnable {
     }
 
     public int getConsistentQueue() {
+        if (consistentQueue == null)
+            return 0;
         return consistentQueue.size();
     }
 
     public int getInconsistentQueue() {
+        if (consistentQueue == null)
+            return 0;
         return inconsistentQueue.size();
     }
 
