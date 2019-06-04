@@ -24,6 +24,7 @@ public class WriterPanel extends JPanel {
 
     public WriterPanel() {
 
+        //todo: show total file writes instead of useless split stuff
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
