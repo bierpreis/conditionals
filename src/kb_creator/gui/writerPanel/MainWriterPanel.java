@@ -4,12 +4,13 @@ import javax.swing.*;
 
 
 public class MainWriterPanel extends JPanel {
+
     private QueuePanel queuePanel;
     private WriterPanel writerPanel;
 
     public MainWriterPanel() {
         setBorder(BorderFactory.createTitledBorder("File Writer"));
-
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         queuePanel = new QueuePanel();
         add(queuePanel);

@@ -18,7 +18,7 @@ public class MainCreatorPanel extends JPanel {
     public MainCreatorPanel(ActionPanel actionPanel) {
         setBorder(BorderFactory.createTitledBorder("Creator"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(Box.createVerticalGlue());
+        //add(Box.createVerticalGlue());
 
         overallStatusPanel = new OverallStatusPanel(actionPanel);
         add(overallStatusPanel);
@@ -30,6 +30,7 @@ public class MainCreatorPanel extends JPanel {
         add(nextIterationPanel);
 
         add(memoryPanel = new MemoryPanel());
+        revalidate();
 
     }
 
