@@ -84,13 +84,13 @@ public class Conditional implements Comparable {
         else spaceFillCharacter = " ";
     }
 
-    //todo: check this
+
     public Conditional getCounterConditional() {
 
-        World newLeftWorld = new World();
-        newLeftWorld.addList(antecedent.getWorldsList());
-        newLeftWorld.removeWorld(consequence);
-        return new Conditional(newLeftWorld, antecedent);
+        World newConsequence = new World();
+        newConsequence.addList(antecedent.getWorldsList());
+        newConsequence.removeWorld(consequence);
+        return new Conditional(newConsequence, antecedent);
 
     }
 
