@@ -26,6 +26,7 @@ public class Disjunction extends AbstractFormula {
 
     @Override
     public boolean equals(Object o) {
+        //todo: what about neg. isnt conjunction == counterconjunction.net?!
         if (!(o instanceof Disjunction))
             return false;
         Disjunction otherDisjunction = (Disjunction) o;
