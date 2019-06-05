@@ -32,8 +32,8 @@ public class Disjunction extends AbstractFormula {
             sb.append(formua.toString());
             sb.append(", ");
         }
-        //todo: remove last comma?
-        return sb.toString();
+        //remove the ", " at the end
+        return sb.toString().replaceAll(", $", "");
     }
 
 
