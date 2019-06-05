@@ -137,7 +137,7 @@ public class NewConditional {
     }
 
 
-    //todo: does this really work? do some equal test. and why antecend neg and not consequence?
+    //todo: this is still wrong.
     public NewConditional getCounterConditional() {
         return new NewConditional(this.antecend.neg(), this.antecend);
     }
