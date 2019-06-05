@@ -1,15 +1,15 @@
 package kb_creator.model.Writers.KBWriter;
 
-import kb_creator.model.Conditionals.KnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 
 public abstract class AbstractKbWriter implements Runnable {
 
     @Override
     public abstract void run();
 
-    public abstract void addConsistentKb(KnowledgeBase knowledgeBase);
+    public abstract void addConsistentKb(AbstractKnowledgeBase knowledgeBase);
 
-    public abstract void addInconsistentKb(KnowledgeBase knowledgeBase);
+    public abstract void addInconsistentKb(AbstractKnowledgeBase knowledgeBase);
 
     public abstract int getInconsistentCounter();
 

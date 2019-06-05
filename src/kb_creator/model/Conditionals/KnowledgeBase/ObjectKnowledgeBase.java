@@ -1,5 +1,6 @@
-package kb_creator.model.Conditionals;
+package kb_creator.model.Conditionals.KnowledgeBase;
 
+import kb_creator.model.Conditionals.NewConditional;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
@@ -10,23 +11,20 @@ import kb_creator.model.Signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 //todo: abstract kb. one with conditionals and one with numbers
-public class KnowledgeBase {
-    private AbstractSignature signature;
-    private List<Integer> conditionalNumbersList;
-    private int kbNumber;
+public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
-    private static Map<Integer, NewConditional> nfcMap;
+    private List<NewConditional> conditionalList;
 
-    public KnowledgeBase(AbstractSignature signature, int kbNumber) {
-        conditionalNumbersList = new ArrayList<>();
+
+    public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
+        conditionalList = new ArrayList<>();
         this.signature = signature;
         this.kbNumber = kbNumber;
     }
 
-    public KnowledgeBase(String stringFromFile) {
+    public ObjectKnowledgeBase(String stringFromFile) {
         //todo: test
         System.out.println("string in kb: " + stringFromFile);
         stringFromFile.replace("signature\n", "");
@@ -37,12 +35,12 @@ public class KnowledgeBase {
             signature = new ABC();
         else throw new RuntimeException("No valid signature found in file");
 
-        conditionalNumbersList = new ArrayList<>();
+        conditionalList = new ArrayList<>();
         stringFromFile.replace(".*conditionals\n\n", "");
         String[] conditionalStringArray = stringFromFile.split(", ");
 
         for (String candidateString : conditionalStringArray)
-            conditionalNumbersList.add(Integer.parseInt(candidateString));
+            conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
 
     }
 
@@ -52,37 +50,18 @@ public class KnowledgeBase {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        List<NewConditional> conditionalList = new ArrayList<>();
-        for (Integer conditionalNumber : conditionalNumbersList) {
-            conditionalList.add(nfcMap.get(conditionalNumber));
-        }
-
-
         AbstractFormula concistecyOfKB = new Tautology();
 
         for (NewConditional conditionalFromList : conditionalList) {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecend().neg().or(conditionalFromList.getConsequence()));
         }
 
-        //here sth like:
+
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
-
-//                System.out.println("consistent: " + world.toString());
-//                System.out.println(conditionalToTest);
-//                System.out.println(concistecyOfKB);
-//                System.out.println();
-
                 return true;
-
             }
-
         }
-
-//        System.out.println("inconsistent: ");
-//        System.out.println(conditionalToTest);
-//        System.out.println(concistecyOfKB);
-//        System.out.println();
 
         return false;
     }
@@ -91,26 +70,14 @@ public class KnowledgeBase {
         return kbNumber;
     }
 
-    public void add(Integer conditionalNumberToAdd) {
-        conditionalNumbersList.add(conditionalNumberToAdd);
+
+    public void add(AbstractKnowledgeBase knowledgeBaseToAdd) {
+        conditionalList.addAll(knowledgeBaseToAdd.getConditionalList());
     }
 
-    public static void setNfcMap(Map<Integer, NewConditional> nfcMapToAdd) {
-        nfcMap = nfcMapToAdd;
-    }
-
-    public void add(KnowledgeBase knowledgeBaseToAdd) {
-        for (Integer conditionalNumber : knowledgeBaseToAdd.getConditionalNumbersList()) {
-            conditionalNumbersList.add(conditionalNumber);
-        }
-    }
-
-    public List<Integer> getConditionalNumbersList() {
-        return conditionalNumbersList;
-    }
-
+    @Override
     public int getSize() {
-        return conditionalNumbersList.size();
+        return conditionalList.size();
     }
 
 
@@ -121,14 +88,10 @@ public class KnowledgeBase {
 
 
     public List<NewConditional> getConditionalList() {
-        List<NewConditional> conditionalList = new ArrayList<>();
-        for (Integer conditionalNumber : conditionalNumbersList) {
-            conditionalList.add(nfcMap.get(conditionalNumber));
-        }
         return conditionalList;
     }
 
-
+    @Override
     public String toFileString() {
 
         StringBuilder sb = new StringBuilder();
@@ -151,19 +114,24 @@ public class KnowledgeBase {
 
     }
 
+    @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("signature");
         sb.append(signature.toString());
         sb.append("\n\n");
         sb.append("conditionals: \n\n");
-        for (Integer conditionalInt : conditionalNumbersList) {
-            sb.append(conditionalInt);
+        for (NewConditional conditional : conditionalList) {
+            sb.append(conditional.getNumber());
             sb.append(", ");
         }
 
 
         return sb.toString();
+    }
+
+    public void add(NewConditional conditionalToAdd) {
+        conditionalList.add(conditionalToAdd);
     }
 
 }

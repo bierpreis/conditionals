@@ -1,6 +1,7 @@
 package kb_creator.model.Writers.KBWriter;
 
-import kb_creator.model.Conditionals.KnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,8 +10,8 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class KbFileWriter extends AbstractKbWriter implements Runnable {
-    private Queue<KnowledgeBase> consistentQueue;
-    private Queue<KnowledgeBase> inconsistentQueue;
+    private Queue<AbstractKnowledgeBase> consistentQueue;
+    private Queue<AbstractKnowledgeBase> inconsistentQueue;
     private String rootFilePath;
 
     private int consistentCounter;
@@ -57,16 +58,16 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     }
 
     @Override
-    public void addConsistentKb(KnowledgeBase kbToAdd) {
+    public void addConsistentKb(AbstractKnowledgeBase kbToAdd) {
             consistentQueue.add(kbToAdd);
     }
 
     @Override
-    public void addInconsistentKb(KnowledgeBase kbToAdd) {
+    public void addInconsistentKb(AbstractKnowledgeBase kbToAdd) {
             inconsistentQueue.add(kbToAdd);
     }
 
-    private void writeConsistentKbToFile(KnowledgeBase knowledgeBase) {
+    private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
 
 
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
@@ -88,7 +89,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
         }
     }
 
-    private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
+    private void writeInconsistentKBToFile(AbstractKnowledgeBase knowledgeBase) {
 
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "inconsistent/";
 

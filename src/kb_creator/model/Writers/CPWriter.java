@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 //todo: thread for this and combine with bufferedList
+
 public class CPWriter {
     private String folderToSave;
 
@@ -19,7 +20,7 @@ public class CPWriter {
         }
     }
 
-    //todo: this is shit. better 2 cp writers, one empty and one real writer?
+    //todo: write all pairs in 1 file. much more efficient
     public void writePair(CandidatePair candidatePair) {
         File subFolder = new File(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())

@@ -1,19 +1,22 @@
 package kb_creator.model.Conditionals;
 
 
+import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 //todo: abstract cp. one with real and one with numbers.
 public class CandidatePair {
-    private KnowledgeBase knowledgeBase;
+    private AbstractKnowledgeBase knowledgeBase;
     private List<Integer> candidatesNumbersList;
 
     private static Map<Integer, NewConditional> nfcMap;
 
 
-    public CandidatePair(KnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+    public CandidatePair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         candidatesNumbersList = new ArrayList<>();
 
@@ -30,7 +33,7 @@ public class CandidatePair {
             throw new RuntimeException("Invalid Candidate Pair File");
         //divide string into kb and candidates
         //create both from subString
-        knowledgeBase = new KnowledgeBase(splitString[0]);
+        knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
         candidatesNumbersList = createCandidatesListFromString(splitString[1]);
     }
 
@@ -59,7 +62,7 @@ public class CandidatePair {
         return candidatesNumbersList;
     }
 
-    public KnowledgeBase getKnowledgeBase() {
+    public AbstractKnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
 

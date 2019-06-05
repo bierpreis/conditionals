@@ -1,6 +1,7 @@
 package kb_creator.model.Writers.KBWriter;
 
-import kb_creator.model.Conditionals.KnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 
 //this class is a writer which throws all input away
 //it is a kind of placeholder for test runs
@@ -13,12 +14,12 @@ public class DummyWriter extends AbstractKbWriter {
     }
 
     @Override
-    public void addConsistentKb(KnowledgeBase knowledgeBase) {
+    public void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
 
     }
 
     @Override
-    public void addInconsistentKb(KnowledgeBase knowledgeBase) {
+    public void addInconsistentKb(AbstractKnowledgeBase knowledgeBase) {
 
     }
 

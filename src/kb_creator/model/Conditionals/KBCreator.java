@@ -1,6 +1,9 @@
 package kb_creator.model.Conditionals;
 
 import kb_creator.Observer.Status;
+import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.NumbersKnowledgeBase;
+import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
@@ -69,7 +72,7 @@ public class KBCreator implements Runnable {
         //Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
 
         CandidatePair.setNfc(nfcMap);
-        KnowledgeBase.setNfcMap(nfcMap);
+        AbstractKnowledgeBase.setNfcMap(nfcMap);
 
         l.getList().add(initOneElementKBs(nfc, cnfc));
 
@@ -87,23 +90,22 @@ public class KBCreator implements Runnable {
             for (CandidatePair candidatePair : l.getList().get(k)) {
 
                 //line 9
-                for (Integer r : candidatePair.getCandidatesNumbersList()) {
-                    NewConditional candidate = nfcMap.get(r);
+                for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
-                    if (candidatePair.getKnowledgeBase().isConsistent(candidate)) {
+                    if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
                         //next part is line 11 and 12
                         //first create knowledge base
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(signature, iterationNumberOfKBs);
-                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
-                        knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
+                        ObjectKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new ObjectKnowledgeBase
+                        knowledgeBaseToAdd.add(r); // add r to new ObjectKnowledgeBase
 
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
-                            if (conditionalFromCandidates.getNumber() > r && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional()))
+                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
@@ -121,7 +123,7 @@ public class KBCreator implements Runnable {
 
                     } else {
 
-                        KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
+                        ObjectKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
                         kbWriter.addInconsistentKb(inconsistentKB);
@@ -177,8 +179,9 @@ public class KBCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            KnowledgeBase rKB = new KnowledgeBase(signature, iterationNumberOfKBs);
-            rKB.add(r.getNumber()); // rKB is r as 1 element kb
+            //todo: here it must be chosen
+            AbstractKnowledgeBase rKB = new NumbersKnowledgeBase(signature, iterationNumberOfKBs);
+            rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new ArrayList<>();
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
