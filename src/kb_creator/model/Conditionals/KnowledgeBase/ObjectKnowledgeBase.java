@@ -12,7 +12,6 @@ import kb_creator.model.Signature.AbstractSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: abstract kb. one with conditionals and one with numbers
 public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private List<NewConditional> conditionalList;

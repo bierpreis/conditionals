@@ -5,7 +5,6 @@ import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 import kb_creator.model.Signature.AbstractSignature;
-import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,8 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
         this.signature = signature;
         this.kbNumber = kbNumber;
     }
-    //todo: this
+
+    @Override
     public boolean isConsistent(NewConditional conditionalToTest) {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
@@ -29,22 +29,16 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
         }
 
 
-
-
         AbstractFormula concistecyOfKB = new Tautology();
 
         for (NewConditional conditionalFromList : conditionalList) {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecend().neg().or(conditionalFromList.getConsequence()));
         }
 
-        //here sth like:
+
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
 
-//                System.out.println("consistent: " + world.toString());
-//                System.out.println(conditionalToTest);
-//                System.out.println(concistecyOfKB);
-//                System.out.println();
 
                 return true;
 
@@ -52,10 +46,6 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
 
         }
 
-//        System.out.println("inconsistent: ");
-//        System.out.println(conditionalToTest);
-//        System.out.println(concistecyOfKB);
-//        System.out.println();
 
         return false;
     }
