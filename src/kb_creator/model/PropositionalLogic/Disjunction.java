@@ -2,48 +2,60 @@ package kb_creator.model.PropositionalLogic;
 
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
-public class Disjunction extends AbstractFormula {
-    private AbstractFormula firstFormula;
-    private AbstractFormula secondFormula;
+import java.util.ArrayList;
+import java.util.List;
 
-    //todo: list like conjunction?!
-    public Disjunction(AbstractFormula firstFormula, AbstractFormula secondFormula) {
-        this.firstFormula = firstFormula;
-        this.secondFormula = secondFormula;
+public class Disjunction extends AbstractFormula {
+    private List<AbstractFormula> formulaList;
+
+
+    public Disjunction(AbstractFormula... formulasToAdd) {
+        formulaList = new ArrayList<>();
+        for (AbstractFormula formula : formulasToAdd)
+            formulaList.add(formula);
     }
 
     @Override
+    //todo: make conjunction evlauate similar to that?
     public boolean evaluate(AbstractWorld world) {
-        return firstFormula.evaluate(world) || secondFormula.evaluate(world);
-
+        for (AbstractFormula formula : formulaList) {
+            if (formula.evaluate(world))
+                return true;
+        }
+        return false;
     }
 
 
     public String toString() {
-        return "(" + firstFormula.toString() + "," + secondFormula.toString() + ")";
+        StringBuilder sb = new StringBuilder();
+        for (AbstractFormula formua : formulaList) {
+            sb.append(formua.toString());
+            sb.append(", ");
+        }
+        //todo: remove last comma?
+        return sb.toString();
     }
 
 
     @Override
     public boolean equals(Object o) {
         //todo: what about neg. isnt conjunction == counterconjunction.net?!
+        //and think again about this
         if (!(o instanceof Disjunction))
             return false;
-        Disjunction otherDisjunction = (Disjunction) o;
+        for (AbstractFormula formula : formulaList) {
+            if (!((Disjunction) o).getFormulaList().contains(formula))
+                return false;
+        }
 
-        if (otherDisjunction.getFirstFormula().equals(firstFormula) && otherDisjunction.getSecondFormula().equals(secondFormula))
-            return true;
-        if (otherDisjunction.getFirstFormula().equals(secondFormula) && otherDisjunction.getSecondFormula().equals(firstFormula))
-            return true;
-        return false;
+        for (AbstractFormula formula : ((Disjunction) o).getFormulaList()) {
+            if (!formulaList.contains(formula))
+                return false;
+        }
+        return true;
     }
 
-    public AbstractFormula getFirstFormula() {
-        return firstFormula;
+    public List<AbstractFormula> getFormulaList() {
+        return formulaList;
     }
-
-    public AbstractFormula getSecondFormula() {
-        return secondFormula;
-    }
-
 }
