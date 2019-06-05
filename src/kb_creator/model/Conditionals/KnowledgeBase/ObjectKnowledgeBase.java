@@ -44,7 +44,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
 
-    //todo: this
     public boolean isConsistent(NewConditional conditionalToTest) {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
@@ -69,7 +68,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return kbNumber;
     }
 
-
+    @Override
     public void add(AbstractKnowledgeBase knowledgeBaseToAdd) {
         conditionalList.addAll(knowledgeBaseToAdd.getConditionalList());
     }

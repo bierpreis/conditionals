@@ -1,5 +1,6 @@
 package kb_creator.model.Conditionals.KnowledgeBase;
 
+import com.intellij.refactoring.changeClassSignature.TypeParameterInfo;
 import kb_creator.model.Conditionals.NewConditional;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
@@ -38,19 +39,14 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
-
-
                 return true;
 
             }
-
         }
-
-
         return false;
     }
 
-
+    @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("signature");
@@ -67,6 +63,13 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     @Override
+    public void add(AbstractKnowledgeBase knowledgeBaseToAdd) {
+        for (NewConditional conditionalToAdd : knowledgeBaseToAdd.getConditionalList()) {
+            conditionalNumbersList.add(conditionalToAdd.getNumber());
+        }
+    }
+
+    @Override
     public int getSize() {
         return conditionalNumbersList.size();
     }
@@ -76,6 +79,7 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
         conditionalNumbersList.add(conditionalToAdd.getNumber());
     }
 
+    @Override
     public String toFileString() {
 
         StringBuilder sb = new StringBuilder();
@@ -98,7 +102,7 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
-
+    @Override
     public String toString() {
         return getConditionalList().toString();
     }

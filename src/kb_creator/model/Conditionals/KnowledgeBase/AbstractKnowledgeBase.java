@@ -19,16 +19,18 @@ public abstract class AbstractKnowledgeBase {
 
     public abstract int getSize();
 
+    public abstract List<NewConditional> getConditionalList();
+
+    public abstract boolean isConsistent(NewConditional conditional);
+
+    public abstract void add(AbstractKnowledgeBase knowledgeBaseToAdd);
+
+
     public static void setNfcMap(Map<Integer, NewConditional> nfcMapToAdd) {
         nfcMap = nfcMapToAdd;
     }
 
-    public abstract List<NewConditional> getConditionalList();
-
     public int getKbNumber() {
         return kbNumber;
     }
-
-    public abstract boolean isConsistent(NewConditional conditional);
-
 }

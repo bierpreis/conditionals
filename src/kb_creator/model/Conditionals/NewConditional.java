@@ -126,7 +126,7 @@ public class NewConditional {
         return number;
     }
 
-
+    //todo: maybe just compare numbers?
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof NewConditional))
