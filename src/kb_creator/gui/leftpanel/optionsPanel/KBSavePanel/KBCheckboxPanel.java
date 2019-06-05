@@ -27,7 +27,15 @@ public class KBCheckboxPanel extends JPanel {
         }
     }
 
-    public void setActive(boolean active) {
+    public void setBoxEnabled(boolean active) {
         checkBox.setEnabled(active);
+    }
+
+    public void setBoxSelected(boolean selected) {
+        checkBox.setSelected(selected);
+    }
+
+    public boolean isBoxSelected() {
+        return checkBox.isSelected();
     }
 }

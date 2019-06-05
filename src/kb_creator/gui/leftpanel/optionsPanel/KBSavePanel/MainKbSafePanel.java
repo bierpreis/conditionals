@@ -1,10 +1,7 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
 
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class MainKbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
@@ -30,7 +27,7 @@ public class MainKbSafePanel extends JPanel {
     }
 
     public void setButtonActive(boolean active) {
-        kbCheckboxPanel.setActive(active);
+        kbCheckboxPanel.setBoxEnabled(active);
     }
 
 }
