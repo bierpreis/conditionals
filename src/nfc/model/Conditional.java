@@ -84,6 +84,7 @@ public class Conditional implements Comparable {
         else spaceFillCharacter = " ";
     }
 
+    //todo: check this
     public Conditional getCounterConditional() {
 
         World newLeftWorld = new World();

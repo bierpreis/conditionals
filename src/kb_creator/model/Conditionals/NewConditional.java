@@ -15,10 +15,11 @@ public class NewConditional {
     private AbstractFormula antecend;
     private AbstractFormula consequence;
 
-    //todo: wtf here antecend and consequence twisted??
-    public NewConditional(AbstractFormula antecend, AbstractFormula consequence) {
-        this.antecend = antecend;
+
+    public NewConditional(AbstractFormula consequence, AbstractFormula antecend) {
+
         this.consequence = consequence;
+        this.antecend = antecend;
     }
 
     public NewConditional(Conditional oldConditional) {
@@ -136,7 +137,7 @@ public class NewConditional {
     }
 
 
-    //todo: does this really work? does this counter and the real counter equal??
+    //todo: does this really work? do some equal test. and why antecend neg and not consequence?
     public NewConditional getCounterConditional() {
         return new NewConditional(this.antecend.neg(), this.antecend);
     }
