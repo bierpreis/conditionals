@@ -70,8 +70,6 @@ public class KBWriter implements Runnable {
 
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
 
-        long beginningTime = 0;
-        beginningTime = System.currentTimeMillis();
         if (rootFilePath != null) {
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
             try {
@@ -90,7 +88,6 @@ public class KBWriter implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("writing time: " + (System.currentTimeMillis() - beginningTime));
     }
 
     private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {

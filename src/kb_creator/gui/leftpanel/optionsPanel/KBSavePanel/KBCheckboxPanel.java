@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//todo: checkbox value is ignored?! only important if a file is selected. maybe auto select checkbox after selecting file?
 public class KBCheckboxPanel extends JPanel {
     private JCheckBox checkBox;
     private MainKbSafePanel mainKbSafePanel;
