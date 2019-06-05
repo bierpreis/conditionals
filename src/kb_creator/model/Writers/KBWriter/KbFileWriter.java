@@ -26,7 +26,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
         while (true) {
             //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
 
-            calculateConsistentSpeed();
+
             if (!consistentQueue.isEmpty())
                 writeConsistentKbToFile(consistentQueue.poll());
             if (!inconsistentQueue.isEmpty())
@@ -115,15 +115,6 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     @Override
     public int getInconsistentQueue() {
         return inconsistentQueue.size();
-    }
-
-    private void calculateConsistentSpeed() {
-        if (System.currentTimeMillis() > nextSpeedCalculationTime) {
-            int kbsSinceLastCalculation = consistentCounter - lastConsistentAmount;
-            int speed = kbsSinceLastCalculation / (int) (SPEED_CALCULATION_INTERVAL / 1000);
-            lastConsistentAmount = consistentCounter;
-            nextSpeedCalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
-        }
     }
 
     @Override
