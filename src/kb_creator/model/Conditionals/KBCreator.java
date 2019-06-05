@@ -179,7 +179,6 @@ public class KBCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            //todo: here it must be chosen
             AbstractKnowledgeBase rKB = new NumbersKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new ArrayList<>();
