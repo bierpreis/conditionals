@@ -1,4 +1,4 @@
-package kb_creator.model.Writers;
+package kb_creator.model.Writers.KBWriter;
 
 import kb_creator.model.Conditionals.KnowledgeBase;
 
@@ -8,45 +8,44 @@ import java.io.PrintWriter;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class KBWriter implements Runnable {
+public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private Queue<KnowledgeBase> consistentQueue;
     private Queue<KnowledgeBase> inconsistentQueue;
     private String rootFilePath;
 
-    private int consitentCounter;
+    private int consistentCounter;
     private int inconsistentCounter;
 
-    private int lastConsitentAmount;
-    private long nextSpeedcalculationTime;
+    private int lastConsistentAmount;
+    private long nextSpeedCalculationTime;
     private final long SPEED_CALCULATION_INTERVAL = 5000;
 
-
+    @Override
     public void run() {
 
         while (true) {
             //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
-            if (rootFilePath != null) {
-                calculateConsistentSpeed();
-                if (!consistentQueue.isEmpty())
-                    writeConsistentKBToFile(consistentQueue.poll());
-                if (!inconsistentQueue.isEmpty())
-                    writeInconsistentKBToFile(inconsistentQueue.poll());
-                if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+            calculateConsistentSpeed();
+            if (!consistentQueue.isEmpty())
+                writeConsistentKbToFile(consistentQueue.poll());
+            if (!inconsistentQueue.isEmpty())
+                writeInconsistentKBToFile(inconsistentQueue.poll());
+            if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-
-
         }
+
+
     }
 
 
-    public KBWriter(String filePathToSave) {
-        consitentCounter = 0;
+    public KbFileWriter(String filePathToSave) {
+        consistentCounter = 0;
         inconsistentCounter = 0;
-        nextSpeedcalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
+        nextSpeedCalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
 
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
@@ -57,20 +56,19 @@ public class KBWriter implements Runnable {
         }
     }
 
-    public void addConsistentKB(KnowledgeBase kbToAdd) {
-        if (consistentQueue != null)
+    @Override
+    public void addConsistentKb(KnowledgeBase kbToAdd) {
             consistentQueue.add(kbToAdd);
     }
 
-    public void addInconsistentKB(KnowledgeBase kbToAdd) {
-        //System.out.println("adding inConsistent");
-        if (inconsistentQueue != null)
+    @Override
+    public void addInconsistentKb(KnowledgeBase kbToAdd) {
             inconsistentQueue.add(kbToAdd);
     }
 
-    private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
+    private void writeConsistentKbToFile(KnowledgeBase knowledgeBase) {
 
-        if (rootFilePath != null) {
+
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
             try {
 
@@ -82,16 +80,16 @@ public class KBWriter implements Runnable {
                 writer.print(knowledgeBase.toFileString());
 
                 writer.close();
-                consitentCounter++;
+                consistentCounter++;
 
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+
         }
     }
 
     private void writeInconsistentKBToFile(KnowledgeBase knowledgeBase) {
-        if (rootFilePath != null) {
+
             String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "inconsistent/";
 
             File inconsistentFolder = new File(filePath);
@@ -105,35 +103,35 @@ public class KBWriter implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+
     }
 
+    @Override
     public int getConsistentQueue() {
-        if (consistentQueue == null)
-            return 0;
+
         return consistentQueue.size();
     }
 
+    @Override
     public int getInconsistentQueue() {
-        if (consistentQueue == null)
-            return 0;
         return inconsistentQueue.size();
     }
 
     private void calculateConsistentSpeed() {
-        if (System.currentTimeMillis() > nextSpeedcalculationTime) {
-            int kbsSinceLastCalculation = consitentCounter - lastConsitentAmount;
+        if (System.currentTimeMillis() > nextSpeedCalculationTime) {
+            int kbsSinceLastCalculation = consistentCounter - lastConsistentAmount;
             int speed = kbsSinceLastCalculation / (int) (SPEED_CALCULATION_INTERVAL / 1000);
-            lastConsitentAmount = consitentCounter;
-            nextSpeedcalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
-            System.out.println("Speed: " + speed);
+            lastConsistentAmount = consistentCounter;
+            nextSpeedCalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
         }
     }
 
-    public int getConsitentCounter() {
-        return consitentCounter;
+    @Override
+    public int getConsistentCounter() {
+        return consistentCounter;
     }
 
+    @Override
     public int getInconsistentCounter() {
         return inconsistentCounter;
     }

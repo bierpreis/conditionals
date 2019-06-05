@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class KBCheckboxPanel extends JPanel {
     private JCheckBox checkBox;
     private MainKbSafePanel mainKbSafePanel;
-
+    //todo: bug: when first path was selected, but then no path is selected when start writer still starts
     public KBCheckboxPanel(MainKbSafePanel mainKbSafePanel) {
         checkBox = new JCheckBox("Save KBs to File");
         add(checkBox);

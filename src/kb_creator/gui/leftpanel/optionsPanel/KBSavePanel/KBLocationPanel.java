@@ -43,15 +43,17 @@ public class KBLocationPanel extends JPanel {
             else {
                 checkboxPanel.setBoxSelected(false);
                 checkboxPanel.setBoxEnabled(false);
-
+                filePathToSave = null;
             }
 
         }
-
-
     }
 
     public String getFilePath() {
         return filePathToSave;
+    }
+
+    public boolean isCheckBoxSelected(){
+        return checkboxPanel.isBoxSelected();
     }
 }

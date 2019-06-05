@@ -1,14 +1,15 @@
 package kb_creator.model.Conditionals;
 
-import cucumber.api.java.lv.Un;
 import kb_creator.Observer.Status;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
-import kb_creator.model.Conditionals.Lists.UnbufferedList;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
-import kb_creator.model.Writers.KBWriter;
+import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
+import kb_creator.model.Writers.KBWriter.DummyWriter;
+import kb_creator.model.Writers.KBWriter.KbFileWriter;
 import nfc.model.NfcCreator;
 
+import javax.swing.text.AbstractWriter;
 import java.util.*;
 
 public class KBCreator implements Runnable {
@@ -28,7 +29,7 @@ public class KBCreator implements Runnable {
 
     private CPWriter cpWriter;
 
-    private KBWriter kbWriter;
+    private AbstractKbWriter kbWriter;
 
     private AbstractCandidateList l;
 
@@ -40,8 +41,9 @@ public class KBCreator implements Runnable {
         this.filePath = filePath;
 
         cpWriter = new CPWriter(filePath);
-
-        kbWriter = new KBWriter(filePath);
+        if (filePath != null)
+            kbWriter = new KbFileWriter(filePath);
+        else kbWriter = new DummyWriter();
     }
 
 
@@ -98,7 +100,7 @@ public class KBCreator implements Runnable {
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new KnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new KnowledgeBase
 
-                        kbWriter.addConsistentKB(knowledgeBaseToAdd);
+                        kbWriter.addConsistentKb(knowledgeBaseToAdd);
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
@@ -125,7 +127,7 @@ public class KBCreator implements Runnable {
                         KnowledgeBase inconsistentKB = new KnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
-                        kbWriter.addInconsistentKB(inconsistentKB);
+                        kbWriter.addInconsistentKb(inconsistentKB);
                     }
                 }
 
@@ -190,7 +192,7 @@ public class KBCreator implements Runnable {
 
 
         for (CandidatePair candidatePair : l) {
-            kbWriter.addConsistentKB(candidatePair.getKnowledgeBase());
+            kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }
 
@@ -254,7 +256,7 @@ public class KBCreator implements Runnable {
         return conditionalMap;
     }
 
-    public KBWriter getWriterThread() {
+    public AbstractKbWriter getWriterThread() {
         return kbWriter;
     }
 
