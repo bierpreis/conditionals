@@ -9,7 +9,6 @@ import kb_creator.model.Writers.KBWriter.DummyWriter;
 import kb_creator.model.Writers.KBWriter.KbFileWriter;
 import nfc.model.NfcCreator;
 
-import javax.swing.text.AbstractWriter;
 import java.util.*;
 
 public class KBCreator implements Runnable {
@@ -25,8 +24,6 @@ public class KBCreator implements Runnable {
     private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
-    private String filePath;
-
     private CPWriter cpWriter;
 
     private AbstractKbWriter kbWriter;
@@ -38,7 +35,6 @@ public class KBCreator implements Runnable {
 
         status = Status.NOT_STARTED;
         this.signature = signature;
-        this.filePath = filePath;
 
         cpWriter = new CPWriter(filePath);
         if (filePath != null)
