@@ -19,14 +19,17 @@ public class NfcCreator {
     public NfcCreator(AbstractSignature signature) {
 
         worlds = createWorlds(signature);
+
         nfc = createNfc(worlds);
+
         cnfcEq = createCnfcEq(nfc);
         cnfc = createCnfc(cnfcEq);
 
         newNfc = translateConditionals(nfc);
 
-        newCnfc = translateConditionals(cnfc);
 
+        newCnfc = translateConditionals(cnfc);
+        System.out.println("nfc created");
     }
 
 
@@ -63,6 +66,9 @@ public class NfcCreator {
             counter++;
         }
 
+        for (Conditional conditional : basicConditionalList) {
+            conditional.setCounterConditional();
+        }
         return basicConditionalList;
     }
 
@@ -175,6 +181,7 @@ public class NfcCreator {
         for (Conditional oldConditional : oldConditionals) {
             NewConditional newConditional = new NewConditional(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
+            newConditional.setCounterConditional(oldConditional);
             newConditionals.add(newConditional);
 
         }

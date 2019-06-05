@@ -4,6 +4,8 @@ public class Conditional implements Comparable {
     private final World consequence;
     private final World antecedent;
 
+    private Conditional counterConditional;
+
     //this is needed for porper columns in conditional field
     private static int longestConditional = 0;
 
@@ -125,6 +127,10 @@ public class Conditional implements Comparable {
 
     public Conditional createCopy() {
         return new Conditional(this.consequence, this.antecedent);
+    }
+
+    public void setCounterConditional() {
+        this.counterConditional = getCounterConditional();
     }
 
 }

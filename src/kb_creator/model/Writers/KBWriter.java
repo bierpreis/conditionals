@@ -69,9 +69,7 @@ public class KBWriter implements Runnable {
     }
 
     private void writeConsistentKBToFile(KnowledgeBase knowledgeBase) {
-        //todo: counters are wrong!
-        System.out.println("origninal: " + knowledgeBase.getConditionalList().get(0));
-        System.out.println("counter: " + knowledgeBase.getConditionalList().get(0).getCounterConditional());
+
         long beginningTime = 0;
         beginningTime = System.currentTimeMillis();
         if (rootFilePath != null) {

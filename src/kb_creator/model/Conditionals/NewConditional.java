@@ -14,6 +14,7 @@ public class NewConditional {
     private int number;
     private AbstractFormula antecend;
     private AbstractFormula consequence;
+    private NewConditional counterConditional;
 
 
     public NewConditional(AbstractFormula consequence, AbstractFormula antecend) {
@@ -28,7 +29,6 @@ public class NewConditional {
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
         number = oldConditional.getNumber();
-        //todo: maybe here set counter conditional again?
     }
 
 
@@ -136,10 +136,8 @@ public class NewConditional {
 
     }
 
-
-    //todo: this is still wrong.
     public NewConditional getCounterConditional() {
-        return new NewConditional(this.antecend.neg(), this.antecend);
+        return counterConditional;
     }
 
     public void setNumber(int number) {
@@ -152,5 +150,9 @@ public class NewConditional {
 
     public AbstractFormula getConsequence() {
         return consequence;
+    }
+
+    public void setCounterConditional(Conditional oldConditional) {
+        this.counterConditional = new NewConditional(oldConditional.getCounterConditional());
     }
 }
