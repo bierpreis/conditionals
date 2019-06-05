@@ -2,10 +2,10 @@ package kb_creator.model.Conditionals;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+//todo: abstract cp. one with real and one with numbers.
 public class CandidatePair {
     private KnowledgeBase knowledgeBase;
     private List<Integer> candidatesNumbersList;

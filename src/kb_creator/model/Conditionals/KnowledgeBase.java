@@ -1,6 +1,5 @@
 package kb_creator.model.Conditionals;
 
-import gherkin.lexer.Kn;
 import kb_creator.model.PropositionalLogic.AbstractFormula;
 import kb_creator.model.PropositionalLogic.Tautology;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
@@ -10,10 +9,10 @@ import kb_creator.model.Signature.AbstractSignature;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+//todo: abstract kb. one with conditionals and one with numbers
 public class KnowledgeBase {
     private AbstractSignature signature;
     private List<Integer> conditionalNumbersList;

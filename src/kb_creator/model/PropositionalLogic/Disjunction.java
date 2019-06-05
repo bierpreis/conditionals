@@ -1,13 +1,12 @@
 package kb_creator.model.PropositionalLogic;
 
-import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
 import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
 
 public class Disjunction extends AbstractFormula {
     private AbstractFormula firstFormula;
     private AbstractFormula secondFormula;
 
-
+    //todo: list like conjunction?!
     public Disjunction(AbstractFormula firstFormula, AbstractFormula secondFormula) {
         this.firstFormula = firstFormula;
         this.secondFormula = secondFormula;
