@@ -56,9 +56,11 @@ public class KBCreator implements Runnable {
 
         status = Status.RUNNING;
 
-        //k in original paper starts at 1
-        //here it starts at 0 because lists in java start at 0 and not 1
-        k = 0;
+
+        k = 1;
+        //add empty list to l because java lists start at 0 and original algorithm starts list at 1
+        //then k and k+1 values are the same here and in the original algorithm
+        l.getList().add(new ArrayList<>());
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
@@ -108,7 +110,6 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
-                        //todo: k+1 is in org algo where k starts at 1. but here k starts at 0?!
                         l.getList().get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
 
 
