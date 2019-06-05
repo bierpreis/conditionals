@@ -9,7 +9,7 @@ import nfc.model.World;
 public class Test {
 
     public static void main(String[] args) {
-        counterConditionalTest();
+        formulaTest();
 
     }
 
@@ -69,5 +69,18 @@ public class Test {
         System.out.println(newFirstConditional);
 
         System.out.println(newFirstConditional.getCounterConditional());
+    }
+
+    private static void formulaTest() {
+        AbstractFormula a = new Atom(Variable.a);
+        AbstractFormula b = new Atom(Variable.b);
+        AbstractFormula c = new Atom(Variable.c);
+        c = c.neg();
+
+        AbstractFormula first = new Conjunction(a, b, c);
+
+        AbstractFormula second = new Conjunction(c, b, a);
+
+        System.out.println(first.equals(second));
     }
 }
