@@ -16,7 +16,6 @@ public class Disjunction extends AbstractFormula {
     }
 
     @Override
-    //todo: make conjunction evlauate similar to that?
     public boolean evaluate(AbstractWorld world) {
         for (AbstractFormula formula : formulaList) {
             if (formula.evaluate(world))
