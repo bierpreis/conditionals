@@ -67,7 +67,7 @@ public class KBCreator implements Runnable {
 
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
-        //todo: with signature abc: conditionals cant be nfc?! e.g. nr 1: (abc|abc) ->problem doenst exist in nfc creator
+
 
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
         //todo: nfc map has not the same size like nfc with signature abc?! maybe there are really equal conditionals in there?
@@ -245,6 +245,8 @@ public class KBCreator implements Runnable {
     private Map<Integer, NewConditional> createNfcMap(List<NewConditional> nfc) {
         Map<Integer, NewConditional> conditionalMap = new HashMap<>();
         for (NewConditional conditional : nfc) {
+            if (conditionalMap.containsKey(conditional.getNumber()))
+                throw new RuntimeException("Double conditional detected!"); //todo: how can this be?!
             conditionalMap.put(conditional.getNumber(), conditional);
         }
 

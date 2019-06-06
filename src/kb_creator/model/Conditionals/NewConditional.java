@@ -104,11 +104,11 @@ public class NewConditional {
                         throw new RuntimeException("Unknown World: " + worldInt);
 
                 }
-
+                //todo: corrected this yesterday. changed for formulatoreturn.and(..) to formulatoreturn.or(..). is this correct?
                 Conjunction conjunctionToAdd = new Conjunction(firstAtom, secondAtom, thirdAtom);
                 if (formulaToReturn == null)
                     formulaToReturn = conjunctionToAdd;
-                else formulaToReturn.and(conjunctionToAdd);
+                else formulaToReturn = formulaToReturn.or(conjunctionToAdd);
 
             }
 
