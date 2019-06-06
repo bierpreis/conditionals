@@ -40,7 +40,7 @@ public class CandidatePair {
     //todo: test
     private List<Integer> createCandidatesListFromString(String inputString) {
         List<Integer> candidatesList = new ArrayList<>();
-        String[] candidatesStringArray = inputString.split(",");
+        String[] candidatesStringArray = inputString.split(", ");
 
         for (String candidateString : candidatesStringArray)
             candidatesList.add(Integer.parseInt(candidateString));

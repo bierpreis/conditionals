@@ -38,7 +38,7 @@ public class CurrentIterationPanel extends JPanel {
 
     public void showOverallProgress(int finishedKBs) {
         if (finishedKBs != -1)
-            progressLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs"); //todo: this is wrong. maybe +2?
+            progressLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
 
         else progressLabel.setText("Not started yet");
     }
