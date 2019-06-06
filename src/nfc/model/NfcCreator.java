@@ -207,7 +207,6 @@ public class NfcCreator {
             NewConditional newConditional = new NewConditional(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
 
-            //todo: set counter conditionals
             newConditional.setCounterConditional(oldConditional.getActualCounterConditional());
             newConditionals.add(newConditional);
 
@@ -225,13 +224,15 @@ public class NfcCreator {
 
     private void setCounterConditionals(List<Conditional> nfc) {
 
-        //todo this, then check if this works with newConditionals and then improve equals of newConditional
+        long start = System.currentTimeMillis();
+        //todo this takes 22 seconds. maybe remove and only use method like this with new conditionals? because here its useless actualy.
         for (Conditional conditional : nfc) {
             for (Conditional otherConditional : nfc) {
                 if (conditional.getBasicCounterContional().equals(otherConditional))
                     conditional.setActualCounterConditional(otherConditional);
             }
         }
+        System.out.println("time: " + (System.currentTimeMillis() - start) / 1000);
     }
 
     public List<Conditional> getNfc() {

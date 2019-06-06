@@ -67,9 +67,10 @@ public class KBCreator implements Runnable {
 
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
-        //todo: counter conditionals are null at this point
+        //todo: with signature abc: conditionals cant be nfc?! e.g. nr 1: (abc|abc) ->problem doenst exist in nfc creator
 
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
+        //todo: nfc map has not the same size like nfc with signature abc?!
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();
         //Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);

@@ -132,7 +132,8 @@ public class NewConditional {
         if (!(o instanceof NewConditional))
             return false;
         NewConditional otherConditional = (NewConditional) o;
-        return this.antecend.equals(otherConditional.getAntecend()) && this.consequence.equals(otherConditional.getConsequence());
+        //return this.antecend.equals(otherConditional.getAntecend()) && this.consequence.equals(otherConditional.getConsequence());
+        return this.number == otherConditional.getNumber();
 
     }
 
@@ -151,7 +152,7 @@ public class NewConditional {
     public AbstractFormula getConsequence() {
         return consequence;
     }
-    
+
     public void setCounterConditional(Conditional oldCounterConditional) {
         //todo: maybe dont set new conditional but the actual conditional similar to nfc creator?
         this.counterConditional = new NewConditional(oldCounterConditional);
