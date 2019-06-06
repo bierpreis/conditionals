@@ -207,8 +207,8 @@ public class NfcCreator {
             NewConditional newConditional = new NewConditional(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
 
-            //todo: delete?
-            //newConditional.setCounterConditional(oldConditional);
+            //todo: set counter conditionals
+            newConditional.setCounterConditional(oldConditional.getActualCounterConditional());
             newConditionals.add(newConditional);
 
         }

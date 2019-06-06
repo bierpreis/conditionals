@@ -68,7 +68,7 @@ public class KBCreator implements Runnable {
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
         //todo: counter conditionals are null at this point
-        
+
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();

@@ -151,11 +151,11 @@ public class NewConditional {
     public AbstractFormula getConsequence() {
         return consequence;
     }
-
-    //todo: this sets a new counter conditional but not the real one
-    public void getBasicCounterContional(Conditional oldConditional) {
-        System.out.println("before creating counter contitional" + oldConditional.getNumber());
-        this.counterConditional = new NewConditional(oldConditional.getBasicCounterContional());
-        System.out.println("after creating counter contitional " + counterConditional.getNumber());
+    
+    public void setCounterConditional(Conditional oldCounterConditional) {
+        //todo: maybe dont set new conditional but the actual conditional similar to nfc creator?
+        this.counterConditional = new NewConditional(oldCounterConditional);
+        this.counterConditional.setNumber(oldCounterConditional.getNumber());
     }
+
 }

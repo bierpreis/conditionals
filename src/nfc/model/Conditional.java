@@ -141,4 +141,10 @@ public class Conditional implements Comparable {
         //System.out.println("counter: " + this.counterConditional.getNumber() + this.counterConditional);
     }
 
+    public Conditional getActualCounterConditional() {
+        if (counterConditional == null)
+            throw new RuntimeException("No Counter Conditional found");
+        return counterConditional;
+    }
+
 }
