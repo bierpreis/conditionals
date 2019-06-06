@@ -96,7 +96,7 @@ public class NfcCreator {
 
         return basicConditionalList;
     }
-    
+
     private List<ConditionalList> createCnfcEq(final List<Conditional> basicConditionalList) {
 
 

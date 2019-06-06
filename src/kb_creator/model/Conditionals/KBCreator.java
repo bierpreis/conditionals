@@ -65,7 +65,10 @@ public class KBCreator implements Runnable {
         //then k and k+1 values are the same here and in the original algorithm
         l.getList().add(new ArrayList<>());
 
+
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
+        //todo: counter conditionals are null at this point
+        
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();

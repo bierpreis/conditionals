@@ -57,8 +57,6 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
             sb.append(conditional);
             sb.append(", ");
         }
-
-
         return sb.toString();
     }
 
