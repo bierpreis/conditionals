@@ -20,9 +20,10 @@ public class NfcCreator {
 
         worlds = createWorlds(signature);
 
+        //todo: nfc is wrong! numbering and oder is not correct. seems to be correkt in cnfcEq?!
         nfc = createNfc(worlds);
 
-        setNumbersToCounterConditionals(nfc);
+        setCounterConditionals(nfc);
 
         cnfcEq = createCnfcEq(nfc);
         cnfc = createCnfc(cnfcEq);
@@ -68,9 +69,6 @@ public class NfcCreator {
             counter++;
         }
 
-        for (Conditional conditional : basicConditionalList) {
-            conditional.setCounterConditional();
-        }
         return basicConditionalList;
     }
 
@@ -198,10 +196,15 @@ public class NfcCreator {
         return newCnfc;
     }
 
-    private void setNumbersToCounterConditionals(List<Conditional> nfc) {
+    private void setCounterConditionals(List<Conditional> nfc) {
 
         //todo this, then check if this works with newConditionals and then improve equals of newConditional
-        
+        for (Conditional conditional : nfc) {
+            for (Conditional otherConditional : nfc) {
+                if (conditional.getBasicCounterContional().equals(otherConditional))
+                    conditional.setActualCounterConditional(otherConditional);
+            }
+        }
     }
 
 }

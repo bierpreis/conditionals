@@ -87,15 +87,6 @@ public class Conditional implements Comparable {
     }
 
 
-    public Conditional getCounterConditional() {
-
-        World newConsequence = new World();
-        newConsequence.addList(antecedent.getWorldsList());
-        newConsequence.removeWorld(consequence);
-        return new Conditional(newConsequence, antecedent);
-
-    }
-
     public int getNumber() {
         return number;
     }
@@ -129,8 +120,23 @@ public class Conditional implements Comparable {
         return new Conditional(this.consequence, this.antecedent);
     }
 
-    public void setCounterConditional() {
-        this.counterConditional = getCounterConditional();
+    //this returns a new counter conditional
+    //which is used to find the actual counter conditional
+    public Conditional getBasicCounterContional() {
+
+        World newConsequence = new World();
+        newConsequence.addList(antecedent.getWorldsList());
+        newConsequence.removeWorld(consequence);
+        return new Conditional(newConsequence, antecedent);
+
+    }
+
+    //this sets the counter conditional as the real object
+    public void setActualCounterConditional(Conditional counterConditional) {
+
+        this.counterConditional = counterConditional;
+        System.out.println("real: " + this + " " + this.getNumber());
+       // System.out.println("counter: " + this.counterConditional + " " + this.counterConditional.getNumber());
     }
 
 }
