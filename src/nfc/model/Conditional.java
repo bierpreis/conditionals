@@ -135,8 +135,10 @@ public class Conditional implements Comparable {
     public void setActualCounterConditional(Conditional counterConditional) {
 
         this.counterConditional = counterConditional;
-        System.out.println("real: " + this.getNumber() + this + " ");
-        //System.out.println("counter: " + this.counterConditional.getNumber() + this.counterConditional + " ");
+
+        //comment out to check correct counter conditionals
+        //System.out.println("real: " + this.getNumber() + this);
+        //System.out.println("counter: " + this.counterConditional.getNumber() + this.counterConditional);
     }
 
 }

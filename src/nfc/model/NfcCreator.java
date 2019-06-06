@@ -25,15 +25,16 @@ public class NfcCreator {
         //-> correct order for basicConditionalList is in def 5 bottom
         basicConditionalList = createBasicConditionalList(worlds);
 
-        setCounterConditionals(basicConditionalList);
 
         cnfcEq = createCnfcEq(basicConditionalList);
         cnfc = createCnfc(cnfcEq);
 
         nfc = createNfc(cnfcEq);
 
-        newNfc = translateConditionals(nfc);
 
+        setCounterConditionals(nfc);
+
+        newNfc = translateConditionals(nfc);
 
         newCnfc = translateConditionals(cnfc);
         System.out.println("basicConditionalList created");
@@ -92,6 +93,7 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
+    //todo: rename parameter. this is not nfc but basicConditionals?!
     private List<ConditionalList> createCnfcEq(final List<Conditional> nfc) {
 
 
