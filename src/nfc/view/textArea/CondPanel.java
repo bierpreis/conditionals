@@ -61,9 +61,10 @@ public class CondPanel extends JPanel {
         infoPanel.printInfo(condTextField.getDescription());
     }
 
+    //todo: delete?
     public void printBasicConditionals(List<Conditional> conditionals) {
         condTextField.setText("");
-        //todo: better own method for this? at least test numbering with this
+
         condTextField.printConditionals(conditionals);
         infoPanel.printInfo(condTextField.getDescription());
     }

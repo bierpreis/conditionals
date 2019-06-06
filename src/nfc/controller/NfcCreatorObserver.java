@@ -33,8 +33,7 @@ public class NfcCreatorObserver implements ActionListener {
                 condPanel.printWorlds(nfcCreator.getWorlds());
                 break;
             case "CONDITIONALS":
-                System.out.println("conditionals!!!");
-                condPanel.printConditionals(nfcCreator.getbasicCondionals());
+                condPanel.printConditionals(nfcCreator.getBasicConditionals());
                 break;
             case "CNFCEQ":
                 condPanel.printCnfcEq(nfcCreator.getCnfcEq());

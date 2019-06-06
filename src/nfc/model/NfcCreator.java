@@ -21,22 +21,26 @@ public class NfcCreator {
 
         worlds = createWorlds(signature);
 
-        //todo: this is not basicConditionalList because wrong oder.
-        //-> correct order for basicConditionalList is in def 5 bottom
+        //this is basic conditional list in order from defintion  2
         basicConditionalList = createBasicConditionalList(worlds);
 
 
         cnfcEq = createCnfcEq(basicConditionalList);
+
+        //this is in order on def 5.1
         cnfc = createCnfc(cnfcEq);
 
+        //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
 
         setCounterConditionals(nfc);
 
+
         newNfc = translateConditionals(nfc);
 
         newCnfc = translateConditionals(cnfc);
+
         System.out.println("basicConditionalList created");
     }
 
@@ -92,22 +96,21 @@ public class NfcCreator {
 
         return basicConditionalList;
     }
-
-    //todo: rename parameter. this is not nfc but basicConditionals?!
-    private List<ConditionalList> createCnfcEq(final List<Conditional> nfc) {
+    
+    private List<ConditionalList> createCnfcEq(final List<Conditional> basicConditionalList) {
 
 
         List<ConditionalList> cNfc = new ArrayList<>();
         List<Conditional> alreadyAddedList = new ArrayList<>();
 
         //iterate basic conditionals
-        for (Conditional conditionalToAdd : nfc) {
+        for (Conditional conditionalToAdd : basicConditionalList) {
             //only create new sublist if conditional was not added before as second conditional
             if (!alreadyAddedList.contains(conditionalToAdd)) {
                 ConditionalList subList = new ConditionalList();
                 subList.add(conditionalToAdd.createCopy());
                 //iterate over base list
-                for (Conditional currentConditional : nfc) {
+                for (Conditional currentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
                     if (currentConditional.isEquivalent(conditionalToAdd)) {
                         //avoid adding the same base conditionals again
@@ -185,7 +188,7 @@ public class NfcCreator {
         return cnfc;
     }
 
-    public List<Conditional> getbasicCondionals() {
+    public List<Conditional> getBasicConditionals() {
         return basicConditionalList;
     }
 
@@ -203,7 +206,9 @@ public class NfcCreator {
         for (Conditional oldConditional : oldConditionals) {
             NewConditional newConditional = new NewConditional(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
-            newConditional.setCounterConditional(oldConditional);
+
+            //todo: delete?
+            //newConditional.setCounterConditional(oldConditional);
             newConditionals.add(newConditional);
 
         }

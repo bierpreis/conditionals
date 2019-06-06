@@ -152,8 +152,8 @@ public class NewConditional {
         return consequence;
     }
 
-    //todo: check this if nfc is fixed
-    public void setCounterConditional(Conditional oldConditional) {
+    //todo: this sets a new counter conditional but not the real one
+    public void getBasicCounterContional(Conditional oldConditional) {
         System.out.println("before creating counter contitional" + oldConditional.getNumber());
         this.counterConditional = new NewConditional(oldConditional.getBasicCounterContional());
         System.out.println("after creating counter contitional " + counterConditional.getNumber());
