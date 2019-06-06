@@ -29,6 +29,11 @@ public class NewConditional {
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
         number = oldConditional.getNumber();
+
+        //todo: every second contitional has no number?!
+        System.out.println(number);
+
+
     }
 
 
