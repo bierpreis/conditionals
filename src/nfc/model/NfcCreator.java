@@ -36,7 +36,7 @@ public class NfcCreator {
 
         setCounterConditionals(nfc);
 
-
+        //todo: translation must be wrong. here first conditionals is abc|abc w from 7/7, 6 which is really wrong?! signature ab works abc is shit
         newNfc = translateConditionals(nfc);
 
         newCnfc = translateConditionals(cnfc);
