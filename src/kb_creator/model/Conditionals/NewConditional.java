@@ -126,12 +126,14 @@ public class NewConditional {
         return number;
     }
 
-    //todo: maybe just compare numbers?
+    //todo: check if this works
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof NewConditional))
             return false;
         NewConditional otherConditional = (NewConditional) o;
+        if (this.number == 0 || otherConditional.getNumber() == 0)
+            throw new RuntimeException("Equals failed because numbers were wrong");
         //return this.antecend.equals(otherConditional.getAntecend()) && this.consequence.equals(otherConditional.getConsequence());
         return this.number == otherConditional.getNumber();
 

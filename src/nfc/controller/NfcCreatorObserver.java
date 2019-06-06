@@ -26,7 +26,7 @@ public class NfcCreatorObserver implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         mainWindow.applySelectedOptions();
         NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-        
+
         switch (e.getActionCommand()) {
             case "WORLDS":
                 condPanel.printWorlds(nfcCreator.getWorlds());
