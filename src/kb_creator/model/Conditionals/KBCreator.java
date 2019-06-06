@@ -73,7 +73,6 @@ public class KBCreator implements Runnable {
         //todo: nfc map has not the same size like nfc with signature abc?! maybe there are really equal conditionals in there?
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();
-        //Map<Integer, NewConditional> cnfcMap = createCnfcMap(cnfc);
 
         CandidatePair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
@@ -245,8 +244,10 @@ public class KBCreator implements Runnable {
     private Map<Integer, NewConditional> createNfcMap(List<NewConditional> nfc) {
         Map<Integer, NewConditional> conditionalMap = new HashMap<>();
         for (NewConditional conditional : nfc) {
-            if (conditionalMap.containsKey(conditional.getNumber()))
+            if (conditionalMap.containsKey(conditional.getNumber())) {
+                System.out.println(conditional + " and " + conditionalMap.get(conditional.getNumber()));
                 throw new RuntimeException("Double conditional detected!"); //todo: how can this be?!
+            }
             conditionalMap.put(conditional.getNumber(), conditional);
         }
 
