@@ -38,7 +38,7 @@ public class Conjunction extends AbstractFormula {
 
     @Override
     public boolean equals(Object o) {
-        //todo: what about a negated conjunction. isnt conjunktion == counterconjunktion.net?
+        //todo: this is not really correct.
         if (!(o instanceof Conjunction))
             return false;
 
