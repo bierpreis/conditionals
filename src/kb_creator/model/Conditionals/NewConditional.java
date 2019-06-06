@@ -29,11 +29,6 @@ public class NewConditional {
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
         number = oldConditional.getNumber();
-
-        //todo: every second contitional has no number?!
-        System.out.println(number);
-
-
     }
 
 
@@ -158,6 +153,8 @@ public class NewConditional {
     }
 
     public void setCounterConditional(Conditional oldConditional) {
+        System.out.println("before creating counter contitional" + oldConditional.getNumber());
         this.counterConditional = new NewConditional(oldConditional.getCounterConditional());
+        System.out.println("after creating counter contitional " + counterConditional.getNumber());
     }
 }

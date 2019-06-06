@@ -22,6 +22,8 @@ public class NfcCreator {
 
         nfc = createNfc(worlds);
 
+        setNumbersToCounterConditionals(nfc);
+
         cnfcEq = createCnfcEq(nfc);
         cnfc = createCnfc(cnfcEq);
 
@@ -194,6 +196,12 @@ public class NfcCreator {
 
     public List<NewConditional> getNewCnfc() {
         return newCnfc;
+    }
+
+    private void setNumbersToCounterConditionals(List<Conditional> nfc) {
+
+        //todo this, then check if this works with newConditionals and then improve equals of newConditional
+        
     }
 
 }
