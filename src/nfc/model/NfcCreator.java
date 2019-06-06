@@ -32,7 +32,7 @@ public class NfcCreator {
 
         nfc = createNfc(cnfcEq);
 
-        newNfc = translateConditionals(basicConditionalList);
+        newNfc = translateConditionals(nfc);
 
 
         newCnfc = translateConditionals(cnfc);
@@ -41,7 +41,7 @@ public class NfcCreator {
 
 
     //3 creators
-    public List<World> createWorlds(AbstractSignature signature) {
+    private List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
         int numberOfWorlds = signature.getPossibleWorlds().size();
         List<Integer> initWorldsList = new ArrayList<>();
@@ -56,8 +56,8 @@ public class NfcCreator {
         return worldsList;
     }
 
-    public List<Conditional> createNfc(List<ConditionalList> cnfc) {
-        List<Conditional> nfc = new ArrayList();
+    private List<Conditional> createNfc(List<ConditionalList> cnfc) {
+        List<Conditional> nfc = new ArrayList<>();
 
         //add the first one of every equivalence class
         for (ConditionalList conditionalList : cnfc)
