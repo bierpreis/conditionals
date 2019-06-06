@@ -15,22 +15,28 @@ public class StartPanel extends JPanel {
 
         AbstractActionButton createWorldsButton = new AbstractActionButton(Action.WORLDS);
 
-        AbstractActionButton createNfcButton = new AbstractActionButton(Action.NFC);
+        AbstractActionButton createBasicConditional = new AbstractActionButton(Action.CONDITIONALS);
 
         AbstractActionButton createCnfcButton = new AbstractActionButton(Action.CNFC);
         AbstractActionButton createCnfcEqButton = new AbstractActionButton(Action.CNFCEQ);
 
+        AbstractActionButton createNfcButton = new AbstractActionButton(Action.NFC);
+
         createWorldsButton.addActionListener(observer);
         add(createWorldsButton);
 
-        createNfcButton.addActionListener(observer);
-        add(createNfcButton);
+        createBasicConditional.addActionListener(observer);
+        add(createBasicConditional);
 
         createCnfcButton.addActionListener(observer);
         add(createCnfcButton);
 
         createCnfcEqButton.addActionListener(observer);
         add(createCnfcEqButton);
+
+        createNfcButton.addActionListener(observer);
+        add(createNfcButton);
+
 
     }
 

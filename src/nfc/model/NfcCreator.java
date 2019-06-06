@@ -10,8 +10,9 @@ import java.util.*;
 public class NfcCreator {
     private final List<World> worlds;
     private final List<ConditionalList> cnfcEq;
-    private final List<Conditional> nfc;
+    private final List<Conditional> basicConditionalList;
     private final List<Conditional> cnfc;
+    private final List<Conditional> nfc;
 
     private final List<NewConditional> newNfc;
     private final List<NewConditional> newCnfc;
@@ -20,19 +21,22 @@ public class NfcCreator {
 
         worlds = createWorlds(signature);
 
-        //todo: nfc is wrong! numbering and oder is not correct. seems to be correkt in cnfcEq?!
-        nfc = createNfc(worlds);
+        //todo: this is not basicConditionalList because wrong oder.
+        //-> correct order for basicConditionalList is in def 5 bottom
+        basicConditionalList = createBasicConditionalList(worlds);
 
-        setCounterConditionals(nfc);
+        setCounterConditionals(basicConditionalList);
 
-        cnfcEq = createCnfcEq(nfc);
+        cnfcEq = createCnfcEq(basicConditionalList);
         cnfc = createCnfc(cnfcEq);
 
-        newNfc = translateConditionals(nfc);
+        nfc = createNfc(cnfcEq);
+
+        newNfc = translateConditionals(basicConditionalList);
 
 
         newCnfc = translateConditionals(cnfc);
-        System.out.println("nfc created");
+        System.out.println("basicConditionalList created");
     }
 
 
@@ -52,8 +56,24 @@ public class NfcCreator {
         return worldsList;
     }
 
+    public List<Conditional> createNfc(List<ConditionalList> cnfc) {
+        List<Conditional> nfc = new ArrayList();
 
-    private List<Conditional> createNfc(List<World> worldsList) {
+        //add the first one of every equivalence class
+        for (ConditionalList conditionalList : cnfc)
+            nfc.add(conditionalList.get(0));
+
+        //then add the rest
+        for (ConditionalList conditionalList : cnfc) {
+            for (int i = 1; i < conditionalList.getList().size(); i++)
+                nfc.add(conditionalList.get(i));
+        }
+
+        return nfc;
+    }
+
+
+    private List<Conditional> createBasicConditionalList(List<World> worldsList) {
 
         List<Conditional> basicConditionalList = new ArrayList<>();
 
@@ -62,7 +82,7 @@ public class NfcCreator {
 
 
         Collections.sort(basicConditionalList);
-        //this simple numbering is just for nfc view and not really useful
+        //this simple numbering is just for basicConditionalList view and not really useful
         int counter = 1;
         for (Conditional conditional : basicConditionalList) {
             conditional.setNumber(counter);
@@ -163,8 +183,8 @@ public class NfcCreator {
         return cnfc;
     }
 
-    public List<Conditional> getNfc() {
-        return nfc;
+    public List<Conditional> getbasicCondionals() {
+        return basicConditionalList;
     }
 
     public List<ConditionalList> getCnfcEq() {
@@ -205,6 +225,10 @@ public class NfcCreator {
                     conditional.setActualCounterConditional(otherConditional);
             }
         }
+    }
+
+    public List<Conditional> getNfc() {
+        return nfc;
     }
 
 }

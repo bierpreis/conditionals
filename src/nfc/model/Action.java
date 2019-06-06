@@ -1,5 +1,5 @@
 package nfc.model;
 
 public enum Action {
-    WORLDS, NFC, CNFC, CNFCEQ
+    WORLDS, CONDITIONALS, NFC, CNFC, CNFCEQ
 }

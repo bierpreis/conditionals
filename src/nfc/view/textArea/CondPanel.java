@@ -55,9 +55,16 @@ public class CondPanel extends JPanel {
         revalidate();
     }
 
-    public void printWorlds(List<World> worldsList){
+    public void printWorlds(List<World> worldsList) {
         condTextField.setText("");
         condTextField.printWorlds(worldsList);
+        infoPanel.printInfo(condTextField.getDescription());
+    }
+
+    public void printBasicConditionals(List<Conditional> conditionals) {
+        condTextField.setText("");
+        //todo: better own method for this? at least test numbering with this
+        condTextField.printConditionals(conditionals);
         infoPanel.printInfo(condTextField.getDescription());
     }
 

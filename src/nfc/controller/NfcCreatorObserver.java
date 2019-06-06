@@ -27,18 +27,23 @@ public class NfcCreatorObserver implements ActionListener {
         mainWindow.applySelectedOptions();
         NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
 
+        //todo: here the action enum tostring not strings
         switch (e.getActionCommand()) {
             case "WORLDS":
                 condPanel.printWorlds(nfcCreator.getWorlds());
                 break;
-            case "NFC":
-                condPanel.printConditionals(nfcCreator.getNfc());
+            case "CONDITIONALS":
+                System.out.println("conditionals!!!");
+                condPanel.printConditionals(nfcCreator.getbasicCondionals());
                 break;
             case "CNFCEQ":
                 condPanel.printCnfcEq(nfcCreator.getCnfcEq());
                 break;
             case "CNFC":
                 condPanel.printConditionals(nfcCreator.getCnfc());
+                break;
+            case "NFC":
+                condPanel.printConditionals(nfcCreator.getNfc());
                 break;
             default:
                 throw new RuntimeException("Unknown command: " + e.getActionCommand());
@@ -55,4 +60,5 @@ public class NfcCreatorObserver implements ActionListener {
             e.printStackTrace();
         }
     }
+
 }
