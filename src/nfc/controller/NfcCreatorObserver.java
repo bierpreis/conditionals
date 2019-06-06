@@ -26,8 +26,7 @@ public class NfcCreatorObserver implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         mainWindow.applySelectedOptions();
         NfcCreator nfcCreator = new NfcCreator(mainWindow.getSignature());
-
-        //todo: here the action enum tostring not strings
+        
         switch (e.getActionCommand()) {
             case "WORLDS":
                 condPanel.printWorlds(nfcCreator.getWorlds());

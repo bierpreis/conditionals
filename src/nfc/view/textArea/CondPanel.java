@@ -60,15 +60,7 @@ public class CondPanel extends JPanel {
         condTextField.printWorlds(worldsList);
         infoPanel.printInfo(condTextField.getDescription());
     }
-
-    //todo: delete?
-    public void printBasicConditionals(List<Conditional> conditionals) {
-        condTextField.setText("");
-
-        condTextField.printConditionals(conditionals);
-        infoPanel.printInfo(condTextField.getDescription());
-    }
-
+    
 
     public String getContentAsString() {
         return condTextField.getContentAsString();
