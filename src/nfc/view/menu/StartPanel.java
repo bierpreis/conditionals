@@ -10,8 +10,15 @@ public class StartPanel extends JPanel {
 
 
     public StartPanel(NfcCreatorObserver observer) {
-        setLayout(new GridLayout());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        //setLayout(new GridLayout());
         setBorder(BorderFactory.createTitledBorder("start"));
+
+        JPanel basicPanel = new JPanel();
+        add(basicPanel);
+
+        JPanel nfcPanel = new JPanel();
+        add(nfcPanel);
 
         AbstractActionButton createWorldsButton = new AbstractActionButton(Action.WORLDS);
 
@@ -25,24 +32,22 @@ public class StartPanel extends JPanel {
         AbstractActionButton createNfcWithCounterButton = new AbstractActionButton(Action.NFC_COUNTER);
 
         createWorldsButton.addActionListener(observer);
-        add(createWorldsButton);
+        basicPanel.add(createWorldsButton);
 
         createBasicConditional.addActionListener(observer);
-        add(createBasicConditional);
+        basicPanel.add(createBasicConditional);
 
         createCnfcButton.addActionListener(observer);
-        add(createCnfcButton);
+        nfcPanel.add(createCnfcButton);
 
         createCnfcEqButton.addActionListener(observer);
-        add(createCnfcEqButton);
+        nfcPanel.add(createCnfcEqButton);
 
         createNfcButton.addActionListener(observer);
-        add(createNfcButton);
+        nfcPanel.add(createNfcButton);
 
         createNfcWithCounterButton.addActionListener(observer);
-        add(createNfcWithCounterButton);
-
-        //todo: button to show nfc with counter conditionalstwo rows for buttons
+        nfcPanel.add(createNfcWithCounterButton);
     }
 
 
