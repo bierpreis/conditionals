@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-//todo: abstract cp. one with real and one with numbers.
-public class CandidateNumbersListPair extends AbstractPair{
+
+public class CandidateNumbersListPair extends AbstractPair {
     private AbstractKnowledgeBase knowledgeBase;
     private List<Integer> candidatesNumbersList;
 
@@ -49,6 +49,7 @@ public class CandidateNumbersListPair extends AbstractPair{
         return candidatesList;
     }
 
+    @Override
     public List<NewConditional> getCandidatesList() {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
@@ -63,34 +64,24 @@ public class CandidateNumbersListPair extends AbstractPair{
         return candidatesNumbersList;
     }
 
-    public AbstractKnowledgeBase getKnowledgeBase() {
-        return knowledgeBase;
-    }
-
+    @Override
     public String toString() {
         return "<" + knowledgeBase + ", " + candidatesNumbersList + ">\n";
     }
 
-    public void deleteCandidates() {
-        candidatesNumbersList = null;
+
+    @Override
+    public AbstractKnowledgeBase getKnowledgeBase() {
+        return knowledgeBase;
     }
 
-    public void deleteKB() {
-        knowledgeBase = null;
-    }
-
-    public static void setNfc(Map<Integer, NewConditional> nfc) {
-        nfcMap = nfc;
-    }
-
+    @Override
     public String toShortString() {
         return "CP: <" + knowledgeBase.getSize() + ", " + candidatesNumbersList.size();
     }
 
-    public int getNumber() {
-        return knowledgeBase.getKbNumber();
-    }
 
+    @Override
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Lists");
@@ -104,5 +95,10 @@ public class CandidateNumbersListPair extends AbstractPair{
         sb.append("\n\nEOF");
 
         return sb.toString();
+    }
+
+    @Override
+    public void deleteCandidates() {
+        candidatesNumbersList = null;
     }
 }

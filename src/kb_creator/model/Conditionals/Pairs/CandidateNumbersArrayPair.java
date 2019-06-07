@@ -1,4 +1,4 @@
 package kb_creator.model.Conditionals.Pairs;
 
-public class CandidateNumbersArrayPair {
+public class CandidateNumbersArrayPair extends AbstractPair{
 }

@@ -1,4 +1,6 @@
 package kb_creator.model.Conditionals.Pairs;
 
-public class RealCandidatePair {
+import nfc.view.menu.AbstractActionButton;
+
+public class RealCandidatePair extends AbstractPair {
 }
