@@ -92,7 +92,7 @@ public class Conditional implements Comparable {
         return number;
     }
 
-    //todo: maybe simplify and only compare numbers?
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Conditional))
@@ -103,11 +103,8 @@ public class Conditional implements Comparable {
             boolean rightEquals = otherConditional.getAntecedent().equals(antecedent);
             boolean equals = leftEquals && rightEquals;
 
-      /*      boolean othereQuals = this.number == otherConditional.number;
-
-            if (equals != othereQuals)
-                throw new RuntimeException("equals fucked up");
-*/
+            //comment this out if u want to make sure equals works
+            //System.out.println(equals + ": " + this + " and " + otherConditional);
             return equals;
         }
 

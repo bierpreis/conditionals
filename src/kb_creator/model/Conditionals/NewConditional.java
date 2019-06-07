@@ -129,7 +129,7 @@ public class NewConditional {
         return number;
     }
 
-    //todo: check if this works
+    //todo: some equals test with sysout
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof NewConditional))
