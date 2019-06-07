@@ -5,6 +5,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.NumbersKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
+import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
 import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
@@ -73,7 +74,7 @@ public class KBCreator implements Runnable {
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();
 
-        CandidatePair.setNfc(nfcMap);
+        CandidateNumbersListPair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
         l.getList().add(initOneElementKBs(nfc, cnfc));
@@ -89,7 +90,7 @@ public class KBCreator implements Runnable {
             l.getList().add(new ArrayList<>());
             iterationNumberOfKBs = 1;
             //this loop is line 8
-            for (CandidatePair candidatePair : l.getList().get(k)) {
+            for (CandidateNumbersListPair candidatePair : l.getList().get(k)) {
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -115,7 +116,7 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
-                        l.getList().get(k + 1).add(new CandidatePair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.getList().get(k + 1).add(new CandidateNumbersListPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
@@ -170,13 +171,13 @@ public class KBCreator implements Runnable {
         l = requestedList;
     }
 
-    private List<CandidatePair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
+    private List<CandidateNumbersListPair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
 
 
         System.out.println("creating 1 element kbs");
 
         iterationNumberOfKBs = 0;
-        List<CandidatePair> l = new ArrayList<>();
+        List<CandidateNumbersListPair> l = new ArrayList<>();
 
         //line 3
         for (NewConditional r : cnfc) {
@@ -188,12 +189,12 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
-            l.add(new CandidatePair(rKB, conditionalsToAdd));
+            l.add(new CandidateNumbersListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
 
 
-        for (CandidatePair candidatePair : l) {
+        for (CandidateNumbersListPair candidatePair : l) {
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }

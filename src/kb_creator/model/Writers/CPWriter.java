@@ -1,6 +1,6 @@
 package kb_creator.model.Writers;
 
-import kb_creator.model.Conditionals.CandidatePair;
+import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class CPWriter {
     }
 
     //todo: write all pairs in 1 file. much more efficient
-    public void writePair(CandidatePair candidatePair) {
+    public void writePair(CandidateNumbersListPair candidatePair) {
         File subFolder = new File(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
             subFolder.mkdirs();
@@ -54,13 +54,13 @@ public class CPWriter {
     }
 
     //todo
-    public CandidatePair readNextPair(int numberOfConditionals) {
+    public CandidateNumbersListPair readNextPair(int numberOfConditionals) {
         //read String
         File fileToRead = new File(folderToSave + "/" + numberOfConditionals + "/");
         System.out.println("files to read: ");
 
         //todo: candidate pairs should be in order. check this
-        CandidatePair candidatePair = new CandidatePair("test");
+        CandidateNumbersListPair candidatePair = new CandidateNumbersListPair("test");
         for (File file : fileToRead.listFiles()) {
             if (!file.isDirectory()) {
                 System.out.println(file.getName());
@@ -69,7 +69,7 @@ public class CPWriter {
 
 
         }
-        return new CandidatePair("test");
+        return new CandidateNumbersListPair("test");
 
     }
 }
