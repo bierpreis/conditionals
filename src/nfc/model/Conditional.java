@@ -4,6 +4,7 @@ public class Conditional implements Comparable {
     private final World consequence;
     private final World antecedent;
 
+    private static int comparions = 0;
     private Conditional counterConditional;
 
     //this is needed for porper columns in conditional field
@@ -93,7 +94,9 @@ public class Conditional implements Comparable {
 
     //todo: maybe simplify and only compare numbers?
     @Override
+
     public boolean equals(Object o) {
+        long startTime = System.currentTimeMillis();
         if (!(o instanceof Conditional))
             return false;
         else {

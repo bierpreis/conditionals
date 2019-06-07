@@ -33,8 +33,10 @@ public class NfcCreator {
         //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
-
+        //todo: fix this long method
+        long startTime = System.currentTimeMillis();
         setCounterConditionals(nfc);
+        System.out.println("time setting counters: " + (System.currentTimeMillis() - startTime) / 1000);
 
         newNfc = translateConditionals(nfc);
 
