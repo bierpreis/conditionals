@@ -60,9 +60,15 @@ public class CondPanel extends JPanel {
         condTextField.printWorlds(worldsList);
         infoPanel.printInfo(condTextField.getDescription());
     }
-    
+
 
     public String getContentAsString() {
         return condTextField.getContentAsString();
+    }
+
+    public void printConditionalsWithCounters(List<Conditional> conditionals) {
+        condTextField.setText("");
+        condTextField.printConditionalsWithCounters(conditionals);
+        infoPanel.printInfo(condTextField.getDescription());
     }
 }

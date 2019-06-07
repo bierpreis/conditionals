@@ -43,6 +43,9 @@ public class NfcCreatorObserver implements ActionListener {
             case "NFC":
                 condPanel.printConditionals(nfcCreator.getNfc());
                 break;
+            case "NFC_COUNTER":
+            condPanel.printConditionalsWithCounters(nfcCreator.getNfc());
+            break;
             default:
                 throw new RuntimeException("Unknown command: " + e.getActionCommand());
 

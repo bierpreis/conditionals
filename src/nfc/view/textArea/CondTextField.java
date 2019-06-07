@@ -97,6 +97,21 @@ public class CondTextField extends JTextArea {
         return lineNumber + "   ";
     }
 
+    public void printConditionalsWithCounters(List<Conditional> conditionals) {
+        setText("");
+        {
+            for (Conditional conditional : conditionals) {
+                if (isNumberingActive)
+                    append(conditional.getNumber() + ": " + conditional.toString() + "  counter: " + conditional.getActualCounterConditional().getNumber() + ": " + conditional.getActualCounterConditional().toString() + "\n");
+                else
+                    append(conditional.toString() + "  counter: " + conditional.getActualCounterConditional().toString() + "\n");
+            }
+        }
+        {
+
+        }
+    }
+
     public String getContentAsString() {
         return getText();
     }

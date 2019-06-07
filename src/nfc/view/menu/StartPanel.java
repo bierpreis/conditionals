@@ -22,6 +22,8 @@ public class StartPanel extends JPanel {
 
         AbstractActionButton createNfcButton = new AbstractActionButton(Action.NFC);
 
+        AbstractActionButton createNfcWithCounterButton = new AbstractActionButton(Action.NFC_COUNTER);
+
         createWorldsButton.addActionListener(observer);
         add(createWorldsButton);
 
@@ -36,6 +38,9 @@ public class StartPanel extends JPanel {
 
         createNfcButton.addActionListener(observer);
         add(createNfcButton);
+
+        createNfcWithCounterButton.addActionListener(observer);
+        add(createNfcWithCounterButton);
 
         //todo: button to show nfc with counter conditionals
 
