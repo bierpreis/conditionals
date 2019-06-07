@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+//todo: show real conditional numbers for all methods.
 public class CondTextField extends JTextArea {
     private final String numberOfWorlds = "Worlds: ";
     private final String numberOfConditionals = "Conditionals: ";
