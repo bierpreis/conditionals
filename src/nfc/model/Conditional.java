@@ -101,7 +101,14 @@ public class Conditional implements Comparable {
             Conditional otherConditional = (Conditional) o;
             boolean leftEquals = otherConditional.getConsequence().equals(consequence);
             boolean rightEquals = otherConditional.getAntecedent().equals(antecedent);
-            return leftEquals && rightEquals;
+            boolean equals = leftEquals && rightEquals;
+
+      /*      boolean othereQuals = this.number == otherConditional.number;
+
+            if (equals != othereQuals)
+                throw new RuntimeException("equals fucked up");
+*/
+            return equals;
         }
 
     }
