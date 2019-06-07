@@ -41,13 +41,13 @@ public class CondTextField extends JTextArea {
         setText("");
         String conditionalString = "";
         int conditionalCounter = 0;
-        for (int i = 0; i < conditionalList.size(); i++) {
+        for (Conditional conditional : conditionalList) {
 
-            conditionalString = conditionalList.get(i).toString() + "\n";
+            conditionalString = conditional.toString() + "\n";
 
 
             if (isNumberingActive)
-                conditionalString = i + 1 + ": " + conditionalString;
+                conditionalString = conditional.getNumber() + ": " + conditionalString;
             conditionalCounter++;
 
 

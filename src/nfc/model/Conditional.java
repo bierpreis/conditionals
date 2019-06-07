@@ -96,7 +96,6 @@ public class Conditional implements Comparable {
     @Override
 
     public boolean equals(Object o) {
-        long startTime = System.currentTimeMillis();
         if (!(o instanceof Conditional))
             return false;
         else {
