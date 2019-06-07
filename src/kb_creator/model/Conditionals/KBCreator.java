@@ -5,6 +5,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.NumbersKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
+import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
@@ -74,7 +75,7 @@ public class KBCreator implements Runnable {
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();
 
-        CandidateNumbersListPair.setNfc(nfcMap);
+        AbstractPair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
         l.getList().add(initOneElementKBs(nfc, cnfc));
@@ -90,7 +91,7 @@ public class KBCreator implements Runnable {
             l.getList().add(new ArrayList<>());
             iterationNumberOfKBs = 1;
             //this loop is line 8
-            for (CandidateNumbersListPair candidatePair : l.getList().get(k)) {
+            for (AbstractPair candidatePair : l.getList().get(k)) {
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -171,13 +172,13 @@ public class KBCreator implements Runnable {
         l = requestedList;
     }
 
-    private List<CandidateNumbersListPair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
+    private List<AbstractPair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
 
 
         System.out.println("creating 1 element kbs");
 
         iterationNumberOfKBs = 0;
-        List<CandidateNumbersListPair> l = new ArrayList<>();
+        List<AbstractPair> l = new ArrayList<>();
 
         //line 3
         for (NewConditional r : cnfc) {
@@ -194,7 +195,7 @@ public class KBCreator implements Runnable {
         }
 
 
-        for (CandidateNumbersListPair candidatePair : l) {
+        for (AbstractPair candidatePair : l) {
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }

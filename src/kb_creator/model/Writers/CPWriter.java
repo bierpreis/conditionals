@@ -1,6 +1,8 @@
 package kb_creator.model.Writers;
 
+import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
+import nfc.view.menu.AbstractActionButton;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +23,7 @@ public class CPWriter {
     }
 
     //todo: write all pairs in 1 file. much more efficient
-    public void writePair(CandidateNumbersListPair candidatePair) {
+    public void writePair(AbstractPair candidatePair) {
         File subFolder = new File(folderToSave + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
             subFolder.mkdirs();
@@ -54,13 +56,13 @@ public class CPWriter {
     }
 
     //todo
-    public CandidateNumbersListPair readNextPair(int numberOfConditionals) {
+    public AbstractPair readNextPair(int numberOfConditionals) {
         //read String
         File fileToRead = new File(folderToSave + "/" + numberOfConditionals + "/");
         System.out.println("files to read: ");
 
         //todo: candidate pairs should be in order. check this
-        CandidateNumbersListPair candidatePair = new CandidateNumbersListPair("test");
+        AbstractPair candidatePair = new CandidateNumbersListPair("test");
         for (File file : fileToRead.listFiles()) {
             if (!file.isDirectory()) {
                 System.out.println(file.getName());

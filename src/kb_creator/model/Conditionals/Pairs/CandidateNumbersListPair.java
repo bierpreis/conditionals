@@ -7,15 +7,11 @@ import kb_creator.model.Conditionals.NewConditional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class CandidateNumbersListPair extends AbstractPair {
     private AbstractKnowledgeBase knowledgeBase;
     private List<Integer> candidatesNumbersList;
-
-    private static Map<Integer, NewConditional> nfcMap;
-
 
     public CandidateNumbersListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;

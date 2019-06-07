@@ -1,7 +1,7 @@
 package kb_creator.model.Conditionals.Lists;
 
 
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
+import kb_creator.model.Conditionals.Pairs.AbstractPair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 //todo: this is still the same as unbuffered list. implement some buffering
 public class BufferedList extends AbstractCandidateList {
     private String filePath;
-    private List<List<CandidateNumbersListPair>> cpList;
+    private List<List<AbstractPair>> cpList;
 
     //maybe use queue for buffering?
 
@@ -18,7 +18,7 @@ public class BufferedList extends AbstractCandidateList {
         cpList = new ArrayList<>();
     }
 
-    public List<List<CandidateNumbersListPair>> getList() {
+    public List<List<AbstractPair>> getList() {
         return cpList;
     }
 
