@@ -94,7 +94,6 @@ public class Conditional implements Comparable {
 
     //todo: maybe simplify and only compare numbers?
     @Override
-
     public boolean equals(Object o) {
         if (!(o instanceof Conditional))
             return false;

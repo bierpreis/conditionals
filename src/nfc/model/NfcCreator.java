@@ -33,7 +33,6 @@ public class NfcCreator {
         //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
-        //todo: fix this long method
         long startTime = System.currentTimeMillis();
         setCounterConditionals(nfc);
         System.out.println("time setting counters: " + (System.currentTimeMillis() - startTime) / 1000);
@@ -230,7 +229,7 @@ public class NfcCreator {
     private void setCounterConditionals(List<Conditional> nfc) {
 
         long start = System.currentTimeMillis();
-        //todo this takes 22 seconds. maybe remove and only use method like this with new conditionals? because here its useless actualy.
+        //this takes very long. but is maybe the only way to set the counter conditional numbers?
         for (Conditional conditional : nfc) {
             for (Conditional otherConditional : nfc) {
                 if (conditional.getBasicCounterContional().equals(otherConditional))
