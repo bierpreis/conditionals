@@ -37,6 +37,7 @@ public class StartPanel extends JPanel {
         createNfcButton.addActionListener(observer);
         add(createNfcButton);
 
+        //todo: button to show nfc with counter conditionals
 
     }
 
