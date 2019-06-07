@@ -24,7 +24,7 @@ public class ConditionalList implements Comparable {
         if (conditionalList.size() == 0)
             return 0;
         if (!(o instanceof ConditionalList))
-            throw new RuntimeException("Cant compare this to ConditionalList");
+            throw new RuntimeException("Cant compare " + o.getClass() + " to ConditionalList");
         else {
             ConditionalList otherConditionalList = ((ConditionalList) o);
             Conditional firstConditional = conditionalList.get(0);
@@ -52,10 +52,10 @@ public class ConditionalList implements Comparable {
         conditionalList.get(0).setNumber(number);
     }
 
-    public void setNumbersToEquivalentConditionals(int firstNumber) {
-        int conditionalNumber = firstNumber;
+    public void setNumbersToEquivalentConditionals(int hightestNumberOfLastList) {
+        int conditionalNumber = hightestNumberOfLastList + 1;
         for (int i = 1; i < conditionalList.size(); i++) {
-            conditionalList.get(i).setNumber(conditionalNumber + i - 1);
+            conditionalList.get(i).setNumber(conditionalNumber);
             conditionalNumber++;
         }
         highestConditionalNumber = conditionalNumber;

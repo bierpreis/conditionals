@@ -125,10 +125,14 @@ public class NfcCreator {
         Collections.sort(cNfc);
 
         int counter = 1;
+
+        //set numbers to the first in every equivalence class
         for (ConditionalList conditionalList : cNfc) {
             conditionalList.setNumberToFirstConditional(counter);
             counter++;
         }
+
+        //set numbers to all but first in equivalence class
         for (ConditionalList conditionalList : cNfc) {
             conditionalList.setNumbersToEquivalentConditionals(counter);
             counter = conditionalList.getHighestConditionalNumber();
