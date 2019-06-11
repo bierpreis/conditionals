@@ -6,6 +6,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.NumbersKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
+import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter;
@@ -117,7 +118,7 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
-                        l.getList().get(k + 1).add(new CandidateNumbersListPair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.getList().get(k + 1).add(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
@@ -145,6 +146,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
                 //delete written candidates to save memory
+                
                 candidatePair.deleteKB();
             }
 
@@ -190,7 +192,7 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
-            l.add(new CandidateNumbersListPair(rKB, conditionalsToAdd));
+            l.add(new CandidateNumbersArrayPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
 

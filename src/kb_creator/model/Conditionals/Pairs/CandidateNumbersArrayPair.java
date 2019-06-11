@@ -10,15 +10,18 @@ import java.util.List;
 //todo this class
 public class CandidateNumbersArrayPair extends AbstractPair {
 
-    private AbstractKnowledgeBase knowledgeBase;
     private int[] candidatesNumbersArray;
 
     public CandidateNumbersArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        for (NewConditional conditionalToAdd : candidates) {
-            candidatesNumbersArray = candidates.stream().mapToInt(i -> conditionalToAdd.getNumber()).toArray();
-        }
+        //todo: remove
+        if (knowledgeBase == null)
+            System.out.println("init kb with null!!!");
+
+        //todo: this must be wrong
+        candidatesNumbersArray = candidates.stream().mapToInt(conditionalToAdd -> getNumber()).toArray();
+
     }
 
     public CandidateNumbersArrayPair(String stringFromFile) {
