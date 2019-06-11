@@ -15,9 +15,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
     private int consistentCounter;
     private int inconsistentCounter;
-
-    //todo: delete?
-    private int lastConsistentAmount;
+    
 
 
     private long nextSpeedCalculationTime;
