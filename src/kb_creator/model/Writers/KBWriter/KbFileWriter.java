@@ -1,7 +1,6 @@
 package kb_creator.model.Writers.KBWriter;
 
 import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
-import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,10 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private int consistentCounter;
     private int inconsistentCounter;
 
+    //todo: delete?
     private int lastConsistentAmount;
+
+
     private long nextSpeedCalculationTime;
     private final long SPEED_CALCULATION_INTERVAL = 5000;
 
@@ -59,51 +61,51 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
     @Override
     public void addConsistentKb(AbstractKnowledgeBase kbToAdd) {
-            consistentQueue.add(kbToAdd);
+        consistentQueue.add(kbToAdd);
     }
 
     @Override
     public void addInconsistentKb(AbstractKnowledgeBase kbToAdd) {
-            inconsistentQueue.add(kbToAdd);
+        inconsistentQueue.add(kbToAdd);
     }
 
     private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
 
 
-            String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
-            try {
+        String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "consistent/";
+        try {
 
-                File consistentFolder = new File(filePath);
-                consistentFolder.mkdirs();
+            File consistentFolder = new File(filePath);
+            consistentFolder.mkdirs();
 
-                PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+            PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
 
-                writer.print(knowledgeBase.toFileString());
+            writer.print(knowledgeBase.toFileString());
 
-                writer.close();
-                consistentCounter++;
+            writer.close();
+            consistentCounter++;
 
-            } catch (IOException e) {
-                e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
 
         }
     }
 
     private void writeInconsistentKBToFile(AbstractKnowledgeBase knowledgeBase) {
 
-            String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "inconsistent/";
+        String filePath = rootFilePath + knowledgeBase.getSize() + "/" + "inconsistent/";
 
-            File inconsistentFolder = new File(filePath);
-            inconsistentFolder.mkdirs();
-            try {
+        File inconsistentFolder = new File(filePath);
+        inconsistentFolder.mkdirs();
+        try {
 
-                PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-                writer.print(knowledgeBase.toFileString());
-                writer.close();
-                inconsistentCounter++;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+            writer.print(knowledgeBase.toFileString());
+            writer.close();
+            inconsistentCounter++;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

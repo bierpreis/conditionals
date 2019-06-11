@@ -7,11 +7,12 @@ import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 import kb_creator.model.Signature.AbstractSignature;
-import kb_creator.model.Writers.CPWriter;
+import kb_creator.model.Writers.CPWriter.AbstractCPWriter;
+import kb_creator.model.Writers.CPWriter.CPFileWriter;
+import kb_creator.model.Writers.CPWriter.CpDummyWriter;
 import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
-import kb_creator.model.Writers.KBWriter.DummyWriter;
+import kb_creator.model.Writers.KBWriter.KbDummyWriter;
 import kb_creator.model.Writers.KBWriter.KbFileWriter;
 import nfc.model.NfcCreator;
 
@@ -30,22 +31,26 @@ public class KBCreator implements Runnable {
     private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
-    private CPWriter cpWriter;
+    private AbstractCPWriter cpWriter;
 
     private AbstractKbWriter kbWriter;
 
     private AbstractCandidateList l;
 
-    public KBCreator(AbstractSignature signature, String filePath) {
+    public KBCreator(AbstractSignature signature, String kbFilePath, String cpFilePath) {
         System.out.println("new kb creator");
 
         status = Status.NOT_STARTED;
         this.signature = signature;
 
-        cpWriter = new CPWriter(filePath);
-        if (filePath != null)
-            kbWriter = new KbFileWriter(filePath);
-        else kbWriter = new DummyWriter();
+        if (cpFilePath != null)
+            cpWriter = new CPFileWriter(cpFilePath);
+        else cpWriter = new CpDummyWriter(cpFilePath);
+
+
+        if (kbFilePath != null)
+            kbWriter = new KbFileWriter(kbFilePath);
+        else kbWriter = new KbDummyWriter(kbFilePath);
     }
 
 
