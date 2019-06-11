@@ -47,7 +47,6 @@ public class KBCreator implements Runnable {
             cpWriter = new CPFileWriter(cpFilePath);
         else cpWriter = new CpDummyWriter(cpFilePath);
 
-
         if (kbFilePath != null)
             kbWriter = new KbFileWriter(kbFilePath);
         else kbWriter = new KbDummyWriter(kbFilePath);
@@ -59,6 +58,8 @@ public class KBCreator implements Runnable {
         System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
 
+        Thread cpWriterThread = new Thread(cpWriter);
+        cpWriterThread.start();
 
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();

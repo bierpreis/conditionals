@@ -15,14 +15,15 @@ public class CPFileWriter extends AbstractCPWriter {
 
     private Queue<AbstractPair> cpQueueToWrite;
 
-    //todo: rename or delete?
-    private Queue<AbstractPair> inconsistentQueue;
+    //todo:
+    private Queue<AbstractPair> queueToReturn;
 
 
     private String folderToSavePath;
     private boolean running;
 
     public CPFileWriter(String filePath) {
+        running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
             this.folderToSavePath = filePath + "/tmp/";
@@ -32,32 +33,37 @@ public class CPFileWriter extends AbstractCPWriter {
         }
 
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
-        inconsistentQueue = new ConcurrentLinkedQueue<>();
+        queueToReturn = new ConcurrentLinkedQueue<>();
 
     }
 
     @Override
     public void run() {
         while (running) {
+            System.out.println("candidate pairs size: " + cpQueueToWrite.size());
             if (!cpQueueToWrite.isEmpty()) {
+                System.out.println(cpQueueToWrite.size());
                 writePair(cpQueueToWrite.poll());
-            }
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
+            } else if (queueToReturn.size() < 0) {
+                //todo: here read new files
+            } else
+                try {
+                    System.out.println("cp writer is sleeping");
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
+
+
     }
 
-    public void addConsistentCp(AbstractPair pairToAdd) {
+    @Override
+    public void addCpToWrite(AbstractPair pairToAdd) {
+        System.out.println("added sth");
         cpQueueToWrite.add(pairToAdd);
     }
 
-    public void addInconsistentCp(AbstractPair pairToAdd) {
-        inconsistentQueue.add(pairToAdd);
-    }
 
     //todo: write all pairs in 1 file. much more efficient
     private void writePair(AbstractPair candidatePair) {
@@ -117,7 +123,7 @@ public class CPFileWriter extends AbstractCPWriter {
     }
 
     public int getInconsistentCounter() {
-        return inconsistentQueue.size();
+        return queueToReturn.size();
     }
 
     public int getQueueToWriteSize() {
@@ -126,7 +132,7 @@ public class CPFileWriter extends AbstractCPWriter {
 
 
     public Queue<AbstractPair> getInconsistentQueue() {
-        return inconsistentQueue;
+        return queueToReturn;
     }
 
     public void stop() {

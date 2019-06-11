@@ -4,20 +4,16 @@ import kb_creator.model.Conditionals.Pairs.AbstractPair;
 
 import java.util.Queue;
 
-public abstract class AbstractCPWriter {
+public abstract class AbstractCPWriter implements Runnable {
 
-
+    @Override
     public abstract void run();
 
-
-    public abstract void addConsistentCp(AbstractPair pair);
-
-
-    public abstract void addInconsistentCp(AbstractPair pair);
 
 
     public abstract int getQueueToWriteSize();
 
 
+    public abstract void addCpToWrite(AbstractPair pair);
 
 }

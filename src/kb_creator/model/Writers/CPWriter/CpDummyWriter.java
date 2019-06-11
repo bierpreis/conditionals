@@ -3,7 +3,6 @@ package kb_creator.model.Writers.CPWriter;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 
 
-
 public class CpDummyWriter extends AbstractCPWriter {
 
     public CpDummyWriter(String filePath) {
@@ -14,15 +13,10 @@ public class CpDummyWriter extends AbstractCPWriter {
     public void run() {
     }
 
-    @Override
-    public void addConsistentCp(AbstractPair pair) {
+
+    public void addCpToWrite(AbstractPair pair) {
+
     }
-
-
-    @Override
-    public void addInconsistentCp(AbstractPair pair) {
-    }
-
 
     @Override
     public int getQueueToWriteSize() {
