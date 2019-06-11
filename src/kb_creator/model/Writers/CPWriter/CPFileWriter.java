@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-//todo: thread for this and combine with bufferedList
+//todo: thread for this and combine with bufferedList. 1 object for writer and one for reader?
 
 public class CPFileWriter extends AbstractCPWriter {
 

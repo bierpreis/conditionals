@@ -108,7 +108,7 @@ public class KBCreator implements Runnable {
                         //next part is line 11 and 12
                         //first create knowledge base
 
-                        ObjectKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new ObjectKnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new ObjectKnowledgeBase
 
@@ -135,7 +135,7 @@ public class KBCreator implements Runnable {
 
                     } else {
                         //todo: this. how to make this abstract?
-                        ObjectKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+                        AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
                         kbWriter.addInconsistentKb(inconsistentKB);
@@ -192,7 +192,7 @@ public class KBCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new NumbersKnowledgeBase(signature, iterationNumberOfKBs);
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new ArrayList<>();
             for (NewConditional conditional : nfc)
