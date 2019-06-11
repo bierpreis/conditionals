@@ -1,8 +1,8 @@
 package kb_creator.gui.creatorPanel;
 
-import com.intellij.ui.JBColor;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MemoryPanel extends JPanel {
     JLabel descriptionLabel;
@@ -16,9 +16,9 @@ public class MemoryPanel extends JPanel {
     public void showFreeMemory() {
         long freeMemoryInMb = calculateFreeMemory();
         if (freeMemoryInMb < 400)
-            descriptionLabel.setForeground(JBColor.RED);
+            descriptionLabel.setForeground(Color.RED);
 
-        else descriptionLabel.setForeground(JBColor.BLACK);
+        else descriptionLabel.setForeground(Color.BLACK);
         descriptionLabel.setText("Free Memory: " + freeMemoryInMb + "mb");
     }
 

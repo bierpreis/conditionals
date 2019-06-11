@@ -1,12 +1,12 @@
 package kb_creator.gui.creatorPanel;
 
-import com.intellij.ui.components.JBPanel;
+
 
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class NextIterationPanel extends JBPanel {
+public class NextIterationPanel extends JPanel {
     private JLabel candidatePairsLabel;
 
     public NextIterationPanel() {
