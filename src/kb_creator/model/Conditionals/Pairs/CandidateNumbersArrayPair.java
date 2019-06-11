@@ -7,7 +7,7 @@ import kb_creator.model.Conditionals.NewConditional;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo this class
+
 public class CandidateNumbersArrayPair extends AbstractPair {
 
     private int[] candidatesNumbersArray;
@@ -15,12 +15,12 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     public CandidateNumbersArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        //todo: remove
-        if (knowledgeBase == null)
-            System.out.println("init kb with null!!!");
+        List<Integer> integerTempList = new ArrayList<>(candidates.size());
 
-        //todo: this must be wrong
-        candidatesNumbersArray = candidates.stream().mapToInt(conditionalToAdd -> getNumber()).toArray();
+        for (NewConditional conditionalToAdd : candidates)
+            integerTempList.add(conditionalToAdd.getNumber());
+
+        candidatesNumbersArray = integerTempList.stream().mapToInt(i -> i).toArray();
 
     }
 

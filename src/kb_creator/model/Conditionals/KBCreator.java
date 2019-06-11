@@ -146,7 +146,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
 
                 //delete written candidates to save memory
-                
+
                 candidatePair.deleteKB();
             }
 
