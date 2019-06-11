@@ -16,12 +16,8 @@ public abstract class AbstractCPWriter {
     public abstract void addInconsistentCp(AbstractPair pair);
 
 
-    public abstract int getInconsistentCounter();
-
-    public abstract int getConsistentCounter();
+    public abstract int getQueueToWriteSize();
 
 
-    public abstract Queue<AbstractPair> getConsistentQueue();
 
-    public abstract Queue<AbstractPair> getInconsistentQueue();
 }

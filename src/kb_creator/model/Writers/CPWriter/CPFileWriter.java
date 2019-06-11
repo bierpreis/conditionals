@@ -13,7 +13,9 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CPFileWriter extends AbstractCPWriter {
 
-    private Queue<AbstractPair> consistentQueue;
+    private Queue<AbstractPair> cpQueueToWrite;
+
+    //todo: rename or delete?
     private Queue<AbstractPair> inconsistentQueue;
 
 
@@ -29,29 +31,28 @@ public class CPFileWriter extends AbstractCPWriter {
             tmpFile.mkdirs();
         }
 
-        consistentQueue = new ConcurrentLinkedQueue<>();
+        cpQueueToWrite = new ConcurrentLinkedQueue<>();
         inconsistentQueue = new ConcurrentLinkedQueue<>();
+
     }
 
     @Override
     public void run() {
         while (running) {
-            if (!consistentQueue.isEmpty()) {
-                //todo
-            } else if (!inconsistentQueue.isEmpty()) {
-                //todo
-            } else
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            if (!cpQueueToWrite.isEmpty()) {
+                writePair(cpQueueToWrite.poll());
+            }
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
     }
 
     public void addConsistentCp(AbstractPair pairToAdd) {
-        consistentQueue.add(pairToAdd);
+        cpQueueToWrite.add(pairToAdd);
     }
 
     public void addInconsistentCp(AbstractPair pairToAdd) {
@@ -78,10 +79,14 @@ public class CPFileWriter extends AbstractCPWriter {
     public void deleteFiles(int numberOfConditionals) {
         System.out.println("trying to delete " + numberOfConditionals + " element pairs");
         File fileToDelete = new File(folderToSavePath + "/" + numberOfConditionals + "/");
+        boolean fileDeletedSuccesfully;
         try {
             for (File file : fileToDelete.listFiles()) {
                 if (!file.isDirectory()) {
-                    file.delete();
+                    if (!
+                            file.delete()
+                    )
+                        System.out.println("deleting candidate pair file failed!");
 
                 }
 
@@ -92,7 +97,7 @@ public class CPFileWriter extends AbstractCPWriter {
     }
 
     //todo
-    private AbstractPair readNextPair(int numberOfConditionals) {
+    private AbstractPair readNewPairs(int numberOfConditionals) {
         //read String
         File fileToRead = new File(folderToSavePath + "/" + numberOfConditionals + "/");
         System.out.println("files to read: ");
@@ -115,13 +120,10 @@ public class CPFileWriter extends AbstractCPWriter {
         return inconsistentQueue.size();
     }
 
-    public int getConsistentCounter() {
-        return consistentQueue.size();
+    public int getQueueToWriteSize() {
+        return cpQueueToWrite.size();
     }
 
-    public Queue<AbstractPair> getConsistentQueue() {
-        return consistentQueue;
-    }
 
     public Queue<AbstractPair> getInconsistentQueue() {
         return inconsistentQueue;
