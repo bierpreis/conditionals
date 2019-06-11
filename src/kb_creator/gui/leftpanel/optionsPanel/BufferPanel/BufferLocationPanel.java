@@ -33,8 +33,12 @@ public class BufferLocationPanel extends JPanel {
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
                 bufferCheckboxPanel.setActive(true);
+                bufferCheckboxPanel.setBoxSelected(true);
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
 
+            } else {
+                bufferCheckboxPanel.setBoxSelected(false);
+                bufferCheckboxPanel.setBoxEnabled(false);
             }
         }
 

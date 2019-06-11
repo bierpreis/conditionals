@@ -7,7 +7,6 @@ public class BufferCheckboxPanel extends JPanel {
     private JCheckBox saveCheckBox;
 
     BufferCheckboxPanel() {
-        //todo: make checkbox work like kb save panel"
 
         saveCheckBox = new JCheckBox("Buffer Files to Disk");
         add(saveCheckBox);
@@ -22,5 +21,16 @@ public class BufferCheckboxPanel extends JPanel {
 
     public void setActive(boolean active) {
         saveCheckBox.setEnabled(active);
+    }
+
+    public void setBoxEnabled(boolean active) {
+
+        saveCheckBox.setEnabled(active);
+    }
+
+    public void setBoxSelected(boolean selected) {
+
+
+        saveCheckBox.setSelected(selected);
     }
 }
