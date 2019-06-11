@@ -2,7 +2,7 @@ package kb_creator.gui.leftpanel;
 
 import kb_creator.Observer.KBCreatorObserver;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-import kb_creator.gui.leftpanel.optionsPanel.OptionsPanel;
+import kb_creator.gui.leftpanel.optionsPanel.MainOptionsPanel;
 import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
@@ -12,17 +12,17 @@ public class LeftPanel extends JPanel {
 
 
     private ActionPanel actionPanel;
-    private OptionsPanel optionsPanel;
+    private MainOptionsPanel mainOptionsPanel;
 
 
     public LeftPanel(KBCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         actionPanel = new ActionPanel(observer);
-        optionsPanel = new OptionsPanel();
+        mainOptionsPanel = new MainOptionsPanel();
 
 
-        add(optionsPanel);
+        add(mainOptionsPanel);
         add(actionPanel);
 
 
@@ -30,20 +30,20 @@ public class LeftPanel extends JPanel {
     }
 
     public AbstractSignature getSignature() {
-        return optionsPanel.getSignature();
+        return mainOptionsPanel.getSignature();
     }
 
 
     public String getKBPath() {
-        return optionsPanel.getKbPath();
+        return mainOptionsPanel.getKbPath();
     }
 
     public String getCpFilePath() {
-        return optionsPanel.getBufferPath();
+        return mainOptionsPanel.getBufferPath();
     }
 
     public boolean isBufferingRequested() {
-        return optionsPanel.isBufferingRequested();
+        return mainOptionsPanel.isBufferingRequested();
     }
 
     public ActionPanel getActionPanel() {

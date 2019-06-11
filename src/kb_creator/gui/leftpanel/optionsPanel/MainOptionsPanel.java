@@ -8,12 +8,12 @@ import kb_creator.model.Signature.AbstractSignature;
 
 import javax.swing.*;
 
-public class OptionsPanel extends JPanel {
+public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private BufferPanel bufferPanel;
     private SignaturePanel signaturePanel;
 
-    public OptionsPanel() {
+    public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
 
