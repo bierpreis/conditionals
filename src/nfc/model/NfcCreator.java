@@ -33,9 +33,7 @@ public class NfcCreator {
         //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
-        long startTime = System.currentTimeMillis();
         setCounterConditionals(nfc);
-        System.out.println("time setting counters: " + (System.currentTimeMillis() - startTime) / 1000);
 
         newNfc = translateConditionals(nfc);
 
@@ -228,7 +226,7 @@ public class NfcCreator {
 
     private void setCounterConditionals(List<Conditional> nfc) {
 
-        long start = System.currentTimeMillis();
+        long startTime = System.currentTimeMillis();
         //this takes very long. but is maybe the only way to set the counter conditional numbers?
         for (Conditional conditional : nfc) {
             for (Conditional otherConditional : nfc) {
@@ -236,7 +234,7 @@ public class NfcCreator {
                     conditional.setActualCounterConditional(otherConditional);
             }
         }
-        System.out.println("time: " + (System.currentTimeMillis() - start) / 1000);
+        System.out.println("time for setting counter conditionals: " + (System.currentTimeMillis() - startTime) / 1000);
     }
 
     public List<Conditional> getNfc() {

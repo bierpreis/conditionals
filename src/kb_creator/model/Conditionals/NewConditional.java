@@ -31,7 +31,6 @@ public class NewConditional {
         consequence = worldToFormula(oldConsequence);
         number = oldConditional.getNumber();
         totalNumberOfConditionals++;
-        System.out.println(totalNumberOfConditionals);
     }
 
 

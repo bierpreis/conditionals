@@ -4,7 +4,6 @@ public class Conditional implements Comparable {
     private final World consequence;
     private final World antecedent;
 
-    private static int comparions = 0;
     private Conditional counterConditional;
 
     //this is needed for porper columns in conditional field
@@ -77,7 +76,7 @@ public class Conditional implements Comparable {
 
     public void setNumber(int number) {
         if (this.number != 0)
-            System.out.println("number " + this.number + "will be overwritten by " + number);
+            System.out.println("Careful! Conditional number " + this.number + "will be overwritten by " + number + ". This should not be! Check conditional creation for errors!");
         this.number = number;
     }
 
