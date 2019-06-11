@@ -8,14 +8,11 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class CpDummyWriter extends AbstractCPWriter {
 
     public CpDummyWriter(String filePath){
-
+        System.out.println("candidate pairs will be kept in main memory");
     }
 
     public void run() {
     }
-
-    ;
-
 
     public void addConsistentCp(AbstractPair pair) {
     }

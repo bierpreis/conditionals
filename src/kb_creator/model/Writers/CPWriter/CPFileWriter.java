@@ -17,14 +17,15 @@ public class CPFileWriter extends AbstractCPWriter {
     private Queue<AbstractPair> inconsistentQueue;
 
 
-    private String foldetToSavePath;
+    private String folderToSavePath;
     private boolean running;
 
     public CPFileWriter(String filePath) {
+        System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
-            this.foldetToSavePath = filePath + "/tmp/";
+            this.folderToSavePath = filePath + "/tmp/";
 
-            File tmpFile = new File(this.foldetToSavePath);
+            File tmpFile = new File(this.folderToSavePath);
             tmpFile.mkdirs();
         }
 
@@ -59,10 +60,10 @@ public class CPFileWriter extends AbstractCPWriter {
 
     //todo: write all pairs in 1 file. much more efficient
     private void writePair(AbstractPair candidatePair) {
-        File subFolder = new File(foldetToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
+        File subFolder = new File(folderToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
             subFolder.mkdirs();
-        if (foldetToSavePath != null)
+        if (folderToSavePath != null)
             try {
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
                 writer.print(candidatePair.toFileString());
@@ -76,7 +77,7 @@ public class CPFileWriter extends AbstractCPWriter {
 
     public void deleteFiles(int numberOfConditionals) {
         System.out.println("trying to delete " + numberOfConditionals + " element pairs");
-        File fileToDelete = new File(foldetToSavePath + "/" + numberOfConditionals + "/");
+        File fileToDelete = new File(folderToSavePath + "/" + numberOfConditionals + "/");
         try {
             for (File file : fileToDelete.listFiles()) {
                 if (!file.isDirectory()) {
@@ -93,7 +94,7 @@ public class CPFileWriter extends AbstractCPWriter {
     //todo
     private AbstractPair readNextPair(int numberOfConditionals) {
         //read String
-        File fileToRead = new File(foldetToSavePath + "/" + numberOfConditionals + "/");
+        File fileToRead = new File(folderToSavePath + "/" + numberOfConditionals + "/");
         System.out.println("files to read: ");
 
         //todo: candidate pairs should be in order. check this
