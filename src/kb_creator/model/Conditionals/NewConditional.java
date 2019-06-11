@@ -15,7 +15,7 @@ public class NewConditional {
     private AbstractFormula antecend;
     private AbstractFormula consequence;
     private NewConditional counterConditional;
-    public static int totalNumberOfConditionals;
+
 
 
     public NewConditional(AbstractFormula consequence, AbstractFormula antecend) {
@@ -30,7 +30,6 @@ public class NewConditional {
         antecend = worldToFormula(oldAntecend);
         consequence = worldToFormula(oldConsequence);
         number = oldConditional.getNumber();
-        totalNumberOfConditionals++;
     }
 
 
