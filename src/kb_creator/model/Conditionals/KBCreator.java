@@ -107,7 +107,7 @@ public class KBCreator implements Runnable {
 
                         //next part is line 11 and 12
                         //first create knowledge base
-                        //todo: this constructor is used 2 times. this is shit.
+ 
                         ObjectKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new ObjectKnowledgeBase
                         knowledgeBaseToAdd.add(r); // add r to new ObjectKnowledgeBase
