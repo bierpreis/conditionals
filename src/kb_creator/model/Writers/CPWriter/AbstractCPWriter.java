@@ -1,6 +1,5 @@
 package kb_creator.model.Writers.CPWriter;
 
-import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 
 import java.util.Queue;
