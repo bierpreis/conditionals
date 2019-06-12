@@ -93,7 +93,9 @@ public class KBCreator implements Runnable {
         //line 6
         while (!l.getListForK(k).isEmpty()) {
             nextCandidatePairAmount = 0;
-            candidatePairAmount = l.getListForK(k).size();
+
+            //todo: can -1 be correct?
+            candidatePairAmount = l.getListForK(k - 1).size();
             //line  7
             l.addNewList(k, new ArrayList<>());
             iterationNumberOfKBs = 1;
