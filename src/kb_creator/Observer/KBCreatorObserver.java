@@ -2,7 +2,7 @@ package kb_creator.Observer;
 
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.Conditionals.KBCreator;
-import kb_creator.model.Conditionals.Lists.BufferedList;
+import kb_creator.model.Conditionals.Lists.SimpleBufferedList;
 import kb_creator.model.Conditionals.Lists.UnbufferedList;
 
 import javax.swing.*;
@@ -35,7 +35,7 @@ public class KBCreatorObserver implements ActionListener {
             creatorThreadObject = new KBCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getCpFilePath());
 
             if (mainWindow.isBufferingRequested())
-                creatorThreadObject.setList(new BufferedList(mainWindow.getCpFilePath()));
+                creatorThreadObject.setList(new SimpleBufferedList(mainWindow.getCpFilePath()));
             else creatorThreadObject.setList(new UnbufferedList());
 
 

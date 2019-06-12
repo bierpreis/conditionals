@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 //todo: this is still the same as unbuffered list. implement some buffering
-public class BufferedList extends AbstractCandidateList {
+public class SimpleBufferedList extends AbstractCandidateList {
     private String filePath;
 
     //maybe use queue for buffering?
 
-    public BufferedList(String filePath) {
+    public SimpleBufferedList(String filePath) {
         this.filePath = filePath;
         candidatePairList = new ArrayList<>();
     }

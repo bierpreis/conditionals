@@ -6,7 +6,7 @@ import kb_creator.model.Conditionals.NewConditional;
 import java.util.List;
 import java.util.Map;
 
-//the reason for this abstract class is only to test diffrent candidate pair implementations for performance reasons
+//the reason for this abstract class is to test different candidate pair implementations for performance reasons
 public abstract class AbstractPair {
     protected AbstractKnowledgeBase knowledgeBase;
     protected static Map<Integer, NewConditional> nfcMap;
