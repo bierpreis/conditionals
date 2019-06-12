@@ -42,9 +42,11 @@ public class CpFileReader {
 
         List<String> stringList = new ArrayList<>();
 
+        //todo: this adds filepath and not the real string
         for (File file : filesArray) {
             stringList.add(file.toString());
         }
+        System.out.println(stringList);
         return stringList;
     }
 }
