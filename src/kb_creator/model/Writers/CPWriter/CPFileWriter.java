@@ -24,7 +24,7 @@ public class CPFileWriter extends AbstractCPWriter {
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
-            this.folderToSavePath = filePath + "/tmp/" + k + "/";
+            this.folderToSavePath = filePath + "/tmp/";
 
             File tmpFile = new File(this.folderToSavePath);
             tmpFile.mkdirs();
@@ -41,7 +41,7 @@ public class CPFileWriter extends AbstractCPWriter {
                 writePair(cpQueueToWrite.poll());
             } else
                 try {
-                    System.out.println("cp writer is sleeping");
+                    //System.out.println("cp writer is sleeping");
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -53,7 +53,6 @@ public class CPFileWriter extends AbstractCPWriter {
 
     @Override
     public void addCpToWrite(AbstractPair pairToAdd) {
-        System.out.println("added sth");
         cpQueueToWrite.add(pairToAdd);
     }
 
@@ -63,7 +62,9 @@ public class CPFileWriter extends AbstractCPWriter {
 
 
     //todo: write all pairs in 1 file. much more efficient
+
     private void writePair(AbstractPair candidatePair) {
+        System.out.println("main folder: " + folderToSavePath);
         File subFolder = new File(folderToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
             subFolder.mkdirs();
