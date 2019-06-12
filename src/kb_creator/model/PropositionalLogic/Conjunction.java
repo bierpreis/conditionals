@@ -38,24 +38,30 @@ public class Conjunction extends AbstractFormula {
 
     @Override
     public boolean equals(Object o) {
-        //todo: this is not really correct.
+  
         if (!(o instanceof Conjunction))
             return false;
 
 
         Conjunction otherConjunction = (Conjunction) o;
 
-        boolean equals;
-        if (formulas.size() == otherConjunction.getFormulas().size()) {
-            equals = true;
-            for (AbstractFormula formula : formulas) {
-                if (!otherConjunction.getFormulas().contains(formula))
-                    equals = false;
-            }
-        } else equals = false;
 
-        return equals;
+        if (formulas.size() != otherConjunction.getFormulas().size())
+            return false;
+
+        for (AbstractFormula formula : formulas)
+            if (!otherConjunction.getFormulas().contains(formula))
+                return false;
+        for (AbstractFormula formula : otherConjunction.getFormulas())
+            if (!formulas.contains(formula))
+                return false;
+
+
+
+        return true;
+
     }
+
 
     public List<AbstractFormula> getFormulas() {
         return formulas;
