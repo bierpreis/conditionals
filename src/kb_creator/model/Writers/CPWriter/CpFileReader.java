@@ -5,9 +5,11 @@ import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class CpFileReader {
     private String filePath;
@@ -43,8 +45,22 @@ public class CpFileReader {
         List<String> stringList = new ArrayList<>();
 
         //todo: this adds filepath and not the real string
-        for (File file : filesArray) {
-            stringList.add(file.toString());
+
+        try {
+            for (File file : filesArray) {
+                Scanner fileScanner = new Scanner(file);
+
+                StringBuilder sb = new StringBuilder();
+
+                while (fileScanner.hasNextLine()) {
+                    sb.append(fileScanner.nextLine());
+                    sb.append("\n");
+                }
+
+                stringList.add(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         System.out.println(stringList);
         return stringList;
