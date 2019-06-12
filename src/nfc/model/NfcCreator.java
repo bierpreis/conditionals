@@ -213,6 +213,10 @@ public class NfcCreator {
             newConditionals.add(newConditional);
 
         }
+        //comment out the following 2 lines and you can see if the counter conditionals are set correct
+        //for (NewConditional conditional : newConditionals) 
+        //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.getCounterConditional().getNumber());
+
         return newConditionals;
     }
 
