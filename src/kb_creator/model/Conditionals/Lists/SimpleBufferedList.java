@@ -29,8 +29,15 @@ public class SimpleBufferedList extends AbstractCandidateList {
     public void addNewList(int k, List listToAdd) {
         candidatePairList.add(listToAdd);
         cpFileWriter = new CPFileWriter(k, filePath);
+        cpFileWriter.addCpList(listToAdd);
         Thread cpWriterThread = new Thread(cpFileWriter);
         cpWriterThread.start();
+
+    }
+
+    @Override
+    public void addPair(AbstractPair pairToAdd) {
+        cpFileWriter.addCpToWrite(pairToAdd);
     }
 
 

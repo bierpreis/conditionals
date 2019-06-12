@@ -6,6 +6,7 @@ import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -58,6 +59,10 @@ public class CPFileWriter extends AbstractCPWriter {
         cpQueueToWrite.add(pairToAdd);
     }
 
+    public void addCpList(List<AbstractPair> listToAdd) {
+        cpQueueToWrite.addAll(listToAdd);
+    }
+
 
     //todo: write all pairs in 1 file. much more efficient
     private void writePair(AbstractPair candidatePair) {
@@ -96,7 +101,7 @@ public class CPFileWriter extends AbstractCPWriter {
         }
     }
 
-    //todo
+    //todo move in reader
     private AbstractPair readNewPairs(int numberOfConditionals) {
         //read String
         File fileToRead = new File(folderToSavePath + "/" + numberOfConditionals + "/");

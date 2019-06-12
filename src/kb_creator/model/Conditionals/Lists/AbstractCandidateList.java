@@ -11,4 +11,6 @@ public abstract class AbstractCandidateList {
     abstract public List<AbstractPair> getListForK(int requestedK);
 
     abstract public void addNewList(int k, List<AbstractPair> pairToAdd);
+
+    abstract public void addPair(AbstractPair pairToAdd);
 }
