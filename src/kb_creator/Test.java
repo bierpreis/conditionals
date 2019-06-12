@@ -9,7 +9,10 @@ import nfc.model.World;
 public class Test {
 
     public static void main(String[] args) {
-        formulaTest();
+        int num = 3;
+        String formatted = String.format("%03d", num);
+
+        System.out.println(formatted);
 
     }
 

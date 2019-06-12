@@ -34,12 +34,10 @@ public class CpFileReader {
 
         //read String
         File fileToRead = new File(filePath + "/" + "/tmp/" + requestedK + "/");
-        System.out.println("files to read: ");
 
 
         File[] filesArray = fileToRead.listFiles();
-
-        //todo: sorting doesnt work good. implement leading 0s to file names
+        
         Arrays.sort(filesArray);
 
         List<String> stringList = new ArrayList<>();

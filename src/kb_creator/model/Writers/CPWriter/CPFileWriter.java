@@ -67,7 +67,10 @@ public class CPFileWriter extends AbstractCPWriter {
             subFolder.mkdirs();
         if (folderToSavePath != null)
             try {
-                PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + candidatePair.getNumber() + ".txt", "UTF-8");
+                //add leading zeros so the files will be soreted in correct order in their folder
+                String fileName = String.format("%08d", candidatePair.getNumber());
+
+                PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
                 writer.print(candidatePair.toFileString());
                 writer.close();
             } catch (IOException e) {
@@ -96,7 +99,6 @@ public class CPFileWriter extends AbstractCPWriter {
             System.out.println("no " + numberOfConditionals + " element pairs found for deleting");
         }
     }
-
 
 
     public int getQueueToWriteSize() {

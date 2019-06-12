@@ -24,16 +24,17 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
-        //todo: test
-        System.out.println("string in kb: " + stringFromFile);
-        stringFromFile.replace("signature\n", "");
+        //todo: why this doenst work?!
 
-        if (stringFromFile.matches("^a,b"))
-            signature = new AB();
-        else if (stringFromFile.matches("^a,b,c"))
+        //not sure why i need to split but replace doenst work?!
+        String[] splitString = stringFromFile.split(".*\nsignature\n");
+        System.out.println(splitString[1]);
+        if (splitString[1].matches("\\.*a,b,c\n.*")) {
             signature = new ABC();
-        else throw new RuntimeException("No valid signature found in file");
-
+        } else if (splitString[1].matches(".*a,b\n\n.*")) {
+            signature = new AB();
+        } else throw new RuntimeException("No valid signature found in file");
+        System.out.println("niece!!!");
         conditionalList = new ArrayList<>();
         stringFromFile.replace(".*conditionals\n\n", "");
         String[] conditionalStringArray = stringFromFile.split(", ");
@@ -120,9 +121,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         sb.append("\n\n");
         sb.append("conditionals:\n");
 
-        for(int i = 0; i<conditionalList.size(); i++){
+        for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i).getNumber());
-            if(i!=conditionalList.size()-1)
+            if (i != conditionalList.size() - 1)
                 sb.append(", ");
         }
         return sb.toString();
