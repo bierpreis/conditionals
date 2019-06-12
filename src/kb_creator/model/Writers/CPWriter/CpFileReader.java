@@ -1,6 +1,7 @@
 package kb_creator.model.Writers.CPWriter;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
+import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 
 import java.io.File;
@@ -18,8 +19,13 @@ public class CpFileReader {
     }
 
     public List<AbstractPair> readAllPairs() {
-        List<String> fileStringArray = getPairStringList();
-        return null;
+        List<String> stringList = getPairStringList();
+        List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
+
+        for (String stringFromFile : stringList)
+            pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
+
+        return pairsList;
     }
 
     private List<String> getPairStringList() {
@@ -29,11 +35,16 @@ public class CpFileReader {
         System.out.println("files to read: ");
 
 
-        File[] files = fileToRead.listFiles();
-        Arrays.sort(files);
+        File[] filesArray = fileToRead.listFiles();
 
-        List<File> fileLitst = new ArrayList<>(Arrays.asList(files));
+        //todo: sorting doesnt work good. implement leading 0s to file names
+        Arrays.sort(filesArray);
 
-        return null;
+        List<String> stringList = new ArrayList<>();
+
+        for (File file : filesArray) {
+            stringList.add(file.toString());
+        }
+        return stringList;
     }
 }
