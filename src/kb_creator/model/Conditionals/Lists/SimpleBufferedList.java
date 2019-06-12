@@ -6,7 +6,6 @@ import kb_creator.model.Writers.CPWriter.CPFileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: this is still the same as unbuffered list. implement some buffering
 public class SimpleBufferedList extends AbstractCandidateList {
     private CPFileWriter cpFileWriter;
     private String filePath;
@@ -19,7 +18,9 @@ public class SimpleBufferedList extends AbstractCandidateList {
         this.filePath = filePath;
     }
 
+    //todo implement sth to get the list here. propably create some cp reader object
     public List<AbstractPair> getListForK(int requestedK) {
+        System.out.println("asked for return list for k: " + requestedK);
         return candidatePairList.get(requestedK);
     }
 

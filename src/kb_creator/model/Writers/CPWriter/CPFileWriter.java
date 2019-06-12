@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-//todo: thread for this and combine with bufferedList. 1 object for writer and one for reader?
-
 public class CPFileWriter extends AbstractCPWriter {
 
     private Queue<AbstractPair> cpQueueToWrite;
@@ -64,7 +62,6 @@ public class CPFileWriter extends AbstractCPWriter {
     //todo: write all pairs in 1 file. much more efficient
 
     private void writePair(AbstractPair candidatePair) {
-        System.out.println("main folder: " + folderToSavePath);
         File subFolder = new File(folderToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
             subFolder.mkdirs();
