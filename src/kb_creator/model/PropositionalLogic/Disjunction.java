@@ -38,16 +38,23 @@ public class Disjunction extends AbstractFormula {
 
     @Override
     public boolean equals(Object o) {
-        //todo: this is not really correct
-        //and think again about this
+
+
         if (!(o instanceof Disjunction))
             return false;
+
+        Disjunction otherConjunction = (Disjunction) o;
+
+        if (formulaList.size() != otherConjunction.getFormulaList().size())
+            return false;
+
+
         for (AbstractFormula formula : formulaList) {
-            if (!((Disjunction) o).getFormulaList().contains(formula))
+            if (!otherConjunction.getFormulaList().contains(formula))
                 return false;
         }
 
-        for (AbstractFormula formula : ((Disjunction) o).getFormulaList()) {
+        for (AbstractFormula formula : otherConjunction.getFormulaList()) {
             if (!formulaList.contains(formula))
                 return false;
         }

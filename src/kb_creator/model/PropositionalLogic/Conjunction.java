@@ -38,7 +38,7 @@ public class Conjunction extends AbstractFormula {
 
     @Override
     public boolean equals(Object o) {
-  
+
         if (!(o instanceof Conjunction))
             return false;
 
