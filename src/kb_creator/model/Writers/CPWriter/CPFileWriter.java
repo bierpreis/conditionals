@@ -40,13 +40,13 @@ public class CPFileWriter extends AbstractCPWriter {
             if (!cpQueueToWrite.isEmpty()) {
                 System.out.println(cpQueueToWrite.size());
                 writePair(cpQueueToWrite.poll());
-            }
-            try {
-                System.out.println("cp writer is sleeping");
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            } else
+                try {
+                    System.out.println("cp writer is sleeping");
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
 
 
