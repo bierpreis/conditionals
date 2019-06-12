@@ -92,7 +92,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         }
         sb.append("\n\nEOF");
 
-        return sb.toString().replace(",$", "");
+        return sb.toString().replace(", $", "");
     }
 
     @Override

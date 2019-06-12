@@ -115,7 +115,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("signature");
+        sb.append("signature\n");
         sb.append(signature.toString());
         sb.append("\n\n");
         sb.append("conditionals: \n\n");
@@ -125,7 +125,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         }
 
 
-        return sb.toString();
+        return sb.toString().replace(", $", "");
     }
 
     public void add(NewConditional conditionalToAdd) {
