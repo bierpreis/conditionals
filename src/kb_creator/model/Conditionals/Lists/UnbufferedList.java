@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnbufferedList extends AbstractCandidateList {
-    List<List<AbstractPair>> cpList;
 
     public UnbufferedList() {
-        cpList = new ArrayList<>();
+        candidatePairList = new ArrayList<>();
     }
 
     @Override
     public List<List<AbstractPair>> getList() {
-        return cpList;
+        return candidatePairList;
     }
 }

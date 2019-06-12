@@ -9,17 +9,16 @@ import java.util.List;
 //todo: this is still the same as unbuffered list. implement some buffering
 public class BufferedList extends AbstractCandidateList {
     private String filePath;
-    private List<List<AbstractPair>> cpList;
 
     //maybe use queue for buffering?
 
     public BufferedList(String filePath) {
         this.filePath = filePath;
-        cpList = new ArrayList<>();
+        candidatePairList = new ArrayList<>();
     }
 
     public List<List<AbstractPair>> getList() {
-        return cpList;
+        return candidatePairList;
     }
 
 
