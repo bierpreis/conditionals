@@ -4,6 +4,8 @@ import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CpFileReader {
@@ -16,7 +18,7 @@ public class CpFileReader {
     }
 
     public List<AbstractPair> readAllPairs() {
-        List<String> fileStringList = getPairStringList();
+        List<String> fileStringArray = getPairStringList();
         return null;
     }
 
@@ -26,16 +28,12 @@ public class CpFileReader {
         File fileToRead = new File(filePath + "/" + "/tmp/" + requestedK + "/");
         System.out.println("files to read: ");
 
-        //todo: files are not in order. sort them.
-        AbstractPair candidatePair = new CandidateNumbersListPair("test");
-        for (File file : fileToRead.listFiles()) {
-            if (!file.isDirectory()) {
-                System.out.println(file.getName());
 
-            }
+        File[] files = fileToRead.listFiles();
+        Arrays.sort(files);
 
+        List<File> fileLitst = new ArrayList<>(Arrays.asList(files));
 
-        }
         return null;
     }
 }
