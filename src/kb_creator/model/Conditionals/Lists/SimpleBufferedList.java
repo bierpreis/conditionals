@@ -1,7 +1,5 @@
 package kb_creator.model.Conditionals.Lists;
 
-
-import gherkin.lexer.Th;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Writers.CPWriter.CPFileWriter;
 
@@ -27,6 +25,7 @@ public class SimpleBufferedList extends AbstractCandidateList {
 
     @Override
     public void addNewList(int k, List listToAdd) {
+        System.out.println("added new list for k: " + k);
         candidatePairList.add(listToAdd);
         cpFileWriter = new CPFileWriter(k, filePath);
         cpFileWriter.addCpList(listToAdd);

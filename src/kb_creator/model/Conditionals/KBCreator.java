@@ -126,7 +126,7 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
-                        l.getListForK(k + 1).add(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.addPair(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;

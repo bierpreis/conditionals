@@ -37,10 +37,7 @@ public class CPFileWriter extends AbstractCPWriter {
     @Override
     public void run() {
         while (running) {
-            System.out.println("candidate pairs size: " + cpQueueToWrite.size());
             if (cpQueueToWrite.peek() != null) {
-                System.out.println(cpQueueToWrite.size());
-
                 writePair(cpQueueToWrite.poll());
             } else
                 try {
