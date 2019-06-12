@@ -11,6 +11,7 @@ import java.util.List;
 public class CandidateNumbersArrayPair extends AbstractPair {
 
     private int[] candidatesNumbersArray;
+
     //this class is much more memory efficient then candidateNumbrersListstPair
     public CandidateNumbersArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
@@ -86,13 +87,14 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         sb.append("\n\n");
         sb.append("candidates:\n");
 
-        for (int candidateNumber : candidatesNumbersArray) {
-            sb.append(candidateNumber);
-            sb.append(", ");
+        for (int i = 0; i < candidatesNumbersArray.length; i++) {
+            sb.append(candidatesNumbersArray[i]);
+            if (i != candidatesNumbersArray.length - 1)
+                sb.append(", ");
         }
         sb.append("\n\nEOF");
 
-        return sb.toString().replace(", $", "");
+        return sb.toString();
     }
 
     @Override
