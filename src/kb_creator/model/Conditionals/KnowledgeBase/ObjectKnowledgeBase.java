@@ -118,14 +118,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         sb.append("signature\n");
         sb.append(signature.toString());
         sb.append("\n\n");
-        sb.append("conditionals: \n\n");
-        for (NewConditional conditional : conditionalList) {
-            sb.append(conditional.getNumber());
-            sb.append(", ");
+        sb.append("conditionals:\n");
+
+        for(int i = 0; i<conditionalList.size(); i++){
+            sb.append(conditionalList.get(i).getNumber());
+            if(i!=conditionalList.size()-1)
+                sb.append(", ");
         }
-
-
-        return sb.toString().replace(", $", "");
+        return sb.toString();
     }
 
     public void add(NewConditional conditionalToAdd) {
