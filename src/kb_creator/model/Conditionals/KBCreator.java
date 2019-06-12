@@ -124,8 +124,7 @@ public class KBCreator implements Runnable {
 
                         //line 12
 
-                        //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
-                        //so write here candidates to file and delete in ram?
+                        //this is where the ram gets full. therefore the buffering
                         l.addPair(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
