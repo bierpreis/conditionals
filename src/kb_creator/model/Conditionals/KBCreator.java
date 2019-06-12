@@ -136,7 +136,6 @@ public class KBCreator implements Runnable {
 
 
                     } else {
-                        //todo: this. how to make this abstract?
                         AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
