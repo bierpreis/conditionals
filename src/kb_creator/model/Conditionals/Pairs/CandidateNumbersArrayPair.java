@@ -26,7 +26,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     }
 
     public CandidateNumbersArrayPair(String stringFromFile) {
-        //todo
+        //todo maybe the problems are caused by threading? solution: put reader and writer in one thread.
         String[] splitString = stringFromFile.split("candidates:");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File");
@@ -92,8 +92,6 @@ public class CandidateNumbersArrayPair extends AbstractPair {
             if (i != candidatesNumbersArray.length - 1)
                 sb.append(", ");
         }
-        sb.append("\n\nEOF");
-
         return sb.toString();
     }
 
