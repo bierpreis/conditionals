@@ -97,25 +97,7 @@ public class CPFileWriter extends AbstractCPWriter {
         }
     }
 
-    //todo move in reader
-    private AbstractPair readNewPairs(int numberOfConditionals) {
-        //read String
-        File fileToRead = new File(folderToSavePath + "/" + numberOfConditionals + "/");
-        System.out.println("files to read: ");
 
-        //todo: candidate pairs should be in order. check this
-        AbstractPair candidatePair = new CandidateNumbersListPair("test");
-        for (File file : fileToRead.listFiles()) {
-            if (!file.isDirectory()) {
-                System.out.println(file.getName());
-
-            }
-
-
-        }
-        return new CandidateNumbersListPair("test");
-
-    }
 
     public int getQueueToWriteSize() {
         return cpQueueToWrite.size();

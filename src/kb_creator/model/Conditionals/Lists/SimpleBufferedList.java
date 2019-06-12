@@ -2,6 +2,7 @@ package kb_creator.model.Conditionals.Lists;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Writers.CPWriter.CPFileWriter;
+import kb_creator.model.Writers.CPWriter.CpFileReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,11 @@ public class SimpleBufferedList extends AbstractCandidateList {
         this.filePath = filePath;
     }
 
-    //todo implement sth to get the list here. propably create some cp reader object
+
     public List<AbstractPair> getListForK(int requestedK) {
         System.out.println("asked for return list for k: " + requestedK);
+        CpFileReader reader = new CpFileReader(requestedK, filePath);
+        reader.readAllPairs();
         return candidatePairList.get(requestedK);
     }
 
