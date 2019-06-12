@@ -44,8 +44,6 @@ public class CpFileReader {
 
         List<String> stringList = new ArrayList<>();
 
-        //todo: this adds filepath and not the real string
-
         try {
             for (File file : filesArray) {
                 Scanner fileScanner = new Scanner(file);
@@ -62,7 +60,6 @@ public class CpFileReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(stringList);
         return stringList;
     }
 }
