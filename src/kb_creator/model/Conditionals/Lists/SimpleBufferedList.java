@@ -10,12 +10,13 @@ import java.util.List;
 //todo: this is still the same as unbuffered list. implement some buffering
 public class SimpleBufferedList extends AbstractCandidateList {
     private CPFileWriter cpFileWriter;
+    private String filePath;
 
     //maybe use queue for buffering?
 
     public SimpleBufferedList(String filePath) {
         candidatePairList = new ArrayList<>();
-        cpFileWriter = new CPFileWriter(filePath);
+        this.filePath = filePath;
     }
 
     public List<AbstractPair> getListForK(int requestedK) {
@@ -23,8 +24,8 @@ public class SimpleBufferedList extends AbstractCandidateList {
     }
 
     @Override
-    public void addNewList(List listToAdd) {
-        //todo: not sure what to do here
+    public void addNewList(int k, List listToAdd) {
+        cpFileWriter = new CPFileWriter(k, filePath);
     }
 
 

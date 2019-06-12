@@ -37,19 +37,19 @@ public class KBCreator implements Runnable {
 
     private AbstractCandidateList l;
 
+    private String kbFilePath;
+
     public KBCreator(AbstractSignature signature, String kbFilePath, String cpFilePath) {
         System.out.println("new kb creator");
 
         status = Status.NOT_STARTED;
         this.signature = signature;
 
-        if (cpFilePath != null)
-            cpWriter = new CPFileWriter(cpFilePath);
-        else cpWriter = new CpDummyWriter(cpFilePath);
-
         if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath);
-        else kbWriter = new KbDummyWriter(kbFilePath);
+            kbWriter = new KbFileWriter(cpFilePath);
+        else kbWriter = new KbDummyWriter(cpFilePath);
+
+        this.kbFilePath = kbFilePath;
     }
 
 
@@ -72,7 +72,7 @@ public class KBCreator implements Runnable {
         k = 1;
         //add empty list to l because java lists start at 0 and original algorithm starts list at 1
         //then k and k+1 values are the same here and in the original algorithm
-        l.addNewList(new ArrayList<>());
+        l.addNewList(k, new ArrayList<>());
 
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
@@ -85,7 +85,7 @@ public class KBCreator implements Runnable {
         AbstractPair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
-        l.addNewList(initOneElementKBs(nfc, cnfc));
+        l.addNewList(k, initOneElementKBs(nfc, cnfc));
 
 
         //the following is the actual loop where the work is done
@@ -95,7 +95,7 @@ public class KBCreator implements Runnable {
             nextCandidatePairAmount = 0;
             candidatePairAmount = l.getListForK(k).size();
             //line  7
-            l.addNewList(new ArrayList<>());
+            l.addNewList(k, new ArrayList<>());
             iterationNumberOfKBs = 1;
             //this loop is line 8
             for (AbstractPair candidatePair : l.getListForK(k)) {
@@ -212,6 +212,7 @@ public class KBCreator implements Runnable {
         //cpWriter.deleteFiles(1);
         return l;
     }
+
 
     public int getTotalKbAmount() {
         return totalNumberOfKBs;

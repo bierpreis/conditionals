@@ -16,15 +16,14 @@ public class CPFileWriter extends AbstractCPWriter {
     private Queue<AbstractPair> cpQueueToWrite;
 
 
-
     private String folderToSavePath;
     private boolean running;
 
-    public CPFileWriter(String filePath) {
+    public CPFileWriter(int k, String filePath) {
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
-            this.folderToSavePath = filePath + "/tmp/";
+            this.folderToSavePath = filePath + "/tmp/" + k + "/";
 
             File tmpFile = new File(this.folderToSavePath);
             tmpFile.mkdirs();
@@ -42,12 +41,12 @@ public class CPFileWriter extends AbstractCPWriter {
                 System.out.println(cpQueueToWrite.size());
                 writePair(cpQueueToWrite.poll());
             }
-                try {
-                    System.out.println("cp writer is sleeping");
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            try {
+                System.out.println("cp writer is sleeping");
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
 
@@ -120,7 +119,6 @@ public class CPFileWriter extends AbstractCPWriter {
     public int getQueueToWriteSize() {
         return cpQueueToWrite.size();
     }
-
 
 
     public void stop() {

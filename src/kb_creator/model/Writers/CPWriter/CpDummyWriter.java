@@ -5,7 +5,7 @@ import kb_creator.model.Conditionals.Pairs.AbstractPair;
 
 public class CpDummyWriter extends AbstractCPWriter {
 
-    public CpDummyWriter(String filePath) {
+    public CpDummyWriter(int k, String filePath) {
         System.out.println("candidate pairs will be kept in main memory");
     }
 
