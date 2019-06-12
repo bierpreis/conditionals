@@ -13,7 +13,12 @@ public class UnbufferedList extends AbstractCandidateList {
     }
 
     @Override
-    public List<List<AbstractPair>> getList() {
-        return candidatePairList;
+    public List<AbstractPair> getListForK(int k) {
+        return candidatePairList.get(k);
+    }
+
+    @Override
+    public void addNewList(List<AbstractPair> listToAdd) {
+        candidatePairList.add(listToAdd);
     }
 }

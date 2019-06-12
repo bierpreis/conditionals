@@ -15,8 +15,6 @@ public class CPFileWriter extends AbstractCPWriter {
 
     private Queue<AbstractPair> cpQueueToWrite;
 
-    //todo:
-    private Queue<AbstractPair> queueToReturn;
 
 
     private String folderToSavePath;
@@ -33,7 +31,6 @@ public class CPFileWriter extends AbstractCPWriter {
         }
 
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
-        queueToReturn = new ConcurrentLinkedQueue<>();
 
     }
 
@@ -44,9 +41,7 @@ public class CPFileWriter extends AbstractCPWriter {
             if (!cpQueueToWrite.isEmpty()) {
                 System.out.println(cpQueueToWrite.size());
                 writePair(cpQueueToWrite.poll());
-            } else if (queueToReturn.size() < 0) {
-                //todo: here read new files
-            } else
+            }
                 try {
                     System.out.println("cp writer is sleeping");
                     Thread.sleep(200);
@@ -122,18 +117,11 @@ public class CPFileWriter extends AbstractCPWriter {
 
     }
 
-    public int getInconsistentCounter() {
-        return queueToReturn.size();
-    }
-
     public int getQueueToWriteSize() {
         return cpQueueToWrite.size();
     }
 
 
-    public Queue<AbstractPair> getInconsistentQueue() {
-        return queueToReturn;
-    }
 
     public void stop() {
         running = false;

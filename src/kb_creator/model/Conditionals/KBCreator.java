@@ -72,7 +72,7 @@ public class KBCreator implements Runnable {
         k = 1;
         //add empty list to l because java lists start at 0 and original algorithm starts list at 1
         //then k and k+1 values are the same here and in the original algorithm
-        l.getList().add(new ArrayList<>());
+        l.addNewList(new ArrayList<>());
 
 
         final List<NewConditional> nfc = nfcCreator.getNewNfc();
@@ -85,20 +85,20 @@ public class KBCreator implements Runnable {
         AbstractPair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
-        l.getList().add(initOneElementKBs(nfc, cnfc));
+        l.addNewList(initOneElementKBs(nfc, cnfc));
 
 
         //the following is the actual loop where the work is done
 
         //line 6
-        while (!l.getList().get(k).isEmpty()) {
+        while (!l.getListForK(k).isEmpty()) {
             nextCandidatePairAmount = 0;
-            candidatePairAmount = l.getList().get(k).size();
+            candidatePairAmount = l.getListForK(k).size();
             //line  7
-            l.getList().add(new ArrayList<>());
+            l.addNewList(new ArrayList<>());
             iterationNumberOfKBs = 1;
             //this loop is line 8
-            for (AbstractPair candidatePair : l.getList().get(k)) {
+            for (AbstractPair candidatePair : l.getListForK(k)) {
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -124,7 +124,7 @@ public class KBCreator implements Runnable {
 
                         //todo: massive problem is here: huge amounts of cp are created (with abc there are 1 kb and 6k candidates for each...)
                         //so write here candidates to file and delete in ram?
-                        l.getList().get(k + 1).add(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.getListForK(k + 1).add(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
