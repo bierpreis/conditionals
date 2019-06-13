@@ -2,15 +2,12 @@ package kb_creator.model.Conditionals;
 
 import kb_creator.Observer.Status;
 import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
-import kb_creator.model.Conditionals.KnowledgeBase.NumbersKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.Writers.CPWriter.AbstractCPWriter;
-import kb_creator.model.Writers.CPWriter.CPFileWriter;
-import kb_creator.model.Writers.CPWriter.CpDummyWriter;
 import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
 import kb_creator.model.Writers.KBWriter.KbDummyWriter;
 import kb_creator.model.Writers.KBWriter.KbFileWriter;

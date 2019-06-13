@@ -1,24 +1,27 @@
 package kb_creator.model.Writers.CPWriter;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
+import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class CPFileWriter extends AbstractCPWriter {
+public class CpFileBuffer extends AbstractCPWriter {
 
     private Queue<AbstractPair> cpQueueToWrite;
-
+    private AtomicInteger requestedKList;
+    private List<AbstractPair> requestedList;
+    private volatile boolean requestedListIsReady;
 
     private String folderToSavePath;
     private boolean running;
 
-    public CPFileWriter(int k, String filePath) {
+    public CpFileBuffer(String filePath) {
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
@@ -29,7 +32,8 @@ public class CPFileWriter extends AbstractCPWriter {
         }
 
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
-
+        requestedKList = new AtomicInteger(0);
+        requestedListIsReady = false;
     }
 
     @Override
@@ -37,9 +41,11 @@ public class CPFileWriter extends AbstractCPWriter {
         while (running) {
             if (cpQueueToWrite.peek() != null) {
                 writePair(cpQueueToWrite.poll());
+            } else if (requestedKList.get() != 0) {
+                requestedList = readAllPairs(requestedKList.get());
             } else
                 try {
-                    //System.out.println("cp writer is sleeping");
+                    System.out.println("cp writer is sleeping");
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -54,7 +60,8 @@ public class CPFileWriter extends AbstractCPWriter {
         cpQueueToWrite.add(pairToAdd);
     }
 
-    public void addCpList(List<AbstractPair> listToAdd) {
+    //todo: how to put k in there? maybe get correkt k by asking pair.getKb.getSize?
+    public void addCpList(int k, List<AbstractPair> listToAdd) {
         cpQueueToWrite.addAll(listToAdd);
     }
 
@@ -108,5 +115,60 @@ public class CPFileWriter extends AbstractCPWriter {
 
     public void stop() {
         running = false;
+    }
+
+    public List<AbstractPair> getList(int requestedK) {
+        requestedKList.set(requestedK);
+        while (!requestedListIsReady) {
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        requestedListIsReady = false;
+        return requestedList;
+    }
+
+    private List<AbstractPair> readAllPairs(int requestedK) {
+        List<String> stringList = getPairStringList(requestedK);
+        List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
+
+        for (String stringFromFile : stringList)
+            pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
+
+        requestedListIsReady = true;
+        return pairsList;
+    }
+
+    private List<String> getPairStringList(int requestedK) {
+
+        //read String
+        File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
+
+        File[] filesArray = fileToRead.listFiles();
+
+        Arrays.sort(filesArray);
+
+        List<String> stringList = new ArrayList<>();
+
+        try {
+            for (File file : filesArray) {
+                Scanner fileScanner = new Scanner(file);
+
+                StringBuilder sb = new StringBuilder();
+
+                while (fileScanner.hasNextLine()) {
+                    sb.append(fileScanner.nextLine());
+                    sb.append("\n");
+                }
+
+                stringList.add(sb.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringList;
     }
 }

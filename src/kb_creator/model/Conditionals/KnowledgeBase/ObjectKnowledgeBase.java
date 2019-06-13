@@ -24,14 +24,13 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
-        //todo: why this doenst work?!
 
         //not sure why i need to split but replace doenst work?!
         String[] splitString = stringFromFile.split(".*\nsignature\n");
         System.out.println(splitString[1]);
         if (splitString[1].matches("\\.*a,b,c\n.*")) {
             signature = new ABC();
-        } else if (splitString[1].matches(".*a,b\n\n.*")) {
+        } else if (splitString[1].matches(".*")) {//todo wtf why this doenst work
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
         System.out.println("niece!!!");

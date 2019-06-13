@@ -1,46 +1,42 @@
 package kb_creator.model.Conditionals.Lists;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Writers.CPWriter.CPFileWriter;
-import kb_creator.model.Writers.CPWriter.CpFileReader;
+import kb_creator.model.Writers.CPWriter.CpFileBuffer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleBufferedList extends AbstractCandidateList {
-    private CPFileWriter cpFileWriter;
-    private String filePath;
+    private CpFileBuffer cpFileBuffer;
 
-    //maybe use queue for buffering?
 
     public SimpleBufferedList(String filePath) {
         System.out.println("created simple buffered list for candidate pairs");
-        candidatePairList = new ArrayList<>();
-        this.filePath = filePath;
+        //candidatePairList = new ArrayList<>();
+        cpFileBuffer = new CpFileBuffer(filePath);
+        Thread cpWriterThread = new Thread(cpFileBuffer);
+        cpWriterThread.start();
     }
 
 
     public List<AbstractPair> getListForK(int requestedK) {
         System.out.println("asked for return list for k: " + requestedK);
-        CpFileReader reader = new CpFileReader(requestedK, filePath);
-        reader.readAllPairs();
-        return candidatePairList.get(requestedK);
+        return cpFileBuffer.getList(requestedK);
     }
 
     @Override
-    public void addNewList(int k, List listToAdd) {
+    public void addNewList(int k, List<AbstractPair> listToAdd) {
         System.out.println("added new list for k: " + k);
-        candidatePairList.add(listToAdd);
-        cpFileWriter = new CPFileWriter(k, filePath);
-        cpFileWriter.addCpList(listToAdd);
-        Thread cpWriterThread = new Thread(cpFileWriter);
-        cpWriterThread.start();
+
+        //candidatePairList.add(listToAdd);
+        cpFileBuffer.addCpList(k, listToAdd);
+
 
     }
+
 
     @Override
     public void addPair(AbstractPair pairToAdd) {
-        cpFileWriter.addCpToWrite(pairToAdd);
+        cpFileBuffer.addCpToWrite(pairToAdd);
     }
 
 
