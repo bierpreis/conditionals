@@ -30,7 +30,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         System.out.println(splitString[1]);
         if (splitString[1].matches("\\.*a,b,c\n.*")) {
             signature = new ABC();
-        } else if (splitString[1].matches(".*")) {//todo wtf why this doenst work
+        } else if (splitString[1].matches(".")) {//todo wtf why this doenst work. try to build the matching stuff diffrent. sth with matcher?
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
         System.out.println("niece!!!");
