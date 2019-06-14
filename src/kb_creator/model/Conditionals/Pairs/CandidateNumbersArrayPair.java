@@ -42,9 +42,13 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
+        for (String string : candidatesStringArray) {
+            System.out.print(string + ", ");
+        }
+        System.out.println("");
         int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray)
-            candidateString.replace(", ", "");
+            candidateString.replace(", ", "");  //todo: exception: there is a array (50, ) and the space fucks this up. remove the comma after 1 element inputstrings?!
 
         for (int i = 0; i < candidatesStringArray.length; i++) {
 
