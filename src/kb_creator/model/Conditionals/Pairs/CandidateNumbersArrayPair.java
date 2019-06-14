@@ -34,22 +34,21 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         //divide string into kb and candidates
         //create both from subString
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
+        if (splitString[1] == " ")
+            System.out.println("wtf");
         candidatesNumbersArray = createCandidatesArrayFromString(splitString[1]);
     }
 
 
-    private int[] createCandidatesArrayFromString(String inputString) {//todo: when there are 0 candidates, then "" is the parameter and then scanning integers will fail
+    private int[] createCandidatesArrayFromString(String inputString) {
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
-        for (String string : candidatesStringArray) {
-            System.out.print(string + "");
-        }
-        System.out.println("");
+
         int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray) {
             if (candidateString.length() == 0)
-                System.out.println("!!! " + candidateString);
+                return null;
             candidateString.replace(", ", "");
         }
         for (int i = 0; i < candidatesStringArray.length; i++) {
@@ -63,7 +62,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     public List<NewConditional> getCandidatesList() {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
-        for (int candidateNumber : this.candidatesNumbersArray) {
+        for (int candidateNumber : this.candidatesNumbersArray) { //todo: null pointer is here
             candidatesList.add(nfcMap.get(candidateNumber));
         }
 
