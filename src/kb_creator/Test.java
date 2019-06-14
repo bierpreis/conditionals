@@ -9,10 +9,9 @@ import nfc.model.World;
 public class Test {
 
     public static void main(String[] args) {
-        int num = 3;
-        String formatted = String.format("%03d", num);
 
-        System.out.println(formatted);
+        String lol = "lol";
+        System.out.println(lol.matches("l.*"));
 
     }
 
