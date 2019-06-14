@@ -47,7 +47,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
         int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray) {
-            if (candidateString.length() == 0)
+            if (candidateString.length() == 0) //todo: this must be wrong?!
                 return null;
             candidateString.replace(", ", "");
         }
