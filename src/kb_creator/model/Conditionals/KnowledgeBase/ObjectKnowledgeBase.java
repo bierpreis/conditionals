@@ -28,17 +28,15 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         String[] splitString = stringFromFile.split(".*\nsignature\n");
 
-        System.out.println("string: " + splitString[1]);
         if (splitString[1].matches("a,b,c[a-z0-9\n]*"))
             signature = new ABC();
         else if (splitString[1].matches("a,b[a-z0-9\n]*")) {
-            System.out.println("nice it matched");
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
-        System.out.println("niece!!!");
+
         conditionalList = new ArrayList<>();
-        stringFromFile.replace(".*conditionals\n\n", "");
-        String[] conditionalStringArray = stringFromFile.split(", ");
+        String[] splitString2 = stringFromFile.split(".*\nconditionals\n");
+        String[] conditionalStringArray = splitString2[1].split(", ");
 
         for (String candidateString : conditionalStringArray)
             conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
