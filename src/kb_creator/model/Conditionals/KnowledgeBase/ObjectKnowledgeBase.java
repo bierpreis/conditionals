@@ -25,17 +25,17 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     public ObjectKnowledgeBase(String stringFromFile) {
 
+        stringFromFile = stringFromFile.replaceAll("\n", "");
+        String[] splitString = stringFromFile.split("signature");
 
-        String[] splitString = stringFromFile.split(".*\nsignature\n");
-
-        if (splitString[1].matches("a,b,c[a-z0-9\n]*"))
+        if (splitString[1].matches("a,b,c[a-z0-9]*"))
             signature = new ABC();
-        else if (splitString[1].matches("a,b[a-z0-9\n]*")) {
+        else if (splitString[1].matches("a,b[a-z0-9]*")) {
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
 
         conditionalList = new ArrayList<>();
-        String[] splitString2 = stringFromFile.split(".*\nconditionals\n");
+        String[] splitString2 = stringFromFile.split("conditionals");
         String[] conditionalStringArray = splitString2[1].split(", ");
 
         for (String candidateString : conditionalStringArray)
