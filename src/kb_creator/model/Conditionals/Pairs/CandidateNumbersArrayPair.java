@@ -50,7 +50,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
             candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
         }
-        return candidatesArray;
+        return candidatesArray; //todo: there a a lot of "0" entries in there which are not in input string
     }
 
     @Override
