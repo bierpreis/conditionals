@@ -16,7 +16,7 @@ public class AB extends AbstractSignature {
 
     @Override
     public String toString() {
-        return "a,b";
+        return "ab";
     }
 
 }

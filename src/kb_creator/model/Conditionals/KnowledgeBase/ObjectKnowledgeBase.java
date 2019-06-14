@@ -25,14 +25,17 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     public ObjectKnowledgeBase(String stringFromFile) {
 
-        String repacesString = stringFromFile.replace("signature", "");
-        System.out.println(repacesString);
+
         String[] splitString = stringFromFile.split(".*\nsignature\n");
-        //System.out.println(splitString[1]);
-        System.out.println("before test");
-        if (splitString[1].matches("\\.*a,b,c\n.*")) {
-            signature = new ABC();
-        } else if (splitString[1].matches("(.*)a,b(.*)")) {//todo wtf why this doenst work. try to build the matching stuff diffrent. sth with matcher?
+
+        System.out.println("string: " + splitString[1]);
+        if (splitString[1].matches("ab\n" +
+                "\n" +
+                "conditionals\n" +
+                "1\n" +
+                "\n")) {
+            System.out.println("nice it matched");
+            //todo wtf why this doenst work. try to build the matching stuff diffrent. sth with matcher?
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
         System.out.println("niece!!!");
@@ -120,7 +123,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         sb.append("signature\n");
         sb.append(signature.toString());
         sb.append("\n\n");
-        sb.append("conditionals:\n");
+        sb.append("conditionals\n");
 
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i).getNumber());

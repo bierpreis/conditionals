@@ -27,7 +27,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
     public CandidateNumbersArrayPair(String stringFromFile) {
 
-        String[] splitString = stringFromFile.split("candidates:");
+        String[] splitString = stringFromFile.split("candidates");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "length");
 
@@ -82,10 +82,10 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         sb.append("Lists");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
-        sb.append("KB:\n");
+        sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
         sb.append("\n\n");
-        sb.append("candidates:\n");
+        sb.append("candidates\n");
 
         for (int i = 0; i < candidatesNumbersArray.length; i++) {
             sb.append(candidatesNumbersArray[i]);
