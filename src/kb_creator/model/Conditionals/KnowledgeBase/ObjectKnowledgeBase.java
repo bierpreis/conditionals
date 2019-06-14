@@ -29,9 +29,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         String[] splitString = stringFromFile.split(".*\nsignature\n");
 
         System.out.println("string: " + splitString[1]);
-        if (splitString[1].matches("ab[a-z0-9\n]*")) {
+        if (splitString[1].matches("abc[a-z0-9\n]*"))
+            signature = new ABC();
+        else if (splitString[1].matches("ab[a-z0-9\n]*")) {
             System.out.println("nice it matched");
-            //todo wtf why this doenst work. try to build the matching stuff diffrent. sth with matcher?
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
         System.out.println("niece!!!");
