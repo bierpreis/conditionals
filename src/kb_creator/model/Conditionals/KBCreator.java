@@ -116,7 +116,7 @@ public class KBCreator implements Runnable {
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
-                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional())) //todo: what is null here?!
+                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12

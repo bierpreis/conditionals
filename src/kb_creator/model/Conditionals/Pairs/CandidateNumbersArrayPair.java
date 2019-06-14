@@ -40,9 +40,9 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
     private int[] createCandidatesArrayFromString(String inputString) {
         inputString = inputString.replaceAll("\n", "");
-        int[] candidatesArray = new int[inputString.length()];
-        String[] candidatesStringArray = inputString.split(", ");
 
+        String[] candidatesStringArray = inputString.split(", ");
+        int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray)
             candidateString.replace(", ", "");
 
@@ -50,7 +50,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
             candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
         }
-        return candidatesArray; //todo: there a a lot of "0" entries in there which are not in input string
+        return candidatesArray;
     }
 
     @Override
