@@ -41,6 +41,8 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
 
     private int[] createCandidatesArrayFromString(String inputString) {
+        if (inputString == "")
+            System.out.println("null!!!");
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
@@ -62,9 +64,12 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     public List<NewConditional> getCandidatesList() {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
-        for (int candidateNumber : this.candidatesNumbersArray) { //todo: null pointer is here
-            candidatesList.add(nfcMap.get(candidateNumber));
-        }
+
+        //array is null if there are no candidates
+        if (candidatesNumbersArray != null)
+            for (int candidateNumber : this.candidatesNumbersArray) { //todo: null poiner will be here if array is null
+                candidatesList.add(nfcMap.get(candidateNumber));
+            }
 
         return candidatesList;
     }
