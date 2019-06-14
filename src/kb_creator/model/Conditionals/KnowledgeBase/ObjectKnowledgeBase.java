@@ -29,11 +29,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         String[] splitString = stringFromFile.split(".*\nsignature\n");
 
         System.out.println("string: " + splitString[1]);
-        if (splitString[1].matches("ab\n" +
-                "\n" +
-                "conditionals\n" +
-                "1\n" +
-                "\n")) {
+        if (splitString[1].matches("ab\n\nconditionals\n1\n\n")) {
             System.out.println("nice it matched");
             //todo wtf why this doenst work. try to build the matching stuff diffrent. sth with matcher?
             signature = new AB();
