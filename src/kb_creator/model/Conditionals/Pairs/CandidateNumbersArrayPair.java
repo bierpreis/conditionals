@@ -38,7 +38,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     }
 
 
-    private int[] createCandidatesArrayFromString(String inputString) {//todo: problem occurs when inputstring is ""
+    private int[] createCandidatesArrayFromString(String inputString) {//todo: when there are 0 candidates, then "" is the parameter and then scanning integers will fail
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
@@ -50,7 +50,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         for (String candidateString : candidatesStringArray) {
             if (candidateString.length() == 0)
                 System.out.println("!!! " + candidateString);
-            candidateString.replace(", ", "");  //todo: exception: there is a array (50, ) and the space fucks this up. remove the comma after 0 element inputstrings?!
+            candidateString.replace(", ", "");
         }
         for (int i = 0; i < candidatesStringArray.length; i++) {
 
