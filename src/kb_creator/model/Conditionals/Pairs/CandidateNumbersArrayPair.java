@@ -39,6 +39,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
     //todo: test
     private int[] createCandidatesArrayFromString(String inputString) {
+        inputString = inputString.replaceAll("\n", "");
         int[] candidatesArray = new int[inputString.length()];
         String[] candidatesStringArray = inputString.split(", ");
 
