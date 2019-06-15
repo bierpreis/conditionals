@@ -11,8 +11,7 @@ import java.util.List;
 public class CandidateNumbersArrayPair extends AbstractPair {
 
     private int[] candidatesNumbersArray;
-
-    //todo: make sure that classes are not just saved on hdd but also deleted
+    
     //this class is much more memory efficient then candidateNumbrersListstPair
     public CandidateNumbersArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;

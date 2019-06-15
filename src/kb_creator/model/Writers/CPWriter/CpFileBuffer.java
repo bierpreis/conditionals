@@ -78,6 +78,8 @@ public class CpFileBuffer extends AbstractCPWriter {
                 String fileName = String.format("%08d", candidatePair.getNumber());
 
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
+
+                //todo: here delete candidate pair?
                 writer.print(candidatePair.toFileString());
                 writer.close();
             } catch (IOException e) {
