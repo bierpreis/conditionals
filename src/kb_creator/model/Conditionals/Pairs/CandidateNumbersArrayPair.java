@@ -34,27 +34,24 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         //divide string into kb and candidates
         //create both from subString
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
-        if (splitString[1] == " ")
+        if (splitString[1] == "")
             System.out.println("wtf");
         candidatesNumbersArray = createCandidatesArrayFromString(splitString[1]);
     }
 
 
     private int[] createCandidatesArrayFromString(String inputString) {
-        if (inputString == "")
-            System.out.println("null!!!");
+
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
-
         int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray) {
-            if (candidateString.length() == 0) //todo: this must be wrong?!
-                return null;
             candidateString.replace(", ", "");
         }
+        if (candidatesArray.length == 1)
+            System.out.println(candidatesStringArray[0] + "!!!"); //todo: this fucks up if string is empty. it still has the length of 1 so loop will run?!
         for (int i = 0; i < candidatesStringArray.length; i++) {
-
             candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
         }
         return candidatesArray;
