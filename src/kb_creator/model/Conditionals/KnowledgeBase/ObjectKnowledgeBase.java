@@ -56,7 +56,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
-
+            //System.out.println(conditionalToTest);
             //todo: here is some null pointer?!
             if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
                 return true;
