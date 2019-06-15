@@ -28,13 +28,13 @@ public class KBCreator implements Runnable {
     private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
-    private AbstractCPWriter cpWriter;
 
     private AbstractKbWriter kbWriter;
 
+
+    //todo: where is l initialized??
     private AbstractCandidateList l;
 
-    private String kbFilePath;
 
     public KBCreator(AbstractSignature signature, String kbFilePath, String cpFilePath) {
         System.out.println("new kb creator");
