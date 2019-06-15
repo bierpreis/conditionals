@@ -9,7 +9,7 @@ public class MainWriterPanel extends JPanel {
     private WriterPanel writerPanel;
 
     public MainWriterPanel() {
-        setBorder(BorderFactory.createTitledBorder("File Writer"));
+        setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         queuePanel = new QueuePanel();

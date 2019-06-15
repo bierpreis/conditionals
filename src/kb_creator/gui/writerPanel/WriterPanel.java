@@ -25,7 +25,7 @@ public class WriterPanel extends JPanel {
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
-        setBorder(BorderFactory.createTitledBorder("KB Writer)"));
+        setBorder(BorderFactory.createTitledBorder("Writer Status"));
 
         speedLabel = new JLabel();
         vBox.add(speedLabel);
