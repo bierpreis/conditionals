@@ -32,7 +32,7 @@ public class KBCreator implements Runnable {
     private AbstractKbWriter kbWriter;
 
 
-    //todo: where is l initialized??
+
     private AbstractCandidateList l;
 
 
@@ -46,7 +46,6 @@ public class KBCreator implements Runnable {
             kbWriter = new KbFileWriter(cpFilePath);
         else kbWriter = new KbDummyWriter(cpFilePath);
 
-        this.kbFilePath = kbFilePath;
     }
 
 
@@ -54,9 +53,6 @@ public class KBCreator implements Runnable {
     public void run() {
         System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
-
-        Thread cpWriterThread = new Thread(cpWriter);
-        cpWriterThread.start();
 
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();
