@@ -79,8 +79,13 @@ public class CpFileBuffer extends AbstractCPWriter {
 
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
-                //todo: here delete candidate pair?
+
                 writer.print(candidatePair.toFileString());
+
+
+                //todo: maybe the whole cp can be deleted somewhere? would be better
+                candidatePair.deleteCandidates();
+                candidatePair.deleteKB();
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
