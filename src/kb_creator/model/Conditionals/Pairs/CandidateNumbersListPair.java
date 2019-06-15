@@ -8,7 +8,9 @@ import kb_creator.model.Conditionals.NewConditional;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//this class is not tested and probably wont work
+//the candidates take too much memory
+//so its not really worth to implement it
 public class CandidateNumbersListPair extends AbstractPair {
     private AbstractKnowledgeBase knowledgeBase;
     private List<Integer> candidatesNumbersList;
@@ -24,7 +26,6 @@ public class CandidateNumbersListPair extends AbstractPair {
     }
 
     public CandidateNumbersListPair(String stringFromFile) {
-        //todo
         String[] splitString = stringFromFile.split("candidates:");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File");
@@ -34,7 +35,7 @@ public class CandidateNumbersListPair extends AbstractPair {
         candidatesNumbersList = createCandidatesListFromString(splitString[1]);
     }
 
-    //todo: test
+
     private List<Integer> createCandidatesListFromString(String inputString) {
         List<Integer> candidatesList = new ArrayList<>();
         String[] candidatesStringArray = inputString.split(", ");
