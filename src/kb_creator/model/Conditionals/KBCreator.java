@@ -32,7 +32,6 @@ public class KBCreator implements Runnable {
     private AbstractKbWriter kbWriter;
 
 
-
     private AbstractCandidateList l;
 
 
@@ -99,7 +98,7 @@ public class KBCreator implements Runnable {
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
                     //todo: r can be null, then it failes. but why?
-                    System.out.println(r);
+                    System.out.println("r: " + r);
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
                         //next part is line 11 and 12

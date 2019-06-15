@@ -40,10 +40,10 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
 
     private int[] createCandidatesArrayFromString(String inputString) {
-        if (inputString.length() < 2)
-            System.out.println(inputString);
-        inputString = inputString.replaceAll("\n", "");
 
+        inputString = inputString.replaceAll("\n", "");
+        if (inputString.length() < 2)
+            System.out.println("candidate string: " + inputString);
         String[] candidatesStringArray = inputString.split(", ");
         int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray) {
@@ -55,6 +55,8 @@ public class CandidateNumbersArrayPair extends AbstractPair {
                 if (candidatesStringArray[i].length() != 0)
                     candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
             }
+        if (candidatesArray[0] == 0)
+            System.out.println("returned 0 !=!=!");
         return candidatesArray;
     }
 
@@ -65,9 +67,9 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
         for (int candidateNumber : this.candidatesNumbersArray) {
 
-            if (candidateNumber == 0)
-                System.out.println("number was 0!!");
-            candidatesList.add(nfcMap.get(candidateNumber));
+            //todo: candidate number can be 0. why is that? it should not be!
+            if (candidateNumber != 0)
+                candidatesList.add(nfcMap.get(candidateNumber));
         }
 
 
