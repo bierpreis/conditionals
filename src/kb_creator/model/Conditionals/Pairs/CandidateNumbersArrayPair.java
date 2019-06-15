@@ -49,10 +49,9 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         for (String candidateString : candidatesStringArray) {
             candidateString.replace(", ", "");
         }
-        if (candidatesArray.length == 1)
-            System.out.println(candidatesStringArray[0] + "!!!"); //todo: this fucks up if string is empty. it still has the length of 1 so loop will run?!
         for (int i = 0; i < candidatesStringArray.length; i++) {
-            candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
+            if (candidatesStringArray[i].length() != 0)
+                candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
         }
         return candidatesArray;
     }
@@ -64,7 +63,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
         //array is null if there are no candidates
         if (candidatesNumbersArray != null)
-            for (int candidateNumber : this.candidatesNumbersArray) { //todo: null poiner will be here if array is null
+            for (int candidateNumber : this.candidatesNumbersArray) {
                 candidatesList.add(nfcMap.get(candidateNumber));
             }
 
