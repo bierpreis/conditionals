@@ -1,6 +1,7 @@
 package kb_creator.gui;
 
 import kb_creator.Observer.KBCreatorObserver;
+import kb_creator.gui.candidatesPanel.MainCandidatesPanel;
 import kb_creator.gui.creatorPanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
 import kb_creator.gui.writerPanel.MainWriterPanel;
