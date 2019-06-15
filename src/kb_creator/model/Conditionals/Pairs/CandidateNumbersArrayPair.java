@@ -70,6 +70,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
             //todo: candidate number can be 0. why is that? it should not be!
             if (candidateNumber != 0)
                 candidatesList.add(nfcMap.get(candidateNumber));
+            else System.out.println("length of array with element 0: " + candidatesNumbersArray.length);
         }
 
 

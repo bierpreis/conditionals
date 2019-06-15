@@ -97,8 +97,6 @@ public class KBCreator implements Runnable {
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
-                    //todo: r can be null, then it failes. but why?
-                    System.out.println("r: " + r);
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
                         //next part is line 11 and 12

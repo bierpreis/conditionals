@@ -28,7 +28,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString = stringFromFile.split("signature");
 
-        if (splitString[1].matches("a,b,c[a-z0-9,]*"))
+        if (splitString[1].matches("a,b,c[a-z0-9, ]*"))
             signature = new ABC();
         else if (splitString[1].matches("a,b[a-z0-9, ]*")) {
             signature = new AB();
