@@ -17,6 +17,8 @@ public class KBMainWindow {
     private MainCreatorPanel mainCreatorPanel;
     private MainWriterPanel mainWriterPanel;
 
+
+    //todo: panel for cp writer
     public KBMainWindow(KBCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
