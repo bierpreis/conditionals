@@ -2,8 +2,6 @@ package kb_creator.gui.creatorPanel;
 
 import kb_creator.Observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-import kb_creator.gui.writerPanel.MainWriterPanel;
-import kb_creator.gui.writerPanel.WriterPanel;
 
 import javax.swing.*;
 import java.awt.*;

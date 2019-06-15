@@ -3,7 +3,6 @@ package kb_creator.Observer;
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.Conditionals.KBCreator;
 import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
-import kb_creator.model.Writers.KBWriter.KbFileWriter;
 
 public class StatusThread implements Runnable {
     private KBCreator creatorThread;
@@ -33,11 +32,11 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
                 mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentCandidatepairAmount());
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
-                mainWindow.getMainWriterPanel().getQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
-                mainWindow.getMainWriterPanel().getQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
-                mainWindow.getMainWriterPanel().getWriterPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
-                mainWindow.getMainWriterPanel().getWriterPanel().showConsistentConter(kbWriter.getConsistentCounter());
-                mainWindow.getMainWriterPanel().getWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
+                mainWindow.getKbWriterPanel().getKbQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
+                mainWindow.getKbWriterPanel().getKbQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+                mainWindow.getKbWriterPanel().getMainKbWriterPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
+                mainWindow.getKbWriterPanel().getMainKbWriterPanel().showConsistentConter(kbWriter.getConsistentCounter());
+                mainWindow.getKbWriterPanel().getMainKbWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
 
             }
 

@@ -1,10 +1,9 @@
 package kb_creator.gui;
 
 import kb_creator.Observer.KBCreatorObserver;
-import kb_creator.gui.candidatesPanel.MainCandidatesPanel;
 import kb_creator.gui.creatorPanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.writerPanel.MainWriterPanel;
+import kb_creator.gui.writerPanel.KbPanel.KbWriterPanel;
 import kb_creator.model.Signature.AbstractSignature;
 
 
@@ -16,7 +15,7 @@ public class KBMainWindow {
     private LeftPanel leftPanel;
     private JFrame mainWindow;
     private MainCreatorPanel mainCreatorPanel;
-    private MainWriterPanel mainWriterPanel;
+    private KbWriterPanel kbWriterPanel;
 
 
     //todo: panel for cp writer
@@ -28,7 +27,7 @@ public class KBMainWindow {
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(mainCreatorPanel = new MainCreatorPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
-        mainWindow.add(mainWriterPanel = new MainWriterPanel(), BorderLayout.EAST);
+        mainWindow.add(kbWriterPanel = new KbWriterPanel(), BorderLayout.EAST);
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,8 +59,8 @@ public class KBMainWindow {
     }
 
 
-    public MainWriterPanel getMainWriterPanel() {
-        return mainWriterPanel;
+    public KbWriterPanel getKbWriterPanel() {
+        return kbWriterPanel;
     }
 
     public MainCreatorPanel getCreatorPanel() {

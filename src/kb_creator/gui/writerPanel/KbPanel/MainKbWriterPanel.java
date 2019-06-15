@@ -1,10 +1,10 @@
-package kb_creator.gui.writerPanel;
+package kb_creator.gui.writerPanel.KbPanel;
 
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class WriterPanel extends JPanel {
+public class MainKbWriterPanel extends JPanel {
 
     private JLabel speedLabel;
 
@@ -19,7 +19,7 @@ public class WriterPanel extends JPanel {
     private JLabel counterLabel;
     private JLabel inconsistentCounterLabel;
 
-    public WriterPanel() {
+    public MainKbWriterPanel() {
 
 
         Box vBox = Box.createVerticalBox();

@@ -1,15 +1,15 @@
-package kb_creator.gui.writerPanel;
+package kb_creator.gui.writerPanel.KbPanel;
 
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class QueuePanel extends JPanel {
+public class KbQueuePanel extends JPanel {
     private JLabel inconsistentLabel;
     private JLabel consistentLabel;
 
 
-    public QueuePanel() {
+    public KbQueuePanel() {
         setBorder(BorderFactory.createTitledBorder("Queue for Writing"));
 
         Box vBox = Box.createVerticalBox();

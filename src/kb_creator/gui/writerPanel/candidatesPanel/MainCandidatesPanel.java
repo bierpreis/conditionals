@@ -1,4 +1,4 @@
-package kb_creator.gui.candidatesPanel;
+package kb_creator.gui.writerPanel.candidatesPanel;
 
 import com.intellij.ui.components.JBPanel;
 
@@ -10,7 +10,7 @@ public class MainCandidatesPanel extends JBPanel {
 
     public MainCandidatesPanel() {
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
-        //setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
 
         Box vBox = Box.createVerticalBox();
         add(vBox);
