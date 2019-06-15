@@ -34,7 +34,7 @@ public class KBCreator implements Runnable {
 
     private AbstractCandidateList l;
 
-
+    //todo: why is cp file path never used?!
     public KBCreator(AbstractSignature signature, String kbFilePath, String cpFilePath) {
         System.out.println("new kb creator");
 
@@ -42,8 +42,8 @@ public class KBCreator implements Runnable {
         this.signature = signature;
 
         if (kbFilePath != null)
-            kbWriter = new KbFileWriter(cpFilePath);
-        else kbWriter = new KbDummyWriter(cpFilePath);
+            kbWriter = new KbFileWriter(kbFilePath);
+        else kbWriter = new KbDummyWriter(kbFilePath);
 
     }
 
