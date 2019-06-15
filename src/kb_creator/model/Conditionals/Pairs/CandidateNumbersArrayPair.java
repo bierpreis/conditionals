@@ -41,7 +41,8 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
 
     private int[] createCandidatesArrayFromString(String inputString) {
-
+        if (inputString.length() < 2)
+            System.out.println(inputString); //todo: input string can be "\n", then it fucks up.
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
@@ -61,14 +62,12 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         //System.out.println("found: " + candidatesNumbersList);
         List<NewConditional> candidatesList = new ArrayList<>();
 
-        //array is null if there are no candidates
-        if (candidatesNumbersArray != null)
-            for (int candidateNumber : this.candidatesNumbersArray) {
-                //todo: number can be 0 which is shit!
-                if (candidateNumber == 0)
-                    System.out.println("number was 0!!");
-                candidatesList.add(nfcMap.get(candidateNumber));
-            }
+        for (int candidateNumber : this.candidatesNumbersArray) {
+            //todo: number can be 0 which is shit!
+            if (candidateNumber == 0)
+                System.out.println("number was 0!!");
+            candidatesList.add(nfcMap.get(candidateNumber));
+        }
 
         //todo: this list can contain null
         if (candidatesList.contains(null))
