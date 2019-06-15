@@ -40,8 +40,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
 
 
     private int[] createCandidatesArrayFromString(String inputString) {
-        if (inputString.replaceAll("\n", "").equals("EMPTY"))
-            System.out.println("empty");
+
         inputString = inputString.replaceAll("\n", "");
 
         String[] candidatesStringArray = inputString.split(", ");
@@ -56,8 +55,8 @@ public class CandidateNumbersArrayPair extends AbstractPair {
                 if (candidatesStringArray[i].length() != 0)
                     candidatesArray[i] = Integer.parseInt(candidatesStringArray[i]);
             }
-        if (candidatesArray[0] == 0)
-            System.out.println("returned 0 !=!=!");
+
+
         return candidatesArray;
     }
 
