@@ -64,9 +64,15 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         //array is null if there are no candidates
         if (candidatesNumbersArray != null)
             for (int candidateNumber : this.candidatesNumbersArray) {
+                //todo: number can be 0 which is shit!
+                if (candidateNumber == 0)
+                    System.out.println("number was 0!!");
                 candidatesList.add(nfcMap.get(candidateNumber));
             }
 
+        //todo: this list can contain null
+        if (candidatesList.contains(null))
+            System.out.println("null in there!");
         return candidatesList;
     }
 
