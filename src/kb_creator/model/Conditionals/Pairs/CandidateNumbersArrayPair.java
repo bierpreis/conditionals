@@ -38,18 +38,19 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         candidatesNumbersArray = createCandidatesArrayFromString(splitString[1]);
     }
 
-    //todo: always when inputstring is "EMPTY" then 0 as candidate is returned. this is wrong! should be empty array! maybe empty array always contains 0?
-    private int[] createCandidatesArrayFromString(String inputString) {
 
+    private int[] createCandidatesArrayFromString(String inputString) {
+        if (inputString.replaceAll("\n", "").equals("EMPTY"))
+            System.out.println("empty");
         inputString = inputString.replaceAll("\n", "");
-        if (inputString.length() < 2)
-            System.out.println("candidate string: " + inputString);
+
         String[] candidatesStringArray = inputString.split(", ");
         int[] candidatesArray = new int[candidatesStringArray.length];
         for (String candidateString : candidatesStringArray) {
             candidateString.replace(", ", "");
         }
         //it will be "EMPTY" if there are no candidates
+        //then as java standard the array will contain int[0] = 0
         if (!inputString.equals("EMPTY"))
             for (int i = 0; i < candidatesStringArray.length; i++) {
                 if (candidatesStringArray[i].length() != 0)
