@@ -6,7 +6,7 @@ import kb_creator.model.Writers.CPWriter.CpFileBuffer;
 import java.util.List;
 
 public class SimpleBufferedList extends AbstractCandidateList {
-    private CpFileBuffer cpFileBuffer;
+
 
 
     public SimpleBufferedList(String filePath) {

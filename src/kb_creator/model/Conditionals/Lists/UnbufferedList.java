@@ -2,6 +2,7 @@ package kb_creator.model.Conditionals.Lists;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
+import kb_creator.model.Writers.CPWriter.CpDummyWriter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class UnbufferedList extends AbstractCandidateList {
     public void addNewList(int k, List<AbstractPair> listToAdd) {
         System.out.println("added new list for k: " + k);
         candidatePairList.add(listToAdd);
+        cpFileBuffer = new CpDummyWriter(null);
     }
 
     @Override

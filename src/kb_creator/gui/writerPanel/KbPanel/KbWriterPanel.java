@@ -32,5 +32,7 @@ public class KbWriterPanel extends JPanel {
         return mainKbWriterPanel;
     }
 
-
+    public MainCandidatesPanel getCandidatesPanel() {
+        return mainCandidatesPanel;
+    }
 }

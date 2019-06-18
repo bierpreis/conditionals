@@ -1,5 +1,6 @@
 package kb_creator.model.Writers.CPWriter;
 
+import kb_creator.gui.writerPanel.candidatesPanel.CandidateStatus;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
@@ -13,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class CpFileBuffer extends AbstractCPWriter {
 
-    private Queue<AbstractPair> cpQueueToWrite;
+
     private AtomicInteger requestedKList;
     private List<AbstractPair> requestedList;
     private volatile boolean requestedListIsReady;
@@ -34,6 +35,7 @@ public class CpFileBuffer extends AbstractCPWriter {
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
         requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
+        status = CandidateStatus.NOT_STARTED;
     }
 
     @Override
@@ -41,8 +43,10 @@ public class CpFileBuffer extends AbstractCPWriter {
         while (running) {
             if (cpQueueToWrite.peek() != null) {
                 writePair(cpQueueToWrite.poll());
+                status = CandidateStatus.WRITING;
             } else if (requestedKList.get() != 0) {
                 requestedList = readAllPairs(requestedKList.get());
+                status = CandidateStatus.READING;
             } else
                 try {
                     System.out.println("cp writer is sleeping");
@@ -60,7 +64,7 @@ public class CpFileBuffer extends AbstractCPWriter {
         cpQueueToWrite.add(pairToAdd);
     }
 
-
+    @Override
     public void addCpList(List<AbstractPair> listToAdd) {
         cpQueueToWrite.addAll(listToAdd);
     }

@@ -19,15 +19,17 @@ public class MainCandidatesPanel extends JBPanel {
         progressLabel = new JLabel();
         vBox.add(statusLabel);
         vBox.add(progressLabel);
-        setStatus(CandidateStatus.NOT_STARTED);
-        setProgress(0);
+        showStatus(CandidateStatus.NOT_STARTED);
+        showProgress(0);
+
     }
 
-    public void setStatus(CandidateStatus status) {
+    public void showStatus(CandidateStatus status) {
         statusLabel.setText("Status: " + status.toString());
     }
 
-    public void setProgress(int alreadyFinishedNumber) {
+    public void showProgress(int alreadyFinishedNumber) {
         progressLabel.setText("Already finished: " + alreadyFinishedNumber);
     }
+
 }

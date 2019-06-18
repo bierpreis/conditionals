@@ -264,8 +264,12 @@ public class KBCreator implements Runnable {
         return conditionalMap;
     }
 
-    public AbstractKbWriter getWriterThread() {
+    public AbstractKbWriter getKbWriterThread() {
         return kbWriter;
+    }
+
+    public AbstractCPWriter getCpWriterThread() {
+        return l.getCpWriter();
     }
 
 
