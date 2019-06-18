@@ -124,8 +124,7 @@ public class NewConditional {
     public int getNumber() {
         return number;
     }
-
-    //todo: some equals test with sysout
+    
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof NewConditional))
