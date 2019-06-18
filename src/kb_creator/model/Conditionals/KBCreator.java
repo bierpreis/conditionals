@@ -6,6 +6,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
+import kb_creator.model.Conditionals.Pairs.RealCandidatePair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.CpBuffer.AbstractCPWriter;
 import kb_creator.model.KBWriter.AbstractKbWriter;

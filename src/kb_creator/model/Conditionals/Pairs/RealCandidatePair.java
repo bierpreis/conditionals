@@ -1,15 +1,26 @@
 package kb_creator.model.Conditionals.Pairs;
 
+import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 import kb_creator.model.Conditionals.NewConditional;
-import nfc.view.menu.AbstractActionButton;
+
 
 import java.util.List;
 
-//todo: this class
+//this class was created for test issues
+//it consumes much more memory then the alternative candidateNumbersArrayPair
+//so it is not used and left here for maybe later tests
 public class RealCandidatePair extends AbstractPair {
+    private List<NewConditional> candidates;
+
+    public RealCandidatePair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+        this.knowledgeBase = knowledgeBase;
+        this.candidates = candidates;
+
+    }
+
     @Override
     public List<NewConditional> getCandidatesList() {
-        return null;
+        return candidates;
     }
 
     @Override
@@ -19,7 +30,7 @@ public class RealCandidatePair extends AbstractPair {
 
     @Override
     public void deleteCandidates() {
-
+        candidates = null;
     }
 
     @Override
