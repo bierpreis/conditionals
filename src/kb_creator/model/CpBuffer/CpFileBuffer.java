@@ -86,12 +86,12 @@ public class CpFileBuffer extends AbstractCPWriter {
 
 
                 writer.print(candidatePair.toFileString());
+                writer.close();
 
-
-                //todo: maybe the whole cp can be deleted somewhere? would be better
+                //delete data which is not needed anymore to free space
                 candidatePair.deleteCandidates();
                 candidatePair.deleteKB();
-                writer.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
