@@ -10,15 +10,15 @@ import java.util.List;
 public class CompressedCandidateArrayPair extends AbstractPair {
     private int[][] compressedCandidatesArray;
 
+    //todo: test if this is really correct
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        //todo: why 100??
-        compressedCandidatesArray = new int[100][2];
+        compressedCandidatesArray = new int[8][2];
 
         int lastConditionalNumber = 0;
         int arrayNumber = 0;
-        int firstConditionalOfSeries = 0;
+
 
 
         for (NewConditional conditional : candidates) {
@@ -26,7 +26,6 @@ public class CompressedCandidateArrayPair extends AbstractPair {
                 compressedCandidatesArray[arrayNumber][0] = conditional.getNumber();
                 compressedCandidatesArray[arrayNumber][1] = conditional.getNumber();
 
-                firstConditionalOfSeries = conditional.getNumber() + 1;
                 lastConditionalNumber = conditional.getNumber();
             } else {
                 compressedCandidatesArray[arrayNumber][1] = conditional.getNumber();
