@@ -21,6 +21,7 @@ public class UnbufferedList extends AbstractCandidateList {
     public void addNewList(int k, List<AbstractPair> listToAdd) {
         System.out.println("added new list for k: " + k);
         candidatePairList.add(listToAdd);
+        System.out.println("before creating dummy writer");
         cpFileBuffer = new CpDummyWriter(null);
     }
 

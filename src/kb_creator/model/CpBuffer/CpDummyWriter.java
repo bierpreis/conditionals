@@ -3,6 +3,7 @@ package kb_creator.model.CpBuffer;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 public class CpDummyWriter extends AbstractCPWriter {
@@ -10,6 +11,7 @@ public class CpDummyWriter extends AbstractCPWriter {
     public CpDummyWriter(String filePath) {
         System.out.println("candidate pairs will be kept in main memory");
         status = CandidateStatus.NOT_STARTED;
+        cpQueueToWrite = new ConcurrentLinkedQueue<>();
     }
 
     @Override

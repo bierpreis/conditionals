@@ -34,6 +34,7 @@ public class CpFileBuffer extends AbstractCPWriter {
         requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
         status = CandidateStatus.NOT_STARTED;
+
     }
 
     @Override

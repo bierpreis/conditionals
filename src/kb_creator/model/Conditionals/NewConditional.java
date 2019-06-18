@@ -17,7 +17,6 @@ public class NewConditional {
     private NewConditional counterConditional;
 
 
-
     public NewConditional(AbstractFormula consequence, AbstractFormula antecend) {
 
         this.consequence = consequence;
@@ -155,10 +154,15 @@ public class NewConditional {
         return consequence;
     }
 
-    public void setCounterConditional(Conditional oldCounterConditional) {
-        //todo: maybe dont set new conditional but the actual conditional similar to nfc creator?
+
+    public void setBasicCounterConditional(Conditional oldCounterConditional) {
         this.counterConditional = new NewConditional(oldCounterConditional);
         this.counterConditional.setNumber(oldCounterConditional.getNumber());
+    }
+
+
+    public void setActualCounterConditional(NewConditional counterConditional) {
+        this.counterConditional = counterConditional;
     }
 
 }

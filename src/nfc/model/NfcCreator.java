@@ -209,9 +209,17 @@ public class NfcCreator {
             NewConditional newConditional = new NewConditional(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
 
-            newConditional.setCounterConditional(oldConditional.getActualCounterConditional());
+            newConditional.setBasicCounterConditional(oldConditional.getActualCounterConditional());
             newConditionals.add(newConditional);
 
+        }
+        //this takes the basic counter conditional and replaces it with the actual counter conditional reference
+        //this saves some memory space, but not very much.
+        for (NewConditional conditional : newConditionals) {
+            for (NewConditional possibleCounterConditional : newConditionals) {
+                if (conditional.getCounterConditional().equals(possibleCounterConditional))
+                    conditional.setActualCounterConditional(possibleCounterConditional);
+            }
         }
         //comment out the following 2 lines and you can see if the counter conditionals are set correct
         //for (NewConditional conditional : newConditionals) 
