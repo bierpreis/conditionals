@@ -8,7 +8,7 @@ import kb_creator.model.Conditionals.NewConditional;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: class compressed candidate numbers pair
+
 //this class is not tested and probably wont work
 //the candidates take too much memory
 //so its not really worth to implement it

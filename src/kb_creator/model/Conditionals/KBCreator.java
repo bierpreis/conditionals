@@ -6,6 +6,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
+import kb_creator.model.Conditionals.Pairs.CompressedCandidateArrayPair;
 import kb_creator.model.Conditionals.Pairs.RealCandidatePair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.CpBuffer.AbstractCPWriter;
@@ -112,14 +113,14 @@ public class KBCreator implements Runnable {
 
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
-                        for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
+                        for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())//todo: candidate pair is null?!
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
 
                         //this is where the ram gets full. therefore the buffering
-                        l.addPair(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
@@ -192,7 +193,7 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
-            l.add(new CandidateNumbersArrayPair(rKB, conditionalsToAdd));
+            l.add(new CompressedCandidateArrayPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
 
