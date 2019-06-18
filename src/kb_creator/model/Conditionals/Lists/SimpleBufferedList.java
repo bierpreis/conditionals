@@ -25,10 +25,8 @@ public class SimpleBufferedList extends AbstractCandidateList {
 
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
-        System.out.println("added new list for k: " + k);
 
-        //candidatePairList.add(listToAdd);
-        cpFileBuffer.addCpList(k, listToAdd);
+        cpFileBuffer.addCpList(listToAdd);
 
 
     }

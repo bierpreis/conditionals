@@ -60,8 +60,8 @@ public class CpFileBuffer extends AbstractCPWriter {
         cpQueueToWrite.add(pairToAdd);
     }
 
-    //todo: how to put k in there? maybe get correkt k by asking pair.getKb.getSize?
-    public void addCpList(int k, List<AbstractPair> listToAdd) {
+
+    public void addCpList(List<AbstractPair> listToAdd) {
         cpQueueToWrite.addAll(listToAdd);
     }
 
