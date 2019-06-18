@@ -1,8 +1,7 @@
 package kb_creator.model.Conditionals.Lists;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
-import kb_creator.model.Writers.CPWriter.CpDummyWriter;
+import kb_creator.model.CpBuffer.CpDummyWriter;
 
 import java.util.ArrayList;
 import java.util.List;

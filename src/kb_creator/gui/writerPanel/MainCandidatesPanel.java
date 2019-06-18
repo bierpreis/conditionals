@@ -1,8 +1,11 @@
-package kb_creator.gui.writerPanel.candidatesPanel;
+package kb_creator.gui.writerPanel;
 
 import com.intellij.ui.components.JBPanel;
+import kb_creator.model.CpBuffer.CandidateStatus;
 
 import javax.swing.*;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class MainCandidatesPanel extends JBPanel {
     private JLabel statusLabel;
@@ -29,7 +32,8 @@ public class MainCandidatesPanel extends JBPanel {
     }
 
     public void showProgress(int alreadyFinishedNumber) {
-        progressLabel.setText("Already finished: " + alreadyFinishedNumber);
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        progressLabel.setText("Queue: " + formatter.format(alreadyFinishedNumber));
     }
 
 }

@@ -2,7 +2,7 @@ package kb_creator.Observer;
 
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.Conditionals.KBCreator;
-import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
+import kb_creator.model.KBWriter.AbstractKbWriter;
 
 public class StatusThread implements Runnable {
     private KBCreator creatorThread;

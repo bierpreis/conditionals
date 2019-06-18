@@ -1,4 +1,4 @@
-package kb_creator.model.Writers.KBWriter;
+package kb_creator.model.KBWriter;
 
 import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 

@@ -1,9 +1,7 @@
-package kb_creator.model.Writers.CPWriter;
+package kb_creator.model.CpBuffer;
 
-import kb_creator.gui.writerPanel.candidatesPanel.CandidateStatus;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +47,7 @@ public class CpFileBuffer extends AbstractCPWriter {
                 status = CandidateStatus.READING;
             } else
                 try {
-                    System.out.println("cp writer is sleeping");
+                    status = CandidateStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

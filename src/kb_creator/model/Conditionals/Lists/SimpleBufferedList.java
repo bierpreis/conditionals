@@ -1,7 +1,7 @@
 package kb_creator.model.Conditionals.Lists;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Writers.CPWriter.CpFileBuffer;
+import kb_creator.model.CpBuffer.CpFileBuffer;
 
 import java.util.List;
 

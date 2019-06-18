@@ -1,9 +1,6 @@
-package kb_creator.model.Writers.CPWriter;
+package kb_creator.model.CpBuffer;
 
-import kb_creator.gui.writerPanel.candidatesPanel.CandidateStatus;
-import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 
 import java.util.List;
 import java.util.Queue;

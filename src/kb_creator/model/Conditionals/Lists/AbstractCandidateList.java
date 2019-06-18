@@ -1,9 +1,7 @@
 package kb_creator.model.Conditionals.Lists;
 
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersListPair;
-import kb_creator.model.Writers.CPWriter.AbstractCPWriter;
-import kb_creator.model.Writers.CPWriter.CpFileBuffer;
+import kb_creator.model.CpBuffer.AbstractCPWriter;
 
 import java.util.List;
 

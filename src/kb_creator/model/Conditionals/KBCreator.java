@@ -7,10 +7,10 @@ import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
 import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Signature.AbstractSignature;
-import kb_creator.model.Writers.CPWriter.AbstractCPWriter;
-import kb_creator.model.Writers.KBWriter.AbstractKbWriter;
-import kb_creator.model.Writers.KBWriter.KbDummyWriter;
-import kb_creator.model.Writers.KBWriter.KbFileWriter;
+import kb_creator.model.CpBuffer.AbstractCPWriter;
+import kb_creator.model.KBWriter.AbstractKbWriter;
+import kb_creator.model.KBWriter.KbDummyWriter;
+import kb_creator.model.KBWriter.KbFileWriter;
 import nfc.model.NfcCreator;
 
 import java.util.*;

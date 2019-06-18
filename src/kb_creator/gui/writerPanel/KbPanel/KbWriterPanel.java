@@ -1,6 +1,6 @@
 package kb_creator.gui.writerPanel.KbPanel;
 
-import kb_creator.gui.writerPanel.candidatesPanel.MainCandidatesPanel;
+import kb_creator.gui.writerPanel.MainCandidatesPanel;
 
 import javax.swing.*;
 
