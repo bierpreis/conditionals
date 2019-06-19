@@ -7,7 +7,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 //it is a kind of placeholder for test runs
 public class KbDummyWriter extends AbstractKbWriter {
 
-    public KbDummyWriter(String pathToSave) {
+    public KbDummyWriter() {
 
     }
 

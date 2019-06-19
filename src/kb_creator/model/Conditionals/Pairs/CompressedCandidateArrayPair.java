@@ -13,7 +13,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        compressedCandidatesArray = new int[5][2];
+        compressedCandidatesArray = new int[4][2];
 
         int lastConditionalNumber = 0;
         int nextArrayNumber = 0;

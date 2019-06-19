@@ -5,9 +5,7 @@ import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
 import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
 import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
 import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
 import kb_creator.model.Conditionals.Pairs.CompressedCandidateArrayPair;
-import kb_creator.model.Conditionals.Pairs.RealCandidatePair;
 import kb_creator.model.Signature.AbstractSignature;
 import kb_creator.model.CpBuffer.AbstractCPWriter;
 import kb_creator.model.KBWriter.AbstractKbWriter;
@@ -45,7 +43,7 @@ public class KBCreator implements Runnable {
 
         if (kbFilePath != null)
             kbWriter = new KbFileWriter(kbFilePath);
-        else kbWriter = new KbDummyWriter(kbFilePath);
+        else kbWriter = new KbDummyWriter();
 
     }
 
@@ -93,7 +91,7 @@ public class KBCreator implements Runnable {
             status = Status.RUNNING;
             //line  7
             l.addNewList(k, new ArrayList<>());
-            iterationNumberOfKBs = 1;
+            iterationNumberOfKBs = 1; //todo: init to 0?
             //this loop is line 8
             for (AbstractPair candidatePair : l.getListForK(k)) {
 
