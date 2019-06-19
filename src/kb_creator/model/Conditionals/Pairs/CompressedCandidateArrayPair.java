@@ -9,7 +9,7 @@ import java.util.List;
 public class CompressedCandidateArrayPair extends AbstractPair {
     private int[][] compressedCandidatesArray;
 
-    //todo: test if this is really correct
+
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
