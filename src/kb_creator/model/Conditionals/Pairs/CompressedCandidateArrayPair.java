@@ -38,7 +38,6 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
     @Override
     public List<NewConditional> getCandidatesList() {
-        //todo test
         List<NewConditional> candidatesList = new ArrayList<>();
         for (int[] candidateBounds : compressedCandidatesArray) {
             //if it is 0, all candidates are found
