@@ -66,8 +66,8 @@ public class KBCreator implements Runnable {
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(k, new ArrayList<>());
 
-        //todo: maybe here sth with Collections.unmodifiable(Map/List) to get immutable conditionals
-        final List<NewConditional> nfc = nfcCreator.getNewNfc();
+        //todo: make nfc and cnfc immutable. plus: make them both map or both list or meybe set? here list would be good but in numbers pairs a map would be nice. maybe construct it there?
+        Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
 
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
