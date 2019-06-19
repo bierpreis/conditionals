@@ -1,13 +1,12 @@
 package kb_creator.gui.writerPanel;
 
-import com.intellij.ui.components.JBPanel;
 import kb_creator.model.CpBuffer.CandidateStatus;
 
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class MainCandidatesPanel extends JBPanel {
+public class MainCandidatesPanel extends JPanel {
     private JLabel statusLabel;
     private JLabel progressLabel;
 
