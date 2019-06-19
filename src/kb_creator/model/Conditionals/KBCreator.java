@@ -91,7 +91,7 @@ public class KBCreator implements Runnable {
             status = Status.RUNNING;
             //line  7
             l.addNewList(k, new ArrayList<>());
-            iterationNumberOfKBs = 1; //todo: init to 0?
+            iterationNumberOfKBs = 0;
             //this loop is line 8
             for (AbstractPair candidatePair : l.getListForK(k)) {
 
