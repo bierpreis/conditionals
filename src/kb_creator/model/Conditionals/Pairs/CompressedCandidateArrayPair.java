@@ -13,6 +13,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
+        // the value 7 was found by trial and error. will this cause problems later?
         compressedCandidatesArray = new int[7][2];
 
         int lastConditionalNumber = 0;
