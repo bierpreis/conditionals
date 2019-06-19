@@ -1,16 +1,16 @@
-package kb_creator.model.Conditionals;
+package kb_creator.model.conditionals;
 
-import kb_creator.Observer.Status;
-import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
-import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
-import kb_creator.model.Conditionals.Lists.AbstractCandidateList;
-import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Conditionals.Pairs.CompressedCandidateArrayPair;
-import kb_creator.model.Signature.AbstractSignature;
-import kb_creator.model.CpBuffer.AbstractCPWriter;
-import kb_creator.model.KBWriter.AbstractKbWriter;
-import kb_creator.model.KBWriter.KbDummyWriter;
-import kb_creator.model.KBWriter.KbFileWriter;
+import kb_creator.observer.Status;
+import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.KnowledgeBase.ObjectKnowledgeBase;
+import kb_creator.model.conditionals.Lists.AbstractCandidateList;
+import kb_creator.model.conditionals.Pairs.AbstractPair;
+import kb_creator.model.conditionals.Pairs.CompressedCandidateArrayPair;
+import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.cp_buffer.AbstractCPWriter;
+import kb_creator.model.kb_writer.AbstractKbWriter;
+import kb_creator.model.kb_writer.KbDummyWriter;
+import kb_creator.model.kb_writer.KbFileWriter;
 import nfc.model.NfcCreator;
 
 import java.util.*;

@@ -1,6 +1,6 @@
-package kb_creator.gui.writerPanel;
+package kb_creator.gui.writerpanel;
 
-import kb_creator.model.CpBuffer.CandidateStatus;
+import kb_creator.model.cp_buffer.CandidateStatus;
 
 import javax.swing.*;
 import java.text.NumberFormat;

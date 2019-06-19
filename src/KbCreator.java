@@ -1,4 +1,4 @@
-import kb_creator.Observer.KBCreatorObserver;
+import kb_creator.observer.KBCreatorObserver;
 
 public class KbCreator {
 

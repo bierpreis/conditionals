@@ -1,8 +1,8 @@
-package kb_creator.model.PropositionalLogic;
+package kb_creator.model.propositional_logic;
 
-import kb_creator.model.PropositionalLogic.Worlds.ABCWorld;
-import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
-import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.Worlds.ABCWorld;
+import kb_creator.model.propositional_logic.Worlds.ABWorld;
+import kb_creator.model.propositional_logic.Worlds.AbstractWorld;
 
 public class Atom extends AbstractFormula {
     private Variable variable;

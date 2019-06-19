@@ -1,6 +1,6 @@
-package kb_creator.model.PropositionalLogic;
+package kb_creator.model.propositional_logic;
 
-import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.Worlds.AbstractWorld;
 
 import java.util.ArrayList;
 import java.util.List;

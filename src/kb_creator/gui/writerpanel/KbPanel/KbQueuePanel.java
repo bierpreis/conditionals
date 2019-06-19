@@ -1,4 +1,4 @@
-package kb_creator.gui.writerPanel.KbPanel;
+package kb_creator.gui.writerpanel.KbPanel;
 
 import javax.swing.*;
 import java.text.NumberFormat;

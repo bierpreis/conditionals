@@ -1,6 +1,6 @@
-package kb_creator.gui.creatorPanel;
+package kb_creator.gui.creatorpanel;
 
-import kb_creator.Observer.Status;
+import kb_creator.observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;

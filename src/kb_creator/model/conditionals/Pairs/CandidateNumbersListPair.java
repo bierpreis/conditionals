@@ -1,9 +1,9 @@
-package kb_creator.model.Conditionals.Pairs;
+package kb_creator.model.conditionals.Pairs;
 
 
-import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
-import kb_creator.model.Conditionals.KnowledgeBase.ObjectKnowledgeBase;
-import kb_creator.model.Conditionals.NewConditional;
+import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.KnowledgeBase.ObjectKnowledgeBase;
+import kb_creator.model.conditionals.NewConditional;
 
 import java.util.ArrayList;
 import java.util.List;

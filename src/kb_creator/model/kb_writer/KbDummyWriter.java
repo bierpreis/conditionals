@@ -1,6 +1,6 @@
-package kb_creator.model.KBWriter;
+package kb_creator.model.kb_writer;
 
-import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
 
 
 //this class is a writer which throws all input away

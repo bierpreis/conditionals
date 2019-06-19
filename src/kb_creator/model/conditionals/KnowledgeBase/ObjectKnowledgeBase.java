@@ -1,12 +1,12 @@
-package kb_creator.model.Conditionals.KnowledgeBase;
+package kb_creator.model.conditionals.KnowledgeBase;
 
-import kb_creator.model.Conditionals.NewConditional;
-import kb_creator.model.PropositionalLogic.AbstractFormula;
-import kb_creator.model.PropositionalLogic.Tautology;
-import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
-import kb_creator.model.Signature.AB;
-import kb_creator.model.Signature.ABC;
-import kb_creator.model.Signature.AbstractSignature;
+import kb_creator.model.conditionals.NewConditional;
+import kb_creator.model.propositional_logic.AbstractFormula;
+import kb_creator.model.propositional_logic.Tautology;
+import kb_creator.model.propositional_logic.Worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.Signature.AB;
+import kb_creator.model.propositional_logic.Signature.ABC;
+import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 
 import java.util.ArrayList;

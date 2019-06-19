@@ -1,11 +1,10 @@
 package nfc.model;
 
-import kb_creator.model.Signature.AB;
-import kb_creator.model.Signature.ABC;
-import kb_creator.model.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.Signature.AB;
+import kb_creator.model.propositional_logic.Signature.ABC;
+import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class World implements Comparable {

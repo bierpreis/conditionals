@@ -1,6 +1,6 @@
-package kb_creator.model.KBWriter;
+package kb_creator.model.kb_writer;
 
-import kb_creator.model.Conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
 
 import java.io.File;
 import java.io.IOException;

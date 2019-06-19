@@ -1,4 +1,4 @@
-package kb_creator.model.PropositionalLogic.Worlds;
+package kb_creator.model.propositional_logic.Worlds;
 
 
 public class ABWorld extends AbstractWorld {

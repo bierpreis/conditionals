@@ -1,7 +1,7 @@
-package kb_creator.model.Signature;
+package kb_creator.model.propositional_logic.Signature;
 
 
-import kb_creator.model.PropositionalLogic.Worlds.ABWorld;
+import kb_creator.model.propositional_logic.Worlds.ABWorld;
 
 public class AB extends AbstractSignature {
 

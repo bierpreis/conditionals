@@ -49,7 +49,7 @@ public class Conditional implements Comparable {
         if (comparedLeft != 0)
             return comparedLeft;
 
-        throw new RuntimeException("Comparing Conditionals failed!");
+        throw new RuntimeException("Comparing conditionals failed!");
     }
 
 

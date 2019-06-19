@@ -1,11 +1,10 @@
-package kb_creator.model.Conditionals.KnowledgeBase;
+package kb_creator.model.conditionals.KnowledgeBase;
 
-import com.intellij.refactoring.changeClassSignature.TypeParameterInfo;
-import kb_creator.model.Conditionals.NewConditional;
-import kb_creator.model.PropositionalLogic.AbstractFormula;
-import kb_creator.model.PropositionalLogic.Tautology;
-import kb_creator.model.PropositionalLogic.Worlds.AbstractWorld;
-import kb_creator.model.Signature.AbstractSignature;
+import kb_creator.model.conditionals.NewConditional;
+import kb_creator.model.propositional_logic.AbstractFormula;
+import kb_creator.model.propositional_logic.Tautology;
+import kb_creator.model.propositional_logic.Worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.List;

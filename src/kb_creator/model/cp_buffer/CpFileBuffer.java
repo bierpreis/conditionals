@@ -1,7 +1,7 @@
-package kb_creator.model.CpBuffer;
+package kb_creator.model.cp_buffer;
 
-import kb_creator.model.Conditionals.Pairs.AbstractPair;
-import kb_creator.model.Conditionals.Pairs.CandidateNumbersArrayPair;
+import kb_creator.model.conditionals.Pairs.AbstractPair;
+import kb_creator.model.conditionals.Pairs.CandidateNumbersArrayPair;
 
 import java.io.File;
 import java.io.IOException;

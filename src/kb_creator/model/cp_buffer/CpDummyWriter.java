@@ -1,6 +1,6 @@
-package kb_creator.model.CpBuffer;
+package kb_creator.model.cp_buffer;
 
-import kb_creator.model.Conditionals.Pairs.AbstractPair;
+import kb_creator.model.conditionals.Pairs.AbstractPair;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;

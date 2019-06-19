@@ -1,4 +1,4 @@
-package kb_creator.Observer;
+package kb_creator.observer;
 
 public enum Status {
 

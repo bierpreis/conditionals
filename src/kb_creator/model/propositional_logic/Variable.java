@@ -1,4 +1,4 @@
-package kb_creator.model.PropositionalLogic;
+package kb_creator.model.propositional_logic;
 
 public enum Variable {
     a, b, c
