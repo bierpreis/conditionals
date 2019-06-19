@@ -101,7 +101,7 @@ public class KBCreator implements Runnable {
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
                         //next part is line 11 and 12
-                        //first create knowledge base
+                        //first create the new knowledge base
 
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new ObjectKnowledgeBase
@@ -112,7 +112,7 @@ public class KBCreator implements Runnable {
                         //then create candidates
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
-                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(conditionalFromCandidates.getCounterConditional()))
+                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
