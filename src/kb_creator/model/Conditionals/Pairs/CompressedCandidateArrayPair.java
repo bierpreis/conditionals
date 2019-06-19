@@ -68,6 +68,8 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         return null;
     }
 
+
+    //this method creates a file string in the exacly same format like the other pair implementations
     @Override
     public String toFileString() {
         List<NewConditional> candidatesList = getCandidatesList();
@@ -81,9 +83,36 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         sb.append("candidates\n");
         if (candidatesList.size() > 0) {
             for (int i = 0; i < candidatesList.size(); i++) {
-                sb.append(candidatesList.get(i));
+                sb.append(candidatesList.get(i).getNumber());
                 if (i != candidatesList.size() - 1)
                     sb.append(", ");
+            }
+        } else sb.append("EMPTY");
+        return sb.toString();
+    }
+
+    //this method creates a file string complressed with the compression in this pair implementation
+    //therefore the file is much shorter
+    public String toShortFileString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Lists");
+        sb.append(knowledgeBase.getKbNumber());
+        sb.append("\n\n");
+        sb.append("KB\n");
+        sb.append(knowledgeBase.toShortFileString());
+        sb.append("\n\n");
+        sb.append("candidates\n");
+        //if this first entry is 0, there are no candidates
+        if (compressedCandidatesArray[0][0] != 0) {
+            sb.append(compressedCandidatesArray[0][0]);
+            sb.append("-");
+            sb.append(compressedCandidatesArray[0][1]);
+
+            //then check if there is a second group to add
+            if (compressedCandidatesArray[1][0] != 0) {
+                sb.append(compressedCandidatesArray[1][0]);
+                sb.append("-");
+                sb.append(compressedCandidatesArray[1][1]);
             }
         } else sb.append("EMPTY");
         return sb.toString();
