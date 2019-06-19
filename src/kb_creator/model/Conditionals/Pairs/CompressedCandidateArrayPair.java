@@ -19,16 +19,16 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         int lastConditionalNumber = 0;
         int nextArrayNumber = 0;
 
-        //todo: what happens in first case? else will trigger and it would fail. debug!
-        for (NewConditional conditional : candidates) {
-            if (conditional.getNumber() != lastConditionalNumber + 1) {
-                compressedCandidatesArray[nextArrayNumber][0] = conditional.getNumber();
-                compressedCandidatesArray[nextArrayNumber][1] = conditional.getNumber();
+        
+        for (NewConditional currentCandidate : candidates) {
+            if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
+                compressedCandidatesArray[nextArrayNumber][0] = currentCandidate.getNumber();
+                compressedCandidatesArray[nextArrayNumber][1] = currentCandidate.getNumber();
 
                 nextArrayNumber = nextArrayNumber + 1;
-                lastConditionalNumber = conditional.getNumber();
+                lastConditionalNumber = currentCandidate.getNumber();
             } else {
-                compressedCandidatesArray[nextArrayNumber - 1][1] = conditional.getNumber();
+                compressedCandidatesArray[nextArrayNumber - 1][1] = currentCandidate.getNumber();
                 lastConditionalNumber++;
             }
 
