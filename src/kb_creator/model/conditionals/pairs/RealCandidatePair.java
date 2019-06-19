@@ -1,6 +1,6 @@
-package kb_creator.model.conditionals.Pairs;
+package kb_creator.model.conditionals.pairs;
 
-import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.NewConditional;
 
 

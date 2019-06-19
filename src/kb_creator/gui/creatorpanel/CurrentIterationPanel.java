@@ -59,6 +59,6 @@ public class CurrentIterationPanel extends JPanel {
 
     public void showCandidatePairs(int canditatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        candidatePairslabel.setText("Candidate Pairs: " + formatter.format(canditatePairs));
+        candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));
     }
 }

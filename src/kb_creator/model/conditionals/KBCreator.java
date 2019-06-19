@@ -1,11 +1,11 @@
 package kb_creator.model.conditionals;
 
 import kb_creator.observer.Status;
-import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
-import kb_creator.model.conditionals.KnowledgeBase.ObjectKnowledgeBase;
-import kb_creator.model.conditionals.Lists.AbstractCandidateList;
-import kb_creator.model.conditionals.Pairs.AbstractPair;
-import kb_creator.model.conditionals.Pairs.CompressedCandidateArrayPair;
+import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
+import kb_creator.model.conditionals.pair_lists.AbstractCandidateList;
+import kb_creator.model.conditionals.pairs.AbstractPair;
+import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 import kb_creator.model.cp_buffer.AbstractCPWriter;
 import kb_creator.model.kb_writer.AbstractKbWriter;
@@ -62,7 +62,7 @@ public class KBCreator implements Runnable {
 
 
         k = 1;
-        //add empty list to l because java lists start at 0 and original algorithm starts list at 1
+        //add empty list to l because java pair_lists start at 0 and original algorithm starts list at 1
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(k, new ArrayList<>());
 

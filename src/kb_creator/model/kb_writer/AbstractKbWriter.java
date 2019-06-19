@@ -1,6 +1,6 @@
 package kb_creator.model.kb_writer;
 
-import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 
 public abstract class AbstractKbWriter implements Runnable {
 

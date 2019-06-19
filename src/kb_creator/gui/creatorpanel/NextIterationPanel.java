@@ -18,6 +18,6 @@ public class NextIterationPanel extends JPanel {
 
     public void showCandidates(int candidatePairsAmount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        candidatePairsLabel.setText("Candidate Pairs: " + formatter.format(candidatePairsAmount));
+        candidatePairsLabel.setText("Candidate pairs: " + formatter.format(candidatePairsAmount));
     }
 }

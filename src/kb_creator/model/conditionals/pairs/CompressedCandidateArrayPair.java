@@ -1,6 +1,6 @@
-package kb_creator.model.conditionals.Pairs;
+package kb_creator.model.conditionals.pairs;
 
-import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.NewConditional;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public String toFileString() {
         List<NewConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
-        sb.append("Lists");
+        sb.append("pair_lists");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB\n");
@@ -95,7 +95,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     //therefore the file is much shorter
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Lists");
+        sb.append("pair_lists");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB\n");

@@ -1,7 +1,7 @@
-package kb_creator.model.conditionals.Pairs;
+package kb_creator.model.conditionals.pairs;
 
-import kb_creator.model.conditionals.KnowledgeBase.AbstractKnowledgeBase;
-import kb_creator.model.conditionals.KnowledgeBase.ObjectKnowledgeBase;
+import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.conditionals.NewConditional;
 
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     @Override
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Lists");
+        sb.append("pair_lists");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB\n");

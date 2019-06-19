@@ -2,8 +2,8 @@ package kb_creator.observer;
 
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.conditionals.KBCreator;
-import kb_creator.model.conditionals.Lists.SimpleBufferedList;
-import kb_creator.model.conditionals.Lists.UnbufferedList;
+import kb_creator.model.conditionals.pair_lists.SimpleBufferedList;
+import kb_creator.model.conditionals.pair_lists.UnbufferedList;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

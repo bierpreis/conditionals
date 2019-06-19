@@ -1,6 +1,6 @@
-package kb_creator.model.conditionals.Lists;
+package kb_creator.model.conditionals.pair_lists;
 
-import kb_creator.model.conditionals.Pairs.AbstractPair;
+import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.cp_buffer.CpDummyWriter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package kb_creator.model.conditionals.KnowledgeBase;
+package kb_creator.model.conditionals.knowledge_base;
 
 import kb_creator.model.conditionals.NewConditional;
 import kb_creator.model.propositional_logic.AbstractFormula;
