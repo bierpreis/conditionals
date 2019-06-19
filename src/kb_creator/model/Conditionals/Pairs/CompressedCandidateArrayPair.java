@@ -19,7 +19,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         int lastConditionalNumber = 0;
         int nextArrayNumber = 0;
 
-        
+
         for (NewConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
                 compressedCandidatesArray[nextArrayNumber][0] = currentCandidate.getNumber();
