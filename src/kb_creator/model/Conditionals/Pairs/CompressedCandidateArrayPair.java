@@ -13,12 +13,12 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        compressedCandidatesArray = new int[4][2];
+        compressedCandidatesArray = new int[2][2];
 
         int lastConditionalNumber = 0;
         int nextArrayNumber = 0;
 
-
+        //todo: what happens in first case? else will trigger and it would fail. debug!
         for (NewConditional conditional : candidates) {
             if (conditional.getNumber() != lastConditionalNumber + 1) {
                 compressedCandidatesArray[nextArrayNumber][0] = conditional.getNumber();
@@ -27,7 +27,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
                 nextArrayNumber = nextArrayNumber + 1;
                 lastConditionalNumber = conditional.getNumber();
             } else {
-                compressedCandidatesArray[nextArrayNumber-1][1] = conditional.getNumber();
+                compressedCandidatesArray[nextArrayNumber - 1][1] = conditional.getNumber();
                 lastConditionalNumber++;
             }
 
