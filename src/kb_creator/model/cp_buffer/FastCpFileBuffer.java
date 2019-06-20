@@ -91,12 +91,13 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
                         AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
                         sb.append(pairToWrite.toFileString());
-                        sb.append("END_PAIR");
+                        sb.append("\nEND_PAIR\n\n");
                         pairToWrite.deleteCandidates();
                         pairToWrite.deleteKB();
 
                     }
-                    writer.print(sb.toString());
+
+                    writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
                     writer.close();
                 }
 
