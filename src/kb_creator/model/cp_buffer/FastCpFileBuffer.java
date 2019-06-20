@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FastCpFileBuffer extends AbstractCPWriter {
-    private final int numberOfPairsInFile = 100;
+    private final int maxNumberOfPairsInFile = 10;
 
 
     private AtomicInteger requestedKList;
@@ -82,11 +82,11 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                 while (!queueToWrite.isEmpty()) {
                     //add leading zeros so the files will be soreted in correct order in their folder
                     String fileName = String.format("%05d", alreadyWrittenNumberOfFiles);
-
+                    alreadyWrittenNumberOfFiles++;
                     PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
                     StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < numberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
+                    for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
 
 
                         AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
