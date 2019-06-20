@@ -26,7 +26,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     }
 
     public CandidateNumbersArrayPair(String stringFromFile) {
-
+        System.out.println("Creating one pair from string");
         String[] splitString = stringFromFile.split("candidates\n");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "length");
