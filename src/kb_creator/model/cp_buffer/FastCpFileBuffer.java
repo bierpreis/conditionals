@@ -157,7 +157,9 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<AbstractPair> readAllPairs(int requestedK) {
+        //todo: this method, first split string
         List<String> stringList = getPairStringList(requestedK);
+
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
@@ -177,7 +179,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
         Arrays.sort(filesArray);
 
-        List<String> stringList = new ArrayList<>();
+        List<String> fileStringList = new ArrayList<>();
 
         try {
             for (File file : filesArray) {
@@ -190,11 +192,15 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                     sb.append("\n");
                 }
 
-                stringList.add(sb.toString());
+                fileStringList.add(sb.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return stringList;
+        List<String> pairStringList = new ArrayList<>();
+        for (String fileString : fileStringList) {
+            pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
+        }
+        return pairStringList;
     }
 }
