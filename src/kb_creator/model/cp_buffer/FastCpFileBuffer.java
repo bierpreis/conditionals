@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FastCpFileBuffer extends AbstractCPWriter {
-    private final int maxNumberOfPairsInFile = 10;
+    private final int maxNumberOfPairsInFile = 100;
 
 
     private AtomicInteger requestedKList;
@@ -141,7 +141,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         running = false;
     }
 
-    //todo implement for long files
+
     public List<AbstractPair> getList(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
@@ -157,7 +157,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<AbstractPair> readAllPairs(int requestedK) {
-        //todo: this method, first split string
         List<String> stringList = getPairStringList(requestedK);
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());

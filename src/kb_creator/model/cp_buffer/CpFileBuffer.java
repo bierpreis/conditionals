@@ -71,7 +71,6 @@ public class CpFileBuffer extends AbstractCPWriter {
     }
 
 
-    //todo: more pairs in 1 file. much more efficient
 
     private void writePair(AbstractPair candidatePair) {
         File subFolder = new File(folderToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
