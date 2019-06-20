@@ -69,7 +69,6 @@ public class KBCreator implements Runnable {
         //todo: make nfc and cnfc immutable. plus: make them both map or both list or meybe set? here list would be good but in numbers pairs a map would be nice. maybe construct it there?
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
-
         final Map<Integer, NewConditional> nfcMap = createNfcMap(nfc);
 
         final List<NewConditional> cnfc = nfcCreator.getNewCnfc();
@@ -173,7 +172,7 @@ public class KBCreator implements Runnable {
         l = requestedList;
     }
 
-    private List<AbstractPair> initOneElementKBs(List<NewConditional> nfc, List<NewConditional> cnfc) {
+    private List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, List<NewConditional> cnfc) {
 
 
         System.out.println("creating 1 element kbs");
@@ -244,7 +243,7 @@ public class KBCreator implements Runnable {
         return nextCandidatePairAmount;
     }
 
-    private Map<Integer, NewConditional> createNfcMap(List<NewConditional> nfc) {
+    private Map<Integer, NewConditional> createNfcMap(Collection<NewConditional> nfc) {
         Map<Integer, NewConditional> conditionalMap = new HashMap<>();
         for (NewConditional conditional : nfc) {
             if (conditionalMap.containsKey(conditional.getNumber())) {
