@@ -32,6 +32,7 @@ public class MainCandidatesPanel extends JPanel {
 
     public void showProgress(int alreadyFinishedNumber) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        //todo: queue fits for writing, but reading is sth like finished
         progressLabel.setText("Queue: " + formatter.format(alreadyFinishedNumber));
     }
 

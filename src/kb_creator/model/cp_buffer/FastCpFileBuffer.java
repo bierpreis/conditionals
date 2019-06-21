@@ -43,7 +43,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     @Override
     public void run() {
         while (running) {
-            //todo: fak
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = CandidateStatus.WRITING;
                 writeAllPairs(cpQueueToWrite);
