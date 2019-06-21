@@ -28,7 +28,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     public CandidateNumbersArrayPair(String stringFromFile) {
         String[] splitString = stringFromFile.split("candidates\n");
         if (splitString.length != 2)
-            throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "length");
+            throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");
 
         //divide string into kb and candidates
         //create both from subString

@@ -71,7 +71,6 @@ public class CpFileBuffer extends AbstractCPWriter {
     }
 
 
-
     private void writePair(AbstractPair candidatePair) {
         File subFolder = new File(folderToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
@@ -181,6 +180,7 @@ public class CpFileBuffer extends AbstractCPWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("String: " + stringList);
         return stringList;
     }
 }
