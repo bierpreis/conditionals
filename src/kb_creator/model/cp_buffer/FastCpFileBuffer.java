@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class FastCpFileBuffer extends AbstractCPWriter {
-    private final int maxNumberOfPairsInFile = 100;
+    private final int maxNumberOfPairsInFile = 200;
 
 
     private AtomicInteger requestedKList;
@@ -178,17 +178,16 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<String> getPairStringList(int requestedK) {
-
+        List<String> fileStringList = new ArrayList<>();
         //read String
         File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
 
         File[] filesArray = fileToRead.listFiles();
-        if (filesArray == null)
-            System.out.println("file array was null!");
-        //todo: null pointer with 23 element kbs.
-        //last file was at 21 with 2 pairs with both NO candidates?! maybe 22 created no files and so 23 was no files and null
 
-        List<String> fileStringList = new ArrayList<>();
+        //if there are no files, there are no candidate pairs left so the empty list gets returned
+        if (filesArray == null)
+            return fileStringList;
+
 
         try {
             for (File file : filesArray) {

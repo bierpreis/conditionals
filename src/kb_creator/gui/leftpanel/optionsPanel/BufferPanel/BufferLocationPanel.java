@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//todo: inform when folder already exists and delete existing folder or abort
 public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
