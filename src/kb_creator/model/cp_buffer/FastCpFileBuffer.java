@@ -76,12 +76,13 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
 
     private void writeAllPairs(Queue queueToWrite) {
-
+        File subFolder = null;
         int alreadyWrittenNumberOfFiles = 0;
-        //todo: cast fucks up when queue has no elements. put this in while loop?
-        File subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
-        if (!subFolder.exists())
-            subFolder.mkdirs();
+        if (!queueToWrite.isEmpty()) {
+            subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
+            if (!subFolder.exists())
+                subFolder.mkdirs();
+        }
         if (folderToSavePath != null) //todo: delete this if?
             try {
 
