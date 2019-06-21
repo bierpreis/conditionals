@@ -41,7 +41,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     @Override
     public void run() {
         while (running) {
-            if (cpQueueToWrite.size() > 10) {
+            if (cpQueueToWrite.size() > maxNumberOfPairsInFile) {
                 writeAllPairs(cpQueueToWrite);
                 status = CandidateStatus.WRITING;
             } else if (requestedKList.get() != 0) {
@@ -86,9 +86,9 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                     PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
                     StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
+                    for (int i = 0; i < maxNumberOfPairsInFile || !queueToWrite.isEmpty(); i++) {
 
-
+                        //todo: non empty queue can poll null?!
                         AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
                         sb.append(pairToWrite.toFileString());
                         sb.append("\nEND_PAIR\n\n");
@@ -99,6 +99,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
                     writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
                     writer.close();
+                    System.out.println("file written!!");
                 }
 
                 //delete data which is not needed anymore to free space
@@ -170,7 +171,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<String> getPairStringList(int requestedK) {
-
+        System.out.println("reading file");
         //read String
         File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
 
