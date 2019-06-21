@@ -45,7 +45,6 @@ public class CpFileBuffer extends AbstractCPWriter {
                 writePair(cpQueueToWrite.poll());
                 status = CandidateStatus.WRITING;
             } else if (requestedKList.get() != 0) {
-                System.out.println("reading");
                 requestedList = readAllPairs(requestedKList.get());
                 status = CandidateStatus.READING;
             } else
@@ -180,7 +179,6 @@ public class CpFileBuffer extends AbstractCPWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("String: " + stringList);
         return stringList;
     }
 

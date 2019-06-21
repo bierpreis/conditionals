@@ -108,7 +108,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
                     writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
                     writer.close();
-                    System.out.println("file written!!");
                 }
 
                 //delete data which is not needed anymore to free space
@@ -180,12 +179,14 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<String> getPairStringList(int requestedK) {
-        System.out.println("reading file");
+
         //read String
         File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
 
         File[] filesArray = fileToRead.listFiles();
-
+        if (filesArray == null)
+            System.out.println("file array was null!");
+        //todo: null pointer can happen here!
         Arrays.sort(filesArray);
 
         List<String> fileStringList = new ArrayList<>();
