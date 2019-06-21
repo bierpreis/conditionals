@@ -185,8 +185,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         File[] filesArray = fileToRead.listFiles();
         if (filesArray == null)
             System.out.println("file array was null!");
-        //todo: null pointer can happen here!
-        Arrays.sort(filesArray);
+        //todo: null pointer with 23 element kbs.
+        //last file was at 21 with 2 pairs with both NO candidates?! maybe 22 created no files and so 23 was no files and null
 
         List<String> fileStringList = new ArrayList<>();
 

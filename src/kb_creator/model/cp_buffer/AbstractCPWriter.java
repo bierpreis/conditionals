@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public abstract class AbstractCPWriter implements Runnable {
     protected Queue<AbstractPair> cpQueueToWrite;
-    protected CandidateStatus status;
+    protected volatile CandidateStatus status;
 
     @Override
     public abstract void run();
