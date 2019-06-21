@@ -9,7 +9,6 @@ import java.util.List;
 public class SimpleBufferedList extends AbstractCandidateList {
 
 
-
     public SimpleBufferedList(String filePath) {
         System.out.println("created simple buffered list for candidate pairs");
         //candidatePairList = new ArrayList<>();
@@ -20,7 +19,7 @@ public class SimpleBufferedList extends AbstractCandidateList {
 
 
     public List<AbstractPair> getListForK(int requestedK) {
-        System.out.println("asked for return list for k: " + requestedK);
+        cpFileBuffer.flush();
         return cpFileBuffer.getList(requestedK);
     }
 

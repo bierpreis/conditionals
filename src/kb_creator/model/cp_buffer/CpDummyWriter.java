@@ -37,4 +37,9 @@ public class CpDummyWriter extends AbstractCPWriter {
     public int getQueueToWriteSize() {
         return 0;
     }
+
+    @Override
+    public void flush(){
+
+    }
 }

@@ -183,4 +183,11 @@ public class CpFileBuffer extends AbstractCPWriter {
         System.out.println("String: " + stringList);
         return stringList;
     }
+
+    @Override
+    public void flush() {
+        for (AbstractPair pair : cpQueueToWrite)
+            writePair(pair);
+    }
+
 }

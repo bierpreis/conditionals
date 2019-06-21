@@ -26,4 +26,6 @@ public abstract class AbstractCPWriter implements Runnable {
 
     public abstract void addCpList(List<AbstractPair> listToadd);
 
+    public abstract void flush();
+
 }

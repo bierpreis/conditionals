@@ -20,8 +20,10 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
     private String folderToSavePath;
     private boolean running;
+    private volatile boolean flushRequested;
 
     public FastCpFileBuffer(String filePath) {
+        flushRequested = false;
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
@@ -42,12 +44,14 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     public void run() {
         while (running) {
             //todo: fak
-            if (cpQueueToWrite.size() > maxNumberOfPairsInFile) {
-                writeAllPairs(cpQueueToWrite);
+            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = CandidateStatus.WRITING;
+                writeAllPairs(cpQueueToWrite);
+
             } else if (requestedKList.get() != 0) {
-                requestedList = readAllPairs(requestedKList.get());
                 status = CandidateStatus.READING;
+                requestedList = readAllPairs(requestedKList.get());
+
             } else
                 try {
                     status = CandidateStatus.SLEEPING;
@@ -72,7 +76,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
 
     private void writeAllPairs(Queue queueToWrite) {
-        System.out.println("!!!!write all pairs");
+
         int alreadyWrittenNumberOfFiles = 0;
         File subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
         if (!subFolder.exists())
@@ -87,11 +91,12 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                     PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
                     StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < maxNumberOfPairsInFile || !queueToWrite.isEmpty(); i++) {
+
+                    for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
 
                         AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
-                        if (pairToWrite.toFileString() == null)
-                            System.out.println("was null!");
+                        if (pairToWrite == null)
+                            System.out.println("pair was null!");
                         sb.append(pairToWrite.toFileString());
                         sb.append("\nEND_PAIR\n\n");
                         pairToWrite.deleteCandidates();
@@ -178,7 +183,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
 
         File[] filesArray = fileToRead.listFiles();
-        
+
         Arrays.sort(filesArray);
 
         List<String> fileStringList = new ArrayList<>();
@@ -204,5 +209,18 @@ public class FastCpFileBuffer extends AbstractCPWriter {
             pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
         }
         return pairStringList;
+    }
+
+    @Override
+    public void flush() {
+        flushRequested = true;
+
+        while (!cpQueueToWrite.isEmpty()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
