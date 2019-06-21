@@ -47,11 +47,11 @@ public class FastCpFileBuffer extends AbstractCPWriter {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = CandidateStatus.WRITING;
                 writeAllPairs(cpQueueToWrite);
+                flushRequested = false;
 
             } else if (requestedKList.get() != 0) {
                 status = CandidateStatus.READING;
                 requestedList = readAllPairs(requestedKList.get());
-
             } else
                 try {
                     status = CandidateStatus.SLEEPING;
