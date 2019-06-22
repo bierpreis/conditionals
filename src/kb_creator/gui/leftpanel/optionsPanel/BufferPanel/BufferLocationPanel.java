@@ -9,9 +9,14 @@ public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
     private BufferCheckboxPanel bufferCheckboxPanel;
+    private JLabel descriptionLabel;
 
     public BufferLocationPanel(BufferCheckboxPanel bufferCheckboxPanel) {
 
+
+
+
+        descriptionLabel = new JLabel("Choose non existing Folder for Saving files to use less Main Memeory");
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);

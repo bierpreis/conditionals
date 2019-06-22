@@ -2,8 +2,6 @@ package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 
 
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-
 import javax.swing.*;
 
 
@@ -11,8 +9,11 @@ public class BufferPanel extends JPanel {
 
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
+    JPanel descriptionPanel = new JPanel();
+    JPanel actionPanel = new JPanel();
 
     public BufferPanel() {
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
         bufferCheckboxPanel = new BufferCheckboxPanel();
@@ -20,9 +21,14 @@ public class BufferPanel extends JPanel {
         bufferLocationPanel = new BufferLocationPanel(bufferCheckboxPanel);
 
 
+        add(descriptionPanel);
+        descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save main memory"));
 
-        add(bufferLocationPanel);
-        add(bufferCheckboxPanel);
+        actionPanel.add(bufferLocationPanel);
+        actionPanel.add(add(bufferCheckboxPanel));
+
+        add(actionPanel);
+
     }
 
     public boolean isBufferingRequested() {
@@ -32,7 +38,6 @@ public class BufferPanel extends JPanel {
     public String getPath() {
         return bufferLocationPanel.getFilePath();
     }
-
 
 
 }
