@@ -17,12 +17,11 @@ public class AlreadyExistsDialog {
         warningDialog.add(okButton);
 
         okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 warningDialog.dispose();
             }
         });
-
+        warningDialog.pack();
         warningDialog.setModal(true);
         warningDialog.setVisible(true);
     }
