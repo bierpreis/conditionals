@@ -53,6 +53,7 @@ public class BufferLocationPanel extends JPanel {
 
                 //todo: if file exists, waring dialogue and dont start
                 if (fileChooser.getSelectedFile().exists()) {
+                    //todo: only show warning when folder exists not when this path exists!
                     new AlreadyExistsDialog(filePathToSave);
                     bufferCheckboxPanel.setBoxSelected(false);
                     bufferCheckboxPanel.setBoxEnabled(false);
