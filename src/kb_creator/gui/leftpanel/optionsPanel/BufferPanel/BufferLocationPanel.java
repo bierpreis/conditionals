@@ -52,7 +52,11 @@ public class BufferLocationPanel extends JPanel {
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
 
                 //todo: if file exists, waring dialogue and dont start
-                System.out.println("exists: " + fileChooser.getSelectedFile().exists());
+                if (fileChooser.getSelectedFile().exists()) {
+                    new AlreadyExistsDialog(filePathToSave);
+                    bufferCheckboxPanel.setBoxSelected(false);
+                    bufferCheckboxPanel.setBoxEnabled(false);
+                }
 
             } else {
                 bufferCheckboxPanel.setBoxSelected(false);
