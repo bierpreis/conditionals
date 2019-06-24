@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//todo: improve view and use file path
+//todo: improve view
 public class AlreadyExistsDialog {
     AlreadyExistsDialog(String pathOfExistingFolder) {
         JDialog warningDialog = new JDialog();
@@ -13,6 +13,7 @@ public class AlreadyExistsDialog {
         warningDialog.add(new JLabel("The Folder you chosse already exits."));
         warningDialog.setPreferredSize(new Dimension(350, 150));
         warningDialog.add(new JLabel("Choose diffrent Folder or delete it go continue"));
+        warningDialog.add(new JLabel(pathOfExistingFolder));
 
         JButton okButton = new JButton("Ok");
         warningDialog.add(okButton);
