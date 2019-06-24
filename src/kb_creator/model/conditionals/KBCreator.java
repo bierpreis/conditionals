@@ -66,7 +66,6 @@ public class KBCreator implements Runnable {
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(k, new ArrayList<>(0));
 
-        //todo: set or map or list or what? and create map only if needed in list not here. in list? actualy it sould be in cp reader!
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
         Map nfcMap = Collections.unmodifiableMap(createNfcMap(nfc));
