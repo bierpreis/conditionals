@@ -76,7 +76,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-
+    //todo: this method is called too often? files will get overwritten cause naming
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
         int alreadyWrittenNumberOfFiles = 0;
