@@ -45,12 +45,17 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         while (running) {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = CandidateStatus.WRITING;
+
+                //todo: rly write all pairs after size is reached?!
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
-                // todo: here set requestedList to 0 after reading?!
+                // todo: why reading takes place more than one?!
             } else if (requestedKList.get() != 0) {
                 status = CandidateStatus.READING;
+                System.out.println("reading: " + requestedKList);
                 requestedList = readAllPairs(requestedKList.get());
+                requestedKList.set(0);
+
             } else
                 try {
                     status = CandidateStatus.SLEEPING;
