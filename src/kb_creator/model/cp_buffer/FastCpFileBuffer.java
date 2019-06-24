@@ -112,8 +112,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                 writer.close();
             }
 
-            //delete data which is not needed anymore to free space
-
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -183,6 +181,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<String> getPairStringList(int requestedK) {
+        System.out.println("getting pair string list for: " + requestedK);
+
         List<String> fileStringList = new ArrayList<>();
         //read String
         File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
