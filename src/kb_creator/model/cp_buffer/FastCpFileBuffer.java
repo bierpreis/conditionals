@@ -47,7 +47,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                 status = CandidateStatus.WRITING;
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
-
+                // todo: here set requestedList to 0 after reading?!
             } else if (requestedKList.get() != 0) {
                 status = CandidateStatus.READING;
                 requestedList = readAllPairs(requestedKList.get());
