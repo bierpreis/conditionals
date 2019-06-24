@@ -77,7 +77,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-    //todo: reanme method
+
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
@@ -169,6 +169,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     //todo: here some progress
+    //todo: read not all at one? not sure how this could work
     //and: are this numbers correct?
     private List<AbstractPair> readAllPairs(int requestedK) {
         List<String> stringList = getPairStringList(requestedK);
