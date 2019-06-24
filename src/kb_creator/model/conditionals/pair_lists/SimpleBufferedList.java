@@ -19,8 +19,6 @@ public class SimpleBufferedList extends AbstractCandidateList {
 
 
     public List<AbstractPair> getListForK(int requestedK) {
-        System.out.println("requesting list for: " + requestedK);
-        cpFileBuffer.flush();
         return cpFileBuffer.getList(requestedK);
     }
 
