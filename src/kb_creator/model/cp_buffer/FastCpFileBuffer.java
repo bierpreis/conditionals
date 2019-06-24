@@ -82,7 +82,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
             subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
-            System.out.println("writing pairs for: " + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize());
             if (!subFolder.exists())
                 subFolder.mkdirs();
         }
