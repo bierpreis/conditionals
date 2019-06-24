@@ -47,6 +47,7 @@ public class CpFileBuffer extends AbstractCPWriter {
             } else if (requestedKList.get() != 0) {
                 requestedList = readAllPairs(requestedKList.get());
                 status = CandidateStatus.READING;
+                requestedKList.set(0);
             } else
                 try {
                     status = CandidateStatus.SLEEPING;
