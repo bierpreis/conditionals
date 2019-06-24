@@ -28,6 +28,7 @@ public class BetterBufferedList extends AbstractCandidateList {
 
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
+        //todo: this is the wrong place to wait. do it somewhere else
         System.out.println("queue: " + cpFileBuffer.getQueueToWriteSize());
         cpFileBuffer.addCpList(listToAdd);
         if (cpFileBuffer.getQueueToWriteSize() > 1000) {
