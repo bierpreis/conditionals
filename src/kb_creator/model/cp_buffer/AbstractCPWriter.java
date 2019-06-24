@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 public abstract class AbstractCPWriter implements Runnable {
-    protected Queue<AbstractPair> cpQueueToWrite;
+    protected volatile Queue<AbstractPair> cpQueueToWrite;
     protected volatile CandidateStatus status;
 
     protected volatile int writeCounter;
