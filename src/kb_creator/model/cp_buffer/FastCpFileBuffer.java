@@ -21,8 +21,10 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     private String folderToSavePath;
     private boolean running;
     private volatile boolean flushRequested;
+    private volatile int alreadyWrittenNumberOfFiles;
 
     public FastCpFileBuffer(String filePath) {
+        alreadyWrittenNumberOfFiles = 0;
         flushRequested = false;
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
@@ -46,7 +48,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = CandidateStatus.WRITING;
 
-                //todo: write all when flush and write the number when size is reached
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
@@ -76,10 +77,9 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-    //todo: this method is called too often? files will get overwritten cause naming
+    //todo: reanme method
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
-        int alreadyWrittenNumberOfFiles = 0;
         if (!queueToWrite.isEmpty()) {
             subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
             System.out.println("writing pairs for: " + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize());
@@ -231,5 +231,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                 e.printStackTrace();
             }
         }
+        alreadyWrittenNumberOfFiles = 0;
     }
 }
