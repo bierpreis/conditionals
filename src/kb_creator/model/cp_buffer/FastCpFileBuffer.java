@@ -162,6 +162,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
+    //todo: here some progress
+    //and: are this numbers correct?
     private List<AbstractPair> readAllPairs(int requestedK) {
         List<String> stringList = getPairStringList(requestedK);
 
