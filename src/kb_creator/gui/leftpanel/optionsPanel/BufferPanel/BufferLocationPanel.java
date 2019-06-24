@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-//todo: inform when folder already exists and delete existing folder or abort
+
 public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
@@ -34,13 +34,6 @@ public class BufferLocationPanel extends JPanel {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.SAVE_DIALOG);
 
-            //todo: create some subfolder?
-/*
-            File workingDirectory = new File(System.getProperty("user.dir") + "/KBs");
-            System.out.println(System.getProperty("user.dir"));
-            fileChooser.setCurrentDirectory(workingDirectory);
-*/
-
 
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fileChooser.showDialog(bufferLocationPanel, "Choose Folder");
@@ -49,11 +42,12 @@ public class BufferLocationPanel extends JPanel {
             if (fileChooser.getSelectedFile() != null) {
                 bufferCheckboxPanel.setActive(true);
                 bufferCheckboxPanel.setBoxSelected(true);
-                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath();
+                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/KBs";
 
-                //todo: if file exists, waring dialogue and dont start
-                if (fileChooser.getSelectedFile().exists()) {
-                    //todo: only show warning when folder exists not when this path exists!
+                File fileToSave = new File(filePathToSave);
+
+                if (fileToSave.exists()) {
+
                     new AlreadyExistsDialog(filePathToSave);
                     bufferCheckboxPanel.setBoxSelected(false);
                     bufferCheckboxPanel.setBoxEnabled(false);
