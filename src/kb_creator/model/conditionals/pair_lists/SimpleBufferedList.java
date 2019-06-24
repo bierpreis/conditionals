@@ -24,6 +24,11 @@ public class SimpleBufferedList extends AbstractCandidateList {
         return cpFileBuffer.getList(requestedK);
     }
 
+    public List<AbstractPair> readListForK(int requestedK){
+        cpFileBuffer.flush();
+        return cpFileBuffer.readList(requestedK);
+    }
+
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 

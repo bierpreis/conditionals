@@ -18,6 +18,11 @@ public class UnbufferedList extends AbstractCandidateList {
     }
 
     @Override
+    public List<AbstractPair> readListForK(int k) {
+        return candidatePairList.get(k);
+    }
+
+    @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
         System.out.println("added new list for k: " + k);
         candidatePairList.add(listToAdd);

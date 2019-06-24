@@ -49,10 +49,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                 //todo: rly write all pairs after size is reached?!
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
-                // todo: why reading takes place more than one?!
             } else if (requestedKList.get() != 0) {
                 status = CandidateStatus.READING;
-                System.out.println("reading: " + requestedKList);
                 requestedList = readAllPairs(requestedKList.get());
                 requestedKList.set(0);
 
@@ -152,6 +150,11 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
 
     public List<AbstractPair> getList(int requestedK) {
+
+        return requestedList;
+    }
+
+    public List<AbstractPair> readList(int requestedK){
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
 
@@ -181,7 +184,6 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
     private List<String> getPairStringList(int requestedK) {
-        System.out.println("getting pair string list for: " + requestedK);
 
         List<String> fileStringList = new ArrayList<>();
         //read String

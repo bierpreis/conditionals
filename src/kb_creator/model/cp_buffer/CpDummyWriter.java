@@ -24,6 +24,13 @@ public class CpDummyWriter extends AbstractCPWriter {
     }
 
     @Override
+    public List<AbstractPair> readList(int requestedK) {
+        return null;
+    }
+
+    ;
+
+    @Override
     public List<AbstractPair> getList(int requestedK) {
         return null;
     }
@@ -39,7 +46,7 @@ public class CpDummyWriter extends AbstractCPWriter {
     }
 
     @Override
-    public void flush(){
+    public void flush() {
 
     }
 }

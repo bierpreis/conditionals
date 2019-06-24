@@ -82,8 +82,7 @@ public class KBCreator implements Runnable {
 
         //line 6
 
-        //todo: here read list for k, later then get list for k
-        while (!l.getListForK(k).isEmpty()) {
+        while (!l.readListForK(k).isEmpty()) {
             nextCandidatePairAmount = 0;
 
             status = Status.WAITING;

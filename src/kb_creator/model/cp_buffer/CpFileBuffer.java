@@ -128,6 +128,10 @@ public class CpFileBuffer extends AbstractCPWriter {
     }
 
     public List<AbstractPair> getList(int requestedK) {
+        return requestedList;
+    }
+
+    public List<AbstractPair> readList(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
 
