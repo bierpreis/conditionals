@@ -38,9 +38,11 @@ public class StatusThread implements Runnable {
                 mainWindow.getKbWriterPanel().getMainKbWriterPanel().showConsistentConter(kbWriter.getConsistentCounter());
                 mainWindow.getKbWriterPanel().getMainKbWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
 
+
                 //cp writer thread is started after this thread, so this will avoid the null pointer exception
                 if (creatorThread.getCpWriterThread() != null) {
-                    mainWindow.getKbWriterPanel().getCandidatesPanel().showProgress(creatorThread.getCpWriterThread().getQueueToWriteSize());
+                    mainWindow.getKbWriterPanel().getCandidatesPanel().showWriterQueue(creatorThread.getCpWriterThread().getQueueToWriteSize());
+                    mainWindow.getKbWriterPanel().getCandidatesPanel().showReaderProgress(creatorThread.getCpWriterThread().getReaderCounter());
                     mainWindow.getKbWriterPanel().getCandidatesPanel().showStatus(creatorThread.getCpWriterThread().getStatus());
                 }
 

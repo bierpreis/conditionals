@@ -21,10 +21,11 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     private String folderToSavePath;
     private boolean running;
     private volatile boolean flushRequested;
-    private volatile int alreadyWrittenNumberOfFiles;
+
 
     public FastCpFileBuffer(String filePath) {
-        alreadyWrittenNumberOfFiles = 0;
+        writeCounter = 0;
+        readCounter = 0;
         flushRequested = false;
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
@@ -90,8 +91,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
             while (!queueToWrite.isEmpty()) {
                 //add leading zeros so the files will be soreted in correct order in their folder
-                String fileName = String.format("%05d", alreadyWrittenNumberOfFiles);
-                alreadyWrittenNumberOfFiles++;
+                String fileName = String.format("%05d", writeCounter);
+                writeCounter++;
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
                 StringBuilder sb = new StringBuilder();
@@ -167,17 +168,18 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         requestedListIsReady = false;
         return requestedList;
     }
-
-    //todo: here some progress
+    
     //todo: read not all at one? not sure how this could work
     //and: are this numbers correct?
     private List<AbstractPair> readAllPairs(int requestedK) {
+        readCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
+            readCounter++;
         }
 
         requestedListIsReady = true;
@@ -231,6 +233,7 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                 e.printStackTrace();
             }
         }
-        alreadyWrittenNumberOfFiles = 0;
+        writeCounter = 0;
     }
+
 }

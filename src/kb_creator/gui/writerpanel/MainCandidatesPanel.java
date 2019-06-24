@@ -8,7 +8,8 @@ import java.util.Locale;
 
 public class MainCandidatesPanel extends JPanel {
     private JLabel statusLabel;
-    private JLabel progressLabel;
+    private JLabel writerLabel;
+    private JLabel readerLabel;
 
     public MainCandidatesPanel() {
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
@@ -18,11 +19,14 @@ public class MainCandidatesPanel extends JPanel {
         add(vBox);
 
         statusLabel = new JLabel();
-        progressLabel = new JLabel();
+        writerLabel = new JLabel();
+        readerLabel = new JLabel();
         vBox.add(statusLabel);
-        vBox.add(progressLabel);
+        vBox.add(writerLabel);
+        vBox.add(readerLabel);
         showStatus(CandidateStatus.NOT_STARTED);
-        showProgress(0);
+        showWriterQueue(0);
+        showReaderProgress(0);
 
     }
 
@@ -30,10 +34,14 @@ public class MainCandidatesPanel extends JPanel {
         statusLabel.setText("Status: " + status.toString());
     }
 
-    public void showProgress(int alreadyFinishedNumber) {
+    public void showWriterQueue(int alreadyFinishedNumber) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        //todo: queue fits for writing, but reading is sth like finished
-        progressLabel.setText("Queue: " + formatter.format(alreadyFinishedNumber));
+        writerLabel.setText("Queue: " + formatter.format(alreadyFinishedNumber));
+    }
+
+    public void showReaderProgress(int alreadyReadNumber) {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        readerLabel.setText("Read KBs: " + formatter.format(alreadyReadNumber));
     }
 
 }

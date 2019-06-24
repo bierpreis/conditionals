@@ -9,6 +9,9 @@ public abstract class AbstractCPWriter implements Runnable {
     protected Queue<AbstractPair> cpQueueToWrite;
     protected volatile CandidateStatus status;
 
+    protected volatile int writeCounter;
+    protected volatile int readCounter;
+
     @Override
     public abstract void run();
 
@@ -29,5 +32,10 @@ public abstract class AbstractCPWriter implements Runnable {
     public abstract void addCpList(List<AbstractPair> listToadd);
 
     public abstract void flush();
+
+    public int getReaderCounter() {
+        return readCounter;
+    }
+
 
 }
