@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//todo: improve view and use file path
 public class AlreadyExistsDialog {
     AlreadyExistsDialog(String pathOfExistingFolder) {
         JDialog warningDialog = new JDialog();

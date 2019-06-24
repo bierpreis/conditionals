@@ -82,39 +82,37 @@ public class FastCpFileBuffer extends AbstractCPWriter {
             if (!subFolder.exists())
                 subFolder.mkdirs();
         }
-        if (folderToSavePath != null) //todo: delete this if?
-            try {
 
-                while (!queueToWrite.isEmpty()) {
-                    //add leading zeros so the files will be soreted in correct order in their folder
-                    String fileName = String.format("%05d", alreadyWrittenNumberOfFiles);
-                    alreadyWrittenNumberOfFiles++;
-                    PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
+        try {
 
-                    StringBuilder sb = new StringBuilder();
+            while (!queueToWrite.isEmpty()) {
+                //add leading zeros so the files will be soreted in correct order in their folder
+                String fileName = String.format("%05d", alreadyWrittenNumberOfFiles);
+                alreadyWrittenNumberOfFiles++;
+                PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
-                    for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
+                StringBuilder sb = new StringBuilder();
 
-                        AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
-                        if (pairToWrite == null)
-                            System.out.println("pair was null!");
-                        sb.append(pairToWrite.toFileString());
-                        sb.append("\nEND_PAIR\n\n");
-                        pairToWrite.deleteCandidates();
-                        pairToWrite.deleteKB();
+                for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
 
-                    }
+                    AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
+                    sb.append(pairToWrite.toFileString());
+                    sb.append("\nEND_PAIR\n\n");
+                    pairToWrite.deleteCandidates();
+                    pairToWrite.deleteKB();
 
-                    writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
-                    writer.close();
                 }
 
-                //delete data which is not needed anymore to free space
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
+                writer.close();
             }
+
+            //delete data which is not needed anymore to free space
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
