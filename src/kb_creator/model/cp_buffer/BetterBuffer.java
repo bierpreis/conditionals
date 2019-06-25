@@ -10,6 +10,9 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
+//todo: this class. it should not read all pairs at once but use producer consumer pattern
+//maybe the problem is the concurrent use of the queue? try some stuff with sleep or wait
 public class BetterBuffer extends AbstractCPWriter {
 
 

@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//todo: this class. it should not read all pairs at once but use producer consumer pattern
+
 public class FastCpFileBuffer extends AbstractCPWriter {
     private final int maxNumberOfPairsInFile = 200;
 
