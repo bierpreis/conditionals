@@ -145,6 +145,7 @@ public class KBCreator implements Runnable {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+                        waitIsRequested = false;
                     }
                 status = Status.RUNNING;
 

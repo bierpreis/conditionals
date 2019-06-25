@@ -18,14 +18,10 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private int inconsistentCounter;
 
 
-    private long nextSpeedCalculationTime;
-    private final long SPEED_CALCULATION_INTERVAL = 5000;
-
     @Override
     public void run() {
 
         while (true) {
-            //rootfilepath is null when saving is not requested. maybe improve by one abstract writer and one like this and one fake
 
 
             if (!consistentQueue.isEmpty())
@@ -46,12 +42,12 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     public KbFileWriter(String filePathToSave) {
         consistentCounter = 0;
         inconsistentCounter = 0;
-        nextSpeedCalculationTime = System.currentTimeMillis() + SPEED_CALCULATION_INTERVAL;
 
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
 
             //todo: check if this or linkedBlockingQueue is better
+            //idea: creator creates list, then gives whole list to writer and creates new list
             //idea: first put 1 mio then write 1 mio
             consistentQueue = new LinkedBlockingQueue<>();
             inconsistentQueue = new LinkedBlockingQueue<>();
