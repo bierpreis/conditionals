@@ -50,6 +50,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
 
+            //todo: check if this or linkedBlockingQueue is better
             consistentQueue = new ConcurrentLinkedQueue();
             inconsistentQueue = new ConcurrentLinkedQueue();
 

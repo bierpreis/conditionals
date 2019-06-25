@@ -41,7 +41,7 @@ public class BetterBuffer extends AbstractCPWriter {
             tmpFile.mkdirs();
         }
 
-        cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>();
+        cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>(); //todo: check if this or linkedBlockingQueue is better
         requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
         status = CandidateStatus.NOT_STARTED;
