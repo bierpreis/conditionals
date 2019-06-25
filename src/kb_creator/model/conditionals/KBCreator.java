@@ -21,6 +21,7 @@ public class KBCreator implements Runnable {
     private volatile int iterationNumberOfKBs;
 
     private volatile Status status;
+    private volatile boolean waitIsRequested;
 
     private AbstractSignature signature;
 
@@ -40,6 +41,7 @@ public class KBCreator implements Runnable {
 
         status = Status.NOT_STARTED;
         this.signature = signature;
+        waitIsRequested = false;
 
         if (kbFilePath != null)
             kbWriter = new KbFileWriter(kbFilePath);
@@ -135,6 +137,16 @@ public class KBCreator implements Runnable {
                         kbWriter.addInconsistentKb(inconsistentKB);
                     }
                 }
+
+                if (waitIsRequested)
+                    synchronized (this) {
+                        try {
+                            this.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                status = Status.RUNNING;
 
                 while (status.equals(Status.PAUSE))
                     sleep(500);
@@ -272,6 +284,18 @@ public class KBCreator implements Runnable {
 
     public AbstractCPWriter getCpWriterThread() {
         return l.getCpWriter();
+    }
+
+    public void setWaiting() {
+        status = Status.WAITING;
+        waitIsRequested = true;
+    }
+
+
+    public void stopWaiting() {
+        status = Status.RUNNING;
+        super.notify();
+
     }
 
 

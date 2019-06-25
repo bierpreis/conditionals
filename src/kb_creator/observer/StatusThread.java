@@ -46,6 +46,19 @@ public class StatusThread implements Runnable {
                     mainWindow.getKbWriterPanel().getCandidatesPanel().showStatus(creatorThread.getCpWriterThread().getStatus());
                 }
 
+                if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
+
+                    creatorThread.setWaiting();
+
+                if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
+                    synchronized (creatorThread) {
+                        creatorThread.notify();
+                    }
+/*
+                if (kbWriter.getInconsistentQueue() + kbWriter.getConsistentQueue() < 200)
+                    kbWriter.notify();
+*/
+
             }
 
             mainWindow.getCreatorPanel().getMemoryPanel().showFreeMemory();
