@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private Queue<AbstractKnowledgeBase> consistentQueue;
@@ -51,8 +52,9 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
             rootFilePath = filePathToSave;
 
             //todo: check if this or linkedBlockingQueue is better
-            consistentQueue = new ConcurrentLinkedQueue();
-            inconsistentQueue = new ConcurrentLinkedQueue();
+            //idea: first put 1 mio then write 1 mio
+            consistentQueue = new LinkedBlockingQueue<>();
+            inconsistentQueue = new LinkedBlockingQueue<>();
 
         }
     }
