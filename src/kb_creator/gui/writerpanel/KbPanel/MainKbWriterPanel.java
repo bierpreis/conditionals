@@ -62,13 +62,15 @@ public class MainKbWriterPanel extends JPanel {
 
 
     public void showConsistentConter(int consistentCounter) {
-        counterLabel.setText("Written Consistent KBs: " + consistentCounter);
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        counterLabel.setText("Written Consistent KBs: " + formatter.format(consistentCounter));
 
 
     }
 
     public void showIncosnsistentCounter(int inconsistetnCounter) {
-        inconsistentCounterLabel.setText("Written Inconsistent KBs: " + inconsistetnCounter);
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        inconsistentCounterLabel.setText("Written Inconsistent KBs: " + formatter.format(inconsistetnCounter));
 
 
     }
