@@ -17,7 +17,6 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private int inconsistentCounter;
 
 
-
     private long nextSpeedCalculationTime;
     private final long SPEED_CALCULATION_INTERVAL = 5000;
 
@@ -33,7 +32,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
             if (!inconsistentQueue.isEmpty())
                 writeInconsistentKBToFile(inconsistentQueue.poll());
             if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
-                Thread.sleep(500);
+                Thread.sleep(500);//todo: maybe this sleep is a problem?
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

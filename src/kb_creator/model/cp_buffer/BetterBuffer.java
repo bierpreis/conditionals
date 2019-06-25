@@ -174,7 +174,7 @@ public class BetterBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
-    //todo: read not all at one? not sure how this could work
+
     //and: are this numbers correct?
     private List<AbstractPair> readAllPairs(int requestedK) {
         readCounter = 0;
