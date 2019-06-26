@@ -36,11 +36,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public AbstractPair getNextElement() {
         return null;
     }
-
-    //todo
+    
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return false;
+        return !candidatePairList.get(requestedK).isEmpty();
     }
 
     @Override
@@ -49,6 +48,9 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         cpFileBuffer.flushWritingElements();
         cpFileBuffer.prepareCollection(requestedK);
         this.currentK = requestedK;
+
+        //todo: null pointer here
+        candidatePairList.add(new ArrayList<>());
         candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
 
     }
