@@ -9,7 +9,7 @@ public abstract class AbstractCandidateCollection {
     protected List<List<AbstractPair>> candidatePairList;
     protected AbstractCPWriter cpFileBuffer;
 
-    abstract public boolean hasNext();
+    abstract public boolean hasMoreElements();
 
     abstract public AbstractPair getNextElement();
 

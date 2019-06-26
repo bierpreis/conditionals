@@ -26,7 +26,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     //todo
     @Override
-    public boolean hasNext() {
+    public boolean hasMoreElements() {
         return false;
     }
 

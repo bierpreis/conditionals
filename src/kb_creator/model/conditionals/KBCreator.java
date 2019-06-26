@@ -95,7 +95,7 @@ public class KBCreator implements Runnable {
             l.addNewList(k, new ArrayList<>());
             iterationNumberOfKBs = 0;
             //this loop is line 8
-            while (l.hasNext()) {
+            while (l.hasMoreElements()) {
                 AbstractPair candidatePair = l.getNextElement();
                 
                 //line 9
