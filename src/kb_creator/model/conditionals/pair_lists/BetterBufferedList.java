@@ -21,7 +21,7 @@ public class BetterBufferedList extends AbstractCandidateCollection {
     public Collection<AbstractPair> getListForK(int requestedK) {
         return cpFileBuffer.getList(requestedK);
     }
-    
+
 
     //todo
     @Override

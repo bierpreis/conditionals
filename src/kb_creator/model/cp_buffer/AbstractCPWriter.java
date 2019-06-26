@@ -30,7 +30,7 @@ public abstract class AbstractCPWriter implements Runnable {
 
     public abstract void addCpList(List<AbstractPair> listToadd);
 
-    //todo: rename to sth with more meaning
+    //todo: rename or remove
     public abstract void flush();
 
     public int getReaderCounter() {
