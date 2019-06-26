@@ -9,6 +9,7 @@ import java.util.List;
 public class UnbufferedList extends AbstractCandidateCollection {
     private int nextElementNumber;
     private int currentK;
+    private List<List<AbstractPair>> candidatePairList;
 
     public UnbufferedList() {
         candidatePairList = new ArrayList<>();

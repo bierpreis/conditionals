@@ -14,7 +14,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     public SimpleBufferedList(String filePath) {
         System.out.println("created simple buffered list for candidate pairs");
-        candidatePairList = new ArrayList<>();
         cpFileBuffer = new FasterSimpleBuffer(filePath);
         Thread cpWriterThread = new Thread(cpFileBuffer);
         cpWriterThread.start();
@@ -24,14 +23,14 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     //todo: dont use cp list but cp buffer?! build sth in cp buffer that it knows when list is empty
     @Override
     public boolean hasMoreElements() {
-        return nextElementNumber + 1 < candidatePairList.get(currentK).size();
+        return false;
     }
 
     @Override
     public AbstractPair getNextPair() {
 
         nextElementNumber++;
-        return candidatePairList.get(currentK).get(nextElementNumber);
+        return cpFileBuffer.getList(currentK).iterator().next();
     }
 
 

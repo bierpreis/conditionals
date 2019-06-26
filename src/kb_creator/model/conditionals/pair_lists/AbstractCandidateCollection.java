@@ -6,7 +6,6 @@ import kb_creator.model.cp_buffer.AbstractBuffer;
 import java.util.List;
 
 public abstract class AbstractCandidateCollection {
-    protected List<List<AbstractPair>> candidatePairList;
     protected AbstractBuffer cpFileBuffer;
 
     abstract public boolean hasMoreElements();
