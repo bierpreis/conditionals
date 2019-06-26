@@ -40,7 +40,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !candidatePairList.get(requestedK).isEmpty();
+        return cpFileBuffer.getList(requestedK).isEmpty();
     }
 
     @Override
@@ -52,8 +52,8 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         cpFileBuffer.prepareCollection(requestedK);
 
         //todo: this
-        candidatePairList.add(new ArrayList<>());
-        candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
+        //candidatePairList.add(new ArrayList<>());
+        //candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
 
     }
 

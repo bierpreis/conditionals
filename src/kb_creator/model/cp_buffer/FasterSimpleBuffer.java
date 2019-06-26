@@ -159,6 +159,7 @@ public class FasterSimpleBuffer extends AbstractBuffer {
     @Override
     public void prepareCollection(int requestedK) {
         //todo: here use readpairs and readallpairs?!
+        readPairs(requestedK);
     }
 
 

@@ -135,7 +135,7 @@ public class SimpleBuffer extends AbstractBuffer {
     public void prepareCollection(int requestedK) {
         //nothing
     }
-    
+
     public List<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
