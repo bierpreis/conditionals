@@ -3,6 +3,7 @@ package kb_creator.model.conditionals.pair_lists;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.cp_buffer.BetterBuffer;
 
+import java.util.Collection;
 import java.util.List;
 
 public class BetterBufferedList extends AbstractCandidateList {
@@ -17,13 +18,13 @@ public class BetterBufferedList extends AbstractCandidateList {
     }
 
 
-    public List<AbstractPair> getListForK(int requestedK) {
+    public Collection<AbstractPair> getListForK(int requestedK) {
         return cpFileBuffer.getList(requestedK);
     }
 
-    public List<AbstractPair> readListForK(int requestedK) {
+    public Collection<AbstractPair> readListForK(int requestedK) {
         cpFileBuffer.flush();
-        return cpFileBuffer.readList(requestedK);
+        return cpFileBuffer.readPairs(requestedK);
     }
 
     @Override

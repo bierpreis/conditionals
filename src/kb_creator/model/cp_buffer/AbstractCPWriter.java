@@ -2,6 +2,7 @@ package kb_creator.model.cp_buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Queue;
 
@@ -25,12 +26,14 @@ public abstract class AbstractCPWriter implements Runnable {
         return status;
     }
 
-    public abstract List<AbstractPair> getList(int requestedK);
+    public abstract Collection<AbstractPair> getList(int requestedK);
 
-    public abstract List<AbstractPair> readList(int requestedK);
+    //todo: maybe rename to getQueue?
+    public abstract Collection<AbstractPair> readPairs(int requestedK);
 
     public abstract void addCpList(List<AbstractPair> listToadd);
 
+    //todo: rename to sth with more meaning
     public abstract void flush();
 
     public int getReaderCounter() {

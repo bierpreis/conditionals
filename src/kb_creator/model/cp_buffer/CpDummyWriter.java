@@ -24,7 +24,7 @@ public class CpDummyWriter extends AbstractCPWriter {
     }
 
     @Override
-    public List<AbstractPair> readList(int requestedK) {
+    public List<AbstractPair> readPairs(int requestedK) {
         return null;
     }
 

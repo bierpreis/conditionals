@@ -156,7 +156,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
-    public List<AbstractPair> readList(int requestedK) {
+    //todo: fit to queue
+    public List<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
 

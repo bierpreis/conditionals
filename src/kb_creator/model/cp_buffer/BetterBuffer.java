@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -41,7 +42,7 @@ public class BetterBuffer extends AbstractCPWriter {
             tmpFile.mkdirs();
         }
 
-        cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>(); //todo: check if this or linkedBlockingQueue is better
+        cpQueueToWrite = new LinkedBlockingQueue<>(); //todo: check if this or linkedBlockingQueue is better
         requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
         status = CandidateStatus.NOT_STARTED;
@@ -163,7 +164,8 @@ public class BetterBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
-    public List<AbstractPair> readList(int requestedK) {
+    //todo: fit to queue
+    public Collection<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
 

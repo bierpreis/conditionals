@@ -4,6 +4,7 @@ import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.cp_buffer.CpFileBuffer;
 import kb_creator.model.cp_buffer.FastCpFileBuffer;
 
+import java.util.Collection;
 import java.util.List;
 
 public class SimpleBufferedList extends AbstractCandidateList {
@@ -17,14 +18,15 @@ public class SimpleBufferedList extends AbstractCandidateList {
         cpWriterThread.start();
     }
 
-
-    public List<AbstractPair> getListForK(int requestedK) {
+    @Override
+    public Collection<AbstractPair> getListForK(int requestedK) {
         return cpFileBuffer.getList(requestedK);
     }
 
-    public List<AbstractPair> readListForK(int requestedK){
+    @Override
+    public Collection<AbstractPair> readListForK(int requestedK){
         cpFileBuffer.flush();
-        return cpFileBuffer.readList(requestedK);
+        return cpFileBuffer.readPairs(requestedK);
     }
 
     @Override
