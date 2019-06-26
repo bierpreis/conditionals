@@ -158,10 +158,10 @@ public class FasterSimpleBuffer extends AbstractBuffer {
 
     @Override
     public void prepareCollection(int requestedK) {
-        //todo
+        //todo: here use readpairs and readallpairs?!
     }
 
-    //todo: fit to queue
+
     public List<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {

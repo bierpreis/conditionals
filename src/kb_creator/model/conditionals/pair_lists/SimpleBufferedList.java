@@ -46,17 +46,17 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         nextElementNumber = 0;
-        cpFileBuffer.flushWritingElements();
-        cpFileBuffer.prepareCollection(requestedK);
         this.currentK = requestedK;
+        cpFileBuffer.flushWritingElements();
 
-        //todo: this 
+        cpFileBuffer.prepareCollection(requestedK);
+
+        //todo: this
         candidatePairList.add(new ArrayList<>());
         candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
 
     }
 
-    //todo
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 
