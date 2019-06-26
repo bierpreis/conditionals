@@ -28,9 +28,6 @@ public abstract class AbstractCPWriter implements Runnable {
 
     public abstract Collection<AbstractPair> getList(int requestedK);
 
-    //todo: maybe rename to getQueue?
-    public abstract Collection<AbstractPair> readPairs(int requestedK);
-
     public abstract void addCpList(List<AbstractPair> listToadd);
 
     //todo: rename to sth with more meaning

@@ -99,7 +99,7 @@ public class KBCreator implements Runnable {
                 AbstractPair candidatePair = l.getNextElement();
                 
                 //line 9
-                for (NewConditional r : candidatePair.getCandidatesList()) { //todo: null pointer here when k = 6 and candidate pair nr 5
+                for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 

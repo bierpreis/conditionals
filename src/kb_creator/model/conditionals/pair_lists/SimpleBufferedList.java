@@ -23,10 +23,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
 
-    public Collection<AbstractPair> readListForK(int requestedK) {
-        cpFileBuffer.flush();
-        return cpFileBuffer.readPairs(requestedK);
-    }
 
     //todo
     @Override
