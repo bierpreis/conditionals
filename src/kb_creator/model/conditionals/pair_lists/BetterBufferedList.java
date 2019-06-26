@@ -29,6 +29,12 @@ public class BetterBufferedList extends AbstractCandidateCollection {
 
     //todo
     @Override
+    public boolean hasNext() {
+        return false;
+    }
+
+    //todo
+    @Override
     public AbstractPair getNextElement() {
         return null;
     }

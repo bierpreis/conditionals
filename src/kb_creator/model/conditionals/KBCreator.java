@@ -95,8 +95,9 @@ public class KBCreator implements Runnable {
             l.addNewList(k, new ArrayList<>());
             iterationNumberOfKBs = 0;
             //this loop is line 8
-            while (l.getNextElement() != null) { //todo: this throws away every second element?!
+            while (l.hasNext()) {
                 AbstractPair candidatePair = l.getNextElement();
+                
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) { //todo: null pointer here when k = 6 and candidate pair nr 5
                     //line 10 //

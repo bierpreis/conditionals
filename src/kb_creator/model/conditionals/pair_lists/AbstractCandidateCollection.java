@@ -9,6 +9,8 @@ public abstract class AbstractCandidateCollection {
     protected List<List<AbstractPair>> candidatePairList;
     protected AbstractCPWriter cpFileBuffer;
 
+    abstract public boolean hasNext();
+
     abstract public AbstractPair getNextElement();
 
     abstract public boolean hasElementsForK(int requestedK);
