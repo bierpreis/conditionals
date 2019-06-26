@@ -17,7 +17,9 @@ public class UnbufferedList extends AbstractCandidateCollection {
     @Override
     public AbstractPair getNextElement() {
         nextElementNumber++;
-        return candidatePairList.get(currentK).get(nextElementNumber - 1);
+        if (nextElementNumber < candidatePairList.get(currentK).size())
+            return candidatePairList.get(currentK).get(nextElementNumber - 1);
+        else return null;
     }
 
     @Override
