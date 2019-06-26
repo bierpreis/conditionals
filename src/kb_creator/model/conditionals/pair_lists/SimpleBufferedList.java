@@ -35,11 +35,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         return candidatePairList.get(currentK).get(nextElementNumber);
     }
 
-    //todo: has no elements
+
     @Override
     public boolean hasElementsForK(int requestedK) {
-        System.out.println("has elements for " + requestedK + cpFileBuffer.getList(requestedK).isEmpty());
-        return cpFileBuffer.getList(requestedK).isEmpty();
+        return !cpFileBuffer.getList(requestedK).isEmpty();
     }
 
     @Override
