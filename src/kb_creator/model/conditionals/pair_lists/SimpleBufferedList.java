@@ -21,9 +21,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
 
-    public Collection<AbstractPair> getListForK(int requestedK) {
-        return cpFileBuffer.getList(requestedK);
-    }
 
 
     @Override
@@ -32,14 +29,16 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public AbstractPair getNextElement() {
+    public AbstractPair getNextPair() {
 
         nextElementNumber++;
         return candidatePairList.get(currentK).get(nextElementNumber);
     }
 
+    //todo: has no elements
     @Override
     public boolean hasElementsForK(int requestedK) {
+        System.out.println("has elements for " + requestedK + cpFileBuffer.getList(requestedK).isEmpty());
         return cpFileBuffer.getList(requestedK).isEmpty();
     }
 

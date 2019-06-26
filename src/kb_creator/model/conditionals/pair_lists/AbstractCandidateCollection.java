@@ -11,7 +11,7 @@ public abstract class AbstractCandidateCollection {
 
     abstract public boolean hasMoreElements();
 
-    abstract public AbstractPair getNextElement();
+    abstract public AbstractPair getNextPair();
 
     abstract public boolean hasElementsForK(int requestedK);
 

@@ -188,6 +188,9 @@ public class FasterSimpleBuffer extends AbstractBuffer {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
             readCounter++;
         }
+        //todo: is this good here?
+        requestedList = pairsList;
+
 
         requestedListIsReady = true;
         return pairsList;

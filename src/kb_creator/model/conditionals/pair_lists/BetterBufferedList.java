@@ -31,7 +31,7 @@ public class BetterBufferedList extends AbstractCandidateCollection {
 
     //todo
     @Override
-    public AbstractPair getNextElement() {
+    public AbstractPair getNextPair() {
         return null;
     }
 

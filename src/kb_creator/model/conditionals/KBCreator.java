@@ -96,7 +96,7 @@ public class KBCreator implements Runnable {
             iterationNumberOfKBs = 0;
             //this loop is line 8
             while (l.hasMoreElements()) {
-                AbstractPair candidatePair = l.getNextElement();
+                AbstractPair candidatePair = l.getNextPair();
                 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
