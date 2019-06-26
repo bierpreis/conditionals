@@ -27,6 +27,24 @@ public class BetterBufferedList extends AbstractCandidateCollection {
         return cpFileBuffer.readPairs(requestedK);
     }
 
+    //todo
+    @Override
+    public AbstractPair getNextElement() {
+        return null;
+    }
+
+    //todo
+    @Override
+    public boolean hasElementsForK(int requestedK) {
+        return false;
+    }
+
+    //todo
+    @Override
+    public void prepareCollection(int requestedK) {
+
+    }
+
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 

@@ -81,6 +81,7 @@ public class KBCreator implements Runnable {
 
         //the following is the actual loop where the work is done
 
+        l.prepareCollection(k);
         //line 6
 
         while (l.hasElementsForK(k)) {

@@ -17,17 +17,35 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         cpWriterThread.start();
     }
 
-    @Override
+
     public Collection<AbstractPair> getListForK(int requestedK) {
         return cpFileBuffer.getList(requestedK);
     }
 
-    @Override
+
     public Collection<AbstractPair> readListForK(int requestedK){
         cpFileBuffer.flush();
         return cpFileBuffer.readPairs(requestedK);
     }
 
+    //todo
+    @Override
+    public AbstractPair getNextElement() {
+        return null;
+    }
+
+    //todo
+    @Override
+    public boolean hasElementsForK(int requestedK) {
+        return false;
+    }
+
+    @Override
+    public void prepareCollection(int requestedK) {
+
+    }
+
+    //todo
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 
