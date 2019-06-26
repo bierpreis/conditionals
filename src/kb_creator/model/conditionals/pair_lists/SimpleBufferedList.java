@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
+    int currentElement;
 
 
     public SimpleBufferedList(String filePath) {
@@ -21,7 +22,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public Collection<AbstractPair> getListForK(int requestedK) {
         return cpFileBuffer.getList(requestedK);
     }
-
 
 
     //todo
@@ -44,6 +44,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void prepareCollection(int requestedK) {
+        currentElement = 0;
 
     }
 

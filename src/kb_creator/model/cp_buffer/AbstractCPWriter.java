@@ -29,9 +29,8 @@ public abstract class AbstractCPWriter implements Runnable {
     public abstract Collection<AbstractPair> getList(int requestedK);
 
     public abstract void addCpList(List<AbstractPair> listToadd);
-
-    //todo: rename or remove
-    public abstract void flush();
+    
+    public abstract void flushWritingElements();
 
     public int getReaderCounter() {
         return readCounter;

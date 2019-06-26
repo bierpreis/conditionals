@@ -233,7 +233,7 @@ public class BetterBuffer extends AbstractCPWriter {
     }
 
     @Override
-    public void flush() {
+    public void flushWritingElements() {
         flushRequested = true;
 
         while (!cpQueueToWrite.isEmpty()) {

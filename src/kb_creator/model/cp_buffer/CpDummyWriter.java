@@ -40,7 +40,7 @@ public class CpDummyWriter extends AbstractCPWriter {
     }
 
     @Override
-    public void flush() {
+    public void flushWritingElements() {
 
     }
 }

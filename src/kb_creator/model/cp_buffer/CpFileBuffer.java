@@ -189,7 +189,7 @@ public class CpFileBuffer extends AbstractCPWriter {
     }
 
     @Override
-    public void flush() {
+    public void flushWritingElements() {
         for (AbstractPair pair : cpQueueToWrite)
             writePair(pair);
     }
