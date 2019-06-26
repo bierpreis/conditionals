@@ -7,14 +7,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
 //todo: this class. it should not read all pairs at once but use producer consumer pattern
 //maybe the problem is the concurrent use of the queue? try some stuff with sleep or wait
-public class BetterBuffer extends AbstractCPWriter {
+public class QueueBuffer extends AbstractBuffer {
 
 
     private final int maxNumberOfPairsInFile = 200;
@@ -29,7 +28,7 @@ public class BetterBuffer extends AbstractCPWriter {
     private volatile boolean flushRequested;
 
 
-    public BetterBuffer(String filePath) {
+    public QueueBuffer(String filePath) {
         writeCounter = 0;
         readCounter = 0;
         flushRequested = false;
@@ -45,7 +44,7 @@ public class BetterBuffer extends AbstractCPWriter {
         cpQueueToWrite = new LinkedBlockingQueue<>(); //todo: check if this or linkedBlockingQueue is better
         requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
-        status = CandidateStatus.NOT_STARTED;
+        status = BufferStatus.NOT_STARTED;
 
     }
 
@@ -53,18 +52,18 @@ public class BetterBuffer extends AbstractCPWriter {
     public void run() {
         while (running) {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
-                status = CandidateStatus.WRITING;
+                status = BufferStatus.WRITING;
 
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
-                status = CandidateStatus.READING;
+                status = BufferStatus.READING;
                 requestedList = readAllPairs(requestedKList.get());
                 requestedKList.set(0);
 
             } else
                 try {
-                    status = CandidateStatus.SLEEPING;
+                    status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();

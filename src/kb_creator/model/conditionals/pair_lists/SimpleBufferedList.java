@@ -1,7 +1,7 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.cp_buffer.FastCpFileBuffer;
+import kb_creator.model.cp_buffer.FasterSimpleBuffer;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,7 +14,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public SimpleBufferedList(String filePath) {
         System.out.println("created simple buffered list for candidate pairs");
         //candidatePairList = new ArrayList<>();
-        cpFileBuffer = new FastCpFileBuffer(filePath);
+        cpFileBuffer = new FasterSimpleBuffer(filePath);
         Thread cpWriterThread = new Thread(cpFileBuffer);
         cpWriterThread.start();
     }
@@ -48,6 +48,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         cpFileBuffer.flushWritingElements();
         cpFileBuffer.prepareCollection(requestedK);
         this.currentK = requestedK;
+        //todo: cp list is null. where init?
         candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
 
     }

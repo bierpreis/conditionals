@@ -7,7 +7,7 @@ import kb_creator.model.conditionals.pair_lists.AbstractCandidateCollection;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
-import kb_creator.model.cp_buffer.AbstractCPWriter;
+import kb_creator.model.cp_buffer.AbstractBuffer;
 import kb_creator.model.kb_writer.AbstractKbWriter;
 import kb_creator.model.kb_writer.KbDummyWriter;
 import kb_creator.model.kb_writer.KbFileWriter;
@@ -279,7 +279,7 @@ public class KBCreator implements Runnable {
         return kbWriter;
     }
 
-    public AbstractCPWriter getCpWriterThread() {
+    public AbstractBuffer getCpWriterThread() {
         return l.getCpWriter();
     }
 

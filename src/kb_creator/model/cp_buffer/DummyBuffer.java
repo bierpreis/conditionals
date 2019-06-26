@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 
-public class CpDummyWriter extends AbstractCPWriter {
+public class DummyBuffer extends AbstractBuffer {
 
-    public CpDummyWriter(String filePath) {
+    public DummyBuffer(String filePath) {
         System.out.println("candidate pairs will be kept in main memory");
-        status = CandidateStatus.NOT_STARTED;
+        status = BufferStatus.NOT_STARTED;
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
     }
 

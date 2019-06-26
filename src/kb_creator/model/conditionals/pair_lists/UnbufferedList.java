@@ -1,7 +1,7 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.cp_buffer.CpDummyWriter;
+import kb_creator.model.cp_buffer.DummyBuffer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +44,7 @@ public class UnbufferedList extends AbstractCandidateCollection {
         System.out.println("added new list for k: " + k);
         candidatePairList.add(listToAdd);
         System.out.println("before creating dummy writer");
-        cpFileBuffer = new CpDummyWriter(null);
+        cpFileBuffer = new DummyBuffer(null);
     }
 
     @Override

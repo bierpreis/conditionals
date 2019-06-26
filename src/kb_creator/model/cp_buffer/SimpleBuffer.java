@@ -10,9 +10,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
-public class FastCpFileBuffer extends AbstractCPWriter {
-    private final int maxNumberOfPairsInFile = 200;
+public class SimpleBuffer extends AbstractBuffer {
 
 
     private AtomicInteger requestedKList;
@@ -21,13 +19,8 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
     private String folderToSavePath;
     private boolean running;
-    private volatile boolean flushRequested;
 
-
-    public FastCpFileBuffer(String filePath) {
-        writeCounter = 0;
-        readCounter = 0;
-        flushRequested = false;
+    public SimpleBuffer(String filePath) {
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
@@ -37,29 +30,27 @@ public class FastCpFileBuffer extends AbstractCPWriter {
             tmpFile.mkdirs();
         }
 
-        cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>();
+        cpQueueToWrite = new ConcurrentLinkedQueue<>();
         requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
-        status = CandidateStatus.NOT_STARTED;
+        status = BufferStatus.NOT_STARTED;
 
     }
 
     @Override
     public void run() {
         while (running) {
-            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
-                status = CandidateStatus.WRITING;
-
-                writeAllPairs(cpQueueToWrite);
-                flushRequested = false;
+            if (cpQueueToWrite.peek() != null) {
+                System.out.println("queue length: " + cpQueueToWrite.size());
+                writePair(cpQueueToWrite.poll());
+                status = BufferStatus.WRITING;
             } else if (requestedKList.get() != 0) {
-                status = CandidateStatus.READING;
                 requestedList = readAllPairs(requestedKList.get());
+                status = BufferStatus.READING;
                 requestedKList.set(0);
-
             } else
                 try {
-                    status = CandidateStatus.SLEEPING;
+                    status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -80,42 +71,28 @@ public class FastCpFileBuffer extends AbstractCPWriter {
     }
 
 
-    private void writeAllPairs(Queue queueToWrite) {
-        File subFolder = null;
-        if (!queueToWrite.isEmpty()) {
-            subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
-            if (!subFolder.exists())
-                subFolder.mkdirs();
-        }
-
-        try {
-
-            while (!queueToWrite.isEmpty()) {
+    private void writePair(AbstractPair candidatePair) {
+        File subFolder = new File(folderToSavePath + "/" + candidatePair.getKnowledgeBase().getSize() + "/");
+        if (!subFolder.exists())
+            subFolder.mkdirs();
+        if (folderToSavePath != null)
+            try {
                 //add leading zeros so the files will be soreted in correct order in their folder
-                String fileName = String.format("%05d", writeCounter);
-                writeCounter++;
+                String fileName = String.format("%08d", candidatePair.getNumber());
+
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
-                StringBuilder sb = new StringBuilder();
 
-                for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
-
-                    AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
-                    sb.append(pairToWrite.toFileString());
-                    sb.append("\nEND_PAIR\n\n");
-                    pairToWrite.deleteCandidates();
-                    pairToWrite.deleteKB();
-
-                }
-
-                writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
+                writer.print(candidatePair.toFileString());
                 writer.close();
+
+                //delete data which is not needed anymore to free space
+                candidatePair.deleteCandidates();
+                candidatePair.deleteKB();
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -150,15 +127,13 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         running = false;
     }
 
-
     public List<AbstractPair> getList(int requestedK) {
-
         return requestedList;
     }
 
     @Override
     public void prepareCollection(int requestedK) {
-        //todo
+        //nothing
     }
 
     //todo: fit to queue
@@ -176,16 +151,12 @@ public class FastCpFileBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
-    //and: are this numbers correct?
     private List<AbstractPair> readAllPairs(int requestedK) {
-        readCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
-
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            readCounter++;
         }
 
         requestedListIsReady = true;
@@ -194,16 +165,14 @@ public class FastCpFileBuffer extends AbstractCPWriter {
 
     private List<String> getPairStringList(int requestedK) {
 
-        List<String> fileStringList = new ArrayList<>();
         //read String
         File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
 
         File[] filesArray = fileToRead.listFiles();
 
-        //if there are no files, there are no candidate pairs left so the empty list gets returned
-        if (filesArray == null)
-            return fileStringList;
+        Arrays.sort(filesArray);
 
+        List<String> stringList = new ArrayList<>();
 
         try {
             for (File file : filesArray) {
@@ -216,30 +185,18 @@ public class FastCpFileBuffer extends AbstractCPWriter {
                     sb.append("\n");
                 }
 
-                fileStringList.add(sb.toString());
+                stringList.add(sb.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<String> pairStringList = new ArrayList<>();
-        for (String fileString : fileStringList) {
-            pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
-        }
-        return pairStringList;
+        return stringList;
     }
 
     @Override
     public void flushWritingElements() {
-        flushRequested = true;
-
-        while (!cpQueueToWrite.isEmpty()) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        writeCounter = 0;
+        for (AbstractPair pair : cpQueueToWrite)
+            writePair(pair);
     }
 
 }

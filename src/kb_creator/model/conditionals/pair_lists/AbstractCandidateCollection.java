@@ -1,13 +1,13 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.cp_buffer.AbstractCPWriter;
+import kb_creator.model.cp_buffer.AbstractBuffer;
 
 import java.util.List;
 
 public abstract class AbstractCandidateCollection {
     protected List<List<AbstractPair>> candidatePairList;
-    protected AbstractCPWriter cpFileBuffer;
+    protected AbstractBuffer cpFileBuffer;
 
     abstract public boolean hasMoreElements();
 
@@ -21,7 +21,7 @@ public abstract class AbstractCandidateCollection {
 
     abstract public void addPair(AbstractPair pairToAdd);
 
-    public AbstractCPWriter getCpWriter() {
+    public AbstractBuffer getCpWriter() {
         return cpFileBuffer;
     }
 }

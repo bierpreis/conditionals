@@ -6,9 +6,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Queue;
 
-public abstract class AbstractCPWriter implements Runnable {
+public abstract class AbstractBuffer implements Runnable {
     protected volatile Queue<AbstractPair> cpQueueToWrite;
-    protected volatile CandidateStatus status;
+    protected volatile BufferStatus status;
 
     protected volatile int writeCounter;
     protected volatile int readCounter;
@@ -22,7 +22,7 @@ public abstract class AbstractCPWriter implements Runnable {
 
     public abstract void addCpToWrite(AbstractPair pair);
 
-    public CandidateStatus getStatus() {
+    public BufferStatus getStatus() {
         return status;
     }
 
@@ -39,4 +39,11 @@ public abstract class AbstractCPWriter implements Runnable {
     }
 
 
+
+    public enum BufferStatus {
+        WRITING, READING, NOT_STARTED, SLEEPING;
+    }
+
 }
+
+

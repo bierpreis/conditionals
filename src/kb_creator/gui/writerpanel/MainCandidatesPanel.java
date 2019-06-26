@@ -1,6 +1,7 @@
 package kb_creator.gui.writerpanel;
 
-import kb_creator.model.cp_buffer.CandidateStatus;
+
+import kb_creator.model.cp_buffer.AbstractBuffer;
 
 import javax.swing.*;
 import java.text.NumberFormat;
@@ -24,13 +25,13 @@ public class MainCandidatesPanel extends JPanel {
         vBox.add(statusLabel);
         vBox.add(writerLabel);
         vBox.add(readerLabel);
-        showStatus(CandidateStatus.NOT_STARTED);
+        showStatus(AbstractBuffer.BufferStatus.NOT_STARTED);
         showWriterQueue(0);
         showReaderProgress(0);
 
     }
 
-    public void showStatus(CandidateStatus status) {
+    public void showStatus(AbstractBuffer.BufferStatus status) {
         statusLabel.setText("Status: " + status.toString());
     }
 
