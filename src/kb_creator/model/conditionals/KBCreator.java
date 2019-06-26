@@ -3,7 +3,7 @@ package kb_creator.model.conditionals;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
-import kb_creator.model.conditionals.pair_lists.AbstractCandidateList;
+import kb_creator.model.conditionals.pair_lists.AbstractCandidateCollection;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
@@ -26,14 +26,13 @@ public class KBCreator implements Runnable {
     private AbstractSignature signature;
 
     private int k;
-    private int candidatePairAmount;
     private int nextCandidatePairAmount;
 
 
     private AbstractKbWriter kbWriter;
 
 
-    private AbstractCandidateList l;
+    private AbstractCandidateCollection l;
 
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
@@ -84,20 +83,19 @@ public class KBCreator implements Runnable {
 
         //line 6
 
-        while (!l.readListForK(k).isEmpty()) {
+        while (l.hasElementsForK(k)) {
             System.gc();
 
             nextCandidatePairAmount = 0;
 
             status = Status.WAITING;
-            candidatePairAmount = l.getListForK(k).size();
             status = Status.RUNNING;
             //line  7
             l.addNewList(k, new ArrayList<>());
             iterationNumberOfKBs = 0;
             //this loop is line 8
-            for (AbstractPair candidatePair : l.getListForK(k)) {
-
+            while( l.getNextElement()!=null) {
+                AbstractPair candidatePair = l.getNextElement();
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
@@ -164,7 +162,7 @@ public class KBCreator implements Runnable {
             }
 
             k = k + 1;
-
+            l.prepareCollection(k);
         }
 
         status = Status.FINISHED;
@@ -183,7 +181,7 @@ public class KBCreator implements Runnable {
         }
     }
 
-    public void setList(AbstractCandidateList requestedList) {
+    public void setList(AbstractCandidateCollection requestedList) {
         l = requestedList;
     }
 
@@ -248,10 +246,6 @@ public class KBCreator implements Runnable {
 
     public int getCurrentK() {
         return k;
-    }
-
-    public int getCurrentCandidatepairAmount() {
-        return candidatePairAmount;
     }
 
     public int getNextCandidatePairAmount() {

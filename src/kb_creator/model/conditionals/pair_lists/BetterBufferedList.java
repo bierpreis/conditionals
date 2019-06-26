@@ -6,7 +6,7 @@ import kb_creator.model.cp_buffer.BetterBuffer;
 import java.util.Collection;
 import java.util.List;
 
-public class BetterBufferedList extends AbstractCandidateList {
+public class BetterBufferedList extends AbstractCandidateCollection {
 
 
     public BetterBufferedList(String filePath) {

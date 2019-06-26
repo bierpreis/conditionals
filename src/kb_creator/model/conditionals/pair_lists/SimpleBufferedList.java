@@ -1,13 +1,12 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.cp_buffer.CpFileBuffer;
 import kb_creator.model.cp_buffer.FastCpFileBuffer;
 
 import java.util.Collection;
 import java.util.List;
 
-public class SimpleBufferedList extends AbstractCandidateList {
+public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
     public SimpleBufferedList(String filePath) {

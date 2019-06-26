@@ -6,13 +6,15 @@ import kb_creator.model.cp_buffer.AbstractCPWriter;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class AbstractCandidateList {
+public abstract class AbstractCandidateCollection {
     protected List<List<AbstractPair>> candidatePairList;
     protected AbstractCPWriter cpFileBuffer;
 
-    abstract public Collection<AbstractPair> getListForK(int requestedK);
+    abstract public AbstractPair getNextElement();
 
-    abstract public Collection<AbstractPair> readListForK(int requestedK);
+    abstract public boolean hasElementsForK(int requestedK);
+
+    abstract public void prepareCollection(int requestedK);
 
     abstract public void addNewList(int k, List<AbstractPair> pairToAdd);
 

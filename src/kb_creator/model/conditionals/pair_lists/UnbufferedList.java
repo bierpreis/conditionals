@@ -6,20 +6,29 @@ import kb_creator.model.cp_buffer.CpDummyWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnbufferedList extends AbstractCandidateList {
+public class UnbufferedList extends AbstractCandidateCollection {
+    private int nextElementNumber;
+    private int currentK;
 
     public UnbufferedList() {
         candidatePairList = new ArrayList<>();
     }
 
     @Override
-    public List<AbstractPair> getListForK(int k) {
-        return candidatePairList.get(k);
+    public AbstractPair getNextElement() {
+        nextElementNumber++;
+        return candidatePairList.get(currentK).get(nextElementNumber - 1);
     }
 
     @Override
-    public List<AbstractPair> readListForK(int k) {
-        return candidatePairList.get(k);
+    public boolean hasElementsForK(int requestedK) {
+        return !candidatePairList.get(requestedK).isEmpty();
+    }
+
+    @Override
+    public void prepareCollection(int k) {
+        currentK = k;
+        nextElementNumber = 0;
     }
 
     @Override
@@ -34,4 +43,5 @@ public class UnbufferedList extends AbstractCandidateList {
     public void addPair(AbstractPair pairToAdd) {
         candidatePairList.get(candidatePairList.size() - 1).add(pairToAdd);
     }
+
 }
