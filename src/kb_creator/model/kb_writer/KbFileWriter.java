@@ -45,10 +45,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
-
-            //todo: check if this or linkedBlockingQueue is better
-            //idea: creator creates list, then gives whole list to writer and creates new list
-            //idea: first put 1 mio then write 1 mio
+            
             consistentQueue = new LinkedBlockingQueue<>();
             inconsistentQueue = new LinkedBlockingQueue<>();
 
