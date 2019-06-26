@@ -131,6 +131,11 @@ public class CpFileBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
+    @Override
+    public void prepareCollection(int requestedK) {
+        //nothing
+    }
+
     //todo: fit to queue
     public List<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);

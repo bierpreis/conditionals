@@ -7,7 +7,8 @@ import java.util.Collection;
 import java.util.List;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
-    int currentElement;
+    private int nextElementNumber;
+    private int currentK;
 
 
     public SimpleBufferedList(String filePath) {
@@ -24,10 +25,9 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo
     @Override
     public boolean hasMoreElements() {
-        return false;
+        return nextElementNumber + 1 < candidatePairList.get(currentK).size();
     }
 
     //todo
@@ -44,7 +44,11 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void prepareCollection(int requestedK) {
-        currentElement = 0;
+        nextElementNumber = 0;
+        cpFileBuffer.flushWritingElements();
+        cpFileBuffer.prepareCollection(requestedK);
+        this.currentK = requestedK;
+        candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
 
     }
 

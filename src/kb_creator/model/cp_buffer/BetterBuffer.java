@@ -164,6 +164,11 @@ public class BetterBuffer extends AbstractCPWriter {
         return requestedList;
     }
 
+    @Override
+    public void prepareCollection(int requestedK) {
+        //todo
+    }
+
     //todo: fit to queue
     public Collection<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);

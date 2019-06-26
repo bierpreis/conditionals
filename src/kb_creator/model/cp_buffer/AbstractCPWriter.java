@@ -28,8 +28,10 @@ public abstract class AbstractCPWriter implements Runnable {
 
     public abstract Collection<AbstractPair> getList(int requestedK);
 
+    public abstract void prepareCollection(int requestedK);
+
     public abstract void addCpList(List<AbstractPair> listToadd);
-    
+
     public abstract void flushWritingElements();
 
     public int getReaderCounter() {

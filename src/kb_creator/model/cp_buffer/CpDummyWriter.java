@@ -30,6 +30,11 @@ public class CpDummyWriter extends AbstractCPWriter {
     }
 
     @Override
+    public void prepareCollection(int requestedK) {
+        //nothing
+    }
+
+    @Override
     public void addCpList(List<AbstractPair> listToadd) {
 
     }
