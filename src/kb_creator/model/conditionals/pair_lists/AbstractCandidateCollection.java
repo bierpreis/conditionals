@@ -3,7 +3,6 @@ package kb_creator.model.conditionals.pair_lists;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.cp_buffer.AbstractCPWriter;
 
-import java.util.Collection;
 import java.util.List;
 
 public abstract class AbstractCandidateCollection {
