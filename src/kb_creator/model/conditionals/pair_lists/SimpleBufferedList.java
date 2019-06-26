@@ -21,8 +21,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
 
-
-
+    //todo: dont use cp list but cp buffer?! build sth in cp buffer that it knows when list is empty
     @Override
     public boolean hasMoreElements() {
         return nextElementNumber + 1 < candidatePairList.get(currentK).size();

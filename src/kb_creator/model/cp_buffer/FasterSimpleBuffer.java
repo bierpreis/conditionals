@@ -23,7 +23,7 @@ public class FasterSimpleBuffer extends AbstractBuffer {
     private boolean running;
     private volatile boolean flushRequested;
 
-
+    //todo: this thing hast to know if it has more elements or if all are used
     public FasterSimpleBuffer(String filePath) {
         writeCounter = 0;
         readCounter = 0;
