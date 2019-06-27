@@ -10,6 +10,8 @@ import java.util.*;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
     private int currentK;
+    private List<AbstractPair> currentList;
+    private int nextElementNumberToReturn;
 
 
     public SimpleBufferedList(String filePath) {
@@ -18,6 +20,8 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
         requestedListIsReady = false;
+        currentList = new ArrayList<>();
+        nextElementNumberToReturn = 0;
     }
 
 
@@ -66,17 +70,21 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void prepareCollection(int requestedK) {
-        this.currentK = requestedK;
         flushWritingElements();
+        this.currentK = requestedK;
+
+
+        nextElementNumberToReturn = 0;
 
         //todo: read elements
 
     }
 
+
+    //todo: delete= should be done in prepareCollection
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 
-        //todo
 
     }
 
@@ -111,8 +119,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
             readCounter++;
         }
-        //todo: is this good here?
-        requestedList = pairsList;
 
 
         requestedListIsReady = true;
