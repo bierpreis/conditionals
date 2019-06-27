@@ -91,7 +91,7 @@ public class KBCreator implements Runnable {
             status = Status.WAITING;
             status = Status.RUNNING;
             //line  7
-            l.addNewList(k, new ArrayList<>());
+            l.addNewList(new ArrayList<>());
             iterationNumberOfKBs = 0;
             //this loop is line 8
             while (l.hasMoreElements()) {

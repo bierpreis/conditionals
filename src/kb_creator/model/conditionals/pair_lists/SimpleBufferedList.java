@@ -10,7 +10,7 @@ import java.util.*;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
     private int currentK;
-    private List<AbstractPair> currentList;
+    private List<List<AbstractPair>> pairsListList;
     private int nextElementNumberToReturn;
 
 
@@ -20,7 +20,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
         requestedListIsReady = false;
-        currentList = new ArrayList<>();
+        pairsListList = new ArrayList<>();
         nextElementNumberToReturn = 0;
     }
 
@@ -62,10 +62,9 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         return null;
     }
 
-    //todo
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return false;
+        return !pairsListList.get(requestedK).isEmpty();
     }
 
     @Override
@@ -78,7 +77,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
         //todo: not sure if this here or set flag and do this in run method.
-        currentList = readAllPairs(requestedK);
+        pairsListList.add(readAllPairs(requestedK));
 
     }
 
