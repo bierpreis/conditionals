@@ -19,14 +19,11 @@ public abstract class AbstractBuffer implements Runnable {
 
     public abstract int getQueueToWriteSize();
 
-
     public abstract void addCpToWrite(AbstractPair pair);
 
     public BufferStatus getStatus() {
         return status;
     }
-
-    public abstract Collection<AbstractPair> getList(int requestedK);
 
     public abstract void prepareCollection(int requestedK);
 
@@ -39,10 +36,15 @@ public abstract class AbstractBuffer implements Runnable {
     }
 
 
-
     public enum BufferStatus {
         WRITING, READING, NOT_STARTED, SLEEPING;
     }
+
+    public abstract boolean hasElementsForK(int requestedK);
+
+    public abstract AbstractPair getNextPair(int requestedK);
+
+    public abstract boolean hasMoreElements(int requestedK);
 
 }
 

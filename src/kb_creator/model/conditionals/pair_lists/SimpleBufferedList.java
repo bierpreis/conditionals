@@ -6,7 +6,6 @@ import kb_creator.model.cp_buffer.SimpleBuffer;
 import java.util.List;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
-    private int nextElementNumber;
     private int currentK;
 
 
@@ -21,33 +20,27 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     //todo: dont use cp list but cp buffer?! build sth in cp buffer that it knows when list is empty
     @Override
     public boolean hasMoreElements() {
-        return false;
+        return cpFileBuffer.hasMoreElements(currentK);
     }
 
     @Override
     public AbstractPair getNextPair() {
-
-        nextElementNumber++;
-        return cpFileBuffer.getList(currentK).iterator().next();
+        return cpFileBuffer.getNextPair(currentK);
     }
 
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !cpFileBuffer.getList(requestedK).isEmpty();
+        return !cpFileBuffer.hasElementsForK(requestedK);
     }
 
     @Override
     public void prepareCollection(int requestedK) {
-        nextElementNumber = 0;
         this.currentK = requestedK;
         cpFileBuffer.flushWritingElements();
 
         cpFileBuffer.prepareCollection(requestedK);
 
-        //todo: this
-        //candidatePairList.add(new ArrayList<>());
-        //candidatePairList.get(requestedK).addAll(cpFileBuffer.getList(requestedK));
 
     }
 
@@ -55,7 +48,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 
         cpFileBuffer.addCpList(listToAdd);
-
 
     }
 
