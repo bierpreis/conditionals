@@ -3,8 +3,11 @@ package kb_creator.model.conditionals.pair_lists;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.cp_buffer.BetterBuffer;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BetterBufferedList extends AbstractCandidateCollection {
 
@@ -13,8 +16,29 @@ public class BetterBufferedList extends AbstractCandidateCollection {
         System.out.println("created simple buffered list for candidate pairs");
         //candidatePairList = new ArrayList<>();
         cpFileBuffer = new BetterBuffer(filePath);
+
         Thread cpWriterThread = new Thread(cpFileBuffer);
         cpWriterThread.start();
+
+
+
+        writeCounter = 0;
+        readCounter = 0;
+        flushRequested = false;
+        running = true;
+        System.out.println("candidate pairs will be buffered on extra memory");
+        if (filePath != null) {
+            this.folderToSavePath = filePath + "/tmp/";
+
+            File tmpFile = new File(this.folderToSavePath);
+            tmpFile.mkdirs();
+        }
+
+        cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>();
+        requestedKList = new AtomicInteger(0);
+        requestedListIsReady = false;
+        status = BufferStatus.NOT_STARTED;
+
     }
 
 

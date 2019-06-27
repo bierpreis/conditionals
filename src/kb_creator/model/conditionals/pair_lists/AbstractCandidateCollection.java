@@ -1,12 +1,30 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.cp_buffer.AbstractBuffer;
 
+import java.io.File;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class AbstractCandidateCollection {
-    protected AbstractBuffer cpFileBuffer;
+public abstract class AbstractCandidateCollection implements Runnable{
+    protected boolean running;
+    protected volatile Queue<AbstractPair> cpQueueToWrite;
+
+    protected volatile BufferStatus status;
+
+    protected volatile int writeCounter;
+    protected volatile int readCounter;
+
+    protected final int maxNumberOfPairsInFile = 200;
+
+    protected String folderToSavePath;
+    protected volatile boolean flushRequested;
+
+    private AtomicInteger requestedKList;
+    private List<AbstractPair> requestedList;
+    private volatile boolean requestedListIsReady;
+
 
     abstract public boolean hasMoreElements();
 
@@ -20,7 +38,50 @@ public abstract class AbstractCandidateCollection {
 
     abstract public void addPair(AbstractPair pairToAdd);
 
-    public AbstractBuffer getCpWriter() {
-        return cpFileBuffer;
+    public abstract void flushWritingElements();
+
+
+    public BufferStatus getStatus() {
+        return status;
     }
+
+    public int getReaderCounter() {
+        return readCounter;
+    }
+
+    public abstract int getQueueToWriteSize();
+
+
+
+    public void deleteFiles(int numberOfConditionals) {
+        System.out.println("trying to delete " + numberOfConditionals + " element pairs");
+        File fileToDelete = new File(folderToSavePath + "/" + numberOfConditionals + "/");
+        boolean fileDeletedSuccesfully;
+        try {
+            for (File file : fileToDelete.listFiles()) {
+                if (!file.isDirectory()) {
+                    if (!
+                            file.delete()
+                    )
+                        System.out.println("deleting candidate pair file failed!");
+
+                }
+
+            }
+        } catch (NullPointerException e) {
+            System.out.println("no " + numberOfConditionals + " element pairs found for deleting");
+        }
+    }
+
+
+
+
+
+
+    public enum BufferStatus {
+        WRITING, READING, NOT_STARTED, SLEEPING;
+    }
+
 }
+
+

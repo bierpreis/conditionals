@@ -51,4 +51,18 @@ public class UnbufferedList extends AbstractCandidateCollection {
         candidatePairList.get(candidatePairList.size() - 1).add(pairToAdd);
     }
 
+    @Override
+    public void flushWritingElements() {
+        //nothing
+    }
+
+    @Override
+    public int getQueueToWriteSize() {
+        return 0;
+    }
+
+    @Override
+    public void run() {
+        //nothing
+    }
 }

@@ -1,8 +1,6 @@
 package kb_creator.gui.writerpanel;
 
 
-import kb_creator.model.cp_buffer.AbstractBuffer;
-
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;

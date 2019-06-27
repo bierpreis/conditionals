@@ -13,19 +13,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 //todo: this class. it should not read all pairs at once but use producer consumer pattern
 //maybe the problem is the concurrent use of the queue? try some stuff with sleep or wait
-public class BetterBuffer extends AbstractBuffer {
+public class BetterBuffer {
 
 
-    private final int maxNumberOfPairsInFile = 200;
 
 
-    private AtomicInteger requestedKList;
-    private List<AbstractPair> requestedList;
-    private volatile boolean requestedListIsReady;
 
-    private String folderToSavePath;
-    private boolean running;
-    private volatile boolean flushRequested;
+
+
+
 
 
     public BetterBuffer(String filePath) {
