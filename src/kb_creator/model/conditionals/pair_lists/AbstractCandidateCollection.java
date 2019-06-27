@@ -34,9 +34,9 @@ public abstract class AbstractCandidateCollection implements Runnable {
     }
 
 
-    abstract public boolean hasMoreElements();
+    abstract public boolean hasMoreElements(int currentK);
 
-    abstract public AbstractPair getNextPair();
+    abstract public AbstractPair getNextPair(int currentK);
 
     abstract public boolean hasElementsForK(int requestedK);
 

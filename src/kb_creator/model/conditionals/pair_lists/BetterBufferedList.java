@@ -189,13 +189,13 @@ public class BetterBufferedList extends AbstractCandidateCollection {
 
     //todo
     @Override
-    public boolean hasMoreElements() {
+    public boolean hasMoreElements(int currentK) {
         return false;
     }
 
     //todo
     @Override
-    public AbstractPair getNextPair() {
+    public AbstractPair getNextPair(int currentK) {
         return null;
     }
 

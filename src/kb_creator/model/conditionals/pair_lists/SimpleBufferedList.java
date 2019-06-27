@@ -52,14 +52,15 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     //todo
     @Override
-    public boolean hasMoreElements() {
+    public boolean hasMoreElements(int currentK) {
         return false;
     }
 
-    //todo
+
     @Override
-    public AbstractPair getNextPair() {
-        return null;
+    public AbstractPair getNextPair(int currentK) {
+        nextElementNumberToReturn++;
+        return pairsListList.get(currentK).get(nextElementNumberToReturn - 1);
     }
 
     @Override
