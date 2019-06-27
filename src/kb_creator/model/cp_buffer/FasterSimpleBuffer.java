@@ -26,7 +26,7 @@ public class FasterSimpleBuffer extends AbstractBuffer {
     //todo: this thing hast to know if it has more elements or if all are used
     //idea: first read number of files
     //then read file for file and count files. this will show if more is left
-    //then sth with iterator?!
+    //then sth with iterator?! look if iterator and queue will hold ordering. else sth with lists.
     public FasterSimpleBuffer(String filePath) {
         writeCounter = 0;
         readCounter = 0;
