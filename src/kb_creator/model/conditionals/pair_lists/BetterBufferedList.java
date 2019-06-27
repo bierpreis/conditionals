@@ -15,9 +15,10 @@ public class BetterBufferedList extends AbstractCandidateCollection {
 
 
     public BetterBufferedList(String filePath) {
+        super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
         //candidatePairList = new ArrayList<>();
-        
+
 
         writeCounter = 0;
         readCounter = 0;
@@ -170,7 +171,6 @@ public class BetterBufferedList extends AbstractCandidateCollection {
     }
 
 
-
     @Override
     public void flushWritingElements() {
         flushRequested = true;
@@ -221,7 +221,6 @@ public class BetterBufferedList extends AbstractCandidateCollection {
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
     }
-
 
 
 }

@@ -1,6 +1,7 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
+import kb_creator.observer.Status;
 
 import java.io.File;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractCandidateCollection implements Runnable {
+
+
     protected boolean running;
     protected volatile Queue<AbstractPair> cpQueueToWrite;
 
@@ -24,6 +27,11 @@ public abstract class AbstractCandidateCollection implements Runnable {
     protected AtomicInteger requestedKList;
     protected List<AbstractPair> requestedList;
     protected volatile boolean requestedListIsReady;
+
+    public AbstractCandidateCollection(String filePath) {
+        status = BufferStatus.NOT_STARTED;
+        this.filePath = filePath;
+    }
 
 
     abstract public boolean hasMoreElements();

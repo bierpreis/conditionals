@@ -38,7 +38,7 @@ public class KBCreatorObserver implements ActionListener {
             //todo: create thread and start here
             if (mainWindow.isBufferingRequested())
                 creatorThreadObject.setList(new SimpleBufferedList(mainWindow.getCpFilePath()));
-            else creatorThreadObject.setList(new UnbufferedList());
+            else creatorThreadObject.setList(new UnbufferedList(null));
 
 
             Thread creatorThread = new Thread(creatorThreadObject);

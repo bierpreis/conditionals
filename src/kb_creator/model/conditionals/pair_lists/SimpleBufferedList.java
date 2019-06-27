@@ -13,9 +13,9 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
     public SimpleBufferedList(String filePath) {
+        super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
 
-        this.filePath = filePath;
 
         requestedListIsReady = false;
     }

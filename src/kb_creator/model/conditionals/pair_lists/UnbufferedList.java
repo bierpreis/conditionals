@@ -10,7 +10,8 @@ public class UnbufferedList extends AbstractCandidateCollection {
     private int currentK;
     private List<List<AbstractPair>> candidatePairList;
 
-    public UnbufferedList() {
+    public UnbufferedList(String filePath) {
+        super(filePath);
         candidatePairList = new ArrayList<>();
     }
 
