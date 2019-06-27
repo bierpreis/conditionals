@@ -64,7 +64,7 @@ public class KBCreator implements Runnable {
         k = 1;
         //add empty list to l because java pair_lists start at 0 and original algorithm starts list at 1
         //then k and k+1 values are the same here and in the original algorithm
-        l.addNewList(k, new ArrayList<>(0));
+        l.addNewList(new ArrayList<>(0));
 
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
@@ -75,7 +75,7 @@ public class KBCreator implements Runnable {
         AbstractPair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
-        l.addNewList(k, initOneElementKBs(nfc, cnfc));
+        l.addNewList(initOneElementKBs(nfc, cnfc));
 
 
         //the following is the actual loop where the work is done
