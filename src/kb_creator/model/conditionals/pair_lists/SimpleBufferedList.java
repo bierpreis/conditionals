@@ -87,8 +87,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo: delete this? or make private?
-    public List<AbstractPair> readPairs(int requestedK) {
+    private List<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
 
@@ -101,8 +100,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         requestedListIsReady = false;
         return requestedList;
     }
-
-    //and: are this numbers correct?
+    
     private List<AbstractPair> readAllPairs(int requestedK) {
         readCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
