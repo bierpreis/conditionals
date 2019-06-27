@@ -12,16 +12,17 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class BetterBufferedList extends AbstractCandidateCollection {
-
+    private List<AbstractPair> currentList;
 
     public BetterBufferedList(String filePath) {
         super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
         //candidatePairList = new ArrayList<>();
-
+        currentList = new ArrayList<>();
 
         writeCounter = 0;
         readCounter = 0;
+
         flushRequested = false;
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
@@ -103,8 +104,8 @@ public class BetterBufferedList extends AbstractCandidateCollection {
 
     }
 
-    //todo: should be void
-    public Collection<AbstractPair> readPairs(int requestedK) {
+    //todo: this only sets flag. put in prepare and delete
+    private Collection<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
 
