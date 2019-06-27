@@ -212,7 +212,7 @@ public class BetterBufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void addNewList(int k, List<AbstractPair> listToAdd) {
+    public void addNewList(List<AbstractPair> listToAdd) {
 
         //todo
     }

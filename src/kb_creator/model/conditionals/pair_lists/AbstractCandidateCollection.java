@@ -42,7 +42,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     abstract public void prepareCollection(int requestedK);
 
-    abstract public void addNewList(int k, List<AbstractPair> pairToAdd);
+    abstract public void addNewList(List<AbstractPair> pairToAdd);
 
     abstract public void addPair(AbstractPair pairToAdd);
 

@@ -76,14 +76,16 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
         nextElementNumberToReturn = 0;
 
-        //todo: read elements
+
+        //todo: not sure if this here or set flag and do this in run method.
+        currentList = readAllPairs(requestedK);
 
     }
 
 
     //todo: delete= should be done in prepareCollection
     @Override
-    public void addNewList(int k, List<AbstractPair> listToAdd) {
+    public void addNewList(List<AbstractPair> listToAdd) {
 
 
     }
@@ -108,7 +110,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         requestedListIsReady = false;
         return requestedList;
     }
-    
+
     private List<AbstractPair> readAllPairs(int requestedK) {
         readCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
