@@ -278,8 +278,8 @@ public class KBCreator implements Runnable {
         return kbWriter;
     }
 
-    public AbstractBuffer getCpWriterThread() {
-        return l.getCpWriter();
+    public AbstractCandidateCollection getCpWriterThread() {
+        return l;
     }
 
     public void setWaiting() {
