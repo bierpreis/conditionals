@@ -21,9 +21,9 @@ public abstract class AbstractCandidateCollection implements Runnable {
     protected String filePath;
     protected volatile boolean flushRequested;
 
-    private AtomicInteger requestedKList;
-    private List<AbstractPair> requestedList;
-    private volatile boolean requestedListIsReady;
+    protected AtomicInteger requestedKList;
+    protected List<AbstractPair> requestedList;
+    protected volatile boolean requestedListIsReady;
 
 
     abstract public boolean hasMoreElements();

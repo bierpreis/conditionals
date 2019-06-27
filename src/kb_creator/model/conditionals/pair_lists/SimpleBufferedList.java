@@ -7,19 +7,17 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
     private int currentK;
 
-    private AtomicInteger requestedKList;
-    private List<AbstractPair> requestedList;
-
 
     public SimpleBufferedList(String filePath) {
         System.out.println("created simple buffered list for candidate pairs");
-        
+
         this.filePath = filePath;
+
+        requestedListIsReady = false;
     }
 
 
@@ -48,44 +46,44 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     }
 
-
+    //todo
     @Override
     public boolean hasMoreElements() {
-        return cpFileBuffer.hasMoreElements(currentK);
+        return false;
     }
 
+    //todo
     @Override
     public AbstractPair getNextPair() {
-        return cpFileBuffer.getNextPair(currentK);
+        return null;
     }
 
-
+    //todo
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !cpFileBuffer.hasElementsForK(requestedK);
+        return false;
     }
 
     @Override
     public void prepareCollection(int requestedK) {
         this.currentK = requestedK;
-        cpFileBuffer.flushWritingElements();
+        flushWritingElements();
 
-        cpFileBuffer.prepareCollection(requestedK);
-
+        //todo: read elements
 
     }
 
     @Override
     public void addNewList(int k, List<AbstractPair> listToAdd) {
 
-        cpFileBuffer.addCpList(listToAdd);
+        //todo
 
     }
 
 
     @Override
     public void addPair(AbstractPair pairToAdd) {
-        cpFileBuffer.addCpToWrite(pairToAdd);
+        cpQueueToWrite.add(pairToAdd);
     }
 
 
