@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class AbstractCandidateCollection implements Runnable{
+public abstract class AbstractCandidateCollection implements Runnable {
     protected boolean running;
     protected volatile Queue<AbstractPair> cpQueueToWrite;
 
@@ -18,7 +18,7 @@ public abstract class AbstractCandidateCollection implements Runnable{
 
     protected final int maxNumberOfPairsInFile = 200;
 
-    protected String folderToSavePath;
+    protected String filePath;
     protected volatile boolean flushRequested;
 
     private AtomicInteger requestedKList;
@@ -49,13 +49,14 @@ public abstract class AbstractCandidateCollection implements Runnable{
         return readCounter;
     }
 
-    public abstract int getQueueToWriteSize();
-
+    public int getQueueToWriteSize() {
+        return cpQueueToWrite.size();
+    }
 
 
     public void deleteFiles(int numberOfConditionals) {
         System.out.println("trying to delete " + numberOfConditionals + " element pairs");
-        File fileToDelete = new File(folderToSavePath + "/" + numberOfConditionals + "/");
+        File fileToDelete = new File(filePath + "/" + numberOfConditionals + "/");
         boolean fileDeletedSuccesfully;
         try {
             for (File file : fileToDelete.listFiles()) {
@@ -72,10 +73,6 @@ public abstract class AbstractCandidateCollection implements Runnable{
             System.out.println("no " + numberOfConditionals + " element pairs found for deleting");
         }
     }
-
-
-
-
 
 
     public enum BufferStatus {

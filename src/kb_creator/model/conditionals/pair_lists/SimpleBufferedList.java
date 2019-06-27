@@ -13,14 +13,13 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     private int currentK;
 
     private AtomicInteger requestedKList;
-
+    private List<AbstractPair> requestedList;
 
 
     public SimpleBufferedList(String filePath) {
         System.out.println("created simple buffered list for candidate pairs");
-        cpFileBuffer = new SimpleBuffer(filePath);
-        Thread cpWriterThread = new Thread(cpFileBuffer);
-        cpWriterThread.start();
+        
+        this.filePath = filePath;
     }
 
 
@@ -28,18 +27,18 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public void run() {
         while (running) {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
-                status = AbstractBuffer.BufferStatus.WRITING;
+                status = BufferStatus.WRITING;
 
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
-                status = AbstractBuffer.BufferStatus.READING;
+                status = BufferStatus.READING;
                 requestedList = readAllPairs(requestedKList.get());
                 requestedKList.set(0);
 
             } else
                 try {
-                    status = AbstractBuffer.BufferStatus.SLEEPING;
+                    status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -49,7 +48,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     }
 
-    //todo: dont use cp list but cp buffer?! build sth in cp buffer that it knows when list is empty
+
     @Override
     public boolean hasMoreElements() {
         return cpFileBuffer.hasMoreElements(currentK);
@@ -128,7 +127,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
         List<String> fileStringList = new ArrayList<>();
         //read String
-        File fileToRead = new File(folderToSavePath + "/" + requestedK + "/");
+        File fileToRead = new File(filePath + "/" + requestedK + "/");
 
         File[] filesArray = fileToRead.listFiles();
 
@@ -177,7 +176,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
-            subFolder = new File(folderToSavePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
+            subFolder = new File(filePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
             if (!subFolder.exists())
                 subFolder.mkdirs();
         }

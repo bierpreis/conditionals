@@ -28,9 +28,9 @@ public class BetterBufferedList extends AbstractCandidateCollection {
         running = true;
         System.out.println("candidate pairs will be buffered on extra memory");
         if (filePath != null) {
-            this.folderToSavePath = filePath + "/tmp/";
+            this.filePath = filePath + "/tmp/";
 
-            File tmpFile = new File(this.folderToSavePath);
+            File tmpFile = new File(this.filePath);
             tmpFile.mkdirs();
         }
 
