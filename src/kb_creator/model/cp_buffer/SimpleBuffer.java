@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class FasterSimpleBuffer extends AbstractBuffer {
+public class SimpleBuffer extends AbstractBuffer {
     private final int maxNumberOfPairsInFile = 200;
 
 
@@ -27,7 +27,7 @@ public class FasterSimpleBuffer extends AbstractBuffer {
     //idea: first read number of files
     //then read file for file and count files. this will show if more is left
     //then sth with iterator?! look if iterator and queue will hold ordering. else sth with lists.
-    public FasterSimpleBuffer(String filePath) {
+    public SimpleBuffer(String filePath) {
         writeCounter = 0;
         readCounter = 0;
         flushRequested = false;
