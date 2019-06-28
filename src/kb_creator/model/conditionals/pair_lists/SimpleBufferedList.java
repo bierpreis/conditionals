@@ -44,7 +44,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
                 pairsListList.get(requestedKList.get() - 1).clear();
 
                 //add candidates from file
-                pairsListList.get(requestedKList.get()-1).addAll(readAllPairs(requestedKList.get()));
+                pairsListList.get(requestedKList.get() - 1).addAll(readAllPairs(requestedKList.get()));
 
                 requestedKList.set(0);
                 System.out.println("finished reading");
@@ -75,27 +75,30 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !pairsListList.get(requestedK).isEmpty();
+        System.out.println("has emelents for " + requestedK + !pairsListList.get(requestedK).isEmpty());
+        return !pairsListList.get(requestedK).isEmpty(); //todo: list for k = 2 is empty?!
     }
 
     @Override
     public void prepareCollection(int requestedK) {
         System.out.println("preparing k: " + requestedK);
+
         cpQueueToWrite.addAll(pairsListList.get(requestedK));
         flushWritingElements();
 
         nextElementNumberToReturn = 0;
 
+
         requestedKList.set(requestedK + 1);
 
-        //todo: not sure if sleep here is useful
+
         while (!requestedListIsReady)
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+        requestedListIsReady = false;
     }
 
 
