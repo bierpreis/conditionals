@@ -55,6 +55,8 @@ public abstract class AbstractCandidateCollection implements Runnable {
         return readCounter;
     }
 
+    public abstract void clear(int requestedK);
+
     public int getQueueToWriteSize() {
         return cpQueueToWrite.size();
     }

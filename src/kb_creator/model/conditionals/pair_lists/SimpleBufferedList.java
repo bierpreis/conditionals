@@ -108,6 +108,11 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     }
 
+    @Override
+    public void clear(int requestedK) {
+        pairsListList.get(requestedK).clear();
+    }
+
 
     @Override
     public void addPair(AbstractPair pairToAdd) {

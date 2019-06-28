@@ -41,6 +41,11 @@ public class UnbufferedList extends AbstractCandidateCollection {
     }
 
     @Override
+    public void clear(int requestedK) {
+        candidatePairList.get(requestedK).clear();
+    }
+
+    @Override
     public void addNewList(List<AbstractPair> listToAdd) {
         candidatePairList.add(listToAdd);
         System.out.println("before creating dummy writer");

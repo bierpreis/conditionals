@@ -81,10 +81,9 @@ public class KBCreator implements Runnable {
         //the following is the actual loop where the work is done
 
         l.prepareCollection(k);
+
+
         //line 6
-
-
-        //todo: l contains all the empty pairs from older generations. delete them with list.clear() to save memory.
         while (l.hasElementsForK(k)) {
             System.gc();
 
@@ -169,6 +168,7 @@ public class KBCreator implements Runnable {
 
             k = k + 1;
             l.prepareCollection(k);
+            l.clear(k - 1);
         }
 
         status = Status.FINISHED;

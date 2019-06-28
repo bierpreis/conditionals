@@ -186,6 +186,11 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         writeCounter = 0;
     }
 
+    @Override
+    public void clear(int requestedK){
+        //todo
+    }
+
 
     //todo
     @Override
