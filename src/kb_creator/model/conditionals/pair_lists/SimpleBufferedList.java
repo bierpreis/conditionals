@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
-    private int currentK;
+
     private List<List<AbstractPair>> pairsListList;
     private int nextElementNumberToReturn;
 
@@ -25,18 +25,20 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         pairsListList = new ArrayList<>();
         nextElementNumberToReturn = 0;
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
+        running = true;
     }
 
 
     @Override
     public void run() {
         while (running) {
+            System.out.println("running...");
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = BufferStatus.WRITING;
-
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
+
                 status = BufferStatus.READING;
                 requestedList = readAllPairs(requestedKList.get());
                 requestedKList.set(0);
@@ -73,7 +75,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         flushWritingElements();
-        this.currentK = requestedK;
 
         nextElementNumberToReturn = 0;
 
