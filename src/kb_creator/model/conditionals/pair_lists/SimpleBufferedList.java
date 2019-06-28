@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleBufferedList extends AbstractCandidateCollection {
     private int currentK;
@@ -18,10 +20,11 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
 
-
+        requestedKList = new AtomicInteger(0);
         requestedListIsReady = false;
         pairsListList = new ArrayList<>();
         nextElementNumberToReturn = 0;
+        cpQueueToWrite = new ConcurrentLinkedQueue<>();
     }
 
 
@@ -77,7 +80,6 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         requestedKList.set(requestedK);
 
     }
-
 
 
     @Override
