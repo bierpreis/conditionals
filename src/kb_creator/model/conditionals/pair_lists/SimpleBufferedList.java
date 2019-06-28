@@ -80,6 +80,8 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
         requestedKList.set(requestedK);
 
+        requestedListIsReady = true;
+
     }
 
 
@@ -165,7 +167,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public void flushWritingElements() {
         flushRequested = true;
-
+        System.out.println("Flushed");
         while (!cpQueueToWrite.isEmpty()) {
             try {
                 Thread.sleep(100);
