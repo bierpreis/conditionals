@@ -99,7 +99,7 @@ public class KBCreator implements Runnable {
                 AbstractPair candidatePair = l.getNextPair(k);
 
                 //line 9
-                for (NewConditional r : candidatePair.getCandidatesList()) {
+                for (NewConditional r : candidatePair.getCandidatesList()) {//todo: candidate pair is not initialized
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 

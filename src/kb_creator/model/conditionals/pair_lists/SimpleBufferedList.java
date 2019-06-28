@@ -32,16 +32,17 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public void run() {
         while (running) {
-            System.out.println("running...");
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = BufferStatus.WRITING;
-                writeAllPairs(cpQueueToWrite);
+                writeAllPairs(cpQueueToWrite); //todo: writing deletes the pairs and leaves empty pairs. then the newly read pairs are added after that in extra list?!
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
-
+                System.out.println("reading");
                 status = BufferStatus.READING;
-                requestedList = readAllPairs(requestedKList.get());
+                pairsListList.get(requestedKList.get()).clear();
+                pairsListList.get(requestedKList.get()).addAll(readAllPairs(requestedKList.get()));
                 requestedKList.set(0);
+                System.out.println("finished reading");
 
             } else
                 try {
@@ -64,7 +65,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public AbstractPair getNextPair(int currentK) {
         nextElementNumberToReturn++;
-        return pairsListList.get(currentK).get(nextElementNumberToReturn - 1);
+        return pairsListList.get(currentK).get(nextElementNumberToReturn - 1);//todo: pairlist.get(k) only has empty pairs in it
     }
 
     @Override
@@ -74,13 +75,20 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void prepareCollection(int requestedK) {
+        cpQueueToWrite.addAll(pairsListList.get(requestedK));
         flushWritingElements();
 
         nextElementNumberToReturn = 0;
 
         requestedKList.set(requestedK);
 
-        requestedListIsReady = true;
+        //todo: not sure if sleep here is useful
+        while (!requestedListIsReady)
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
     }
 
