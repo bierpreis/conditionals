@@ -37,10 +37,12 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
-                System.out.println("reading: " + requestedKList.get()); //todo: there is no reading 3. but it should be?
+                System.out.println("reading: " + requestedKList.get());
                 status = BufferStatus.READING;
-                pairsListList.get(requestedKList.get()).clear();
-                pairsListList.get(requestedKList.get()).addAll(readAllPairs(requestedKList.get()));
+
+
+                pairsListList.add(readAllPairs(requestedKList.get())); //todo: read all pairs returnes nothing!
+
                 requestedKList.set(0);
                 System.out.println("finished reading");
 
@@ -81,7 +83,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
         nextElementNumberToReturn = 0;
 
-        requestedKList.set(requestedK);
+        requestedKList.set(requestedK + 1);
 
         //todo: not sure if sleep here is useful
         while (!requestedListIsReady)

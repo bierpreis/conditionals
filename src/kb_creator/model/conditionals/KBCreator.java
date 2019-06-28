@@ -93,6 +93,8 @@ public class KBCreator implements Runnable {
 
             //line  7
             l.addNewList(new ArrayList<>());
+
+
             iterationNumberOfKBs = 0;
             //this loop is line 8
             while (l.hasMoreElements(k)) {
