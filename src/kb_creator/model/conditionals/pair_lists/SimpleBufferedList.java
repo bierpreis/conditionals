@@ -71,7 +71,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public void prepareCollection(int requestedK) {
         flushWritingElements();
         this.currentK = requestedK;
-        
+
         nextElementNumberToReturn = 0;
 
         requestedKList.set(requestedK);
@@ -79,10 +79,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo: delete= should be done in prepareCollection
+
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
-
+        pairsListList.add(listToAdd);
 
     }
 

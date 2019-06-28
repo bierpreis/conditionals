@@ -88,8 +88,9 @@ public class KBCreator implements Runnable {
 
             nextCandidatePairAmount = 0;
 
-            status = Status.WAITING;
             status = Status.RUNNING;
+
+
             //line  7
             l.addNewList(new ArrayList<>());
             iterationNumberOfKBs = 0;
