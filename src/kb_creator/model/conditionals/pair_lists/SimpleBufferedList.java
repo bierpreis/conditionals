@@ -65,12 +65,12 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public AbstractPair getNextPair(int currentK) {
         nextElementNumberToReturn++;
-        return pairsListList.get(currentK).get(nextElementNumberToReturn - 1);//todo: pairlist.get(k) only has empty pairs in it
+        return pairsListList.get(currentK).get(nextElementNumberToReturn - 1);
     }
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !pairsListList.get(requestedK).isEmpty();
+        return !pairsListList.get(requestedK).isEmpty();//todo: this is empty for k = 3. this caused the problem.
     }
 
     @Override
