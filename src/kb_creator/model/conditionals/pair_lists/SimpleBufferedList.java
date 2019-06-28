@@ -49,11 +49,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
     }
-
-    //todo
+    
     @Override
     public boolean hasMoreElements(int currentK) {
-        return false;
+        return pairsListList.get(currentK).size() > nextElementNumberToReturn;
     }
 
 
