@@ -49,7 +49,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
     }
-    
+
     @Override
     public boolean hasMoreElements(int currentK) {
         return pairsListList.get(currentK).size() > nextElementNumberToReturn;
@@ -71,13 +71,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public void prepareCollection(int requestedK) {
         flushWritingElements();
         this.currentK = requestedK;
-
-
+        
         nextElementNumberToReturn = 0;
 
-
-        //todo: not sure if this here or set flag and do this in run method.
-        pairsListList.add(readAllPairs(requestedK));
+        requestedKList.set(requestedK);
 
     }
 
