@@ -75,12 +75,12 @@ public class KBCreator implements Runnable {
         AbstractPair.setNfc(nfcMap);
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
-        l.addNewList(initOneElementKBs(nfc, cnfc)); //todo: they are now written to file?!
+        l.addNewList(initOneElementKBs(nfc, cnfc));
 
 
         //the following is the actual loop where the work is done
 
-        l.prepareCollection(k); //todo: think about prepatation
+        l.prepareCollection(k);
         //line 6
 
         while (l.hasElementsForK(k)) {
@@ -164,7 +164,7 @@ public class KBCreator implements Runnable {
             }
 
             k = k + 1;
-            l.prepareCollection(k);
+            l.prepareCollection(k); //todo: this is not called for 3.
         }
 
         status = Status.FINISHED;

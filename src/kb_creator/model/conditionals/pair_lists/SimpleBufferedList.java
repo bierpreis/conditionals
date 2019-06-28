@@ -34,10 +34,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         while (running) {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = BufferStatus.WRITING;
-                writeAllPairs(cpQueueToWrite); //todo: writing deletes the pairs and leaves empty pairs. then the newly read pairs are added after that in extra list?!
+                writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
-                System.out.println("reading");
+                System.out.println("reading: " + requestedKList.get()); //todo: there is no reading 3. but it should be?
                 status = BufferStatus.READING;
                 pairsListList.get(requestedKList.get()).clear();
                 pairsListList.get(requestedKList.get()).addAll(readAllPairs(requestedKList.get()));
@@ -70,11 +70,12 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !pairsListList.get(requestedK).isEmpty();//todo: this is empty for k = 3. this caused the problem.
+        return !pairsListList.get(requestedK).isEmpty();
     }
 
     @Override
-    public void prepareCollection(int requestedK) {
+    public void prepareCollection(int requestedK) { //todo: there is no preparing for k = 3. therefore no elements?!
+        System.out.println("preparing k: " + requestedK);
         cpQueueToWrite.addAll(pairsListList.get(requestedK));
         flushWritingElements();
 
