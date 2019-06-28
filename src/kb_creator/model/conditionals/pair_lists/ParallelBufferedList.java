@@ -11,10 +11,10 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class BetterBufferedList extends AbstractCandidateCollection {
+public class ParallelBufferedList extends AbstractCandidateCollection {
     private List<AbstractPair> currentList;
 
-    public BetterBufferedList(String filePath) {
+    public ParallelBufferedList(String filePath) {
         super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
         //candidatePairList = new ArrayList<>();

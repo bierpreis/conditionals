@@ -3,7 +3,6 @@ package kb_creator.observer;
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.conditionals.KBCreator;
 import kb_creator.model.conditionals.pair_lists.AbstractCandidateCollection;
-import kb_creator.model.conditionals.pair_lists.BetterBufferedList;
 import kb_creator.model.conditionals.pair_lists.SimpleBufferedList;
 import kb_creator.model.conditionals.pair_lists.UnbufferedList;
 
