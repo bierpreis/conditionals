@@ -83,6 +83,8 @@ public class KBCreator implements Runnable {
         l.prepareCollection(k);
         //line 6
 
+
+        //todo: l contains all the empty pairs from older generations. delete them with list.clear() to save memory.
         while (l.hasElementsForK(k)) {
             System.gc();
 
