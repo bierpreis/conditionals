@@ -79,7 +79,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void prepareCollection(int requestedK) { //todo: there is no preparing for k = 3. therefore no elements?!
+    public void prepareCollection(int requestedK) {
         System.out.println("preparing k: " + requestedK);
         cpQueueToWrite.addAll(pairsListList.get(requestedK));
         flushWritingElements();
@@ -128,7 +128,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     private List<AbstractPair> readAllPairs(int requestedK) {
         readCounter = 0;
-        List<String> stringList = getPairStringList(requestedK); //todo: string list has 0 elements?!
+        List<String> stringList = getPairStringList(requestedK);
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
