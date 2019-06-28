@@ -40,8 +40,11 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
                 System.out.println("reading: " + requestedKList.get());
                 status = BufferStatus.READING;
 
+                //remove the "null" pairs with empty kb and candidates
+                pairsListList.get(requestedKList.get() - 1).clear();
 
-                pairsListList.add(readAllPairs(requestedKList.get())); //todo: read all pairs returnes nothing!
+                //add candidates from file
+                pairsListList.get(requestedKList.get()-1).addAll(readAllPairs(requestedKList.get()));
 
                 requestedKList.set(0);
                 System.out.println("finished reading");
@@ -125,7 +128,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     private List<AbstractPair> readAllPairs(int requestedK) {
         readCounter = 0;
-        List<String> stringList = getPairStringList(requestedK);
+        List<String> stringList = getPairStringList(requestedK); //todo: string list has 0 elements?!
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
@@ -140,10 +143,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
     private List<String> getPairStringList(int requestedK) {
-
+        System.out.println("reading files for k: " + requestedK);
         List<String> fileStringList = new ArrayList<>();
         //read String
-        File fileToRead = new File(filePath + "/" + requestedK + "/");
+        File fileToRead = new File(filePath + "/" + (requestedK - 1) + "/");
 
         File[] filesArray = fileToRead.listFiles();
 
@@ -172,6 +175,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         for (String fileString : fileStringList) {
             pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
         }
+        System.out.println("succesfully read " + pairStringList.size() + " pair strings for k: " + requestedK);
         return pairStringList;
     }
 
