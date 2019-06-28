@@ -76,7 +76,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     @Override
     public boolean hasElementsForK(int requestedK) {
         System.out.println("has emelents for " + requestedK + !pairsListList.get(requestedK).isEmpty());
-        return !pairsListList.get(requestedK).isEmpty(); //todo: list for k = 2 is empty?!
+        return !pairsListList.get(requestedK).isEmpty();
     }
 
     @Override
