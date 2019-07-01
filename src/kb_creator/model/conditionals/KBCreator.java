@@ -99,6 +99,8 @@ public class KBCreator implements Runnable {
 
             iterationNumberOfKBs = 0;
             //this loop is line 8
+
+            //todo: this doensnt trigger
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
 
@@ -125,6 +127,7 @@ public class KBCreator implements Runnable {
                         //line 12
 
                         //this is where the ram gets full. therefore the buffering
+                        System.out.println("adding pair");
                         l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 

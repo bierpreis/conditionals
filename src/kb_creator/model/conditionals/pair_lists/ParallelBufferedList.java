@@ -8,9 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -88,35 +85,36 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             subFolder = new File(filePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
             if (!subFolder.exists())
                 subFolder.mkdirs();
-        }
 
-        try {
 
-            //add leading zeros so the files will be soreted in correct order in their folder
-            String fileName = String.format("%05d", fileNameCounter);
-            fileNameCounter++;
+            try {
 
-            //todo: subfolder is null. why?
-            PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
+                //add leading zeros so the files will be soreted in correct order in their folder
+                String fileName = String.format("%05d", fileNameCounter);
+                fileNameCounter++;
 
-            StringBuilder sb = new StringBuilder();
+                //todo: subfolder is null. why?
+                PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
-            for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
+                StringBuilder sb = new StringBuilder();
 
-                AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
-                sb.append(pairToWrite.toFileString());
-                sb.append("\nEND_PAIR\n\n");
-                pairToWrite.deleteCandidates();
-                pairToWrite.deleteKB();
+                for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
 
+                    AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
+                    sb.append(pairToWrite.toFileString());
+                    sb.append("\nEND_PAIR\n\n");
+                    pairToWrite.deleteCandidates();
+                    pairToWrite.deleteKB();
+
+                }
+
+                writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
+                writer.close();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
-            writer.close();
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         System.out.println("writing finished" + queueToWrite.size());
@@ -144,7 +142,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         String[] fileStringArray = sb.toString().split("\nEND_PAIR\n\n");
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
-        //todo: fileStringArray contains the filepath of file not the string which is in it
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
             readCounter++;
@@ -219,7 +216,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void prepareCollection(int requestedK) {
-        System.out.println("preparing");
+        System.out.println("preparing: " + requestedK);
         flushWritingElements();
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         requestedListNumber.set(requestedK);
@@ -245,9 +242,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-
+    //todo: why is this never called? should be called when k = 2.
     @Override
     public void addPair(AbstractPair pairToAdd) {
+        System.out.println("adding: " + pairToAdd);
         cpQueueToWrite.add(pairToAdd);
 
     }
