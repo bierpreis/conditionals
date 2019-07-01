@@ -55,14 +55,16 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void run() {
         while (running) {
-            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
+            if (cpQueueToWrite.size() > maxNumberOfPairsInFile) {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
+            } else if (flushRequested) {
+                status = BufferStatus.WRITING;
+                writeNextFile(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
-                //todo: why put reading in requestedList and not in queue?
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
                 requestedListIsReady = true;
                 requestedListNumber.set(0);
@@ -80,6 +82,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
     private void writeNextFile(Queue queueToWrite) {
+        System.out.println("writing " + queueToWrite.size() + " elements");
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
             subFolder = new File(filePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
@@ -114,6 +117,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("writing finished" + queueToWrite.size());
 
     }
 
@@ -153,6 +158,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void flushWritingElements() {
+        System.out.println("flushing");
         flushRequested = true;
 
         while (!cpQueueToWrite.isEmpty()) {
@@ -162,6 +168,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
+        System.out.println("flushing finished");
         fileNameCounter = 0;
     }
 
@@ -211,12 +218,17 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void prepareCollection(int requestedK) {
+        System.out.println("preparing");
+        flushWritingElements();
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         requestedListNumber.set(requestedK);
+
+
         File folderToRead = new File(filePath + "/" + requestedK + "/");
 
         long beforeReadFiles = System.currentTimeMillis();
         File[] filesArray = folderToRead.listFiles();
+
         Arrays.sort(filesArray);
         filesList = Arrays.asList(filesArray);
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");

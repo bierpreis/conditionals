@@ -168,6 +168,7 @@ public class KBCreator implements Runnable {
             }
 
             k = k + 1;
+
             l.prepareCollection(k);
             l.clear(k - 1);
         }
