@@ -9,37 +9,43 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParallelBufferedList extends AbstractCandidateCollection {
-    private List<AbstractPair> currentList;
+    private Queue queueToReturn;
+    private Queue queueToPrepare;
 
     public ParallelBufferedList(String filePath) {
         super(filePath);
-        System.out.println("created simple buffered list for candidate pairs");
-        //candidatePairList = new ArrayList<>();
-        currentList = new ArrayList<>();
+        System.out.println("created parallel list for candidate pairs");
 
         writeCounter = 0;
         readCounter = 0;
 
+        queueToReturn = new LinkedBlockingQueue();
+        queueToPrepare = new LinkedBlockingQueue();
+
         flushRequested = false;
         running = true;
-        System.out.println("candidate pairs will be buffered on extra memory");
-        if (filePath != null) {
+
+
             this.filePath = filePath + "/tmp/";
 
             File tmpFile = new File(this.filePath);
             tmpFile.mkdirs();
-        }
+
 
         cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>();
+
         requestedKList = new AtomicInteger(0);
-        requestedListIsReady = false;
+
+
         status = BufferStatus.NOT_STARTED;
 
     }
 
+    //todo
     @Override
     public void run() {
         while (running) {
@@ -65,6 +71,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     }
 
+    //todo
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
@@ -104,7 +111,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     }
 
-    //todo: this only sets flag. put in prepare and delete
+    //todo
     private Collection<AbstractPair> readPairs(int requestedK) {
         requestedKList.set(requestedK);
         while (!requestedListIsReady) {
@@ -118,6 +125,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         requestedListIsReady = false;
         return requestedList;
     }
+
 
     private List<String> getPairStringList(int requestedK) {
 
@@ -155,7 +163,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return pairStringList;
     }
 
-    //and: are this numbers correct?
+    //todo
     private List<AbstractPair> readAllPairs(int requestedK) {
         readCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
@@ -187,8 +195,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void clear(int requestedK){
-        //todo
+    public void clear(int requestedK) {
+        //nothing
     }
 
 
