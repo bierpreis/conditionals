@@ -180,7 +180,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     public boolean hasElementsForK(int requestedK) {
         return filesList.size() >= (requestedK - 1);
     }
-    
+
     @Override
     public void prepareCollection(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;

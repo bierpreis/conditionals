@@ -3,6 +3,7 @@ package kb_creator.observer;
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.conditionals.KBCreator;
 import kb_creator.model.conditionals.pair_lists.AbstractCandidateCollection;
+import kb_creator.model.conditionals.pair_lists.ParallelBufferedList;
 import kb_creator.model.conditionals.pair_lists.SimpleBufferedList;
 import kb_creator.model.conditionals.pair_lists.UnbufferedList;
 
@@ -38,7 +39,7 @@ public class KBCreatorObserver implements ActionListener {
             AbstractCandidateCollection candidateBuffer;
 
             if (mainWindow.isBufferingRequested())
-                creatorThreadObject.setList(candidateBuffer = new SimpleBufferedList(mainWindow.getCpFilePath()));
+                creatorThreadObject.setList(candidateBuffer = new ParallelBufferedList(mainWindow.getCpFilePath()));
             else creatorThreadObject.setList(candidateBuffer = new UnbufferedList(null));
 
 

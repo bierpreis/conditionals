@@ -76,6 +76,7 @@ public class KBCreator implements Runnable {
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
+        l.flushWritingElements();
 
 
         //the following is the actual loop where the work is done
