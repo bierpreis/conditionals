@@ -160,7 +160,16 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             return true;
         if (nextFileToReadNumber == filesList.size())
             return false;
-        throw new RuntimeException("has more elements failed!");
+
+        //if nothing from above triggered, reader thread is propably reading, so wait and check again later
+        if (!requestedListIsReady)
+            try {
+                System.out.println("sleeping!!");
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        return hasElementsForK(currentK);
     }
 
 
@@ -191,7 +200,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         File[] filesArray = folderToRead.listFiles();
         Arrays.sort(filesArray);
         filesList = Arrays.asList(filesArray);
-        System.out.println("reading folder took " + (System.currentTimeMillis()-beforeReadFiles)/1000 +" seconds");
+        System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
 
         nextFileToReadNumber = 0;
         readCounter = 0;
