@@ -58,7 +58,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 flushRequested = false;
             } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
-                requestedList = readNextFile(requestedListNumber.get());
+                //todo: why put reading in requestedList and not in queue?
+                queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
+                requestedListIsReady = true;
                 requestedListNumber.set(0);
 
             } else
@@ -128,7 +130,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
 
         nextFileToReadNumber++;
-        requestedListIsReady = true;
+
         return pairsList;
     }
 
@@ -158,8 +160,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         if (!queueToReturn.isEmpty())
             return true;
-        if (!queueToPrepare.isEmpty())
-            return true;
         if (nextFileToReadNumber == filesList.size())
             return false;
 
@@ -171,7 +171,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        return hasElementsForK(currentK);
+        return hasMoreElements(currentK);
     }
 
     //todo: this returns null when queue is empty. this should not be! but how to fix?
