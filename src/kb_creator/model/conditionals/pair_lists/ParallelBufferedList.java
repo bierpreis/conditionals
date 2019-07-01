@@ -58,7 +58,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 flushRequested = false;
             } else if (requestedKList.get() != 0) {
                 status = BufferStatus.READING;
-                requestedList = readAllPairs(requestedKList.get());
+                requestedList = readNextFile(requestedKList.get());
                 requestedKList.set(0);
 
             } else
@@ -132,6 +132,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         //read String
         File fileToRead = new File(filePath + "/" + requestedK + "/");
 
+        //todo: files array length is indicator if there are more files to read
         File[] filesArray = fileToRead.listFiles();
 
         //if there are no files, there are no candidate pairs left so the empty list gets returned
@@ -149,7 +150,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                     sb.append(fileScanner.nextLine());
                     sb.append("\n");
                 }
-
+                //todo: not all in one list but one list for every file
                 fileStringList.add(sb.toString());
             }
         } catch (IOException e) {
@@ -163,9 +164,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
     //todo: read next file
-    private List<AbstractPair> readAllPairs(int requestedK) {
-        readCounter = 0;
-        List<String> stringList = getPairStringList(requestedK);
+    private List<AbstractPair> readNextFile(int requestedK) {
+        List<>
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
@@ -175,6 +175,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         }
 
         requestedListIsReady = true;
+        nextFileToReadNumber++;
         return pairsList;
     }
 
@@ -228,6 +229,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     public void prepareCollection(int requestedK) {
         fileStringList = getPairStringList(requestedK);
         nextFileToReadNumber = 0;
+        readCounter = 0;
+        readNextFile(requestedK);
 
 
     }
