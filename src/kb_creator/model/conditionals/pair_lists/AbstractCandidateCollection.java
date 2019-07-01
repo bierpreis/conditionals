@@ -19,7 +19,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     protected final int maxNumberOfPairsInFile = 200;
 
-    protected String filePath;
+    protected String filePath = "";
     protected volatile boolean flushRequested;
 
     protected AtomicInteger requestedListNumber;

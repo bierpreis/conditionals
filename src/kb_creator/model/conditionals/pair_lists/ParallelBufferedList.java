@@ -5,8 +5,12 @@ import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -88,8 +92,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             //add leading zeros so the files will be soreted in correct order in their folder
             String fileName = String.format("%05d", fileNameCounter);
             fileNameCounter++;
-            if (subFolder == null)
-                System.out.println("it was null!");
+
             PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
             StringBuilder sb = new StringBuilder();
@@ -116,11 +119,23 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     private List<AbstractPair> readNextFile(int requestedK) {
         //read String
-        File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter));
+        File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter) + ".txt");
+        Scanner fileScanner = null;
+        try {
+            fileScanner = new Scanner(fileToRead);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (fileScanner.hasNextLine()) {
+            sb.append(fileScanner.nextLine());
+            sb.append("\n");
+        }
 
 
-        String[] fileStringArray = fileToRead.toString().split("\nEND_PAIR\n\n");
-
+        String[] fileStringArray = sb.toString().split("\nEND_PAIR\n\n");
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
         //todo: fileStringArray contains the filepath of file not the string which is in it
