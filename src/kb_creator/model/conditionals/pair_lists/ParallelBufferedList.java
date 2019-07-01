@@ -166,6 +166,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
         if (!requestedListIsReady)
             try {
+                status = BufferStatus.SLEEPING;
                 System.out.println("sleeping!!");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -174,12 +175,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return hasMoreElements(currentK);
     }
 
-    //todo: this returns null when queue is empty. this should not be! but how to fix?
+
     @Override
     public AbstractPair getNextPair(int currentK) {
         if (queueToReturn.isEmpty()) {
             queueToReturn = queueToPrepare;
-            queueToPrepare.clear();
+            queueToPrepare = new LinkedBlockingQueue<>();
 
         }
 
@@ -195,7 +196,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
-
+        requestedListNumber.set(requestedK);
         File folderToRead = new File(filePath + "/" + requestedK + "/");
 
         long beforeReadFiles = System.currentTimeMillis();
