@@ -109,7 +109,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         }
 
     }
-    
+
     private List<AbstractPair> readNextFile(int requestedK) {
         //read String
         File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter));
@@ -180,8 +180,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     public boolean hasElementsForK(int requestedK) {
         return filesList.size() >= (requestedK - 1);
     }
-
-    //todo
+    
     @Override
     public void prepareCollection(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
@@ -197,7 +196,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         nextFileToReadNumber = 0;
         readCounter = 0;
         requestedListIsReady = false;
-
     }
 
     @Override
