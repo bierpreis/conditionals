@@ -13,22 +13,20 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParallelBufferedList extends AbstractCandidateCollection {
-    private Queue queueToReturn;
-    private Queue queueToPrepare;
+    private Queue<AbstractPair> queueToReturn;
+    private Queue<AbstractPair> queueToPrepare;
     private List<String> fileStringList;
-    private int currentK;
     private int nextFileToReadNumber;
 
     public ParallelBufferedList(String filePath) {
         super(filePath);
         System.out.println("created parallel list for candidate pairs");
-        currentK = 1;
 
         writeCounter = 0;
         readCounter = 0;
 
-        queueToReturn = new LinkedBlockingQueue();
-        queueToPrepare = new LinkedBlockingQueue();
+        queueToReturn = new LinkedBlockingQueue<>();
+        queueToPrepare = new LinkedBlockingQueue<>();
 
         flushRequested = false;
         running = true;
@@ -47,8 +45,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         status = BufferStatus.NOT_STARTED;
 
-        fileStringList = getPairStringList(currentK);
-        nextFileToReadNumber = 0;
     }
 
     //todo
@@ -76,7 +72,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
 
     }
-    
+
     private void writeNextFile(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
@@ -163,7 +159,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         for (String fileString : fileStringList) {
             pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
         }
-        currentK++;
         return pairStringList;
     }
 
@@ -210,10 +205,16 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return false;
     }
 
-    //todo
+
     @Override
     public AbstractPair getNextPair(int currentK) {
-        return null;
+        if (queueToReturn.isEmpty()) {
+            queueToReturn = queueToPrepare;
+            queueToPrepare.clear();
+
+        }
+
+        return queueToReturn.poll();
     }
 
     //todo
@@ -225,19 +226,24 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //todo
     @Override
     public void prepareCollection(int requestedK) {
+        fileStringList = getPairStringList(requestedK);
+        nextFileToReadNumber = 0;
+
 
     }
 
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
 
-        //todo
+        //todo what should this do?!
     }
 
 
+    //todo: think about if this needs sync block
     @Override
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
+
     }
 
 
