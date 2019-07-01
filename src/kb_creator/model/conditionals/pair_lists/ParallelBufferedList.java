@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ParallelBufferedList extends AbstractCandidateCollection {
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> queueToPrepare;
-    private List<String> fileStringList;
+    private List<List<String>> fileStringListList;
     private int nextFileToReadNumber;
 
     public ParallelBufferedList(String filePath) {
@@ -126,16 +126,19 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
-    private List<String> getPairStringList(int requestedK) {
+    private List<List<String>> getPairStringList(int requestedK) {
 
-        List<String> fileStringList = new ArrayList<>();
+
         //read String
         File fileToRead = new File(filePath + "/" + requestedK + "/");
 
         //todo: files array length is indicator if there are more files to read
         File[] filesArray = fileToRead.listFiles();
 
+        List<List<String>> fileStringList = new ArrayList<>(filesArray.length);
         //if there are no files, there are no candidate pairs left so the empty list gets returned
+
+        //todo: why always false?
         if (filesArray == null)
             return fileStringList;
 
@@ -165,11 +168,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     //todo: read next file
     private List<AbstractPair> readNextFile(int requestedK) {
+        
+        List<AbstractPair> pairsList = new ArrayList<>(fileStringListList.get(nextFileToReadNumber).size());
 
-        //todo: init this with a size? standard file size or the correct size?
-        List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
-
-        for (String stringFromFile : stringList) {
+        for (String stringFromFile : fileStringListList.get(nextFileToReadNumber)) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
             readCounter++;
         }
