@@ -2,6 +2,7 @@ package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
+import kb_creator.observer.Status;
 
 
 import java.io.File;
@@ -181,11 +182,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         if (!queueToReturn.isEmpty())
             return true;
+
+        //todo: this is wrong ant causes not iterating in kb creator
         if (nextFileToReadNumber == filesList.size())
             return false;
 
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
-        if (!requestedListIsReady)
+        if (!requestedListIsReady || status.equals(BufferStatus.READING))
             try {
                 status = BufferStatus.SLEEPING;
                 System.out.println("sleeping!!");
