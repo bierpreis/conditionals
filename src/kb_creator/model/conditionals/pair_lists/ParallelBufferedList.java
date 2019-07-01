@@ -15,14 +15,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ParallelBufferedList extends AbstractCandidateCollection {
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> queueToPrepare;
-    private List<List<String>> fileStringListList;
+    private List<String> fileStringList;
     private int nextFileToReadNumber;
 
     public ParallelBufferedList(String filePath) {
         super(filePath);
         System.out.println("created parallel list for candidate pairs");
 
-        writeCounter = 0;
+        fileNameCounter = 0;
         readCounter = 0;
 
         queueToReturn = new LinkedBlockingQueue<>();
@@ -40,7 +40,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>();
 
-        requestedKList = new AtomicInteger(0);
+        requestedListNumber = new AtomicInteger(0);
 
 
         status = BufferStatus.NOT_STARTED;
@@ -56,10 +56,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
                 writeNextFile(cpQueueToWrite);
                 flushRequested = false;
-            } else if (requestedKList.get() != 0) {
+            } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
-                requestedList = readNextFile(requestedKList.get());
-                requestedKList.set(0);
+                requestedList = readNextFile(requestedListNumber.get());
+                requestedListNumber.set(0);
 
             } else
                 try {
@@ -84,8 +84,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         try {
 
             //add leading zeros so the files will be soreted in correct order in their folder
-            String fileName = String.format("%05d", writeCounter);
-            writeCounter++;
+            String fileName = String.format("%05d", fileNameCounter);
+            fileNameCounter++;
             PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
             StringBuilder sb = new StringBuilder();
@@ -112,7 +112,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     //todo: read next file
     private Collection<AbstractPair> readPairs(int requestedK) {
-        requestedKList.set(requestedK);
+        requestedListNumber.set(requestedK);
         while (!requestedListIsReady) {
 
             try {
@@ -130,45 +130,51 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
 
         //read String
-        File fileToRead = new File(filePath + "/" + requestedK + "/");
+        File folderToRead = new File(filePath + "/" + requestedK + "/");
 
-        //todo: files array length is indicator if there are more files to read
-        File[] filesArray = fileToRead.listFiles();
+        //todo: this list is not in order says javadoc. need to sort it?
+        File[] filesArray = folderToRead.listFiles();
 
-        List<List<String>> fileStringList = new ArrayList<>(filesArray.length);
+        List<List<String>> localFileStringListList = new ArrayList<>(filesArray.length);
         //if there are no files, there are no candidate pairs left so the empty list gets returned
 
         //todo: why always false?
         if (filesArray == null)
-            return fileStringList;
+            return localFileStringListList;
 
-
+        int currentFileNumber = 0;
         try {
             for (File file : filesArray) {
                 Scanner fileScanner = new Scanner(file);
 
                 StringBuilder sb = new StringBuilder();
 
+                //todo: size this?
+                localFileStringListList.add(new ArrayList<>());
+
                 while (fileScanner.hasNextLine()) {
                     sb.append(fileScanner.nextLine());
                     sb.append("\n");
                 }
                 //todo: not all in one list but one list for every file
-                fileStringList.add(sb.toString());
+                localFileStringListList.get(currentFileNumber).add(sb.toString());
+                currentFileNumber++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //todo: these are the real pair strings?!
         List<String> pairStringList = new ArrayList<>();
-        for (String fileString : fileStringList) {
+        for (String fileString : localFileStringListList) {
             pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
         }
-        return pairStringList;
+        return localFileStringListList;
     }
 
     //todo: read next file
     private List<AbstractPair> readNextFile(int requestedK) {
-        
+
         List<AbstractPair> pairsList = new ArrayList<>(fileStringListList.get(nextFileToReadNumber).size());
 
         for (String stringFromFile : fileStringListList.get(nextFileToReadNumber)) {
@@ -193,7 +199,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
-        writeCounter = 0;
+        fileNameCounter = 0;
     }
 
     @Override
@@ -202,10 +208,16 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo
     @Override
     public boolean hasMoreElements(int currentK) {
-        return false;
+
+        if (!queueToReturn.isEmpty())
+            return true;
+        if (!queueToPrepare.isEmpty())
+            return true;
+        if (nextFileToReadNumber == fileStringList.size())
+            return false;
+        throw new RuntimeException("has more elements failed!");
     }
 
 
@@ -220,10 +232,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return queueToReturn.poll();
     }
 
-    //todo
+
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return false;
+        return fileStringList.size() >= (requestedK - 1);
     }
 
     //todo

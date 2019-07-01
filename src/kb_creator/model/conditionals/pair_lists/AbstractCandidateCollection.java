@@ -14,7 +14,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     protected volatile BufferStatus status;
 
-    protected volatile int writeCounter;
+    protected volatile int fileNameCounter;
     protected volatile int readCounter;
 
     protected final int maxNumberOfPairsInFile = 200;
@@ -22,7 +22,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
     protected String filePath;
     protected volatile boolean flushRequested;
 
-    protected AtomicInteger requestedKList;
+    protected AtomicInteger requestedListNumber;
     protected List<AbstractPair> requestedList;
     protected volatile boolean requestedListIsReady;
 

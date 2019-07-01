@@ -20,7 +20,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
 
-        requestedKList = new AtomicInteger(0);
+        requestedListNumber = new AtomicInteger(0);
         requestedListIsReady = false;
         pairsListList = new ArrayList<>();
         nextElementNumberToReturn = 0;
@@ -36,17 +36,17 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.WRITING;
                 writeAllPairs(cpQueueToWrite);
                 flushRequested = false;
-            } else if (requestedKList.get() != 0) {
-                System.out.println("reading: " + requestedKList.get());
+            } else if (requestedListNumber.get() != 0) {
+                System.out.println("reading: " + requestedListNumber.get());
                 status = BufferStatus.READING;
 
                 //remove the "null" pairs with empty kb and candidates
-                pairsListList.get(requestedKList.get() - 1).clear();
+                pairsListList.get(requestedListNumber.get() - 1).clear();
 
                 //add candidates from file
-                pairsListList.get(requestedKList.get() - 1).addAll(readAllPairs(requestedKList.get()));
+                pairsListList.get(requestedListNumber.get() - 1).addAll(readAllPairs(requestedListNumber.get()));
 
-                requestedKList.set(0);
+                requestedListNumber.set(0);
                 System.out.println("finished reading");
 
             } else
@@ -89,7 +89,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         nextElementNumberToReturn = 0;
 
 
-        requestedKList.set(requestedK + 1);
+        requestedListNumber.set(requestedK + 1);
 
 
         while (!requestedListIsReady)
@@ -121,7 +121,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
     private List<AbstractPair> readPairs(int requestedK) {
-        requestedKList.set(requestedK);
+        requestedListNumber.set(requestedK);
         while (!requestedListIsReady) {
 
             try {
@@ -198,7 +198,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
-        writeCounter = 0;
+        fileNameCounter = 0;
     }
 
     private void writeAllPairs(Queue queueToWrite) {
@@ -213,8 +213,8 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
             while (!queueToWrite.isEmpty()) {
                 //add leading zeros so the files will be soreted in correct order in their folder
-                String fileName = String.format("%05d", writeCounter);
-                writeCounter++;
+                String fileName = String.format("%05d", fileNameCounter);
+                fileNameCounter++;
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
                 StringBuilder sb = new StringBuilder();
