@@ -53,8 +53,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         while (running) {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || flushRequested) {
                 status = BufferStatus.WRITING;
-
-                writeNextFile(cpQueueToWrite);
+                if (cpQueueToWrite.size() > 0)
+                    writeNextFile(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
@@ -86,7 +86,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             //add leading zeros so the files will be soreted in correct order in their folder
             String fileName = String.format("%05d", fileNameCounter);
             fileNameCounter++;
-            PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
+            if (subFolder == null)
+                System.out.println("it was null!");
+            PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
             StringBuilder sb = new StringBuilder();
 
@@ -172,7 +174,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return hasElementsForK(currentK);
     }
 
-
+    //todo: this returns null when queue is empty. this should not be! but how to fix?
     @Override
     public AbstractPair getNextPair(int currentK) {
         if (queueToReturn.isEmpty()) {
