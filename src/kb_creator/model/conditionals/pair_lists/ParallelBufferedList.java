@@ -96,6 +96,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             String fileName = String.format("%05d", fileNameCounter);
             fileNameCounter++;
 
+            //todo: subfolder is null. why?
             PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
             StringBuilder sb = new StringBuilder();
