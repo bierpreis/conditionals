@@ -94,7 +94,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 String fileName = String.format("%05d", fileNameCounter);
                 fileNameCounter++;
 
-                //todo: subfolder is null. why?
+
                 PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
                 StringBuilder sb = new StringBuilder();
@@ -176,16 +176,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         //nothing
     }
 
-
+    //todo: this doenst work. it should return if queue is empty and possibly wait for reader to finish
     @Override
     public boolean hasMoreElements(int currentK) {
 
         if (!queueToReturn.isEmpty())
             return true;
 
-        //todo: this is wrong ant causes not iterating in kb creator
-        if (nextFileToReadNumber == filesList.size())
-            return false;
 
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
         if (!requestedListIsReady || status.equals(BufferStatus.READING))
@@ -245,7 +242,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-    //todo: why is this never called? should be called when k = 2.
+
     @Override
     public void addPair(AbstractPair pairToAdd) {
         System.out.println("adding: " + pairToAdd);
