@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ParallelBufferedList extends AbstractCandidateCollection {
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> queueToPrepare;
-    private List<String> fileStringList;
+    private List<File> filesList;
     private int nextFileToReadNumber;
 
     public ParallelBufferedList(String filePath) {
@@ -125,15 +125,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return requestedList;
     }
 
-
+    //todo: dont read all files at once!
     private List<List<String>> getPairStringList(int requestedK) {
 
-
-        //read String
-        File folderToRead = new File(filePath + "/" + requestedK + "/");
-
-        //todo: this list is not in order says javadoc. need to sort it?
-        File[] filesArray = folderToRead.listFiles();
 
         List<List<String>> localFileStringListList = new ArrayList<>(filesArray.length);
         //if there are no files, there are no candidate pairs left so the empty list gets returned
@@ -174,16 +168,22 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     //todo: read next file
     private List<AbstractPair> readNextFile(int requestedK) {
+        //read String
+        File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter));
 
-        List<AbstractPair> pairsList = new ArrayList<>(fileStringListList.get(nextFileToReadNumber).size());
 
-        for (String stringFromFile : fileStringListList.get(nextFileToReadNumber)) {
+        String[] fileStringArray = fileToRead.toString().split("\nEND_PAIR\n\n");
+
+        List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
+
+        for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
             readCounter++;
         }
 
-        requestedListIsReady = true;
+
         nextFileToReadNumber++;
+        requestedListIsReady = true;
         return pairsList;
     }
 
@@ -215,7 +215,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             return true;
         if (!queueToPrepare.isEmpty())
             return true;
-        if (nextFileToReadNumber == fileStringList.size())
+        if (nextFileToReadNumber == filesList.size())
             return false;
         throw new RuntimeException("has more elements failed!");
     }
@@ -235,17 +235,23 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return fileStringList.size() >= (requestedK - 1);
+        return filesList.size() >= (requestedK - 1);
     }
 
     //todo
     @Override
     public void prepareCollection(int requestedK) {
-        fileStringList = getPairStringList(requestedK);
+        status = BufferStatus.PREPARING_NEXT_ITERATION;
+
+        //todo: this list is not in order says javadoc. need to sort it?
+        File folderToRead = new File(filePath + "/" + requestedK + "/");
+
+        //todo: check if this takes too long
+        filesList = Arrays.asList(folderToRead.listFiles());
+
         nextFileToReadNumber = 0;
         readCounter = 0;
-        readNextFile(requestedK);
-
+        requestedListIsReady = false;
 
     }
 

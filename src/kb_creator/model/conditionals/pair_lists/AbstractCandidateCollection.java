@@ -84,7 +84,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
 
     public enum BufferStatus {
-        WRITING, READING, NOT_STARTED, SLEEPING;
+        WRITING, READING, NOT_STARTED, SLEEPING, PREPARING_NEXT_ITERATION;
     }
 
 }
