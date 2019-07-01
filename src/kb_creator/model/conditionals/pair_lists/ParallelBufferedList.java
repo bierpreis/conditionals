@@ -244,7 +244,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
 
         File folderToRead = new File(filePath + "/" + requestedK + "/");
-        
+
         long beforeReadFiles = System.currentTimeMillis();
         File[] filesArray = folderToRead.listFiles();
         Arrays.sort(filesArray);
@@ -263,8 +263,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-
-    //todo: think about if this needs sync block
+    
     @Override
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
