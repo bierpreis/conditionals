@@ -47,7 +47,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     }
 
-    //todo
+
     @Override
     public void run() {
         while (running) {
@@ -109,64 +109,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         }
 
     }
-
-    //todo: read next file
-    private Collection<AbstractPair> readPairs(int requestedK) {
-        requestedListNumber.set(requestedK);
-        while (!requestedListIsReady) {
-
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        requestedListIsReady = false;
-        return requestedList;
-    }
-
-    //todo: dont read all files at once!
-    private List<List<String>> getPairStringList(int requestedK) {
-
-
-        List<List<String>> localFileStringListList = new ArrayList<>(filesArray.length);
-        //if there are no files, there are no candidate pairs left so the empty list gets returned
-
-        //todo: why always false?
-        if (filesArray == null)
-            return localFileStringListList;
-
-        int currentFileNumber = 0;
-        try {
-            for (File file : filesArray) {
-                Scanner fileScanner = new Scanner(file);
-
-                StringBuilder sb = new StringBuilder();
-
-                //todo: size this?
-                localFileStringListList.add(new ArrayList<>());
-
-                while (fileScanner.hasNextLine()) {
-                    sb.append(fileScanner.nextLine());
-                    sb.append("\n");
-                }
-                //todo: not all in one list but one list for every file
-                localFileStringListList.get(currentFileNumber).add(sb.toString());
-                currentFileNumber++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //todo: these are the real pair strings?!
-        List<String> pairStringList = new ArrayList<>();
-        for (String fileString : localFileStringListList) {
-            pairStringList.addAll(Arrays.asList(fileString.split("\nEND_PAIR\n\n")));
-        }
-        return localFileStringListList;
-    }
-
-    //todo: read next file
+    
     private List<AbstractPair> readNextFile(int requestedK) {
         //read String
         File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter));
@@ -263,7 +206,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-    
+
     @Override
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
