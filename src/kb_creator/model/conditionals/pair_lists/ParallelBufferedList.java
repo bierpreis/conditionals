@@ -123,6 +123,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
+        //todo: fileStringArray contains the filepath of file not the string which is in it
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
             readCounter++;
