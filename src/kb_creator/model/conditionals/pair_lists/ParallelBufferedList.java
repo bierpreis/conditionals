@@ -242,12 +242,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
-
-        //todo: this list is not in order says javadoc. need to sort it?
+        
         File folderToRead = new File(filePath + "/" + requestedK + "/");
 
         //todo: check if this takes too long
-        filesList = Arrays.asList(folderToRead.listFiles());
+        File[] filesArray = folderToRead.listFiles();
+        Arrays.sort(filesArray);
+        filesList = Arrays.asList(filesArray);
 
         nextFileToReadNumber = 0;
         readCounter = 0;
