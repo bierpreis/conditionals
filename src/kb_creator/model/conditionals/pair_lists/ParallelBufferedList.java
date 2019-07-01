@@ -165,8 +165,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     //todo: read next file
     private List<AbstractPair> readNextFile(int requestedK) {
-        List<>
 
+        //todo: init this with a size? standard file size or the correct size?
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
