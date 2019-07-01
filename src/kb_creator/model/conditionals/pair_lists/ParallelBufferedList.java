@@ -257,8 +257,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
-
-        //todo what should this do?!
+        flushWritingElements();
+        cpQueueToWrite.addAll(listToAdd);
     }
 
 
