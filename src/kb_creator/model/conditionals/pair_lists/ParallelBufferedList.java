@@ -242,13 +242,14 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
-        
-        File folderToRead = new File(filePath + "/" + requestedK + "/");
 
-        //todo: check if this takes too long
+        File folderToRead = new File(filePath + "/" + requestedK + "/");
+        
+        long beforeReadFiles = System.currentTimeMillis();
         File[] filesArray = folderToRead.listFiles();
         Arrays.sort(filesArray);
         filesList = Arrays.asList(filesArray);
+        System.out.println("reading folder took " + (System.currentTimeMillis()-beforeReadFiles)/1000 +" seconds");
 
         nextFileToReadNumber = 0;
         readCounter = 0;
