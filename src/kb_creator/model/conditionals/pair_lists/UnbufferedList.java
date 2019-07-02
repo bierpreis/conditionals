@@ -62,6 +62,11 @@ public class UnbufferedList extends AbstractCandidateCollection {
     }
 
     @Override
+    public void finishCollection(int requestedK) {
+        //nothing
+    }
+
+    @Override
     public int getQueueToWriteSize() {
         return 0;
     }

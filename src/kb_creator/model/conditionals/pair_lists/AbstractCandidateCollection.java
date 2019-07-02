@@ -1,6 +1,7 @@
 package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
+
 import java.io.File;
 import java.util.List;
 import java.util.Queue;
@@ -46,6 +47,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     public abstract void flushWritingElements();
 
+    public abstract void finishCollection(int requestedK);
 
     public BufferStatus getStatus() {
         return status;
@@ -84,7 +86,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
 
     public enum BufferStatus {
-        WRITING, READING, NOT_STARTED, SLEEPING, PREPARING_NEXT_ITERATION;
+        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION;
     }
 
 }

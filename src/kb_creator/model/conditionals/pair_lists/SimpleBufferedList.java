@@ -201,6 +201,11 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         fileNameCounter = 0;
     }
 
+    @Override
+    public void finishCollection(int requestedK) {
+        //todo not sure if sth is needed here
+    }
+
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {

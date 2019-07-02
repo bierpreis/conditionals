@@ -231,9 +231,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
-        System.out.println("preparing: " + requestedK);
-
-        flushWritingElements();
+        System.out.println("preparing iteration: " + requestedK);
 
 
         requestedListNumber.set(requestedK);
@@ -266,6 +264,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
 
+    }
+
+    @Override
+    public void finishCollection(int requestedK) {
+        status = BufferStatus.FINISHING_ITERATION;
+        System.out.println("finishing iteration: " + requestedK);
+        flushWritingElements();
     }
 
 
