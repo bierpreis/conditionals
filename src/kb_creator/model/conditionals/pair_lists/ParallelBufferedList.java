@@ -189,6 +189,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
         if (status.equals(BufferStatus.READING)) {
+            System.out.println("waiting because reading");
             try {
                 synchronized (this) {
                     this.wait();
@@ -206,7 +207,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         }
         returnValue = !queueToReturn.isEmpty();
 
-        System.out.println("returnvalue: " + returnValue);
+        System.out.println("!!!has more elements for k " + currentK + ": " + returnValue);
         return returnValue;
     }
 
@@ -232,7 +233,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     public void prepareCollection(int requestedK) {
         System.out.println("preparing: " + requestedK);
         flushWritingElements();
-        status = BufferStatus.PREPARING_NEXT_ITERATION;
+        //status = BufferStatus.PREPARING_NEXT_ITERATION;
         requestedListNumber.set(requestedK);
 
 
