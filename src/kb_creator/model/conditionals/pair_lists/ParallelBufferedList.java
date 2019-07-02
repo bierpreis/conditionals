@@ -224,12 +224,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //todo: this is completely wrong
     @Override
     public boolean hasElementsForK(int requestedK) {
+        //idea: check if folder with name k exists?
         return true;
     }
 
     //kb creator runs this and fails in there. wait should be here?
     @Override
-    public void prepareCollection(int requestedK) {
+    public void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
@@ -241,8 +242,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         long beforeReadFiles = System.currentTimeMillis();
 
-        //todo: this is shit, this shows wait in flushWritingElments doesnt work
-
+        //todo: this is shit, this shows wait in finish iteration doenst work
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
@@ -267,9 +272,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void finishCollection(int requestedK) {
-        status = BufferStatus.FINISHING_ITERATION;
+    public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
+        status = BufferStatus.FINISHING_ITERATION;
         flushWritingElements();
     }
 

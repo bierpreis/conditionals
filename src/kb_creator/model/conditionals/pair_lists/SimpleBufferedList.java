@@ -80,7 +80,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void prepareCollection(int requestedK) {
+    public void prepareIteration(int requestedK) {
         System.out.println("preparing k: " + requestedK);
 
 
@@ -199,8 +199,8 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         fileNameCounter = 0;
     }
 
-    @Override
-    public void finishCollection(int requestedK) {
+
+    public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
         cpQueueToWrite.addAll(pairsListList.get(requestedK));
         flushWritingElements();

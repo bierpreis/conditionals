@@ -35,7 +35,7 @@ public class UnbufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void prepareCollection(int k) {
+    public void prepareIteration(int k) {
         currentK = k;
         nextElementNumber = 0;
     }
@@ -62,7 +62,7 @@ public class UnbufferedList extends AbstractCandidateCollection {
     }
 
     @Override
-    public void finishCollection(int requestedK) {
+    public void finishIteration(int requestedK) {
         //nothing
     }
 

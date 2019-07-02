@@ -39,7 +39,9 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     abstract public boolean hasElementsForK(int requestedK);
 
-    abstract public void prepareCollection(int requestedK);
+    abstract public void prepareIteration(int requestedK);
+
+    public abstract void finishIteration(int requestedK);
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
@@ -47,7 +49,6 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     public abstract void flushWritingElements();
 
-    public abstract void finishCollection(int requestedK);
 
     public BufferStatus getStatus() {
         return status;

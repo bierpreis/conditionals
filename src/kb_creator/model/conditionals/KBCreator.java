@@ -1,13 +1,11 @@
 package kb_creator.model.conditionals;
 
 import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
-import kb_creator.model.conditionals.pairs.RealCandidatePair;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.conditionals.pair_lists.AbstractCandidateCollection;
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 import kb_creator.model.kb_writer.AbstractKbWriter;
 import kb_creator.model.kb_writer.KbDummyWriter;
@@ -78,12 +76,12 @@ public class KBCreator implements Runnable {
         AbstractKnowledgeBase.setNfcMap(nfcMap);
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
+        l.finishIteration(k);
 
+
+        l.prepareIteration(k);
 
         //the following is the actual loop where the work is done
-
-        l.prepareCollection(k);
-
 
         //line 6
         while (l.hasElementsForK(k)) {
@@ -167,9 +165,11 @@ public class KBCreator implements Runnable {
 
                 candidatePair.deleteKB();
             }
-            l.finishCollection(k);
+            l.finishIteration(k);
             k = k + 1;
-            l.prepareCollection(k);
+            l.prepareIteration(k);
+
+            //todo: put clear in finish iteration. but be careful because finish iteration 1 is called twice!
             l.clear(k - 1);
         }
 
