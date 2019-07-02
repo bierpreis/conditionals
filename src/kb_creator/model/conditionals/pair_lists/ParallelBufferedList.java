@@ -164,6 +164,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         System.out.println("flushing " + cpQueueToWrite.size() + " elements");
         flushRequested = true;
 
+        long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
                 Thread.sleep(100);
@@ -171,7 +172,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
-        System.out.println("flushing finished");
+        System.out.println("flushing finished in " + (System.currentTimeMillis() - timeBeforeWaiting) + "ms");
         fileNameCounter = 0;
     }
 
@@ -183,16 +184,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //todo: this doenst work. it should return if queue is empty and possibly wait for reader to finish
     @Override
     public boolean hasMoreElements(int currentK) {
-        boolean returnValue;
-        if (!queueToReturn.isEmpty())
-            returnValue = true;
 
 
-        //if nothing from above triggered, reader thread is propably reading, so wait and check again later
-        while (status.equals(BufferStatus.READING))
+        while (!status.equals(BufferStatus.SLEEPING))
             try {
                 System.out.println("sleeping");
-                Thread.sleep(200);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -202,9 +199,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             queueToReturn = queueToPrepare;
             queueToPrepare = new LinkedBlockingQueue<>();
         }
-        returnValue = !queueToReturn.isEmpty();
+        boolean returnValue = !queueToReturn.isEmpty();
 
-        System.out.println("!!!has more elements for k " + currentK + ": " + returnValue);
+        System.out.println("has more elements for k " + currentK + ": " + returnValue);
         return returnValue;
     }
 
@@ -230,6 +227,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void prepareCollection(int requestedK) {
         System.out.println("preparing: " + requestedK);
+        Object writerWaitOobject = new Object();
         flushWritingElements();
         //status = BufferStatus.PREPARING_NEXT_ITERATION;
         requestedListNumber.set(requestedK);
