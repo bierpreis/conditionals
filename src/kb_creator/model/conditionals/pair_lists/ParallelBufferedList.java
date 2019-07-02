@@ -224,6 +224,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
+    //todo: this is propably wrong
     @Override
     public boolean hasElementsForK(int requestedK) {
         return filesList.size() >= (requestedK - 1);
