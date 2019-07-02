@@ -182,9 +182,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //todo: this doenst work. it should return if queue is empty and possibly wait for reader to finish
     @Override
     public boolean hasMoreElements(int currentK) {
-
+        boolean returnValue;
         if (!queueToReturn.isEmpty())
-            return true;
+            returnValue = true;
 
 
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
@@ -204,7 +204,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             queueToReturn = queueToPrepare;
             queueToPrepare = new LinkedBlockingQueue<>();
         }
-        return !queueToReturn.isEmpty();
+        returnValue = !queueToReturn.isEmpty();
+
+        System.out.println("returnvalue: " + returnValue);
+        return returnValue;
     }
 
 
