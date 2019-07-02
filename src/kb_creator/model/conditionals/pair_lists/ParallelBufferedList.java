@@ -61,8 +61,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
             } else if (requestedListNumber.get() != 0) {
+
+                //todo: this doenst work i guess
                 status = BufferStatus.READING;
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
+
+                //todo: what to to with this value.
                 requestedListIsReady = true;
                 requestedListNumber.set(0);
                 synchronized (this) {
@@ -168,6 +172,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
+        System.out.println("queue size after flushing: " + cpQueueToWrite.size());
         flushRequested = false;
         System.out.println("flushing finished in " + (System.currentTimeMillis() - timeBeforeWaiting) + "ms");
         fileNameCounter = 0;
@@ -239,11 +244,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         long beforeReadFiles = System.currentTimeMillis();
 
         //todo: this is shit, this shows wait in flushWritingElments doesnt work
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
