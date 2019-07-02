@@ -103,7 +103,7 @@ public class KBCreator implements Runnable {
             //todo: this doensnt trigger
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
-
+                System.out.println("!!!inside loop");
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
