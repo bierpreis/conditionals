@@ -224,6 +224,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return filesList.size() >= (requestedK - 1);
     }
 
+    //kb creator runs this and fails in there. wait should be here?
     @Override
     public void prepareCollection(int requestedK) {
         System.out.println("preparing: " + requestedK);

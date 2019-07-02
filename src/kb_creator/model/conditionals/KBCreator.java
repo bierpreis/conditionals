@@ -99,8 +99,7 @@ public class KBCreator implements Runnable {
 
             iterationNumberOfKBs = 0;
             //this loop is line 8
-
-            //todo: this doensnt trigger
+            
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
                 System.out.println("!!!inside loop");
