@@ -53,10 +53,23 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         return candidatesList;
     }
 
-    //todo this causes the pair in debugger appear as "null"
     @Override
     public String toString() {
-        return null;
+        List<NewConditional> candidatesList = getCandidatesList();
+        StringBuilder sb = new StringBuilder();
+        sb.append(knowledgeBase.getKbNumber());
+        sb.append("<");
+        sb.append(knowledgeBase.toShortFileString());
+        sb.append(", n");
+        if (candidatesList.size() > 0) {
+            for (int i = 0; i < candidatesList.size(); i++) {
+                sb.append(candidatesList.get(i).getNumber());
+                if (i != candidatesList.size() - 1)
+                    sb.append(", ");
+            }
+        } else sb.append("EMPTY");
+        sb.append(">");
+        return sb.toString();
     }
 
     @Override

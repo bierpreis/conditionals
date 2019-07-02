@@ -23,7 +23,6 @@ public class RealCandidatePair extends AbstractPair {
         return candidates;
     }
 
-    //todo
     @Override
     public String toString() {
         return null;
