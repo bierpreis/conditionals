@@ -160,7 +160,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void flushWritingElements() {
-        System.out.println("flushing");
+        System.out.println("flushing " + cpQueueToWrite.size() + " elements");
         flushRequested = true;
 
         while (!cpQueueToWrite.isEmpty()) {
@@ -198,7 +198,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             }
 
         }
-        //todo: this is still empty after wait?!
+        //todo: this is still empty after wait?! queue to prepare is 31!. swapt it?
+        //todo: this is unsafe?!
+        if (queueToReturn.isEmpty() && !queueToPrepare.isEmpty()) {
+            queueToReturn = queueToPrepare;
+            queueToPrepare = new LinkedBlockingQueue<>();
+        }
         return !queueToReturn.isEmpty();
     }
 
