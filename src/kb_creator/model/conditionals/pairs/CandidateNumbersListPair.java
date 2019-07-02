@@ -74,12 +74,6 @@ public class CandidateNumbersListPair extends AbstractPair {
     }
 
     @Override
-    public String toShortString() {
-        return "CP: <" + knowledgeBase.getSize() + ", " + candidatesNumbersList.size();
-    }
-
-
-    @Override
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("pair_lists");

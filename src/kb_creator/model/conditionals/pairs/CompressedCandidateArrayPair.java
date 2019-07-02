@@ -64,11 +64,6 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         compressedCandidatesArray = null;
     }
 
-    @Override
-    public String toShortString() {
-        return null;
-    }
-
 
     //this method creates a file string in the exacly same format like the other pair implementations
     @Override

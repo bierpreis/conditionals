@@ -33,7 +33,5 @@ public abstract class AbstractPair {
 
     public abstract void deleteCandidates();
 
-    public abstract String toShortString();
-
     public abstract String toFileString();
 }

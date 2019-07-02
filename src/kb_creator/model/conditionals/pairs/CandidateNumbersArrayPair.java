@@ -83,13 +83,6 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         return null;
     }
 
-    //todo: this is shit too
-    @Override
-    public String toShortString() {
-        return null;
-    }
-
-
     @Override
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
