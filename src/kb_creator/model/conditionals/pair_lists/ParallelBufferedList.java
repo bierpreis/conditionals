@@ -33,7 +33,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         flushRequested = false;
         running = true;
 
-
+        //todo: file path is set here and in constructor (super) but without tmp. this sucks!
         this.filePath = filePath + "/tmp/";
 
         File tmpFile = new File(this.filePath);
