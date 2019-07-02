@@ -169,7 +169,7 @@ public class KBCreator implements Runnable {
             }
 
             k = k + 1;
-
+            //todo: at this place this creator thread should wait until writer is finished. then wait until next iteration is prepared. then continue.
             l.prepareCollection(k);
             l.clear(k - 1);
         }

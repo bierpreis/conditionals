@@ -55,13 +55,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         while (running) {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile) {
                 status = BufferStatus.WRITING;
-                if (cpQueueToWrite.size() > 0)
-                    writeNextFile(cpQueueToWrite);
+                writeNextFile(cpQueueToWrite);
             } else if (flushRequested) {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
-                flushRequested = false;
+                if (cpQueueToWrite.size() == 0)
+                    flushRequested = false;
             } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
@@ -186,7 +186,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     public boolean hasMoreElements(int currentK) {
 
 
-        while (!status.equals(BufferStatus.SLEEPING))
+        while (flushRequested)
             try {
                 System.out.println("sleeping");
                 Thread.sleep(100);
