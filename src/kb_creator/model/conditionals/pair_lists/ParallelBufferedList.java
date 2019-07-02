@@ -121,7 +121,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             }
         }
 
-        System.out.println("writing finished" + queueToWrite.size());
+        System.out.println("writing finished: " + queueToWrite.size());
 
     }
 
@@ -266,7 +266,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //todo: this adding is not called, therefore queue is emty and nothing gets written on flush
     @Override
     public void addPair(AbstractPair pairToAdd) {
-        System.out.println("adding: pair: " + pairToAdd.toString());
         cpQueueToWrite.add(pairToAdd);
 
     }
