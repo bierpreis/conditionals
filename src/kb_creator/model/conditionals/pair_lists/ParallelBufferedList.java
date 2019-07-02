@@ -189,13 +189,14 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         while (!status.equals(BufferStatus.SLEEPING))
             try {
                 System.out.println("sleeping");
-                Thread.sleep(5000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        //todo: this is still empty after wait?! queue to prepare is 31!. swapt it?
+
         //todo: this is unsafe?!
         if (queueToReturn.isEmpty() && !queueToPrepare.isEmpty()) {
+            System.out.println("!!!!DANGEROUS SUFF TRIGGERED!!!!");
             queueToReturn = queueToPrepare;
             queueToPrepare = new LinkedBlockingQueue<>();
         }

@@ -77,13 +77,13 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         return candidatesList;
     }
 
-
+    //todo: this is shit
     @Override
     public String toString() {
         return null;
     }
 
-
+    //todo: this is shit too
     @Override
     public String toShortString() {
         return null;
