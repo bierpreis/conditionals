@@ -66,7 +66,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
                 requestedListIsReady = true;
                 requestedListNumber.set(0);
-
+                synchronized (this) {
+                    this.notify();
+                }
             } else
                 try {
                     status = BufferStatus.SLEEPING;
@@ -185,15 +187,15 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
 
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
-        if (!requestedListIsReady || status.equals(BufferStatus.READING))
+        if (status.equals(BufferStatus.READING)) {
             try {
-                status = BufferStatus.SLEEPING;
-                System.out.println("sleeping!!");
-                Thread.sleep(200);
+                this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        return hasMoreElements(currentK);
+
+        }
+        return !queueToReturn.isEmpty();
     }
 
 
