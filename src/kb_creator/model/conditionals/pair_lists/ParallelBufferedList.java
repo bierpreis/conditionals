@@ -59,7 +59,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                     writeNextFile(cpQueueToWrite);
             } else if (flushRequested) {
                 status = BufferStatus.WRITING;
-                writeNextFile(cpQueueToWrite);
+                if (cpQueueToWrite.size() > 0)
+                    writeNextFile(cpQueueToWrite);
                 flushRequested = false;
             } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
@@ -230,7 +231,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         long beforeReadFiles = System.currentTimeMillis();
 
-        //todo: this tries to read 2 before writing 
+        //todo: this tries to read 2 before writing
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
@@ -249,6 +250,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
+    //todo: this adding is not called, therefore queue is emty and nothing gets written on flush
     @Override
     public void addPair(AbstractPair pairToAdd) {
         System.out.println("adding: " + pairToAdd);
