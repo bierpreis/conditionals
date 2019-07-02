@@ -58,10 +58,6 @@ public class CandidateNumbersListPair extends AbstractPair {
         return candidatesList;
     }
 
-    public List<Integer> getCandidatesNumbersList() {
-        return candidatesNumbersList;
-    }
-
     @Override
     public String toString() {
         return "<" + knowledgeBase + ", " + candidatesNumbersList + ">\n";

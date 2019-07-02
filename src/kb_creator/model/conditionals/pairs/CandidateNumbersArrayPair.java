@@ -77,10 +77,22 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         return candidatesList;
     }
 
-    //todo: this is shit
+
     @Override
     public String toString() {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        sb.append("<");
+        sb.append(knowledgeBase.getKbNumber());
+        sb.append(", ");
+        if (candidatesNumbersArray.length > 0) {
+            for (int i = 0; i < candidatesNumbersArray.length; i++) {
+                sb.append(candidatesNumbersArray[i]);
+                if (i != candidatesNumbersArray.length - 1)
+                    sb.append(", ");
+            }
+        } else sb.append("EMPTY");
+        sb.append(">");
+        return sb.toString();
     }
 
     @Override
