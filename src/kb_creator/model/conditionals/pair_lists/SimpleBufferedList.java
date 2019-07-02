@@ -83,12 +83,10 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     public void prepareCollection(int requestedK) {
         System.out.println("preparing k: " + requestedK);
 
-        cpQueueToWrite.addAll(pairsListList.get(requestedK));
-        flushWritingElements();
 
         nextElementNumberToReturn = 0;
 
-
+        //todo: rly k + 1 ? in parallel this was not the case
         requestedListNumber.set(requestedK + 1);
 
 
@@ -203,7 +201,9 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
     @Override
     public void finishCollection(int requestedK) {
-        //todo not sure if sth is needed here
+        System.out.println("finishing iteration: " + requestedK);
+        cpQueueToWrite.addAll(pairsListList.get(requestedK));
+        flushWritingElements();
     }
 
     private void writeAllPairs(Queue queueToWrite) {
