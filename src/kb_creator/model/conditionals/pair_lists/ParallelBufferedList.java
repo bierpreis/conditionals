@@ -126,6 +126,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
     private List<AbstractPair> readNextFile(int requestedK) {
+        System.out.println("reading file for k: " + requestedK);
         //read String
         File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter) + ".txt");
         Scanner fileScanner = null;
@@ -188,17 +189,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
 
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
-        if (status.equals(BufferStatus.READING)) {
-            System.out.println("waiting because reading");
+        while (status.equals(BufferStatus.READING))
             try {
-                synchronized (this) {
-                    this.wait();
-                }
+                System.out.println("sleeping");
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-        }
         //todo: this is still empty after wait?! queue to prepare is 31!. swapt it?
         //todo: this is unsafe?!
         if (queueToReturn.isEmpty() && !queueToPrepare.isEmpty()) {
@@ -264,7 +261,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //todo: this adding is not called, therefore queue is emty and nothing gets written on flush
     @Override
     public void addPair(AbstractPair pairToAdd) {
-        System.out.println("adding: pair: " + pairToAdd);
+        System.out.println("adding: pair: " + pairToAdd.toString());
         cpQueueToWrite.add(pairToAdd);
 
     }

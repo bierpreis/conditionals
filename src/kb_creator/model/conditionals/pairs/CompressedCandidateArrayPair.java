@@ -53,6 +53,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         return candidatesList;
     }
 
+    //todo this causes the pair in debugger appear as "null"
     @Override
     public String toString() {
         return null;
