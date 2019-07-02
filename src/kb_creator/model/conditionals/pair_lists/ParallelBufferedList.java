@@ -229,6 +229,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         File folderToRead = new File(filePath + "/" + requestedK + "/");
 
         long beforeReadFiles = System.currentTimeMillis();
+
+        //todo: this tries to read 2 before writing 
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
