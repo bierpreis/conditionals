@@ -181,7 +181,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         //nothing
     }
 
-    //todo: this doenst work. it should return if queue is empty and possibly wait for reader to finish
+    //todo: this is not good at all
     @Override
     public boolean hasMoreElements(int currentK) {
 
@@ -239,12 +239,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         long beforeReadFiles = System.currentTimeMillis();
 
+        //todo: this is shit, here must be some wait
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //todo: this tries to read 2 before writing
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
@@ -263,7 +263,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo: this adding is not called, therefore queue is emty and nothing gets written on flush
     @Override
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
