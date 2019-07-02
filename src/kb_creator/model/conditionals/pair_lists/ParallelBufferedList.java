@@ -238,6 +238,11 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         long beforeReadFiles = System.currentTimeMillis();
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         //todo: this tries to read 2 before writing
         File[] filesArray = folderToRead.listFiles();
 

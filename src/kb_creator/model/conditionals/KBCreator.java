@@ -1,5 +1,6 @@
 package kb_creator.model.conditionals;
 
+import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
 import kb_creator.model.conditionals.pairs.RealCandidatePair;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
@@ -99,7 +100,7 @@ public class KBCreator implements Runnable {
 
             iterationNumberOfKBs = 0;
             //this loop is line 8
-            
+
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
                 System.out.println("!!!inside loop");
@@ -127,7 +128,7 @@ public class KBCreator implements Runnable {
 
                         //this is where the ram gets full. therefore the buffering
                         System.out.println("adding pair");
-                        l.addPair(new RealCandidatePair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.addPair(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
@@ -213,7 +214,7 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
-            l.add(new RealCandidatePair(rKB, conditionalsToAdd));
+            l.add(new CandidateNumbersArrayPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
 
