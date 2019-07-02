@@ -60,8 +60,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
-                if (cpQueueToWrite.size() == 0)
-                    flushRequested = false;
             } else if (requestedListNumber.get() != 0) {
                 status = BufferStatus.READING;
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
@@ -113,6 +111,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 }
 
                 writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
+                writer.flush();
                 writer.close();
 
 
@@ -162,6 +161,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public void flushWritingElements() {
         System.out.println("flushing " + cpQueueToWrite.size() + " elements");
+
+        //todo: think about when this value is set
         flushRequested = true;
 
         long timeBeforeWaiting = System.currentTimeMillis();
@@ -172,6 +173,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
+        flushRequested = false;
         System.out.println("flushing finished in " + (System.currentTimeMillis() - timeBeforeWaiting) + "ms");
         fileNameCounter = 0;
     }
@@ -228,10 +230,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     //kb creator runs this and fails in there. wait should be here?
     @Override
     public void prepareCollection(int requestedK) {
+        status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing: " + requestedK);
-        Object writerWaitOobject = new Object();
+
         flushWritingElements();
-        //status = BufferStatus.PREPARING_NEXT_ITERATION;
+
+
         requestedListNumber.set(requestedK);
 
 
@@ -240,11 +244,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         long beforeReadFiles = System.currentTimeMillis();
 
         //todo: this is shit, here must be some wait
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
