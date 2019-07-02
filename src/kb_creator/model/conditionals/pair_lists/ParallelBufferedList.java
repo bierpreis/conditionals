@@ -191,7 +191,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
 
-        //todo: this is unsafe?!
+        //todo: this is shit. if the dangerous stuff triggered, and both queues are at some point 0, every input which can come later will be ignored
         if (queueToReturn.isEmpty() && !queueToPrepare.isEmpty()) {
             System.out.println("!!!!DANGEROUS SUFF TRIGGERED!!!!");
             queueToReturn = queueToPrepare;
@@ -199,14 +199,14 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         }
         boolean returnValue = !queueToReturn.isEmpty();
 
-        System.out.println("has more elements for k " + currentK + ": " + returnValue);
         return returnValue;
     }
 
-
+    //todo: this is strange. can this work?
     @Override
     public AbstractPair getNextPair(int currentK) {
         if (queueToReturn.isEmpty()) {
+            System.out.println("switched empty queue to return for queue to prepare with " + queueToPrepare.size() + "elements");
             queueToReturn = queueToPrepare;
             queueToPrepare = new LinkedBlockingQueue<>();
 
