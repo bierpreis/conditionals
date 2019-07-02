@@ -81,9 +81,9 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<");
+        sb.append("<(");
         sb.append(knowledgeBase.getKbNumber());
-        sb.append(", ");
+        sb.append("), (");
         if (candidatesNumbersArray.length > 0) {
             for (int i = 0; i < candidatesNumbersArray.length; i++) {
                 sb.append(candidatesNumbersArray[i]);
@@ -91,7 +91,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
                     sb.append(", ");
             }
         } else sb.append("EMPTY");
-        sb.append(">");
+        sb.append(")>");
         return sb.toString();
     }
 

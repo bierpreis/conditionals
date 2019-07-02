@@ -60,7 +60,7 @@ public class CandidateNumbersListPair extends AbstractPair {
 
     @Override
     public String toString() {
-        return "<" + knowledgeBase + ", " + candidatesNumbersList + ">\n";
+        return "<(" + knowledgeBase + "), (" + candidatesNumbersList + ")>\n";
     }
 
 

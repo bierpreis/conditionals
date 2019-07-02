@@ -58,9 +58,9 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         List<NewConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
         sb.append(knowledgeBase.getKbNumber());
-        sb.append("<");
+        sb.append("<(");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append(", n");
+        sb.append("), (");
         if (candidatesList.size() > 0) {
             for (int i = 0; i < candidatesList.size(); i++) {
                 sb.append(candidatesList.get(i).getNumber());
@@ -68,7 +68,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
                     sb.append(", ");
             }
         } else sb.append("EMPTY");
-        sb.append(">");
+        sb.append(")>");
         return sb.toString();
     }
 
