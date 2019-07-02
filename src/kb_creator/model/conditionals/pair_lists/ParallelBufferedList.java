@@ -216,10 +216,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo: this is propably wrong
+    //todo: this is completely wrong
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return filesList.size() >= (requestedK - 1);
+        return true;
     }
 
     //kb creator runs this and fails in there. wait should be here?
@@ -238,8 +238,12 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         long beforeReadFiles = System.currentTimeMillis();
 
-        //todo: this is shit, here must be some wait
-
+        //todo: this is shit, this shows wait in flushWritingElments doesnt work
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         File[] filesArray = folderToRead.listFiles();
 
         Arrays.sort(filesArray);
