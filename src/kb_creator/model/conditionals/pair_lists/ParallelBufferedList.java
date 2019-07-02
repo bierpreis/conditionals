@@ -189,7 +189,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         //if nothing from above triggered, reader thread is propably reading, so wait and check again later
         if (status.equals(BufferStatus.READING)) {
             try {
-                this.wait();
+                synchronized (this) {
+                    this.wait();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
