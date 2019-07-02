@@ -84,7 +84,7 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         sb.append("<(");
 
         //todo: here really kb number and not kb?
-        sb.append(knowledgeBase.getKbNumber());
+        sb.append(knowledgeBase);
         sb.append("), (");
         if (candidatesNumbersArray.length > 0) {
             for (int i = 0; i < candidatesNumbersArray.length; i++) {

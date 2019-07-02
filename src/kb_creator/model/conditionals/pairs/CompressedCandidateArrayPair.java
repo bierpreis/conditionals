@@ -57,7 +57,6 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public String toString() {
         List<NewConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
-        sb.append(knowledgeBase.getKbNumber());
         sb.append("<(");
         sb.append(knowledgeBase.toShortFileString());
         sb.append("), (");
