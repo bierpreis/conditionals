@@ -23,8 +23,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         super(filePath);
         System.out.println("created parallel list for candidate pairs");
 
-        fileNameCounter = 0;
-        readCounter = 0;
+        writingFileNameCounter = 0;
+        readingFileNameCounter = 0;
 
         queueToReturn = new LinkedBlockingQueue<>();
         queueToPrepare = new LinkedBlockingQueue<>();
@@ -91,8 +91,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             try {
 
                 //add leading zeros so the files will be soreted in correct order in their folder
-                String fileName = String.format("%05d", fileNameCounter);
-                fileNameCounter++;
+                String fileName = String.format("%05d", writingFileNameCounter);
+                writingFileNameCounter++;
 
 
                 PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
@@ -123,7 +123,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private List<AbstractPair> readNextFile(int requestedK) {
         System.out.println("reading file for k: " + requestedK);
         //read String
-        File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter) + ".txt");
+        File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", writingFileNameCounter) + ".txt");
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);
@@ -144,7 +144,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            readCounter++;
+            readingFileNameCounter++;
         }
 
 
@@ -171,7 +171,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         System.out.println("queue size after flushing: " + cpQueueToWrite.size());
         flushRequested = false;
         System.out.println("flushing finished in " + (System.currentTimeMillis() - timeBeforeWaiting) + "ms");
-        fileNameCounter = 0;
+        writingFileNameCounter = 0;
     }
 
     @Override
@@ -231,6 +231,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
+        writingFileNameCounter = 0;
+        readingFileNameCounter = 0;
 
         requestedListNumber.set(requestedK);
 
@@ -252,7 +254,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
 
         nextFileToReadNumber = 0;
-        readCounter = 0;
+        readingFileNameCounter = 0;
         requestedListIsReady = false;
     }
 

@@ -133,14 +133,14 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
     private List<AbstractPair> readAllPairs(int requestedK) {
-        readCounter = 0;
+        readingFileNameCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            readCounter++;
+            readingFileNameCounter++;
         }
 
 
@@ -196,7 +196,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
-        fileNameCounter = 0;
+        writingFileNameCounter = 0;
     }
 
 
@@ -218,8 +218,8 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
             while (!queueToWrite.isEmpty()) {
                 //add leading zeros so the files will be soreted in correct order in their folder
-                String fileName = String.format("%05d", fileNameCounter);
-                fileNameCounter++;
+                String fileName = String.format("%05d", writingFileNameCounter);
+                writingFileNameCounter++;
                 PrintWriter writer = new PrintWriter(subFolder.toString() + "/" + fileName + ".txt", "UTF-8");
 
                 StringBuilder sb = new StringBuilder();
