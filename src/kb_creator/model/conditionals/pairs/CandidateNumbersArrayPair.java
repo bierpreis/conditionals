@@ -82,6 +82,8 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("<(");
+
+        //todo: here really kb number and not kb?
         sb.append(knowledgeBase.getKbNumber());
         sb.append("), (");
         if (candidatesNumbersArray.length > 0) {
