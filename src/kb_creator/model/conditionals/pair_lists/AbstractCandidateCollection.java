@@ -20,16 +20,16 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     protected final int maxNumberOfPairsInFile = 200;
 
-    protected String filePath = "";
+    protected String tmpFilePath;
     protected volatile boolean flushRequested;
 
     protected AtomicInteger requestedListNumber;
     protected List<AbstractPair> requestedList;
     protected volatile boolean requestedListIsReady;
 
-    public AbstractCandidateCollection(String filePath) {
+    public AbstractCandidateCollection(String tmpFilePath) {
         status = BufferStatus.NOT_STARTED;
-        this.filePath = filePath;
+        this.tmpFilePath = tmpFilePath + "/tmp/";
     }
 
 
@@ -67,7 +67,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
 
     public void deleteFiles(int numberOfConditionals) {
         System.out.println("trying to delete " + numberOfConditionals + " element pairs");
-        File fileToDelete = new File(filePath + "/" + numberOfConditionals + "/");
+        File fileToDelete = new File(tmpFilePath + "/" + numberOfConditionals + "/");
         boolean fileDeletedSuccesfully;
         try {
             for (File file : fileToDelete.listFiles()) {

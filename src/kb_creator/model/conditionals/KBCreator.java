@@ -169,7 +169,6 @@ public class KBCreator implements Runnable {
             k = k + 1;
             l.prepareIteration(k);
 
-            //todo: put clear in finish iteration. but be careful because finish iteration 1 is called twice!
             l.clear(k - 1);
         }
 

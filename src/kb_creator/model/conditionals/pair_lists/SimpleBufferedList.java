@@ -152,7 +152,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
         System.out.println("reading files for k: " + requestedK);
         List<String> fileStringList = new ArrayList<>();
         //read String
-        File fileToRead = new File(filePath + "/" + (requestedK - 1) + "/");
+        File fileToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
 
         File[] filesArray = fileToRead.listFiles();
 
@@ -209,7 +209,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     private void writeAllPairs(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
-            subFolder = new File(filePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
+            subFolder = new File(tmpFilePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
             if (!subFolder.exists())
                 subFolder.mkdirs();
         }

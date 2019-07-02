@@ -2,7 +2,6 @@ package kb_creator.model.conditionals.pair_lists;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
-import kb_creator.observer.Status;
 
 
 import java.io.File;
@@ -33,10 +32,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         flushRequested = false;
         running = true;
 
-        //todo: file path is set here and in constructor (super) but without tmp. this sucks!
-        this.filePath = filePath + "/tmp/";
-
-        File tmpFile = new File(this.filePath);
+        File tmpFile = new File(this.tmpFilePath);
         tmpFile.mkdirs();
 
 
@@ -87,7 +83,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private void writeNextFile(Queue queueToWrite) {
         File subFolder = null;
         if (!queueToWrite.isEmpty()) {
-            subFolder = new File(filePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
+            subFolder = new File(tmpFilePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
             if (!subFolder.exists())
                 subFolder.mkdirs();
 
@@ -127,7 +123,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private List<AbstractPair> readNextFile(int requestedK) {
         System.out.println("reading file for k: " + requestedK);
         //read String
-        File fileToRead = new File(filePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter) + ".txt");
+        File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", fileNameCounter) + ".txt");
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);
@@ -225,10 +221,11 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     @Override
     public boolean hasElementsForK(int requestedK) {
         //idea: check if folder with name k exists?
+        //but then also check if siles exit which are non empty
         return true;
     }
 
-    //kb creator runs this and fails in there. wait should be here?
+
     @Override
     public void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
@@ -238,7 +235,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         requestedListNumber.set(requestedK);
 
 
-        File folderToRead = new File(filePath + "/" + requestedK + "/");
+        File folderToRead = new File(tmpFilePath + "/" + requestedK + "/");
 
         long beforeReadFiles = System.currentTimeMillis();
 
