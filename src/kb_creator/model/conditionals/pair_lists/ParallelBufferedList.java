@@ -18,6 +18,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private Queue<AbstractPair> queueToPrepare;
     private int iterationNumberOfFiles;
     private List<File> filesList;
+    private volatile boolean hasNextIteration;
 
     public ParallelBufferedList(String filePath) {
         super(filePath);
@@ -64,8 +65,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.READING;
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
 
-                //todo: what to to with this value.
-                requestedListIsReady = true;
                 requestedListNumber.set(0);
             } else
                 try {
@@ -216,10 +215,9 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo: not sure if this is correct
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return iterationNumberOfFiles != 0;
+        return hasNextIteration;
     }
 
 
@@ -232,10 +230,17 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         readingFileNameCounter = 0;
         pairReaderCounter = 0;
 
-        requestedListNumber.set(requestedK);
-
 
         File folderToRead = new File(tmpFilePath + "/" + requestedK + "/");
+
+        hasNextIteration = folderToRead.exists();
+
+        //if no next iteration exists, the steps here are not needed and would cause null pointer exeption because of the missing file
+        if (!hasNextIteration)
+            return;
+
+        requestedListNumber.set(requestedK);
+
 
         long beforeReadFiles = System.currentTimeMillis();
 
@@ -252,8 +257,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         filesList = Arrays.asList(filesArray);
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
 
-
-        requestedListIsReady = false;
     }
 
     @Override

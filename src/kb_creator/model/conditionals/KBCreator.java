@@ -170,7 +170,7 @@ public class KBCreator implements Runnable {
 
             l.clear(k - 1);
         }
-
+        l.stopThread();
         status = Status.FINISHED;
     }
 

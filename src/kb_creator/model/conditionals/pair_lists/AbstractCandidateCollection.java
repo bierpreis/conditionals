@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class AbstractCandidateCollection implements Runnable {
 
 
-    protected boolean running;
+    protected volatile boolean running;
     protected volatile Queue<AbstractPair> cpQueueToWrite;
 
     protected volatile BufferStatus status;
@@ -87,9 +87,15 @@ public abstract class AbstractCandidateCollection implements Runnable {
         }
     }
 
+    public void stopThread() {
+        System.out.println("!!!!list thread stopped");
+        running = false;
+        status = BufferStatus.FINISHED;
+    }
+
 
     public enum BufferStatus {
-        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION;
+        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED;
     }
 
 }
