@@ -55,18 +55,14 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
-            } else if (requestedListNumber.get() != 0) {
+            } else if (queueToPrepare.isEmpty() && requestedListNumber.get() != 0) { //todo: only read when there are files left?!
 
-                //todo: this doenst work i guess
                 status = BufferStatus.READING;
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
 
                 //todo: what to to with this value.
                 requestedListIsReady = true;
                 requestedListNumber.set(0);
-                synchronized (this) {
-                    this.notify();
-                }
             } else
                 try {
                     status = BufferStatus.SLEEPING;
