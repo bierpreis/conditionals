@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class AbstractCandidateCollection implements Runnable {
+public abstract class AbstractPairBuffer implements Runnable {
 
 
     protected volatile boolean running;
@@ -29,7 +29,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
     protected List<AbstractPair> requestedList;
     protected volatile boolean requestedListIsReady;
 
-    public AbstractCandidateCollection(String tmpFilePath) {
+    public AbstractPairBuffer(String tmpFilePath) {
         status = BufferStatus.NOT_STARTED;
         this.tmpFilePath = tmpFilePath + "/tmp/";
     }

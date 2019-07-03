@@ -4,7 +4,7 @@ import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
-import kb_creator.model.conditionals.pair_lists.AbstractCandidateCollection;
+import kb_creator.model.conditionals.pair_lists.AbstractPairBuffer;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 import kb_creator.model.kb_writer.AbstractKbWriter;
@@ -31,7 +31,7 @@ public class KBCreator implements Runnable {
     private AbstractKbWriter kbWriter;
 
 
-    private AbstractCandidateCollection l;
+    private AbstractPairBuffer l;
 
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
@@ -186,7 +186,7 @@ public class KBCreator implements Runnable {
         }
     }
 
-    public void setList(AbstractCandidateCollection requestedList) {
+    public void setList(AbstractPairBuffer requestedList) {
         l = requestedList;
     }
 
@@ -282,7 +282,7 @@ public class KBCreator implements Runnable {
         return kbWriter;
     }
 
-    public AbstractCandidateCollection getCpWriterThread() {
+    public AbstractPairBuffer getPairBuffer() {
         return l;
     }
 
@@ -290,5 +290,5 @@ public class KBCreator implements Runnable {
         status = Status.WAITING_FOR_WRITER;
         waitForKbWriter = true;
     }
-    
+
 }

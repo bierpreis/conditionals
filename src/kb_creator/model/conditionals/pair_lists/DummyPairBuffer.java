@@ -5,12 +5,12 @@ import kb_creator.model.conditionals.pairs.AbstractPair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UnbufferedList extends AbstractCandidateCollection {
+public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private int currentK;
     private List<List<AbstractPair>> candidatePairList;
 
-    public UnbufferedList(String filePath) {
+    public DummyPairBuffer(String filePath) {
         super(filePath);
         candidatePairList = new ArrayList<>();
     }

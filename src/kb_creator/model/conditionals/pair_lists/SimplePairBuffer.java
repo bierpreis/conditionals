@@ -10,13 +10,13 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class SimpleBufferedList extends AbstractCandidateCollection {
+public class SimplePairBuffer extends AbstractPairBuffer {
 
     private List<List<AbstractPair>> pairsListList;
     private int nextElementNumberToReturn;
 
 
-    public SimpleBufferedList(String filePath) {
+    public SimplePairBuffer(String filePath) {
         super(filePath);
         System.out.println("created simple buffered list for candidate pairs");
 

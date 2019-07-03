@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ParallelBufferedList extends AbstractCandidateCollection {
+public class ParallelPairBuffer extends AbstractPairBuffer {
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> queueToPrepare;
     private int iterationNumberOfFiles;
@@ -21,7 +21,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private volatile boolean hasNextIteration;
     private volatile int lastIterationPairAmount;
 
-    public ParallelBufferedList(String filePath) {
+    public ParallelPairBuffer(String filePath) {
         super(filePath);
         System.out.println("created parallel list for candidate pairs");
 
