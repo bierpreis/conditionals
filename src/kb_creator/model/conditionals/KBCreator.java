@@ -98,8 +98,13 @@ public class KBCreator implements Runnable {
             iterationNumberOfKBs = 0;
             //this loop is line 8
 
+            int pairCounter = 0;
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
+                pairCounter++;
+
+                //todo: this as progress and to say if it has more elements?
+                System.out.println("pairs left: " + (l.getLastIterationPairAmount() - pairCounter));
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //

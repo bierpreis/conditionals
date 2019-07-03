@@ -28,6 +28,7 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected AtomicInteger requestedListNumber;
     protected List<AbstractPair> requestedList;
     protected volatile boolean requestedListIsReady;
+    protected volatile int lastIterationPairAmount;
 
     public AbstractPairBuffer(String tmpFilePath) {
         status = BufferStatus.NOT_STARTED;
@@ -95,6 +96,10 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     public enum BufferStatus {
         WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED;
+    }
+
+    public int getLastIterationPairAmount(){
+        return lastIterationPairAmount;
     }
 
 }

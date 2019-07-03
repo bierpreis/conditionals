@@ -19,7 +19,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private int iterationNumberOfFiles;
     private List<File> filesList;
     private volatile boolean hasNextIteration;
-    private volatile int lastIterationPairAmount;
+
 
     public ParallelPairBuffer(String filePath) {
         super(filePath);
@@ -276,6 +276,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.FINISHING_ITERATION;
         flushWritingElements();
     }
+
+
 
 
 }
