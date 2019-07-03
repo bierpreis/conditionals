@@ -53,7 +53,7 @@ public class StatusThread implements Runnable {
 
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
 
-                    creatorThread.setWaiting();
+                    creatorThread.waitForKbWriter();
 
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
                     synchronized (creatorThread) {

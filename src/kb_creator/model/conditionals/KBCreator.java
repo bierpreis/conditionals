@@ -20,7 +20,7 @@ public class KBCreator implements Runnable {
     private volatile int iterationNumberOfKBs;
 
     private volatile Status status;
-    private volatile boolean waitIsRequested;
+    private volatile boolean waitForKbWriter;
 
     private AbstractSignature signature;
 
@@ -39,7 +39,7 @@ public class KBCreator implements Runnable {
 
         status = Status.NOT_STARTED;
         this.signature = signature;
-        waitIsRequested = false;
+        waitForKbWriter = false;
 
         if (kbFilePath != null)
             kbWriter = new KbFileWriter(kbFilePath);
@@ -139,15 +139,15 @@ public class KBCreator implements Runnable {
                         kbWriter.addInconsistentKb(inconsistentKB);
                     }
                 }
-                //todo: is this still needed?
-                if (waitIsRequested)
+
+                if (waitForKbWriter)
                     synchronized (this) {
                         try {
                             this.wait();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        waitIsRequested = false;
+                        waitForKbWriter = false;
                     }
                 status = Status.RUNNING;
 
@@ -286,17 +286,9 @@ public class KBCreator implements Runnable {
         return l;
     }
 
-    public void setWaiting() {
-        status = Status.WAITING;
-        waitIsRequested = true;
+    public void waitForKbWriter() {
+        status = Status.WAITING_FOR_WRITER;
+        waitForKbWriter = true;
     }
-
-
-    public void stopWaiting() {
-        status = Status.RUNNING;
-        super.notify();
-
-    }
-
-
+    
 }
