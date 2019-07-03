@@ -88,7 +88,6 @@ public abstract class AbstractCandidateCollection implements Runnable {
     }
 
     public void stopThread() {
-        System.out.println("!!!!list thread stopped");
         running = false;
         status = BufferStatus.FINISHED;
     }

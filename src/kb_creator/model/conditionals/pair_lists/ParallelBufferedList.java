@@ -57,9 +57,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
-
-                //todo: maybe only do this when there are files available?!
-                //currently doenst work. maybe later
+                
             } else if (queueToPrepare.isEmpty() && requestedListNumber.get() != 0) {
 
                 status = BufferStatus.READING;
@@ -124,7 +122,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
         Scanner fileScanner = null;
         try {
-            fileScanner = new Scanner(fileToRead); //todo: here exception when no file is found (because it is finished!)
+            fileScanner = new Scanner(fileToRead);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -201,7 +199,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         return returnValue;
     }
 
-    //todo: this is strange. can this work?
+    //todo: this sucks
     @Override
     public AbstractPair getNextPair(int currentK) {
         if (queueToReturn.isEmpty()) {
