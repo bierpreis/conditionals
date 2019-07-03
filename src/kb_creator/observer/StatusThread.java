@@ -28,9 +28,14 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showStatus(creatorThread.getStatus());
                 mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
                 mainWindow.getCreatorPanel().showKBAmount(creatorThread.getTotalKbAmount());
-                mainWindow.getCreatorPanel().showFinishedKbs(creatorThread.getCurrentK());
+
+                mainWindow.getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
+
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-                mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentK());
+
+                //removed because information didnt work with parallel buffer
+                // mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentK());
+
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
                 mainWindow.getKbWriterPanel().getKbQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
                 mainWindow.getKbWriterPanel().getKbQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());

@@ -231,6 +231,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         System.out.println("preparing iteration: " + requestedK);
 
         writingFileNameCounter = 0;
+        readingFileNameCounter = 0;
         pairReaderCounter = 0;
 
         requestedListNumber.set(requestedK);

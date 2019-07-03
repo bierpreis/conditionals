@@ -38,8 +38,8 @@ public class MainCreatorPanel extends JPanel {
 
     }
 
-    public void showFinishedKbs(int finishedKBs) {
-        currentIterationPanel.showOverallProgress(finishedKBs);
+    public void showCurrentK(int finishedKBs) {
+        currentIterationPanel.showCurrentK(finishedKBs);
     }
 
     public void showIterationKBs(int candidatePairAmount) {

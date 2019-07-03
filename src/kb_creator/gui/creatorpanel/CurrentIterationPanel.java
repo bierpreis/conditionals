@@ -31,12 +31,12 @@ public class CurrentIterationPanel extends JPanel {
         vBox.add(candidatePairslabel);
 
         showIterationKBs(0);
-        showCandidatePairs(0);
+        //showCandidatePairs(0);
         showSpeed(0);
-        showOverallProgress(-1);
+        showCurrentK(-1);
     }
 
-    public void showOverallProgress(int finishedKBs) {
+    public void showCurrentK(int finishedKBs) {
         if (finishedKBs != -1)
             progressLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
 
