@@ -244,7 +244,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             e.printStackTrace();
         }
         File[] filesArray = folderToRead.listFiles();
-
+        System.out.println("number of files foud for " + requestedK + " iteration: " + filesArray.length);
         Arrays.sort(filesArray);
         filesList = Arrays.asList(filesArray);
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
