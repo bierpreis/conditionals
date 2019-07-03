@@ -33,7 +33,7 @@ public class StatusThread implements Runnable {
 
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
 
-                //removed because information didnt work with parallel buffer
+                //removed because information didnt work with parallel buffer //todo: here show the "last" cp number. but where to save it?
                 // mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentK());
 
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
