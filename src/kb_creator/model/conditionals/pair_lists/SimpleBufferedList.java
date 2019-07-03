@@ -85,8 +85,7 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
 
 
         nextElementNumberToReturn = 0;
-
-        //todo: rly k + 1 ? in parallel this was not the case
+        
         requestedListNumber.set(requestedK + 1);
 
 

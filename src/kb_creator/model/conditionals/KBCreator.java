@@ -139,7 +139,7 @@ public class KBCreator implements Runnable {
                         kbWriter.addInconsistentKb(inconsistentKB);
                     }
                 }
-
+                //todo: is this still needed?
                 if (waitIsRequested)
                     synchronized (this) {
                         try {
@@ -156,7 +156,7 @@ public class KBCreator implements Runnable {
                 if (status.equals(Status.STOPPED)) {
                     return;
                 }
-
+                System.out.println("deleting stuff for: " + candidatePair.toString());
                 //delete to save some memory
                 candidatePair.deleteCandidates();
 

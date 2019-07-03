@@ -15,7 +15,6 @@ public class CandidateNumbersArrayPair extends AbstractPair {
     //this class is much more memory efficient then candidateNumbrersListstPair
     public CandidateNumbersArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
-
         List<Integer> integerTempList = new ArrayList<>(candidates.size());
 
         for (NewConditional conditionalToAdd : candidates)
@@ -33,7 +32,6 @@ public class CandidateNumbersArrayPair extends AbstractPair {
         //divide string into kb and candidates
         //create both from subString
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
-
         candidatesNumbersArray = createCandidatesArrayFromString(splitString[1]);
     }
 

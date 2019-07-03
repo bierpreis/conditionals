@@ -39,7 +39,7 @@ public class KBCreatorObserver implements ActionListener {
             AbstractCandidateCollection candidateBuffer;
 
             if (mainWindow.isBufferingRequested())
-                creatorThreadObject.setList(candidateBuffer = new ParallelBufferedList(mainWindow.getCpFilePath()));
+                creatorThreadObject.setList(candidateBuffer = new SimpleBufferedList(mainWindow.getCpFilePath()));
             else creatorThreadObject.setList(candidateBuffer = new UnbufferedList(null));
 
 
