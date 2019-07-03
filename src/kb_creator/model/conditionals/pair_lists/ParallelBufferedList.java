@@ -16,6 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ParallelBufferedList extends AbstractCandidateCollection {
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> queueToPrepare;
+    private int iterationNumberOfFiles;
     private List<File> filesList;
 
     public ParallelBufferedList(String filePath) {
@@ -55,7 +56,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
-            } else if (queueToPrepare.isEmpty() && requestedListNumber.get() != 0) { //todo: only read when there are files left?!
+
+                //todo: maybe only do this when there are files available?!
+                //currently doenst work. maybe later
+            } else if (queueToPrepare.isEmpty() && requestedListNumber.get() != 0) {
 
                 status = BufferStatus.READING;
                 queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
@@ -121,7 +125,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
         Scanner fileScanner = null;
         try {
-            fileScanner = new Scanner(fileToRead);
+            fileScanner = new Scanner(fileToRead); //todo: here exception when no file is found (because it is finished!)
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -212,12 +216,10 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     }
 
 
-    //todo: this is completely wrong
+    //todo: not sure if this is correct
     @Override
     public boolean hasElementsForK(int requestedK) {
-        //idea: check if folder with name k exists?
-        //but then also check if siles exit which are non empty
-        return true;
+        return iterationNumberOfFiles != 0;
     }
 
 
@@ -244,7 +246,8 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
             e.printStackTrace();
         }
         File[] filesArray = folderToRead.listFiles();
-        System.out.println("number of files foud for " + requestedK + " iteration: " + filesArray.length);
+        System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
+        iterationNumberOfFiles = filesArray.length;
         Arrays.sort(filesArray);
         filesList = Arrays.asList(filesArray);
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
