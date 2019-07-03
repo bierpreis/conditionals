@@ -156,7 +156,6 @@ public class KBCreator implements Runnable {
                 if (status.equals(Status.STOPPED)) {
                     return;
                 }
-                System.out.println("deleting stuff for: " + candidatePair.toString());
                 //delete to save some memory
                 candidatePair.deleteCandidates();
 

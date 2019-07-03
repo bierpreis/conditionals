@@ -19,6 +19,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private int iterationNumberOfFiles;
     private List<File> filesList;
     private volatile boolean hasNextIteration;
+    private volatile int lastIterationPairAmount;
 
     public ParallelBufferedList(String filePath) {
         super(filePath);
@@ -57,7 +58,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 status = BufferStatus.WRITING;
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
-                
+
             } else if (queueToPrepare.isEmpty() && requestedListNumber.get() != 0) {
 
                 status = BufferStatus.READING;
@@ -164,7 +165,6 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
                 e.printStackTrace();
             }
         }
-        System.out.println("queue size after flushing: " + cpQueueToWrite.size());
         flushRequested = false;
         System.out.println("flushing finished in " + (System.currentTimeMillis() - timeBeforeWaiting) + "ms");
         writingFileNameCounter = 0;
@@ -226,6 +226,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         writingFileNameCounter = 0;
         readingFileNameCounter = 0;
+        lastIterationPairAmount = pairReaderCounter;
         pairReaderCounter = 0;
 
 
