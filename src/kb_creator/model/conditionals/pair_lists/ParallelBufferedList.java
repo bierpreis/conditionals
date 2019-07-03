@@ -17,14 +17,13 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> queueToPrepare;
     private List<File> filesList;
-    private int nextFileToReadNumber;
 
     public ParallelBufferedList(String filePath) {
         super(filePath);
         System.out.println("created parallel list for candidate pairs");
 
         writingFileNameCounter = 0;
-        readingFileNameCounter = 0;
+        pairReaderCounter = 0;
 
         queueToReturn = new LinkedBlockingQueue<>();
         queueToPrepare = new LinkedBlockingQueue<>();
@@ -123,7 +122,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
     private List<AbstractPair> readNextFile(int requestedK) {
         System.out.println("reading file for k: " + requestedK);
         //read String
-        File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", writingFileNameCounter) + ".txt");
+        File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);
@@ -144,11 +143,11 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
 
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            readingFileNameCounter++;
+            pairReaderCounter++;
         }
 
 
-        nextFileToReadNumber++;
+        readingFileNameCounter++;
 
         return pairsList;
     }
@@ -232,7 +231,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         System.out.println("preparing iteration: " + requestedK);
 
         writingFileNameCounter = 0;
-        readingFileNameCounter = 0;
+        pairReaderCounter = 0;
 
         requestedListNumber.set(requestedK);
 
@@ -253,8 +252,7 @@ public class ParallelBufferedList extends AbstractCandidateCollection {
         filesList = Arrays.asList(filesArray);
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
 
-        nextFileToReadNumber = 0;
-        readingFileNameCounter = 0;
+
         requestedListIsReady = false;
     }
 

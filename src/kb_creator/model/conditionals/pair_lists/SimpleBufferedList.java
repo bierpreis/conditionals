@@ -133,14 +133,14 @@ public class SimpleBufferedList extends AbstractCandidateCollection {
     }
 
     private List<AbstractPair> readAllPairs(int requestedK) {
-        readingFileNameCounter = 0;
+        pairReaderCounter = 0;
         List<String> stringList = getPairStringList(requestedK);
 
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            readingFileNameCounter++;
+            pairReaderCounter++;
         }
 
 

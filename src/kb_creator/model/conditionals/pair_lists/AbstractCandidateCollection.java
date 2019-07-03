@@ -18,6 +18,8 @@ public abstract class AbstractCandidateCollection implements Runnable {
     protected volatile int writingFileNameCounter;
     protected volatile int readingFileNameCounter;
 
+    protected volatile int pairReaderCounter;
+
     protected final int maxNumberOfPairsInFile = 200;
 
     protected String tmpFilePath;
@@ -55,7 +57,7 @@ public abstract class AbstractCandidateCollection implements Runnable {
     }
 
     public int getReaderCounter() {
-        return readingFileNameCounter;
+        return pairReaderCounter;
     }
 
     public abstract void clear(int requestedK);
