@@ -20,6 +20,8 @@ public class StatusThread implements Runnable {
         lastTimeStamp = System.currentTimeMillis();
     }
 
+
+    //todo: order stuff
     @Override
     public void run() {
         while (isRunning) {
@@ -51,6 +53,8 @@ public class StatusThread implements Runnable {
                     mainWindow.getKbWriterPanel().getCandidatesPanel().showStatus(creatorThread.getPairBuffer().getStatus());
                 }
 
+
+                //todo: delete this stuff? what is this?
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
 
                     creatorThread.waitForKbWriter();
