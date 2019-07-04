@@ -1,6 +1,7 @@
 package kb_creator.gui.creatorpanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -12,6 +13,7 @@ public class CurrentIterationPanel extends JPanel {
     private JLabel candidatePairslabel;
 
     public CurrentIterationPanel() {
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
         Box vBox = Box.createVerticalBox();
         add(vBox);

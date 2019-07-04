@@ -8,6 +8,7 @@ public class MemoryPanel extends JPanel {
     JLabel descriptionLabel;
 
     public MemoryPanel() {
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("JVM Memory"));
         descriptionLabel = new JLabel();
         add(descriptionLabel);

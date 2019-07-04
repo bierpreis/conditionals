@@ -4,6 +4,7 @@ import kb_creator.observer.Status;
 import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -16,6 +17,7 @@ public class OverallStatusPanel extends JPanel {
 
 
     public OverallStatusPanel(ActionPanel actionPanel) {
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         this.actionPanel = actionPanel;
 
 
