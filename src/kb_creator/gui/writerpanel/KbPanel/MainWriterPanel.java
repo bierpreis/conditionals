@@ -3,6 +3,7 @@ package kb_creator.gui.writerpanel.KbPanel;
 import kb_creator.gui.writerpanel.MainBufferPanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class MainWriterPanel extends JPanel {
@@ -12,6 +13,7 @@ public class MainWriterPanel extends JPanel {
     private MainBufferPanel mainBufferPanel;
 
     public MainWriterPanel() {
+        setPreferredSize(new Dimension(300, 100));
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
