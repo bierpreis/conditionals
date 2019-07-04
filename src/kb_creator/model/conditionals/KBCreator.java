@@ -17,6 +17,7 @@ import java.util.*;
 public class KBCreator implements Runnable {
 
     private volatile int totalNumberOfKBs;
+    private volatile int totalInconsistentAmount;
     private volatile int iterationNumberOfKBs;
 
     private volatile Status status;
@@ -103,7 +104,7 @@ public class KBCreator implements Runnable {
                 AbstractPair candidatePair = l.getNextPair(k);
                 pairCounter++;
 
-                //todo: this as progress and to say if it has more elements?
+                //todo: this as progress?
                 System.out.println("pairs left: " + (l.getLastIterationPairAmount() - pairCounter));
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -142,6 +143,7 @@ public class KBCreator implements Runnable {
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
                         kbWriter.addInconsistentKb(inconsistentKB);
+                        totalInconsistentAmount++;
                     }
                 }
 
@@ -229,6 +231,10 @@ public class KBCreator implements Runnable {
 
     public int getTotalKbAmount() {
         return totalNumberOfKBs;
+    }
+
+    public int getTotalInconsistentAmount() {
+        return totalInconsistentAmount;
     }
 
     public int getIterationNumberOfKBs() {

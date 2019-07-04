@@ -33,7 +33,7 @@ public class MainCreatorPanel extends JPanel {
 
         showStatus(Status.NOT_STARTED);
 
-        showKBAmount(0);
+        showConsistentKBAmount(0);
 
 
     }
@@ -46,8 +46,12 @@ public class MainCreatorPanel extends JPanel {
         currentIterationPanel.showIterationKBs(candidatePairAmount);
     }
 
-    public void showKBAmount(int kbAmount) {
+    public void showConsistentKBAmount(int kbAmount) {
         overallStatusPanel.showConsistentKBAmount(kbAmount);
+    }
+
+    public void showInconsistentKBAmount(int kbAmount) {
+        overallStatusPanel.showInconsistentKBAmount(kbAmount);
     }
 
     public void showStatus(Status status) {

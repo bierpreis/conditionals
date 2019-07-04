@@ -13,7 +13,8 @@ public class OverallStatusPanel extends JPanel {
 
     private JLabel statusLabel;
     private ActionPanel actionPanel;
-    private JLabel kbLabel;
+    private JLabel consistentAmountLabel;
+    private JLabel inconsistentAmountLabel;
 
 
     public OverallStatusPanel(ActionPanel actionPanel) {
@@ -30,8 +31,13 @@ public class OverallStatusPanel extends JPanel {
         statusLabel = new JLabel();
         vBox.add(statusLabel);
 
-        kbLabel = new JLabel();
-        vBox.add(kbLabel);
+        consistentAmountLabel = new JLabel();
+        vBox.add(consistentAmountLabel);
+
+        inconsistentAmountLabel = new JLabel();
+        vBox.add(inconsistentAmountLabel);
+
+        showInconsistentKBAmount(0);
 
     }
 
@@ -43,10 +49,14 @@ public class OverallStatusPanel extends JPanel {
     public void showConsistentKBAmount(int amount) {
 
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        kbLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
+        consistentAmountLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
-    //todo: counter for inconsistent amount
+
+    public void showInconsistentKBAmount(int amount) {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        inconsistentAmountLabel.setText("Inonsistent Knowledge Bases: " + formatter.format(amount) + "\n");
+    }
 
 
 }

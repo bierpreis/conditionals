@@ -29,7 +29,8 @@ public class StatusThread implements Runnable {
             if (creatorThread != null) {
                 mainWindow.getCreatorPanel().showStatus(creatorThread.getStatus());
                 mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
-                mainWindow.getCreatorPanel().showKBAmount(creatorThread.getTotalKbAmount());
+                mainWindow.getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
+                mainWindow.getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
 
                 mainWindow.getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
 
@@ -54,7 +55,7 @@ public class StatusThread implements Runnable {
                 }
 
 
-                //todo: delete this stuff? what is this?
+                //todo: think about this. this should be there for consistent and inconsistent?!
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
 
                     creatorThread.waitForKbWriter();
