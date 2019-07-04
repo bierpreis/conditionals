@@ -1,6 +1,7 @@
 package kb_creator.gui.writerpanel.KbPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -10,6 +11,7 @@ public class KbQueuePanel extends JPanel {
 
 
     public KbQueuePanel() {
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Queue for Writing"));
 
         Box vBox = Box.createVerticalBox();

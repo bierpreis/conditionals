@@ -21,7 +21,7 @@ public class MainKbWriterPanel extends JPanel {
     private JLabel inconsistentCounterLabel;
 
     public MainKbWriterPanel() {
-
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         setPreferredSize(new Dimension(350, 100));
         Box vBox = Box.createVerticalBox();
         add(vBox);

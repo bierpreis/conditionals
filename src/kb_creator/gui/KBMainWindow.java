@@ -3,7 +3,7 @@ package kb_creator.gui;
 import kb_creator.observer.KBCreatorObserver;
 import kb_creator.gui.creatorpanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.writerpanel.KbPanel.KbWriterPanel;
+import kb_creator.gui.writerpanel.KbPanel.MainWriterPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 
@@ -15,7 +15,7 @@ public class KBMainWindow {
     private LeftPanel leftPanel;
     private JFrame mainWindow;
     private MainCreatorPanel mainCreatorPanel;
-    private KbWriterPanel kbWriterPanel;
+    private MainWriterPanel mainWriterPanel;
 
     //todo: add some information how long this is running?
     public KBMainWindow(KBCreatorObserver observer) {
@@ -26,7 +26,7 @@ public class KBMainWindow {
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(mainCreatorPanel = new MainCreatorPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
-        mainWindow.add(kbWriterPanel = new KbWriterPanel(), BorderLayout.EAST);
+        mainWindow.add(mainWriterPanel = new MainWriterPanel(), BorderLayout.EAST);
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,8 +58,8 @@ public class KBMainWindow {
     }
 
 
-    public KbWriterPanel getKbWriterPanel() {
-        return kbWriterPanel;
+    public MainWriterPanel getMainWriterPanel() {
+        return mainWriterPanel;
     }
 
     public MainCreatorPanel getCreatorPanel() {

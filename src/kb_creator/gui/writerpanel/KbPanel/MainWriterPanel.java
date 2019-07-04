@@ -5,13 +5,13 @@ import kb_creator.gui.writerpanel.MainBufferPanel;
 import javax.swing.*;
 
 
-public class KbWriterPanel extends JPanel {
+public class MainWriterPanel extends JPanel {
 
     private KbQueuePanel kbQueuePanel;
     private MainKbWriterPanel mainKbWriterPanel;
     private MainBufferPanel mainBufferPanel;
 
-    public KbWriterPanel() {
+    public MainWriterPanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
