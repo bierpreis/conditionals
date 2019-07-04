@@ -104,7 +104,6 @@ public class KBCreator implements Runnable {
                 pairCounter++;
 
                 //todo: this as progress and to say if it has more elements?
-                //this shows the problem: always 200 are read and processed, rest ignored. fix this!
                 System.out.println("pairs left: " + (l.getLastIterationPairAmount() - pairCounter));
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {

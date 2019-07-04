@@ -66,8 +66,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 }
 
             } else {
-                System.out.println("queue to return: " + queueToReturn.size());
-                System.out.println("queue to write: " + cpQueueToWrite.size());
                 try {
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
@@ -178,10 +176,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         //nothing
     }
 
-    //todo: this is not good at all
+
     @Override
     public boolean hasMoreElements(int currentK) {
-        System.out.println("has more elments?");
         if (!queueToReturn.isEmpty())
             return true;
 
@@ -203,7 +200,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasElementsForK(int requestedK) {
-        System.out.println("has elements for " + requestedK + hasNextIteration);
         return hasNextIteration;
     }
 
@@ -256,9 +252,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        System.out.println("finishing iteration: " + requestedK);
+
         status = BufferStatus.FINISHING_ITERATION;
         flushWritingElements();
+        System.out.println("finished iteration: " + requestedK);
     }
 
 
