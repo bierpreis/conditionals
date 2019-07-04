@@ -59,19 +59,22 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 if (cpQueueToWrite.size() > 0)
                     writeNextFile(cpQueueToWrite);
 
-            } else if (queueToPrepare.isEmpty() && requestedListNumber.get() != 0) {
+            } else if (readingFileNameCounter < iterationNumberOfFiles) {
+                if (queueToReturn.size() < 1000) {
+                    status = BufferStatus.READING;
+                    queueToReturn.addAll(readNextFile(requestedListNumber.get()));
+                }
 
-                status = BufferStatus.READING;
-                queueToPrepare.addAll(readNextFile(requestedListNumber.get()));
-
-                requestedListNumber.set(0);
-            } else
+            } else {
+                System.out.println("queue to return: " + queueToReturn.size());
+                System.out.println("queue to write: " + cpQueueToWrite.size());
                 try {
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+            }
         }
 
 
@@ -178,43 +181,29 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     //todo: this is not good at all
     @Override
     public boolean hasMoreElements(int currentK) {
+        System.out.println("has more elments?");
+        if (!queueToReturn.isEmpty())
+            return true;
+
+        return (readingFileNameCounter < iterationNumberOfFiles);
+    }
 
 
-        while (flushRequested)
+    @Override
+    public AbstractPair getNextPair(int currentK) {
+        while (queueToReturn.peek() == null)
             try {
-                System.out.println("sleeping");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-        //todo: this is shit. if the dangerous stuff triggered, and both queues are at some point 0, every input which can come later will be ignored
-        if (queueToReturn.isEmpty() && !queueToPrepare.isEmpty()) {
-            System.out.println("!!!!DANGEROUS SUFF TRIGGERED!!!!");
-            queueToReturn = queueToPrepare;
-            queueToPrepare = new LinkedBlockingQueue<>();
-        }
-        boolean returnValue = !queueToReturn.isEmpty();
-
-        return returnValue;
-    }
-
-    //todo: this sucks
-    @Override
-    public AbstractPair getNextPair(int currentK) {
-        if (queueToReturn.isEmpty()) {
-            System.out.println("switched empty queue to return for queue to prepare with " + queueToPrepare.size() + "elements");
-            queueToReturn = queueToPrepare;
-            queueToPrepare = new LinkedBlockingQueue<>();
-
-        }
-
         return queueToReturn.poll();
     }
 
 
     @Override
     public boolean hasElementsForK(int requestedK) {
+        System.out.println("has elements for " + requestedK + hasNextIteration);
         return hasNextIteration;
     }
 
@@ -225,7 +214,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("preparing iteration: " + requestedK);
 
         writingFileNameCounter = 0;
-        readingFileNameCounter = 0;
+
         lastIterationPairAmount = pairReaderCounter;
         pairReaderCounter = 0;
 
@@ -238,17 +227,12 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         if (!hasNextIteration)
             return;
 
+        readingFileNameCounter = 0;
         requestedListNumber.set(requestedK);
 
 
         long beforeReadFiles = System.currentTimeMillis();
 
-        //todo: this is shit, this shows wait in finish iteration doenst work
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         File[] filesArray = folderToRead.listFiles();
         System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
         iterationNumberOfFiles = filesArray.length;
@@ -276,8 +260,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.FINISHING_ITERATION;
         flushWritingElements();
     }
-
-
 
 
 }
