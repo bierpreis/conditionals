@@ -1,7 +1,6 @@
 package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 
-
 import javax.swing.*;
 
 
@@ -12,6 +11,8 @@ public class BufferPanel extends JPanel {
     JPanel descriptionPanel = new JPanel();
     JPanel actionPanel = new JPanel();
 
+
+    //todo: add option to chose buffer file size
     public BufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));

@@ -13,6 +13,7 @@ public class MainOptionsPanel extends JPanel {
     private BufferPanel bufferPanel;
     private SignaturePanel signaturePanel;
 
+    //todo: deacitvate options panel while creator is running
     public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
