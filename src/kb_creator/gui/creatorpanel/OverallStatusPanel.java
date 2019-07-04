@@ -38,14 +38,13 @@ public class OverallStatusPanel extends JPanel {
         actionPanel.setStatus(status);
     }
 
-    //todo: rename in consistent stuff
-    public void showKBs(int amount) {
+    public void showConsistentKBAmount(int amount) {
 
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        kbLabel.setText("Knowledge Bases: " + formatter.format(amount) + "\n");
+        kbLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
-    //todo: counter for inconsistent stuff
+    //todo: counter for inconsistent amount
 
 
 }

@@ -47,7 +47,7 @@ public class MainCreatorPanel extends JPanel {
     }
 
     public void showKBAmount(int kbAmount) {
-        overallStatusPanel.showKBs(kbAmount);
+        overallStatusPanel.showConsistentKBAmount(kbAmount);
     }
 
     public void showStatus(Status status) {
