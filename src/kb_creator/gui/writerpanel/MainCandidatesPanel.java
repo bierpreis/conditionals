@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+//todo. increase width. just like creator panel would be good
 public class MainCandidatesPanel extends JPanel {
     private JLabel statusLabel;
     private JLabel writerLabel;
