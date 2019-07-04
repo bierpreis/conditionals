@@ -17,7 +17,7 @@ public class KBMainWindow {
     private MainCreatorPanel mainCreatorPanel;
     private KbWriterPanel kbWriterPanel;
 
-    
+    //todo: add some information how long this is running?
     public KBMainWindow(KBCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
