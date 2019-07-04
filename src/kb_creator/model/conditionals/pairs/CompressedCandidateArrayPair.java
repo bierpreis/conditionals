@@ -77,7 +77,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     }
 
 
-    //this method creates a file string in the exacly same format like the other pair implementations
+    //todo: this should create a short file string?!
     @Override
     public String toFileString() {
         List<NewConditional> candidatesList = getCandidatesList();
