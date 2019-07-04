@@ -7,12 +7,12 @@ import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class MainCandidatesPanel extends JPanel {
+public class MainBufferPanel extends JPanel {
     private JLabel statusLabel;
     private JLabel writerLabel;
     private JLabel readerLabel;
 
-    public MainCandidatesPanel() {
+    public MainBufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
 
 
@@ -37,10 +37,10 @@ public class MainCandidatesPanel extends JPanel {
     }
 
 
-    //todo: this is useless. at least write "writer queue" or remove completely.
+
     public void showWriterQueue(int alreadyFinishedNumber) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        writerLabel.setText("Queue: " + formatter.format(alreadyFinishedNumber));
+        writerLabel.setText("Writer Queue: " + formatter.format(alreadyFinishedNumber));
     }
 
 

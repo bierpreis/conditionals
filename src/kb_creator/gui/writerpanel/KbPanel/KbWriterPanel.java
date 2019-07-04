@@ -1,6 +1,6 @@
 package kb_creator.gui.writerpanel.KbPanel;
 
-import kb_creator.gui.writerpanel.MainCandidatesPanel;
+import kb_creator.gui.writerpanel.MainBufferPanel;
 
 import javax.swing.*;
 
@@ -9,7 +9,7 @@ public class KbWriterPanel extends JPanel {
 
     private KbQueuePanel kbQueuePanel;
     private MainKbWriterPanel mainKbWriterPanel;
-    private MainCandidatesPanel mainCandidatesPanel;
+    private MainBufferPanel mainBufferPanel;
 
     public KbWriterPanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
@@ -20,8 +20,8 @@ public class KbWriterPanel extends JPanel {
         mainKbWriterPanel = new MainKbWriterPanel();
         add(mainKbWriterPanel);
 
-        mainCandidatesPanel = new MainCandidatesPanel();
-        add(mainCandidatesPanel);
+        mainBufferPanel = new MainBufferPanel();
+        add(mainBufferPanel);
     }
 
     public KbQueuePanel getKbQueuePanel() {
@@ -32,7 +32,7 @@ public class KbWriterPanel extends JPanel {
         return mainKbWriterPanel;
     }
 
-    public MainCandidatesPanel getCandidatesPanel() {
-        return mainCandidatesPanel;
+    public MainBufferPanel getCandidatesPanel() {
+        return mainBufferPanel;
     }
 }
