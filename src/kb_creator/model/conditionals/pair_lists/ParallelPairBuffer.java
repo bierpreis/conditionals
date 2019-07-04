@@ -26,7 +26,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("created parallel list for candidate pairs");
 
         writingFileNameCounter = 0;
-        pairReaderCounter = 0;
 
         queueToReturn = new LinkedBlockingQueue<>();
         queueToPrepare = new LinkedBlockingQueue<>();
@@ -142,7 +141,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            pairReaderCounter++;
+            pairReaderCounter++; //todo: why this here? better count pairs when writing them?
         }
 
 
@@ -211,7 +210,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         writingFileNameCounter = 0;
 
+
+        //todo: can this be correkt?
         lastIterationPairAmount = pairReaderCounter;
+
         pairReaderCounter = 0;
 
 
