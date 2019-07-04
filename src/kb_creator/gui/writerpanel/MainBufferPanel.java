@@ -4,6 +4,7 @@ package kb_creator.gui.writerpanel;
 import kb_creator.model.conditionals.pair_lists.AbstractPairBuffer;
 
 import javax.swing.*;
+import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -13,8 +14,8 @@ public class MainBufferPanel extends JPanel {
     private JLabel readerLabel;
 
 
-    //todo: try some left alignment?
     public MainBufferPanel() {
+        setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
 
 
@@ -27,6 +28,7 @@ public class MainBufferPanel extends JPanel {
         vBox.add(statusLabel);
         vBox.add(writerLabel);
         vBox.add(readerLabel);
+        vBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         showStatus(AbstractPairBuffer.BufferStatus.NOT_STARTED);
         showWriterQueue(0);
         showReaderProgress(0);
