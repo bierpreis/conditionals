@@ -12,6 +12,8 @@ public class MainBufferPanel extends JPanel {
     private JLabel writerLabel;
     private JLabel readerLabel;
 
+
+    //todo: try some left alignment?
     public MainBufferPanel() {
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
 
@@ -31,11 +33,10 @@ public class MainBufferPanel extends JPanel {
 
     }
 
-    //todo: useless. almost always shows reading as status. is this correct? if yes, remove
+
     public void showStatus(AbstractPairBuffer.BufferStatus status) {
         statusLabel.setText("Status: " + status.toString());
     }
-
 
 
     public void showWriterQueue(int alreadyFinishedNumber) {
@@ -44,10 +45,9 @@ public class MainBufferPanel extends JPanel {
     }
 
 
-    //todo: this is some useless information with parallel buffer. ony useful with simple buffer? what does it mean. does it make sense? write it in description or delete info
     public void showReaderProgress(int alreadyReadNumber) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        readerLabel.setText("Read KBs: " + formatter.format(alreadyReadNumber));
+        readerLabel.setText("Read Pairs: " + formatter.format(alreadyReadNumber));
     }
 
 }
