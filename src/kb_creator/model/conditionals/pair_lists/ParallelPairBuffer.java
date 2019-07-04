@@ -15,9 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParallelPairBuffer extends AbstractPairBuffer {
     private Queue<AbstractPair> queueToReturn;
-    private Queue<AbstractPair> queueToPrepare;
     private int iterationNumberOfFiles;
-    private List<File> filesList;
     private volatile boolean hasNextIteration;
 
 
@@ -28,7 +26,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         writingFileNameCounter = 0;
 
         queueToReturn = new LinkedBlockingQueue<>();
-        queueToPrepare = new LinkedBlockingQueue<>();
 
         flushRequested = false;
         running = true;
@@ -141,7 +138,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CandidateNumbersArrayPair(stringFromFile));
-            pairReaderCounter++; //todo: why this here? better count pairs when writing them?
         }
 
 
@@ -235,7 +231,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
         iterationNumberOfFiles = filesArray.length;
         Arrays.sort(filesArray);
-        filesList = Arrays.asList(filesArray);
         System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
 
     }
@@ -249,7 +244,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     @Override
     public void addPair(AbstractPair pairToAdd) {
         cpQueueToWrite.add(pairToAdd);
-
+        pairReaderCounter++;
     }
 
     @Override

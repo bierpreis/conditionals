@@ -20,10 +20,12 @@ public class ActionPanel extends JPanel {
         startButton.addActionListener(observer);
         add(startButton);
 
+        //todo: remove
         pauseButton = new PauseButton();
         pauseButton.addActionListener(observer);
         add(pauseButton);
 
+        //todo: stop button doenst work?
         stopButton = new JButton("Stop");
         stopButton.addActionListener(observer);
         add(stopButton);
