@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class ActionPanel extends JPanel {
     private JButton startButton;
-    private PauseButton pauseButton;
+
     private JButton stopButton;
 
     public ActionPanel(KBCreatorObserver observer) {
@@ -20,10 +20,6 @@ public class ActionPanel extends JPanel {
         startButton.addActionListener(observer);
         add(startButton);
 
-        //todo: remove
-        pauseButton = new PauseButton();
-        pauseButton.addActionListener(observer);
-        add(pauseButton);
 
         //todo: stop button doenst work?
         stopButton = new JButton("Stop");
@@ -38,21 +34,17 @@ public class ActionPanel extends JPanel {
         switch (status) {
             case CREATING_CONDITIONALS:
                 startButton.setEnabled(false);
-                pauseButton.setEnabled(false);
                 stopButton.setEnabled(false);
                 break;
             case RUNNING:
-            case PAUSE:
             case WAITING_FOR_WRITER:
                 startButton.setEnabled(false);
-                pauseButton.setEnabled(true);
                 stopButton.setEnabled(true);
                 break;
             case FINISHED:
             case NOT_STARTED:
             case STOPPED:
                 startButton.setEnabled(true);
-                pauseButton.setEnabled(false);
                 stopButton.setEnabled(false);
                 break;
             default:
@@ -61,7 +53,4 @@ public class ActionPanel extends JPanel {
         }
     }
 
-    public void activateStartButton(boolean active) {
-        startButton.setEnabled(active);
-    }
 }

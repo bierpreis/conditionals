@@ -156,8 +156,6 @@ public class KBCreator implements Runnable {
                     }
                 status = Status.RUNNING;
 
-                while (status.equals(Status.PAUSE))
-                    sleep(500);
                 if (status.equals(Status.STOPPED)) {
                     return;
                 }
@@ -243,15 +241,6 @@ public class KBCreator implements Runnable {
 
     public void stop() {
         status = Status.STOPPED;
-    }
-
-    public void pause(boolean pause) {
-
-        if (pause)
-            status = Status.PAUSE;
-        if (!pause)
-            status = Status.RUNNING;
-
     }
 
     public int getCurrentK() {
