@@ -31,10 +31,13 @@ public class KBMainWindow {
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        mainWindow.setVisible(true);
 
 
         mainWindow.pack();
+        mainWindow.setLocationRelativeTo(null);
+
+        mainWindow.setVisible(true);
+
     }
 
     public AbstractSignature getSignature() {
