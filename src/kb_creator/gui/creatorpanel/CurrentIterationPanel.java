@@ -66,7 +66,7 @@ public class CurrentIterationPanel extends JPanel {
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
     }
 
-    //todo: this info is useless. this shows the same number like above. maybe change for progress in percent oder last iteration pair numbe?
+    //todo: this info is useless.
     public void showCandidatePairs(int canditatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));

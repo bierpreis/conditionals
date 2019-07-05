@@ -61,7 +61,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         //nothing
     }
 
-    
+
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = candidatePairList.get(requestedK+1).size();
