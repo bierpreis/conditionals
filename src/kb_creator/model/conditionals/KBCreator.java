@@ -106,7 +106,7 @@ public class KBCreator implements Runnable {
                 AbstractPair candidatePair = l.getNextPair(k);
                 pairCounter++;
 
-                //todo: this as progress?
+                //todo: progress with dummy buffer
                 progress = calculateProgress(pairCounter, l.getLastIterationPairAmount());
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
