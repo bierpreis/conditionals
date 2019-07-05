@@ -106,7 +106,7 @@ public class KBCreator implements Runnable {
                 AbstractPair candidatePair = l.getNextPair(k);
                 pairCounter++;
 
-                
+
                 progress = calculateProgress(pairCounter, l.getLastIterationPairAmount());
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -293,9 +293,13 @@ public class KBCreator implements Runnable {
         waitForKbWriter = true;
     }
 
+
+    //todo: how can this be? and why only in unbuffered list? the must be sth worng
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
         if (lastIterationAmount == 0)
             return 0;
+        if (progress > 100)
+            System.out.println("lol");
         return (float) (pairCounter / (float) lastIterationAmount) * 100;
     }
 
