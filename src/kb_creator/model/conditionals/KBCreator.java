@@ -294,8 +294,9 @@ public class KBCreator implements Runnable {
     }
 
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
-        //System.out.println(pairCounter + " " + lastIterationAmount);
-        return (float) (pairCounter / (float) lastIterationAmount)*100;
+        if (lastIterationAmount == 0)
+            return 0;
+        return (float) (pairCounter / (float) lastIterationAmount) * 100;
     }
 
     public float getProgress() {
