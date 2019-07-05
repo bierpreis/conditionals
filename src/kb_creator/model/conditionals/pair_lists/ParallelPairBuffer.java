@@ -205,7 +205,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("preparing iteration: " + requestedK);
 
         writingFileNameCounter = 0;
-        
+
+        System.out.println("pairReaderCounter: " + pairReaderCounter);
         lastIterationPairAmount = pairReaderCounter;
 
         pairReaderCounter = 0;

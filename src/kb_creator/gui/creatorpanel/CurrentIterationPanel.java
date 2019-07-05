@@ -9,14 +9,18 @@ import java.util.Locale;
 public class CurrentIterationPanel extends JPanel {
     private JLabel iterationKBLabel;
     private JLabel speedLabel;
-    private JLabel progressLabel;
+    private JLabel currentKLabel;
     private JLabel candidatePairslabel;
+    private JLabel progressLabel;
 
     public CurrentIterationPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
         Box vBox = Box.createVerticalBox();
         add(vBox);
+
+        currentKLabel = new JLabel();
+        vBox.add(currentKLabel);
 
         progressLabel = new JLabel();
         vBox.add(progressLabel);
@@ -32,6 +36,9 @@ public class CurrentIterationPanel extends JPanel {
         candidatePairslabel = new JLabel();
         vBox.add(candidatePairslabel);
 
+        progressLabel = new JLabel();
+        vBox.add(progressLabel);
+
         showIterationKBs(0);
         //showCandidatePairs(0);
         showSpeed(0);
@@ -40,9 +47,9 @@ public class CurrentIterationPanel extends JPanel {
 
     public void showCurrentK(int finishedKBs) {
         if (finishedKBs != -1)
-            progressLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
+            currentKLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
 
-        else progressLabel.setText("Not started yet");
+        else currentKLabel.setText("Not started yet");
     }
 
 
@@ -63,5 +70,9 @@ public class CurrentIterationPanel extends JPanel {
     public void showCandidatePairs(int canditatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));
+    }
+
+    public void showProgress(float progress) {
+        progressLabel.setText("Progress: " + String.format("%.2f", progress) + "%");
     }
 }

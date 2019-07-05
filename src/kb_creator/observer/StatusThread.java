@@ -31,6 +31,7 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
                 mainWindow.getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
                 mainWindow.getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
+                mainWindow.getCreatorPanel().showProgress(creatorThread.getProgress());
 
                 mainWindow.getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
 

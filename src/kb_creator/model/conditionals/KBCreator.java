@@ -34,6 +34,8 @@ public class KBCreator implements Runnable {
 
     private AbstractPairBuffer l;
 
+    private float progress;
+
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
@@ -105,7 +107,7 @@ public class KBCreator implements Runnable {
                 pairCounter++;
 
                 //todo: this as progress?
-                System.out.println("pairs left: " + (l.getLastIterationPairAmount() - pairCounter));
+                progress = calculateProgress(pairCounter, l.getLastIterationPairAmount());
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
@@ -289,6 +291,15 @@ public class KBCreator implements Runnable {
     public void waitForKbWriter() {
         status = Status.WAITING_FOR_WRITER;
         waitForKbWriter = true;
+    }
+
+    private float calculateProgress(int pairCounter, int lastIterationAmount) {
+        //System.out.println(pairCounter + " " + lastIterationAmount);
+        return (float) pairCounter / (float) lastIterationAmount;
+    }
+
+    public float getProgress() {
+        return progress;
     }
 
 }

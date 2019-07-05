@@ -35,7 +35,7 @@ public class MainCreatorPanel extends JPanel {
 
         showConsistentKBAmount(0);
 
-
+        showProgress(0);
     }
 
     public void showCurrentK(int finishedKBs) {
@@ -72,6 +72,10 @@ public class MainCreatorPanel extends JPanel {
 
     public MemoryPanel getMemoryPanel() {
         return memoryPanel;
+    }
+
+    public void showProgress(float progress){
+        currentIterationPanel.showProgress(progress);
     }
 
 
