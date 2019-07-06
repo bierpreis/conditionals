@@ -91,9 +91,6 @@ public class KBCreator implements Runnable {
 
             nextCandidatePairAmount = 0;
 
-            status = Status.RUNNING;
-
-
             //line  7
             l.addNewList(new ArrayList<>());
 
@@ -112,7 +109,6 @@ public class KBCreator implements Runnable {
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-
                         //next part is line 11 and 12
                         //first create the new knowledge base
 
@@ -158,7 +154,6 @@ public class KBCreator implements Runnable {
                         }
                         waitForKbWriter = false;
                     }
-                status = Status.RUNNING;
 
                 if (status.equals(Status.STOPPED)) {
                     return;
@@ -248,7 +243,7 @@ public class KBCreator implements Runnable {
     }
 
     public void stop() {
-        status = Status.STOPPED;
+        this.status = Status.STOPPED;
     }
 
     public int getCurrentK() {
