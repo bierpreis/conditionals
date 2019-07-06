@@ -19,9 +19,7 @@ public class ActionPanel extends JPanel {
         startButton = new JButton("Start");
         startButton.addActionListener(observer);
         add(startButton);
-
-
-        //todo: stop button doenst work?
+        
         stopButton = new JButton("Stop");
         stopButton.addActionListener(observer);
         add(stopButton);
