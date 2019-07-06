@@ -36,6 +36,8 @@ public class MainCreatorPanel extends JPanel {
         showConsistentKBAmount(0);
 
         showProgress(0);
+
+        showCurrentCandidatePairs(0);
     }
 
     public void showCurrentK(int finishedKBs) {

@@ -293,7 +293,7 @@ public class KBCreator implements Runnable {
         waitForKbWriter = true;
     }
 
-    
+
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
         if (lastIterationAmount == 0)
             return 0;
@@ -302,6 +302,10 @@ public class KBCreator implements Runnable {
 
     public float getProgress() {
         return progress;
+    }
+
+    public int getLastPairAmount() {
+        return l.getLastIterationPairAmount();
     }
 
 }
