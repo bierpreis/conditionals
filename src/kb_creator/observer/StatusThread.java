@@ -54,7 +54,6 @@ public class StatusThread implements Runnable {
                 }
 
 
-                //todo: think about this. this should be there for consistent and inconsistent?!
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
 
                     creatorThread.waitForKbWriter();
@@ -63,10 +62,6 @@ public class StatusThread implements Runnable {
                     synchronized (creatorThread) {
                         creatorThread.notify();
                     }
-/*
-                if (kbWriter.getInconsistentQueue() + kbWriter.getConsistentQueue() < 200)
-                    kbWriter.notify();
-*/
 
             }
 
