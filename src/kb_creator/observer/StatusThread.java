@@ -20,8 +20,7 @@ public class StatusThread implements Runnable {
         lastTimeStamp = System.currentTimeMillis();
     }
 
-
-    //todo: order stuff
+    
     @Override
     public void run() {
         while (isRunning) {
@@ -32,16 +31,16 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
                 mainWindow.getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
                 mainWindow.getCreatorPanel().showProgress(creatorThread.getProgress());
-
                 mainWindow.getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
-
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-
                 mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
-
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+
+
                 mainWindow.getMainWriterPanel().getKbQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
                 mainWindow.getMainWriterPanel().getKbQueuePanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+
+
                 mainWindow.getMainWriterPanel().getMainKbWriterPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
                 mainWindow.getMainWriterPanel().getMainKbWriterPanel().showConsistentConter(kbWriter.getConsistentCounter());
                 mainWindow.getMainWriterPanel().getMainKbWriterPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
