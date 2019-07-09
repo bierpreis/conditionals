@@ -2,6 +2,7 @@ package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainKbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
@@ -28,6 +29,13 @@ public class MainKbSafePanel extends JPanel {
 
     public void setButtonActive(boolean active) {
         kbCheckboxPanel.setBoxEnabled(active);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
     }
 
 }

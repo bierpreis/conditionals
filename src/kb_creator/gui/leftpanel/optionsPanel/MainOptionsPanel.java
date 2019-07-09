@@ -7,13 +7,13 @@ import kb_creator.model.propositional_logic.Signature.ABC;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private BufferPanel bufferPanel;
     private SignaturePanel signaturePanel;
-
-    //todo: deacitvate options panel while creator is running
+    
     public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
@@ -43,5 +43,14 @@ public class MainOptionsPanel extends JPanel {
 
     public boolean isBufferingRequested() {
         return bufferPanel.isBufferingRequested();
+    }
+
+    public void setActive(boolean active) {
+
+        if (this.isEnabled()) {
+            super.setEnabled(active);
+            for (Component component : getComponents())
+                component.setEnabled(active);
+        }
     }
 }

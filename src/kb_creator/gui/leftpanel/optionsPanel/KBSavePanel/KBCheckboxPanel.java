@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,7 +35,11 @@ public class KBCheckboxPanel extends JPanel {
         checkBox.setSelected(selected);
     }
 
-    public boolean isBoxSelected() {
-        return checkBox.isSelected();
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+setBoxEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
     }
 }

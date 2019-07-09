@@ -68,4 +68,8 @@ public class KBMainWindow {
     public MainCreatorPanel getCreatorPanel() {
         return mainCreatorPanel;
     }
+
+    public LeftPanel getLeftPanel(){
+        return leftPanel;
+    }
 }

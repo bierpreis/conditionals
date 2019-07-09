@@ -2,6 +2,7 @@ package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BufferCheckboxPanel extends JPanel {
     private JCheckBox saveCheckBox;
@@ -32,5 +33,12 @@ public class BufferCheckboxPanel extends JPanel {
 
 
         saveCheckBox.setSelected(selected);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
     }
 }

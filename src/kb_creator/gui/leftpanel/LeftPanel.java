@@ -49,4 +49,8 @@ public class LeftPanel extends JPanel {
     public ActionPanel getActionPanel() {
         return actionPanel;
     }
+
+    public MainOptionsPanel getMainOptionsPanel(){
+        return mainOptionsPanel;
+    }
 }

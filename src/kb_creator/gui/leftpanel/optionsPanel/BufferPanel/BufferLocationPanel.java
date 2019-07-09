@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -64,7 +65,11 @@ public class BufferLocationPanel extends JPanel {
         return filePathToSave;
     }
 
-    public void setActive(boolean active) {
-        saveButton.setEnabled(active);
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        saveButton.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
     }
 }

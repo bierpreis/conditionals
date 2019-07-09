@@ -1,6 +1,7 @@
 package kb_creator.gui.leftpanel.optionsPanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class SignaturePanel extends JPanel {
 
@@ -37,5 +38,10 @@ public class SignaturePanel extends JPanel {
         return signatureButtonGroup.getSelection().getActionCommand();
     }
 
-
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+    }
 }

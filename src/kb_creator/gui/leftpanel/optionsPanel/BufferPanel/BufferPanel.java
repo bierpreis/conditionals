@@ -2,14 +2,15 @@ package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class BufferPanel extends JPanel {
 
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
-    JPanel descriptionPanel = new JPanel();
-    JPanel actionPanel = new JPanel();
+    private JPanel descriptionPanel = new JPanel();
+    private JPanel actionPanel = new JPanel();
 
     //todo: option to delete buffer files
     //todo: add option to chose buffer file size
@@ -41,4 +42,15 @@ public class BufferPanel extends JPanel {
     }
 
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        bufferCheckboxPanel.setEnabled(enabled);
+        bufferLocationPanel.setEnabled(enabled);
+
+        descriptionPanel.getComponent(0).setEnabled(enabled);
+
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+    }
 }

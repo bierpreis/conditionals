@@ -20,12 +20,13 @@ public class StatusThread implements Runnable {
         lastTimeStamp = System.currentTimeMillis();
     }
 
-    
+
     @Override
     public void run() {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
             if (creatorThread != null) {
+                mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
                 mainWindow.getCreatorPanel().showStatus(creatorThread.getStatus());
                 mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
                 mainWindow.getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
