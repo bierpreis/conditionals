@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class BufferPanel extends JPanel {
+public class MainBufferPanel extends JPanel {
 
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
@@ -13,12 +13,11 @@ public class BufferPanel extends JPanel {
     private JPanel optionsPanel;
     private JPanel actionPanel;
     private JCheckBox deleteTempFilesCheckbox;
-    private JPanel bufferSizePanel;
+    private BufferSizePanel bufferSizePanel;
 
-    private JTextField bufferSizeField;
 
     //todo: add option to chose buffer file size
-    public BufferPanel() {
+    public MainBufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
@@ -30,7 +29,7 @@ public class BufferPanel extends JPanel {
 
         actionPanel = new JPanel();
 
-        bufferSizePanel = new JPanel();
+        bufferSizePanel = new BufferSizePanel();
 
 
         add(descriptionPanel);
@@ -48,11 +47,6 @@ public class BufferPanel extends JPanel {
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         optionsPanel.add(deleteTempFilesCheckbox);
         deleteTempFilesCheckbox.setSelected(true);
-
-        //todo: some listener for this field which pops some warning if no valid input
-        bufferSizeField = new JTextField("200");
-        bufferSizePanel.add(new JLabel("Number of Candidates in File: "));
-        bufferSizePanel.add(bufferSizeField);
 
 
         add(optionsPanel);
@@ -77,7 +71,7 @@ public class BufferPanel extends JPanel {
         bufferLocationPanel.setEnabled(enabled);
 
         deleteTempFilesCheckbox.setEnabled(enabled);
-        bufferSizeField.setEnabled(enabled);
+        bufferSizePanel.setEnabled(enabled);
 
         descriptionPanel.getComponent(0).setEnabled(enabled);
 
@@ -88,6 +82,6 @@ public class BufferPanel extends JPanel {
     }
 
     public int getBufferSize() {
-        return Integer.parseInt(bufferSizeField.getText());
+        return bufferSizePanel.getBufferSize();
     }
 }

@@ -1,6 +1,6 @@
 package kb_creator.gui.leftpanel.optionsPanel;
 
-import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.BufferPanel;
+import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.MainBufferPanel;
 import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.MainKbSafePanel;
 import kb_creator.model.propositional_logic.Signature.AB;
 import kb_creator.model.propositional_logic.Signature.ABC;
@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
-    private BufferPanel bufferPanel;
+    private MainBufferPanel mainBufferPanel;
     private SignaturePanel signaturePanel;
 
     public MainOptionsPanel() {
@@ -19,7 +19,7 @@ public class MainOptionsPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Options"));
 
         add(signaturePanel = new SignaturePanel());
-        add(bufferPanel = new BufferPanel());
+        add(mainBufferPanel = new MainBufferPanel());
         add(mainKbSafePanel = new MainKbSafePanel());
     }
 
@@ -38,11 +38,11 @@ public class MainOptionsPanel extends JPanel {
     }
 
     public String getBufferPath() {
-        return bufferPanel.getPath();
+        return mainBufferPanel.getPath();
     }
 
     public boolean isBufferingRequested() {
-        return bufferPanel.isBufferingRequested();
+        return mainBufferPanel.isBufferingRequested();
     }
 
     public void setActive(boolean active) {
