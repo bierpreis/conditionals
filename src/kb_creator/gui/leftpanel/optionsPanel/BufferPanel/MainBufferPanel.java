@@ -88,6 +88,7 @@ public class MainBufferPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
+    //todo: implement
     public int getBufferSize() {
         return bufferSizePanel.getBufferSize();
     }
