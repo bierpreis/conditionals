@@ -17,8 +17,7 @@ public class MainBufferPanel extends JPanel {
     private JCheckBox deleteTempFilesCheckbox;
     private BufferSizePanel bufferSizePanel;
 
-
-    //todo: add option to chose buffer file size
+    
     public MainBufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
