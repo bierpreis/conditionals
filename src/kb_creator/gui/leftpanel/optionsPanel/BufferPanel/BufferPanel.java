@@ -9,9 +9,9 @@ public class BufferPanel extends JPanel {
 
     private BufferLocationPanel bufferLocationPanel;
     private BufferCheckboxPanel bufferCheckboxPanel;
-    private JPanel descriptionPanel = new JPanel();
+    private JPanel descriptionPanel;
     private JPanel optionsPanel;
-    private JPanel actionPanel = new JPanel();
+    private JPanel actionPanel;
     private JCheckBox deleteTempFilesCheckbox;
 
     private JTextField bufferSizeField;
@@ -21,10 +21,13 @@ public class BufferPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
+        descriptionPanel = new JPanel();
+
         bufferCheckboxPanel = new BufferCheckboxPanel();
 
         bufferLocationPanel = new BufferLocationPanel(bufferCheckboxPanel);
 
+        actionPanel = new JPanel();
 
         add(descriptionPanel);
         descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save main memory"));
