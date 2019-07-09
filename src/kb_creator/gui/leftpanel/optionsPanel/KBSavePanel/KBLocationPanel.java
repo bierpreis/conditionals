@@ -12,7 +12,7 @@ public class KBLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
     private KBCheckboxPanel checkboxPanel;
-    
+
     public KBLocationPanel(KBCheckboxPanel checkboxPanel) {
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new SaveButtonListener(this));
