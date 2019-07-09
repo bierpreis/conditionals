@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AlreadyExistsDialog {
-    AlreadyExistsDialog(String pathOfExistingFolder) {
+    public AlreadyExistsDialog(String pathOfExistingFolder) {
         JDialog warningDialog = new JDialog();
         warningDialog.add(new JLabel(" "));
         warningDialog.setLayout(new BoxLayout(warningDialog.getContentPane(), BoxLayout.PAGE_AXIS));

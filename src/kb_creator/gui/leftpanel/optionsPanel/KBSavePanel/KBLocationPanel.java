@@ -1,6 +1,8 @@
 package kb_creator.gui.leftpanel.optionsPanel.KBSavePanel;
 
 
+import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.AlreadyExistsDialog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,8 +12,7 @@ public class KBLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
     private KBCheckboxPanel checkboxPanel;
-
-    //todo: warning when file already exists
+    
     public KBLocationPanel(KBCheckboxPanel checkboxPanel) {
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new SaveButtonListener(this));
@@ -40,6 +41,12 @@ public class KBLocationPanel extends JPanel {
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/kbs/";
                 checkboxPanel.setBoxSelected(true);
 
+                if (fileChooser.getSelectedFile().exists()) {
+
+                    new AlreadyExistsDialog(filePathToSave);
+                    checkboxPanel.setEnabled(false);
+                    checkboxPanel.setBoxSelected(false);
+                }
             }
             //deactivate if no path was selected
             else {
