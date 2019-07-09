@@ -64,8 +64,7 @@ public class OverallStatusPanel extends JPanel {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentAmountLabel.setText("Inonsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
-
-    //todo: stop time when creator stopped
+    
     public void showTime(long startTime) {
         long time = System.currentTimeMillis() - startTime;
 
