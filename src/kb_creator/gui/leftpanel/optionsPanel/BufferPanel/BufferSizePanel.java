@@ -49,7 +49,6 @@ public class BufferSizePanel extends JPanel {
         //todo: warning also when not enter after putting in number?!
         WrongInputDialog() {
             setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-            //todo: title to other warnings too
             setTitle("Warning");
             add(new JLabel("Invalid input for File Size. Enter valid Number."));
             setLocationRelativeTo(null);

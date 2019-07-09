@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class AlreadyExistsDialog {
     public AlreadyExistsDialog(String pathOfExistingFolder) {
         JDialog warningDialog = new JDialog();
+        warningDialog.setTitle("Warning");
         warningDialog.add(new JLabel(" "));
         warningDialog.setLayout(new BoxLayout(warningDialog.getContentPane(), BoxLayout.PAGE_AXIS));
         warningDialog.add(new JLabel("The Folder you chosse already exits."));
