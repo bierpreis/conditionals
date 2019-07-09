@@ -1,6 +1,8 @@
 package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
 
 
+import nfc.view.menu.options.OptionsPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -25,7 +27,7 @@ public class MainBufferPanel extends JPanel {
 
         bufferCheckboxPanel = new BufferCheckboxPanel();
 
-        bufferLocationPanel = new BufferLocationPanel(bufferCheckboxPanel);
+        bufferLocationPanel = new BufferLocationPanel(this);
 
         actionPanel = new JPanel();
 
@@ -52,6 +54,11 @@ public class MainBufferPanel extends JPanel {
         add(optionsPanel);
 
         add(bufferSizePanel);
+
+        bufferCheckboxPanel.setBoxSelected(false);
+        bufferCheckboxPanel.setBoxEnabled(false);
+        bufferSizePanel.setEnabled(false);
+        getDeleteCheckbox().setEnabled(false);
 
 
     }
@@ -83,5 +90,21 @@ public class MainBufferPanel extends JPanel {
 
     public int getBufferSize() {
         return bufferSizePanel.getBufferSize();
+    }
+
+    public BufferCheckboxPanel getBufferCheckboxPanel() {
+        return bufferCheckboxPanel;
+    }
+
+    public BufferLocationPanel getBufferLocationPanel() {
+        return bufferLocationPanel;
+    }
+
+    public BufferSizePanel getBufferSizePanel() {
+        return bufferSizePanel;
+    }
+
+    public JCheckBox getDeleteCheckbox() {
+        return deleteTempFilesCheckbox;
     }
 }

@@ -10,14 +10,16 @@ import java.io.File;
 public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
-    private BufferCheckboxPanel bufferCheckboxPanel;
+    private MainBufferPanel mainBufferPanel;
 
-    public BufferLocationPanel(BufferCheckboxPanel bufferCheckboxPanel) {
+    public BufferLocationPanel(MainBufferPanel mainBufferPanel) {
 
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);
-        this.bufferCheckboxPanel = bufferCheckboxPanel;
+        this.mainBufferPanel = mainBufferPanel;
+
+
     }
 
     private class BufferSaveButtonListener implements ActionListener {
@@ -38,8 +40,10 @@ public class BufferLocationPanel extends JPanel {
 
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
-                bufferCheckboxPanel.setActive(true);
-                bufferCheckboxPanel.setBoxSelected(true);
+                mainBufferPanel.getBufferCheckboxPanel().setActive(true);
+                mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(true);
+                mainBufferPanel.getBufferSizePanel().setEnabled(true);
+                mainBufferPanel.getDeleteCheckbox().setEnabled(true);
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/KBs";
 
                 File fileToSave = new File(filePathToSave);
@@ -47,13 +51,17 @@ public class BufferLocationPanel extends JPanel {
                 if (fileToSave.exists()) {
 
                     new AlreadyExistsDialog(filePathToSave);
-                    bufferCheckboxPanel.setBoxSelected(false);
-                    bufferCheckboxPanel.setBoxEnabled(false);
+                    mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
+                    mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
+                    mainBufferPanel.getBufferSizePanel().setEnabled(false);
+                    mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                 }
 
             } else {
-                bufferCheckboxPanel.setBoxSelected(false);
-                bufferCheckboxPanel.setBoxEnabled(false);
+                mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
+                mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
+                mainBufferPanel.getBufferSizePanel().setEnabled(false);
+                mainBufferPanel.getDeleteCheckbox().setEnabled(false);
             }
         }
 
