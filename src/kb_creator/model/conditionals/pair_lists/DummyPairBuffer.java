@@ -48,7 +48,6 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
         candidatePairList.add(listToAdd);
-        System.out.println("before creating dummy writer");
     }
 
     @Override
