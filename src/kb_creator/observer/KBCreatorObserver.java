@@ -2,9 +2,9 @@ package kb_creator.observer;
 
 import kb_creator.gui.KBMainWindow;
 import kb_creator.model.conditionals.KBCreator;
-import kb_creator.model.conditionals.pair_lists.AbstractPairBuffer;
-import kb_creator.model.conditionals.pair_lists.ParallelPairBuffer;
-import kb_creator.model.conditionals.pair_lists.DummyPairBuffer;
+import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
+import kb_creator.model.conditionals.buffer.ParallelPairBuffer;
+import kb_creator.model.conditionals.buffer.DummyPairBuffer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -38,7 +38,7 @@ public class KBCreatorObserver implements ActionListener {
             AbstractPairBuffer candidateBuffer;
 
             if (mainWindow.isBufferingRequested())
-                creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath()));
+                creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferSize()));
             else creatorThreadObject.setList(candidateBuffer = new DummyPairBuffer(null));
 
 

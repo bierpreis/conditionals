@@ -53,4 +53,5 @@ public class LeftPanel extends JPanel {
     public MainOptionsPanel getMainOptionsPanel(){
         return mainOptionsPanel;
     }
+
 }

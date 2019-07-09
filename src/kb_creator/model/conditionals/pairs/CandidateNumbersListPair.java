@@ -72,7 +72,7 @@ public class CandidateNumbersListPair extends AbstractPair {
     @Override
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("pair_lists");
+        sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB:\n");

@@ -53,4 +53,8 @@ public class MainOptionsPanel extends JPanel {
                 component.setEnabled(active);
         }
     }
+
+    public int getBufferSize(){
+        return mainBufferPanel.getBufferSize();
+    }
 }

@@ -17,7 +17,7 @@ public class MainBufferPanel extends JPanel {
     private JCheckBox deleteTempFilesCheckbox;
     private BufferSizePanel bufferSizePanel;
 
-    
+
     public MainBufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
@@ -87,7 +87,6 @@ public class MainBufferPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
-    //todo: implement
     public int getBufferSize() {
         return bufferSizePanel.getBufferSize();
     }

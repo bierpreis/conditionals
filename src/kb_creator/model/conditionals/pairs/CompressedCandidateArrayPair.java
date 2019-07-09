@@ -82,7 +82,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public String toFileString() {
         List<NewConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
-        sb.append("pair_lists");
+        sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB\n");
@@ -103,7 +103,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     //therefore the file is much shorter
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("pair_lists");
+        sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\n\n");
         sb.append("KB\n");

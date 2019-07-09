@@ -1,4 +1,4 @@
-package kb_creator.model.conditionals.pair_lists;
+package kb_creator.model.conditionals.buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 

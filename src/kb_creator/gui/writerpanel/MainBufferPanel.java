@@ -1,7 +1,7 @@
 package kb_creator.gui.writerpanel;
 
 
-import kb_creator.model.conditionals.pair_lists.AbstractPairBuffer;
+import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
 
 import javax.swing.*;
 import java.awt.*;

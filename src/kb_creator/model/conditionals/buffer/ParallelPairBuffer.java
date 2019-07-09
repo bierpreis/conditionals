@@ -1,4 +1,4 @@
-package kb_creator.model.conditionals.pair_lists;
+package kb_creator.model.conditionals.buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
@@ -19,9 +19,12 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
 
 
-    public ParallelPairBuffer(String filePath) {
+    public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
         System.out.println("created parallel list for candidate pairs");
+        this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
+
+        System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
 
@@ -205,7 +208,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("preparing iteration: " + requestedK);
 
         writingFileNameCounter = 0;
-
 
 
         pairReaderCounter = 0;

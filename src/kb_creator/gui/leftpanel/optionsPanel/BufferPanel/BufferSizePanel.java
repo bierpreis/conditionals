@@ -29,8 +29,7 @@ public class BufferSizePanel extends JPanel {
         });
 
     }
-
-    //todo: some listener for this field which pops some warning if no valid input
+    
     public int getBufferSize() {
         return Integer.parseInt(bufferSizeField.getText());
     }

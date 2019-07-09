@@ -1,4 +1,4 @@
-package kb_creator.model.conditionals.pair_lists;
+package kb_creator.model.conditionals.buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 
@@ -20,7 +20,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     protected volatile int pairReaderCounter;
 
-    protected final int maxNumberOfPairsInFile = 200;
+    protected int maxNumberOfPairsInFile;
 
     protected String tmpFilePath;
     protected volatile boolean flushRequested;
