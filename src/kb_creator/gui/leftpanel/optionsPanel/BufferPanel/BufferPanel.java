@@ -13,6 +13,7 @@ public class BufferPanel extends JPanel {
     private JPanel optionsPanel;
     private JPanel actionPanel;
     private JCheckBox deleteTempFilesCheckbox;
+    private JPanel bufferSizePanel;
 
     private JTextField bufferSizeField;
 
@@ -28,6 +29,9 @@ public class BufferPanel extends JPanel {
         bufferLocationPanel = new BufferLocationPanel(bufferCheckboxPanel);
 
         actionPanel = new JPanel();
+
+        bufferSizePanel = new JPanel();
+
 
         add(descriptionPanel);
         descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save main memory"));
@@ -47,9 +51,13 @@ public class BufferPanel extends JPanel {
 
         //todo: some listener for this field which pops some warning if no valid input
         bufferSizeField = new JTextField("200");
-        optionsPanel.add(bufferSizeField);
+        bufferSizePanel.add(new JLabel("Number of Candidates in File: "));
+        bufferSizePanel.add(bufferSizeField);
+
 
         add(optionsPanel);
+
+        add(bufferSizePanel);
 
 
     }
