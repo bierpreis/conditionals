@@ -80,5 +80,9 @@ public class MainCreatorPanel extends JPanel {
         currentIterationPanel.showProgress(progress);
     }
 
+    public void showTime( long startTime){
+        overallStatusPanel.showTime(startTime);
+    }
+
 
 }

@@ -28,6 +28,8 @@ public class KBCreator implements Runnable {
     private int k;
     private int nextCandidatePairAmount;
 
+    private long startTime;
+
 
     private AbstractKbWriter kbWriter;
 
@@ -55,6 +57,8 @@ public class KBCreator implements Runnable {
     public void run() {
         System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
+
+        startTime = System.currentTimeMillis();
 
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();
@@ -301,6 +305,10 @@ public class KBCreator implements Runnable {
 
     public int getLastPairAmount() {
         return l.getLastIterationPairAmount();
+    }
+
+    public long getStartTime(){
+        return startTime;
     }
 
 }

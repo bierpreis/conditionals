@@ -72,4 +72,5 @@ public class KBMainWindow {
     public LeftPanel getLeftPanel(){
         return leftPanel;
     }
+
 }

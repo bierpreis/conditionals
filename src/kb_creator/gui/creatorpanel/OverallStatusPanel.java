@@ -6,6 +6,8 @@ import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class OverallStatusPanel extends JPanel {
@@ -15,6 +17,7 @@ public class OverallStatusPanel extends JPanel {
     private ActionPanel actionPanel;
     private JLabel consistentAmountLabel;
     private JLabel inconsistentAmountLabel;
+    private JLabel timeLabel;
 
 
     public OverallStatusPanel(ActionPanel actionPanel) {
@@ -37,6 +40,10 @@ public class OverallStatusPanel extends JPanel {
         inconsistentAmountLabel = new JLabel();
         vBox.add(inconsistentAmountLabel);
 
+        timeLabel = new JLabel();
+        vBox.add(timeLabel);
+        timeLabel.setText("Running Time: 00:00:00");
+
         showInconsistentKBAmount(0);
 
     }
@@ -56,6 +63,19 @@ public class OverallStatusPanel extends JPanel {
     public void showInconsistentKBAmount(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentAmountLabel.setText("Inonsistent Knowledge Bases: " + formatter.format(amount) + "\n");
+    }
+
+    //todo: stop time when creator stopped
+    public void showTime(long startTime) {
+        long time = System.currentTimeMillis() - startTime;
+
+        long second = (time / 1000) % 60;
+        long minute = (time / (1000 * 60)) % 60;
+        long hour = (time / (1000 * 60 * 60)) % 24;
+
+        timeLabel.setText("Running Time: " + String.format("%02d:%02d:%02d", hour, minute, second));
+
+
     }
 
 

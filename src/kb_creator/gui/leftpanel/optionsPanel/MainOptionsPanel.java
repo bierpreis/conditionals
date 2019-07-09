@@ -13,7 +13,7 @@ public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private BufferPanel bufferPanel;
     private SignaturePanel signaturePanel;
-    
+
     public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));

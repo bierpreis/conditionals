@@ -36,6 +36,7 @@ public class StatusThread implements Runnable {
                 mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
                 mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
                 mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+                mainWindow.getCreatorPanel().showTime(creatorThread.getStartTime());
 
 
                 mainWindow.getMainWriterPanel().getKbQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
