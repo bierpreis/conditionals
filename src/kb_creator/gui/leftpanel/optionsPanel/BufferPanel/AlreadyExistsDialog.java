@@ -31,6 +31,8 @@ public class AlreadyExistsDialog {
         });
         warningDialog.pack();
         warningDialog.setModal(true);
+        warningDialog.setLocationRelativeTo(null);
         warningDialog.setVisible(true);
+
     }
 }
