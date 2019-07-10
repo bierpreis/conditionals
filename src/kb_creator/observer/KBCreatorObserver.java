@@ -37,9 +37,11 @@ public class KBCreatorObserver implements ActionListener {
 
             AbstractPairBuffer candidateBuffer;
 
-            if (mainWindow.isBufferingRequested())
-                creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferSize()));
-            else creatorThreadObject.setList(candidateBuffer = new DummyPairBuffer(null));
+            if (mainWindow.isBufferingRequested()) {
+                if (mainWindow.getLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
+                    creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferSize()));
+                else return; //return if buffer size is 0 because this is no valid value which can be used
+            } else creatorThreadObject.setList(candidateBuffer = new DummyPairBuffer(null));
 
 
             Thread bufferThread = new Thread(candidateBuffer);

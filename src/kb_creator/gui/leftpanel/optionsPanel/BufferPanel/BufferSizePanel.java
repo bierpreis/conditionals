@@ -29,8 +29,7 @@ public class BufferSizePanel extends JPanel {
         });
 
     }
-
-    //todo: how to stop programm when catch triggers?
+    
     public int getBufferSize() {
         int returnvalue = 0;
 
