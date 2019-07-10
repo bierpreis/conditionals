@@ -29,9 +29,18 @@ public class BufferSizePanel extends JPanel {
         });
 
     }
-    
+
+    //todo: how to stop programm when catch triggers?
     public int getBufferSize() {
-        return Integer.parseInt(bufferSizeField.getText());
+        int returnvalue = 0;
+
+        try {
+            returnvalue = Integer.parseInt(bufferSizeField.getText());
+        } catch (NumberFormatException e) {
+            new WrongInputDialog();
+
+        }
+        return returnvalue;
     }
 
     @Override
@@ -45,7 +54,7 @@ public class BufferSizePanel extends JPanel {
     class WrongInputDialog extends JDialog {
         JButton okButton;
 
-        //todo: warning also when not enter after putting in number?!
+
         WrongInputDialog() {
             setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
             setTitle("Warning");
