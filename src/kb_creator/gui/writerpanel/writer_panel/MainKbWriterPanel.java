@@ -1,10 +1,8 @@
-package kb_creator.gui.writerpanel.KbPanel;
+package kb_creator.gui.writerpanel.writer_panel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 public class MainKbWriterPanel extends JPanel {

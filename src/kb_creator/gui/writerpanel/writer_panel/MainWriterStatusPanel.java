@@ -1,4 +1,4 @@
-package kb_creator.gui.writerpanel.KbPanel;
+package kb_creator.gui.writerpanel.writer_panel;
 
 import kb_creator.gui.writerpanel.MainBufferStatusPanel;
 

@@ -1,6 +1,6 @@
 package kb_creator.observer;
 
-import kb_creator.gui.KBMainWindow;
+import kb_creator.gui.MainWindow;
 import kb_creator.model.conditionals.KBCreator;
 import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
 import kb_creator.model.conditionals.buffer.ParallelPairBuffer;
@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class KBCreatorObserver implements ActionListener {
-    private KBMainWindow mainWindow;
+    private MainWindow mainWindow;
 
     private KBCreator creatorThreadObject;
     private StatusThread statusThreadObject;
@@ -19,7 +19,7 @@ public class KBCreatorObserver implements ActionListener {
 
     public KBCreatorObserver() {
 
-        mainWindow = new KBMainWindow(this);
+        mainWindow = new MainWindow(this);
         statusThreadObject = new StatusThread(mainWindow);
 
         Thread statusThread = new Thread(statusThreadObject);

@@ -3,21 +3,21 @@ package kb_creator.gui;
 import kb_creator.observer.KBCreatorObserver;
 import kb_creator.gui.creatorpanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.writerpanel.KbPanel.MainWriterStatusPanel;
+import kb_creator.gui.writerpanel.writer_panel.MainWriterStatusPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 
 import javax.swing.*;
 import java.awt.*;
 
-public class KBMainWindow {
+public class MainWindow {
     private KBCreatorObserver observer;
     private LeftPanel leftPanel;
     private JFrame mainWindow;
     private MainCreatorPanel mainCreatorPanel;
     private MainWriterStatusPanel mainWriterStatusPanel;
 
-    public KBMainWindow(KBCreatorObserver observer) {
+    public MainWindow(KBCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
         this.observer = observer;

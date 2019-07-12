@@ -1,6 +1,6 @@
 package kb_creator.observer;
 
-import kb_creator.gui.KBMainWindow;
+import kb_creator.gui.MainWindow;
 import kb_creator.model.conditionals.KBCreator;
 import kb_creator.model.kb_writer.AbstractKbWriter;
 
@@ -11,10 +11,10 @@ public class StatusThread implements Runnable {
     private long lastTimeStamp;
     private boolean isRunning = true;
     private AbstractKbWriter kbWriter;
-    private KBMainWindow mainWindow;
+    private MainWindow mainWindow;
 
 
-    public StatusThread(KBMainWindow mainWindow) {
+    public StatusThread(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
         idealSleepTime = 200;
         lastTimeStamp = System.currentTimeMillis();
