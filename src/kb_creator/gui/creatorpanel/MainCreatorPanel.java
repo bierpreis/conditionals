@@ -28,6 +28,7 @@ public class MainCreatorPanel extends JPanel {
         nextIterationPanel = new NextIterationPanel();
         add(nextIterationPanel);
 
+        //todo: this should not be in creator panel but in own panel
         add(memoryPanel = new MemoryPanel());
         revalidate();
 
@@ -76,11 +77,11 @@ public class MainCreatorPanel extends JPanel {
         return memoryPanel;
     }
 
-    public void showProgress(float progress){
+    public void showProgress(float progress) {
         currentIterationPanel.showProgress(progress);
     }
 
-    public void showTime( long startTime){
+    public void showTime(long startTime) {
         overallStatusPanel.showTime(startTime);
     }
 

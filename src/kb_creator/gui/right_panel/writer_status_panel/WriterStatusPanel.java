@@ -6,13 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class MainWriterStatusPanel extends JPanel {
+public class WriterStatusPanel extends JPanel {
 
     private KbQueuePanel kbQueuePanel;
     private KbWriterPanel kbWriterPanel;
-    private BufferStatusPanel bufferStatusPanel;
 
-    public MainWriterStatusPanel() {
+
+    public WriterStatusPanel() {
         setPreferredSize(new Dimension(300, 100));
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -23,8 +23,7 @@ public class MainWriterStatusPanel extends JPanel {
         add(kbWriterPanel);
 
         //todo: remove this from writer panel into own panel
-        bufferStatusPanel = new BufferStatusPanel();
-        add(bufferStatusPanel);
+
     }
 
     public KbQueuePanel getKbQueuePanel() {
@@ -35,7 +34,5 @@ public class MainWriterStatusPanel extends JPanel {
         return kbWriterPanel;
     }
 
-    public BufferStatusPanel getCandidatesPanel() {
-        return bufferStatusPanel;
-    }
+
 }

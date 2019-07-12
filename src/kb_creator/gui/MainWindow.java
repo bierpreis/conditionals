@@ -1,9 +1,9 @@
 package kb_creator.gui;
 
+import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.observer.KBCreatorObserver;
 import kb_creator.gui.creatorpanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.right_panel.writer_status_panel.MainWriterStatusPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 
@@ -15,7 +15,7 @@ public class MainWindow {
     private LeftPanel leftPanel;
     private JFrame mainWindow;
     private MainCreatorPanel mainCreatorPanel;
-    private MainWriterStatusPanel mainWriterStatusPanel;
+    private RightPanel rightPanel;
 
     public MainWindow(KBCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
@@ -25,11 +25,10 @@ public class MainWindow {
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(mainCreatorPanel = new MainCreatorPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
-        mainWindow.add(mainWriterStatusPanel = new MainWriterStatusPanel(), BorderLayout.EAST);
+        mainWindow.add(rightPanel = new RightPanel(), BorderLayout.EAST);
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
 
         mainWindow.pack();
@@ -60,15 +59,15 @@ public class MainWindow {
     }
 
 
-    public MainWriterStatusPanel getMainWriterStatusPanel() {
-        return mainWriterStatusPanel;
+    public RightPanel getRightPanel() {
+        return rightPanel;
     }
 
     public MainCreatorPanel getCreatorPanel() {
         return mainCreatorPanel;
     }
 
-    public LeftPanel getLeftPanel(){
+    public LeftPanel getLeftPanel() {
         return leftPanel;
     }
 
