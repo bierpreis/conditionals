@@ -1,4 +1,4 @@
-package kb_creator.gui.writerpanel;
+package kb_creator.gui.right_panel;
 
 
 import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
@@ -8,13 +8,13 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class MainBufferStatusPanel extends JPanel {
+public class BufferStatusPanel extends JPanel {
     private JLabel statusLabel;
     private JLabel writerLabel;
     private JLabel readerLabel;
 
     //todo: seperate better between writer and buffer
-    public MainBufferStatusPanel() {
+    public BufferStatusPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
 

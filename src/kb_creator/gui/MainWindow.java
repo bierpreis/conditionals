@@ -3,7 +3,7 @@ package kb_creator.gui;
 import kb_creator.observer.KBCreatorObserver;
 import kb_creator.gui.creatorpanel.MainCreatorPanel;
 import kb_creator.gui.leftpanel.LeftPanel;
-import kb_creator.gui.writerpanel.writer_panel.MainWriterStatusPanel;
+import kb_creator.gui.right_panel.writer_status_panel.MainWriterStatusPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 

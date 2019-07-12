@@ -1,6 +1,6 @@
-package kb_creator.gui.writerpanel.writer_panel;
+package kb_creator.gui.right_panel.writer_status_panel;
 
-import kb_creator.gui.writerpanel.MainBufferStatusPanel;
+import kb_creator.gui.right_panel.BufferStatusPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +10,7 @@ public class MainWriterStatusPanel extends JPanel {
 
     private KbQueuePanel kbQueuePanel;
     private KbWriterPanel kbWriterPanel;
-    private MainBufferStatusPanel mainBufferStatusPanel;
+    private BufferStatusPanel bufferStatusPanel;
 
     public MainWriterStatusPanel() {
         setPreferredSize(new Dimension(300, 100));
@@ -23,8 +23,8 @@ public class MainWriterStatusPanel extends JPanel {
         add(kbWriterPanel);
 
         //todo: remove this from writer panel into own panel
-        mainBufferStatusPanel = new MainBufferStatusPanel();
-        add(mainBufferStatusPanel);
+        bufferStatusPanel = new BufferStatusPanel();
+        add(bufferStatusPanel);
     }
 
     public KbQueuePanel getKbQueuePanel() {
@@ -35,7 +35,7 @@ public class MainWriterStatusPanel extends JPanel {
         return kbWriterPanel;
     }
 
-    public MainBufferStatusPanel getCandidatesPanel() {
-        return mainBufferStatusPanel;
+    public BufferStatusPanel getCandidatesPanel() {
+        return bufferStatusPanel;
     }
 }

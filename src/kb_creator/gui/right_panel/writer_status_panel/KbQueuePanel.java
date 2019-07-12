@@ -1,4 +1,4 @@
-package kb_creator.gui.writerpanel.writer_panel;
+package kb_creator.gui.right_panel.writer_status_panel;
 
 import javax.swing.*;
 import java.awt.*;
