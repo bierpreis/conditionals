@@ -121,8 +121,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public void deleteCandidates() {
         compressedCandidatesArray = null;
     }
-
-    //todo: implement reading from short file string
+    
     public String toFileString() {
         return toShortFileString();
     }
