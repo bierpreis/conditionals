@@ -212,6 +212,17 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         pairReaderCounter = 0;
 
+        if (deleteFiles) {
+            File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
+
+            if (folderToDelete.exists()) {
+                for (File subFile : folderToDelete.listFiles())
+                    subFile.delete();
+
+                folderToDelete.delete();
+
+            }
+        }
 
         File folderToRead = new File(tmpFilePath + "/" + requestedK + "/");
 

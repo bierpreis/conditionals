@@ -43,8 +43,6 @@ public class MainBufferPanel extends JPanel {
 
         optionsPanel = new JPanel();
 
-
-        //todo: function for deleting files
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         optionsPanel.add(deleteTempFilesCheckbox);
         deleteTempFilesCheckbox.setSelected(true);
