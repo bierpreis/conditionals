@@ -54,7 +54,11 @@ public class MainOptionsPanel extends JPanel {
         }
     }
 
-    public int getBufferSize(){
+    public int getBufferSize() {
         return mainBufferPanel.getBufferSize();
+    }
+
+    public boolean isDeletingBufferFilesRequested() {
+        return mainBufferPanel.getDeleteCheckbox().isSelected();
     }
 }

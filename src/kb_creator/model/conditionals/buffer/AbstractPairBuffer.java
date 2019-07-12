@@ -30,6 +30,8 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected volatile boolean requestedListIsReady;
     protected volatile int lastIterationPairAmount;
 
+    protected boolean deleteFiles;
+
     public AbstractPairBuffer(String tmpFilePath) {
         status = BufferStatus.NOT_STARTED;
         this.tmpFilePath = tmpFilePath + "/tmp/";
@@ -98,8 +100,13 @@ public abstract class AbstractPairBuffer implements Runnable {
         WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED;
     }
 
-    public int getLastIterationPairAmount(){
+    public int getLastIterationPairAmount() {
         return lastIterationPairAmount;
+    }
+
+    public void setDeletingFiles(boolean deleteFiles) {
+        System.out.println("deleted buffer files: " + deleteFiles);
+        this.deleteFiles = deleteFiles;
     }
 
 }

@@ -35,6 +35,7 @@ public class KBCreatorObserver implements ActionListener {
 
             creatorThreadObject = new KBCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
 
+
             AbstractPairBuffer candidateBuffer;
 
             if (mainWindow.isBufferingRequested()) {
@@ -54,6 +55,8 @@ public class KBCreatorObserver implements ActionListener {
             creatorThread.start();
 
             statusThreadObject.setCreatorThread(creatorThreadObject);
+
+            creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
 
         }
 

@@ -41,4 +41,6 @@ public class BufferCheckboxPanel extends JPanel {
         for (Component component : getComponents())
             component.setEnabled(enabled);
     }
+
+
 }
