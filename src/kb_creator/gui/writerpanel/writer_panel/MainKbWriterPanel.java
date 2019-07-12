@@ -5,6 +5,7 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+//todo: this is not "main" and maybe merge with kb queue panel?
 public class MainKbWriterPanel extends JPanel {
 
     private JLabel speedLabel;
