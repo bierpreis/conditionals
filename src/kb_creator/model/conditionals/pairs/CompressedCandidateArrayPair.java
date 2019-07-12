@@ -153,10 +153,11 @@ public class CompressedCandidateArrayPair extends AbstractPair {
                 sb.append(compressedCandidatesArray[pairNumber][0]);
                 sb.append("-");
                 sb.append(compressedCandidatesArray[pairNumber][1]);
+                sb.append(", ");
             }
             pairNumber++;
         }
 
-        return sb.toString();
+        return sb.toString().replaceAll(", $", "");
     }
 }
