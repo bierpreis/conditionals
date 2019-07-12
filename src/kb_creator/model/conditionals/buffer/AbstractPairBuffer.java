@@ -105,7 +105,7 @@ public abstract class AbstractPairBuffer implements Runnable {
     }
 
     public void setDeletingFiles(boolean deleteFiles) {
-        System.out.println("deleted buffer files: " + deleteFiles);
+        System.out.println("deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;
     }
 

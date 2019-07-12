@@ -121,7 +121,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public void deleteCandidates() {
         compressedCandidatesArray = null;
     }
-    
+
     public String toFileString() {
         return toShortFileString();
     }

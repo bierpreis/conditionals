@@ -20,7 +20,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         nextElementNumber++;
         if (nextElementNumber < candidatePairList.get(currentK).size())
             return candidatePairList.get(currentK).get(nextElementNumber - 1);
-        System.out.println("returned null!");
+        System.out.println("returned null!"); //todo: remove?!
         return null;
     }
 
