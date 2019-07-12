@@ -46,7 +46,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
 
-
+    //todo: buffer always shows sleeping. this cant be correct.
     @Override
     public void run() {
         while (running) {
