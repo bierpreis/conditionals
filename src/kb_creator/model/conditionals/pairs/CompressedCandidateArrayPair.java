@@ -2,6 +2,7 @@ package kb_creator.model.conditionals.pairs;
 
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.NewConditional;
+import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,30 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     }
 
     public CompressedCandidateArrayPair(String stringFromFile) {
-        //todo
+        String[] splitString = stringFromFile.split("candidates\n");
+        if (splitString.length != 2)
+            throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");
+
+        //divide string into kb and candidates
+        //create both from subString
+        knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
+        compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
+    }
+
+    private int[][] createCandidatesArrayFromString(String stringFromFile) {
+        String[] stringArray = stringFromFile.split(", ");
+        int[][] arrayToReturn = new int[stringArray.length][2];
+        int counter = 0;
+        for (String string : stringArray) {
+            String[] twoString = string.split("-");
+            if (twoString.length != 2)
+                System.out.println("fak: " + twoString);
+            arrayToReturn[counter][0] = Integer.parseInt(twoString[0]);
+            arrayToReturn[counter][1] = Integer.parseInt(twoString[0]);
+
+        }
+
+        return arrayToReturn;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package kb_creator.model.conditionals;
 
 import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
+import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
@@ -131,7 +132,7 @@ public class KBCreator implements Runnable {
                         //line 12
 
                         //this is where the ram gets full. therefore the buffering
-                        l.addPair(new CandidateNumbersArrayPair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
@@ -214,7 +215,7 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
-            l.add(new CandidateNumbersArrayPair(rKB, conditionalsToAdd));
+            l.add(new CompressedCandidateArrayPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
 
