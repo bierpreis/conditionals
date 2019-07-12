@@ -9,7 +9,7 @@ import java.awt.*;
 public class MainWriterStatusPanel extends JPanel {
 
     private KbQueuePanel kbQueuePanel;
-    private MainKbWriterPanel mainKbWriterPanel;
+    private KbWriterPanel kbWriterPanel;
     private MainBufferStatusPanel mainBufferStatusPanel;
 
     public MainWriterStatusPanel() {
@@ -19,9 +19,10 @@ public class MainWriterStatusPanel extends JPanel {
 
         kbQueuePanel = new KbQueuePanel();
         add(kbQueuePanel);
-        mainKbWriterPanel = new MainKbWriterPanel();
-        add(mainKbWriterPanel);
+        kbWriterPanel = new KbWriterPanel();
+        add(kbWriterPanel);
 
+        //todo: remove this from writer panel into own panel
         mainBufferStatusPanel = new MainBufferStatusPanel();
         add(mainBufferStatusPanel);
     }
@@ -30,8 +31,8 @@ public class MainWriterStatusPanel extends JPanel {
         return kbQueuePanel;
     }
 
-    public MainKbWriterPanel getMainKbWriterPanel() {
-        return mainKbWriterPanel;
+    public KbWriterPanel getKbWriterPanel() {
+        return kbWriterPanel;
     }
 
     public MainBufferStatusPanel getCandidatesPanel() {

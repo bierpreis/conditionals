@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 //todo: this is not "main" and maybe merge with kb queue panel?
-public class MainKbWriterPanel extends JPanel {
+public class KbWriterPanel extends JPanel {
 
     private JLabel speedLabel;
 
@@ -21,7 +21,7 @@ public class MainKbWriterPanel extends JPanel {
     private JLabel counterLabel;
     private JLabel inconsistentCounterLabel;
 
-    public MainKbWriterPanel() {
+    public KbWriterPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
         Box vBox = Box.createVerticalBox();
