@@ -17,7 +17,7 @@ public class MainBufferPanel extends JPanel {
     private JCheckBox deleteTempFilesCheckbox;
     private BufferSizePanel bufferSizePanel;
 
-
+    //todo: seperate better between writer and buffer
     public MainBufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
