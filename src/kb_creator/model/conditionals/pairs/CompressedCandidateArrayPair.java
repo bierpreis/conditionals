@@ -3,12 +3,12 @@ package kb_creator.model.conditionals.pairs;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.NewConditional;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
-import org.codehaus.groovy.runtime.dgmimpl.NumberNumberMetaMethod;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CompressedCandidateArrayPair extends AbstractPair {
+    //todo: this here should be real conditionals? try!
     private int[][] compressedCandidatesArray;
 
 
