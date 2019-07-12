@@ -53,15 +53,25 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         String[] stringArray = stringFromFile.split(", ");
         int[][] arrayToReturn = new int[stringArray.length][2];
         int counter = 0;
-        for (String string : stringArray) {
-            String[] twoString = string.split("-");
 
-            //sometimes the is a line break after last number. remove it because parsing int would fail otherwise.
-            twoString[1] = twoString[1].replaceAll("\n", "");
+
+        for (String string : stringArray) {
+            string = string.replaceAll("\n", "");
+
+            if (string.equals("EMPTY")) {
+                arrayToReturn[0][0] = 0;
+                arrayToReturn[0][1] = 0;
+                return arrayToReturn;
+            }
+            String[] twoString = string.split("-");
 
 
             if (twoString.length != 2)
-                System.out.println("fak: " + twoString);
+                throw new RuntimeException("Invalid compressed candidates String: " + stringFromFile);
+
+
+            //sometimes the is a line break after last number. remove it because parsing int would fail otherwise.
+
             arrayToReturn[counter][0] = Integer.parseInt(twoString[0]);
 
             arrayToReturn[counter][1] = Integer.parseInt(twoString[1]);
