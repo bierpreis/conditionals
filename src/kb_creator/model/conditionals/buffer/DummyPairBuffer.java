@@ -7,7 +7,7 @@ import java.util.List;
 
 public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
-    private int currentK;
+    private int currentK; //todo: delete this?
     private List<List<AbstractPair>> candidatePairList;
 
     public DummyPairBuffer(String filePath) {
@@ -59,7 +59,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public void flushWritingElements() {
         //nothing
     }
-    
+
     @Override
     public void finishIteration(int requestedK) {
         if (requestedK != 1)
