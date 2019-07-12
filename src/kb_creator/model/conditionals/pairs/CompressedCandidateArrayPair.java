@@ -152,7 +152,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
         int pairNumber = 0;
 
-        if (compressedCandidatesArray.length == 0)
+        if (compressedCandidatesArray.length == 0 || compressedCandidatesArray[0][0] == 0)
             sb.append("EMPTY");
 
 
