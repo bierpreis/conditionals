@@ -1,7 +1,5 @@
-package kb_creator.gui.leftpanel.optionsPanel.BufferPanel;
+package kb_creator.gui.leftpanel.optionsPanel.BufferOptionsPanel;
 
-
-import nfc.view.menu.options.OptionsPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +15,7 @@ public class MainBufferPanel extends JPanel {
     private JCheckBox deleteTempFilesCheckbox;
     private BufferSizePanel bufferSizePanel;
 
-    //todo: seperate better between writer and buffer
+
     public MainBufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));

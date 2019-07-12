@@ -1,7 +1,7 @@
 package kb_creator.gui.leftpanel.optionsPanel;
 
-import kb_creator.gui.leftpanel.optionsPanel.BufferPanel.MainBufferPanel;
-import kb_creator.gui.leftpanel.optionsPanel.KBSavePanel.MainKbSafePanel;
+import kb_creator.gui.leftpanel.optionsPanel.BufferOptionsPanel.MainBufferPanel;
+import kb_creator.gui.leftpanel.optionsPanel.KBSaveOptionsPanel.MainKbSafePanel;
 import kb_creator.model.propositional_logic.Signature.AB;
 import kb_creator.model.propositional_logic.Signature.ABC;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
@@ -12,20 +12,20 @@ import java.awt.*;
 public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private MainBufferPanel mainBufferPanel;
-    private SignaturePanel signaturePanel;
+    private SignatureOptionsPanel signatureOptionsPanel;
 
     public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
 
-        add(signaturePanel = new SignaturePanel());
+        add(signatureOptionsPanel = new SignatureOptionsPanel());
         add(mainBufferPanel = new MainBufferPanel());
         add(mainKbSafePanel = new MainKbSafePanel());
     }
 
     public AbstractSignature getSignature() {
 
-        String signature = signaturePanel.getOption();
+        String signature = signatureOptionsPanel.getOption();
         if (signature.equals("ab"))
             return new AB();
         if (signature.equals("abc"))

@@ -8,13 +8,13 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class MainBufferPanel extends JPanel {
+public class MainBufferStatusPanel extends JPanel {
     private JLabel statusLabel;
     private JLabel writerLabel;
     private JLabel readerLabel;
 
-
-    public MainBufferPanel() {
+    //todo: seperate better between writer and buffer
+    public MainBufferStatusPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
 

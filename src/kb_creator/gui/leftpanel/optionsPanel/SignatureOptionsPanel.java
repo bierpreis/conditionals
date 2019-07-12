@@ -3,12 +3,12 @@ package kb_creator.gui.leftpanel.optionsPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class SignaturePanel extends JPanel {
+public class SignatureOptionsPanel extends JPanel {
 
     private ButtonGroup signatureButtonGroup;
 
 
-    public SignaturePanel() {
+    public SignatureOptionsPanel() {
         setBorder(BorderFactory.createTitledBorder("Choose Signature"));
 
         signatureButtonGroup = new ButtonGroup();
