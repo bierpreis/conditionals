@@ -7,7 +7,6 @@ import java.util.List;
 
 public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
-    private int currentK; //todo: delete this?
     private List<List<AbstractPair>> candidatePairList;
 
     public DummyPairBuffer(String filePath) {
@@ -20,8 +19,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         nextElementNumber++;
         if (nextElementNumber < candidatePairList.get(currentK).size())
             return candidatePairList.get(currentK).get(nextElementNumber - 1);
-        System.out.println("returned null!"); //todo: remove?!
-        return null;
+
+        throw new RuntimeException("Dummy buffer failed!");
     }
 
     @Override
@@ -36,7 +35,6 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int k) {
-        currentK = k;
         nextElementNumber = 0;
     }
 
