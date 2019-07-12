@@ -68,27 +68,7 @@ public abstract class AbstractPairBuffer implements Runnable {
     public int getQueueToWriteSize() {
         return cpQueueToWrite.size();
     }
-
-
-    public void deleteFiles(int numberOfConditionals) {
-        System.out.println("trying to delete " + numberOfConditionals + " element pairs");
-        File fileToDelete = new File(tmpFilePath + "/" + numberOfConditionals + "/");
-        boolean fileDeletedSuccesfully;
-        try {
-            for (File file : fileToDelete.listFiles()) {
-                if (!file.isDirectory()) {
-                    if (!
-                            file.delete()
-                    )
-                        System.out.println("deleting candidate pair file failed!");
-
-                }
-
-            }
-        } catch (NullPointerException e) {
-            System.out.println("no " + numberOfConditionals + " element pairs found for deleting");
-        }
-    }
+    
 
     public void stopThread() {
         running = false;
