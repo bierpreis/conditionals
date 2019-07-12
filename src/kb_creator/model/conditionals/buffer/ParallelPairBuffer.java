@@ -46,7 +46,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
 
-    //todo: buffer always shows sleeping. this cant be correct.
+
     @Override
     public void run() {
         while (running) {
@@ -54,10 +54,11 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
             } else if (flushRequested) {
-                status = BufferStatus.WRITING;
-                if (cpQueueToWrite.size() > 0)
+                if (cpQueueToWrite.size() > 0) {
+                    status = BufferStatus.WRITING;
                     writeNextFile(cpQueueToWrite);
 
+                }
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
                 if (queueToReturn.size() < 1000) {
                     status = BufferStatus.READING;
@@ -66,6 +67,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
             } else {
                 try {
+                    System.out.println("sleeping");
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
