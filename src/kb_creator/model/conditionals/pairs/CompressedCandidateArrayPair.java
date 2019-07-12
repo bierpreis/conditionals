@@ -3,6 +3,7 @@ package kb_creator.model.conditionals.pairs;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.NewConditional;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
+import org.codehaus.groovy.runtime.dgmimpl.NumberNumberMetaMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,10 +55,17 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         int counter = 0;
         for (String string : stringArray) {
             String[] twoString = string.split("-");
+
+            //sometimes the is a line break after last number. remove it because parsing int would fail otherwise.
+            twoString[1] = twoString[1].replaceAll("\n", "");
+
+
             if (twoString.length != 2)
                 System.out.println("fak: " + twoString);
             arrayToReturn[counter][0] = Integer.parseInt(twoString[0]);
+
             arrayToReturn[counter][1] = Integer.parseInt(twoString[1]);
+
 
         }
 
