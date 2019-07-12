@@ -13,7 +13,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        // the value 7 was found by trial and error. will this cause problems later?
+        // todo: make this variable or with list
         compressedCandidatesArray = new int[7][2];
 
         int lastConditionalNumber = 0;
@@ -34,6 +34,10 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
         }
 
+    }
+
+    public CompressedCandidateArrayPair(String stringFromFile) {
+        //todo
     }
 
     @Override
@@ -76,10 +80,12 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         compressedCandidatesArray = null;
     }
 
-
-    //todo: this should create a short file string?!
-    @Override
+    //todo: implement reading from short file string
     public String toFileString() {
+        return toShortFileString();
+    }
+
+    private String toLongFileString() {
         List<NewConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
@@ -101,7 +107,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
     //this method creates a file string complressed with the compression in this pair implementation
     //therefore the file is much shorter
-    public String toShortFileString() {
+    private String toShortFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
@@ -111,18 +117,22 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         sb.append("\n\n");
         sb.append("candidates\n");
         //if this first entry is 0, there are no candidates
-        if (compressedCandidatesArray[0][0] != 0) {
-            sb.append(compressedCandidatesArray[0][0]);
-            sb.append("-");
-            sb.append(compressedCandidatesArray[0][1]);
 
-            //then check if there is a second group to add
-            if (compressedCandidatesArray[1][0] != 0) {
-                sb.append(compressedCandidatesArray[1][0]);
+        int pairNumber = 0;
+
+        if (compressedCandidatesArray.length == 0)
+            sb.append("EMPTY");
+
+
+        while (pairNumber < compressedCandidatesArray.length) {
+            if (compressedCandidatesArray[pairNumber][0] != 0) {
+                sb.append(compressedCandidatesArray[pairNumber][0]);
                 sb.append("-");
-                sb.append(compressedCandidatesArray[1][1]);
+                sb.append(compressedCandidatesArray[pairNumber][1]);
             }
-        } else sb.append("EMPTY");
+            pairNumber++;
+        }
+
         return sb.toString();
     }
 }
