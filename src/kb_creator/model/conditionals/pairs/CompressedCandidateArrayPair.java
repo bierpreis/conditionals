@@ -57,7 +57,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
             if (twoString.length != 2)
                 System.out.println("fak: " + twoString);
             arrayToReturn[counter][0] = Integer.parseInt(twoString[0]);
-            arrayToReturn[counter][1] = Integer.parseInt(twoString[0]);
+            arrayToReturn[counter][1] = Integer.parseInt(twoString[1]);
 
         }
 

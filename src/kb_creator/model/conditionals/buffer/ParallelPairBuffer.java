@@ -1,7 +1,6 @@
 package kb_creator.model.conditionals.buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
 import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 
 
