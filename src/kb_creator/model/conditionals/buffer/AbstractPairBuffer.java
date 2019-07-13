@@ -2,14 +2,13 @@ package kb_creator.model.conditionals.buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
 
-import java.io.File;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer implements Runnable {
 
-
+    //todo: check if volatile really is needed
     protected volatile boolean running;
     protected volatile Queue<AbstractPair> cpQueueToWrite;
 
