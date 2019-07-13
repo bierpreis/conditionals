@@ -1,11 +1,12 @@
-package kb_creator.gui.right_panel.writer_status_panel;
+package kb_creator.gui.right_panel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class KbWriterPanel extends JPanel {
+
+public class WriterStatusPanel extends JPanel {
 
     private JLabel speedLabel;
 
@@ -20,13 +21,17 @@ public class KbWriterPanel extends JPanel {
     private JLabel counterLabel;
     private JLabel inconsistentCounterLabel;
 
-    public KbWriterPanel() {
-        setLayout(new FlowLayout(FlowLayout.LEFT));
+    private JLabel inconsistentLabel;
+    private JLabel consistentLabel;
 
+
+    public WriterStatusPanel() {
         Box vBox = Box.createVerticalBox();
         add(vBox);
+        vBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+        setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
+        setLayout(new FlowLayout());
 
-        setBorder(BorderFactory.createTitledBorder("Writer Status"));
 
         speedLabel = new JLabel();
         vBox.add(speedLabel);
@@ -46,8 +51,23 @@ public class KbWriterPanel extends JPanel {
         showConsistentConter(0);
         showIncosnsistentCounter(0);
 
-    }
+        //placeholder for empty line
+        vBox.add(new JLabel(" "));
 
+
+        consistentLabel = new JLabel();
+        vBox.add(consistentLabel);
+
+
+        inconsistentLabel = new JLabel();
+        vBox.add(inconsistentLabel);
+
+
+        showConsistentQueue(0);
+        showInconsistentQueue(0);
+
+
+    }
 
     public void showSpeed(int totalWrites) {
 
@@ -72,6 +92,22 @@ public class KbWriterPanel extends JPanel {
     public void showIncosnsistentCounter(int inconsistetnCounter) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentCounterLabel.setText("Written Inconsistent KBs: " + formatter.format(inconsistetnCounter));
+
+
+    }
+
+
+    public void showConsistentQueue(int consistentQueue) {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
+
+
+    }
+
+
+    public void showInconsistentQueue(int inConsistentQueue) {
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+        inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
 
 
     }
