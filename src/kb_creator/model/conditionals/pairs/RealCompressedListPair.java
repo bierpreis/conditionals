@@ -66,7 +66,7 @@ public class RealCompressedListPair extends AbstractPair {
         return candidatesList;
     }
 
-    //todo: is this needed?
+
     @Override
     public String toString() {
         List<NewConditional> candidatesList = getCandidatesList();
