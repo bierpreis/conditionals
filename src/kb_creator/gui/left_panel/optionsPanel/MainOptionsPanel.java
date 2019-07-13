@@ -1,7 +1,7 @@
-package kb_creator.gui.leftpanel.optionsPanel;
+package kb_creator.gui.left_panel.optionsPanel;
 
-import kb_creator.gui.leftpanel.optionsPanel.BufferOptionsPanel.MainBufferPanel;
-import kb_creator.gui.leftpanel.optionsPanel.KBSaveOptionsPanel.MainKbSafePanel;
+import kb_creator.gui.left_panel.optionsPanel.BufferOptionsPanel.MainBufferPanel;
+import kb_creator.gui.left_panel.optionsPanel.KBSaveOptionsPanel.MainKbSafePanel;
 import kb_creator.model.propositional_logic.Signature.AB;
 import kb_creator.model.propositional_logic.Signature.ABC;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;

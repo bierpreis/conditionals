@@ -1,9 +1,10 @@
 package kb_creator.gui;
 
+import kb_creator.gui.mid_panel.MidPanel;
 import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.observer.KBCreatorObserver;
-import kb_creator.gui.creatorpanel.MainCreatorPanel;
-import kb_creator.gui.leftpanel.LeftPanel;
+import kb_creator.gui.mid_panel.creator_panel.MainCreatorPanel;
+import kb_creator.gui.left_panel.LeftPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 
@@ -11,10 +12,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainWindow {
-    private KBCreatorObserver observer;
-    private LeftPanel leftPanel;
+    private KBCreatorObserver observer; //todo: remove?
+
     private JFrame mainWindow;
-    private MainCreatorPanel mainCreatorPanel;
+
+
+    private LeftPanel leftPanel;
+    private MidPanel midPanel;
     private RightPanel rightPanel;
 
     public MainWindow(KBCreatorObserver observer) {
@@ -24,7 +28,7 @@ public class MainWindow {
 
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
-        mainWindow.add(mainCreatorPanel = new MainCreatorPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
+        mainWindow.add(midPanel = new MidPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
         mainWindow.add(rightPanel = new RightPanel(), BorderLayout.EAST);
 
 
@@ -63,8 +67,8 @@ public class MainWindow {
         return rightPanel;
     }
 
-    public MainCreatorPanel getCreatorPanel() {
-        return mainCreatorPanel;
+    public MidPanel getMidPanel() {
+        return midPanel;
     }
 
     public LeftPanel getLeftPanel() {

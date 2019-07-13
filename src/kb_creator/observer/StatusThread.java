@@ -27,18 +27,18 @@ public class StatusThread implements Runnable {
             long startTime = System.currentTimeMillis();
             if (creatorThread != null) {
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
-                mainWindow.getCreatorPanel().showStatus(creatorThread.getStatus());
-                mainWindow.getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
-                mainWindow.getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
-                mainWindow.getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
-                mainWindow.getCreatorPanel().showProgress(creatorThread.getProgress());
-                mainWindow.getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
-                mainWindow.getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-                mainWindow.getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
-                mainWindow.getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+                mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getStatus());
+                mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
+                mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
+                mainWindow.getMidPanel().getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
+                mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.getProgress());
+                mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
+                mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
+                mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
+                mainWindow.getMidPanel().getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
 
                 if (creatorThread.getStatus().equals(Status.RUNNING))
-                    mainWindow.getCreatorPanel().showTime(creatorThread.getStartTime());
+                    mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
 
 
                 mainWindow.getRightPanel().getWriterStatusPanel().getKbQueuePanel().showConsistentQueue(kbWriter.getConsistentQueue());
@@ -69,7 +69,7 @@ public class StatusThread implements Runnable {
 
             }
 
-            mainWindow.getCreatorPanel().getMemoryPanel().showFreeMemory();
+            mainWindow.getMidPanel().getMemoryPanel().showFreeMemory();
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
             if (sleepTime > 0)

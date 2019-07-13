@@ -1,8 +1,8 @@
-package kb_creator.gui.leftpanel;
+package kb_creator.gui.left_panel;
 
 import kb_creator.observer.KBCreatorObserver;
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
-import kb_creator.gui.leftpanel.optionsPanel.MainOptionsPanel;
+import kb_creator.gui.left_panel.actionpanel.ActionPanel;
+import kb_creator.gui.left_panel.optionsPanel.MainOptionsPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
 import javax.swing.*;

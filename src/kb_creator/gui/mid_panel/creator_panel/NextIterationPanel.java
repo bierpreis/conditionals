@@ -1,4 +1,4 @@
-package kb_creator.gui.creatorpanel;
+package kb_creator.gui.mid_panel.creator_panel;
 
 
 

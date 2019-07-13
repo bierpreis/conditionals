@@ -1,7 +1,8 @@
-package kb_creator.gui.creatorpanel;
+package kb_creator.gui.mid_panel.creator_panel;
 
+import kb_creator.gui.mid_panel.MemoryPanel;
 import kb_creator.observer.Status;
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+import kb_creator.gui.left_panel.actionpanel.ActionPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +12,6 @@ public class MainCreatorPanel extends JPanel {
     private OverallStatusPanel overallStatusPanel;
     private CurrentIterationPanel currentIterationPanel;
     private NextIterationPanel nextIterationPanel;
-    private MemoryPanel memoryPanel;
 
     public MainCreatorPanel(ActionPanel actionPanel) {
         setPreferredSize(new Dimension(350, 300));
@@ -27,10 +27,6 @@ public class MainCreatorPanel extends JPanel {
 
         nextIterationPanel = new NextIterationPanel();
         add(nextIterationPanel);
-
-        //todo: this should not be in creator panel but in own panel
-        add(memoryPanel = new MemoryPanel());
-        revalidate();
 
         showStatus(Status.NOT_STARTED);
 
@@ -71,10 +67,6 @@ public class MainCreatorPanel extends JPanel {
 
     public void showNextCandidatePairs(int nextCandidatepairs) {
         nextIterationPanel.showCandidates(nextCandidatepairs);
-    }
-
-    public MemoryPanel getMemoryPanel() {
-        return memoryPanel;
     }
 
     public void showProgress(float progress) {

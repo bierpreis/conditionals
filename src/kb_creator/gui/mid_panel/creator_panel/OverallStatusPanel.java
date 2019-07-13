@@ -1,13 +1,11 @@
-package kb_creator.gui.creatorpanel;
+package kb_creator.gui.mid_panel.creator_panel;
 
 import kb_creator.observer.Status;
-import kb_creator.gui.leftpanel.actionpanel.ActionPanel;
+import kb_creator.gui.left_panel.actionpanel.ActionPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 public class OverallStatusPanel extends JPanel {
