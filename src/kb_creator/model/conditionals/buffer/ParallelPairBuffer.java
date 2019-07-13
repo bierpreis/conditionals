@@ -247,6 +247,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractPair pairToAdd) {
+        //todo: this is wrong. adding to queue to write increases readerCounter?!
         cpQueueToWrite.add(pairToAdd);
         pairReaderCounter++;
     }
