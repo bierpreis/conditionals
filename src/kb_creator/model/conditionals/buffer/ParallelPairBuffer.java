@@ -206,9 +206,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-        //todo: this needs to be incremented when reading pair or can be removed from here
-        pairReaderCounter = 0;
-
         if (deleteFiles) {
             File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
 
