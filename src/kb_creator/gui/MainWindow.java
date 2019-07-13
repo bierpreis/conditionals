@@ -3,7 +3,6 @@ package kb_creator.gui;
 import kb_creator.gui.mid_panel.MidPanel;
 import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.observer.KBCreatorObserver;
-import kb_creator.gui.mid_panel.creator_panel.MainCreatorPanel;
 import kb_creator.gui.left_panel.LeftPanel;
 import kb_creator.model.propositional_logic.Signature.AbstractSignature;
 
@@ -12,7 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainWindow {
-    private KBCreatorObserver observer; //todo: remove?
 
     private JFrame mainWindow;
 
@@ -24,8 +22,6 @@ public class MainWindow {
     public MainWindow(KBCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
-        this.observer = observer;
-
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(midPanel = new MidPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
