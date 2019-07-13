@@ -45,7 +45,7 @@ public class BufferStatusPanel extends JPanel {
         writerLabel.setText("Writer Queue: " + formatter.format(alreadyFinishedNumber));
     }
 
-
+    //todo: is this realy read pairs what is shown?
     public void showReaderProgress(int alreadyReadNumber) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         readerLabel.setText("Read Pairs: " + formatter.format(alreadyReadNumber));
