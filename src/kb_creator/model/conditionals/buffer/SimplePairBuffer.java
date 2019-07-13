@@ -3,6 +3,7 @@ package kb_creator.model.conditionals.buffer;
 import kb_creator.model.conditionals.pairs.AbstractPair;
 import kb_creator.model.conditionals.pairs.CandidateNumbersArrayPair;
 import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
+import kb_creator.model.conditionals.pairs.RealCompressedListPair;
 
 import java.io.File;
 import java.io.IOException;
@@ -139,7 +140,7 @@ public class SimplePairBuffer extends AbstractPairBuffer {
         List<AbstractPair> pairsList = new ArrayList<>(stringList.size());
 
         for (String stringFromFile : stringList) {
-            pairsList.add(new CompressedCandidateArrayPair(stringFromFile));
+            pairsList.add(new RealCompressedListPair(stringFromFile));
             pairReaderCounter++;
         }
 

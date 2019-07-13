@@ -308,7 +308,7 @@ public class KBCreator implements Runnable {
         return l.getLastIterationPairAmount();
     }
 
-    public long getStartTime(){
+    public long getStartTime() {
         return startTime;
     }
 

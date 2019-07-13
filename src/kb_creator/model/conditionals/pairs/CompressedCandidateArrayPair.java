@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompressedCandidateArrayPair extends AbstractPair {
-    //todo: this here should be real conditionals? try!
+
     private int[][] compressedCandidatesArray;
 
 
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        // todo: make this variable or with list
         compressedCandidatesArray = new int[7][2];
 
         int lastConditionalNumber = 0;

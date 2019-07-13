@@ -10,7 +10,7 @@ import java.util.List;
 public class RealCompressedListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
 
-
+    //todo: check if pairs are correct
     public RealCompressedListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
@@ -90,7 +90,6 @@ public class RealCompressedListPair extends AbstractPair {
         candidatesList = null;
     }
 
-    //todo: create short string from candidatesList
     //this method creates a file string complressed with the compression in this pair implementation
     //therefore the file is much shorter
     public String toFileString() {
@@ -105,15 +104,13 @@ public class RealCompressedListPair extends AbstractPair {
         //if this first entry is 0, there are no candidates
 
 
-
-
         List<NumberPair> numberPairList = new ArrayList<>();
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
         else {
             int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
-            
+
             numberPairList.add(new NumberPair(candidatesList.get(0).getNumber()));
 
             for (NewConditional currentCandidate : candidatesList) {
@@ -145,16 +142,8 @@ public class RealCompressedListPair extends AbstractPair {
 
         public NumberPair(int first) {
             this.first = first;
-            this.second = second;
         }
 
-        public int getFirst() {
-            return first;
-        }
-
-        public int getSecond() {
-            return second;
-        }
 
         public void setSecond(int second) {
             this.second = second;
