@@ -254,6 +254,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public void finishIteration(int requestedK) {
 
         status = BufferStatus.FINISHING_ITERATION;
+        //todo: this is wrong and fucks up progress.
         lastIterationPairAmount = pairReaderCounter;
         flushWritingElements();
         System.out.println("finished iteration: " + requestedK);

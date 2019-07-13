@@ -72,6 +72,7 @@ public class CurrentIterationPanel extends JPanel {
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));
     }
 
+
     public void showProgress(float progress) {
         progressLabel.setText("Progress: " + String.format("%.2f", progress) + "%");
     }
