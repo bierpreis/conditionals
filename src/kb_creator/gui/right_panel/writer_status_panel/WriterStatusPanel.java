@@ -17,13 +17,11 @@ public class WriterStatusPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+        //todo: maybe merge these 2 panels to 1 writer status panel
         kbQueuePanel = new KbQueuePanel();
         add(kbQueuePanel);
         kbWriterPanel = new KbWriterPanel();
         add(kbWriterPanel);
-
-        //todo: remove this from writer panel into own panel
-
     }
 
     public KbQueuePanel getKbQueuePanel() {
