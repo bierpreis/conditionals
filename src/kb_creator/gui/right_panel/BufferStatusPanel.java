@@ -13,7 +13,6 @@ public class BufferStatusPanel extends JPanel {
     private JLabel writerLabel;
     private JLabel readerLabel;
 
-    //todo: seperate better between writer and buffer
     public BufferStatusPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));

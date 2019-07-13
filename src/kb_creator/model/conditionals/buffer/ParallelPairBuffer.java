@@ -46,7 +46,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
     //todo: if stopped it keeps status writing. but it should be sleeping? and later stopped?
-    //todo: stop button should stop this
 
     @Override
     public void run() {
