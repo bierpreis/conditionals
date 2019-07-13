@@ -105,13 +105,15 @@ public class RealCompressedListPair extends AbstractPair {
         //if this first entry is 0, there are no candidates
 
 
-        int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
+
 
         List<NumberPair> numberPairList = new ArrayList<>();
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
         else {
+            int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
+            
             numberPairList.add(new NumberPair(candidatesList.get(0).getNumber()));
 
             for (NewConditional currentCandidate : candidatesList) {
