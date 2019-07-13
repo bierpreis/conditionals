@@ -59,6 +59,7 @@ public abstract class AbstractPairBuffer implements Runnable {
         return status;
     }
 
+    //todo: delete ?
     public int getReaderCounter() {
         return pairReaderCounter;
     }

@@ -17,6 +17,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private Queue<AbstractPair> queueToReturn;
     private int iterationNumberOfFiles;
     private volatile boolean hasNextIteration;
+    private volatile int pairWriterCounter;
 
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
@@ -96,6 +97,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                     sb.append("\nEND_PAIR\n\n");
                     pairToWrite.deleteCandidates();
                     pairToWrite.deleteKB();
+                    pairWriterCounter++;
 
                 }
 
@@ -134,6 +136,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         for (String stringFromFile : fileStringArray) {
             pairsList.add(new CompressedCandidateArrayPair(stringFromFile));
+            pairReaderCounter++;
         }
 
 
@@ -200,9 +203,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
+        pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-
+        //todo: this needs to be incremented when reading pair or can be removed from here
         pairReaderCounter = 0;
 
         if (deleteFiles) {
@@ -254,8 +258,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public void finishIteration(int requestedK) {
 
         status = BufferStatus.FINISHING_ITERATION;
-        //todo: this is wrong and fucks up progress.
-        lastIterationPairAmount = pairReaderCounter;
+
+        lastIterationPairAmount = pairWriterCounter;
         flushWritingElements();
         System.out.println("finished iteration: " + requestedK);
     }

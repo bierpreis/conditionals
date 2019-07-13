@@ -293,7 +293,6 @@ public class KBCreator implements Runnable {
         waitForKbWriter = true;
     }
 
-    //todo: progress doenst work because the reader counter wont incremept on write lel
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
         if (lastIterationAmount == 0)
             return 0;
