@@ -10,18 +10,11 @@ import java.util.List;
 public class RealCompressedListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
 
-    //todo: this class
-
 
     public RealCompressedListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
         this.candidatesList = candidates;
-
-        int lastConditionalNumber = 0;
-        int nextArrayNumber = 0;
-
-
     }
 
     public RealCompressedListPair(String stringFromFile) {
@@ -111,24 +104,33 @@ public class RealCompressedListPair extends AbstractPair {
         sb.append("candidates\n");
         //if this first entry is 0, there are no candidates
 
-        int firstConditionalNumberToAdd = 0;
-        int lastConditionalNumber = 0;
+        int firstConditionalNumberToAdd = candidatesList.get(0).getNumber();
+        int lastConditionalNumber = candidatesList.get(0).getNumber();
+
+        List<NumberPair> numberPairList = new ArrayList<>();
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
         else
             for (NewConditional currentCandidate : candidatesList) {
-                if (currentCandidate.getNumber() != lastConditionalNumber + 1) { //todo: switch to ==
-                    sb.append(firstConditionalNumberToAdd);
-                    sb.append("-");
-                    sb.append(currentCandidate.getNumber());
-                    sb.append(", ");
+                if (currentCandidate.getNumber() == lastConditionalNumber + 1)
                     lastConditionalNumber = currentCandidate.getNumber();
-                } else {
-                    lastConditionalNumber++;
+                else {
+                    numberPairList.add(new NumberPair(firstConditionalNumberToAdd, currentCandidate.getNumber()));
+
+                    firstConditionalNumberToAdd = currentCandidate.getNumber();
+                    
+                    lastConditionalNumber = currentCandidate.getNumber();
+
                 }
 
             }
+
+        for (NumberPair numberPair : numberPairList) {
+            sb.append(numberPair.toString());
+            sb.append(", ");
+        }
+
         return sb.toString().replaceAll(", $", "");
     }
 
@@ -146,6 +148,11 @@ public class RealCompressedListPair extends AbstractPair {
 
         public int getSecond() {
             return second;
+        }
+
+        @Override
+        public String toString() {
+            return first + "-" + second;
         }
     }
 }
