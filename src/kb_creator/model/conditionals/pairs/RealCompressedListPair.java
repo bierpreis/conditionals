@@ -104,27 +104,31 @@ public class RealCompressedListPair extends AbstractPair {
         sb.append("candidates\n");
         //if this first entry is 0, there are no candidates
 
-        int firstConditionalNumberToAdd = candidatesList.get(0).getNumber();
-        int lastConditionalNumber = candidatesList.get(0).getNumber();
+
+        int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
 
         List<NumberPair> numberPairList = new ArrayList<>();
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
-        else
+        else {
+            numberPairList.add(new NumberPair(candidatesList.get(0).getNumber()));
+
             for (NewConditional currentCandidate : candidatesList) {
                 if (currentCandidate.getNumber() == lastConditionalNumber + 1)
                     lastConditionalNumber = currentCandidate.getNumber();
                 else {
-                    numberPairList.add(new NumberPair(firstConditionalNumberToAdd, currentCandidate.getNumber()));
+                    numberPairList.get(numberPairList.size() - 1).setSecond(lastConditionalNumber);
 
-                    firstConditionalNumberToAdd = currentCandidate.getNumber();
-                    
+                    numberPairList.add(new NumberPair(currentCandidate.getNumber()));
+
                     lastConditionalNumber = currentCandidate.getNumber();
 
                 }
 
             }
+            numberPairList.get(numberPairList.size() - 1).setSecond(lastConditionalNumber);
+        }
 
         for (NumberPair numberPair : numberPairList) {
             sb.append(numberPair.toString());
@@ -137,7 +141,7 @@ public class RealCompressedListPair extends AbstractPair {
     class NumberPair {
         int first, second;
 
-        public NumberPair(int first, int second) {
+        public NumberPair(int first) {
             this.first = first;
             this.second = second;
         }
@@ -148,6 +152,10 @@ public class RealCompressedListPair extends AbstractPair {
 
         public int getSecond() {
             return second;
+        }
+
+        public void setSecond(int second) {
+            this.second = second;
         }
 
         @Override
