@@ -50,21 +50,14 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     @Override
     public void run() {
         while (running) {
-            if (cpQueueToWrite.size() > maxNumberOfPairsInFile) {
+            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || (cpQueueToWrite.size() > 0 && flushRequested)) {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
-            } else if (flushRequested) {
-                if (cpQueueToWrite.size() > 0) {
-                    status = BufferStatus.WRITING;
-                    writeNextFile(cpQueueToWrite);
-
-                }
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
                 if (queueToReturn.size() < 1000) {
                     status = BufferStatus.READING;
                     queueToReturn.addAll(readNextFile(requestedListNumber.get()));
                 }
-
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
