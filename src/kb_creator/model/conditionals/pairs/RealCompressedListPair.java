@@ -34,7 +34,7 @@ public class RealCompressedListPair extends AbstractPair {
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
         candidatesList = createCandidatesListFromString(splitString[1]);
     }
-    
+
     private List<NewConditional> createCandidatesListFromString(String stringFromFile) {
         String[] stringArray = stringFromFile.split(", ");
         List<NewConditional> listToReturn = new ArrayList<>();
@@ -111,35 +111,25 @@ public class RealCompressedListPair extends AbstractPair {
         sb.append("candidates\n");
         //if this first entry is 0, there are no candidates
 
-        int pairNumber = 0;
-
-        if (compressedCandidatesArray.length == 0 || compressedCandidatesArray[0][0] == 0)
-            sb.append("EMPTY");
-
-
-        while (pairNumber < compressedCandidatesArray.length) {
-            if (compressedCandidatesArray[pairNumber][0] != 0) {
-                sb.append(compressedCandidatesArray[pairNumber][0]);
-                sb.append("-");
-                sb.append(compressedCandidatesArray[pairNumber][1]);
-                sb.append(", ");
-            }
-            pairNumber++;
-        }
-
-        return sb.toString().replaceAll(", $", "");
-
-        List<NumberPair> numberPairList = new ArrayList<>();
+        int firstConditionalNumberToAdd = 0;
         int lastConditionalNumber = 0;
 
-        for (NewConditional currentCandidate : candidatesList) {
-            if (currentCandidate.getNumber() == lastConditionalNumber + 1) {
-
-            } else {
+        if (candidatesList.isEmpty())
+            sb.append("EMPTY");
+        else
+            for (NewConditional currentCandidate : candidatesList) {
+                if (currentCandidate.getNumber() != lastConditionalNumber + 1) { //todo: switch to ==
+                    sb.append(firstConditionalNumberToAdd);
+                    sb.append("-");
+                    sb.append(currentCandidate.getNumber());
+                    sb.append(", ");
+                    lastConditionalNumber = currentCandidate.getNumber();
+                } else {
+                    lastConditionalNumber++;
+                }
 
             }
-
-        }
+        return sb.toString().replaceAll(", $", "");
     }
 
     class NumberPair {
