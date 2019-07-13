@@ -22,21 +22,6 @@ public class RealCompressedListPair extends AbstractPair {
         int nextArrayNumber = 0;
 
 
-        //todo: use this for to File String
-        for (NewConditional currentCandidate : candidates) {
-            if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
-                compressedCandidatesArray[nextArrayNumber][0] = currentCandidate.getNumber();
-                compressedCandidatesArray[nextArrayNumber][1] = currentCandidate.getNumber();
-
-                nextArrayNumber = nextArrayNumber + 1;
-                lastConditionalNumber = currentCandidate.getNumber();
-            } else {
-                compressedCandidatesArray[nextArrayNumber - 1][1] = currentCandidate.getNumber();
-                lastConditionalNumber++;
-            }
-
-        }
-
     }
 
     public RealCompressedListPair(String stringFromFile) {
@@ -47,23 +32,21 @@ public class RealCompressedListPair extends AbstractPair {
         //divide string into kb and candidates
         //create both from subString
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
-        compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
+        candidatesList = createCandidatesListFromString(splitString[1]);
     }
-
-    private int[][] createCandidatesArrayFromString(String stringFromFile) {
+    
+    private List<NewConditional> createCandidatesListFromString(String stringFromFile) {
         String[] stringArray = stringFromFile.split(", ");
-        int[][] arrayToReturn = new int[stringArray.length][2];
-        int counter = 0;
-
+        List<NewConditional> listToReturn = new ArrayList<>();
 
         for (String string : stringArray) {
             string = string.replaceAll("\n", "");
 
-            if (string.equals("EMPTY")) {
-                arrayToReturn[0][0] = 0;
-                arrayToReturn[0][1] = 0;
-                return arrayToReturn;
-            }
+            //return empty list if there are no candidates
+            if (string.equals("EMPTY"))
+                return listToReturn;
+
+
             String[] twoString = string.split("-");
 
 
@@ -71,35 +54,26 @@ public class RealCompressedListPair extends AbstractPair {
                 throw new RuntimeException("Invalid compressed candidates String: " + stringFromFile);
 
 
-            //sometimes the is a line break after last number. remove it because parsing int would fail otherwise.
+            int firstNumer = Integer.parseInt(twoString[0]);
 
-            arrayToReturn[counter][0] = Integer.parseInt(twoString[0]);
+            int secondNumer = Integer.parseInt(twoString[1]);
 
-            arrayToReturn[counter][1] = Integer.parseInt(twoString[1]);
+            for (int i = firstNumer; i <= secondNumer; i++) {
+                listToReturn.add(nfcMap.get(i));
+            }
 
 
         }
 
-        return arrayToReturn;
+        return listToReturn;
     }
 
     @Override
     public List<NewConditional> getCandidatesList() {
-        List<NewConditional> candidatesList = new ArrayList<>();
-        for (int[] candidateBounds : compressedCandidatesArray) {
-            //if it is 0, all candidates are found
-            if (candidateBounds[0] == 0) {
-                return candidatesList;
-            }
-            for (int i = candidateBounds[0]; i <= candidateBounds[1]; i++) {
-
-                candidatesList.add(nfcMap.get(i));
-            }
-        }
-
         return candidatesList;
     }
 
+    //todo: is this needed?
     @Override
     public String toString() {
         List<NewConditional> candidatesList = getCandidatesList();
@@ -123,32 +97,10 @@ public class RealCompressedListPair extends AbstractPair {
         candidatesList = null;
     }
 
-    public String toFileString() {
-        return toShortFileString();
-    }
-
-    private String toLongFileString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("buffer");
-        sb.append(knowledgeBase.getKbNumber());
-        sb.append("\n\n");
-        sb.append("KB\n");
-        sb.append(knowledgeBase.toShortFileString());
-        sb.append("\n\n");
-        sb.append("candidates\n");
-        if (candidatesList.size() > 0) {
-            for (int i = 0; i < candidatesList.size(); i++) {
-                sb.append(candidatesList.get(i).getNumber());
-                if (i != candidatesList.size() - 1)
-                    sb.append(", ");
-            }
-        } else sb.append("EMPTY");
-        return sb.toString();
-    }
-
+    //todo: create short string from candidatesList
     //this method creates a file string complressed with the compression in this pair implementation
     //therefore the file is much shorter
-    private String toShortFileString() {
+    public String toFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
@@ -176,5 +128,34 @@ public class RealCompressedListPair extends AbstractPair {
         }
 
         return sb.toString().replaceAll(", $", "");
+
+        List<NumberPair> numberPairList = new ArrayList<>();
+        int lastConditionalNumber = 0;
+
+        for (NewConditional currentCandidate : candidatesList) {
+            if (currentCandidate.getNumber() == lastConditionalNumber + 1) {
+
+            } else {
+
+            }
+
+        }
+    }
+
+    class NumberPair {
+        int first, second;
+
+        public NumberPair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public int getFirst() {
+            return first;
+        }
+
+        public int getSecond() {
+            return second;
+        }
     }
 }
