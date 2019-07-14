@@ -300,7 +300,7 @@ public class KBCreator implements Runnable {
             return 0;
 
         }
-        return (float) (pairCounter / (float) lastIterationAmount) * 100;
+        return (pairCounter / (float) lastIterationAmount) * 100;
     }
 
     public float getProgress() {
