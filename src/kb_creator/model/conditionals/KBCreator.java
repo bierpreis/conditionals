@@ -149,8 +149,7 @@ public class KBCreator implements Runnable {
                         totalInconsistentAmount++;
                     }
                 }
-
-                //todo: is this still needed?
+                
                 if (waitForKbWriter)
                     synchronized (this) {
                         try {
