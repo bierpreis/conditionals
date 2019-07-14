@@ -61,8 +61,7 @@ public class World implements Comparable {
     }
 
     public void addList(List<Integer> newList) {
-        for (Integer newInt : newList)
-            worlds.add(newInt);
+        worlds.addAll(newList);
     }
 
     @Override
