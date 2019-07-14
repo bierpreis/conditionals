@@ -238,7 +238,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
         iterationNumberOfFiles = filesArray.length;
         Arrays.sort(filesArray);
-        System.out.println("reading folder took " + (System.currentTimeMillis() - beforeReadFiles) / 1000 + " seconds");
 
     }
 

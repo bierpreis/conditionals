@@ -72,7 +72,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
 
     public enum BufferStatus {
-        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED;
+        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED
     }
 
     public int getLastIterationPairAmount() {

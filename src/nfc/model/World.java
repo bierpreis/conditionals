@@ -131,7 +131,7 @@ public class World implements Comparable {
     }
 
     public enum View {
-        NUMBERS, LETTERS;
+        NUMBERS, LETTERS
     }
 
     public AbstractSignature getSignature() {

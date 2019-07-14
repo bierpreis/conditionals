@@ -302,7 +302,6 @@ public class KBCreator implements Runnable {
             return 0;
 
         }
-        System.out.println("pairCounter: " + pairCounter + " lastIterationAmount: " + lastIterationAmount);
         return (float) (pairCounter / (float) lastIterationAmount) * 100;
     }
 
