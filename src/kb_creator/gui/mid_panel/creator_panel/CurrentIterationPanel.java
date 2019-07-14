@@ -66,7 +66,6 @@ public class CurrentIterationPanel extends JPanel {
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
     }
 
-    //todo: this info seems wrong. its pairs -1-1 but it sould be pairs -1
     public void showCandidatePairs(int canditatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));

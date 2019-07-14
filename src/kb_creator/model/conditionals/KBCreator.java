@@ -115,7 +115,6 @@ public class KBCreator implements Runnable {
                 pairCounter++;
 
                 lastIterationAmount = l.getLastIterationPairAmount();
-                //todo: dont get iteration amount from l. but it is correct there?!
                 progress = calculateProgress(pairCounter, lastIterationAmount);
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -315,7 +314,6 @@ public class KBCreator implements Runnable {
         return progress;
     }
 
-    //todo: this shows last last iteration pairs?
     public int getLastPairAmount() {
         return lastIterationAmount;
     }
