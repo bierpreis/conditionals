@@ -100,11 +100,10 @@ public class Conditional implements Comparable {
             Conditional otherConditional = (Conditional) o;
             boolean leftEquals = otherConditional.getConsequence().equals(consequence);
             boolean rightEquals = otherConditional.getAntecedent().equals(antecedent);
-            boolean equals = leftEquals && rightEquals;
 
             //comment this out if u want to make sure equals works
             //System.out.println(equals + ": " + this + " and " + otherConditional);
-            return equals;
+            return leftEquals && rightEquals;
         }
 
     }
