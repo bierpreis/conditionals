@@ -18,7 +18,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private Queue<AbstractPair> queueToReturn;
     private int iterationNumberOfFiles;
     private volatile boolean hasNextIteration;
-    private volatile int pairWriterCounter;
+    private int pairWriterCounter;
 
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {

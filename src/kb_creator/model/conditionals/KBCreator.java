@@ -22,7 +22,7 @@ public class KBCreator implements Runnable {
     private int totalInconsistentAmount;
     private int iterationNumberOfKBs;
 
-    private volatile Status status;
+    private Status status;
     private volatile boolean waitForKbWriter;
 
     private AbstractSignature signature;
