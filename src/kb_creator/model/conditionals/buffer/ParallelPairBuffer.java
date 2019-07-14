@@ -54,6 +54,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || (cpQueueToWrite.size() > 0 && flushRequested)) {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
+                //todo: reader could create bigger buffer, so reader sleeps less and can deliver faster?
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
                 if (queueToReturn.size() < 1000) {
                     status = BufferStatus.READING;
