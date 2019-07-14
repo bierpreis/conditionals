@@ -21,7 +21,7 @@ public class KBCreator implements Runnable {
     private int totalNumberOfKBs;
     private int totalInconsistentAmount;
     private int iterationNumberOfKBs;
-    private int lastIterationPairs;
+    private int lastIterationAmount;
 
     private Status status;
     private volatile boolean waitForKbWriter;
@@ -52,7 +52,7 @@ public class KBCreator implements Runnable {
             kbWriter = new KbFileWriter(kbFilePath);
         else kbWriter = new KbDummyWriter();
 
-        lastIterationPairs = 0;
+        lastIterationAmount = 0;
 
     }
 
@@ -107,15 +107,16 @@ public class KBCreator implements Runnable {
             iterationNumberOfKBs = 0;
             //this loop is line 8
 
-            lastIterationPairs = pairCounter;
+            lastIterationAmount = pairCounter;
             pairCounter = 0;
 
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
                 pairCounter++;
 
-
-                progress = calculateProgress(pairCounter, l.getLastIterationPairAmount());
+                lastIterationAmount = l.getLastIterationPairAmount();
+                //todo: dont get iteration amount from l. but it is correct there?!
+                progress = calculateProgress(pairCounter, lastIterationAmount);
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
@@ -229,7 +230,6 @@ public class KBCreator implements Runnable {
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }
-        lastIterationPairs = iterationNumberOfKBs;
 
 
         System.out.println("finished 1 element kbs");
@@ -317,7 +317,7 @@ public class KBCreator implements Runnable {
 
     //todo: this shows last last iteration pairs?
     public int getLastPairAmount() {
-        return lastIterationPairs;
+        return lastIterationAmount;
     }
 
     public long getStartTime() {
