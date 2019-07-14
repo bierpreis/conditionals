@@ -41,10 +41,10 @@ public class ConditionalList implements Comparable {
 
     @Override
     public String toString() {
-        String stringToReturn = "";
+        StringBuilder sb = new StringBuilder();
         for (Conditional conditional : conditionalList)
-            stringToReturn = stringToReturn + conditional.toString();
-        return stringToReturn;
+            sb.append(conditional.toString());
+        return sb.toString();
 
     }
 
