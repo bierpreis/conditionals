@@ -17,7 +17,7 @@ import nfc.model.NfcCreator;
 import java.util.*;
 
 public class KBCreator implements Runnable {
-    
+
     private int totalNumberOfKBs;
     private int totalInconsistentAmount;
     private int iterationNumberOfKBs;

@@ -8,16 +8,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer implements Runnable {
 
-    //todo: check if volatile really is needed
-    protected volatile boolean running;
-    protected volatile Queue<AbstractPair> cpQueueToWrite;
 
-    protected volatile BufferStatus status;
+    protected boolean running;
+    protected Queue<AbstractPair> cpQueueToWrite;
 
-    protected volatile int writingFileNameCounter;
-    protected volatile int readingFileNameCounter;
+    protected BufferStatus status;
 
-    protected volatile int pairReaderCounter;
+    protected int writingFileNameCounter;
+    protected int readingFileNameCounter;
+
+    protected int pairReaderCounter;
 
     protected int maxNumberOfPairsInFile;
 
@@ -27,7 +27,7 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected AtomicInteger requestedListNumber;
     protected List<AbstractPair> requestedList;
     protected volatile boolean requestedListIsReady;
-    protected volatile int lastIterationPairAmount;
+    protected int lastIterationPairAmount;
 
     protected boolean deleteFiles;
 
