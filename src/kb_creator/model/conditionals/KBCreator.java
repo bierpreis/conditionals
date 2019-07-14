@@ -17,11 +17,10 @@ import nfc.model.NfcCreator;
 import java.util.*;
 
 public class KBCreator implements Runnable {
-
-    //todo: check if volatile is needed
-    private volatile int totalNumberOfKBs;
-    private volatile int totalInconsistentAmount;
-    private volatile int iterationNumberOfKBs;
+    
+    private int totalNumberOfKBs;
+    private int totalInconsistentAmount;
+    private int iterationNumberOfKBs;
 
     private volatile Status status;
     private volatile boolean waitForKbWriter;
@@ -35,7 +34,6 @@ public class KBCreator implements Runnable {
 
 
     private AbstractKbWriter kbWriter;
-
 
     private AbstractPairBuffer l;
 
@@ -152,6 +150,7 @@ public class KBCreator implements Runnable {
                     }
                 }
 
+                //todo: is this still needed?
                 if (waitForKbWriter)
                     synchronized (this) {
                         try {
