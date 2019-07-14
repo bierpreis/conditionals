@@ -1,6 +1,6 @@
 package nfc.view.menu.options;
 
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import nfc.model.Conditional;
 import nfc.model.World;
 import nfc.view.textArea.CondTextField;

@@ -3,7 +3,7 @@ package kb_creator.gui.left_panel;
 import kb_creator.observer.KBCreatorObserver;
 import kb_creator.gui.left_panel.actionpanel.ActionPanel;
 import kb_creator.gui.left_panel.optionsPanel.MainOptionsPanel;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import javax.swing.*;
 

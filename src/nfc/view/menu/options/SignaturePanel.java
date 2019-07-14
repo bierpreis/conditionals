@@ -1,8 +1,8 @@
 package nfc.view.menu.options;
 
-import kb_creator.model.propositional_logic.Signature.AB;
-import kb_creator.model.propositional_logic.Signature.ABC;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import javax.swing.*;
 
@@ -11,7 +11,7 @@ public class SignaturePanel extends JPanel {
     private ButtonGroup signatureButtonGroup;
 
     public SignaturePanel() {
-        setBorder(BorderFactory.createTitledBorder("Choose Signature"));
+        setBorder(BorderFactory.createTitledBorder("Choose signature"));
 
         signatureButtonGroup = new ButtonGroup();
 
@@ -29,7 +29,7 @@ public class SignaturePanel extends JPanel {
         abRadioButton.setSelected(true);
 
 
-        setBorder(BorderFactory.createTitledBorder("Signature"));
+        setBorder(BorderFactory.createTitledBorder("signature"));
 
     }
 

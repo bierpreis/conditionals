@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.List;
 
 public class CondTextField extends JTextArea {
-    private final String numberOfWorlds = "Worlds: ";
+    private final String numberOfWorlds = "worlds: ";
     private final String numberOfConditionals = "conditionals: ";
     private final String numberOfEquivalenceClasses = "Equivalence Classes: ";
 

@@ -3,10 +3,10 @@ package kb_creator.model.conditionals.knowledge_base;
 import kb_creator.model.conditionals.NewConditional;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.Tautology;
-import kb_creator.model.propositional_logic.Worlds.AbstractWorld;
-import kb_creator.model.propositional_logic.Signature.AB;
-import kb_creator.model.propositional_logic.Signature.ABC;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 
 import java.util.ArrayList;

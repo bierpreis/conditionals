@@ -1,7 +1,7 @@
-package kb_creator.gui.left_panel.optionsPanel.KBSaveOptionsPanel;
+package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
 
-import kb_creator.gui.left_panel.optionsPanel.BufferOptionsPanel.AlreadyExistsDialog;
+import kb_creator.gui.left_panel.optionsPanel.buffer_options_panel.AlreadyExistsDialog;
 
 import javax.swing.*;
 import java.awt.*;

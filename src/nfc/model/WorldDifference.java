@@ -1,8 +1,8 @@
 package nfc.model;
 
-import kb_creator.model.propositional_logic.Signature.AB;
-import kb_creator.model.propositional_logic.Signature.ABC;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -72,7 +72,7 @@ public class WorldDifference {
                 else return (equivalenceGroup2.contains(firstInt) && equivalenceGroup2.contains(secondInt));
             }
 
-            throw new RuntimeException("Wrong Signature: " + signature);
+            throw new RuntimeException("Wrong signature: " + signature);
 
         }
 

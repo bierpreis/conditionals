@@ -1,6 +1,6 @@
-package kb_creator.model.propositional_logic.Signature;
+package kb_creator.model.propositional_logic.signature;
 
-import kb_creator.model.propositional_logic.Worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 import java.util.ArrayList;
 import java.util.List;

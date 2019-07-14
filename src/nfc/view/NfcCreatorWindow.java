@@ -1,6 +1,6 @@
 package nfc.view;
 
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import nfc.controller.NfcCreatorObserver;
 import nfc.view.menu.MenuPanel;
 import nfc.view.textArea.CondPanel;

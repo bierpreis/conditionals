@@ -4,8 +4,8 @@ import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.Atom;
 import kb_creator.model.propositional_logic.Conjunction;
 import kb_creator.model.propositional_logic.Variable;
-import kb_creator.model.propositional_logic.Signature.AB;
-import kb_creator.model.propositional_logic.Signature.ABC;
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
 import nfc.model.Conditional;
 import nfc.model.World;
 

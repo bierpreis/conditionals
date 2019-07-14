@@ -1,8 +1,8 @@
 package nfc.model;
 
-import kb_creator.model.propositional_logic.Signature.AB;
-import kb_creator.model.propositional_logic.Signature.ABC;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +125,7 @@ public class World implements Comparable {
             string = string.replace("3", "ab");
 
 
-        } else throw new RuntimeException("Invalid Signature: " + signature);
+        } else throw new RuntimeException("Invalid signature: " + signature);
 
         return string;
     }

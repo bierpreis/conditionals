@@ -1,7 +1,7 @@
 package kb_creator.model.conditionals.knowledge_base;
 
 import kb_creator.model.conditionals.NewConditional;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.List;
 import java.util.Map;

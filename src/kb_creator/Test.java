@@ -2,7 +2,7 @@ package kb_creator;
 
 import kb_creator.model.conditionals.NewConditional;
 import kb_creator.model.propositional_logic.*;
-import kb_creator.model.propositional_logic.Worlds.ABWorld;
+import kb_creator.model.propositional_logic.worlds.ABWorld;
 import nfc.model.Conditional;
 import nfc.model.World;
 

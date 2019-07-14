@@ -1,10 +1,10 @@
 package kb_creator.gui.left_panel.optionsPanel;
 
-import kb_creator.gui.left_panel.optionsPanel.BufferOptionsPanel.MainBufferPanel;
-import kb_creator.gui.left_panel.optionsPanel.KBSaveOptionsPanel.MainKbSafePanel;
-import kb_creator.model.propositional_logic.Signature.AB;
-import kb_creator.model.propositional_logic.Signature.ABC;
-import kb_creator.model.propositional_logic.Signature.AbstractSignature;
+import kb_creator.gui.left_panel.optionsPanel.buffer_options_panel.MainBufferPanel;
+import kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel.MainKbSafePanel;
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import javax.swing.*;
 import java.awt.*;
