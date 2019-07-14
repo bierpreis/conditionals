@@ -74,7 +74,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private void writeNextFile(Queue queueToWrite) {
-        File subFolder = null;
+        File subFolder;
         if (!queueToWrite.isEmpty()) {
             subFolder = new File(tmpFilePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
             if (!subFolder.exists())

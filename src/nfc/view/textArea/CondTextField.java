@@ -38,7 +38,7 @@ public class CondTextField extends JTextArea {
     public void printConditionals(List<Conditional> conditionalList) {
 
         setText("");
-        String conditionalString = "";
+        String conditionalString;
         int conditionalCounter = 0;
         for (Conditional conditional : conditionalList) {
 
