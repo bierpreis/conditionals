@@ -63,7 +63,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
-                    Thread.sleep(200);
+                    Thread.sleep(100); //this sleep also has practicaly no impact on speed
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
