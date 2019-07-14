@@ -229,7 +229,6 @@ public class KBCreator implements Runnable {
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }
-        //todo: is this correct?
         lastIterationPairs = iterationNumberOfKBs;
 
 
@@ -301,7 +300,6 @@ public class KBCreator implements Runnable {
         waitForKbWriter = true;
     }
 
-    //todo: progress doenst work with abc
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
 
         if (lastIterationAmount == 0) {
@@ -317,7 +315,6 @@ public class KBCreator implements Runnable {
         return progress;
     }
 
-    //todo: save this info here to avoid jumping between threads
     public int getLastPairAmount() {
         return lastIterationPairs;
     }
