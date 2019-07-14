@@ -315,6 +315,7 @@ public class KBCreator implements Runnable {
         return progress;
     }
 
+    //todo: this shows last last iteration pairs?
     public int getLastPairAmount() {
         return lastIterationPairs;
     }
