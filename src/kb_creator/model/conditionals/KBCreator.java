@@ -295,8 +295,13 @@ public class KBCreator implements Runnable {
 
     //todo: progress doenst work with abc
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
-        if (lastIterationAmount == 0)
+
+        if (lastIterationAmount == 0) {
+            System.out.println("lastIterationAmount is 0!!");
             return 0;
+
+        }
+        System.out.println("pairCounter: " + pairCounter + " lastIterationAmount: " + lastIterationAmount);
         return (float) (pairCounter / (float) lastIterationAmount) * 100;
     }
 

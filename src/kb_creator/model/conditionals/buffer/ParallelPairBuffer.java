@@ -256,9 +256,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public void finishIteration(int requestedK) {
 
         status = BufferStatus.FINISHING_ITERATION;
-
-        lastIterationPairAmount = pairWriterCounter;
+        
         flushWritingElements();
+        lastIterationPairAmount = pairWriterCounter;
+
         System.out.println("finished iteration: " + requestedK);
     }
 
