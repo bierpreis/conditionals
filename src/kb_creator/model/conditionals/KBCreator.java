@@ -99,23 +99,22 @@ public class KBCreator implements Runnable {
             System.gc();
 
             nextCandidatePairAmount = 0;
+            lastIterationAmount = pairCounter;
+            pairCounter = 0;
+            iterationNumberOfKBs = 0;
 
             //line  7
             l.addNewList(new ArrayList<>());
 
 
-            iterationNumberOfKBs = 0;
             //this loop is line 8
-
-            lastIterationAmount = pairCounter;
-            pairCounter = 0;
-
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
-                pairCounter++;
 
+                pairCounter++;
                 lastIterationAmount = l.getLastIterationPairAmount();
                 progress = calculateProgress(pairCounter, lastIterationAmount);
+                
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
                     //line 10 //
