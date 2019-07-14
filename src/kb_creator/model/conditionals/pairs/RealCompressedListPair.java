@@ -9,8 +9,7 @@ import java.util.List;
 
 public class RealCompressedListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
-
-    //todo: check if pairs are correct
+    
     public RealCompressedListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
