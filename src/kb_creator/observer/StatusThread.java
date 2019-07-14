@@ -99,6 +99,7 @@ public class StatusThread implements Runnable {
         return kbPerSecond;
     }
 
+    //todo: this should be done in constructor, then creator thread can be final and then the java threading wwarning will dissapear
     public void setCreatorThread(KBCreator kbCreator) {
         this.creatorThread = kbCreator;
         this.kbWriter = creatorThread.getKbWriterThread();
