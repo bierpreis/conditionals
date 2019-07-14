@@ -98,7 +98,6 @@ public class StatusThread implements Runnable {
 
     public void setCreatorThread(KBCreator kbCreator) {
         this.creatorThread = kbCreator;
-        System.out.println("setting writer");
         this.kbWriter = creatorThread.getKbWriterThread();
     }
 
