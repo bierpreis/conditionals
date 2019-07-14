@@ -149,7 +149,7 @@ public class KBCreator implements Runnable {
                         totalInconsistentAmount++;
                     }
                 }
-                
+
                 if (waitForKbWriter)
                     synchronized (this) {
                         try {
@@ -293,6 +293,7 @@ public class KBCreator implements Runnable {
         waitForKbWriter = true;
     }
 
+    //todo: progress doenst work with abc
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
         if (lastIterationAmount == 0)
             return 0;
