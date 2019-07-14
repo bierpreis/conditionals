@@ -114,38 +114,37 @@ public class KBCreator implements Runnable {
                 pairCounter++;
                 lastIterationAmount = l.getLastIterationPairAmount();
                 progress = calculateProgress(pairCounter, lastIterationAmount);
-                
+
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
+
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
+
                         //next part is line 11 and 12
+
                         //first create the new knowledge base
-
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
-                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase()); //add R to new ObjectKnowledgeBase
-                        knowledgeBaseToAdd.add(r); // add r to new ObjectKnowledgeBase
-
+                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
+                        knowledgeBaseToAdd.add(r);
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
 
-                        //then create candidates
+                        //create candidates set
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
-
-                        //this is where the ram gets full. therefore the buffering
                         l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
-
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
 
 
+                        //save inconsistent knowledge base
                     } else {
                         AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
@@ -170,9 +169,7 @@ public class KBCreator implements Runnable {
                 }
                 //delete to save some memory
                 candidatePair.deleteCandidates();
-
                 //delete written candidates to save memory
-
                 candidatePair.deleteKB();
             }
             l.finishIteration(k);
