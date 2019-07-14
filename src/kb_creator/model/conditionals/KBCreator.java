@@ -21,6 +21,7 @@ public class KBCreator implements Runnable {
     private int totalNumberOfKBs;
     private int totalInconsistentAmount;
     private int iterationNumberOfKBs;
+    private int lastIterationPairs;
 
     private Status status;
     private volatile boolean waitForKbWriter;
@@ -51,11 +52,14 @@ public class KBCreator implements Runnable {
             kbWriter = new KbFileWriter(kbFilePath);
         else kbWriter = new KbDummyWriter();
 
+        lastIterationPairs = 0;
+
     }
 
 
     @Override
     public void run() {
+        int pairCounter = 0;
         System.out.println("creator thread started");
         status = Status.CREATING_CONDITIONALS;
 
@@ -103,7 +107,9 @@ public class KBCreator implements Runnable {
             iterationNumberOfKBs = 0;
             //this loop is line 8
 
-            int pairCounter = 0;
+            lastIterationPairs = pairCounter;
+            pairCounter = 0;
+
             while (l.hasMoreElements(k)) {
                 AbstractPair candidatePair = l.getNextPair(k);
                 pairCounter++;
@@ -207,7 +213,6 @@ public class KBCreator implements Runnable {
 
         //line 3
         for (NewConditional r : cnfc) {
-
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
@@ -224,6 +229,9 @@ public class KBCreator implements Runnable {
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
             // cpWriter.writePair(candidatePair);
         }
+        //todo: is this correct?
+        lastIterationPairs = iterationNumberOfKBs;
+
 
         System.out.println("finished 1 element kbs");
         //cpWriter.deleteFiles(1);
@@ -309,8 +317,9 @@ public class KBCreator implements Runnable {
         return progress;
     }
 
+    //todo: save this info here to avoid jumping between threads
     public int getLastPairAmount() {
-        return l.getLastIterationPairAmount();
+        return lastIterationPairs;
     }
 
     public long getStartTime() {
