@@ -3,6 +3,7 @@ package kb_creator.model.propositional_logic;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Disjunction extends AbstractFormula {
@@ -11,8 +12,7 @@ public class Disjunction extends AbstractFormula {
 
     public Disjunction(AbstractFormula... formulasToAdd) {
         formulaList = new ArrayList<>();
-        for (AbstractFormula formula : formulasToAdd)
-            formulaList.add(formula);
+        formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
     @Override

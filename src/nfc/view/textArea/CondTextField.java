@@ -64,7 +64,7 @@ public class CondTextField extends JTextArea {
 
         for (ConditionalList currentEqList : eqClassList) {
             String currentLine = "";
-
+            //todo: use string builder like code analyze suggests
             for (Conditional currentConditional : currentEqList.getList()) {
                 if (isNumberingActive)
                     currentLine = currentLine + currentConditional.getNumber() + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length());

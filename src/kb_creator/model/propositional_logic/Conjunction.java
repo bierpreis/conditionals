@@ -12,10 +12,7 @@ public class Conjunction extends AbstractFormula {
 
 
         formulas = new ArrayList<>();
-        for (AbstractFormula formula : formulasToAdd) {
-            formulas.add(formula);
-
-        }
+        formulas.addAll(Arrays.asList(formulasToAdd));
     }
 
     @Override
@@ -55,7 +52,6 @@ public class Conjunction extends AbstractFormula {
         for (AbstractFormula formula : otherConjunction.getFormulas())
             if (!formulas.contains(formula))
                 return false;
-
 
 
         return true;
