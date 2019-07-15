@@ -12,8 +12,8 @@ import nfc.model.World;
 
 public class NewConditional {
     private int number;
-    private AbstractFormula antecend;
-    private AbstractFormula consequence;
+    private final AbstractFormula antecend;
+    private final AbstractFormula consequence;
     private NewConditional counterConditional;
 
 
