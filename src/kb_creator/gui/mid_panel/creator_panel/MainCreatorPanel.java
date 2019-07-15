@@ -1,6 +1,5 @@
 package kb_creator.gui.mid_panel.creator_panel;
 
-import kb_creator.gui.mid_panel.MemoryPanel;
 import kb_creator.observer.Status;
 import kb_creator.gui.left_panel.actionpanel.ActionPanel;
 

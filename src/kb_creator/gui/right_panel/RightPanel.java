@@ -6,6 +6,7 @@ import java.awt.*;
 public class RightPanel extends JPanel {
     private BufferStatusPanel bufferStatusPanel;
     private WriterStatusPanel writerStatusPanel;
+    private MemoryPanel memoryPanel;
 
     public RightPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -18,6 +19,8 @@ public class RightPanel extends JPanel {
         bufferStatusPanel = new BufferStatusPanel();
         add(bufferStatusPanel);
 
+        memoryPanel = new MemoryPanel();
+        add(memoryPanel);
     }
 
 
@@ -27,5 +30,9 @@ public class RightPanel extends JPanel {
 
     public WriterStatusPanel getWriterStatusPanel() {
         return writerStatusPanel;
+    }
+
+    public MemoryPanel getMemoryPanel() {
+        return memoryPanel;
     }
 }

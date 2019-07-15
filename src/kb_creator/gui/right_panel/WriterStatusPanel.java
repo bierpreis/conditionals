@@ -28,6 +28,7 @@ public class WriterStatusPanel extends JPanel {
     public WriterStatusPanel() {
         Box vBox = Box.createVerticalBox();
         add(vBox);
+        //todo: left alignment doenst work?!
         vBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Writer"));
         setLayout(new FlowLayout());

@@ -71,7 +71,7 @@ public class StatusThread implements Runnable {
 
             }
 
-            mainWindow.getMidPanel().getMemoryPanel().showFreeMemory();
+            mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
             if (sleepTime > 0)
@@ -98,7 +98,7 @@ public class StatusThread implements Runnable {
 
         return kbPerSecond;
     }
-    
+
     public void setCreatorThread(KBCreator kbCreator) {
         this.creatorThread = kbCreator;
         this.kbWriter = creatorThread.getKbWriterThread();

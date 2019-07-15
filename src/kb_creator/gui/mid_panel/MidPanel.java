@@ -2,11 +2,12 @@ package kb_creator.gui.mid_panel;
 
 import kb_creator.gui.left_panel.actionpanel.ActionPanel;
 import kb_creator.gui.mid_panel.creator_panel.MainCreatorPanel;
+import kb_creator.gui.right_panel.MemoryPanel;
 
 import javax.swing.*;
 
 public class MidPanel extends JPanel {
-    private MemoryPanel memoryPanel;
+
     private MainCreatorPanel mainCreatorPanel;
 
     public MidPanel(ActionPanel actionPanel) {
@@ -17,15 +18,12 @@ public class MidPanel extends JPanel {
         add(mainCreatorPanel);
 
         //todo: memory panel in right panel
-        memoryPanel = new MemoryPanel();
-        add(memoryPanel);
+
     }
 
     public MainCreatorPanel getCreatorPanel() {
         return mainCreatorPanel;
     }
 
-    public MemoryPanel getMemoryPanel() {
-        return memoryPanel;
-    }
+
 }
