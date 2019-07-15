@@ -11,7 +11,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
-
+    //todo: use sth like this if no buffering. nice speed test. how to fit to gui?
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
