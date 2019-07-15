@@ -296,7 +296,6 @@ public class KBCreator implements Runnable {
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
 
         if (lastIterationAmount == 0) {
-            System.out.println("lastIterationAmount is 0!!");
             return 0;
 
         }
