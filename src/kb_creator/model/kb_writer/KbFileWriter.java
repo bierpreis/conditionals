@@ -48,7 +48,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
-
+            //todo: think about what datat type will be best. look bookmark and stuff.
             consistentQueue = new LinkedBlockingQueue<>();
             inconsistentQueue = new LinkedBlockingQueue<>();
 
