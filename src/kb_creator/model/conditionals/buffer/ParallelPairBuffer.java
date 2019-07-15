@@ -56,14 +56,14 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 writeNextFile(cpQueueToWrite);
 
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
-                if (queueToReturn.size() < 5000) {//this value has pacticaly no impact on speed at all
+                if (queueToReturn.size() < 5000) {//this value has pactically no impact on speed at all
                     status = BufferStatus.READING;
                     queueToReturn.addAll(readNextFile(requestedListNumber.get()));
                 }
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
-                    Thread.sleep(100); //this sleep also has practicaly no impact on speed
+                    Thread.sleep(100); //this sleep also has practically no impact on speed
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
