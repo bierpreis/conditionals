@@ -21,7 +21,6 @@ public abstract class AbstractKbWriter implements Runnable {
 
     public abstract int getInconsistentQueue();
 
-    //todo: call this from observer
     public WriterStatus getStatus(){
         return status;
     }
