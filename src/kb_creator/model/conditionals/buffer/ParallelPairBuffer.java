@@ -31,16 +31,15 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         writingFileNameCounter = 0;
 
         //todo: think about data structure
-        queueToReturn = new LinkedBlockingQueue<>();
+        queueToReturn = new ConcurrentLinkedQueue<>();
+
+        cpQueueToWrite = new ConcurrentLinkedQueue<>();
 
         flushRequested = false;
         running = true;
 
         File tmpFile = new File(this.tmpFilePath);
         tmpFile.mkdirs();
-
-        //todo: think about data type
-        cpQueueToWrite = new ConcurrentLinkedQueue<AbstractPair>();
 
         requestedListNumber = new AtomicInteger(0);
 
