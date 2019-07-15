@@ -11,7 +11,7 @@ public class Atom extends AbstractFormula {
         this.variable = variable;
     }
 
-    public Variable get() {
+    public Variable getVariable() {
         return variable;
     }
 
@@ -51,6 +51,6 @@ public class Atom extends AbstractFormula {
         if (!(o instanceof Atom))
             return false;
         Atom otherAtom = (Atom) o;
-        return otherAtom.get().equals(variable);
+        return otherAtom.getVariable().equals(variable);
     }
 }
