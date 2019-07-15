@@ -6,7 +6,7 @@ import kb_creator.model.propositional_logic.worlds.ABCWorld;
 import java.util.ArrayList;
 
 public class ABC extends AbstractSignature {
-    
+
     public ABC() {
         possibleWorlds = new ArrayList<>(8);
         possibleWorlds.add(new ABCWorld(false, false, false));

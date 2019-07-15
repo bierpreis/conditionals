@@ -260,20 +260,11 @@ public class KBCreator implements Runnable {
     }
 
     private Map<Integer, NewConditional> createNfcMap(Collection<NewConditional> nfc) {
-        Map<Integer, NewConditional> conditionalMap = new HashMap<>();
+        Map<Integer, NewConditional> conditionalMap = new HashMap<>(nfc.size());
         for (NewConditional conditional : nfc) {
             if (conditionalMap.containsKey(conditional.getNumber())) {
                 throw new RuntimeException("Double conditional detected!");
             }
-            conditionalMap.put(conditional.getNumber(), conditional);
-        }
-
-        return conditionalMap;
-    }
-
-    private Map<Integer, NewConditional> createCnfcMap(List<NewConditional> cnfc) {
-        Map<Integer, NewConditional> conditionalMap = new HashMap<>();
-        for (NewConditional conditional : cnfc) {
             conditionalMap.put(conditional.getNumber(), conditional);
         }
 
