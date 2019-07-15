@@ -16,9 +16,6 @@ public class MidPanel extends JPanel {
 
         mainCreatorPanel = new MainCreatorPanel(actionPanel);
         add(mainCreatorPanel);
-
-        //todo: memory panel in right panel
-
     }
 
     public MainCreatorPanel getCreatorPanel() {

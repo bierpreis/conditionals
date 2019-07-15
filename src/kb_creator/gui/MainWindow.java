@@ -19,7 +19,6 @@ public class MainWindow {
     private MidPanel midPanel;
     private RightPanel rightPanel;
 
-    //todo: main gui update. 1 row options, bottom status panels, both in 3 rows creator, buffer and writer.
     public MainWindow(KBCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
