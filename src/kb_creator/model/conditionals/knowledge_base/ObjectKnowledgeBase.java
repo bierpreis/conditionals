@@ -72,6 +72,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return kbNumber;
     }
 
+    //todo: only add not addall?!
     @Override
     public void add(AbstractKnowledgeBase knowledgeBaseToAdd) {
         conditionalList.addAll(knowledgeBaseToAdd.getConditionalList());
