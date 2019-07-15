@@ -11,7 +11,7 @@ public class Disjunction extends AbstractFormula {
 
 
     public Disjunction(AbstractFormula... formulasToAdd) {
-        formulaList = new ArrayList<>();
+        formulaList = new ArrayList<>(formulasToAdd.length);//
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 

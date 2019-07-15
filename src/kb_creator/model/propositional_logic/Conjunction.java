@@ -11,7 +11,7 @@ public class Conjunction extends AbstractFormula {
     public Conjunction(AbstractFormula... formulasToAdd) {
 
 
-        formulas = new ArrayList<>();
+        formulas = new ArrayList<>(formulasToAdd.length);
         formulas.addAll(Arrays.asList(formulasToAdd));
     }
 
