@@ -63,17 +63,17 @@ public class CondTextField extends JTextArea {
         setText("");
 
         for (ConditionalList currentEqList : eqClassList) {
-            String currentLine = "";
-            //todo: use string builder like code analyze suggests
+            StringBuilder sb = new StringBuilder();
             for (Conditional currentConditional : currentEqList.getList()) {
                 if (isNumberingActive)
-                    currentLine = currentLine + currentConditional.getNumber() + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length());
+                    sb.append(currentConditional.getNumber() + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length()));
                 else
-                    currentLine = currentLine + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length());
+                    sb.append(currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length()));
                 numberOfConditionals++;
 
             }
-            append(currentLine + "\n");
+            sb.append("\n");
+            append(sb.toString());
         }
         description = this.numberOfEquivalenceClasses + eqClassList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
     }
