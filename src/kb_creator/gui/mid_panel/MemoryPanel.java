@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MemoryPanel extends JPanel {
-    JLabel descriptionLabel;
+    private JLabel descriptionLabel;
 
     public MemoryPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
