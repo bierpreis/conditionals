@@ -18,7 +18,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
-        conditionalList = new ArrayList<>();
+        this.conditionalList = new ArrayList<>();
         this.signature = signature;
         this.kbNumber = kbNumber;
     }
@@ -34,7 +34,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
 
-        conditionalList = new ArrayList<>();
+        conditionalList = new ArrayList<>();//todo: maybe init this with data from below?
         String[] splitString2 = stringFromFile.split("conditionals");
         String[] conditionalStringArray = splitString2[1].split(", ");
 
