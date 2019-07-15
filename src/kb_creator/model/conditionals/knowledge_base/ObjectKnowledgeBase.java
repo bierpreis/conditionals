@@ -34,9 +34,11 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
 
-        conditionalList = new ArrayList<>();//todo: maybe init this with data from below?
+
         String[] splitString2 = stringFromFile.split("conditionals");
         String[] conditionalStringArray = splitString2[1].split(", ");
+
+        conditionalList = new ArrayList<>(conditionalStringArray.length);
 
         for (String candidateString : conditionalStringArray)
             conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
