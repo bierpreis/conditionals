@@ -9,7 +9,7 @@ public class SignatureOptionsPanel extends JPanel {
 
 
     public SignatureOptionsPanel() {
-        setBorder(BorderFactory.createTitledBorder("Choose signature"));
+        setBorder(BorderFactory.createTitledBorder("Choose Signature"));
 
         signatureButtonGroup = new ButtonGroup();
 
@@ -29,7 +29,7 @@ public class SignatureOptionsPanel extends JPanel {
         abRadioButton.setSelected(true);
 
 
-        setBorder(BorderFactory.createTitledBorder("signature"));
+        setBorder(BorderFactory.createTitledBorder("Signature"));
 
     }
 

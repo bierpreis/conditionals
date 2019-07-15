@@ -32,7 +32,7 @@ public class MainBufferPanel extends JPanel {
 
 
         add(descriptionPanel);
-        descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save main memory"));
+        descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save Main Memory"));
 
         actionPanel.add(bufferLocationPanel);
         actionPanel.add(add(bufferCheckboxPanel));

@@ -30,7 +30,7 @@ public class MainOptionsPanel extends JPanel {
             return new AB();
         if (signature.equals("abc"))
             return new ABC();
-        throw new RuntimeException("No valid signature:" + signature);
+        throw new RuntimeException("No valid Signature:" + signature);
     }
 
     public String getKbPath() {
