@@ -3,12 +3,15 @@ package kb_creator.model.propositional_logic.signature;
 
 import kb_creator.model.propositional_logic.worlds.ABCWorld;
 
+import java.util.ArrayList;
+
 public class ABC extends AbstractSignature {
 
     //todo: this is not consistent to ab world.
     //first: no super here
     //second: twisted oder of worlds added
     public ABC() {
+        possibleWorlds = new ArrayList<>(8);
         possibleWorlds.add(new ABCWorld(false, false, false));
         possibleWorlds.add(new ABCWorld(false, false, true));
         possibleWorlds.add(new ABCWorld(false, true, false));

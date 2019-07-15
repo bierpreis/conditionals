@@ -3,11 +3,13 @@ package kb_creator.model.propositional_logic.signature;
 
 import kb_creator.model.propositional_logic.worlds.ABWorld;
 
+import java.util.ArrayList;
+
 public class AB extends AbstractSignature {
 
 
     public AB() {
-        super();
+        possibleWorlds = new ArrayList<>(4);
         possibleWorlds.add(new ABWorld(true, true));
         possibleWorlds.add(new ABWorld(true, false));
         possibleWorlds.add(new ABWorld(false, true));
