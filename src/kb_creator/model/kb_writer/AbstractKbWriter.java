@@ -4,6 +4,8 @@ import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 
 public abstract class AbstractKbWriter implements Runnable {
 
+    protected WriterStatus status;
+
     @Override
     public abstract void run();
 
@@ -18,4 +20,9 @@ public abstract class AbstractKbWriter implements Runnable {
     public abstract int getConsistentQueue();
 
     public abstract int getInconsistentQueue();
+
+    //todo: call this from observer
+    public WriterStatus getStatus(){
+        return status;
+    }
 }

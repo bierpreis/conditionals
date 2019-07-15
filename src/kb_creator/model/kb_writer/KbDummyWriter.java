@@ -8,7 +8,7 @@ import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 public class KbDummyWriter extends AbstractKbWriter {
 
     public KbDummyWriter() {
-
+        status = WriterStatus.NOT_STARTED;
     }
 
     @Override

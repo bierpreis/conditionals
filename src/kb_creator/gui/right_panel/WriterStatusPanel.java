@@ -1,5 +1,7 @@
 package kb_creator.gui.right_panel;
 
+import kb_creator.model.kb_writer.WriterStatus;
+
 import javax.swing.*;
 import java.awt.*;
 import java.text.NumberFormat;
@@ -18,6 +20,8 @@ public class WriterStatusPanel extends JPanel {
 
     private final int SPEED_CALCULATION_MS = 1000;
 
+
+    private JLabel statusLabel;
     private JLabel counterLabel;
     private JLabel inconsistentCounterLabel;
 
@@ -34,11 +38,13 @@ public class WriterStatusPanel extends JPanel {
         setLayout(new FlowLayout(FlowLayout.LEFT));
 
 
+        statusLabel = new JLabel();
+        vBox.add(statusLabel);
+
+        vBox.add(new JLabel(" "));
+
         speedLabel = new JLabel();
         vBox.add(speedLabel);
-
-
-        showSpeed(0);
 
 
         nextSpeedCalculation = System.currentTimeMillis();
@@ -66,7 +72,8 @@ public class WriterStatusPanel extends JPanel {
 
         showConsistentQueue(0);
         showInconsistentQueue(0);
-
+        showSpeed(0);
+        showStatus(WriterStatus.NOT_STARTED);
 
     }
 
@@ -111,6 +118,10 @@ public class WriterStatusPanel extends JPanel {
         inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
 
 
+    }
+
+    public void showStatus(WriterStatus status) {
+        statusLabel.setText("Status: " + status.toString());
     }
 
 

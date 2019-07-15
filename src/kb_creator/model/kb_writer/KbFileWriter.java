@@ -19,15 +19,19 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
     @Override
     public void run() {
-
         while (true) {
 
 
-            if (!consistentQueue.isEmpty())
+            if (!consistentQueue.isEmpty()) {
+                status = WriterStatus.RUNNING;
                 writeConsistentKbToFile(consistentQueue.poll());
-            if (!inconsistentQueue.isEmpty())
+            }
+            if (!inconsistentQueue.isEmpty()) {
+                status = WriterStatus.RUNNING;
                 writeInconsistentKBToFile(inconsistentQueue.poll());
+            }
             if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
+                status = WriterStatus.SLEEPING;
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();

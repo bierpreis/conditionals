@@ -25,6 +25,7 @@ public class BufferStatusPanel extends JPanel {
         writerLabel = new JLabel();
         readerLabel = new JLabel();
         vBox.add(statusLabel);
+        vBox.add(new JLabel(" "));
         vBox.add(writerLabel);
         vBox.add(readerLabel);
         vBox.setAlignmentX(Component.LEFT_ALIGNMENT);

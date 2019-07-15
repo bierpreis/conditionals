@@ -22,6 +22,8 @@ public class CurrentIterationPanel extends JPanel {
         currentKLabel = new JLabel();
         vBox.add(currentKLabel);
 
+        vBox.add(new JLabel(" "));
+
         progressLabel = new JLabel();
         vBox.add(progressLabel);
 

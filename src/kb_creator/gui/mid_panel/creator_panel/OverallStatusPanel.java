@@ -32,6 +32,8 @@ public class OverallStatusPanel extends JPanel {
         statusLabel = new JLabel();
         vBox.add(statusLabel);
 
+        vBox.add(new JLabel(" "));
+
         consistentAmountLabel = new JLabel();
         vBox.add(consistentAmountLabel);
 
