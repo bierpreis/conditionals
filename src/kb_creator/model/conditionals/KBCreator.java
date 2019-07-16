@@ -224,7 +224,8 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
-            //todo: realcompressed pair if buffering and compressedcandidatearraypair if no buffering
+
+            //no buffereing for first iteration because there is no use for it
             l.add(new RealCompressedListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
