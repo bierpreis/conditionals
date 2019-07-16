@@ -17,6 +17,8 @@ public class SimplePairBuffer extends AbstractPairBuffer {
     private List<List<AbstractPair>> pairsListList;
     private int nextElementNumberToReturn;
 
+    private volatile boolean requestedListIsReady;
+
 
     public SimplePairBuffer(String filePath) {
         super(filePath);

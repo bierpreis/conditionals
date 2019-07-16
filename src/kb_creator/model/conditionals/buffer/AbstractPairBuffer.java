@@ -27,8 +27,7 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected AtomicInteger requestedListNumber;
     protected List<AbstractPair> requestedList;
 
-    //todo: remove from abstract list?!
-    protected volatile boolean requestedListIsReady;
+
 
     protected int lastIterationPairAmount;
 
