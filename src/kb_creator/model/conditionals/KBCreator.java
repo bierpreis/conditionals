@@ -62,7 +62,7 @@ public class KBCreator implements Runnable {
 
     }
 
-
+    //todo: read about executor services and stuff
     @Override
     public void run() {
         int pairCounter = 0;
