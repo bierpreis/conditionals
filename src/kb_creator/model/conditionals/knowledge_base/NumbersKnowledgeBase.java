@@ -51,12 +51,14 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
         sb.append("signature");
         sb.append(signature.toString());
         sb.append("\n\n");
-        sb.append("conditionals: \n\n");
+        sb.append("conditionals:\n");
+        sb.append(kbNumber);
+        sb.append("{\n");
         for (Integer conditional : conditionalNumbersList) {
             sb.append(conditional);
             sb.append(", ");
         }
-        return sb.toString().replace(", \n$", "");
+        return sb.toString().replace(", \n$", "}");
     }
 
     @Override

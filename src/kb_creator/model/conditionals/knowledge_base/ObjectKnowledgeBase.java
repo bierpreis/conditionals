@@ -101,7 +101,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         sb.append("signature\n");
         sb.append(signature.toString().toLowerCase());
         sb.append("\n");
-        sb.append("conditionals\n\n");
+        sb.append("conditionals\n");
         sb.append(this.kbNumber);
         sb.append("{\n");
 
