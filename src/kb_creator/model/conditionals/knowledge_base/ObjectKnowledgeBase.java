@@ -93,7 +93,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return conditionalList;
     }
 
-    //todo: check again if this rly fits to infocf
+
     @Override
     public String toFileString() {
 
