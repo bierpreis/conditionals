@@ -1,5 +1,6 @@
 package kb_creator.model.conditionals;
 
+import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
 import kb_creator.model.conditionals.pairs.RealCompressedListPair;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
@@ -12,6 +13,7 @@ import kb_creator.model.kb_writer.KbDummyWriter;
 import kb_creator.model.kb_writer.KbFileWriter;
 import nfc.model.NfcCreator;
 
+import java.lang.reflect.Constructor;
 import java.util.*;
 
 public class KBCreator implements Runnable {
@@ -38,6 +40,8 @@ public class KBCreator implements Runnable {
 
     private float progress;
 
+    private boolean isBufferingActive;
+
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
@@ -46,9 +50,13 @@ public class KBCreator implements Runnable {
         this.signature = signature;
         waitForKbWriter = false;
 
-        if (kbFilePath != null)
+        if (kbFilePath != null) {
             kbWriter = new KbFileWriter(kbFilePath);
-        else kbWriter = new KbDummyWriter();
+            isBufferingActive = true;
+        } else {
+            kbWriter = new KbDummyWriter();
+            isBufferingActive = false;
+        }
 
         lastIterationAmount = 0;
 
@@ -134,9 +142,10 @@ public class KBCreator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
-                        //todo: realcompressed pair if buffering and compressedcandidatearraypair if no buffering
-                        l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
-
+                        //doenst look great but should be faster then using reflection
+                        if (isBufferingActive)
+                            l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
+                        else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;

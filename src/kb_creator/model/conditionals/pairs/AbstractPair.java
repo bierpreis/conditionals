@@ -8,6 +8,13 @@ import java.util.Map;
 
 //the reason for this abstract class is to test different candidate pair implementations for performance reasons
 public abstract class AbstractPair {
+
+    AbstractPair(){
+
+    }
+    AbstractPair(AbstractKnowledgeBase kb,  List<NewConditional> list){
+
+    }
     protected AbstractKnowledgeBase knowledgeBase;
     protected static Map<Integer, NewConditional> nfcMap;
 

@@ -11,28 +11,43 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
-    //todo: use sth like this if no buffering. nice speed test. how to fit to gui?
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        //todo: init as u know how many space is needed
-        compressedCandidatesArray = new int[7][2];
 
         int lastConditionalNumber = 0;
         int nextArrayNumber = 0;
 
+        List<List<Integer>> temporaryList = new ArrayList<>();
 
+        //todo test
         for (NewConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
-                compressedCandidatesArray[nextArrayNumber][0] = currentCandidate.getNumber();
-                compressedCandidatesArray[nextArrayNumber][1] = currentCandidate.getNumber();
+
+
+                if (!temporaryList.isEmpty())
+                    temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
+
+
+                temporaryList.add(new ArrayList<>(2));
+                temporaryList.get(temporaryList.size() - 1).add(currentCandidate.getNumber());
 
                 nextArrayNumber = nextArrayNumber + 1;
                 lastConditionalNumber = currentCandidate.getNumber();
             } else {
-                compressedCandidatesArray[nextArrayNumber - 1][1] = currentCandidate.getNumber();
                 lastConditionalNumber++;
             }
+
+        }
+
+        if (!temporaryList.isEmpty())
+            temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
+
+
+        compressedCandidatesArray = new int[temporaryList.size()][2];
+        for (int i = 0; i < temporaryList.size(); i++) {
+            compressedCandidatesArray[i][0] = temporaryList.get(i).get(0);
+            compressedCandidatesArray[i][1] = temporaryList.get(i).get(1);
 
         }
 
