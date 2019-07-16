@@ -39,7 +39,7 @@ public class KBLocationPanel extends JPanel {
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
                 checkboxPanel.setBoxEnabled(true);
-                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/Kbs/";
+                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/KBs/";
                 File fileToSave = new File(filePathToSave);
                 checkboxPanel.setBoxSelected(true);
 
