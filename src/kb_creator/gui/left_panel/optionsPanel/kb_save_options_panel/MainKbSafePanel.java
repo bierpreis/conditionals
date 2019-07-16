@@ -7,8 +7,7 @@ import java.awt.*;
 public class MainKbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
     private KBLocationPanel kbLocationPanel;
-
-    //todo: test this file chooser. exits should work like buffer chooser.
+    
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 

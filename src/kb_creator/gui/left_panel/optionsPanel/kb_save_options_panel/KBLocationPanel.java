@@ -1,12 +1,13 @@
 package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
 
-import kb_creator.gui.left_panel.optionsPanel.buffer_options_panel.AlreadyExistsDialog;
+import kb_creator.gui.left_panel.optionsPanel.AlreadyExistsDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class KBLocationPanel extends JPanel {
     private JButton saveButton;
@@ -38,10 +39,11 @@ public class KBLocationPanel extends JPanel {
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
                 checkboxPanel.setBoxEnabled(true);
-                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/kbs/";
+                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/Kbs/";
+                File fileToSave = new File(filePathToSave);
                 checkboxPanel.setBoxSelected(true);
 
-                if (fileChooser.getSelectedFile().exists()) {
+                if (fileToSave.exists()) {
 
                     new AlreadyExistsDialog(filePathToSave);
                     checkboxPanel.setEnabled(false);

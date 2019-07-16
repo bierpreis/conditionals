@@ -1,5 +1,7 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
+import kb_creator.gui.left_panel.optionsPanel.AlreadyExistsDialog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

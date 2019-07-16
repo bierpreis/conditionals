@@ -1,4 +1,4 @@
-package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
+package kb_creator.gui.left_panel.optionsPanel;
 
 import javax.swing.*;
 import java.awt.*;
