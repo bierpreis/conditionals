@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class KbFileWriter extends AbstractKbWriter implements Runnable {
@@ -48,7 +49,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
         if (filePathToSave != null) {
             rootFilePath = filePathToSave;
-            //todo: think about what datat type will be best. look bookmark and stuff.
+
             consistentQueue = new LinkedBlockingQueue<>();
             inconsistentQueue = new LinkedBlockingQueue<>();
 
