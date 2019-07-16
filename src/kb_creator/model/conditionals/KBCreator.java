@@ -134,6 +134,7 @@ public class KBCreator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
+                        //todo: realcompressed pair if buffering and compressedcandidatearraypair if no buffering
                         l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
@@ -214,6 +215,7 @@ public class KBCreator implements Runnable {
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
+            //todo: realcompressed pair if buffering and compressedcandidatearraypair if no buffering
             l.add(new RealCompressedListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }

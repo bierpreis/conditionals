@@ -15,6 +15,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
     public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
+        //todo: init as u know how many space is needed
         compressedCandidatesArray = new int[7][2];
 
         int lastConditionalNumber = 0;
