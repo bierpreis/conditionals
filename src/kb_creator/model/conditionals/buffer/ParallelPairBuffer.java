@@ -28,8 +28,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
-
-        //todo: think about data structure
+        
         queueToReturn = new ConcurrentLinkedQueue<>();
 
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
