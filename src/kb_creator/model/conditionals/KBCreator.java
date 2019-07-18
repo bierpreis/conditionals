@@ -147,7 +147,7 @@ public class KBCreator implements Runnable {
                         if (isBufferingActive)
                             l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
                         else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
-                        System.out.println("time: " + (System.nanoTime() - start)/1000);
+                        System.out.println("time: " + (System.nanoTime() - start) / 1000);
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
