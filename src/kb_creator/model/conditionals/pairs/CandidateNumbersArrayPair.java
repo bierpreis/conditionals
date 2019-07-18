@@ -68,10 +68,6 @@ public class CandidateNumbersArrayPair extends AbstractPair {
             if (candidateNumber != 0)
                 candidatesList.add(nfcMap.get(candidateNumber));
         }
-
-
-        if (candidatesList.contains(null))
-            System.out.println("null in there!");
         return candidatesList;
     }
 
