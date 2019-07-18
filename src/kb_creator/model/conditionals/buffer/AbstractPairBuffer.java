@@ -28,7 +28,6 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected List<AbstractPair> requestedList;
 
 
-
     protected int lastIterationPairAmount;
 
     protected boolean deleteFiles;
@@ -82,7 +81,8 @@ public abstract class AbstractPairBuffer implements Runnable {
     }
 
     public void setDeletingFiles(boolean deleteFiles) {
-        System.out.println("deleting buffer files: " + deleteFiles);
+        if (!(this instanceof DummyPairBuffer))
+            System.out.println("deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;
     }
 

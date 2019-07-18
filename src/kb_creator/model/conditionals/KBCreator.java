@@ -126,7 +126,7 @@ public class KBCreator implements Runnable {
 
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-
+                        long start = System.nanoTime();
                         //next part is line 11 and 12
 
                         //first create the new knowledge base
@@ -151,7 +151,7 @@ public class KBCreator implements Runnable {
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
 
-
+                        System.out.println("time: " + (System.nanoTime() - start)/1000);
                         //save inconsistent knowledge base
                     } else {
                         AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
