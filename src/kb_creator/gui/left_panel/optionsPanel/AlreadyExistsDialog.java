@@ -11,12 +11,13 @@ public class AlreadyExistsDialog {
         warningDialog.setTitle("Warning");
         warningDialog.add(new JLabel(" "));
         warningDialog.setLayout(new BoxLayout(warningDialog.getContentPane(), BoxLayout.PAGE_AXIS));
-        //todo: fit text into window!!
+
+        
         warningDialog.add(new JLabel("The Folder you chosse already exits."));
-        warningDialog.setPreferredSize(new Dimension(350, 150));
-        warningDialog.add(new JLabel("Choose diffrent Folder or delete it go continue"));
+        warningDialog.add(new JLabel("(" + pathOfExistingFolder + ")"));
+        warningDialog.add(new JLabel("Choose diffrent Folder or delete it go continue."));
         warningDialog.add(new JLabel(""));
-        warningDialog.add(new JLabel(pathOfExistingFolder));
+
 
         //jpanel is used for centering button
         JPanel buttonPanel = new JPanel();
