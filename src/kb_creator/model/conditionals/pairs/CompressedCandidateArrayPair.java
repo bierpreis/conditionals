@@ -24,7 +24,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         for (NewConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
 
-
+                //this should not be executed in the first iteration
                 if (!temporaryList.isEmpty())
                     temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
 
@@ -32,7 +32,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
                 temporaryList.add(new ArrayList<>(2));
                 temporaryList.get(temporaryList.size() - 1).add(currentCandidate.getNumber());
 
-                nextArrayNumber = nextArrayNumber + 1;
+                nextArrayNumber = nextArrayNumber + 1; //todo: delete this variable? is it useless?
                 lastConditionalNumber = currentCandidate.getNumber();
             } else {
                 lastConditionalNumber++;

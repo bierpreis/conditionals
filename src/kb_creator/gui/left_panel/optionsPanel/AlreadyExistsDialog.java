@@ -12,7 +12,7 @@ public class AlreadyExistsDialog {
         warningDialog.add(new JLabel(" "));
         warningDialog.setLayout(new BoxLayout(warningDialog.getContentPane(), BoxLayout.PAGE_AXIS));
 
-        
+
         warningDialog.add(new JLabel("The Folder you chosse already exits."));
         warningDialog.add(new JLabel("(" + pathOfExistingFolder + ")"));
         warningDialog.add(new JLabel("Choose diffrent Folder or delete it go continue."));
