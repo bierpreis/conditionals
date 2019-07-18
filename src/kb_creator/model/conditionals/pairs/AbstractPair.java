@@ -12,9 +12,6 @@ public abstract class AbstractPair {
     AbstractPair(){
 
     }
-    AbstractPair(AbstractKnowledgeBase kb,  List<NewConditional> list){
-
-    }
     protected AbstractKnowledgeBase knowledgeBase;
     protected static Map<Integer, NewConditional> nfcMap;
 
