@@ -115,6 +115,7 @@ public class KBCreator implements Runnable {
 
             //this loop is line 8
             while (l.hasMoreElements(k)) {
+                long overallStart = System.nanoTime();
                 AbstractPair candidatePair = l.getNextPair(k);
 
                 pairCounter++;
@@ -127,27 +128,33 @@ public class KBCreator implements Runnable {
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
+
                         //next part is line 11 and 12
 
                         //first create the new knowledge base
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
+
                         knowledgeBaseToAdd.add(r);
+
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
+
 
                         //create candidates set
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
+                        long smallStart = System.nanoTime();
 
-                        long start = System.nanoTime();
+                        //todo: idea: add all pairs of a candidate at one? would mean much less thread interaction
                         //line 12
                         //doenst look great but should be faster then using reflection
                         if (isBufferingActive)
                             l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
                         else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
-                        System.out.println("time: " + (System.nanoTime() - start) / 1000);
+                        System.out.println("small time: " + (System.nanoTime() - smallStart) / 1000);
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
@@ -161,6 +168,7 @@ public class KBCreator implements Runnable {
                         kbWriter.addInconsistentKb(inconsistentKB);
                         totalInconsistentAmount++;
                     }
+
                 }
 
                 if (waitForKbWriter)
@@ -175,11 +183,14 @@ public class KBCreator implements Runnable {
 
                 if (status.equals(Status.STOPPED)) {
                     return;
+
+
                 }
                 //delete to save some memory
                 candidatePair.deleteCandidates();
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
+                //System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
             }
             l.finishIteration(k);
             k = k + 1;
