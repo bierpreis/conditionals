@@ -55,6 +55,7 @@ public class SimplePairBuffer extends AbstractPairBuffer {
 
             } else
                 try {
+                    System.out.println("buffer sleeping");
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(200);
                 } catch (InterruptedException e) {
@@ -95,6 +96,7 @@ public class SimplePairBuffer extends AbstractPairBuffer {
 
         while (!requestedListIsReady)
             try {
+                System.out.println("buffer sleeping");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -126,6 +128,7 @@ public class SimplePairBuffer extends AbstractPairBuffer {
         while (!requestedListIsReady) {
 
             try {
+                System.out.println("buffer sleeping");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -194,6 +197,7 @@ public class SimplePairBuffer extends AbstractPairBuffer {
         System.out.println("Flushed");
         while (!cpQueueToWrite.isEmpty()) {
             try {
+                System.out.println("buffer sleeping");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -28,7 +28,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
-        
+
         queueToReturn = new ConcurrentLinkedQueue<>();
 
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
@@ -60,6 +60,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 }
             } else {
                 try {
+                    System.out.println("buffer sleeping");
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(100); //this sleep also has practically no impact on speed
                 } catch (InterruptedException e) {
@@ -154,6 +155,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
+            System.out.println("buffer sleeping");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -184,6 +186,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public AbstractPair getNextPair(int currentK) {
         while (queueToReturn.peek() == null)
             try {
+                System.out.println("buffer sleeping");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();

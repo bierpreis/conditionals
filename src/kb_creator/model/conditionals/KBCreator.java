@@ -154,7 +154,7 @@ public class KBCreator implements Runnable {
                         if (isBufferingActive)
                             l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
                         else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
-                        System.out.println("small time: " + (System.nanoTime() - smallStart) / 1000);
+                        //System.out.println("small time: " + (System.nanoTime() - smallStart) / 1000);
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
@@ -206,14 +206,6 @@ public class KBCreator implements Runnable {
         this.signature = signature;
     }
 
-
-    private void sleep(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void setList(AbstractPairBuffer requestedList) {
         l = requestedList;
