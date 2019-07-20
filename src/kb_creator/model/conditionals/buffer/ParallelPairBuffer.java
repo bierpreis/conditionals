@@ -186,7 +186,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public AbstractPair getNextPair(int currentK) {
         while (queueToReturn.peek() == null)
             try {
-                System.out.println("buffer sleeping");
+                System.out.println("buffer sleeping!!!!");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
