@@ -275,7 +275,6 @@ public class KBCreator implements Runnable {
     }
 
     private Map<Integer, NewConditional> createNfcMap(Collection<NewConditional> nfc) {
-        //todo: read about load factor for hashmap tuning
         Map<Integer, NewConditional> conditionalMap = new HashMap<>(nfc.size());
         for (NewConditional conditional : nfc) {
             if (conditionalMap.containsKey(conditional.getNumber())) {
