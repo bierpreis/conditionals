@@ -82,9 +82,6 @@ public class CompressedCandidateArrayPair extends AbstractPair {
             if (twoString.length != 2)
                 throw new RuntimeException("Invalid compressed candidates String: " + stringFromFile);
 
-
-            //sometimes the is a line break after last number. remove it because parsing int would fail otherwise.
-
             arrayToReturn[counter][0] = Integer.parseInt(twoString[0]);
 
             arrayToReturn[counter][1] = Integer.parseInt(twoString[1]);
