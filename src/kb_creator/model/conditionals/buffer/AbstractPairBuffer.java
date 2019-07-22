@@ -32,9 +32,9 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     protected boolean deleteFiles;
 
-    public AbstractPairBuffer(String tmpFilePath) {
+    public AbstractPairBuffer(String baseFilePath) {
         status = BufferStatus.NOT_STARTED;
-        this.tmpFilePath = tmpFilePath + "/tmp/";
+        this.tmpFilePath = baseFilePath + "/tmp/";
     }
 
 
@@ -82,7 +82,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     public void setDeletingFiles(boolean deleteFiles) {
         if (!(this instanceof DummyPairBuffer))
-            System.out.println("deleting buffer files: " + deleteFiles);
+            System.out.println("set deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;
     }
 
