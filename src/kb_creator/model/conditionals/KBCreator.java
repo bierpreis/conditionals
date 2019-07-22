@@ -84,8 +84,7 @@ public class KBCreator implements Runnable {
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(new ArrayList<>(0));
 
-
-        //todo: test which data type for nfc is best
+        
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
         Map nfcMap = Collections.unmodifiableMap(createNfcMap(nfc));
