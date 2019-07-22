@@ -18,8 +18,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
         int lastConditionalNumber = 0;
 
         List<List<Integer>> temporaryList = new ArrayList<>();
-
-        //todo check if this works correctly
+        
         for (NewConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
 
