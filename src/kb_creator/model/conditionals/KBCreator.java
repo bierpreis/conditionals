@@ -61,8 +61,7 @@ public class KBCreator implements Runnable {
         lastIterationAmount = 0;
 
     }
-
-    //todo: read about executor services and stuff
+    
     @Override
     public void run() {
         int pairCounter = 0;
@@ -148,7 +147,7 @@ public class KBCreator implements Runnable {
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
                         long smallStart = System.nanoTime();
-                        
+
                         //line 12
                         //doenst look great but should be faster then using reflection
                         if (isBufferingActive)
