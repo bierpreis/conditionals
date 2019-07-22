@@ -137,7 +137,8 @@ public class Conditional implements Comparable {
 
     //this sets the counter conditional as the real object
     public void setActualCounterConditional(Conditional counterConditional) {
-
+        if (counterConditional == null)
+            throw new RuntimeException("Null is no valid counter conditional!");
         this.counterConditional = counterConditional;
 
         //comment out to check correct counter conditionals
