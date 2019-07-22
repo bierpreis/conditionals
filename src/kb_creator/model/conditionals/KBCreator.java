@@ -84,7 +84,7 @@ public class KBCreator implements Runnable {
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(new ArrayList<>(0));
 
-        
+
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
         Map nfcMap = Collections.unmodifiableMap(createNfcMap(nfc));
@@ -148,8 +148,7 @@ public class KBCreator implements Runnable {
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
                         long smallStart = System.nanoTime();
-
-                        //todo: idea: add all pairs of a candidate at one? would mean much less thread interaction
+                        
                         //line 12
                         //doenst look great but should be faster then using reflection
                         if (isBufferingActive)
