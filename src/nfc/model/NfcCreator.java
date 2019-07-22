@@ -33,13 +33,13 @@ public class NfcCreator {
         //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
+        //todo: fix?
+        //this method takes much time
         setCounterConditionals(nfc);
 
         newNfc = translateConditionals(nfc);
 
         newCnfc = translateConditionals(cnfc);
-
-        System.out.println("basicConditionalList created");
     }
 
 
