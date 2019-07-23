@@ -24,7 +24,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
-
+        //todo: where is kb number set?
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString = stringFromFile.split("signature");
 
