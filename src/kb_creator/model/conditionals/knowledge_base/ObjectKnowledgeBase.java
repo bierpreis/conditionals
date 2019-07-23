@@ -24,7 +24,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
-        //todo: read kb number
+        //todo: just check if kb numbers are correct
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString = stringFromFile.split("signature");
 
@@ -37,7 +37,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
         String[] splitString2 = stringFromFile.split("conditionals");
-        String[] conditionalStringArray = splitString2[1].split(", ");
+        String[] splitString3 = splitString2[1].split("\\{");
+        this.kbNumber = Integer.parseInt(splitString3[0]);
+        String[] conditionalStringArray = splitString3[1].replaceAll("\\}", "").split(", ");
 
         conditionalList = new ArrayList<>(conditionalStringArray.length);
 
@@ -94,7 +96,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
 
-    //todo: {} causes problems but how to seperate conditionals and kb number from each other without?
     @Override
     public String toFileString() {
 
