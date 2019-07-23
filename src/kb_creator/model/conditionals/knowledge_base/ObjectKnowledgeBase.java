@@ -94,6 +94,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
 
+    //todo: {} causes problems but how to seperate conditionals and kb number from each other without?
     @Override
     public String toFileString() {
 
