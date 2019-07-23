@@ -56,8 +56,7 @@ public class NewConditional {
                     default:
                         throw new RuntimeException("Unknown World: " + worldInt);
 
-                } //todo: conjunction is AND. here and and or are mixed?!?!?! same in abc!!!
-                //actualy this is possible. its sth lie ab, aNOTb. is it like that? rethink and delete.
+                }
                 if (formulaToReturn == null)
                     formulaToReturn = new Conjunction(firstAtom, secondAtom);
                 else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
