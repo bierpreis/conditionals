@@ -61,7 +61,7 @@ public class KBCreator implements Runnable {
         lastIterationAmount = 0;
 
     }
-    
+
     @Override
     public void run() {
         int pairCounter = 0;
@@ -117,7 +117,7 @@ public class KBCreator implements Runnable {
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
                 AbstractPair candidatePair = l.getNextPair(k);
-
+                System.out.println("number: " + candidatePair.getKnowledgeBase().getKbNumber());
                 pairCounter++;
                 lastIterationAmount = l.getLastIterationPairAmount();
                 progress = calculateProgress(pairCounter, lastIterationAmount);
