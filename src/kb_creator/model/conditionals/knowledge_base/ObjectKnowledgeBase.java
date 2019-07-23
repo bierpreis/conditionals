@@ -24,13 +24,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
-        //todo: number is not set
+        //todo: read kb number
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString = stringFromFile.split("signature");
 
-        if (splitString[1].matches("a,b,c[a-z0-9, ]*"))
+        //todo: maybe shorten this like a,b,c[.]*
+        if (splitString[1].matches("a,b,c[a-z0-9, {}]*"))
             signature = new ABC();
-        else if (splitString[1].matches("a,b[a-z0-9, ]*")) {
+        else if (splitString[1].matches("a,b[a-z0-9, {}]*")) {
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
 
@@ -124,12 +125,15 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         sb.append(signature.toString());
         sb.append("\n\n");
         sb.append("conditionals\n");
+        sb.append(this.kbNumber);
+        sb.append("{\n");
 
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i).getNumber());
             if (i != conditionalList.size() - 1)
                 sb.append(", ");
         }
+        sb.append("\n}");
         return sb.toString();
     }
 
