@@ -27,12 +27,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString1 = stringFromFile.split("signature");
 
+        //todo: use the pattern thing for efficency?
+
         //todo: maybe shorten this like a,b,c[.]*
-        if (splitString1[1].matches("a,b,c[.]*"))
+        if (splitString1[1].matches("^a,b,c.*"))
             signature = new ABC();
-        else if (splitString1[1].matches("a,b[.]*")) {
+        else if (splitString1[1].matches("^a,b.*")) {
             signature = new AB();
-        } else throw new RuntimeException("No valid signature found in file");
+        } else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);
 
 
         String[] splitString2 = stringFromFile.split("conditionals");
