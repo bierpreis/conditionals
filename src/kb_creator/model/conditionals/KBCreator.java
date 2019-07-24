@@ -119,7 +119,7 @@ public class KBCreator implements Runnable {
                 AbstractPair candidatePair = l.getNextPair(k); //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
 
                 pairCounter++;
-                lastIterationAmount = l.getLastIterationPairAmount();
+                lastIterationAmount = l.getLastIterationPairAmount(); //todo: why is this here? should it be better in the upper while loop?!
                 progress = calculateProgress(pairCounter, lastIterationAmount);
 
                 //line 9
@@ -144,7 +144,6 @@ public class KBCreator implements Runnable {
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
 
 
-
                         //create candidates set
                         //this loop takes most of the time (70 percent)
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
@@ -153,15 +152,12 @@ public class KBCreator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
 
-
-
                         //line 12
                         //doenst look great but should be faster then using reflection
                         //this takes about 30 percent of time
                         if (isBufferingActive)
                             l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
                         else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
-
 
 
                         nextCandidatePairAmount++;
