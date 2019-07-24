@@ -71,7 +71,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
                 return true;
             }
         }
-
         return false;
     }
 

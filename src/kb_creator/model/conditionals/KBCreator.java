@@ -124,14 +124,17 @@ public class KBCreator implements Runnable {
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
-                    long candidateStart = System.nanoTime();
+                    long candidateStart;
                     //line 10 //
+                    //consistency check takes almost no time
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
 
                         //next part is line 11 and 12
 
                         //first create the new knowledge base
+
+
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
 
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
@@ -141,33 +144,43 @@ public class KBCreator implements Runnable {
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
 
 
+
                         //create candidates set
+                        //this loop takes most of the time (70 percent)
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
 
+
+
                         //line 12
                         //doenst look great but should be faster then using reflection
+                        //this takes about 30 percent of time
                         if (isBufferingActive)
                             l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
                         else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
-                        //System.out.println("small time: " + (System.nanoTime() - smallStart) / 1000);
+
+
+
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
 
 
                         //save inconsistent knowledge base
+                        //this part takes almost no time
                     } else {
+
                         AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
                         kbWriter.addInconsistentKb(inconsistentKB);
                         totalInconsistentAmount++;
+
                     }
-                    //System.out.println("ns for candidate: " + (System.nanoTime() - candidateStart)/1000 + "mics");
+
                 }
 
                 if (waitForKbWriter)
@@ -189,7 +202,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
-                //System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
+                System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
             }
             l.finishIteration(k);
             k = k + 1;
