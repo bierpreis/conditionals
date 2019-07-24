@@ -19,6 +19,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
+    private final int READ_QUEUE_MIN = 5000;
+
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
@@ -55,13 +57,13 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 writeNextFile(cpQueueToWrite);
 
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
-                if (queueToReturn.size() < 5000) {//this value has pactically no impact on speed at all
+                if (queueToReturn.size() < READ_QUEUE_MIN) {//this value has pactically no impact on speed at all
                     status = BufferStatus.READING;
                     queueToReturn.addAll(readNextFile(requestedListNumber.get()));
                 }
             } else {
                 try {
-                    System.out.println("buffer sleeping");
+                    //System.out.println("buffer sleeping");
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(100); //this sleep also has practically no impact on speed
                 } catch (InterruptedException e) {
@@ -115,7 +117,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private List<AbstractPair> readNextFile(int requestedK) {
-
         //read String
         File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
         Scanner fileScanner = null;
@@ -143,7 +144,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
 
         readingFileNameCounter++;
-
         return pairsList;
     }
 
