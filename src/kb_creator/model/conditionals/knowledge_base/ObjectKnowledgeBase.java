@@ -28,9 +28,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         String[] splitString1 = stringFromFile.split("signature");
 
         //todo: maybe shorten this like a,b,c[.]*
-        if (splitString1[1].matches("a,b,c[a-z0-9, {}]*"))
+        if (splitString1[1].matches("a,b,c[.]*"))
             signature = new ABC();
-        else if (splitString1[1].matches("a,b[a-z0-9, {}]*")) {
+        else if (splitString1[1].matches("a,b[.]*")) {
             signature = new AB();
         } else throw new RuntimeException("No valid signature found in file");
 
@@ -94,7 +94,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return conditionalList;
     }
 
-    
+
     @Override
     public String toFileString() {
 
