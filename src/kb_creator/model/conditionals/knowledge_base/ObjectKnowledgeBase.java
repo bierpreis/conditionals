@@ -24,7 +24,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
-        //todo: just check if kb numbers are correct
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString1 = stringFromFile.split("signature");
 
@@ -96,6 +95,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
 
+    //todo: rethink which of the to file string methods will get used when
     @Override
     public String toFileString() {
 
@@ -118,7 +118,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return sb.toString();
 
     }
-    
+
     @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
