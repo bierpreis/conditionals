@@ -94,8 +94,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return conditionalList;
     }
 
-
-    //todo: rethink which of the to file string methods will get used when
+    
     @Override
     public String toFileString() {
 
