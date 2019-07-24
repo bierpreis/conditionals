@@ -124,7 +124,7 @@ public class KBCreator implements Runnable {
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
-
+                    long candidateStart = System.nanoTime();
                     //line 10 //
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
 
@@ -146,7 +146,7 @@ public class KBCreator implements Runnable {
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
-                        long smallStart = System.nanoTime();
+
 
                         //line 12
                         //doenst look great but should be faster then using reflection
@@ -167,7 +167,7 @@ public class KBCreator implements Runnable {
                         kbWriter.addInconsistentKb(inconsistentKB);
                         totalInconsistentAmount++;
                     }
-
+                    //System.out.println("ns for candidate: " + (System.nanoTime() - candidateStart)/1000 + "mics");
                 }
 
                 if (waitForKbWriter)
