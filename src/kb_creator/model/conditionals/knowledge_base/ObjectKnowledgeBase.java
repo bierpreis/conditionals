@@ -118,8 +118,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return sb.toString();
 
     }
-
-    //todo: number is not put in file
+    
     @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
