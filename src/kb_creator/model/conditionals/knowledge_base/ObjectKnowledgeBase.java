@@ -27,9 +27,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString1 = stringFromFile.split("signature");
 
-        //todo: use the pattern thing for efficency?
-
-        //todo: maybe shorten this like a,b,c[.]*
+        //todo: use the pattern thing for efficency!
+        if(splitString1[1].contains("a,b"))
+            System.out.println("contains!!");
         if (splitString1[1].matches("^a,b,c.*"))
             signature = new ABC();
         else if (splitString1[1].matches("^a,b.*")) {
