@@ -11,30 +11,34 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private List<NewConditional> conditionalList;
+
+    private final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
+    private final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
 
 
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
         this.conditionalList = new ArrayList<>();
         this.signature = signature;
         this.kbNumber = kbNumber;
+
+
     }
 
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString1 = stringFromFile.split("signature");
 
-        //todo: use the pattern thing for efficency!
-        if(splitString1[1].contains("a,b"))
-            System.out.println("contains!!");
-        if (splitString1[1].matches("^a,b,c.*"))
+        if (ABC_PATTERN.matcher(splitString1[1]).matches())
             signature = new ABC();
-        else if (splitString1[1].matches("^a,b.*")) {
+        else if (AB_PATTERN.matcher(splitString1[1]).matches())
             signature = new AB();
-        } else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);
+        else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);
 
 
         String[] splitString2 = stringFromFile.split("conditionals");

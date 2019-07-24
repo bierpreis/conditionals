@@ -117,7 +117,7 @@ public class KBCreator implements Runnable {
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
                 AbstractPair candidatePair = l.getNextPair(k); //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
-                System.out.println("number: " + candidatePair.getKnowledgeBase().getKbNumber());
+                
                 pairCounter++;
                 lastIterationAmount = l.getLastIterationPairAmount();
                 progress = calculateProgress(pairCounter, lastIterationAmount);

@@ -9,6 +9,7 @@ import java.util.Map;
 //this class is made to use diffrent knowledge base implementations
 //but the actual impelementation seems not to be important
 public abstract class AbstractKnowledgeBase {
+
     protected static Map<Integer, NewConditional> nfcMap;
     protected AbstractSignature signature;
     protected int kbNumber;
