@@ -111,15 +111,17 @@ public class KBCreator implements Runnable {
             //line  7
             l.addNewList(new ArrayList<>());
 
+            lastIterationAmount = l.getLastIterationPairAmount();
 
             //this loop is line 8
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
-                AbstractPair candidatePair = l.getNextPair(k); //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
+
+
+                //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
+                AbstractPair candidatePair = l.getNextPair(k);
 
                 pairCounter++;
-                lastIterationAmount = l.getLastIterationPairAmount(); //todo: why is this here? should it be better in the upper while loop?!
-                progress = calculateProgress(pairCounter, lastIterationAmount);
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
