@@ -13,7 +13,6 @@ import kb_creator.model.kb_writer.KbDummyWriter;
 import kb_creator.model.kb_writer.KbFileWriter;
 import nfc.model.NfcCreator;
 
-import java.lang.reflect.Constructor;
 import java.util.*;
 
 public class KBCreator implements Runnable {

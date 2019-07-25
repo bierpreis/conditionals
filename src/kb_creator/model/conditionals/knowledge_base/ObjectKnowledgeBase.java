@@ -11,7 +11,6 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
