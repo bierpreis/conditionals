@@ -10,6 +10,7 @@ import java.util.List;
 public class RealCompressedListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
 
+    //todo: think about everything in here. this class is very important!
     public RealCompressedListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
