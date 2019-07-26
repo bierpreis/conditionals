@@ -19,7 +19,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
-    private final int READ_QUEUE_MIN = 5000;
+    private final int READ_QUEUE_MIN = 100;
 
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
@@ -117,7 +117,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private List<AbstractPair> readNextFile(int requestedK) {
-        //todo: all files are read at once. can this be correct?!
 
         //read String
         File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
