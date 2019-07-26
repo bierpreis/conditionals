@@ -199,7 +199,7 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteCandidates();
                 //delete written candidates to save memory
                 candidatePair.deleteKB();
-                System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
+                //System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
             }
             l.finishIteration(k);
             k = k + 1;

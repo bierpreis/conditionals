@@ -117,8 +117,11 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private List<AbstractPair> readNextFile(int requestedK) {
+        //todo: all files are read at once. can this be correct?!
+
         //read String
         File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
+        System.out.println("reading file for: " + fileToRead.getAbsolutePath());
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);

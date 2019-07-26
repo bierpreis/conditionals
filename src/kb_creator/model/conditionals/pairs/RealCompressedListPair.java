@@ -24,7 +24,9 @@ public class RealCompressedListPair extends AbstractPair {
 
         //divide string into kb and candidates
         //create both from subString
+        //long startTime = System.currentTimeMillis();
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
+        //System.out.println("time + " + (System.currentTimeMillis() - startTime));
         candidatesList = createCandidatesListFromString(splitString[1]);
     }
 
