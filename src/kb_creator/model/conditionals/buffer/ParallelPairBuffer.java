@@ -14,11 +14,14 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ParallelPairBuffer extends AbstractPairBuffer {
-    private Queue<AbstractPair> queueToReturn;
+
     private int iterationNumberOfFiles;
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
+
+    private Queue<AbstractPair> queueToReturn;
+    //if queue to return is lower than this value, a new file will be read and the queue gets filled again
     private final int READ_QUEUE_MIN = 100;
 
 

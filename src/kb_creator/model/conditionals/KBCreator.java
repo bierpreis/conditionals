@@ -116,6 +116,7 @@ public class KBCreator implements Runnable {
             //this loop is line 8
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
+                progress = calculateProgress(pairCounter, lastIterationAmount);
 
 
                 //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
@@ -309,7 +310,6 @@ public class KBCreator implements Runnable {
         waitForKbWriter = true;
     }
 
-    //todo: this is never called and no progress is displayed!!
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
 
         if (lastIterationAmount == 0) {
