@@ -127,9 +127,13 @@ public class NewConditional {
         if (!(o instanceof NewConditional))
             return false;
         NewConditional otherConditional = (NewConditional) o;
-        if (this.number == 0 || otherConditional.getNumber() == 0)
-            throw new RuntimeException("Equals failed because numbers were wrong");
+
+        //uncomment for testing purposes
+        //if (this.number == 0 || otherConditional.getNumber() == 0)
+        //    throw new RuntimeException("Equals failed because numbers were wrong");
+
         //return this.antecedent.equals(otherConditional.getAntecedent()) && this.consequence.equals(otherConditional.getConsequence());
+        
         return this.number == otherConditional.getNumber();
 
     }
