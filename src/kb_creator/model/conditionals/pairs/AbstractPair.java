@@ -12,12 +12,6 @@ public abstract class AbstractPair {
     protected AbstractKnowledgeBase knowledgeBase;
     protected static Map<Integer, NewConditional> nfcMap;
 
-    //todo: rename pairs
-    //maybe delete some or use this useless constructor
-    AbstractPair() {
-
-    }
-
     //concrete methods
     public AbstractKnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
@@ -25,10 +19,6 @@ public abstract class AbstractPair {
 
     public void deleteKB() {
         knowledgeBase = null;
-    }
-
-    public int getNumber() {
-        return knowledgeBase.getKbNumber();
     }
 
     public static void setNfc(Map<Integer, NewConditional> nfc) {
