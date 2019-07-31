@@ -20,7 +20,7 @@ public class StatusThread implements Runnable {
         lastTimeStamp = System.currentTimeMillis();
     }
 
-
+    //todo: maybe the threads should report its status to this thread? can this b faster?
     @Override
     public void run() {
         while (isRunning) {
