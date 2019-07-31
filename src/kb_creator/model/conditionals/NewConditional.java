@@ -12,18 +12,18 @@ import nfc.model.World;
 
 public class NewConditional {
     private int number;
-    private final AbstractFormula antecend;
+    private final AbstractFormula antecedent;
     private final AbstractFormula consequence;
     private NewConditional counterConditional;
 
 
-    public NewConditional(AbstractFormula consequence, AbstractFormula antecend) {
+    public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
         this.consequence = consequence;
-        this.antecend = antecend;
+        this.antecedent = antecedent;
     }
 
     public NewConditional(Conditional oldConditional) {
-        antecend = worldToFormula(oldConditional.getAntecedent());
+        antecedent = worldToFormula(oldConditional.getAntecedent());
         consequence = worldToFormula(oldConditional.getConsequence());
         number = oldConditional.getNumber();
     }
@@ -115,7 +115,7 @@ public class NewConditional {
     }
 
     public String toString() {
-        return "(" + consequence + " | " + antecend + ")";
+        return "(" + consequence + " | " + antecedent + ")";
     }
 
     public int getNumber() {
@@ -129,7 +129,7 @@ public class NewConditional {
         NewConditional otherConditional = (NewConditional) o;
         if (this.number == 0 || otherConditional.getNumber() == 0)
             throw new RuntimeException("Equals failed because numbers were wrong");
-        //return this.antecend.equals(otherConditional.getAntecend()) && this.consequence.equals(otherConditional.getConsequence());
+        //return this.antecedent.equals(otherConditional.getAntecedent()) && this.consequence.equals(otherConditional.getConsequence());
         return this.number == otherConditional.getNumber();
 
     }
@@ -142,8 +142,8 @@ public class NewConditional {
         this.number = number;
     }
 
-    public AbstractFormula getAntecend() {
-        return antecend;
+    public AbstractFormula getAntecedent() {
+        return antecedent;
     }
 
     public AbstractFormula getConsequence() {

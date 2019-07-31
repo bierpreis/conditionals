@@ -32,12 +32,12 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
         AbstractFormula concistecyOfKB = new Tautology();
 
         for (NewConditional conditionalFromList : conditionalList) {
-            concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecend().neg().or(conditionalFromList.getConsequence()));
+            concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
 
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
-            if (conditionalToTest.getAntecend().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
+            if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
                 return true;
 
             }
