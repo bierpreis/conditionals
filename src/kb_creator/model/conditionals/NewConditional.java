@@ -18,16 +18,13 @@ public class NewConditional {
 
 
     public NewConditional(AbstractFormula consequence, AbstractFormula antecend) {
-
         this.consequence = consequence;
         this.antecend = antecend;
     }
 
     public NewConditional(Conditional oldConditional) {
-        World oldAntecend = oldConditional.getAntecedent();
-        World oldConsequence = oldConditional.getConsequence();
-        antecend = worldToFormula(oldAntecend);
-        consequence = worldToFormula(oldConsequence);
+        antecend = worldToFormula(oldConditional.getAntecedent());
+        consequence = worldToFormula(oldConditional.getConsequence());
         number = oldConditional.getNumber();
     }
 
