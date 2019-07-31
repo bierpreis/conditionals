@@ -7,17 +7,17 @@ import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RealCompressedListPair extends AbstractPair {
+public class RealListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
 
     //todo: think about everything in here. this class is very important!
-    public RealCompressedListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+    public RealListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
         this.candidatesList = candidates;
     }
 
-    public RealCompressedListPair(String stringFromFile) {
+    public RealListPair(String stringFromFile) {
         String[] splitString = stringFromFile.split("candidates\n");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");

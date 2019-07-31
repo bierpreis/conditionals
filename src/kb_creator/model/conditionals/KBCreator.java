@@ -1,7 +1,7 @@
 package kb_creator.model.conditionals;
 
-import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
-import kb_creator.model.conditionals.pairs.RealCompressedListPair;
+import kb_creator.model.conditionals.pairs.CompressedArrayPair;
+import kb_creator.model.conditionals.pairs.RealListPair;
 import kb_creator.observer.Status;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
@@ -158,8 +158,8 @@ public class KBCreator implements Runnable {
                         //doesn't look great but should be faster then using reflection
                         //this takes about 30 percent of time
                         if (isBufferingActive)
-                            l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
-                        else l.addPair(new CompressedCandidateArrayPair(knowledgeBaseToAdd, candidatesToAdd));
+                            l.addPair(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
+                        else l.addPair(new CompressedArrayPair(knowledgeBaseToAdd, candidatesToAdd));
 
 
                         nextCandidatePairAmount++;
@@ -240,7 +240,7 @@ public class KBCreator implements Runnable {
                     conditionalsToAdd.add(conditional);
 
             //no buffereing for first iteration because there is no use for it
-            l.add(new RealCompressedListPair(rKB, conditionalsToAdd));
+            l.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
         }
 

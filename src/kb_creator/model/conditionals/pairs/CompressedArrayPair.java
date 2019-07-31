@@ -7,11 +7,11 @@ import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompressedCandidateArrayPair extends AbstractPair {
+public class CompressedArrayPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
-    public CompressedCandidateArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+    public CompressedArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
 
@@ -50,7 +50,7 @@ public class CompressedCandidateArrayPair extends AbstractPair {
 
     }
 
-    public CompressedCandidateArrayPair(String stringFromFile) {
+    public CompressedArrayPair(String stringFromFile) {
         String[] splitString = stringFromFile.split("candidates\n");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");

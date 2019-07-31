@@ -1,8 +1,7 @@
 package kb_creator.model.conditionals.buffer;
 
 import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.conditionals.pairs.CompressedCandidateArrayPair;
-import kb_creator.model.conditionals.pairs.RealCompressedListPair;
+import kb_creator.model.conditionals.pairs.RealListPair;
 
 
 import java.io.File;
@@ -143,7 +142,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
         for (String stringFromFile : fileStringArray) {
-            pairsList.add(new RealCompressedListPair(stringFromFile));
+            pairsList.add(new RealListPair(stringFromFile));
             pairReaderCounter++;
         }
 
