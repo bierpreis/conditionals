@@ -20,6 +20,8 @@ public class Atom extends AbstractFormula {
         return variable.toString();
     }
 
+
+    //todo: rethink
     public boolean evaluate(AbstractWorld world) {
 
         if (world instanceof ABCWorld) {

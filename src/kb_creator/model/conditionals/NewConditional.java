@@ -133,7 +133,7 @@ public class NewConditional {
         //    throw new RuntimeException("Equals failed because numbers were wrong");
 
         //return this.antecedent.equals(otherConditional.getAntecedent()) && this.consequence.equals(otherConditional.getConsequence());
-        
+
         return this.number == otherConditional.getNumber();
 
     }
