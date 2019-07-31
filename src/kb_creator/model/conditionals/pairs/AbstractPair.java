@@ -9,11 +9,19 @@ import java.util.Map;
 //the reason for this abstract class is to test different candidate pair implementations for performance reasons
 public abstract class AbstractPair {
 
-    AbstractPair(){
-
-    }
     protected AbstractKnowledgeBase knowledgeBase;
     protected static Map<Integer, NewConditional> nfcMap;
+
+    //todo: rename pairs
+    //maybe delete some or use this useless constructor
+    AbstractPair() {
+
+    }
+
+    //concrete methods
+    public AbstractKnowledgeBase getKnowledgeBase() {
+        return knowledgeBase;
+    }
 
     public void deleteKB() {
         knowledgeBase = null;
@@ -27,9 +35,8 @@ public abstract class AbstractPair {
         nfcMap = nfc;
     }
 
-    public AbstractKnowledgeBase getKnowledgeBase() {
-        return knowledgeBase;
-    }
+
+    //abstract methods
 
     public abstract List<NewConditional> getCandidatesList();
 

@@ -155,7 +155,7 @@ public class KBCreator implements Runnable {
 
 
                         //line 12
-                        //doenst look great but should be faster then using reflection
+                        //doesn't look great but should be faster then using reflection
                         //this takes about 30 percent of time
                         if (isBufferingActive)
                             l.addPair(new RealCompressedListPair(knowledgeBaseToAdd, candidatesToAdd));
