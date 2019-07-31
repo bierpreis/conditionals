@@ -7,7 +7,7 @@ import kb_creator.model.conditionals.NewConditional;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//todo: delete this class? should be useless. re think and do
 public class CandidateNumbersArrayPair extends AbstractPair {
 
     private int[] candidatesNumbersArray;
