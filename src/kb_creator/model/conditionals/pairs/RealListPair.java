@@ -21,7 +21,7 @@ public class RealListPair extends AbstractPair {
 
         //divide string into kb and candidates
         String[] splitString = stringFromFile.split("candidates\n");
-        
+
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");
 
@@ -76,7 +76,6 @@ public class RealListPair extends AbstractPair {
 
     @Override
     public String toString() {
-        List<NewConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
         sb.append("<(");
         sb.append(knowledgeBase.toShortFileString());
@@ -85,7 +84,7 @@ public class RealListPair extends AbstractPair {
             for (int i = 0; i < candidatesList.size(); i++) {
                 sb.append(candidatesList.get(i).getNumber());
                 if (i != candidatesList.size() - 1)
-                    sb.append(", ");
+                    sb.append(", ");//todo: put this to end?!
             }
         } else sb.append("EMPTY");
         sb.append(")>");
