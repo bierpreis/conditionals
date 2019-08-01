@@ -20,11 +20,13 @@ public class StatusThread implements Runnable {
         lastTimeStamp = System.currentTimeMillis();
     }
 
-    //todo: maybe the threads should report its status to this thread? can this b faster?
+
     @Override
     public void run() {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
+
+            //todo: own methods for parts to simplyfy this method
             if (creatorThread != null) {
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
                 mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getStatus());
@@ -60,11 +62,12 @@ public class StatusThread implements Runnable {
                     mainWindow.getRightPanel().getCandidatesPanel().showStatus(creatorThread.getPairBuffer().getStatus());
                 }
 
-
+                //todo: own method
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
 
                     creatorThread.waitForKbWriter();
 
+                //todo: own method
                 if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
                     synchronized (creatorThread) {
                         creatorThread.notify();
@@ -73,6 +76,8 @@ public class StatusThread implements Runnable {
             }
 
             mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
+
+            //todo: own method
             long iterationTime = System.currentTimeMillis() - startTime;
             long sleepTime = idealSleepTime - iterationTime;
             if (sleepTime > 0)
