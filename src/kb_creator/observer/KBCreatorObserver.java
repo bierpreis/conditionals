@@ -54,6 +54,8 @@ public class KBCreatorObserver implements ActionListener {
 
             creatorThread.start();
 
+            creatorThread.setPriority(Thread.MAX_PRIORITY);
+
             statusThreadObject.setCreatorThread(creatorThreadObject);
 
             creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
