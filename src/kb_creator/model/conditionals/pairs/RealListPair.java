@@ -18,11 +18,14 @@ public class RealListPair extends AbstractPair {
     }
 
     public RealListPair(String stringFromFile) {
+
+        //divide string into kb and candidates
         String[] splitString = stringFromFile.split("candidates\n");
+        
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");
 
-        //divide string into kb and candidates
+
         //create both from subString
         //long startTime = System.currentTimeMillis();
         knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
@@ -31,8 +34,10 @@ public class RealListPair extends AbstractPair {
     }
 
     private List<NewConditional> createCandidatesListFromString(String stringFromFile) {
-        String[] stringArray = stringFromFile.split(", ");
+
         List<NewConditional> listToReturn = new ArrayList<>();
+
+        String[] stringArray = stringFromFile.split(", ");
 
         for (String string : stringArray) {
             string = string.replaceAll("\n", "");
