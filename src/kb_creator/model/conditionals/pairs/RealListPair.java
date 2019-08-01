@@ -84,7 +84,7 @@ public class RealListPair extends AbstractPair {
             for (int i = 0; i < candidatesList.size(); i++) {
                 sb.append(candidatesList.get(i).getNumber());
                 if (i != candidatesList.size() - 1)
-                    sb.append(", ");//todo: put this to end?!
+                    sb.append(", ");
             }
         } else sb.append("EMPTY");
         sb.append(")>");
