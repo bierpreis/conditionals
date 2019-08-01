@@ -152,7 +152,6 @@ public class KBCreator implements Runnable {
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
-                        //todo: iterate trough list with i? maybe can start with i = r and save much time?
 
                         //line 12
                         //doesn't look great but should be faster then using reflection
