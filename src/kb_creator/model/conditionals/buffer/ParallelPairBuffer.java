@@ -26,7 +26,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
-        System.out.println("created parallel list for candidate pairs");
+        System.out.println("created parallel buffer for candidate pairs");
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
