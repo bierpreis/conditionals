@@ -26,35 +26,11 @@ public class StatusThread implements Runnable {
         while (isRunning) {
             long startTime = System.currentTimeMillis();
 
-            //todo: own methods for parts to simplyfy this method
             if (creatorThread != null) {
-                mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
-                mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getStatus());
-                mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
-                mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
-                mainWindow.getMidPanel().getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
-                mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.getProgress());
-                mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
-                mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
 
+                showCreatorStatus();
 
-                mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
-
-                mainWindow.getMidPanel().getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
-
-                if (creatorThread.getStatus().equals(Status.RUNNING))
-                    mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
-
-
-                mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
-                mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
-
-
-                mainWindow.getRightPanel().getWriterStatusPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
-                mainWindow.getRightPanel().getWriterStatusPanel().showConsistentConter(kbWriter.getConsistentCounter());
-                mainWindow.getRightPanel().getWriterStatusPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
-                mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
-
+                showWriterStatus();
 
                 showBufferStatus();
 
@@ -71,6 +47,33 @@ public class StatusThread implements Runnable {
 
     }
 
+    private void showCreatorStatus() {
+        mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
+        mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getStatus());
+        mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
+        mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
+        mainWindow.getMidPanel().getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
+        mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.getProgress());
+        mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
+        mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
+        mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
+        mainWindow.getMidPanel().getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
+
+        if (creatorThread.getStatus().equals(Status.RUNNING))
+            mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
+    }
+
+    private void showWriterStatus() {
+        mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
+        mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+
+
+        mainWindow.getRightPanel().getWriterStatusPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
+        mainWindow.getRightPanel().getWriterStatusPanel().showConsistentConter(kbWriter.getConsistentCounter());
+        mainWindow.getRightPanel().getWriterStatusPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
+        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
+    }
+
     private void showBufferStatus() {
         //cp writer thread is started after this thread, so this will avoid the null pointer exception
         if (creatorThread.getPairBuffer() != null) {
@@ -81,7 +84,6 @@ public class StatusThread implements Runnable {
 
     private void checkIfWaitForWriter() {
         if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
-
             creatorThread.waitForKbWriter();
 
         if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
