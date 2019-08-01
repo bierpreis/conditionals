@@ -46,6 +46,7 @@ public class StatusThread implements Runnable {
                     mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
 
 
+
                 mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
                 mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
@@ -62,33 +63,40 @@ public class StatusThread implements Runnable {
                     mainWindow.getRightPanel().getCandidatesPanel().showStatus(creatorThread.getPairBuffer().getStatus());
                 }
 
-                //todo: own method
-                if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
-
-                    creatorThread.waitForKbWriter();
-
-                //todo: own method
-                if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
-                    synchronized (creatorThread) {
-                        creatorThread.notify();
-                    }
-
+                checkIfWaitForWriter();
             }
 
             mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
 
-            //todo: own method
-            long iterationTime = System.currentTimeMillis() - startTime;
-            long sleepTime = idealSleepTime - iterationTime;
-            if (sleepTime > 0)
-                try {
-                    Thread.sleep(sleepTime);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
+
+            sleep(startTime);
 
         }
+
+
+    }
+
+    private void checkIfWaitForWriter() {
+        if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
+
+            creatorThread.waitForKbWriter();
+
+        if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
+            synchronized (creatorThread) {
+                creatorThread.notify();
+            }
+    }
+
+    private void sleep(long startTime) {
+        long iterationTime = System.currentTimeMillis() - startTime;
+        long sleepTime = idealSleepTime - iterationTime;
+        if (sleepTime > 0)
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
 
     }
