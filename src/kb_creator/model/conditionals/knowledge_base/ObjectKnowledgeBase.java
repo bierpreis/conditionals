@@ -110,16 +110,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         sb.append(this.kbNumber);
         sb.append("{\n");
 
-        List<NewConditional> conditionalList = getConditionalList();//todo: wtf?!
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i));
             if (i != conditionalList.size() - 1)
                 sb.append(",\n");
-
         }
+
         sb.append("\n}");
         return sb.toString();
-
     }
 
     @Override
