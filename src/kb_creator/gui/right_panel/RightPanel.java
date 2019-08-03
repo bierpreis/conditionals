@@ -23,8 +23,8 @@ public class RightPanel extends JPanel {
         add(memoryPanel);
     }
 
-    //todo: fix this naming?!
-    public BufferStatusPanel getCandidatesPanel() {
+
+    public BufferStatusPanel getBufferStatusPanel() {
         return bufferStatusPanel;
     }
 
