@@ -54,10 +54,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     @Override
     public void run() {
         while (running) {
-            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || (cpQueueToWrite.size() > 0 && flushRequested)) {
+            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0)) {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
-
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
                 if (queueToReturn.size() < READ_QUEUE_MIN) {//this value has pactically no impact on speed at all
                     status = BufferStatus.READING;
