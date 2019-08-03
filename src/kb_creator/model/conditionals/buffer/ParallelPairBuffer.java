@@ -58,7 +58,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
 
-            } else if (readingFileNameCounter < iterationNumberOfFiles) {//todo: twist this internally && this should be first in method?!
+            } else if (readingFileNameCounter < iterationNumberOfFiles) {
                 if (queueToReturn.size() < READ_QUEUE_MIN) {//this value has pactically no impact on speed at all
                     status = BufferStatus.READING;
                     queueToReturn.addAll(readNextFile(requestedListNumber.get()));
