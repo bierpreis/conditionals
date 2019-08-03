@@ -82,7 +82,7 @@ public class StatusThread implements Runnable {
         if (creatorThread.getPairBuffer() != null) {
             mainWindow.getRightPanel().getBufferStatusPanel().showStatus(creatorThread.getPairBuffer().getStatus());
 
-            //todo: show reader queue
+            mainWindow.getRightPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
             mainWindow.getRightPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
 
         }

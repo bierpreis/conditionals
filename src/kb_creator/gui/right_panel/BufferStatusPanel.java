@@ -31,6 +31,7 @@ public class BufferStatusPanel extends JPanel {
         vBox.setAlignmentX(Component.LEFT_ALIGNMENT);
         showStatus(AbstractPairBuffer.BufferStatus.NOT_STARTED);
         showWriterQueue(0);
+        showReaderBuffer(0);
 
     }
 
@@ -43,6 +44,10 @@ public class BufferStatusPanel extends JPanel {
     public void showWriterQueue(int alreadyFinishedNumber) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         writerLabel.setText("Writer Queue: " + formatter.format(alreadyFinishedNumber));
+    }
+
+    public void showReaderBuffer(int readerBufferSize) {
+        readerLabel.setText("Reader Buffer: " + readerBufferSize);
     }
 
 
