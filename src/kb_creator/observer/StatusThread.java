@@ -95,6 +95,7 @@ public class StatusThread implements Runnable {
             }
     }
 
+    //todo: simplify? test!
     private void sleep(long startTime) {
         long iterationTime = System.currentTimeMillis() - startTime;
         long sleepTime = idealSleepTime - iterationTime;
@@ -107,15 +108,13 @@ public class StatusThread implements Runnable {
 
 
     }
-
-    //todo: make this more smooth?!
+    
     private int calcSpeed(int kbAmount) {
-        int kbIncrease = kbAmount - lastKBAmount;
+        int kbGrowthNumber = kbAmount - lastKBAmount;
         lastKBAmount = kbAmount;
 
         float timeInSeconds = (System.currentTimeMillis() - lastTimeStamp) / 1000f;
-        int kbPerSecond = (int) (kbIncrease / timeInSeconds);
-
+        int kbPerSecond = (int) (kbGrowthNumber / timeInSeconds);
         lastTimeStamp = System.currentTimeMillis();
 
         return kbPerSecond;
