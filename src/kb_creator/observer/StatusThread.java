@@ -49,7 +49,7 @@ public class StatusThread implements Runnable {
 
     private void showCreatorStatus() {
         mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
-        mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getStatus());
+        mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
         mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
         mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
         mainWindow.getMidPanel().getCreatorPanel().showInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
@@ -59,7 +59,7 @@ public class StatusThread implements Runnable {
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
         mainWindow.getMidPanel().getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
 
-        if (creatorThread.getStatus().equals(Status.RUNNING))
+        if (creatorThread.getCreatorStatus().equals(CreatorStatus.RUNNING))
             mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
     }
 

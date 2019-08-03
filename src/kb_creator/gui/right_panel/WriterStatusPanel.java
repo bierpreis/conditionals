@@ -121,7 +121,7 @@ public class WriterStatusPanel extends JPanel {
     }
 
     public void showStatus(WriterStatus status) {
-        statusLabel.setText("Status: " + status.toString());
+        statusLabel.setText("CreatorStatus: " + status.toString());
     }
 
 

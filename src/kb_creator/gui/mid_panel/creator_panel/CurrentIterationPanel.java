@@ -15,7 +15,7 @@ public class CurrentIterationPanel extends JPanel {
 
     public CurrentIterationPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
-        setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
+        setBorder(BorderFactory.createTitledBorder("Current Iteration CreatorStatus"));
         Box vBox = Box.createVerticalBox();
         add(vBox);
 

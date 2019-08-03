@@ -2,7 +2,7 @@ package kb_creator.model.conditionals;
 
 import kb_creator.model.conditionals.pairs.CompressedArrayPair;
 import kb_creator.model.conditionals.pairs.RealListPair;
-import kb_creator.observer.Status;
+import kb_creator.observer.CreatorStatus;
 import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
@@ -22,7 +22,7 @@ public class KBCreator implements Runnable {
     private int iterationNumberOfKBs;
     private int lastIterationAmount;
 
-    private Status status;
+    private CreatorStatus creatorStatus;
     private volatile boolean waitForKbWriter;
 
     private AbstractSignature signature;
@@ -45,7 +45,7 @@ public class KBCreator implements Runnable {
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
 
-        status = Status.NOT_STARTED;
+        creatorStatus = CreatorStatus.NOT_STARTED;
         this.signature = signature;
         waitForKbWriter = false;
 
@@ -65,7 +65,7 @@ public class KBCreator implements Runnable {
     public void run() {
         int pairCounter = 0;
         System.out.println("creator thread started");
-        status = Status.CREATING_CONDITIONALS;
+        creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
         startTime = System.currentTimeMillis();
 
@@ -74,7 +74,7 @@ public class KBCreator implements Runnable {
 
         NfcCreator nfcCreator = new NfcCreator(signature);
 
-        status = Status.RUNNING;
+        creatorStatus = CreatorStatus.RUNNING;
 
 
         k = 1;
@@ -190,7 +190,7 @@ public class KBCreator implements Runnable {
                         waitForKbWriter = false;
                     }
 
-                if (status.equals(Status.STOPPED)) {
+                if (creatorStatus.equals(CreatorStatus.STOPPED)) {
                     return;
 
 
@@ -208,7 +208,7 @@ public class KBCreator implements Runnable {
             l.clear(k - 1);
         }
         l.stopThread();
-        status = Status.FINISHED;
+        creatorStatus = CreatorStatus.FINISHED;
     }
 
     public void setSignature(AbstractSignature signature) {
@@ -268,12 +268,12 @@ public class KBCreator implements Runnable {
         return iterationNumberOfKBs;
     }
 
-    public Status getStatus() {
-        return status;
+    public CreatorStatus getCreatorStatus() {
+        return creatorStatus;
     }
 
     public void stop() {
-        this.status = Status.STOPPED;
+        this.creatorStatus = CreatorStatus.STOPPED;
     }
 
     public int getCurrentK() {
@@ -305,7 +305,7 @@ public class KBCreator implements Runnable {
     }
 
     public void waitForKbWriter() {
-        status = Status.WAITING_FOR_WRITER;
+        creatorStatus = CreatorStatus.WAITING_FOR_WRITER;
         waitForKbWriter = true;
     }
 
