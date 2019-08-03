@@ -16,7 +16,7 @@ public class StatusThread implements Runnable {
 
     public StatusThread(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
-        idealSleepTime = 300;
+        idealSleepTime = 400;
         lastTimeStamp = System.currentTimeMillis();
     }
 
@@ -77,8 +77,11 @@ public class StatusThread implements Runnable {
     private void showBufferStatus() {
         //cp writer thread is started after this thread, so this will avoid the null pointer exception
         if (creatorThread.getPairBuffer() != null) {
-            mainWindow.getRightPanel().getCandidatesPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
             mainWindow.getRightPanel().getCandidatesPanel().showStatus(creatorThread.getPairBuffer().getStatus());
+
+            //todo: show reader queue
+            mainWindow.getRightPanel().getCandidatesPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
+
         }
     }
 
