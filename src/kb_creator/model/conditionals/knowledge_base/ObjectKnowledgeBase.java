@@ -29,6 +29,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
+    //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString1 = stringFromFile.split("signature");
@@ -49,28 +50,32 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         for (String candidateString : conditionalStringArray)
             conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
-
     }
 
     //todo: really think about this again. very important!!
+    //this takes about 4 micosecs
     public boolean isConsistent(NewConditional conditionalToTest) {
+        //long start = System.nanoTime();
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
         AbstractFormula concistecyOfKB = new Tautology();
 
+        //todo: does this antecend.net() work? looks like only first letter is negated. thats wrong!
         for (NewConditional conditionalFromList : conditionalList) {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
 
-
+        //todo: test this in debugger. consistency looks strange. can this be correct? test manually?
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
-                return true;
+                return true; //set debug flag here and watch which is consistent. is this correct?
             }
         }
+        //System.out.println("test: " + ((System.nanoTime() - start) / 1000));
         return false;
+
     }
 
     public int getKbNumber() {
