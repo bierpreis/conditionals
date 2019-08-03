@@ -105,6 +105,7 @@ public class StatusThread implements Runnable {
 
     }
 
+    //todo: make this more smooth?!
     private int calcSpeed(int kbAmount) {
         int kbIncrease = kbAmount - lastKBAmount;
         lastKBAmount = kbAmount;
