@@ -6,7 +6,7 @@ import kb_creator.model.kb_writer.AbstractKbWriter;
 
 public class StatusThread implements Runnable {
     private KBCreator creatorThread;
-    private long idealSleepTime;
+    private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
     private boolean isRunning = true;
@@ -16,7 +16,7 @@ public class StatusThread implements Runnable {
 
     public StatusThread(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
-        idealSleepTime = 400;
+        sleepTime = 400;
         lastTimeStamp = System.currentTimeMillis();
     }
 
@@ -24,7 +24,6 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (isRunning) {
-            long startTime = System.currentTimeMillis();
 
             if (creatorThread != null) {
 
@@ -40,7 +39,11 @@ public class StatusThread implements Runnable {
             mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
 
 
-            sleep(startTime);
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
 
@@ -95,20 +98,7 @@ public class StatusThread implements Runnable {
             }
     }
 
-    //todo: simplify? test!
-    private void sleep(long startTime) {
-        long iterationTime = System.currentTimeMillis() - startTime;
-        long sleepTime = idealSleepTime - iterationTime;
-        if (sleepTime > 0)
-            try {
-                Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
-
-    }
-    
     private int calcSpeed(int kbAmount) {
         int kbGrowthNumber = kbAmount - lastKBAmount;
         lastKBAmount = kbAmount;
