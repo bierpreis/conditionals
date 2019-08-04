@@ -14,19 +14,23 @@ public class Test {
 
     }
 
+    //todo: now fix disjunction
     private static void signatureTest() {
         AbstractFormula a = new Atom(Variable.a);
         a = a.neg();
         AbstractFormula b = new Atom(Variable.b);
+        b = b.neg();
         AbstractFormula c = new Atom(Variable.c);
 
-        ABWorld world = new ABWorld(true, false);
+        ABWorld world = new ABWorld(true, true);
 
         AbstractFormula formula = new Tautology();
 
-        AbstractFormula formulaToTest = a.and(b);
+        AbstractFormula formulaToTest = a.or(b);
 
-        System.out.println("test: " + formulaToTest.neg().evaluate(world)); //todo: this proofs the prop logic is wrong!!!
+        formulaToTest = formulaToTest.neg();
+
+        System.out.println("test: " + formulaToTest.neg().evaluate(world));
 
         //System.out.println("formula: " + formula.and(a).neg().and(b).and(c).evaluate(world));
 
