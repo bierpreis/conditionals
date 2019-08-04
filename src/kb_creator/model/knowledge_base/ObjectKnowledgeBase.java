@@ -61,7 +61,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         AbstractFormula concistecyOfKB = new Tautology();
 
-        //todo: does this antecend.net() work? looks like only first letter is negated. thats wrong!
+        //todo: this seems wrong. see in debugger. todo for this is also in abstract formula. must retink and and or
         for (NewConditional conditionalFromList : conditionalList) {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
