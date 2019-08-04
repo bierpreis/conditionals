@@ -10,8 +10,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        String lol = "lol";
-        System.out.println(lol.matches("l.*"));
+        signatureTest();
 
     }
 
@@ -25,7 +24,11 @@ public class Test {
 
         AbstractFormula formula = new Tautology();
 
-        System.out.println("formula: " + formula.and(a).and(b).and(c).evaluate(world));
+        AbstractFormula formulaToTest = a.and(b);
+
+        System.out.println("test: " + formulaToTest.neg().evaluate(world)); //todo: this proofs the prop logic is wrong!!!
+
+        //System.out.println("formula: " + formula.and(a).neg().and(b).and(c).evaluate(world));
 
     }
 
