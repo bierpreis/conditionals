@@ -1,12 +1,11 @@
-package kb_creator.model.kb_writer;
+package kb_creator.model.writer;
 
-import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class KbFileWriter extends AbstractKbWriter implements Runnable {

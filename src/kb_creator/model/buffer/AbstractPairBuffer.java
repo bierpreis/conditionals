@@ -1,6 +1,6 @@
-package kb_creator.model.conditionals.buffer;
+package kb_creator.model.buffer;
 
-import kb_creator.model.conditionals.pairs.AbstractPair;
+import kb_creator.model.pairs.AbstractPair;
 
 import java.util.List;
 import java.util.Queue;

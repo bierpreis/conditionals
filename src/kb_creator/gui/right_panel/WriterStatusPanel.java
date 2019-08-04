@@ -1,6 +1,6 @@
 package kb_creator.gui.right_panel;
 
-import kb_creator.model.kb_writer.WriterStatus;
+import kb_creator.model.writer.WriterStatus;
 
 import javax.swing.*;
 import java.awt.*;

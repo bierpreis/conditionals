@@ -1,7 +1,7 @@
-package kb_creator.model.conditionals.buffer;
+package kb_creator.model.buffer;
 
-import kb_creator.model.conditionals.pairs.AbstractPair;
-import kb_creator.model.conditionals.pairs.RealListPair;
+import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.pairs.RealListPair;
 
 import java.io.File;
 import java.io.IOException;

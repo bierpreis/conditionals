@@ -1,16 +1,17 @@
-package kb_creator.model.conditionals;
+package kb_creator.model;
 
-import kb_creator.model.conditionals.pairs.CompressedArrayPair;
-import kb_creator.model.conditionals.pairs.RealListPair;
-import kb_creator.observer.CreatorStatus;
-import kb_creator.model.conditionals.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.conditionals.knowledge_base.ObjectKnowledgeBase;
-import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
-import kb_creator.model.conditionals.pairs.AbstractPair;
+import kb_creator.model.pairs.CompressedArrayPair;
+import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
+import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import kb_creator.model.kb_writer.AbstractKbWriter;
-import kb_creator.model.kb_writer.KbDummyWriter;
-import kb_creator.model.kb_writer.KbFileWriter;
+import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.KbDummyWriter;
+import kb_creator.model.writer.KbFileWriter;
+import kb_creator.observer.CreatorStatus;
 import nfc.model.NfcCreator;
 
 import java.util.*;
@@ -331,3 +332,4 @@ public class KBCreator implements Runnable {
     }
 
 }
+

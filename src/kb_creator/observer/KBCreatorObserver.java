@@ -1,10 +1,10 @@
 package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
-import kb_creator.model.conditionals.KBCreator;
-import kb_creator.model.conditionals.buffer.AbstractPairBuffer;
-import kb_creator.model.conditionals.buffer.ParallelPairBuffer;
-import kb_creator.model.conditionals.buffer.DummyPairBuffer;
+import kb_creator.model.KBCreator;
+import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.buffer.ParallelPairBuffer;
+import kb_creator.model.buffer.DummyPairBuffer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

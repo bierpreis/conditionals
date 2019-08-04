@@ -1,7 +1,7 @@
 package nfc.model;
 
 
-import kb_creator.model.conditionals.NewConditional;
+import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.*;
