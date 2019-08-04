@@ -9,7 +9,7 @@ public class Negation extends AbstractFormula {
         this.formula = formula;
     }
 
-    //todo: brackets if formula is no atom!
+    //todo: brackets if formula is no atom! but is it nessecary? new negation could twist single elements of conjunctions and disjunctions!
     @Override
     public String toString() {
         return "!" + formula.toString();
