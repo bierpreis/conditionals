@@ -6,6 +6,7 @@ public abstract class AbstractFormula {
 
     abstract public boolean evaluate(AbstractWorld world);
 
+    //todo: make abstract?!
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }
@@ -17,17 +18,11 @@ public abstract class AbstractFormula {
 
     abstract public AbstractFormula neg();
 
+    @Override
     public abstract String toString();
 
     @Override
     public abstract boolean equals(Object o);
 
-
-    public boolean isAtom() {
-        if (this instanceof Atom) return true;
-        if (this instanceof Negation)
-            return ((Negation) this).isNegatedAtom();
-        return false;
-    }
 
 }

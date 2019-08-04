@@ -13,7 +13,7 @@ public class Test {
         signatureTest();
 
     }
-    
+
     private static void signatureTest() {
         AbstractFormula a = new Atom(Variable.a);
         a = a.neg();
