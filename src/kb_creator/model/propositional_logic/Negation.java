@@ -9,7 +9,7 @@ public class Negation extends AbstractFormula {
         this.formula = formula;
     }
 
-
+    //todo: brackets if formula is no atom!
     @Override
     public String toString() {
         return "!" + formula.toString();
