@@ -73,6 +73,7 @@ public class Test {
         System.out.println(newFirstConditional.getCounterConditional());
     }
 
+    //todo: test logic here
     private static void formulaTest() {
         AbstractFormula a = new Atom(Variable.a);
         AbstractFormula b = new Atom(Variable.b);
