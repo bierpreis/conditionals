@@ -15,10 +15,9 @@ public class Contradiction extends AbstractFormula {
         return new Tautology();
     }
 
-    //todo
     @Override
     public String toString() {
-        return null;
+        return "(false)";
     }
 
     @Override
