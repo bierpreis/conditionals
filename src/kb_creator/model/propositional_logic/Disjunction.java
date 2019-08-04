@@ -24,6 +24,12 @@ public class Disjunction extends AbstractFormula {
         return false;
     }
 
+    //todo
+    @Override
+    public AbstractFormula neg() {
+        return null;
+    }
+
 
     public String toString() {
         StringBuilder sb = new StringBuilder();

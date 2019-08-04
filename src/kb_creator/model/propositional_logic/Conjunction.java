@@ -24,6 +24,12 @@ public class Conjunction extends AbstractFormula {
         return evaluation;
     }
 
+    //todo
+    @Override
+    public AbstractFormula neg() {
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

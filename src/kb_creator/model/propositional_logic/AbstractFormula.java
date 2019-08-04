@@ -15,10 +15,7 @@ public abstract class AbstractFormula {
         return new Disjunction(this, otherFormula);
     }
 
-    public AbstractFormula neg() {
-        return new Negation(this);
-
-    }
+    abstract public AbstractFormula neg();
 
     public abstract String toString();
 

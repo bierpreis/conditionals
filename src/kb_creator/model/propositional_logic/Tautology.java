@@ -16,4 +16,9 @@ public class Tautology extends AbstractFormula {
     public boolean equals(Object o) {
         return (o instanceof Tautology);
     }
+
+    @Override
+    public AbstractFormula neg() {
+        return new Contradiction();
+    }
 }

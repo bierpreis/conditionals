@@ -48,6 +48,12 @@ public class Atom extends AbstractFormula {
         throw new RuntimeException("No possible World found!" + world);
     }
 
+    //todo
+    @Override
+    public AbstractFormula neg() {
+        return new Negation(this);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Atom))
