@@ -23,7 +23,7 @@ public class Disjunction extends AbstractFormula {
         }
         return false;
     }
-    
+
     @Override
     public AbstractFormula neg() {
         AbstractFormula formulaToReturn = new Disjunction();

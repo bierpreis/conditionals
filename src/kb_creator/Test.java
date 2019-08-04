@@ -13,8 +13,7 @@ public class Test {
         signatureTest();
 
     }
-
-    //todo: now fix disjunction
+    
     private static void signatureTest() {
         AbstractFormula a = new Atom(Variable.a);
         a = a.neg();
@@ -24,7 +23,7 @@ public class Test {
 
         ABWorld world = new ABWorld(true, true);
 
-        AbstractFormula formula = new Tautology();
+        //AbstractFormula formula = new Tautology();
 
         AbstractFormula formulaToTest = a.or(b);
 

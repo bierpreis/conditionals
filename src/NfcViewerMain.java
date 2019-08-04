@@ -1,6 +1,6 @@
 import nfc.controller.NfcCreatorObserver;
 
-public class NfcViewer {
+public class NfcViewerMain {
 
     public static void main(String[] args) {
         new NfcCreatorObserver();
