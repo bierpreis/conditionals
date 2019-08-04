@@ -1,7 +1,7 @@
 package kb_creator.gui.left_panel.actionpanel;
 
 
-import kb_creator.observer.CreatorStatus;
+import kb_creator.model.KBCreator;
 import kb_creator.observer.KBCreatorObserver;
 
 import javax.swing.*;
@@ -28,7 +28,7 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
-    public void setStatus(CreatorStatus creatorStatus) {
+    public void setStatus(KBCreator.CreatorStatus creatorStatus) {
         switch (creatorStatus) {
             case CREATING_CONDITIONALS:
                 startButton.setEnabled(false);

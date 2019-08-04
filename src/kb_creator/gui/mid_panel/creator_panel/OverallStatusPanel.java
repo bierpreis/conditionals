@@ -1,6 +1,6 @@
 package kb_creator.gui.mid_panel.creator_panel;
 
-import kb_creator.observer.CreatorStatus;
+import kb_creator.model.KBCreator;
 import kb_creator.gui.left_panel.actionpanel.ActionPanel;
 
 import javax.swing.*;
@@ -48,7 +48,7 @@ public class OverallStatusPanel extends JPanel {
 
     }
 
-    public void showStatus(CreatorStatus creatorStatus) {
+    public void showStatus(KBCreator.CreatorStatus creatorStatus) {
         statusLabel.setText("CreatorStatus: " + creatorStatus.toString());
         actionPanel.setStatus(creatorStatus);
     }

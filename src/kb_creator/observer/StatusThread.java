@@ -62,7 +62,7 @@ public class StatusThread implements Runnable {
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getLastPairAmount());
         mainWindow.getMidPanel().getCreatorPanel().showNextCandidatePairs(creatorThread.getNextCandidatePairAmount());
 
-        if (creatorThread.getCreatorStatus().equals(CreatorStatus.RUNNING))
+        if (creatorThread.getCreatorStatus().equals(KBCreator.CreatorStatus.RUNNING))
             mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
     }
 

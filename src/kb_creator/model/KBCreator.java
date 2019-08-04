@@ -11,7 +11,6 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
 import kb_creator.model.writer.KbDummyWriter;
 import kb_creator.model.writer.KbFileWriter;
-import kb_creator.observer.CreatorStatus;
 import nfc.model.NfcCreator;
 
 import java.util.*;
@@ -331,5 +330,13 @@ public class KBCreator implements Runnable {
         return startTime;
     }
 
+    public enum CreatorStatus {
+
+        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED, WAITING_FOR_WRITER
+    }
+
 }
+
+
+
 
