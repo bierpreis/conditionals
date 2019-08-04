@@ -27,7 +27,11 @@ public class Conjunction extends AbstractFormula {
     //todo
     @Override
     public AbstractFormula neg() {
-        return null;
+        AbstractFormula formulaToReturn = new Conjunction();
+        for (AbstractFormula formula : formulas) {
+            formulaToReturn = formulaToReturn.and(formula.neg());
+        }
+        return formulaToReturn;
     }
 
     @Override

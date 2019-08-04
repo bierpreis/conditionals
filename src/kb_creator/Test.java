@@ -20,7 +20,7 @@ public class Test {
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
 
-        ABWorld world = new ABWorld(true, true);
+        ABWorld world = new ABWorld(true, false);
 
         AbstractFormula formula = new Tautology();
 
