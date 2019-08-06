@@ -111,7 +111,7 @@ public class KBCreator implements Runnable {
             //line  7
             l.addNewList(new ArrayList<>());
 
-            lastIterationAmount = l.getLastIterationPairAmount();
+            lastIterationAmount = l.getLastIterationPairAmount();//todo: this is not set at first iteration
 
             //this loop is line 8
             while (l.hasMoreElements(k)) {

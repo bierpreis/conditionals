@@ -29,7 +29,6 @@ public class Conjunction extends AbstractFormula {
         return new Negation(this);
     }
 
-    //todo: brackets?!
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
