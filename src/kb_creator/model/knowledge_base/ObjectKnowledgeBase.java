@@ -1,5 +1,6 @@
 package kb_creator.model.knowledge_base;
 
+import kb_creator.model.propositional_logic.Conjunction;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.Tautology;
@@ -59,22 +60,23 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        //todo: remove tautology?
-        AbstractFormula concistecyOfKB = new Tautology();
+        AbstractFormula concistecyOfKB = null;
 
 
         for (NewConditional conditionalFromList : conditionalList) {
-            concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+            if (concistecyOfKB == null)
+                concistecyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+            else
+                concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
 
         //todo: test this in debugger. consistency looks strange. can this be correct? test manually?
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {
-                return true; //set debug flag here and watch which is consistent. is this correct?
+                return true;
             }
         }
-        //System.out.println("test: " + ((System.nanoTime() - start) / 1000));
         return false;
 
     }
