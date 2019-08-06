@@ -69,8 +69,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
             else
                 concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
-
-        //todo: test this in debugger. consistency looks strange. can this be correct? test manually?
+        
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && concistecyOfKB.evaluate(world)) {

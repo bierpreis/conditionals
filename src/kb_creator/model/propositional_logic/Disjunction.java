@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Disjunction extends AbstractFormula {
+    //todo: think about set here and in conjunction. would make equals easier
     private List<AbstractFormula> formulaList;
 
 
