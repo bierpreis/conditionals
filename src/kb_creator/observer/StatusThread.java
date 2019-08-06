@@ -51,9 +51,14 @@ public class StatusThread implements Runnable {
     }
 
     private void showCreatorStatus() {
-        mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false); //todo: this cant work
-        if (!creatorThread.getCreatorStatus().equals(KBCreator.CreatorStatus.RUNNING))
+
+        //mute options when cretor is running
+        if (creatorThread.getCreatorStatus().equals(KBCreator.CreatorStatus.RUNNING))
+            mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
+            //and reactivate when creator is stopped
+        else
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
+
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
         mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
         mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());

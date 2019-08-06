@@ -19,7 +19,7 @@ public class ActionPanel extends JPanel {
         startButton = new JButton("Start");
         startButton.addActionListener(observer);
         add(startButton);
-        
+
         stopButton = new JButton("Stop");
         stopButton.addActionListener(observer);
         add(stopButton);
@@ -28,6 +28,7 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
+    //todo: use this to reactivate options?!
     public void setStatus(KBCreator.CreatorStatus creatorStatus) {
         switch (creatorStatus) {
             case CREATING_CONDITIONALS:

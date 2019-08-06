@@ -70,6 +70,7 @@ public class KBCreatorObserver implements ActionListener {
 
             if (answer == 0)
                 creatorThreadObject.stop();
+            mainWindow.getMainLeftPanel().getActionPanel().se
 
         }
 
