@@ -2,6 +2,8 @@ package kb_creator.model.propositional_logic;
 
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
+import java.util.List;
+
 public abstract class AbstractFormula {
 
     abstract public boolean evaluate(AbstractWorld world);
@@ -24,6 +26,5 @@ public abstract class AbstractFormula {
 
     @Override
     public abstract boolean equals(Object o);
-
 
 }

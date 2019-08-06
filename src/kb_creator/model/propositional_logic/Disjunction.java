@@ -40,6 +40,14 @@ public class Disjunction extends AbstractFormula {
         return sb.toString().replaceAll(", $", "");
     }
 
+    @Override
+    public AbstractFormula or(AbstractFormula otherFormula) {
+        if (otherFormula instanceof Disjunction) {
+            formulaList.addAll(((Disjunction) otherFormula).getFormulaList());
+            return this;
+
+        } else return super.and(otherFormula);
+    }
 
     @Override
     public boolean equals(Object o) {

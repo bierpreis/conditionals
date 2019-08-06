@@ -18,7 +18,7 @@ public class ABWorld extends AbstractWorld {
     public boolean isB() {
         return b;
     }
-    
+
     public String toString() {
         return a + "," + b;
     }
