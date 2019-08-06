@@ -7,6 +7,7 @@ public abstract class AbstractFormula {
     abstract public boolean evaluate(AbstractWorld world);
 
     //todo: make abstract?! because this seems to be wrong. check also the is consistent method in object knowledge base for this as example.
+    //at least for conjunction this is wrong?! or not?
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }

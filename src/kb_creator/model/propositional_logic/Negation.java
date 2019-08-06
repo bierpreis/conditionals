@@ -8,7 +8,7 @@ public class Negation extends AbstractFormula {
     public Negation(AbstractFormula formula) {
         this.formula = formula;
     }
-    
+
     @Override
     public String toString() {
         if (formula instanceof Atom)
