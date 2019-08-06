@@ -7,7 +7,7 @@ public abstract class AbstractFormula {
     abstract public boolean evaluate(AbstractWorld world);
 
     //todo: override in conjunction and disjunction!
-    //at least for conjunction this is wrong?! or not?
+    //this will be overwritten in some subclasses
     public AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }

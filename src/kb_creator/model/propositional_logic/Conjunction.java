@@ -64,6 +64,14 @@ public class Conjunction extends AbstractFormula {
 
     }
 
+    @Override
+    public AbstractFormula and(AbstractFormula otherFormula) {
+        if (otherFormula instanceof Conjunction) {
+            formulas.addAll(((Conjunction) otherFormula).getFormulas());
+            return this;
+        } else return super.and(otherFormula);
+    }
+
 
     public List<AbstractFormula> getFormulas() {
         return formulas;
