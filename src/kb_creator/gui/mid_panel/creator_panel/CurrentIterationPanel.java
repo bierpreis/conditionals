@@ -68,6 +68,7 @@ public class CurrentIterationPanel extends JPanel {
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
     }
 
+    //todo: doenst work if abc and no buffering. why?
     public void showCandidatePairs(int canditatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));
