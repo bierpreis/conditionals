@@ -1,4 +1,4 @@
-package kb_creator.gui.left_panel.actionpanel;
+package kb_creator.gui.left_panel;
 
 
 import kb_creator.model.KBCreator;

@@ -3,7 +3,7 @@ package kb_creator.gui;
 import kb_creator.gui.mid_panel.MidPanel;
 import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.observer.KBCreatorObserver;
-import kb_creator.gui.left_panel.LeftPanel;
+import kb_creator.gui.left_panel.MainLeftPanel;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 
@@ -15,7 +15,7 @@ public class MainWindow {
     private JFrame mainWindow;
 
 
-    private LeftPanel leftPanel;
+    private MainLeftPanel mainLeftPanel;
     private MidPanel midPanel;
     private RightPanel rightPanel;
 
@@ -23,8 +23,8 @@ public class MainWindow {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
 
-        mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
-        mainWindow.add(midPanel = new MidPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
+        mainWindow.add(mainLeftPanel = new MainLeftPanel(observer), BorderLayout.WEST);
+        mainWindow.add(midPanel = new MidPanel(mainLeftPanel.getActionPanel()), BorderLayout.CENTER);
         mainWindow.add(rightPanel = new RightPanel(), BorderLayout.EAST);
 
 
@@ -39,7 +39,7 @@ public class MainWindow {
     }
 
     public AbstractSignature getSignature() {
-        return leftPanel.getSignature();
+        return mainLeftPanel.getSignature();
     }
 
     public JFrame getMainWindow() {
@@ -47,15 +47,15 @@ public class MainWindow {
     }
 
     public String getKbFilePath() {
-        return leftPanel.getKBPath();
+        return mainLeftPanel.getKBPath();
     }
 
     public boolean isBufferingRequested() {
-        return leftPanel.isBufferingRequested();
+        return mainLeftPanel.isBufferingRequested();
     }
 
     public String getCpFilePath() {
-        return leftPanel.getCpFilePath();
+        return mainLeftPanel.getCpFilePath();
     }
 
 
@@ -67,8 +67,8 @@ public class MainWindow {
         return midPanel;
     }
 
-    public LeftPanel getLeftPanel() {
-        return leftPanel;
+    public MainLeftPanel getMainLeftPanel() {
+        return mainLeftPanel;
     }
 
 }

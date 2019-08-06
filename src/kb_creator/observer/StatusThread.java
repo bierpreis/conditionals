@@ -51,7 +51,7 @@ public class StatusThread implements Runnable {
     }
 
     private void showCreatorStatus() {
-        mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
+        mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false); //todo: set this to true when stopped
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
         mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
         mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());

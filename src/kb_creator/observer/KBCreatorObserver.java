@@ -39,8 +39,8 @@ public class KBCreatorObserver implements ActionListener {
             AbstractPairBuffer candidateBuffer;
 
             if (mainWindow.isBufferingRequested()) {
-                if (mainWindow.getLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
-                    creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferSize()));
+                if (mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
+                    creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize()));
                 else return; //return if buffer size is 0 because this is no valid value which can be used
             } else creatorThreadObject.setList(candidateBuffer = new DummyPairBuffer(null));
 
@@ -58,7 +58,7 @@ public class KBCreatorObserver implements ActionListener {
 
             statusThreadObject.setCreatorThread(creatorThreadObject);
 
-            creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
+            creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getMainLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
 
         }
 

@@ -1,7 +1,7 @@
 package kb_creator.gui.mid_panel.creator_panel;
 
 import kb_creator.model.KBCreator;
-import kb_creator.gui.left_panel.actionpanel.ActionPanel;
+import kb_creator.gui.left_panel.ActionPanel;
 
 import javax.swing.*;
 import java.awt.*;
