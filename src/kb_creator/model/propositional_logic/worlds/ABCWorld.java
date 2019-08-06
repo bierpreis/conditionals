@@ -9,10 +9,9 @@ public class ABCWorld extends AbstractWorld {
         this.c = c;
     }
 
-    //todo: improve!
     @Override
     public String toString() {
-        return "a,b,c";
+        return a + "," + b + "," + c;
     }
 
     public boolean isA() {
