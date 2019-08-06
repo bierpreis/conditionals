@@ -29,7 +29,7 @@ public class Disjunction extends AbstractFormula {
         return new Negation(this);
     }
 
-
+    //todo. brackets!?
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (AbstractFormula formua : formulaList) {
