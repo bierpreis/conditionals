@@ -41,7 +41,6 @@ public class KBCreator implements Runnable {
 
     private boolean isBufferingActive;
 
-    int pairCounter = 0;
 
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
@@ -65,7 +64,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
-        pairCounter = 0;
+
         System.out.println("creator thread started");
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
@@ -105,9 +104,12 @@ public class KBCreator implements Runnable {
         while (l.hasElementsForK(k)) {
             System.gc();
 
-            nextCandidatePairAmount = 0; //todo: wtf?
-            lastIterationAmount = pairCounter;  //todo: wrong
-            pairCounter = 0;
+            int iterationPairCounter = 0;
+
+
+            lastIterationAmount = nextCandidatePairAmount;
+            nextCandidatePairAmount = 0;
+
             iterationNumberOfKBs = 0;
 
             //line  7
@@ -118,13 +120,13 @@ public class KBCreator implements Runnable {
             //this loop is line 8
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
-                progress = calculateProgress(pairCounter, lastIterationAmount);
+                progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
 
                 //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
                 AbstractPair candidatePair = l.getNextPair(k);
 
-                pairCounter++;
+                iterationPairCounter++;
 
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -242,7 +244,8 @@ public class KBCreator implements Runnable {
 
             //no buffereing for first iteration because there is no use for it
             l.add(new RealListPair(rKB, conditionalsToAdd));
-            pairCounter++;
+            iterationNumberOfKBs++;
+            nextCandidatePairAmount++;
         }
 
 
