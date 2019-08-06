@@ -28,6 +28,7 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
+    //todo: this should be in observer
     public void setStatus(KBCreator.CreatorStatus creatorStatus) {
         switch (creatorStatus) {
             case CREATING_CONDITIONALS:

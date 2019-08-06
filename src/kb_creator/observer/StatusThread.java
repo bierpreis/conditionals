@@ -52,6 +52,7 @@ public class StatusThread implements Runnable {
 
     private void showCreatorStatus() {
 
+        //todo: this should be in observer
         //mute options when cretor is running
         if (creatorThread.getCreatorStatus().equals(KBCreator.CreatorStatus.RUNNING))
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
