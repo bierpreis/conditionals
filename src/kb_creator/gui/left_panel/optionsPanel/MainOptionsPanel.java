@@ -47,7 +47,8 @@ public class MainOptionsPanel extends JPanel {
 
     public void setActive(boolean active) {
 
-        if (this.isEnabled()) {
+        //avoid iterating without use
+        if (active != this.isEnabled()) {
             super.setEnabled(active);
             for (Component component : getComponents())
                 component.setEnabled(active);

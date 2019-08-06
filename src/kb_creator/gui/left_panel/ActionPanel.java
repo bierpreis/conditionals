@@ -28,7 +28,6 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
 
-    //todo: use this to reactivate options?!
     public void setStatus(KBCreator.CreatorStatus creatorStatus) {
         switch (creatorStatus) {
             case CREATING_CONDITIONALS:
