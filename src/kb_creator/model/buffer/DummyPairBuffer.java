@@ -61,7 +61,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public void finishIteration(int requestedK) {
         if (requestedK != 1)//todo: this is why in first iteration there is no progress and stuff
-            lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
+            lastIterationPairAmount = candidatePairList.get(requestedK + 1).size(); //why + 1 ?
     }
 
     @Override

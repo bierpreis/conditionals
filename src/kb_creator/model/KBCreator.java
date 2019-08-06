@@ -41,6 +41,8 @@ public class KBCreator implements Runnable {
 
     private boolean isBufferingActive;
 
+    int pairCounter = 0;
+
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
@@ -63,7 +65,7 @@ public class KBCreator implements Runnable {
 
     @Override
     public void run() {
-        int pairCounter = 0;
+        pairCounter = 0;
         System.out.println("creator thread started");
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
@@ -103,15 +105,15 @@ public class KBCreator implements Runnable {
         while (l.hasElementsForK(k)) {
             System.gc();
 
-            nextCandidatePairAmount = 0;
-            lastIterationAmount = pairCounter;
+            nextCandidatePairAmount = 0; //todo: wtf?
+            lastIterationAmount = pairCounter;  //todo: wrong
             pairCounter = 0;
             iterationNumberOfKBs = 0;
 
             //line  7
             l.addNewList(new ArrayList<>());
 
-            lastIterationAmount = l.getLastIterationPairAmount();//todo: this is not set at first iteration
+            //lastIterationAmount = l.getLastIterationPairAmount();
 
             //this loop is line 8
             while (l.hasMoreElements(k)) {
@@ -240,7 +242,7 @@ public class KBCreator implements Runnable {
 
             //no buffereing for first iteration because there is no use for it
             l.add(new RealListPair(rKB, conditionalsToAdd));
-            iterationNumberOfKBs++;
+            pairCounter++;
         }
 
 
