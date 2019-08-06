@@ -24,14 +24,9 @@ public class Conjunction extends AbstractFormula {
         return evaluation;
     }
 
-    //todo: wrong
     @Override
     public AbstractFormula neg() {
-        AbstractFormula formulaToReturn = new Conjunction();
-        for (AbstractFormula formula : formulas) {
-            formulaToReturn = formulaToReturn.and(formula.neg());
-        }
-        return formulaToReturn;
+        return new Negation(this);
     }
 
     @Override

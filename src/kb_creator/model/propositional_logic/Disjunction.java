@@ -24,13 +24,9 @@ public class Disjunction extends AbstractFormula {
         return false;
     }
 
-    //todo: wrong
     @Override
     public AbstractFormula neg() {
-        AbstractFormula formulaToReturn = new Disjunction();
-        for (AbstractFormula formula : formulaList)
-            formulaToReturn = formulaToReturn.or(formula.neg());
-        return formulaToReturn;
+        return new Negation(this);
     }
 
 
