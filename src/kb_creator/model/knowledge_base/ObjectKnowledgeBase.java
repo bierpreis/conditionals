@@ -59,9 +59,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
+        //todo: remove tautology?
         AbstractFormula concistecyOfKB = new Tautology();
 
-        //todo: this seems wrong. see in debugger. todo for this is also in abstract formula. must retink and and or
+
         for (NewConditional conditionalFromList : conditionalList) {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
