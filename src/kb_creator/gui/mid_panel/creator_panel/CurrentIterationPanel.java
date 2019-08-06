@@ -67,10 +67,10 @@ public class CurrentIterationPanel extends JPanel {
 
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
     }
-    
-    public void showCandidatePairs(int canditatePairs) {
+
+    public void showCandidatePairs(int candidatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        candidatePairslabel.setText("Candidate pairs: " + formatter.format(canditatePairs));
+        candidatePairslabel.setText("Candidate pairs: " + formatter.format(candidatePairs));
     }
 
 
