@@ -24,6 +24,7 @@ public class Conjunction extends AbstractFormula {
         return evaluation;
     }
 
+    //todo: wrong
     @Override
     public AbstractFormula neg() {
         AbstractFormula formulaToReturn = new Conjunction();

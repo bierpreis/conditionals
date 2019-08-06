@@ -24,6 +24,7 @@ public class Disjunction extends AbstractFormula {
         return false;
     }
 
+    //todo: wrong
     @Override
     public AbstractFormula neg() {
         AbstractFormula formulaToReturn = new Disjunction();
