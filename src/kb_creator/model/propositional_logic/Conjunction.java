@@ -48,7 +48,7 @@ public class Conjunction extends AbstractFormula {
 
         Conjunction otherConjunction = (Conjunction) o;
 
-
+        //todo: this could possibly be wrong with nested conjunctions!
         if (formulas.size() != otherConjunction.getFormulas().size())
             return false;
 
