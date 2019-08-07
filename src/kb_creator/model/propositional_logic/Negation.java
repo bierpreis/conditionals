@@ -33,7 +33,7 @@ public class Negation extends AbstractFormula {
         Negation otherNegation = (Negation) o;
         return otherNegation.getFormula().equals(formula);
     }
-
+    
     private AbstractFormula getFormula() {
         return formula;
     }
