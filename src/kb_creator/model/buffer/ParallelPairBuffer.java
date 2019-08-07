@@ -33,7 +33,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         writingFileNameCounter = 0;
 
-        //todo: think about this buffer size and types
         queueToReturn = new ConcurrentLinkedQueue<>();
 
         cpQueueToWrite = new ConcurrentLinkedQueue<>();

@@ -76,6 +76,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
                 return true;
             }
         }
+        //System.out.println("time: " + (System.nanoTime() - start) / 1000);
         return false;
 
     }
