@@ -56,9 +56,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     //todo: really think about this again. very important!!
-    //this takes about 4 micosecs
+
     public boolean isConsistent(NewConditional conditionalToTest) {
-        //long start = System.nanoTime();
+
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
@@ -66,6 +66,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         if (consistencyOfKB == null)
             consistencyOfKB = createConsistencyFormula();
 
+
+        //long start = System.nanoTime();
+
+        //this takes about 4 micosecs
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && consistencyOfKB.evaluate(world)) {
