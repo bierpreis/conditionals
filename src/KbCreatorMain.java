@@ -1,9 +1,9 @@
-import kb_creator.observer.KBCreatorObserver;
+import kb_creator.observer.CreatorButtonObserver;
 
 public class KbCreatorMain {
 
     public static void main(String[] args){
-        new KBCreatorObserver();
+        new CreatorButtonObserver();
 
         
     }

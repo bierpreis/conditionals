@@ -1,6 +1,6 @@
 package kb_creator.gui.left_panel;
 
-import kb_creator.observer.KBCreatorObserver;
+import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.optionsPanel.MainOptionsPanel;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
@@ -14,7 +14,7 @@ public class MainLeftPanel extends JPanel {
     private MainOptionsPanel mainOptionsPanel;
 
 
-    public MainLeftPanel(KBCreatorObserver observer) {
+    public MainLeftPanel(CreatorButtonObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         actionPanel = new ActionPanel(observer);

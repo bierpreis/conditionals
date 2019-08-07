@@ -10,14 +10,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class KBCreatorObserver implements ActionListener {
+public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
 
     private KBCreator creatorThreadObject;
     private StatusThread statusThreadObject;
 
 
-    public KBCreatorObserver() {
+    public CreatorButtonObserver() {
 
         mainWindow = new MainWindow(this);
         statusThreadObject = new StatusThread(mainWindow);
