@@ -6,19 +6,19 @@ import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import java.util.*;
 
 public class Conjunction extends AbstractFormula {
-    private List<AbstractFormula> formulas;
+    private List<AbstractFormula> formulaList;
 
     public Conjunction(AbstractFormula... formulasToAdd) {
 
 
-        formulas = new ArrayList<>(formulasToAdd.length);
-        formulas.addAll(Arrays.asList(formulasToAdd));
+        formulaList = new ArrayList<>(formulasToAdd.length);
+        formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
     @Override
     public boolean evaluate(AbstractWorld world) {
         boolean evaluation = true;
-        for (AbstractFormula formula : formulas) {
+        for (AbstractFormula formula : formulaList) {
             evaluation = evaluation && formula.evaluate(world);
         }
         return evaluation;
@@ -32,7 +32,7 @@ public class Conjunction extends AbstractFormula {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (AbstractFormula formula : formulas) {
+        for (AbstractFormula formula : formulaList) {
             sb.append(formula.toString());
         }
         return sb.toString();
@@ -47,15 +47,12 @@ public class Conjunction extends AbstractFormula {
 
         Conjunction otherConjunction = (Conjunction) o;
 
-        //todo: this could possibly be wrong with nested conjunctions!
-        if (formulas.size() != otherConjunction.getFormulas().size())
-            return false;
 
-        for (AbstractFormula formula : formulas)
-            if (!otherConjunction.getFormulas().contains(formula))
+        for (AbstractFormula formula : formulaList)
+            if (!otherConjunction.getFormulaList().contains(formula))
                 return false;
-        for (AbstractFormula formula : otherConjunction.getFormulas())
-            if (!formulas.contains(formula))
+        for (AbstractFormula formula : otherConjunction.getFormulaList())
+            if (!formulaList.contains(formula))
                 return false;
 
 
@@ -66,13 +63,13 @@ public class Conjunction extends AbstractFormula {
     @Override
     public AbstractFormula and(AbstractFormula otherFormula) {
         if (otherFormula instanceof Conjunction) {
-            formulas.addAll(((Conjunction) otherFormula).getFormulas());
+            formulaList.addAll(((Conjunction) otherFormula).getFormulaList());
             return this;
         } else return super.and(otherFormula);
     }
 
 
-    public List<AbstractFormula> getFormulas() {
-        return formulas;
+    public List<AbstractFormula> getFormulaList() {
+        return formulaList;
     }
 }
