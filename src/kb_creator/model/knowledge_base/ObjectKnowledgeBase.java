@@ -80,8 +80,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
-    public int getKbNumber() {
-        return kbNumber;
+
+    @Override
+    public void add(NewConditional conditionalToAdd) {
+        conditionalList.add(conditionalToAdd);
     }
 
     @Override
@@ -146,8 +148,5 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return sb.toString();
     }
 
-    public void add(NewConditional conditionalToAdd) {
-        conditionalList.add(conditionalToAdd);
-    }
 
 }
