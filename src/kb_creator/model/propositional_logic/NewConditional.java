@@ -24,7 +24,7 @@ public class NewConditional {
         number = oldConditional.getNumber();
     }
 
-
+    //todo: really think about this one.
     private AbstractFormula worldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
 
