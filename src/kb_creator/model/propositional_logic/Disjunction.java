@@ -45,8 +45,7 @@ public class Disjunction extends AbstractFormula {
         if (otherFormula instanceof Disjunction) {
             formulaList.addAll(((Disjunction) otherFormula).getFormulaList());
             return this;
-
-        } else return super.and(otherFormula);
+        } else return super.or(otherFormula);
     }
 
     @Override
