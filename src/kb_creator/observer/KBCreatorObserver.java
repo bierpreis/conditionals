@@ -33,6 +33,7 @@ public class KBCreatorObserver implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
 
+            mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
             creatorThreadObject = new KBCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
 
 
@@ -68,8 +69,10 @@ public class KBCreatorObserver implements ActionListener {
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
-            if (answer == 0)
+            if (answer == 0) {
                 creatorThreadObject.stop();
+                mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
+            }
 
 
         }
