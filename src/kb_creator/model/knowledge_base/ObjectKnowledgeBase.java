@@ -21,6 +21,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
     private final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
 
+    private AbstractFormula consistencyOfKB;
+
 
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
         this.conditionalList = new ArrayList<>();
@@ -51,6 +53,15 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         for (String candidateString : conditionalStringArray)
             conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
+
+        //create consistency formula to be reused for every consistency test
+        //this increases overall speed about 20%
+        for (NewConditional conditionalFromList : conditionalList) {
+            if (consistencyOfKB == null)
+                consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+            else
+                consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+        }
     }
 
     //todo: really think about this again. very important!!
@@ -60,15 +71,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        AbstractFormula consistencyOfKB = null;
-
-        //todo: maybe prepare this and dont create for every conditional again?!
-        for (NewConditional conditionalFromList : conditionalList) {
-            if (consistencyOfKB == null)
-                consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
-            else
-                consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
-        }
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
