@@ -57,11 +57,6 @@ public class Disjunction extends AbstractFormula {
 
         Disjunction otherConjunction = (Disjunction) o;
 
-        
-        if (formulaList.size() != otherConjunction.getFormulaList().size())
-            return false;
-
-
         for (AbstractFormula formula : formulaList) {
             if (!otherConjunction.getFormulaList().contains(formula))
                 return false;
