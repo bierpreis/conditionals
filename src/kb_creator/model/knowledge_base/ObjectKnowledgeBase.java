@@ -3,7 +3,6 @@ package kb_creator.model.knowledge_base;
 import kb_creator.model.propositional_logic.Conjunction;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.AbstractFormula;
-import kb_creator.model.propositional_logic.Tautology;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
@@ -29,7 +28,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         this.signature = signature;
         this.kbNumber = kbNumber;
 
-
     }
 
     //this constructor takes almost no time
@@ -54,14 +52,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         for (String candidateString : conditionalStringArray)
             conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
 
-        //create consistency formula to be reused for every consistency test
-        //this increases overall speed about 20%
-        for (NewConditional conditionalFromList : conditionalList) {
-            if (consistencyOfKB == null)
-                consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
-            else
-                consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
-        }
+
     }
 
     //todo: really think about this again. very important!!
@@ -71,6 +62,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
+        //only create this formula once for performance reasons
+        if (consistencyOfKB == null)
+            consistencyOfKB = createConsistencyFormula();
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
@@ -81,6 +75,19 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         //System.out.println("time: " + (System.nanoTime() - start) / 1000);
         return false;
 
+    }
+
+    //create consistency formula to be reused for every consistency test
+    //this increases overall speed about 20%
+    private AbstractFormula createConsistencyFormula() {
+
+        for (NewConditional conditionalFromList : conditionalList) {
+            if (consistencyOfKB == null)
+                consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+            else
+                consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+        }
+        return consistencyOfKB;
     }
 
 
