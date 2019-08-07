@@ -62,7 +62,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         AbstractFormula consistencyOfKB = null;
 
-
+        //todo: maybe prepare this and dont create for every conditional again?!
         for (NewConditional conditionalFromList : conditionalList) {
             if (consistencyOfKB == null)
                 consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
