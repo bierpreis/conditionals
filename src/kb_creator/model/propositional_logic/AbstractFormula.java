@@ -12,7 +12,7 @@ public abstract class AbstractFormula {
         return new Conjunction(this, otherFormula);
     }
 
-
+    //this will be overwritten in some subclasses
     public AbstractFormula or(AbstractFormula otherFormula) {
         return new Disjunction(this, otherFormula);
     }
