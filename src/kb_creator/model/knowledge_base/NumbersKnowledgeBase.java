@@ -9,6 +9,7 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import java.util.ArrayList;
 import java.util.List;
 
+//this class is not up to date. it probably wont work correct.
 public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     private List<Integer> conditionalNumbersList;
 
