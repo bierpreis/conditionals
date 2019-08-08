@@ -35,6 +35,7 @@ public class Atom extends AbstractFormula {
             if (variable.equals(Variable.c))
                 return abcWorld.isC();
 
+            throw new RuntimeException("Invalid variable found: " + variable);
         }
 
         if (world instanceof ABWorld) {
@@ -44,6 +45,8 @@ public class Atom extends AbstractFormula {
 
             if (variable.equals(Variable.b))
                 return abWorld.isB();
+
+            throw new RuntimeException("Invalid variable found: " + variable);
         }
         throw new RuntimeException("No possible World found!" + world);
     }
