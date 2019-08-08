@@ -15,6 +15,7 @@ public class Conjunction extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
+    //todo: maybe improve performance by instantly returning false if sth is false?
     @Override
     public boolean evaluate(AbstractWorld world) {
         boolean evaluation = true;
@@ -38,6 +39,7 @@ public class Conjunction extends AbstractFormula {
         return sb.toString();
     }
 
+    //this is not really correct but should work in all cases it will be used
     @Override
     public boolean equals(Object o) {
 

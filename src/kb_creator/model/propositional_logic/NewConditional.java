@@ -97,6 +97,7 @@ public class NewConditional {
                         throw new RuntimeException("Unknown World: " + worldInt);
 
                 }
+                //todo: make like the ab thing. could improve efficiency a bit
                 Conjunction conjunctionToAdd = new Conjunction(firstAtom, secondAtom, thirdAtom);
                 if (formulaToReturn == null)
                     formulaToReturn = conjunctionToAdd;
@@ -154,6 +155,7 @@ public class NewConditional {
     public void setBasicCounterConditional(Conditional oldCounterConditional) {
         this.counterConditional = new NewConditional(oldCounterConditional);
         this.counterConditional.setNumber(oldCounterConditional.getNumber());
+        //todo: maybe use this number to get the real conditional from map? would be much faster.
     }
 
 

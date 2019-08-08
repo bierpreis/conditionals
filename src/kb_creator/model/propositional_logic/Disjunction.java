@@ -29,7 +29,7 @@ public class Disjunction extends AbstractFormula {
     public AbstractFormula neg() {
         return new Negation(this);
     }
-    
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (AbstractFormula formua : formulaList) {
@@ -48,6 +48,7 @@ public class Disjunction extends AbstractFormula {
         } else return super.or(otherFormula);
     }
 
+    //this is not really correct but should work in the cases it will be used
     @Override
     public boolean equals(Object o) {
 
