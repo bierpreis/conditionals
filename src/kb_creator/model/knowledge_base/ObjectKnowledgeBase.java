@@ -75,7 +75,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             //System.out.println(conditionalToTest);
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && consistencyOfKB.evaluate(world)) {
-                return true;
+                return true; //todo: more debug to watch this
             }
         }
         //System.out.println("time: " + (System.nanoTime() - start) / 1000);
