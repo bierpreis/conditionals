@@ -58,9 +58,11 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //todo: really think about this again. very important!!
 
     public boolean isConsistent(NewConditional conditionalToTest) {
-
+        //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
-        //siehe auch infofc s 4 dazu. auch s 9 dort.
+        //
+        // nicht so wichtig dazu, vlt comment streichen:
+        // siehe auch infofc s 4 dazu. auch s 9 dort.
 
         //only create this formula once for performance reasons
         if (consistencyOfKB == null)

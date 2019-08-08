@@ -96,7 +96,7 @@ public class RealListPair extends AbstractPair {
         candidatesList = null;
     }
 
-    //this method creates a file string complressed with the compression in this pair implementation
+    //this method creates a file string compressed with the compression in this pair implementation
     //therefore the file is much shorter
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
