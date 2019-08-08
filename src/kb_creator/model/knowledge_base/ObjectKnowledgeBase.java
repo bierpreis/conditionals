@@ -87,6 +87,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         for (NewConditional conditionalFromList : conditionalList) {
             if (consistencyOfKB == null)
+                //this is actually the implication
                 consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
             else
                 consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
