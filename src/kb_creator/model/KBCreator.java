@@ -69,6 +69,8 @@ public class KBCreator implements Runnable {
 
         startTime = System.currentTimeMillis();
 
+
+        //todo: put as much as possible of this stuff in constructor
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();
 
@@ -85,13 +87,11 @@ public class KBCreator implements Runnable {
 
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
-        //todo: put this into nfc creator and use it there for setting counter conditionals much faster
-        Map nfcMap = Collections.unmodifiableMap(createNfcMap(nfc));
 
         Collection<NewConditional> cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
 
-        AbstractPair.setNfc(nfcMap);
-        AbstractKnowledgeBase.setNfcMap(nfcMap);
+        AbstractPair.setNfc(nfcCreator.getNfcMap());
+        AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
@@ -289,17 +289,6 @@ public class KBCreator implements Runnable {
         return nextCandidatePairAmount;
     }
 
-    private Map<Integer, NewConditional> createNfcMap(Collection<NewConditional> nfc) {
-        Map<Integer, NewConditional> conditionalMap = new HashMap<>(nfc.size());
-        for (NewConditional conditional : nfc) {
-            if (conditionalMap.containsKey(conditional.getNumber())) {
-                throw new RuntimeException("Double conditional detected!");
-            }
-            conditionalMap.put(conditional.getNumber(), conditional);
-        }
-
-        return conditionalMap;
-    }
 
     public AbstractKbWriter getKbWriterThread() {
         return kbWriter;

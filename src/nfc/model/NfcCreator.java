@@ -17,6 +17,8 @@ public class NfcCreator {
     private final List<NewConditional> newNfc;
     private final List<NewConditional> newCnfc;
 
+    private final Map<Integer, NewConditional> nfcMap;
+
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started nfc creator");
         worlds = createWorlds(signature);
@@ -39,6 +41,8 @@ public class NfcCreator {
         newNfc = translateConditionals(nfc);
 
         newCnfc = translateConditionals(cnfc);
+
+        nfcMap = createNfcMap(newNfc);
         System.out.println("nfc creator finished");
     }
 
@@ -260,6 +264,23 @@ public class NfcCreator {
 
     public List<Conditional> getNfc() {
         return nfc;
+    }
+
+    private Map<Integer, NewConditional> createNfcMap(Collection<NewConditional> nfc) {
+        Map<Integer, NewConditional> conditionalMap = new HashMap<>(nfc.size());
+        for (NewConditional conditional : nfc) {
+            if (conditionalMap.containsKey(conditional.getNumber())) {
+                throw new RuntimeException("Double conditional detected!");
+            }
+            conditionalMap.put(conditional.getNumber(), conditional);
+        }
+
+        //make it unmodifiable so no accidentally changed to this map can happen
+        return Collections.unmodifiableMap(conditionalMap);
+    }
+
+    public Map<Integer, NewConditional> getNfcMap() {
+        return nfcMap;
     }
 
 }
