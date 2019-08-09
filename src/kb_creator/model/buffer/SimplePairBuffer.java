@@ -1,7 +1,10 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.pairs.CompressedArrayPair;
 import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.propositional_logic.NewConditional;
 
 import java.io.File;
 import java.io.IOException;
@@ -115,12 +118,6 @@ public class SimplePairBuffer extends AbstractPairBuffer {
     }
 
 
-    @Override
-    public void addPair(AbstractPair pairToAdd) {
-        cpQueueToWrite.add(pairToAdd);
-    }
-
-
     private List<AbstractPair> readPairs(int requestedK) {
         requestedListNumber.set(requestedK);
         while (!requestedListIsReady) {
@@ -202,6 +199,11 @@ public class SimplePairBuffer extends AbstractPairBuffer {
             }
         }
         writingFileNameCounter = 0;
+    }
+
+    @Override
+    public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
+        cpQueueToWrite.add(new RealListPair(knowledgeBase, candidatesToAdd));
     }
 
 

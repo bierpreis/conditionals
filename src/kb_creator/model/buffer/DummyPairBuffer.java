@@ -1,6 +1,9 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.pairs.CompressedArrayPair;
+import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,13 +52,13 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void addPair(AbstractPair pairToAdd) {
-        candidatePairList.get(candidatePairList.size() - 1).add(pairToAdd);
+    public void flushWritingElements() {
+        //nothing
     }
 
     @Override
-    public void flushWritingElements() {
-        //nothing
+    public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
+        candidatePairList.get(candidatePairList.size() - 1).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
     @Override

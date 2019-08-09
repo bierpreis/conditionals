@@ -1,7 +1,9 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.propositional_logic.NewConditional;
 
 
 import java.io.File;
@@ -170,6 +172,11 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
+    public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
+        cpQueueToWrite.add(new RealListPair(knowledgeBase, candidatesToAdd));
+    }
+
+    @Override
     public void clear(int requestedK) {
         //nothing
     }
@@ -249,11 +256,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         cpQueueToWrite.addAll(listToAdd);
     }
 
-
-    @Override
-    public void addPair(AbstractPair pairToAdd) {
-        cpQueueToWrite.add(pairToAdd);
-    }
 
     @Override
     public void finishIteration(int requestedK) {

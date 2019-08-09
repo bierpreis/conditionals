@@ -1,6 +1,8 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.List;
 import java.util.Queue;
@@ -50,9 +52,9 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
-    abstract public void addPair(AbstractPair pairToAdd);
-
     public abstract void flushWritingElements();
+
+    public abstract void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd);
 
 
     public BufferStatus getStatus() {
@@ -89,6 +91,7 @@ public abstract class AbstractPairBuffer implements Runnable {
             System.out.println("set deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;
     }
+
 
 }
 

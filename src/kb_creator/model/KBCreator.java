@@ -148,14 +148,10 @@ public class KBCreator implements Runnable {
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
-
-                        //todo: maybe put this logic in l and not here?!
+                            
                         //line 12
-                        //doesn't look great but should be faster then using reflection
                         //this takes about 30 percent of time
-                        if (isBufferingActive)
-                            l.addPair(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
-                        else l.addPair(new CompressedArrayPair(knowledgeBaseToAdd, candidatesToAdd));
+                        l.addPair(knowledgeBaseToAdd, candidatesToAdd);
 
 
                         nextCandidatePairAmount++;
@@ -165,7 +161,7 @@ public class KBCreator implements Runnable {
 
                         //save inconsistent knowledge base
                         //this part takes almost no time
-                    } else addInconistentKb(candidatePair.getKnowledgeBase(), r);
+                    } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
 
 
                 }
@@ -194,7 +190,7 @@ public class KBCreator implements Runnable {
         creatorStatus = CreatorStatus.FINISHED;
     }
 
-    private void addInconistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+    private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
         AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(iterationNumberOfKBs, knowledgeBase, conditionalToAdd);
         kbWriter.addInconsistentKb(inconsistentKB);
         totalInconsistentAmount++;
