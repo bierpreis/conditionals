@@ -139,12 +139,9 @@ public class KBCreator implements Runnable {
                         //next part is line 11 and 12
 
                         //first create the new knowledge base
-
-
+                        //todo: maybe change the constructor of kb. signature is already in candidate pair(kb)
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
-
                         knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
-
                         knowledgeBaseToAdd.add(r);
 
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
