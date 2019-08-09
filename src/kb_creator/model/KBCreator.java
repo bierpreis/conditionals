@@ -42,7 +42,6 @@ public class KBCreator implements Runnable {
     private boolean isBufferingActive;
 
 
-
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
 
@@ -86,6 +85,7 @@ public class KBCreator implements Runnable {
 
         Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
 
+        //todo: put this into nfc creator and use it there for setting counter conditionals much faster
         Map nfcMap = Collections.unmodifiableMap(createNfcMap(nfc));
 
         Collection<NewConditional> cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
