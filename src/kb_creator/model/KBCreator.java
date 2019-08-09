@@ -140,10 +140,7 @@ public class KBCreator implements Runnable {
 
                         //first create the new knowledge base
                         //todo: maybe change the constructor of kb. signature is already in candidate pair(kb)
-                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
-                        knowledgeBaseToAdd.add(candidatePair.getKnowledgeBase());
-                        knowledgeBaseToAdd.add(r);
-
+                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
 
 
@@ -198,9 +195,7 @@ public class KBCreator implements Runnable {
     }
 
     private void addInconistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
-        AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
-        inconsistentKB.add(knowledgeBase);
-        inconsistentKB.add(conditionalToAdd);
+        AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(iterationNumberOfKBs, knowledgeBase, conditionalToAdd);
         kbWriter.addInconsistentKb(inconsistentKB);
         totalInconsistentAmount++;
     }
@@ -238,7 +233,7 @@ public class KBCreator implements Runnable {
         //line 3
         for (NewConditional r : cnfc) {
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);//todo: recreate original constructor? or how to get signature in there?!
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new ArrayList<>();
             for (NewConditional conditional : nfc)

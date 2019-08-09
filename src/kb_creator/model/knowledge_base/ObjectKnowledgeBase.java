@@ -22,12 +22,21 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private AbstractFormula consistencyOfKB;
 
-
+    //this constructor is only used for initializing 1 element kbs
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
         this.conditionalList = new ArrayList<>();
         this.signature = signature;
         this.kbNumber = kbNumber;
+    }
 
+    //this constructor is used for all the other iterations
+    public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+        this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
+        this.signature = knowledgeBase.getSignature();
+        this.kbNumber = kbNumber;
+
+        conditionalList.addAll(knowledgeBase.getConditionalList());
+        conditionalList.add(conditionalToAdd);
     }
 
     //this constructor takes almost no time
