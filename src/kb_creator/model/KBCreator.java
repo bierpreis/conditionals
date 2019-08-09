@@ -134,7 +134,7 @@ public class KBCreator implements Runnable {
                     //line 10 //
                     //consistency check takes almost no time
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-                        
+
                         //next part is line 11 and 12
 
                         //first create the new knowledge base
@@ -182,6 +182,8 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteKB();
                 //System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
             }
+
+            //todo: maybe put theese 4 lines all together into l?
             l.finishIteration(k);
             k = k + 1;
             l.prepareIteration(k);
