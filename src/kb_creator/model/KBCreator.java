@@ -157,6 +157,7 @@ public class KBCreator implements Runnable {
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
 
+                        //todo: maybe put this logic in l and not here?!
                         //line 12
                         //doesn't look great but should be faster then using reflection
                         //this takes about 30 percent of time
