@@ -184,16 +184,7 @@ public class KBCreator implements Runnable {
                     }
 
                 }
-                //todo: own method for this
-                if (waitForKbWriter)
-                    synchronized (this) {
-                        try {
-                            this.wait();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        waitForKbWriter = false;
-                    }
+                checkIfWaitForWriter();
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED)) {
                     return;
@@ -214,6 +205,19 @@ public class KBCreator implements Runnable {
         }
         l.stopThread();
         creatorStatus = CreatorStatus.FINISHED;
+    }
+
+    private void checkIfWaitForWriter() {
+        if (waitForKbWriter)
+            synchronized (this) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                waitForKbWriter = false;
+            }
+
     }
 
     public void setSignature(AbstractSignature signature) {
