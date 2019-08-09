@@ -208,7 +208,7 @@ public class NfcCreator {
     }
 
     private List<NewConditional> translateConditionals(List<Conditional> oldConditionals) {
-        System.out.println("translating conditonals");
+        System.out.println("translating conditionals");
         List<NewConditional> newConditionals = new ArrayList<>(oldConditionals.size());
 
         for (Conditional oldConditional : oldConditionals) {
