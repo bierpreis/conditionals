@@ -172,25 +172,15 @@ public class KBCreator implements Runnable {
 
                         //save inconsistent knowledge base
                         //this part takes almost no time
-                    } else {
+                    } else addInconistentKb(candidatePair.getKnowledgeBase(), r);
 
-                        //todo: own method for this
-                        AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
-                        inconsistentKB.add(candidatePair.getKnowledgeBase());
-                        inconsistentKB.add(r);
-                        kbWriter.addInconsistentKb(inconsistentKB);
-                        totalInconsistentAmount++;
-
-                    }
 
                 }
                 checkIfWaitForWriter();
 
-                if (creatorStatus.equals(CreatorStatus.STOPPED)) {
+                if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
-
-                }
 
                 //todo: is this still needed?!
                 //delete to save some memory
@@ -207,6 +197,14 @@ public class KBCreator implements Runnable {
         }
         l.stopThread();
         creatorStatus = CreatorStatus.FINISHED;
+    }
+
+    private void addInconistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+        AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+        inconsistentKB.add(knowledgeBase);
+        inconsistentKB.add(conditionalToAdd);
+        kbWriter.addInconsistentKb(inconsistentKB);
+        totalInconsistentAmount++;
     }
 
     private void checkIfWaitForWriter() {
