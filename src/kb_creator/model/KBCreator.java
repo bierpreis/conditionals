@@ -191,6 +191,8 @@ public class KBCreator implements Runnable {
 
 
                 }
+
+                //todo: is this still needed?!
                 //delete to save some memory
                 candidatePair.deleteCandidates();
                 //delete written candidates to save memory
