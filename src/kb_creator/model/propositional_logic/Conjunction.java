@@ -15,14 +15,15 @@ public class Conjunction extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
-    //todo: maybe improve performance by instantly returning false if sth is false?
+    //if one of the list is false, the whole conjunction is false
+    //returning false immediately is a bit faster than always calculating all elements before returning the value
     @Override
     public boolean evaluate(AbstractWorld world) {
-        boolean evaluation = true;
         for (AbstractFormula formula : formulaList) {
-            evaluation = evaluation && formula.evaluate(world);
+            if (!formula.evaluate(world))
+                return false;
         }
-        return evaluation;
+        return true;
     }
 
     @Override
