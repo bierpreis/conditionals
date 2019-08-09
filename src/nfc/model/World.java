@@ -9,14 +9,14 @@ import java.util.List;
 
 public class World implements Comparable {
 
-    private final List<Integer> worlds;
+    private final List<Integer> WORLDS_LIST;
 
     private static View view = View.NUMBERS; //this default is for kbcreator. maybe delete later
     private static AbstractSignature signature;
 
 
     public World() {
-        worlds = new ArrayList<>();
+        WORLDS_LIST = new ArrayList<>();
 
     }
 
@@ -30,44 +30,44 @@ public class World implements Comparable {
     public int compareTo(Object o) {
         World otherWorld = (World) o;
 
-        if (worlds.size() < otherWorld.getWorldsList().size())
+        if (WORLDS_LIST.size() < otherWorld.getWorldsList().size())
             return -1;
-        if (worlds.size() > otherWorld.getWorldsList().size())
+        if (WORLDS_LIST.size() > otherWorld.getWorldsList().size())
             return 1;
 
-        for (int i = 0; i < worlds.size(); i++) {
-            if (worlds.get(i) > otherWorld.getWorldsList().get(i))
+        for (int i = 0; i < WORLDS_LIST.size(); i++) {
+            if (WORLDS_LIST.get(i) > otherWorld.getWorldsList().get(i))
                 return -1;
-            if (worlds.get(i) < otherWorld.getWorldsList().get(i))
+            if (WORLDS_LIST.get(i) < otherWorld.getWorldsList().get(i))
                 return 1;
 
         }
-        throw new RuntimeException("Comparing worlds failed!");
+        throw new RuntimeException("Comparing WORLDS_LIST failed!");
 
 
     }
 
 
     public List<Integer> getWorldsList() {
-        return worlds;
+        return WORLDS_LIST;
     }
 
     public int getSize() {
-        return worlds.size();
+        return WORLDS_LIST.size();
     }
 
     public void addInt(int worldToAdd) {
-        worlds.add(worldToAdd);
+        WORLDS_LIST.add(worldToAdd);
     }
 
     public void addList(List<Integer> newList) {
-        worlds.addAll(newList);
+        WORLDS_LIST.addAll(newList);
     }
 
     @Override
     public String toString() {
 
-        String originalString = worlds.toString();
+        String originalString = WORLDS_LIST.toString();
         originalString = originalString.replace('[', '{');
         originalString = originalString.replace(']', '}');
 
@@ -96,12 +96,12 @@ public class World implements Comparable {
         World worldToCompare = (World) o;
 
 
-        return this.worlds.equals(worldToCompare.getWorldsList());
+        return this.WORLDS_LIST.equals(worldToCompare.getWorldsList());
 
     }
 
     public void removeWorld(World worldsToRemove) {
-        worlds.removeAll(worldsToRemove.getWorldsList());
+        WORLDS_LIST.removeAll(worldsToRemove.getWorldsList());
     }
 
     public String translateNumbersToLetters(String string) {
