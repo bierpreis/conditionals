@@ -174,6 +174,7 @@ public class KBCreator implements Runnable {
                         //this part takes almost no time
                     } else {
 
+                        //todo: own method for this
                         AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
                         inconsistentKB.add(candidatePair.getKnowledgeBase());
                         inconsistentKB.add(r);
@@ -183,7 +184,7 @@ public class KBCreator implements Runnable {
                     }
 
                 }
-
+                //todo: own method for this
                 if (waitForKbWriter)
                     synchronized (this) {
                         try {
