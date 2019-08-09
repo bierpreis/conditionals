@@ -97,11 +97,9 @@ public class NewConditional {
                         throw new RuntimeException("Unknown World: " + worldInt);
 
                 }
-                //todo: make like the ab thing. could improve efficiency a bit
-                Conjunction conjunctionToAdd = new Conjunction(firstAtom, secondAtom, thirdAtom);
                 if (formulaToReturn == null)
-                    formulaToReturn = conjunctionToAdd;
-                else formulaToReturn = formulaToReturn.or(conjunctionToAdd);
+                    formulaToReturn = new Conjunction(firstAtom, secondAtom, thirdAtom);
+                else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom, thirdAtom));
 
             }
 
