@@ -231,7 +231,7 @@ public class NfcCreator {
         System.out.println("finished setting basic counter conditionals");
         //comment out the following 2 lines and you can see if the counter conditionals are set correct
         //for (NewConditional conditional : newConditionals) 
-        //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.getCounterConditional().getNumber());
+        //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.findCounterConditional().getNumber());
 
         return newConditionals;
     }
@@ -249,15 +249,15 @@ public class NfcCreator {
         long startTime = System.currentTimeMillis();
         //this takes very long. but is maybe the only way to set the counter conditional numbers?
         for (Conditional conditional : nfc) {
-            conditional.setActualCounterConditional(getCounterConditional(conditional, nfc));
+            conditional.setActualCounterConditional(findCounterConditional(conditional, nfc));
         }
         System.out.println("time for setting counter conditionals: " + (System.currentTimeMillis() - startTime) / 1000);
     }
 
-    private Conditional getCounterConditional(Conditional conditional, List<Conditional> nfc) {
-        for (Conditional otherConditional : nfc)
-            if (conditional.getBasicCounterContional().equals(otherConditional))
-                return otherConditional;
+    private Conditional findCounterConditional(Conditional conditional, List<Conditional> nfc) {
+        for (Conditional possibleCounterConditional : nfc)
+            if (conditional.getBasicCounterContional().equals(possibleCounterConditional))
+                return possibleCounterConditional;
 
         return null;
     }
