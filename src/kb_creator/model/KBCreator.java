@@ -94,9 +94,8 @@ public class KBCreator implements Runnable {
         AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
-
-        //todo: maybe here k -1??
-        l.finishIteration(k);
+        
+        l.finishIteration(k-1);
         //l.prepareIteration(k); //can already be deleted for dummypairbuffer
 
         //the following is the actual loop where the work is done

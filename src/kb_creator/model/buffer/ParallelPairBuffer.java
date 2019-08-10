@@ -179,7 +179,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     @Override
     public void clear(int requestedK) {
         if (deleteFiles) {
-            File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
+            File folderToDelete = new File(tmpFilePath + "/" + (requestedK) + "/");
 
             if (folderToDelete.exists()) {
                 for (File subFile : folderToDelete.listFiles())
@@ -229,7 +229,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-        File folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/"); //todo: files are in k -1. e.g. when preparing iteration 2 files are in folder 11
+        File folderToRead = new File(tmpFilePath + "/" + (requestedK) + "/"); //todo: files are in k -1. e.g. when preparing iteration 2 files are in folder 11
 
         hasNextIteration = folderToRead.exists();
 
