@@ -221,19 +221,17 @@ public class KBCreator implements Runnable {
     }
 
     private List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
-
-
         System.out.println("creating 1 element kbs");
 
         iterationNumberOfKBs = 0;
-        List<AbstractPair> l = new ArrayList<>();
+        List<AbstractPair> l = new ArrayList<>(cnfc.size());
 
         //line 3
         for (NewConditional r : cnfc) {
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
-            List<NewConditional> conditionalsToAdd = new ArrayList<>(cnfc.size());
+            List<NewConditional> conditionalsToAdd = new ArrayList<>();
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
