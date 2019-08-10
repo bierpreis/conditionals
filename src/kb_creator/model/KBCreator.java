@@ -95,7 +95,7 @@ public class KBCreator implements Runnable {
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
-        //todo: here is same k, later k and k+1 is used. and: put in init method!
+        //todo: maybe here k -1??
         l.finishIteration(k);
         //l.prepareIteration(k); //can already be deleted for dummypairbuffer
 
@@ -168,7 +168,7 @@ public class KBCreator implements Runnable {
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-                
+
                 //todo: is this still needed?!
                 //delete to save some memory
                 candidatePair.deleteCandidates();
