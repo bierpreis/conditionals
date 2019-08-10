@@ -178,7 +178,17 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void clear(int requestedK) {
-        //nothing
+        if (deleteFiles) {
+            File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
+
+            if (folderToDelete.exists()) {
+                for (File subFile : folderToDelete.listFiles())
+                    subFile.delete();
+
+                folderToDelete.delete();
+
+            }
+        }
     }
 
 
@@ -219,18 +229,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-        if (deleteFiles) {
-            File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
-
-            if (folderToDelete.exists()) {
-                for (File subFile : folderToDelete.listFiles())
-                    subFile.delete();
-
-                folderToDelete.delete();
-
-            }
-        }
-
         File folderToRead = new File(tmpFilePath + "/" + requestedK + "/");
 
         hasNextIteration = folderToRead.exists();
@@ -266,6 +264,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         flushWritingElements();
         lastIterationPairAmount = pairWriterCounter;
 
+        clear(requestedK);
+
+        prepareIteration(requestedK + 1);
         System.out.println("finished iteration: " + requestedK);
     }
 

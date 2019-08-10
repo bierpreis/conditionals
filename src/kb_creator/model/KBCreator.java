@@ -184,9 +184,6 @@ public class KBCreator implements Runnable {
             //todo: here the finish methods are called with diffrent ks, in init its same k
             l.finishIteration(k);
             k = k + 1;
-            l.prepareIteration(k);
-
-            l.clear(k - 1);
         }
         l.stopThread();
         creatorStatus = CreatorStatus.FINISHED;
