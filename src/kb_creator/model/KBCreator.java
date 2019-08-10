@@ -95,6 +95,7 @@ public class KBCreator implements Runnable {
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
+        //todo: here is same k, later k and k+1 is used. and: put in init method!
         l.finishIteration(k);
         l.prepareIteration(k);
 
@@ -148,7 +149,7 @@ public class KBCreator implements Runnable {
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
-                            
+
                         //line 12
                         //this takes about 30 percent of time
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
@@ -180,6 +181,7 @@ public class KBCreator implements Runnable {
             }
 
             //todo: maybe put theese 4 lines all together into l?
+            //todo: here the finish methods are called with diffrent ks, in init its same k
             l.finishIteration(k);
             k = k + 1;
             l.prepareIteration(k);
