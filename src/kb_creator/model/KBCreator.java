@@ -74,11 +74,14 @@ public class KBCreator implements Runnable {
         AbstractPair.setNfc(nfcCreator.getNfcMap());
         AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
+        Thread kbWriterThread = new Thread(kbWriter);
+        kbWriterThread.start();
+
     }
 
     @Override
     public void run() {
-
+        creatorStatus = CreatorStatus.RUNNING;
         System.out.println("creator thread started");
 
 
@@ -86,11 +89,6 @@ public class KBCreator implements Runnable {
 
 
         //todo: put as much as possible of this stuff in constructor
-        Thread kbWriterThread = new Thread(kbWriter);
-        kbWriterThread.start();
-
-
-        creatorStatus = CreatorStatus.RUNNING;
 
 
         k = 1;
@@ -101,10 +99,7 @@ public class KBCreator implements Runnable {
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
-        l.finishIteration(k - 1);
-        //l.prepareIteration(k); //can already be deleted for dummypairbuffer
-
-        //the following is the actual loop where the work is done
+        l.finishIteration(k - 1); //todo: put in init?
 
         //line 6
         while (l.hasElementsForK(k)) {
