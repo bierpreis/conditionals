@@ -229,7 +229,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-        File folderToRead = new File(tmpFilePath + "/" + requestedK + "/");
+        File folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/"); //todo: files are in k -1. e.g. when preparing iteration 2 files are in folder 11
 
         hasNextIteration = folderToRead.exists();
 

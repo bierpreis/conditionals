@@ -52,7 +52,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
         prepareIteration(requestedK + 1);
-        clear(requestedK - 1);
+        clear(requestedK - 1); //todo: when preparing iteration 2, it deletes iteration 0! this should not be?!
     }
 
     @Override

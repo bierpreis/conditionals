@@ -97,7 +97,7 @@ public class KBCreator implements Runnable {
 
         //todo: here is same k, later k and k+1 is used. and: put in init method!
         l.finishIteration(k);
-        l.prepareIteration(k); //can already be deleted for dummypairbuffer
+        //l.prepareIteration(k); //can already be deleted for dummypairbuffer
 
         //the following is the actual loop where the work is done
 
