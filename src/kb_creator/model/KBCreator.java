@@ -39,7 +39,6 @@ public class KBCreator implements Runnable {
 
     private float progress;
 
-    private boolean isBufferingActive;
 
     private Collection<NewConditional> nfc;
 
@@ -53,13 +52,11 @@ public class KBCreator implements Runnable {
         this.signature = signature;
         waitForKbWriter = false;
 
-        if (kbFilePath != null) {
+        //kbFilePath is null when no buffering is requested
+        if (kbFilePath != null)
             kbWriter = new KbFileWriter(kbFilePath);
-            isBufferingActive = true;
-        } else {
+        else
             kbWriter = new KbDummyWriter();
-            isBufferingActive = false;
-        }
 
         lastIterationAmount = 0;
 
