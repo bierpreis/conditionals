@@ -41,6 +41,10 @@ public class KBCreator implements Runnable {
 
     private boolean isBufferingActive;
 
+    private Collection<NewConditional> nfc;
+
+    Collection<NewConditional> cnfc;
+
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
@@ -59,13 +63,24 @@ public class KBCreator implements Runnable {
 
         lastIterationAmount = 0;
 
+        creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
+
+        NfcCreator nfcCreator = new NfcCreator(signature);
+
+        nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
+
+        cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
+
+        AbstractPair.setNfc(nfcCreator.getNfcMap());
+        AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
+
     }
 
     @Override
     public void run() {
 
         System.out.println("creator thread started");
-        creatorStatus = CreatorStatus.CREATING_CONDITIONALS; //todo: this should be set in constructor but at the end running should be set
+
 
         startTime = System.currentTimeMillis();
 
@@ -74,7 +89,6 @@ public class KBCreator implements Runnable {
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();
 
-        NfcCreator nfcCreator = new NfcCreator(signature);
 
         creatorStatus = CreatorStatus.RUNNING;
 
@@ -84,14 +98,6 @@ public class KBCreator implements Runnable {
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(new ArrayList<>(0));
 
-
-        Collection<NewConditional> nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
-
-
-        Collection<NewConditional> cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
-
-        AbstractPair.setNfc(nfcCreator.getNfcMap());
-        AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
