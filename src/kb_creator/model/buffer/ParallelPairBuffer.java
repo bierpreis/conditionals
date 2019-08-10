@@ -101,8 +101,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                     AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
                     sb.append(pairToWrite.toFileString());
                     sb.append("\nEND_PAIR\n\n");
-                    pairToWrite.deleteCandidates();
-                    pairToWrite.deleteKB();
+                    pairToWrite.clear();
                     pairWriterCounter++;
 
                 }

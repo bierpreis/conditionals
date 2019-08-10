@@ -17,7 +17,7 @@ public abstract class AbstractPair {
         return knowledgeBase;
     }
 
-    public void deleteKB() {
+    private void deleteKB() {
         knowledgeBase = null;
     }
 
@@ -32,7 +32,7 @@ public abstract class AbstractPair {
 
     public abstract String toString();
 
-    public abstract void deleteCandidates();
-
     public abstract String toFileString();
+
+    public abstract void clear();
 }

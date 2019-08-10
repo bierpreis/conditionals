@@ -126,8 +126,8 @@ public class CompressedArrayPair extends AbstractPair {
         return sb.toString();
     }
 
-    @Override
-    public void deleteCandidates() {
+    public void clear(){
+        knowledgeBase = null;
         compressedCandidatesArray = null;
     }
 

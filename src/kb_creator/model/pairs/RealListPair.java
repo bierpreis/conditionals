@@ -91,10 +91,6 @@ public class RealListPair extends AbstractPair {
         return sb.toString();
     }
 
-    @Override
-    public void deleteCandidates() {
-        candidatesList = null;
-    }
 
     //this method creates a file string compressed with the compression in this pair implementation
     //therefore the file is much shorter
@@ -141,6 +137,12 @@ public class RealListPair extends AbstractPair {
         }
 
         return sb.toString().replaceAll(", $", "");
+    }
+
+    @Override
+    public void clear() {
+        candidatesList = null;
+        knowledgeBase = null;
     }
 
     class NumberPair {

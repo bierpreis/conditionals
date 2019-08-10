@@ -170,12 +170,8 @@ public class KBCreator implements Runnable {
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
-                //todo: is this still needed?!
-                //delete to save some memory
-                candidatePair.deleteCandidates();
-                //delete written candidates to save memory
-                candidatePair.deleteKB();
-                //System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
+                //this saves a lot of memory
+                candidatePair.clear();
             }
             l.finishIteration(k);
             k = k + 1;
