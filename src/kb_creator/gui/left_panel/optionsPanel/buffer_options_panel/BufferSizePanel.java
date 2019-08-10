@@ -12,7 +12,7 @@ public class BufferSizePanel extends JPanel {
 
     public BufferSizePanel() {
         descriptionLabel = new JLabel("Number of Candidates in File: ");
-        bufferSizeField = new JTextField("100");
+        bufferSizeField = new JTextField("500");
         add(descriptionLabel);
         add(bufferSizeField);
 
