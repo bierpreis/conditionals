@@ -65,7 +65,7 @@ public class KBCreator implements Runnable {
     public void run() {
 
         System.out.println("creator thread started");
-        creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
+        creatorStatus = CreatorStatus.CREATING_CONDITIONALS; //todo: this should be set in constructor but at the end running should be set
 
         startTime = System.currentTimeMillis();
 
@@ -94,8 +94,8 @@ public class KBCreator implements Runnable {
         AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
-        
-        l.finishIteration(k-1);
+
+        l.finishIteration(k - 1);
         //l.prepareIteration(k); //can already be deleted for dummypairbuffer
 
         //the following is the actual loop where the work is done
