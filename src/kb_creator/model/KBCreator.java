@@ -231,28 +231,23 @@ public class KBCreator implements Runnable {
         //line 3
         for (NewConditional r : cnfc) {
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);//todo: recreate original constructor? or how to get signature in there?!
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
-            List<NewConditional> conditionalsToAdd = new ArrayList<>();
+            List<NewConditional> conditionalsToAdd = new ArrayList<>(cnfc.size());
             for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
 
-            //no buffereing for first iteration because there is no use for it
+            //no buffereing for first iteration because it almost makes no difference
             l.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
             nextCandidatePairAmount++;
         }
 
-
-        for (AbstractPair candidatePair : l) {
+        for (AbstractPair candidatePair : l)
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
-            // cpWriter.writePair(candidatePair);
-        }
-
 
         System.out.println("finished 1 element kbs");
-        //cpWriter.deleteFiles(1);
         return l;
     }
 
