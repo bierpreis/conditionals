@@ -53,8 +53,9 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
         prepareIteration(requestedK + 1);
 
+        //dont clear list(-1) it wont work
         if (requestedK != 0)
-            clear(requestedK - 1); //todo: when preparing iteration 2, it deletes iteration 0! this should not be?!
+            clear(requestedK - 1);
     }
 
     @Override
