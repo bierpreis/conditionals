@@ -195,6 +195,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public AbstractPair getNextPair(int currentK) {
         while (queueToReturn.peek() == null)
             try {
+                //todo: this happens all the time with ab and buffering
                 System.out.println("buffer sleeping because queue is empty! this should only happen when new iteration is started.");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
