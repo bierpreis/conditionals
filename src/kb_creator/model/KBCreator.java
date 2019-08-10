@@ -81,18 +81,12 @@ public class KBCreator implements Runnable {
         creatorStatus = CreatorStatus.RUNNING;
         System.out.println("creator thread started");
 
-
         startTime = System.currentTimeMillis();
-
-
-        //todo: put as much as possible of this stuff in constructor
-
 
         k = 1;
         //add empty list to l because java buffer start at 0 and original algorithm starts list at 1
         //then k and k+1 values are the same here and in the original algorithm
         l.addNewList(new ArrayList<>(0));
-
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
@@ -104,11 +98,8 @@ public class KBCreator implements Runnable {
             System.gc();
 
             int iterationPairCounter = 0;
-
-
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
-
             iterationNumberOfKBs = 0;
 
             //line  7
@@ -120,7 +111,6 @@ public class KBCreator implements Runnable {
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
-
 
                 //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
                 AbstractPair candidatePair = l.getNextPair(k);
@@ -151,12 +141,10 @@ public class KBCreator implements Runnable {
                         //line 12
                         //this takes about 30 percent of time
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
-
-
+                        
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
-
 
                         //save inconsistent knowledge base
                         //this part takes almost no time
