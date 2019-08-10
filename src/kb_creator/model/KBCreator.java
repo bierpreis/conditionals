@@ -163,15 +163,12 @@ public class KBCreator implements Runnable {
                         //save inconsistent knowledge base
                         //this part takes almost no time
                     } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
-
-
                 }
                 checkIfWaitForWriter();
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-
-
+                
                 //todo: is this still needed?!
                 //delete to save some memory
                 candidatePair.deleteCandidates();
@@ -179,9 +176,6 @@ public class KBCreator implements Runnable {
                 candidatePair.deleteKB();
                 //System.out.println("overall time: " + (System.nanoTime() - overallStart) / 1000);
             }
-
-            //todo: maybe put theese 4 lines all together into l?
-            //todo: here the finish methods are called with diffrent ks, in init its same k
             l.finishIteration(k);
             k = k + 1;
         }
