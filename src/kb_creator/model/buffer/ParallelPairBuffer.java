@@ -195,7 +195,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public AbstractPair getNextPair(int currentK) {
         while (queueToReturn.peek() == null)
             try {
-                //todo: this happens all the time with ab and buffering
+                //todo: this happens all the time with ab and buffering ->it happens always when reading files. put more data in file?!
                 System.out.println("buffer sleeping because queue is empty! this should only happen when new iteration is started.");
                 Thread.sleep(100);
             } catch (InterruptedException e) {

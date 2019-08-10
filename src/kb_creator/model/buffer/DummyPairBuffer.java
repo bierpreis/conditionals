@@ -47,6 +47,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     //todo: maybe later put all in one method, remove the others
+    //or: put this into abstract method and the submethods in impelementations
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
