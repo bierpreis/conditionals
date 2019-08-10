@@ -215,7 +215,7 @@ public class KBCreator implements Runnable {
         System.out.println("creating 1 element kbs");
 
         iterationNumberOfKBs = 0;
-        List<AbstractPair> l = new ArrayList<>(cnfc.size());
+        List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
         //line 3
         for (NewConditional r : cnfc) {
@@ -228,16 +228,16 @@ public class KBCreator implements Runnable {
                     conditionalsToAdd.add(conditional);
 
             //no buffereing for first iteration because it almost makes no difference
-            l.add(new RealListPair(rKB, conditionalsToAdd));
+            listToReturn.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
             nextCandidatePairAmount++;
         }
 
-        for (AbstractPair candidatePair : l)
+        for (AbstractPair candidatePair : listToReturn)
             kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
 
         System.out.println("finished 1 element kbs");
-        return l;
+        return listToReturn;
     }
 
 
