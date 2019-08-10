@@ -48,8 +48,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        if (requestedK != 1) //todo: maybe delete after fixing the k and k+1 issue in genkb?
-            lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
+            lastIterationPairAmount = candidatePairList.get(requestedK).size();
     }
 
     @Override
