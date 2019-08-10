@@ -23,7 +23,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     private Queue<AbstractPair> queueToReturn;
     //if queue to return is lower than this value, a new file will be read and the queue gets filled again
-    private final int READ_QUEUE_MIN = 100;
+    private final int READ_QUEUE_MIN = 1000;
 
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
@@ -205,7 +205,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public AbstractPair getNextPair(int currentK) {
         while (queueToReturn.peek() == null)
             try {
-                //todo: this happens all the time with ab and buffering ->it happens always when reading files. put more data in file?!
+                //todo: this happens all the time with ab and buffering ->it happens always when reading files. put more data in file?! and queue min in here.
                 System.out.println("buffer sleeping because queue is empty! this should only happen when new iteration is started.");
                 Thread.sleep(100);
             } catch (InterruptedException e) {
