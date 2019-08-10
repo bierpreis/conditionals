@@ -47,6 +47,12 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
+    public void finishIteration(int requestedK) {
+        if (requestedK != 1) //todo: maybe delete after fixing the k and k+1 issue in genkb?
+            lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
+    }
+
+    @Override
     public void addNewList(List<AbstractPair> listToAdd) {
         candidatePairList.add(listToAdd);
     }
@@ -61,11 +67,6 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList.get(candidatePairList.size() - 1).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
-    @Override
-    public void finishIteration(int requestedK) {
-        if (requestedK != 1)
-            lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
-    }
 
     @Override
     public int getQueueToWriteSize() {
