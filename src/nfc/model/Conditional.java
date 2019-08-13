@@ -6,7 +6,7 @@ public class Conditional implements Comparable {
 
     private Conditional counterConditional;
 
-    //this is needed for porper columns in conditional field
+    //this is needed for proper columns in conditional field
     private static int longestConditional = 0;
 
 
@@ -126,7 +126,7 @@ public class Conditional implements Comparable {
 
     //this returns a new counter conditional
     //which is used to find the actual counter conditional
-    public Conditional getBasicCounterContional() {
+    public Conditional getBasicCounterConditional() {
 
         World newConsequence = new World();
         newConsequence.addList(antecedent.getWorldsList());

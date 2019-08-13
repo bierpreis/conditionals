@@ -256,7 +256,7 @@ public class NfcCreator {
 
     private Conditional findCounterConditional(Conditional conditional, List<Conditional> nfc) {
         for (Conditional possibleCounterConditional : nfc)
-            if (conditional.getBasicCounterContional().equals(possibleCounterConditional))
+            if (conditional.getBasicCounterConditional().equals(possibleCounterConditional))
                 return possibleCounterConditional;
 
         return null;
