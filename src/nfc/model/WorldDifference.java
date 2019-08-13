@@ -4,6 +4,7 @@ import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,8 +40,8 @@ public class WorldDifference {
             if (!world1.getWorldsList().get(i).equals(world2.getWorldsList().get(i)))
                 differenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
         }
-        //todo: arrayList?!
-        List<WorldsPair> cleanedDifferenceList = new LinkedList<>();
+
+        List<WorldsPair> cleanedDifferenceList = new ArrayList<>();
         for (WorldsPair worldsPair : differenceList) {
             if (!worldsPair.isEquivalent())
                 cleanedDifferenceList.add(worldsPair);
