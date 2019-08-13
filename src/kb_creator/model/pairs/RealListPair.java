@@ -54,11 +54,11 @@ public class RealListPair extends AbstractPair {
                 throw new RuntimeException("Invalid compressed candidates String: " + stringFromFile);
 
 
-            int firstNumer = Integer.parseInt(twoString[0]);
+            int firstNumber = Integer.parseInt(twoString[0]);
 
-            int secondNumer = Integer.parseInt(twoString[1]);
+            int secondNumber = Integer.parseInt(twoString[1]);
 
-            for (int i = firstNumer; i <= secondNumer; i++) {
+            for (int i = firstNumber; i <= secondNumber; i++) {
                 listToReturn.add(nfcMap.get(i));
             }
 

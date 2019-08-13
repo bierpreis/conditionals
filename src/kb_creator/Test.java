@@ -78,7 +78,7 @@ public class Test {
 
         System.out.println(newFirstConditional.getCounterConditional());
     }
-    
+
     private static void formulaTest() {
         AbstractFormula a = new Atom(Variable.a);
         AbstractFormula b = new Atom(Variable.b);
