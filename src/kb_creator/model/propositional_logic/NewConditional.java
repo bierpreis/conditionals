@@ -153,7 +153,6 @@ public class NewConditional {
     public void setBasicCounterConditional(Conditional oldCounterConditional) {
         this.counterConditional = new NewConditional(oldCounterConditional);
         this.counterConditional.setNumber(oldCounterConditional.getNumber());
-        //todo: maybe use this number to get the real conditional from map? would be much faster.
     }
 
 
