@@ -10,7 +10,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        signatureTest();
+        formulaTest();
 
     }
 
@@ -78,8 +78,7 @@ public class Test {
 
         System.out.println(newFirstConditional.getCounterConditional());
     }
-
-    //todo: test logic here
+    
     private static void formulaTest() {
         AbstractFormula a = new Atom(Variable.a);
         AbstractFormula b = new Atom(Variable.b);
@@ -91,5 +90,9 @@ public class Test {
         AbstractFormula second = new Conjunction(c, b, a);
 
         System.out.println(first.equals(second));
+
+        AbstractFormula third = first.or(second);
+
+        System.out.println(third);
     }
 }
