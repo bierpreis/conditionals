@@ -64,8 +64,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
-    //todo: really think about this again. very important!!
-
     public boolean isConsistent(NewConditional conditionalToTest) {
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
@@ -99,7 +97,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         for (NewConditional conditionalFromList : conditionalList) {
             if (consistencyOfKB == null)
                 //this is actually the implication
-                //todo: why is the first formula always conjunction and rest disjunction?! wtf
                 consistencyOfKB = conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence());
             else
                 consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
