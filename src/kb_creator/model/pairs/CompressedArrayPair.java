@@ -183,6 +183,6 @@ public class CompressedArrayPair extends AbstractPair {
             }
             pairNumber++;
         }
-        return sb.toString().replace(", $", "");
+        return sb.toString().replaceAll(", $", "");
     }
 }

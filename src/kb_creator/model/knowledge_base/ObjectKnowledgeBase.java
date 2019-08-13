@@ -100,7 +100,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
             if (consistencyOfKB == null)
                 //this is actually the implication
                 //todo: why is the first formula always conjunction and rest disjunction?! wtf
-                consistencyOfKB = new Conjunction(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
+                consistencyOfKB = conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence());
             else
                 consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }

@@ -136,7 +136,7 @@ public class RealListPair extends AbstractPair {
             sb.append(", ");
         }
 
-        return sb.toString().replace(", $", "");
+        return sb.toString().replaceAll(", $", "");
     }
 
     @Override
