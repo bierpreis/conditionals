@@ -39,7 +39,7 @@ public class WorldDifference {
             if (!world1.getWorldsList().get(i).equals(world2.getWorldsList().get(i)))
                 differenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
         }
-
+        //todo: arrayList?!
         List<WorldsPair> cleanedDifferenceList = new LinkedList<>();
         for (WorldsPair worldsPair : differenceList) {
             if (!worldsPair.isEquivalent())
