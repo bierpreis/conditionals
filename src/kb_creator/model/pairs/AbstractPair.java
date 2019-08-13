@@ -16,7 +16,7 @@ public abstract class AbstractPair {
     public AbstractKnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
-    
+
     public static void setNfc(Map<Integer, NewConditional> nfc) {
         nfcMap = nfc;
     }
