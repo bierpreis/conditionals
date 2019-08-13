@@ -27,7 +27,6 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected volatile boolean flushRequested;
 
     protected AtomicInteger requestedListNumber;
-    protected List<AbstractPair> requestedList;
 
 
     protected int lastIterationPairAmount;
@@ -46,12 +45,13 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     abstract public boolean hasElementsForK(int requestedK);
 
-    abstract public void prepareIteration(int requestedK);
+    protected abstract void prepareIteration(int requestedK);
 
     public abstract void finishIteration(int requestedK);
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
+    //todo: when is it used? put in finish iteration?
     public abstract void flushWritingElements();
 
     public abstract void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd);
@@ -61,7 +61,7 @@ public abstract class AbstractPairBuffer implements Runnable {
         return status;
     }
 
-    public abstract void clear(int requestedK);
+    protected abstract void clear(int requestedK);
 
     public int getQueueToWriteSize() {
         return cpQueueToWrite.size();

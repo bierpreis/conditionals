@@ -220,7 +220,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public void prepareIteration(int requestedK) {
+    protected void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 

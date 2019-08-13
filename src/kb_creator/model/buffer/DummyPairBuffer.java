@@ -42,20 +42,19 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void clear(int requestedK) {
-        candidatePairList.get(requestedK).clear();
+    protected void clear(int requestedK) {
+        //dont clear list(-1) it wont work
+        if (requestedK > 0)
+            candidatePairList.get(requestedK).clear();
     }
 
-    //todo: maybe later put all in one method, remove the others
-    //or: put this into abstract method and the submethods in impelementations
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
         prepareIteration(requestedK + 1);
 
-        //dont clear list(-1) it wont work
-        if (requestedK != 0)
-            clear(requestedK - 1);
+
+        clear(requestedK - 1);
     }
 
     @Override
