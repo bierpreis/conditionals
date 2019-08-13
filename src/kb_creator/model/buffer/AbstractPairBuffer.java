@@ -51,9 +51,6 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
-    //todo: when is it used? put in finish iteration?
-    public abstract void flushWritingElements();
-
     public abstract void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd);
 
 

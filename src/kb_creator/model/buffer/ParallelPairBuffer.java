@@ -144,15 +144,12 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             pairsList.add(new RealListPair(stringFromFile));
             pairReaderCounter++;
         }
-
-
+        
         readingFileNameCounter++;
         return pairsList;
     }
 
-
-    @Override
-    public void flushWritingElements() {
+    private void flushWritingElements() {
         System.out.println("flushing " + cpQueueToWrite.size() + " elements");
 
         flushRequested = true;
