@@ -41,6 +41,7 @@ public class KBCreator implements Runnable {
 
     private Collection<NewConditional> nfc;
 
+    //todo
     Collection<NewConditional> cnfc;
 
 
