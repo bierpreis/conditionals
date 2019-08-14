@@ -42,6 +42,7 @@ public class RealListPair extends AbstractPair {
         for (String string : stringArray) {
             string = string.replaceAll("\n", "");
 
+            //todo: only check first string for this?!
             //return empty list if there are no candidates
             if (string.equals("EMPTY"))
                 return listToReturn;
