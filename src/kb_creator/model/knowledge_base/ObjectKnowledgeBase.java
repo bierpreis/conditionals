@@ -44,6 +44,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         stringFromFile = stringFromFile.replaceAll("\n", "");
         String[] splitString1 = stringFromFile.split("signature");
 
+        //todo: every signature gets a new object. this is way too much.
         if (ABC_PATTERN.matcher(splitString1[1]).matches())
             signature = new ABC();
         else if (AB_PATTERN.matcher(splitString1[1]).matches())

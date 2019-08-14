@@ -28,6 +28,9 @@ public abstract class AbstractFormula {
     //if(o.evaluate!=this.evaluate
     //return false
     //else return true
+
+    //therefore the signature is needed (there are the possible worlds)
+    //make this static somewhere? or what?
     @Override
     public abstract boolean equals(Object o);
 
