@@ -43,7 +43,7 @@ public class Conjunction extends AbstractFormula {
     //this is not really correct but should work in all cases it will be used
     @Override
     public boolean equals(Object o) {
-
+        System.out.println("equals was called!!");
         if (!(o instanceof Conjunction))
             return false;
 

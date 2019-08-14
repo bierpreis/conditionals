@@ -22,6 +22,12 @@ public abstract class AbstractFormula {
     @Override
     public abstract String toString();
 
+    //todo: some real equals method.
+    //sth like:
+    //for world world: worlds
+    //if(o.evaluate!=this.evaluate
+    //return false
+    //else return true
     @Override
     public abstract boolean equals(Object o);
 

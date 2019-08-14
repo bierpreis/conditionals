@@ -52,7 +52,7 @@ public class Disjunction extends AbstractFormula {
     @Override
     public boolean equals(Object o) {
 
-
+        System.out.println("equals was called!!");
         if (!(o instanceof Disjunction))
             return false;
 
