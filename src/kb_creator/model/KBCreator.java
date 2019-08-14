@@ -1,6 +1,5 @@
 package kb_creator.model;
 
-import kb_creator.model.pairs.CompressedArrayPair;
 import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
@@ -104,8 +103,6 @@ public class KBCreator implements Runnable {
 
             //line  7
             l.addNewList(new ArrayList<>());
-
-            //lastIterationAmount = l.getLastIterationPairAmount();
 
             //this loop is line 8
             while (l.hasMoreElements(k)) {
