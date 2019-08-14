@@ -104,7 +104,7 @@ public class KBCreator implements Runnable {
             //line  7
             l.addNewList(new ArrayList<>());
 
-            //this loop is line 8
+            //this is line 8
             while (l.hasMoreElements(k)) {
                 long overallStart = System.nanoTime();
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
@@ -138,7 +138,7 @@ public class KBCreator implements Runnable {
                         //line 12
                         //this takes about 30 percent of time
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
-                        
+
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
@@ -264,6 +264,7 @@ public class KBCreator implements Runnable {
 
     private float calculateProgress(int pairCounter, int lastIterationAmount) {
 
+        //avoid division with zero
         if (lastIterationAmount == 0) {
             return 0;
 
