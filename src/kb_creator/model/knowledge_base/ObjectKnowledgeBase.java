@@ -17,7 +17,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private List<NewConditional> conditionalList;
 
-    //todo: this is shit. it takes much space. make static? only make when its needed? pattern takes much space!
+    //todo: this is shit. it takes much space. pattern could be in signature!
+    //also search for patterns in whole project. they take most space!
     private final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
     private final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
 
