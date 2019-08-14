@@ -9,8 +9,7 @@ import java.util.List;
 
 public class RealListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
-
-    //todo: think about everything in here. this class is very important!
+    
     public RealListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
@@ -37,16 +36,14 @@ public class RealListPair extends AbstractPair {
 
         List<NewConditional> listToReturn = new ArrayList<>();
 
+        //this will trigger if there are no candidates
+        if (stringFromFile.equals("EMPTY"))
+            return listToReturn;
+
         String[] stringArray = stringFromFile.split(", ");
 
         for (String string : stringArray) {
             string = string.replaceAll("\n", "");
-
-            //todo: only check first string for this?!
-            //return empty list if there are no candidates
-            if (string.equals("EMPTY"))
-                return listToReturn;
-
 
             String[] twoString = string.split("-");
 
