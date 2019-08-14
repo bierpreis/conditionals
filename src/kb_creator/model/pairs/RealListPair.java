@@ -9,7 +9,7 @@ import java.util.List;
 
 public class RealListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
-    
+
     public RealListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 

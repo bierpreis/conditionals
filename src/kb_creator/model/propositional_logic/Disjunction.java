@@ -32,8 +32,8 @@ public class Disjunction extends AbstractFormula {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (AbstractFormula formua : formulaList) {
-            sb.append(formua.toString());
+        for (AbstractFormula formula : formulaList) {
+            sb.append(formula.toString());
             sb.append(", ");
         }
         //remove the ", " at the end

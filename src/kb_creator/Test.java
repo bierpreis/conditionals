@@ -2,7 +2,9 @@ package kb_creator;
 
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.*;
+import kb_creator.model.propositional_logic.worlds.ABCWorld;
 import kb_creator.model.propositional_logic.worlds.ABWorld;
+import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import nfc.model.Conditional;
 import nfc.model.World;
 
@@ -83,16 +85,24 @@ public class Test {
         AbstractFormula a = new Atom(Variable.a);
         AbstractFormula b = new Atom(Variable.b);
         AbstractFormula c = new Atom(Variable.c);
-        c = c.neg();
+
+        AbstractFormula notB = new Atom(Variable.b).neg();
+
+        AbstractWorld testWorld = new ABCWorld(true, false, true);
+
 
         AbstractFormula first = new Conjunction(a, b, c);
 
-        AbstractFormula second = new Conjunction(c, b, a);
+        System.out.println("first: " + first.evaluate(testWorld));
 
-        System.out.println(first.equals(second));
+        AbstractFormula second = new Conjunction(c, notB, a);
+
+        System.out.println("second: " + second.evaluate(testWorld));
+
+        //System.out.println(first.equals(second));
 
         AbstractFormula third = first.or(second);
 
-        System.out.println(third);
+        System.out.println(third.evaluate(testWorld));
     }
 }
