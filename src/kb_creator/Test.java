@@ -2,6 +2,8 @@ package kb_creator;
 
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.*;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.worlds.ABCWorld;
 import kb_creator.model.propositional_logic.worlds.ABWorld;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
@@ -91,9 +93,11 @@ public class Test {
         AbstractWorld testWorld = new ABCWorld(true, false, true);
 
 
-        AbstractFormula first = new Conjunction(a, b, c);
+        AbstractFormula first = new Conjunction(a, notB, c);
+        AbstractSignature abc = new ABC();
 
-        System.out.println("first: " + first.evaluate(testWorld));
+        for (AbstractWorld world : abc.getPossibleWorlds())
+            System.out.println("first: " + first.evaluate(world) + "(" + world + ")");
 
         AbstractFormula second = new Conjunction(c, notB, a);
 
