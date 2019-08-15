@@ -24,15 +24,18 @@ public abstract class AbstractFormula {
     @Override
     public abstract String toString();
 
-    //todo: some real equals method.
-    //sth like:
-    //for world world: worlds
-    //if(o.evaluate!=this.evaluate
-    //return false
-    //else return true
-    
+    //todo: test
     @Override
-    public abstract boolean equals(Object o);
+    public boolean equals(Object o) {
+        if (!(o instanceof AbstractFormula))
+            return false;
+
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
+            if (!this.evaluate(world) == ((AbstractFormula) o).evaluate(world))
+                return false;
+        }
+        return true;
+    }
 
     public static void setSignature(AbstractSignature requestedSignature) {
         signature = requestedSignature;
