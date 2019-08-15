@@ -36,10 +36,6 @@ public class RealListPair extends AbstractPair {
 
         List<NewConditional> listToReturn = new ArrayList<>();
 
-        //this will trigger if there are no candidates
-        if (stringFromFile.equals("EMPTY"))
-            return listToReturn;
-
         String[] stringArray = stringFromFile.split(", ");
 
         for (String string : stringArray) {
@@ -47,6 +43,10 @@ public class RealListPair extends AbstractPair {
 
             String[] twoString = string.split("-");
 
+
+            //this will return empty list if there are no candidates
+            if (twoString[0].equals("EMPTY"))
+                return listToReturn;
 
             if (twoString.length != 2)
                 throw new RuntimeException("Invalid compressed candidates String: " + stringFromFile);

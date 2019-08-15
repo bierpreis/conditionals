@@ -112,6 +112,7 @@ public class Test {
     }
 
     private static void equalsTest() {
+        //todo: more test with this
         AbstractFormula.setSignature(new AB());
 
         AbstractFormula first = new Disjunction(new Atom(Variable.a));
