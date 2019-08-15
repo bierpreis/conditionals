@@ -25,18 +25,5 @@ public class Negation extends AbstractFormula {
     public AbstractFormula neg() {
         return formula;
     }
-
-/*    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Negation))
-            return false;
-        Negation otherNegation = (Negation) o;
-        return otherNegation.getFormula().equals(formula);
-    }*/
     
-    private AbstractFormula getFormula() {
-        return formula;
-    }
-
-
 }
