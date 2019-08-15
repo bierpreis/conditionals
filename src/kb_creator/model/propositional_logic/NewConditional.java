@@ -24,7 +24,10 @@ public class NewConditional {
         number = oldConditional.getNumber();
     }
 
-    //todo: really think about this one.
+
+    //this translates possible worlds to propositional formulas
+    //the returned formulas are conjunctions of the list of possible worlds
+    //like this the formulas are not as short as possible but correct
     private AbstractFormula worldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
 

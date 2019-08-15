@@ -112,15 +112,23 @@ public class Test {
     }
 
     private static void equalsTest() {
-        //todo: more test with this
         AbstractFormula.setSignature(new AB());
 
-        AbstractFormula first = new Disjunction(new Atom(Variable.a));
 
-        AbstractFormula second = new Disjunction(new Atom(Variable.b));
+        AbstractFormula a = new Atom(Variable.a);
 
-        AbstractFormula third = first.or(second);
+        AbstractFormula b = new Atom(Variable.b);
 
-        System.out.println(third.equals(first));
+        AbstractFormula first = a.or(b.neg());
+
+        AbstractFormula second = a.and(b).or(a.and(b.neg())).or(a.neg().and(b.neg()));
+
+        System.out.println(first.equals(second));
+
+        System.out.println(a.equals(a.and(b).or(a.and(b.neg()))));
+
+        System.out.println(a.or(b.neg()).equals(a.and(b).or(a.and(b.neg()).or(a.neg().and(b.neg())))));
+
+        System.out.println(b.neg().equals(a.and(b.neg()).or(a.neg().and(b))));
     }
 }
