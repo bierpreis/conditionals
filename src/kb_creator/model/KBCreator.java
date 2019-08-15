@@ -108,38 +108,44 @@ public class KBCreator implements Runnable {
 
             //this is line 8
             while (l.hasMoreElements(k)) {
-                long overallStart = System.nanoTime();
+
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
                 //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
                 AbstractPair candidatePair = l.getNextPair(k);
 
                 iterationPairCounter++;
-
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
-                    long candidateStart;
+                    long overallStart = System.nanoTime();
                     //line 10 //
                     //consistency check takes almost no time
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-
+                        System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
                         //next part is line 11 and 12
 
+                        long kbCreationStart = System.nanoTime();
                         //first create the new knowledge base
+                        //takes very little time
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
+                        System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
-
+                        long beforeCandidates = System.nanoTime();
                         //create candidates set
                         //this loop takes most of the time (70 percent)
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
+                        System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
+                        //todo: try adding all pairs at once maybe?
                         //line 12
                         //this takes about 30 percent of time
+                        long beforeAddingPair = System.nanoTime();
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
+                        System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
@@ -148,14 +154,18 @@ public class KBCreator implements Runnable {
                         //save inconsistent knowledge base
                         //this part takes almost no time
                     } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
+                    System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
                 }
+                long overallStart = System.currentTimeMillis();
+                //this both takes almost no time
                 checkIfWaitForWriter();
-
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-
+                System.out.println("overall time: " + (System.currentTimeMillis() - overallStart) + "ms");
                 //this saves a lot of memory
+                //this takes almost no time
                 candidatePair.clear();
+
             }
             l.finishIteration(k);
             k = k + 1;
