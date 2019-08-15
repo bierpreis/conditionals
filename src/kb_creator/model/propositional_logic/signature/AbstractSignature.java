@@ -7,8 +7,7 @@ import java.util.List;
 
 public abstract class AbstractSignature {
     protected List<AbstractWorld> possibleWorlds;
-
-    //todo: signature should only be cosntructed once. make sure!
+    
     @Override
     abstract public String toString();
 
