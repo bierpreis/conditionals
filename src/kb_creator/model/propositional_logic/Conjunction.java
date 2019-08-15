@@ -40,7 +40,7 @@ public class Conjunction extends AbstractFormula {
         return sb.toString();
     }
 
-    //this is not really correct but should work in all cases it will be used
+/*    //this is not really correct but should work in all cases it will be used
     @Override
     public boolean equals(Object o) {
         System.out.println("equals was called!!");
@@ -61,15 +61,8 @@ public class Conjunction extends AbstractFormula {
 
         return true;
 
-    }
+    }*/
 
-    @Override
-    public AbstractFormula and(AbstractFormula otherFormula) {
-        if (otherFormula instanceof Conjunction) {
-            formulaList.addAll(((Conjunction) otherFormula).getFormulaList());
-            return this;
-        } else return super.and(otherFormula);
-    }
 
 
     public List<AbstractFormula> getFormulaList() {

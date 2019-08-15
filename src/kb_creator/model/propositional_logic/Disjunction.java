@@ -48,7 +48,7 @@ public class Disjunction extends AbstractFormula {
         } else return super.or(otherFormula);
     }
 
-    //this is not really correct but should work in the cases it will be used
+/*    //this is not really correct but should work in the cases it will be used
     @Override
     public boolean equals(Object o) {
 
@@ -68,7 +68,7 @@ public class Disjunction extends AbstractFormula {
                 return false;
         }
         return true;
-    }
+    }*/
 
     public List<AbstractFormula> getFormulaList() {
         return formulaList;

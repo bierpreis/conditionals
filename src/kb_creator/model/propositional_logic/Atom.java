@@ -56,11 +56,11 @@ public class Atom extends AbstractFormula {
         return new Negation(this);
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o) {
         if (!(o instanceof Atom))
             return false;
         Atom otherAtom = (Atom) o;
         return otherAtom.getVariable().equals(variable);
-    }
+    }*/
 }

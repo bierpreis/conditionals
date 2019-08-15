@@ -2,6 +2,7 @@ package kb_creator;
 
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.*;
+import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.worlds.ABCWorld;
@@ -14,7 +15,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        formulaTest();
+        equalsTest();
 
     }
 
@@ -108,5 +109,17 @@ public class Test {
         AbstractFormula third = first.or(second);
 
         System.out.println(third.evaluate(testWorld));
+    }
+
+    private static void equalsTest() {
+        AbstractFormula.setSignature(new AB());
+
+        AbstractFormula first = new Conjunction(new Atom(Variable.a));
+
+        AbstractFormula second = new Conjunction(new Atom(Variable.b));
+
+        AbstractFormula third = first.and(second);
+
+        System.out.println(third.equals(first));
     }
 }
