@@ -140,9 +140,9 @@ public class KBCreator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
                         System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
-                        //todo: try adding all pairs at once maybe?
                         //line 12
                         //this takes about 30 percent of time
+                        //collecting pairs and add together is even slower
                         long beforeAddingPair = System.nanoTime();
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
                         System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
