@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class AbstractSignature {
     protected List<AbstractWorld> possibleWorlds;
-    
+
     @Override
     abstract public String toString();
 

@@ -1,6 +1,7 @@
 package kb_creator.model;
 
 import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
@@ -37,7 +38,7 @@ public class KBCreator implements Runnable {
     private AbstractPairBuffer l;
 
     private float progress;
-    
+
     private Collection<NewConditional> nfc;
 
     private Collection<NewConditional> cnfc;
@@ -45,6 +46,8 @@ public class KBCreator implements Runnable {
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
+
+        AbstractFormula.setSignature(signature);
 
         creatorStatus = CreatorStatus.NOT_STARTED;
         this.signature = signature;

@@ -1,9 +1,11 @@
 package kb_creator.model.propositional_logic;
 
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 
 public abstract class AbstractFormula {
+    protected static AbstractSignature signature;
 
     abstract public boolean evaluate(AbstractWorld world);
 
@@ -28,10 +30,12 @@ public abstract class AbstractFormula {
     //if(o.evaluate!=this.evaluate
     //return false
     //else return true
-
-    //therefore the signature is needed (there are the possible worlds)
-    //make this static somewhere? or what?
+    
     @Override
     public abstract boolean equals(Object o);
+
+    public static void setSignature(AbstractSignature requestedSignature) {
+        signature = requestedSignature;
+    }
 
 }
