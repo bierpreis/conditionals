@@ -37,12 +37,10 @@ public class KBCreator implements Runnable {
     private AbstractPairBuffer l;
 
     private float progress;
-
-
+    
     private Collection<NewConditional> nfc;
 
-    //todo
-    Collection<NewConditional> cnfc;
+    private Collection<NewConditional> cnfc;
 
 
     public KBCreator(AbstractSignature signature, String kbFilePath) {
