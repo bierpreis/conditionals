@@ -159,7 +159,7 @@ public class KBCreator implements Runnable {
                 long overallStart = System.currentTimeMillis();
                 //this both takes almost no time
                 checkIfWaitForWriter();
-                if (creatorStatus.equals(CreatorStatus.STOPPED))
+                if (creatorStatus.equals(CreatorStatus.STOPPED))//todo: stop in gui doenst work?! with no buffering and writer on
                     return;
                 //System.out.println("overall time: " + (System.currentTimeMillis() - overallStart) + "ms");
                 //this saves a lot of memory
