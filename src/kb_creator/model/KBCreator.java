@@ -218,7 +218,7 @@ public class KBCreator implements Runnable {
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
 
-            //no buffereing for first iteration because it almost makes no difference
+            //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
             nextCandidatePairAmount++;

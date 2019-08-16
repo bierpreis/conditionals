@@ -39,5 +39,5 @@ public class Conjunction extends AbstractFormula {
         }
         return sb.toString();
     }
-    
+
 }
