@@ -82,7 +82,7 @@ public class KBCreator implements Runnable {
         creatorStatus = CreatorStatus.RUNNING;
         System.out.println("creator thread started");
 
-        startTime = System.currentTimeMillis();
+        //startTime = System.currentTimeMillis();
 
         k = 1;
         //add empty list to l because java buffer start at 0 and original algorithm starts list at 1
@@ -121,31 +121,31 @@ public class KBCreator implements Runnable {
                     //line 10 //
                     //consistency check takes almost no time
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-                        System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
+                        //System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
                         //next part is line 11 and 12
 
-                        long kbCreationStart = System.nanoTime();
+                        //long kbCreationStart = System.nanoTime();
                         //first create the new knowledge base
                         //takes very little time
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
                         kbWriter.addConsistentKb(knowledgeBaseToAdd);
-                        System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
+                        //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
-                        long beforeCandidates = System.nanoTime();
+                        //long beforeCandidates = System.nanoTime();
                         //create candidates set
                         //this loop takes most of the time (70 percent)
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
-                        System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
+                        //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
                         //line 12
                         //this takes about 30 percent of time
                         //collecting pairs and add together is even slower
                         long beforeAddingPair = System.nanoTime();
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
-                        System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
+                        //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
@@ -154,14 +154,14 @@ public class KBCreator implements Runnable {
                         //save inconsistent knowledge base
                         //this part takes almost no time
                     } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
-                    System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
+                    //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
                 }
                 long overallStart = System.currentTimeMillis();
                 //this both takes almost no time
                 checkIfWaitForWriter();
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-                System.out.println("overall time: " + (System.currentTimeMillis() - overallStart) + "ms");
+                //System.out.println("overall time: " + (System.currentTimeMillis() - overallStart) + "ms");
                 //this saves a lot of memory
                 //this takes almost no time
                 candidatePair.clear();
