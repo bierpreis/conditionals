@@ -107,7 +107,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
                 }
 
-                writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", ""));
+                writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", "")); //todo this is shit
                 writer.flush();
                 writer.close();
 
