@@ -80,7 +80,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private void writeNextFile(Queue queueToWrite) {
         File subFolder;
         if (!queueToWrite.isEmpty()) {
-            subFolder = new File(tmpFilePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");
+            //todo: prepare iteration should be here. can save a lot of stuff
+            subFolder = new File(tmpFilePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");//todo: maybe here too much get size?!
             if (!subFolder.exists())
                 subFolder.mkdirs();
 
