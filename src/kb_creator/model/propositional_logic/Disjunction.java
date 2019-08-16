@@ -39,30 +39,5 @@ public class Disjunction extends AbstractFormula {
         //remove the ", " at the end
         return sb.toString().replaceAll(", $", "");
     }
-
-/*    //this is not really correct but should work in the cases it will be used
-    @Override
-    public boolean equals(Object o) {
-
-        System.out.println("equals was called!!");
-        if (!(o instanceof Disjunction))
-            return false;
-
-        Disjunction otherConjunction = (Disjunction) o;
-
-        for (AbstractFormula formula : formulaList) {
-            if (!otherConjunction.getFormulaList().contains(formula))
-                return false;
-        }
-
-        for (AbstractFormula formula : otherConjunction.getFormulaList()) {
-            if (!formulaList.contains(formula))
-                return false;
-        }
-        return true;
-    }*/
-
-    public List<AbstractFormula> getFormulaList() {
-        return formulaList;
-    }
+    
 }

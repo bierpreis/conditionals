@@ -25,5 +25,5 @@ public class Negation extends AbstractFormula {
     public AbstractFormula neg() {
         return formula;
     }
-    
+
 }

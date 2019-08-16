@@ -20,8 +20,4 @@ public class Contradiction extends AbstractFormula {
         return "(false)";
     }
 
-/*    @Override
-    public boolean equals(Object o) {
-        return o instanceof Contradiction;
-    }*/
 }
