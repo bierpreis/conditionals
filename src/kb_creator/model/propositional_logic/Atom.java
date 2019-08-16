@@ -11,10 +11,6 @@ public class Atom extends AbstractFormula {
         this.variable = variable;
     }
 
-    public Variable getVariable() {
-        return variable;
-    }
-
     @Override
     public String toString() {
         return variable.toString();
@@ -56,11 +52,5 @@ public class Atom extends AbstractFormula {
         return new Negation(this);
     }
 
-/*    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Atom))
-            return false;
-        Atom otherAtom = (Atom) o;
-        return otherAtom.getVariable().equals(variable);
-    }*/
+
 }

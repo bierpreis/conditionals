@@ -36,8 +36,9 @@ public class Disjunction extends AbstractFormula {
             sb.append(formula.toString());
             sb.append(", ");
         }
+        //todo: maybe without regex
         //remove the ", " at the end
         return sb.toString().replaceAll(", $", "");
     }
-    
+
 }
