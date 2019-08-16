@@ -101,13 +101,14 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
                     AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
                     sb.append(pairToWrite.toFileString());
-                    sb.append("\nEND_PAIR\n\n");
+                    if (i != maxNumberOfPairsInFile - 1)
+                        sb.append("\nEND_PAIR\n\n");
                     pairToWrite.clear();
                     pairWriterCounter++;
 
                 }
 
-                writer.print(sb.toString().replaceAll("\nEND_PAIR\n\n$", "")); //todo this is shit
+                writer.print(sb.toString());
                 writer.flush();
                 writer.close();
 
