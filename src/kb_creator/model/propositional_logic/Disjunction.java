@@ -12,7 +12,7 @@ public class Disjunction extends AbstractFormula {
 
 
     public Disjunction(AbstractFormula... formulasToAdd) {
-        formulaList = new ArrayList<>(formulasToAdd.length);//
+        formulaList = new ArrayList<>(formulasToAdd.length);
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
@@ -32,13 +32,12 @@ public class Disjunction extends AbstractFormula {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (AbstractFormula formula : formulaList) {
-            sb.append(formula.toString());
-            sb.append(", ");
+        for (int i = 0; i < formulaList.size(); i++) {
+            sb.append(formulaList.get(i).toString());
+            if (i != (formulaList.size() - 1))
+                sb.append(", ");
         }
-        //todo: maybe without regex
-        //remove the ", " at the end
-        return sb.toString().replaceAll(", $", "");
+        return sb.toString();
     }
 
 }
