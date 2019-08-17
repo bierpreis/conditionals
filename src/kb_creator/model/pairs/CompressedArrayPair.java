@@ -155,7 +155,7 @@ public class CompressedArrayPair extends AbstractPair {
         return sb.toString();
     }
 
-    //this method creates a file string complressed with the compression in this pair implementation
+    //this method creates a file string compressed with the compression in this pair implementation
     //therefore the file is much shorter
     private String toShortFileString() {
         StringBuilder sb = new StringBuilder();
@@ -179,10 +179,11 @@ public class CompressedArrayPair extends AbstractPair {
                 sb.append(compressedCandidatesArray[pairNumber][0]);
                 sb.append("-");
                 sb.append(compressedCandidatesArray[pairNumber][1]);
-                sb.append(", ");
+                if (pairNumber != (compressedCandidatesArray.length - 1))
+                    sb.append(", ");
             }
             pairNumber++;
         }
-        return sb.toString().replaceAll(", $", "");//todo: fix regex
+        return sb.toString();
     }
 }
