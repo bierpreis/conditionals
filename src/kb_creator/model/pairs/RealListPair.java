@@ -143,6 +143,7 @@ public class RealListPair extends AbstractPair {
         knowledgeBase = null;
     }
 
+    //todo: rename
     class NumberPair {
         int first, second;
 
