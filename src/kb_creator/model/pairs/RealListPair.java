@@ -104,34 +104,34 @@ public class RealListPair extends AbstractPair {
         //if this firstNumber entry is 0, there are no candidates
 
 
-        List<NumberPair> numberPairList = new ArrayList<>();
+        List<CandidateGroup> candidateGroupList = new ArrayList<>();
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
         else {
             int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
 
-            numberPairList.add(new NumberPair(candidatesList.get(0).getNumber()));
+            candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber()));
 
             for (NewConditional currentCandidate : candidatesList) {
                 if (currentCandidate.getNumber() == lastConditionalNumber + 1)
                     lastConditionalNumber = currentCandidate.getNumber();
                 else {
-                    numberPairList.get(numberPairList.size() - 1).setLastNumber(lastConditionalNumber);
+                    candidateGroupList.get(candidateGroupList.size() - 1).setLastNumber(lastConditionalNumber);
 
-                    numberPairList.add(new NumberPair(currentCandidate.getNumber()));
+                    candidateGroupList.add(new CandidateGroup(currentCandidate.getNumber()));
 
                     lastConditionalNumber = currentCandidate.getNumber();
 
                 }
 
             }
-            numberPairList.get(numberPairList.size() - 1).setLastNumber(lastConditionalNumber);
+            candidateGroupList.get(candidateGroupList.size() - 1).setLastNumber(lastConditionalNumber);
         }
 
-        for (int i = 0; i < numberPairList.size(); i++) {
-            sb.append(numberPairList.get(i).toString());
-            if (i != (numberPairList.size() - 1))
+        for (int i = 0; i < candidateGroupList.size(); i++) {
+            sb.append(candidateGroupList.get(i).toString());
+            if (i != (candidateGroupList.size() - 1))
                 sb.append(", ");
         }
 
@@ -144,11 +144,10 @@ public class RealListPair extends AbstractPair {
         knowledgeBase = null;
     }
 
-    //todo: rename
-    class NumberPair {
+    class CandidateGroup {
         int firstNumber, lastNumber;
 
-        public NumberPair(int firstNumber) {
+        public CandidateGroup(int firstNumber) {
             this.firstNumber = firstNumber;
         }
 
