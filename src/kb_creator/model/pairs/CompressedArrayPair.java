@@ -18,7 +18,7 @@ public class CompressedArrayPair extends AbstractPair {
         int lastConditionalNumber = 0;
 
         List<List<Integer>> temporaryList = new ArrayList<>();
-        
+
         for (NewConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
 
@@ -29,7 +29,7 @@ public class CompressedArrayPair extends AbstractPair {
 
                 temporaryList.add(new ArrayList<>(2));
                 temporaryList.get(temporaryList.size() - 1).add(currentCandidate.getNumber());
-                
+
                 lastConditionalNumber = currentCandidate.getNumber();
             } else {
                 lastConditionalNumber++;
@@ -126,7 +126,7 @@ public class CompressedArrayPair extends AbstractPair {
         return sb.toString();
     }
 
-    public void clear(){
+    public void clear() {
         knowledgeBase = null;
         compressedCandidatesArray = null;
     }
@@ -183,6 +183,6 @@ public class CompressedArrayPair extends AbstractPair {
             }
             pairNumber++;
         }
-        return sb.toString().replaceAll(", $", "");
+        return sb.toString().replaceAll(", $", "");//todo: fix regex
     }
 }
