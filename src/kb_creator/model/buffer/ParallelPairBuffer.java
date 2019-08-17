@@ -270,6 +270,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("finished iteration: " + requestedK);
     }
 
+    @Override
     public int getReaderBufferSize() {
         return queueToReturn.size();
     }
