@@ -22,7 +22,7 @@ public class CompressedArrayPair extends AbstractPair {
         for (NewConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
 
-                //this should not be executed in the first iteration
+                //this should not be executed in the firstNumber iteration
                 if (!temporaryList.isEmpty())
                     temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
 
@@ -166,7 +166,7 @@ public class CompressedArrayPair extends AbstractPair {
         sb.append(knowledgeBase.toShortFileString());
         sb.append("\n\n");
         sb.append("candidates\n");
-        //if this first entry is 0, there are no candidates
+        //if this firstNumber entry is 0, there are no candidates
 
         int pairNumber = 0;
 

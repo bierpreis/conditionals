@@ -101,7 +101,7 @@ public class RealListPair extends AbstractPair {
         sb.append(knowledgeBase.toShortFileString());
         sb.append("\n\n");
         sb.append("candidates\n");
-        //if this first entry is 0, there are no candidates
+        //if this firstNumber entry is 0, there are no candidates
 
 
         List<NumberPair> numberPairList = new ArrayList<>();
@@ -117,7 +117,7 @@ public class RealListPair extends AbstractPair {
                 if (currentCandidate.getNumber() == lastConditionalNumber + 1)
                     lastConditionalNumber = currentCandidate.getNumber();
                 else {
-                    numberPairList.get(numberPairList.size() - 1).setSecond(lastConditionalNumber);
+                    numberPairList.get(numberPairList.size() - 1).setLastNumber(lastConditionalNumber);
 
                     numberPairList.add(new NumberPair(currentCandidate.getNumber()));
 
@@ -126,15 +126,16 @@ public class RealListPair extends AbstractPair {
                 }
 
             }
-            numberPairList.get(numberPairList.size() - 1).setSecond(lastConditionalNumber);
+            numberPairList.get(numberPairList.size() - 1).setLastNumber(lastConditionalNumber);
         }
 
-        for (NumberPair numberPair : numberPairList) {
-            sb.append(numberPair.toString());
-            sb.append(", ");
+        for (int i = 0; i < numberPairList.size(); i++) {
+            sb.append(numberPairList.get(i).toString());
+            if (i != (numberPairList.size() - 1))
+                sb.append(", ");
         }
 
-        return sb.toString().replaceAll(", $", "");//todo delete regex
+        return sb.toString();
     }
 
     @Override
@@ -145,20 +146,20 @@ public class RealListPair extends AbstractPair {
 
     //todo: rename
     class NumberPair {
-        int first, second;
+        int firstNumber, lastNumber;
 
-        public NumberPair(int first) {
-            this.first = first;
+        public NumberPair(int firstNumber) {
+            this.firstNumber = firstNumber;
         }
 
 
-        public void setSecond(int second) {
-            this.second = second;
+        public void setLastNumber(int lastNumber) {
+            this.lastNumber = lastNumber;
         }
 
         @Override
         public String toString() {
-            return first + "-" + second;
+            return firstNumber + "-" + lastNumber;
         }
     }
 }
