@@ -66,8 +66,8 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     public abstract int getReaderBufferSize();
 
-    //todo: this is wrong!
-    public void stopThread() {
+
+    public void setFinished() {
         running = false;
         status = BufferStatus.FINISHED;
     }
