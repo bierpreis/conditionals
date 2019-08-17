@@ -64,6 +64,7 @@ public abstract class AbstractPairBuffer implements Runnable {
         return cpQueueToWrite.size();
     }
 
+    //todo: wtf
     public int getReaderBufferSize() {
         return 0;
     }
