@@ -32,8 +32,9 @@ public class RealListPair extends AbstractPair {
         candidatesList = createCandidatesListFromString(splitString[1]);
     }
 
+    //this method takes 0-1 ms so pre compiling regexes may be useless
     private List<NewConditional> createCandidatesListFromString(String stringFromFile) {
-        //todo: precompile regexes
+
         List<NewConditional> listToReturn = new ArrayList<>();
 
         String[] stringArray = stringFromFile.split(", ");
@@ -137,7 +138,7 @@ public class RealListPair extends AbstractPair {
 
         return sb.toString();
     }
-
+    
     @Override
     public void clear() {
         candidatesList = null;
