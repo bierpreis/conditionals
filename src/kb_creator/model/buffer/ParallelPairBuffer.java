@@ -55,6 +55,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
 
+    //todo: fix this chaotic shit
     @Override
     public void run() {
         while (running) {
