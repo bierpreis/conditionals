@@ -33,7 +33,7 @@ public class RealListPair extends AbstractPair {
     }
 
     private List<NewConditional> createCandidatesListFromString(String stringFromFile) {
-
+        //todo: precompile regexes
         List<NewConditional> listToReturn = new ArrayList<>();
 
         String[] stringArray = stringFromFile.split(", ");
