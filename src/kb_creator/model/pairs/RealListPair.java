@@ -138,7 +138,7 @@ public class RealListPair extends AbstractPair {
 
         return sb.toString();
     }
-    
+
     @Override
     public void clear() {
         candidatesList = null;

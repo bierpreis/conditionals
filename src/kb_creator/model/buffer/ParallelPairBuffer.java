@@ -91,7 +91,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
             try {
 
-                //add leading zeros so the files will be soreted in correct order in their folder
+                //add leading zeros so the files can be sorted in correct order in their folder
                 String fileName = String.format("%05d", writingFileNameCounter);
                 writingFileNameCounter++;
 
