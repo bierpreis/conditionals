@@ -214,7 +214,7 @@ public class KBCreator implements Runnable {
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new ArrayList<>();
-            //todo: this is now cnfc it was nfc. rethink and delete todo
+            //todo: this is now cnfc it was nfc. rethink and delete todo  THIS IS WRONG?!
             for (NewConditional conditional : cnfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
