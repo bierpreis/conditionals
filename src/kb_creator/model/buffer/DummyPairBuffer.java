@@ -12,7 +12,6 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
 
-    //todo: test finish and prepare iterations
     public DummyPairBuffer(String filePath) {
         super(filePath);
         candidatePairList = new ArrayList<>();
