@@ -65,6 +65,7 @@ public class OverallStatusPanel extends JPanel {
         inconsistentAmountLabel.setText("Inonsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
+    //todo: rename and fix. this shows very long running time?!
     public void showTime(long startTime) {
         long time = System.currentTimeMillis() - startTime;
 
