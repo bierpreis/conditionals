@@ -25,6 +25,7 @@ public class Conditional implements Comparable {
 
     }
 
+    //todo: here new comparing conditionals
     @Override
     public int compareTo(Object o) {
         if (!(o instanceof Conditional))
@@ -61,7 +62,7 @@ public class Conditional implements Comparable {
                 return 1;
 
         }
-        return 0;
+        return 0;//todo: when does this happen?!
     }
 
     @Override
