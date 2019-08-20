@@ -27,6 +27,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private final int READ_QUEUE_MIN = 1000;
 
     private File folderToWrite;
+    private File folderToRead;
 
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
@@ -231,8 +232,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-        //todo: delete?
-        File folderToRead = new File(tmpFilePath + "/" + (requestedK) + "/");
+        //todo: this should be k -1 later
+        folderToRead = new File(tmpFilePath + "/" + (requestedK) + "/");
 
 
         //todo: test
