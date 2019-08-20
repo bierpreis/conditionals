@@ -26,6 +26,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     //if queue to return is lower than this value, a new file will be read and the queue gets filled again
     private final int READ_QUEUE_MIN = 1000;
 
+    private File folderToWrite;
+
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
@@ -82,13 +84,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private void writeNextFile(Queue queueToWrite) {
-        File subFolder;
-        if (!queueToWrite.isEmpty()) {
-            //todo: prepare iteration should be here. can save a lot of stuff
-            subFolder = new File(tmpFilePath + "/" + ((AbstractPair) queueToWrite.peek()).getKnowledgeBase().getSize() + "/");//todo: maybe here too much get size?!
-            if (!subFolder.exists())
-                subFolder.mkdirs();
-
+        if (!queueToWrite.isEmpty()) {//todo: delete this if?!
 
             try {
 
@@ -97,7 +93,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 writingFileNameCounter++;
 
 
-                PrintWriter writer = new PrintWriter(subFolder.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
+                PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
                 StringBuilder sb = new StringBuilder();
 
@@ -236,6 +232,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         hasNextIteration = folderToRead.exists();
 
+        folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
+        ;
+
         //if no next iteration exists, the steps here are not needed and would cause null pointer exeption because of the missing file
         if (!hasNextIteration)
             return;
@@ -244,7 +243,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         //todo: here the folder should be created
         requestedListNumber.set(requestedK);
-        
+
 
         File[] filesArray = folderToRead.listFiles();
         System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
