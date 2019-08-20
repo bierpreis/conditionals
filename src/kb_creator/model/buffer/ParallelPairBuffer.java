@@ -55,6 +55,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         status = BufferStatus.NOT_STARTED;
 
+        prepareIteration(1);
+
     }
 
     //todo: fix this chaotic shit
@@ -84,6 +86,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private void writeNextFile(Queue queueToWrite) {
+        System.out.println("writing file");
         if (!queueToWrite.isEmpty()) {//todo: delete this if?!
 
             try {
@@ -230,6 +233,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         File folderToRead = new File(tmpFilePath + "/" + (requestedK) + "/");
 
+        //todo: this should not be in here it fails with the next step
         //if no next iteration exists, the next steps here are not needed and would cause null pointer exception because of the missing file
         hasNextIteration = folderToRead.exists();
         if (!hasNextIteration)
@@ -237,6 +241,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         //todo: test
         folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
+        System.out.println("mk dir: " + folderToRead.mkdirs());
 
 
         readingFileNameCounter = 0;
