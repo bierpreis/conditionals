@@ -230,14 +230,14 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         File folderToRead = new File(tmpFilePath + "/" + (requestedK) + "/");
 
+        //if no next iteration exists, the next steps here are not needed and would cause null pointer exception because of the missing file
         hasNextIteration = folderToRead.exists();
-
-        folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
-        ;
-
-        //if no next iteration exists, the steps here are not needed and would cause null pointer exeption because of the missing file
         if (!hasNextIteration)
             return;
+
+        //todo: test
+        folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
+
 
         readingFileNameCounter = 0;
 
