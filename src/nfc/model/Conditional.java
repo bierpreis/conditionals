@@ -52,7 +52,7 @@ public class Conditional implements Comparable {
         throw new RuntimeException("Comparing conditionals failed!");
     }
 
-
+    //todo: here compare wolds
     private int compareWorldsElements(World firstWorld, World secondWorld) {
         for (int i = 0; i < firstWorld.getSize(); i++) {
             if (firstWorld.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
