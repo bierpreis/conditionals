@@ -47,6 +47,7 @@ public class CurrentIterationPanel extends JPanel {
         showCurrentK(-1);
     }
 
+    //todo: this doent fit anymore
     public void showCurrentK(int finishedKBs) {
         if (finishedKBs != -1)
             currentKLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");

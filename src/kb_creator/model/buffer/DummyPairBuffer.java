@@ -31,14 +31,17 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return nextElementNumber + 1 < candidatePairList.get(currentK).size();
     }
 
+    //todo: this is empty for k = 2?!
     @Override
     public boolean hasElementsForK(int requestedK) {
-        return !candidatePairList.get(requestedK).isEmpty();
+        return !candidatePairList.get(requestedK - 1).isEmpty();
     }
 
     //todo
     @Override
     public void prepareIteration(int k) {
+
+        System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
     }
 
@@ -51,7 +54,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
+        System.out.println("finishing iteration: " + requestedK);
+        lastIterationPairAmount = candidatePairList.get(requestedK).size();
 
 
         clear(requestedK - 1);

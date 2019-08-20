@@ -81,14 +81,13 @@ public class KBCreator implements Runnable {
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
         System.out.println("creator thread started");
+        l.prepareIteration(0);
 
-        //startTime = System.currentTimeMillis();
-
+        //line 2
         k = 1;
-        //add empty list to l because java buffer start at 0 and original algorithm starts list at 1
-        //then k and k+1 values are the same here and in the original algorithm
-        l.addNewList(new ArrayList<>(0));
 
+        //this is actually iteration 0
+        //and line 3-5
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
         //k - 1 because actually the init list is iteration 0
@@ -97,6 +96,7 @@ public class KBCreator implements Runnable {
         //line 6
         while (l.hasElementsForK(k)) {
             System.gc();
+            l.prepareIteration(k);
 
             int iterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
@@ -169,7 +169,6 @@ public class KBCreator implements Runnable {
             }
             l.finishIteration(k);
             k = k + 1;
-            l.prepareIteration(k);
         }
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
