@@ -21,7 +21,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private int pairWriterCounter;
 
     //todo: check this class
-    //todo: test queues
+
     private Queue<AbstractPair> queueToReturn;
     //if queue to return is lower than this value, a new file will be read and the queue gets filled again
     private final int READ_QUEUE_MIN = 1000;
@@ -244,9 +244,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         //todo: here the folder should be created
         requestedListNumber.set(requestedK);
-
-
-        long beforeReadFiles = System.currentTimeMillis();
+        
 
         File[] filesArray = folderToRead.listFiles();
         System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
