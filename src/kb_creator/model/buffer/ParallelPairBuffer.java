@@ -241,6 +241,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             return;
 
         readingFileNameCounter = 0;
+
+        //todo: here the folder should be created
         requestedListNumber.set(requestedK);
 
 
