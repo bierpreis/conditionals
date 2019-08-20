@@ -27,7 +27,7 @@ public class WorldDifference {
         this.world1 = world1;
         this.world2 = world2;
 
-        differenceList = new LinkedList<>();
+        differenceList = new LinkedList<>(); //todo: linkedlist?!
         areEqual = false;
 
         calculateDifference();
