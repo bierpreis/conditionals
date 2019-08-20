@@ -222,7 +222,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return hasNextIteration;
     }
 
-
+    //todo: this is called 2 times for (1)!!
     @Override
     protected void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
@@ -235,13 +235,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         //todo: this should not be in here it fails with the next step
         //if no next iteration exists, the next steps here are not needed and would cause null pointer exception because of the missing file
-        hasNextIteration = folderToRead.exists();
-        if (!hasNextIteration)
-            return;
 
         //todo: test
         folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
-        System.out.println("mk dir: " + folderToRead.mkdirs());
+        folderToRead.mkdirs();
 
 
         readingFileNameCounter = 0;
@@ -271,9 +268,13 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         flushWritingElements();
         lastIterationPairAmount = pairWriterCounter;
 
+        if (folderToWrite.listFiles().length > 0) {
+            prepareIteration(requestedK + 1);
+            hasNextIteration = true;
+        } else hasNextIteration = false;
+
         clear(requestedK);
 
-        prepareIteration(requestedK + 1);
         System.out.println("finished iteration: " + requestedK);
     }
 

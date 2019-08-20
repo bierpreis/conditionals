@@ -91,7 +91,7 @@ public class KBCreator implements Runnable {
 
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
-        //k - 1 because actualy the init list is iteration 0
+        //k - 1 because actually the init list is iteration 0
         l.finishIteration(k - 1);
 
         //line 6
@@ -214,8 +214,8 @@ public class KBCreator implements Runnable {
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> conditionalsToAdd = new ArrayList<>();
-            //todo: this is now cnfc it was nfc. rethink and delete todo  THIS IS WRONG?!
-            for (NewConditional conditional : cnfc)
+            //todo: this should be changed to fit new GenKB
+            for (NewConditional conditional : nfc)
                 if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
                     conditionalsToAdd.add(conditional);
 

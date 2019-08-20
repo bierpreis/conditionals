@@ -45,7 +45,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     abstract public boolean hasElementsForK(int requestedK);
 
-    protected abstract void prepareIteration(int requestedK);
+    public abstract void prepareIteration(int requestedK);
 
     public abstract void finishIteration(int requestedK);
 
