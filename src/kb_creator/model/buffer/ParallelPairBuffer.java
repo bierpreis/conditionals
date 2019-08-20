@@ -222,9 +222,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return hasNextIteration;
     }
 
-    //todo: this is called 2 times for (1)!!
+    //todo: fit in new iterations
     @Override
-    protected void prepareIteration(int requestedK) {
+    public void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 

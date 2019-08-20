@@ -12,6 +12,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
 
+    //todo: test finish and prepare iterations
     public DummyPairBuffer(String filePath) {
         super(filePath);
         candidatePairList = new ArrayList<>();
@@ -36,6 +37,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return !candidatePairList.get(requestedK).isEmpty();
     }
 
+    //todo
     @Override
     public void prepareIteration(int k) {
         nextElementNumber = 0;
@@ -51,7 +53,6 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = candidatePairList.get(requestedK + 1).size();
-        prepareIteration(requestedK + 1);
 
 
         clear(requestedK - 1);

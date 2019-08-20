@@ -169,6 +169,7 @@ public class KBCreator implements Runnable {
             }
             l.finishIteration(k);
             k = k + 1;
+            l.prepareIteration(k);
         }
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
