@@ -62,7 +62,7 @@ public class OverallStatusPanel extends JPanel {
 
     public void showInconsistentKBAmount(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        inconsistentAmountLabel.setText("Inonsistent Knowledge Bases: " + formatter.format(amount) + "\n");
+        inconsistentAmountLabel.setText("Inconsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
     
     public void showRunningTime(long startTime) {
