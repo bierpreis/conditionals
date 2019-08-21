@@ -122,7 +122,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private List<AbstractPair> readNextFile(int requestedK) {
 
         //read String
-        File fileToRead = new File(tmpFilePath + "/" + requestedK + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
+        File fileToRead = new File(folderToRead + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
         System.out.println("reading file: " + fileToRead.getAbsolutePath());
         Scanner fileScanner = null;
         try {
