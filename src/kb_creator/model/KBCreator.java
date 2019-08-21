@@ -112,7 +112,7 @@ public class KBCreator implements Runnable {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                //todo: make sure if ordering is neccesary. if not, threading could be usful. if yes, make sure it is ordered!
+                //todo: make sure if ordering is necessary. if not, threading could be useful. if yes, make sure it is ordered!
                 AbstractPair candidatePair = l.getNextPair(k);
 
                 iterationPairCounter++;

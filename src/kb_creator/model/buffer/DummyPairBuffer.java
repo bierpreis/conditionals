@@ -42,7 +42,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     protected void clear(int requestedK) {
-        //dont clear list(-1) it wont work
+        //don't clear list(-1) it wont work
         if (requestedK > 0)
             candidatePairList.get(requestedK).clear();
     }
