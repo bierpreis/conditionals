@@ -266,10 +266,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         flushWritingElements();
         lastIterationPairAmount = pairWriterCounter;
 
-        if (folderToWrite.listFiles().length > 0) {
-            prepareIteration(requestedK + 1); //todo: delete?!
-            hasNextIteration = true;
-        } else hasNextIteration = false;
+        hasNextIteration = (folderToWrite.listFiles().length > 0);
+        hasNextIteration = true;
 
         clear(requestedK);
 
