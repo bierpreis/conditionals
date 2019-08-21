@@ -30,7 +30,7 @@ public class KBCreator implements Runnable {
     private int k;
     private int nextCandidatePairAmount;
 
-    private long startTime; //todo: why is this not used?! could be reason time in gui fucks up
+    private long startTime;
 
     private AbstractKbWriter kbWriter;
 
@@ -73,6 +73,8 @@ public class KBCreator implements Runnable {
 
         Thread kbWriterThread = new Thread(kbWriter);
         kbWriterThread.start();
+
+        startTime = System.currentTimeMillis();
 
     }
 
