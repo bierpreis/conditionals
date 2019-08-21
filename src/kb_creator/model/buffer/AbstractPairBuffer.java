@@ -77,11 +77,6 @@ public abstract class AbstractPairBuffer implements Runnable {
         WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED
     }
 
-    //todo
-    public int getLastIterationPairAmount() {
-        return lastIterationPairAmount;
-    }
-
     public void setDeletingFiles(boolean deleteFiles) {
         if (!(this instanceof DummyPairBuffer))
             System.out.println("set deleting buffer files: " + deleteFiles);

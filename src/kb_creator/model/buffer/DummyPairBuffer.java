@@ -23,7 +23,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return candidatePairList.get(currentK - 1).get(nextElementNumber - 1);
 
     }
-    
+
     @Override
     public boolean hasMoreElements(int currentK) {
         return (nextElementNumber) < (candidatePairList.get(currentK - 1).size());
