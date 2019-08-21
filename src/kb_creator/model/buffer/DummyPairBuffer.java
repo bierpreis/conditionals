@@ -20,18 +20,17 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public AbstractPair getNextPair(int currentK) {
         nextElementNumber++;
-        if (nextElementNumber < candidatePairList.get(currentK).size())
-            return candidatePairList.get(currentK).get(nextElementNumber - 1);
+        if (nextElementNumber <= candidatePairList.get(currentK - 1).size())//todo: remove if? should never trigger
+            return candidatePairList.get(currentK - 1).get(nextElementNumber - 1);
 
         throw new RuntimeException("Dummy buffer failed!");
     }
 
     @Override
     public boolean hasMoreElements(int currentK) {
-        return nextElementNumber + 1 < candidatePairList.get(currentK).size();
+        return (nextElementNumber) < (candidatePairList.get(currentK - 1).size());
     }
 
-    //todo: this is empty for k = 2?!
     @Override
     public boolean hasElementsForK(int requestedK) {
         return !candidatePairList.get(requestedK - 1).isEmpty();
