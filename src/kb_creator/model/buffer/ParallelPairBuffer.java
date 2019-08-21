@@ -49,9 +49,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         File tmpFile = new File(this.tmpFilePath);
         tmpFile.mkdirs();
 
-        requestedListNumber = new AtomicInteger(0);
-
-
         status = BufferStatus.NOT_STARTED;
 
     }
@@ -66,7 +63,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             } else if (readingFileNameCounter < iterationNumberOfFiles) {
                 if (queueToReturn.size() < READ_QUEUE_MIN) {//this value has pactically no impact on speed at all
                     status = BufferStatus.READING;
-                    queueToReturn.addAll(readNextFile(requestedListNumber.get()));
+                    queueToReturn.addAll(readNextFile());
                 }
             } else {
                 try {
@@ -111,7 +108,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         }
     }
 
-    private List<AbstractPair> readNextFile(int requestedK) {
+    private List<AbstractPair> readNextFile() {
 
         //read String
         File fileToRead = new File(folderToRead + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
@@ -226,9 +223,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
 
         readingFileNameCounter = 0;
-
-        //todo: delete variable?! put only in dummy buffer?
-        requestedListNumber.set(requestedK);
 
         //for iteration 0 there are no files to read
         if (requestedK != 0) {
