@@ -64,7 +64,7 @@ public class OverallStatusPanel extends JPanel {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentAmountLabel.setText("Inconsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
-    
+
     public void showRunningTime(long startTime) {
         long time = System.currentTimeMillis() - startTime;
 

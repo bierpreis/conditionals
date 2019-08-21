@@ -21,7 +21,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private int pairWriterCounter;
 
     private Queue<AbstractPair> queueToReturn;
+
     //if queue to return is lower than this value, a new file will be read and the queue gets filled again
+    //this value has almost no impact on speed at all
     private final int READ_QUEUE_MIN = 1000;
 
     private File folderToWrite;
@@ -53,21 +55,21 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
 
-    //todo: fix this chaotic shit
     @Override
     public void run() {
         while (running) {
+            //writing has first priority
             if (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0)) {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
-            } else if (readingFileNameCounter < iterationNumberOfFiles) {
-                if (queueToReturn.size() < READ_QUEUE_MIN) {//this value has pactically no impact on speed at all
-                    status = BufferStatus.READING;
-                    queueToReturn.addAll(readNextFile());
-                }
+                //reading has second priority
+            } else if (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN) {
+                status = BufferStatus.READING;
+                queueToReturn.addAll(readNextFile());
+                //sleep if no writing or reading is needed
             } else {
+
                 try {
-                    //System.out.println("buffer sleeping");
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(100); //this sleep also has practically no impact on speed
                 } catch (InterruptedException e) {
