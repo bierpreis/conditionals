@@ -228,8 +228,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         pairWriterCounter = 0;
         writingFileNameCounter = 0;
 
-        //todo: test
-        folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
 
         folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
         folderToWrite.mkdirs();
@@ -240,13 +238,16 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         //todo: is this variable needed?
         requestedListNumber.set(requestedK);
 
-        //todo: this fails for iteration 0
-        File[] filesArray = folderToRead.listFiles();
-        System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
-        iterationNumberOfFiles = filesArray.length;
+        //for iteration 0 there are no files to read
+        if (requestedK != 0) {
+            folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
+            File[] filesArray = folderToRead.listFiles();
+            System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
+            iterationNumberOfFiles = filesArray.length;
 
-        //todo: useless
-        Arrays.sort(filesArray);
+            //todo: useless
+            Arrays.sort(filesArray);
+        }
 
     }
 
