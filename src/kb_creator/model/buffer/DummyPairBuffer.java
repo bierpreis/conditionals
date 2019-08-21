@@ -34,10 +34,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return !candidatePairList.get(requestedK - 1).isEmpty();
     }
 
-    //todo
     @Override
     public void prepareIteration(int k) {
-
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
     }
