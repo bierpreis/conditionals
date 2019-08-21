@@ -178,8 +178,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void clear(int requestedK) {
-        if (deleteFiles) {
-            File folderToDelete = new File(tmpFilePath + "/" + (requestedK) + "/");
+        //dont delete files for iteration 0 because there wont be any
+        if (deleteFiles && requestedK != 0) {
+            File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
 
             if (folderToDelete.exists()) {
                 for (File subFile : folderToDelete.listFiles())
