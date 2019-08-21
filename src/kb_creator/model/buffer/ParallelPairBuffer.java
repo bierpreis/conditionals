@@ -218,7 +218,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public boolean hasElementsForK(int requestedK) {
         return hasNextIteration;
     }
-    
+
     @Override
     public void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
@@ -243,9 +243,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             File[] filesArray = folderToRead.listFiles();
             System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
             iterationNumberOfFiles = filesArray.length;
-
-            //todo: useless
-            Arrays.sort(filesArray);
         }
 
     }
