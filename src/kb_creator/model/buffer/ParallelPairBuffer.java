@@ -54,8 +54,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         status = BufferStatus.NOT_STARTED;
 
-        prepareIteration(1);
-
     }
 
     //todo: fix this chaotic shit
