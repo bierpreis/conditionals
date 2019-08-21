@@ -92,7 +92,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 String fileName = String.format("%05d", writingFileNameCounter);
                 writingFileNameCounter++;
 
-                //todo: null pointer here! maybe iteration 1 is not prepared?!
                 PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
                 StringBuilder sb = new StringBuilder();
@@ -219,8 +218,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public boolean hasElementsForK(int requestedK) {
         return hasNextIteration;
     }
-
-    //todo: fit in new iterations
+    
     @Override
     public void prepareIteration(int requestedK) {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
