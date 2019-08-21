@@ -73,7 +73,7 @@ public class MainCreatorPanel extends JPanel {
     }
 
     public void showTime(long startTime) {
-        overallStatusPanel.showTime(startTime);
+        overallStatusPanel.showRunningTime(startTime);
     }
 
 
