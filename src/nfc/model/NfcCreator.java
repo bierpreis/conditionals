@@ -254,6 +254,7 @@ public class NfcCreator {
         System.out.println("time for setting counter conditionals: " + (System.currentTimeMillis() - startTime) / 1000);
     }
 
+    //todo: this needs some tempoary map to get much faster! map<number, conditional>
     private Conditional findCounterConditional(Conditional conditional, List<Conditional> nfc) {
         for (Conditional possibleCounterConditional : nfc)
             if (conditional.getBasicCounterConditional().equals(possibleCounterConditional))
