@@ -84,37 +84,30 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     private void writeNextFile(Queue queueToWrite) {
         System.out.println("writing file");
-        if (!queueToWrite.isEmpty()) {//todo: delete this if?!
+        try {
+            //add leading zeros so the files can be sorted in correct order in their folder
+            String fileName = String.format("%05d", writingFileNameCounter);
+            writingFileNameCounter++;
 
-            try {
+            PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
-                //add leading zeros so the files can be sorted in correct order in their folder
-                String fileName = String.format("%05d", writingFileNameCounter);
-                writingFileNameCounter++;
+            StringBuilder sb = new StringBuilder();
 
-                PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
+            for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
 
-                StringBuilder sb = new StringBuilder();
-
-                for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
-
-                    AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
-                    sb.append(pairToWrite.toFileString());
-                    if (i != maxNumberOfPairsInFile - 1)
-                        sb.append("\nEND_PAIR\n\n");
-                    pairToWrite.clear();
-                    pairWriterCounter++;
-
-                }
-
-                writer.print(sb.toString());
-                writer.flush();
-                writer.close();
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
+                AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
+                sb.append(pairToWrite.toFileString());
+                if (i != maxNumberOfPairsInFile - 1)
+                    sb.append("\nEND_PAIR\n\n");
+                pairToWrite.clear();
+                pairWriterCounter++;
             }
+
+            writer.print(sb.toString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
