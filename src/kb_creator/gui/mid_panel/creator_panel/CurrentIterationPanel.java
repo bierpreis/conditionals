@@ -44,24 +44,18 @@ public class CurrentIterationPanel extends JPanel {
         showIterationKBs(0);
         //showCandidatePairs(0);
         showSpeed(0);
-        showCurrentK(-1);
+        showCurrentK(0);
     }
 
-    //todo: this doent fit anymore
-    public void showCurrentK(int finishedKBs) {
-        if (finishedKBs != -1)
-            currentKLabel.setText("Now creating " + (finishedKBs + 1) + " element KBs");
-
-        else currentKLabel.setText("Not started yet");
+    public void showCurrentK(int currentK) {
+            currentKLabel.setText("Current k value: " + currentK);
     }
-
 
     public void showSpeed(int speed) {
 
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         speedLabel.setText("Speed (KBs/Second): " + formatter.format(speed));
     }
-
 
     public void showIterationKBs(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));

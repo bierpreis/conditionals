@@ -30,8 +30,7 @@ public class KBCreator implements Runnable {
     private int k;
     private int nextCandidatePairAmount;
 
-    private long startTime;
-
+    private long startTime; //todo: why is this not used?! could be reason time in gui fucks up
 
     private AbstractKbWriter kbWriter;
 
