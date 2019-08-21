@@ -236,7 +236,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         readingFileNameCounter = 0;
 
-        //todo: is this variable needed?
+        //todo: delete variable?! put only in dummy buffer?
         requestedListNumber.set(requestedK);
 
         //for iteration 0 there are no files to read
