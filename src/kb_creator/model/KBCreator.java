@@ -92,7 +92,7 @@ public class KBCreator implements Runnable {
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
         //k - 1 because actually the init list is iteration 0
-        l.finishIteration(k - 1);
+        l.finishIteration(0);
 
         //line 6
         while (l.hasElementsForK(k)) {
