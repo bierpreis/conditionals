@@ -49,7 +49,7 @@ public class OverallStatusPanel extends JPanel {
     }
 
     public void showStatus(KBCreator.CreatorStatus creatorStatus) {
-        statusLabel.setText("CreatorStatus: " + creatorStatus.toString());
+        statusLabel.setText("Status: " + creatorStatus.toString());
         actionPanel.setStatus(creatorStatus);
     }
 

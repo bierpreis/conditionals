@@ -37,7 +37,7 @@ public class BufferStatusPanel extends JPanel {
 
     //todo: CreatorStatus is wrong!
     public void showStatus(AbstractPairBuffer.BufferStatus status) {
-        statusLabel.setText("CreatorStatus: " + status.toString());
+        statusLabel.setText("Status: " + status.toString());
     }
 
 
