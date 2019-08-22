@@ -120,6 +120,7 @@ public class WriterStatusPanel extends JPanel {
 
     }
 
+    //todo: Creator Status is wrong!
     public void showStatus(WriterStatus status) {
         statusLabel.setText("CreatorStatus: " + status.toString());
     }
