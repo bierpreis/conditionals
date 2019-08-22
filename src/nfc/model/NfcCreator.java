@@ -141,6 +141,7 @@ public class NfcCreator {
             conditionalList.setNumbersToEquivalentConditionals(counter);
             counter = conditionalList.getHighestConditionalNumber();
         }
+        //todo: in this list put all equivalent conditionals into the first so it has info about all equivalent conditionals
         return cNfc;
     }
 
