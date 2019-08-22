@@ -43,7 +43,9 @@ public class World implements Comparable {
                 return 1;
 
         }
-        throw new RuntimeException("Comparing WORLDS_LIST failed!");
+
+        //this happens when both worlds are equal
+        return 0;
 
 
     }

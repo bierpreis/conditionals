@@ -25,45 +25,20 @@ public class Conditional implements Comparable {
 
     }
 
-    //todo: here new comparing conditionals
+    //this is ordering according to definition 3
     @Override
     public int compareTo(Object o) {
         if (!(o instanceof Conditional))
             throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
-        Conditional other = (Conditional) o;
 
-        if (antecedent.getSize() < other.antecedent.getSize())
-            return -1;
-        if (antecedent.getSize() > other.antecedent.getSize())
-            return 1;
 
-        if (consequence.getSize() < other.consequence.getSize())
-            return -1;
-        if (consequence.getSize() > other.consequence.getSize())
-            return 1;
+        Conditional otherConditional = (Conditional) o;
 
-        int comparedRight = compareWorldsElements(antecedent, other.antecedent);
-        if (comparedRight != 0)
-            return comparedRight;
-
-        int comparedLeft = compareWorldsElements(consequence, other.consequence);
-        if (comparedLeft != 0)
-            return comparedLeft;
-
-        throw new RuntimeException("Comparing conditionals failed!");
+        if (this.antecedent.compareTo(otherConditional.getAntecedent()) != 0)
+            return this.antecedent.compareTo(otherConditional.getAntecedent());
+        else return this.consequence.compareTo(otherConditional.getConsequence());
     }
 
-    //todo: here compare wolds
-    private int compareWorldsElements(World firstWorld, World secondWorld) {
-        for (int i = 0; i < firstWorld.getSize(); i++) {
-            if (firstWorld.getWorldsList().get(i) > secondWorld.getWorldsList().get(i))
-                return -1;
-            if (firstWorld.getWorldsList().get(i) < secondWorld.getWorldsList().get(i))
-                return 1;
-
-        }
-        return 0;//todo: when does this happen?!
-    }
 
     @Override
     public String toString() {
