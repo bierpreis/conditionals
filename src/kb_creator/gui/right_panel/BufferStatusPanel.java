@@ -34,8 +34,7 @@ public class BufferStatusPanel extends JPanel {
         showReaderBuffer(0);
 
     }
-
-    //todo: CreatorStatus is wrong!
+    
     public void showStatus(AbstractPairBuffer.BufferStatus status) {
         statusLabel.setText("Status: " + status.toString());
     }
