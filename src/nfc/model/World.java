@@ -26,7 +26,7 @@ public class World implements Comparable {
 
     }
 
-    //todo: here some change is needed for new ordering. see def 2 for it. this here should be almost def 2?!
+    //this ordering is ordering according to definition 1 and 2
     @Override
     public int compareTo(Object o) {
         World otherWorld = (World) o;
