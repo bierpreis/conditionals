@@ -35,6 +35,8 @@ public class NfcCreator {
         //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
+        setEquivalentListToCnfc(cnfcEq);
+
         //this method takes much time
         setCounterConditionals(nfc);
 
@@ -141,9 +143,15 @@ public class NfcCreator {
             conditionalList.setNumbersToEquivalentConditionals(counter);
             counter = conditionalList.getHighestConditionalNumber();
         }
-        //todo: in this list put all equivalent conditionals into the first so it has info about all equivalent conditionals
-        //todo: then put this list in the new conditionals too
         return cNfc;
+    }
+
+    private void setEquivalentListToCnfc(List<ConditionalList> cnfcEq) {
+        for (ConditionalList conditionalList : cnfcEq) {
+            for (int i = 1; i < conditionalList.getList().size(); i++) {
+                conditionalList.get(0).addEqConditionalNumber(conditionalList.get(i).getNumber());
+            }
+        }
     }
 
     private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
@@ -210,6 +218,7 @@ public class NfcCreator {
     }
 
     private List<NewConditional> translateConditionals(List<Conditional> oldConditionals) {
+        //todo: translate eq conditional list too. use nfc map for it
         System.out.println("translating conditionals");
         List<NewConditional> newConditionals = new ArrayList<>(oldConditionals.size());
 

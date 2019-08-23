@@ -1,5 +1,8 @@
 package nfc.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Conditional implements Comparable {
     private final World consequence;
     private final World antecedent;
@@ -8,6 +11,8 @@ public class Conditional implements Comparable {
 
     //this is needed for proper columns in conditional field
     private static int longestConditional = 0;
+
+    private List<Integer> eqConditionalNumbers;
 
 
     private int number;
@@ -18,6 +23,7 @@ public class Conditional implements Comparable {
         this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
+        eqConditionalNumbers = new ArrayList<>();
     }
 
     public boolean isEquivalent(Conditional otherConditional) {
@@ -126,6 +132,10 @@ public class Conditional implements Comparable {
         if (counterConditional == null)
             throw new RuntimeException("No Counter Conditional found");
         return counterConditional;
+    }
+
+    public void addEqConditionalNumber(int eqNumber){
+        this.eqConditionalNumbers.add(eqNumber);
     }
 
 }
