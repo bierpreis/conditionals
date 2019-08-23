@@ -45,6 +45,8 @@ public class NfcCreator {
         newCnfc = translateConditionals(cnfc);
 
         nfcMap = createNfcMap(newNfc);
+
+        setEquivalentListToNewConditionals(cnfc, nfcMap);
         System.out.println("nfc creator finished");
     }
 
@@ -181,6 +183,12 @@ public class NfcCreator {
         return currentConditionalList;
     }
 
+    private void setEquivalentListToNewConditionals(List<Conditional> oldCnfc, Map<Integer, NewConditional> newNfcMap) {
+        for(Conditional oldConditional: oldCnfc){
+            newNfcMap.get(oldConditional.getNumber()).addEqList(oldConditional.getEqList());
+        }
+    }
+
 
     private List<World> createSubSetList(List<Integer> inputList) {
         List<World> subSetList = new ArrayList<>();
@@ -293,6 +301,8 @@ public class NfcCreator {
     public Map<Integer, NewConditional> getNfcMap() {
         return nfcMap;
     }
+
+
 
 }
 

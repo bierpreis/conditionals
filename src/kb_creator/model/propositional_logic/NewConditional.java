@@ -5,12 +5,16 @@ import kb_creator.model.propositional_logic.signature.ABC;
 import nfc.model.Conditional;
 import nfc.model.World;
 
+import java.util.List;
+
 
 public class NewConditional {
     private int number;
     private final AbstractFormula antecedent;
     private final AbstractFormula consequence;
     private NewConditional counterConditional;
+
+    private List<Integer> eqNumbersList;
 
 
     public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
@@ -161,6 +165,10 @@ public class NewConditional {
 
     public void setActualCounterConditional(NewConditional counterConditional) {
         this.counterConditional = counterConditional;
+    }
+
+    public void addEqList(List<Integer> eqNumbersList){
+        this.eqNumbersList = eqNumbersList;
     }
 
 }

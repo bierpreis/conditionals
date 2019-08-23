@@ -90,6 +90,10 @@ public class Conditional implements Comparable {
 
     }
 
+    public List<Integer> getEqList() {
+        return eqConditionalNumbers;
+    }
+
     public World getAntecedent() {
         return antecedent;
     }
@@ -134,7 +138,7 @@ public class Conditional implements Comparable {
         return counterConditional;
     }
 
-    public void addEqConditionalNumber(int eqNumber){
+    public void addEqConditionalNumber(int eqNumber) {
         this.eqConditionalNumbers.add(eqNumber);
     }
 
