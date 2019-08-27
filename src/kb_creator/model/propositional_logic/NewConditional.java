@@ -21,8 +21,6 @@ public class NewConditional {
     public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
-
-        eqConditionalsList = new ArrayList<>();
     }
 
     public NewConditional(Conditional oldConditional) {
@@ -171,10 +169,12 @@ public class NewConditional {
     }
 
     public void addEqList(List<NewConditional> eqConditionalsList) {
-        this.eqConditionalsList.addAll(eqConditionalsList);
+        System.out.println("adding eq list: " + eqConditionalsList);
+        this.eqConditionalsList = eqConditionalsList;
     }
 
     public List<NewConditional> getEqConditionalsList() {
+        System.out.println(eqConditionalsList);
         return eqConditionalsList;
     }
 
