@@ -147,18 +147,18 @@ public class NfcCreator {
         }
         return cNfc;
     }
-
-    //todo: do this no nfc not cnfc
-    //todo: check if the first is also in it
+    
     private void setEquivalentListToNfc(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
-            for (int i = 0; i < conditionalList.getList().size(); i++) {
+
+            //collect all equivalent conditionals into the first in the eq class
+            for (int i = 0; i < conditionalList.getList().size(); i++)
                 conditionalList.get(0).addEqConditionalNumber(conditionalList.get(i).getNumber());
 
-                //add eq list to all but the first in the conditional list
-                for (int j = 1; j < conditionalList.getList().size(); j++)
-                    conditionalList.get(j).addEqNumbersList(conditionalList.get(0).getEqList());
-            }
+
+            //add eq list to all but the first in the conditional list
+            for (int j = 1; j < conditionalList.getList().size(); j++)
+                conditionalList.get(j).addEqNumbersList(conditionalList.get(0).getEqList());
         }
     }//todo: highestConditionalNumber is not correct for the sublists?!
 
