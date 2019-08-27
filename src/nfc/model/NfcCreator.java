@@ -148,6 +148,8 @@ public class NfcCreator {
         return cNfc;
     }
 
+    //todo: do this no nfc not cnfc
+    //todo: check if the first is also in it
     private void setEquivalentListToCnfc(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
             for (int i = 1; i < conditionalList.getList().size(); i++) {
