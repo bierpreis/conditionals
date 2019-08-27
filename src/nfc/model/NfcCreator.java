@@ -51,8 +51,7 @@ public class NfcCreator {
             newCnfc.add(newNfc.get(i));
 
         newNfcMap = createNfcMap(newNfc);
-
-        //todo: here the eq list is created for oldCnfc but not for oldCnfcEq?
+        
         setEquivalentListToNewConditionals(oldCnfc, newNfcMap);
         System.out.println("oldNfc creator finished");
     }
