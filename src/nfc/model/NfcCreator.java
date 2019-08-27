@@ -35,7 +35,7 @@ public class NfcCreator {
         //this is in order of defintion 5.2
         nfc = createNfc(cnfcEq);
 
-        setEquivalentListToCnfc(cnfcEq);
+        setEquivalentListToNfc(cnfcEq);
 
         //this method takes much time
         setCounterConditionals(nfc);
@@ -150,13 +150,15 @@ public class NfcCreator {
 
     //todo: do this no nfc not cnfc
     //todo: check if the first is also in it
-    private void setEquivalentListToCnfc(List<ConditionalList> cnfcEq) {
+    private void setEquivalentListToNfc(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
             for (int i = 1; i < conditionalList.getList().size(); i++) {
                 conditionalList.get(0).addEqConditionalNumber(conditionalList.get(i).getNumber());
+                for (int j = 1; j < conditionalList.getList().size(); j++)
+                    conditionalList.get(j).addEqNumbersList(conditionalList.get(0).getEqList());
             }
         }
-    }
+    }//todo: highestConditionalNumber is not correct for the sublists?!
 
     private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
         System.out.println("creating cnfc");

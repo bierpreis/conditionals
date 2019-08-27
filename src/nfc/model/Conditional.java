@@ -142,4 +142,8 @@ public class Conditional implements Comparable {
         this.eqConditionalNumbers.add(eqNumber);
     }
 
+    public void addEqNumbersList(List<Integer> eqConditionalList) {
+            this.eqConditionalNumbers.addAll(eqConditionalList);
+    }
+
 }
