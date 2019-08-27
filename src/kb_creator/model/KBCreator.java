@@ -209,17 +209,17 @@ public class KBCreator implements Runnable {
         iterationNumberOfKBs = 0;
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
-        //todo: r is added to kb AND to candidates. this is shit. problem in genkb or in implementation?
+        //todo: test
         //line 3
         for (NewConditional r : cnfc) {
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> D = new ArrayList<>();
-            //todo: this is wrong. smaller conditionals are included, equivalent conditionals are only sometimes removed
+
             for (NewConditional d : cnfc) {
-                if (d.getNumber() < r.getEqConditionalsList().get(0).getNumber()) {//todo: this doenst work. it doesnt remove smaller conditionals?!
-                    D.addAll(r.getEqConditionalsList());
+                if (d.getEqConditionalsList().get(0).getNumber() < r.getNumber()) {
+                    D.addAll(d.getEqConditionalsList());
                 }
 
             }
