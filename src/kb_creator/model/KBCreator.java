@@ -209,6 +209,7 @@ public class KBCreator implements Runnable {
         iterationNumberOfKBs = 0;
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
+        //todo: r is added to kb AND to candidates. this is shit. problem in genkb or in implementation?
         //line 3
         for (NewConditional r : cnfc) {
             //line 4 and 5
