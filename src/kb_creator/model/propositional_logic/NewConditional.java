@@ -172,15 +172,11 @@ public class NewConditional {
     }
 
     public void addEqList(List<NewConditional> eqConditionalsList) {
-        System.out.println("adding eq list: " + number);
         this.eqConditionalsList = eqConditionalsList;
     }
 
-    //todo: this is null but why?!
     public List<NewConditional> getEqConditionalsList() {
-        System.out.println(eqConditionalsList);
         return eqConditionalsList;
     }
-
-
+    
 }
