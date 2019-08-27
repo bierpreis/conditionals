@@ -40,6 +40,7 @@ public class NfcCreator {
         //this method takes much time
         setCounterConditionals(nfc);
 
+        //todo: here for nfc and nfceq NEW newconditionals are constructed. why not create cnfc from newnfc?
         newNfc = translateConditionals(nfc);
 
         newCnfc = translateConditionals(cnfc);
