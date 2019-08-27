@@ -178,5 +178,5 @@ public class NewConditional {
     public List<NewConditional> getEqConditionalsList() {
         return eqConditionalsList;
     }
-    
+
 }

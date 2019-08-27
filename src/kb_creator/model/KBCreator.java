@@ -215,7 +215,7 @@ public class KBCreator implements Runnable {
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> D = new ArrayList<>();
-            //todo: this should be changed to fit new GenKB
+            //todo: this is wrong. smaller conditionals are included, equivalent conditionals are not removed
             for (NewConditional d : cnfc) {
                 if (d.getNumber() < r.getNumber()) {
                     D.add(r);
