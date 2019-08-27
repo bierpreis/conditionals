@@ -9,46 +9,47 @@ import java.util.*;
 
 public class NfcCreator {
     private final List<World> worlds;
-    private final List<ConditionalList> cnfcEq;
+    private final List<ConditionalList> oldCnfcEq;
     private final List<Conditional> basicConditionalList;
-    private final List<Conditional> cnfc;
-    private final List<Conditional> nfc;
+    private final List<Conditional> oldCnfc;
+    private final List<Conditional> oldNfc;
 
     private final List<NewConditional> newNfc;
     private final List<NewConditional> newCnfc;
 
-    private final Map<Integer, NewConditional> nfcMap;
+    private final Map<Integer, NewConditional> newNfcMap;
 
     public NfcCreator(AbstractSignature signature) {
-        System.out.println("started nfc creator");
+        System.out.println("started oldNfc creator");
         worlds = createWorlds(signature);
 
         //this is basic conditional list in order from defintion  2
         basicConditionalList = createBasicConditionalList(worlds);
 
 
-        cnfcEq = createCnfcEq(basicConditionalList);
+        oldCnfcEq = createCnfcEq(basicConditionalList);
 
         //this is in order on def 5.1
-        cnfc = createCnfc(cnfcEq);
+        oldCnfc = createCnfc(oldCnfcEq);
 
         //this is in order of defintion 5.2
-        nfc = createNfc(cnfcEq);
+        oldNfc = createNfc(oldCnfcEq);
 
-        setEquivalentListToNfc(cnfcEq);
+        setEquivalentListToNfc(oldCnfcEq);
 
         //this method takes much time
-        setCounterConditionals(nfc);
+        setCounterConditionals(oldNfc);
 
-        //todo: here for nfc and nfceq NEW newconditionals are constructed. why not create cnfc from newnfc?
-        newNfc = translateConditionals(nfc);
+        //todo: here for oldNfc and nfceq NEW newconditionals are constructed. why not create oldCnfc from newnfc?
+        newNfc = translateConditionals(oldNfc);
 
-        newCnfc = translateConditionals(cnfc);
+        newCnfc = translateConditionals(oldCnfc);
 
-        nfcMap = createNfcMap(newNfc);
+        newNfcMap = createNfcMap(newNfc);
 
-        setEquivalentListToNewConditionals(cnfc, nfcMap);
-        System.out.println("nfc creator finished");
+        //todo: here the eq list is created for oldCnfc but not for oldCnfcEq?
+        setEquivalentListToNewConditionals(oldCnfc, newNfcMap);
+        System.out.println("oldNfc creator finished");
     }
 
 
@@ -69,7 +70,7 @@ public class NfcCreator {
     }
 
     private List<Conditional> createNfc(List<ConditionalList> cnfc) {
-        System.out.println("creating nfc");
+        System.out.println("creating oldNfc");
         List<Conditional> nfc = new ArrayList<>();
 
         //add the first one of every equivalence class
@@ -106,7 +107,7 @@ public class NfcCreator {
     }
 
     private List<ConditionalList> createCnfcEq(final List<Conditional> basicConditionalList) {
-        System.out.println("creating cnfc eq");
+        System.out.println("creating oldCnfc eq");
 
         List<ConditionalList> cNfc = new ArrayList<>();
         List<Conditional> alreadyAddedList = new ArrayList<>();
@@ -164,7 +165,7 @@ public class NfcCreator {
     }//todo: highestConditionalNumber is not correct for the sublists?!
 
     private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
-        System.out.println("creating cnfc");
+        System.out.println("creating oldCnfc");
         List<Conditional> cnfc = new ArrayList<>();
 
         for (ConditionalList sublist : cnfcEq)
@@ -191,13 +192,13 @@ public class NfcCreator {
     }
 
     //todo: rethink
-    //this adds the numbers of equivalent conditionals to every cnfc new conditional
+    //this adds the numbers of equivalent conditionals to every oldCnfc new conditional
     //this list is needed to reduce the possible candidates when initialising candidate pairs
     private void setEquivalentListToNewConditionals(List<Conditional> oldCnfc, Map<Integer, NewConditional> newNfcMap) {
-        for (Conditional oldConditional : oldCnfc) {//todo: why only cnfc? why not nfc?!
+        for (Conditional oldConditional : oldCnfc) {//todo: why only oldCnfc? why not oldNfc?!
             List<NewConditional> eqList = new ArrayList<>();
             for (Integer eqNumber : oldConditional.getEqList())
-                eqList.add(nfcMap.get(eqNumber));
+                eqList.add(this.newNfcMap.get(eqNumber));
             newNfcMap.get(oldConditional.getNumber()).setEqList(eqList);
         }
     }
@@ -222,16 +223,16 @@ public class NfcCreator {
 
     //getters
 
-    public List<Conditional> getCnfc() {
-        return cnfc;
+    public List<Conditional> getOldCnfc() {
+        return oldCnfc;
     }
 
     public List<Conditional> getBasicConditionals() {
         return basicConditionalList;
     }
 
-    public List<ConditionalList> getCnfcEq() {
-        return cnfcEq;
+    public List<ConditionalList> getOldCnfcEq() {
+        return oldCnfcEq;
     }
 
     public List<World> getWorlds() {
@@ -293,8 +294,8 @@ public class NfcCreator {
         return null;
     }
 
-    public List<Conditional> getNfc() {
-        return nfc;
+    public List<Conditional> getOldNfc() {
+        return oldNfc;
     }
 
     private Map<Integer, NewConditional> createNfcMap(Collection<NewConditional> nfc) {
@@ -311,7 +312,7 @@ public class NfcCreator {
     }
 
     public Map<Integer, NewConditional> getNfcMap() {
-        return nfcMap;
+        return newNfcMap;
     }
 
 
