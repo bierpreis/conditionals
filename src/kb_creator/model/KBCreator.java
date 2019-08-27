@@ -214,12 +214,17 @@ public class KBCreator implements Runnable {
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
-            List<NewConditional> conditionalsToAdd = new ArrayList<>();
+            List<NewConditional> D = new ArrayList<>();
             //todo: this should be changed to fit new GenKB
-            for (NewConditional conditional : nfc)
-                if (conditional.getNumber() > r.getNumber() && !conditional.equals(r.getCounterConditional()))
-                    conditionalsToAdd.add(conditional);
+            for (NewConditional d : cnfc) {
+                if (d.getNumber() < r.getNumber()) {
+                    D.add(r);
+                    D.addAll(r.getEqConditionalsList());
+                }
 
+            }
+            List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
+            conditionalsToAdd.removeAll(D);
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;

@@ -5,6 +5,7 @@ import kb_creator.model.propositional_logic.signature.ABC;
 import nfc.model.Conditional;
 import nfc.model.World;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,12 +15,14 @@ public class NewConditional {
     private final AbstractFormula consequence;
     private NewConditional counterConditional;
 
-    private List<Integer> eqNumbersList;
+    private List<NewConditional> eqConditionalsList;
 
 
     public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
+
+        eqConditionalsList = new ArrayList<>();
     }
 
     public NewConditional(Conditional oldConditional) {
@@ -167,8 +170,13 @@ public class NewConditional {
         this.counterConditional = counterConditional;
     }
 
-    public void addEqList(List<Integer> eqNumbersList){
-        this.eqNumbersList = eqNumbersList;
+    public void addEqList(List<NewConditional> eqConditionalsList) {
+        this.eqConditionalsList.addAll(eqConditionalsList);
     }
+
+    public List<NewConditional> getEqConditionalsList() {
+        return eqConditionalsList;
+    }
+
 
 }
