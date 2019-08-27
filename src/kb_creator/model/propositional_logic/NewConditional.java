@@ -15,15 +15,15 @@ public class NewConditional {
     private final AbstractFormula consequence;
     private NewConditional counterConditional;
 
-    private List<NewConditional> eqConditionalsList;
+    //empty list as default for all conditionals who will not have an eq list
+    private List<NewConditional> eqConditionalsList = new ArrayList<>(0);
 
 
     public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
 
-        //empty list as default for all conditionals who will not have an eq list
-        this.eqConditionalsList = new ArrayList<>(0);
+
     }
 
     public NewConditional(Conditional oldConditional) {
