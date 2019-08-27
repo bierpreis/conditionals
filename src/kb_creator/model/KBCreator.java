@@ -219,7 +219,7 @@ public class KBCreator implements Runnable {
 
             for (NewConditional d : cnfc) {
                 if (d.getEqConditionalsList().get(0).getNumber() < r.getNumber()) {
-                    D.addAll(d.getEqConditionalsList());
+                    D.addAll(d.getEqConditionalsList());//todo: this doensnt work?
                 }
 
             }
