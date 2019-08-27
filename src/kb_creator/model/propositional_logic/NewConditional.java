@@ -175,6 +175,7 @@ public class NewConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
+    //todo: maybe put here all equiv conditionals in order? then the first equiv conditional can be found
     public List<NewConditional> getEqConditionalsList() {
         return eqConditionalsList;
     }
