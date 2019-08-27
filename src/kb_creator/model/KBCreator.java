@@ -216,17 +216,16 @@ public class KBCreator implements Runnable {
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> D = new ArrayList<>();
-            //todo: this is wrong. smaller conditionals are included, equivalent conditionals are not removed
+            //todo: this is wrong. smaller conditionals are included, equivalent conditionals are only sometimes removed
             for (NewConditional d : cnfc) {
-                if (d.getNumber() < r.getNumber()) { //todo: here not r.getnumber but r.getEQList.get(0).getNumber
-                    D.add(r); //todo: delete this if eq list is complete
+                if (d.getNumber() < r.getEqConditionalsList().get(0).getNumber()) {//todo: this doenst work. it doesnt remove smaller conditionals?!
                     D.addAll(r.getEqConditionalsList());
                 }
 
             }
 
             List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
-            //conditionalsToAdd.removeAll(D);
+            conditionalsToAdd.removeAll(D);
             conditionalsToAdd.remove(r.getCounterConditional());
 
             //no buffering for first iteration because it almost makes no difference

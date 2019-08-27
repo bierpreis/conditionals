@@ -51,7 +51,7 @@ public class NfcCreator {
             newCnfc.add(newNfc.get(i));
 
         newNfcMap = createNfcMap(newNfc);
-        
+
         setEquivalentListToNewConditionals(oldCnfc, newNfcMap);
         System.out.println("oldNfc creator finished");
     }
