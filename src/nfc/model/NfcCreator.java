@@ -143,7 +143,7 @@ public class NfcCreator {
         //set numbers to all but first in equivalence class
         for (ConditionalList conditionalList : cNfc) {
             conditionalList.setNumbersToEquivalentConditionals(counter);
-            counter = conditionalList.getHighestConditionalNumber();
+            counter = conditionalList.getHighestConditionalNumber();//todo: highest number is wrong?!
         }
         return cNfc;
     }
@@ -152,8 +152,10 @@ public class NfcCreator {
     //todo: check if the first is also in it
     private void setEquivalentListToNfc(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
-            for (int i = 1; i < conditionalList.getList().size(); i++) {
+            for (int i = 0; i < conditionalList.getList().size(); i++) {
                 conditionalList.get(0).addEqConditionalNumber(conditionalList.get(i).getNumber());
+
+                //add eq list to all but the first in the conditional list
                 for (int j = 1; j < conditionalList.getList().size(); j++)
                     conditionalList.get(j).addEqNumbersList(conditionalList.get(0).getEqList());
             }
