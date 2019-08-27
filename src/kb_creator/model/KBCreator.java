@@ -224,8 +224,11 @@ public class KBCreator implements Runnable {
                 }
 
             }
+
             List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
-            conditionalsToAdd.removeAll(D);
+            //conditionalsToAdd.removeAll(D);
+            conditionalsToAdd.remove(r.getCounterConditional());
+
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
