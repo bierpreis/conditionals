@@ -217,8 +217,8 @@ public class KBCreator implements Runnable {
             List<NewConditional> D = new ArrayList<>();
             //todo: this is wrong. smaller conditionals are included, equivalent conditionals are not removed
             for (NewConditional d : cnfc) {
-                if (d.getNumber() < r.getNumber()) {
-                    D.add(r);
+                if (d.getNumber() < r.getNumber()) { //todo: here not r.getnumber but r.getEQList.get(0).getNumber
+                    D.add(r); //todo: delete this if eq list is complete
                     D.addAll(r.getEqConditionalsList());
                 }
 

@@ -191,7 +191,7 @@ public class NfcCreator {
             List<NewConditional> eqList = new ArrayList<>();
             for (Integer eqNumber : oldConditional.getEqList())
                 eqList.add(nfcMap.get(eqNumber));
-            newNfcMap.get(oldConditional.getNumber()).addEqList(eqList);
+            newNfcMap.get(oldConditional.getNumber()).setEqList(eqList);
         }
     }
 

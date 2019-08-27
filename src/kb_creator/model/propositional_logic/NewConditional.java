@@ -171,7 +171,9 @@ public class NewConditional {
         this.counterConditional = counterConditional;
     }
 
-    public void addEqList(List<NewConditional> eqConditionalsList) {
+    public void setEqList(List<NewConditional> eqConditionalsList) {
+        if (this.eqConditionalsList.size() != 0)
+            throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
     }
 
