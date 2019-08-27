@@ -21,6 +21,9 @@ public class NewConditional {
     public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
+
+        //empty list as default for all conditionals who will not have an eq list
+        this.eqConditionalsList = new ArrayList<>(0);
     }
 
     public NewConditional(Conditional oldConditional) {
@@ -169,10 +172,11 @@ public class NewConditional {
     }
 
     public void addEqList(List<NewConditional> eqConditionalsList) {
-        System.out.println("adding eq list: " + eqConditionalsList);
+        System.out.println("adding eq list: " + number);
         this.eqConditionalsList = eqConditionalsList;
     }
 
+    //todo: this is null but why?!
     public List<NewConditional> getEqConditionalsList() {
         System.out.println(eqConditionalsList);
         return eqConditionalsList;
