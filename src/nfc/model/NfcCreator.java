@@ -40,10 +40,15 @@ public class NfcCreator {
         //this method takes much time
         setCounterConditionals(oldNfc);
 
-        //todo: here for oldNfc and nfceq NEW newconditionals are constructed. why not create oldCnfc from newnfc?
+
         newNfc = translateConditionals(oldNfc);
 
-        newCnfc = translateConditionals(oldCnfc);
+        newCnfc = new ArrayList<>(oldCnfc.size());
+        //add the conditionals from nfc instead of translating this again
+        //because translating would create NEW conditionals
+        //e.g. for settingEquivalentLists to set the lists for both nfc and nfceq
+        for (int i = 0; i < oldCnfc.size(); i++)
+            newCnfc.add(newNfc.get(i));
 
         newNfcMap = createNfcMap(newNfc);
 
