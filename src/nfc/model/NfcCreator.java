@@ -198,9 +198,9 @@ public class NfcCreator {
     //todo: rethink
     //this adds the numbers of equivalent conditionals to every oldCnfc new conditional
     //this list is needed to reduce the possible candidates when initialising candidate pairs
-    private void setEquivalentListToNewConditionals(List<Conditional> oldCnfc, Map<Integer, NewConditional> newNfcMap) {
-        for (Conditional oldConditional : oldCnfc) {//todo: why only oldCnfc? why not oldNfc?!
-            List<NewConditional> eqList = new ArrayList<>();
+    private void setEquivalentListToNewConditionals(List<Conditional> oldNfc, Map<Integer, NewConditional> newNfcMap) {
+        for (Conditional oldConditional : oldNfc) {
+            List<NewConditional> eqList = new ArrayList<>(oldConditional.getEqList().size());
             for (Integer eqNumber : oldConditional.getEqList())
                 eqList.add(this.newNfcMap.get(eqNumber));
             newNfcMap.get(oldConditional.getNumber()).setEqList(eqList);
