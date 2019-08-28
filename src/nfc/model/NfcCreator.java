@@ -53,7 +53,7 @@ public class NfcCreator {
         newNfcMap = createNfcMap(newNfc);
 
         setEquivalentListToNewConditionals(oldNfc, newNfcMap);
-        System.out.println("oldNfc creator finished");//todo: eq conditional lists are not correct (e.g. c 36 has NO elements!)
+        System.out.println("oldNfc creator finished");
     }
 
 
