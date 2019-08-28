@@ -1,12 +1,10 @@
 package kb_creator.model.knowledge_base;
 
-import kb_creator.model.propositional_logic.Conjunction;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 
 import java.util.ArrayList;
@@ -23,18 +21,15 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private AbstractFormula consistencyOfKB;
 
-    //todo: signature should be static in abstract kb and set only once
     //this constructor is only used for initializing 1 element kbs
-    public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
+    public ObjectKnowledgeBase(int kbNumber) {
         this.conditionalList = new ArrayList<>(1);
-        this.signature = signature;
         this.kbNumber = kbNumber;
     }
 
     //this constructor is used for all the other iterations
     public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
-        this.signature = knowledgeBase.getSignature();
         this.kbNumber = kbNumber;
 
         conditionalList.addAll(knowledgeBase.getConditionalList());
@@ -45,8 +40,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = stringFromFile.replaceAll("\n", "");
-        String[] splitString1 = stringFromFile.split("signature");
-
+        String[] splitString1 = stringFromFile.split("signature"); //todo: remove
+        //todo: not sure if remove
         if (ABC_PATTERN.matcher(splitString1[1]).matches())
             signature = new ABC();
         else if (AB_PATTERN.matcher(splitString1[1]).matches())

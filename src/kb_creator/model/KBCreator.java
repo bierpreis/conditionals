@@ -47,6 +47,7 @@ public class KBCreator implements Runnable {
         System.out.println("new kb creator");
 
         AbstractFormula.setSignature(signature);
+        AbstractKnowledgeBase.setSignature(signature);
 
         creatorStatus = CreatorStatus.NOT_STARTED;
         this.signature = signature;
@@ -214,7 +215,7 @@ public class KBCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
             List<NewConditional> D = new ArrayList<>();
 

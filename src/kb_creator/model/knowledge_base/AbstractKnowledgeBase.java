@@ -11,7 +11,7 @@ import java.util.Map;
 public abstract class AbstractKnowledgeBase {
 
     protected static Map<Integer, NewConditional> nfcMap;
-    protected AbstractSignature signature;
+    protected static AbstractSignature signature;
     protected int kbNumber;
 
     public abstract String toFileString();
@@ -39,5 +39,9 @@ public abstract class AbstractKnowledgeBase {
 
     public AbstractSignature getSignature() {
         return signature;
+    }
+
+    public static void setSignature(AbstractSignature signatureToSet) {
+        signature = signatureToSet;
     }
 }
