@@ -23,6 +23,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private AbstractFormula consistencyOfKB;
 
+    //todo: signature should be static in abstract kb and set only once
     //this constructor is only used for initializing 1 element kbs
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
         //todo: init list with 1 if this is only used by 1 element kbs? else delete comment
@@ -155,6 +156,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return sb.toString();
     }
 
+    //todo: remove signature from here?
     @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
