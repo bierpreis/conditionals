@@ -68,7 +68,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 queueToReturn.addAll(readNextFile());
                 //sleep if no writing or reading is needed
             } else {
-
+                //todo: wait not sleep. status thread can notify when time to continue?
                 try {
                     status = BufferStatus.SLEEPING;
                     Thread.sleep(100); //this sleep also has practically no impact on speed
