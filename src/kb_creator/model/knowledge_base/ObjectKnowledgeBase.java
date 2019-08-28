@@ -17,6 +17,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private List<NewConditional> conditionalList;
 
+    //todo: this is shit. at least one of theese is useless. or make static?
     private final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
     private final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
 
