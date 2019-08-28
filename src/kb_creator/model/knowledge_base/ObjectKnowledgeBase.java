@@ -17,14 +17,15 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private List<NewConditional> conditionalList;
 
-    //todo: this is shit. at least one of theese is useless. or make static?
-    private final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
-    private final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
+    //making theese static saves A LOT of memory
+    private static final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
+    private static final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
 
     private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
+        //todo: init list with 1 if this is only used by 1 element kbs? else delete comment
         this.conditionalList = new ArrayList<>();
         this.signature = signature;
         this.kbNumber = kbNumber;
