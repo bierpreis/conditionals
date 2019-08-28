@@ -17,6 +17,7 @@ public class RealListPair extends AbstractPair {
     }
 
     public RealListPair(String stringFromFile) {
+        //todo: pre compile regex
 
         //divide string into kb and candidates
         String[] splitString = stringFromFile.split("candidates\n");

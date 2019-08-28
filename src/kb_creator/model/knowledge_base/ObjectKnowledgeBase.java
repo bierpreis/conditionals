@@ -41,7 +41,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         conditionalList.add(conditionalToAdd);
     }
 
-    //todo: maybe pre compile the regexes for efficiency
+    //todo: maybe pre compile the STATIC regexes for efficiency
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = stringFromFile.replaceAll("\n", "");

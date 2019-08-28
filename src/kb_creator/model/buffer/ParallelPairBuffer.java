@@ -128,7 +128,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             sb.append("\n");
         }
 
-
+        //todo: pre compile regex
         String[] fileStringArray = sb.toString().split("\nEND_PAIR\n\n");
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
