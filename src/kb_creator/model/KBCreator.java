@@ -213,6 +213,7 @@ public class KBCreator implements Runnable {
 
         //line 3
         for (NewConditional r : cnfc) {
+
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(signature, iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
@@ -225,14 +226,18 @@ public class KBCreator implements Runnable {
 
             }
 
+            //long start = System.currentTimeMillis();
+            //todo: the following 3 lines are very slow!
             List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
             conditionalsToAdd.removeAll(D);
             conditionalsToAdd.remove(r.getCounterConditional());
+            //System.out.println("time: " + (System.currentTimeMillis() - start));
 
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, conditionalsToAdd));
             iterationNumberOfKBs++;
             nextCandidatePairAmount++;
+
         }
 
         for (AbstractPair candidatePair : listToReturn)
