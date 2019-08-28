@@ -209,7 +209,7 @@ public class KBCreator implements Runnable {
         iterationNumberOfKBs = 0;
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
-        //todo: test
+
         //line 3
         for (NewConditional r : cnfc) {
             //line 4 and 5
@@ -219,7 +219,7 @@ public class KBCreator implements Runnable {
 
             for (NewConditional d : cnfc) {
                 if (d.getEqConditionalsList().get(0).getNumber() < r.getNumber()) {
-                    D.addAll(d.getEqConditionalsList());//todo: this doensnt work?
+                    D.addAll(d.getEqConditionalsList());
                 }
 
             }
