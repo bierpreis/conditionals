@@ -48,7 +48,7 @@ public class CurrentIterationPanel extends JPanel {
     }
 
     public void showCurrentK(int currentK) {
-            currentKLabel.setText("Current k value: " + currentK);
+        currentKLabel.setText("Current k value: " + currentK);
     }
 
     public void showSpeed(int speed) {
@@ -63,6 +63,7 @@ public class CurrentIterationPanel extends JPanel {
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
     }
 
+    //todo: show consistent and inconsistent here?
     public void showCandidatePairs(int candidatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(candidatePairs));
