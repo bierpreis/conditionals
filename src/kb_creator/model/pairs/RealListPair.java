@@ -39,7 +39,7 @@ public class RealListPair extends AbstractPair {
         List<NewConditional> listToReturn = new ArrayList<>();
 
         String[] stringArray = stringFromFile.split(", ");
-
+        //todo: pre compile in this loop could be best regex improvement
         for (String string : stringArray) {
             string = string.replaceAll("\n", "");
 
