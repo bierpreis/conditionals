@@ -15,7 +15,7 @@ public class NewConditional {
     private final AbstractFormula consequence;
     private NewConditional counterConditional;
 
-    //empty list as default for all conditionals who will not have an eq list
+    //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<NewConditional> eqConditionalsList = new ArrayList<>(0);
 
 
@@ -176,8 +176,7 @@ public class NewConditional {
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
     }
-
-    //todo: maybe put here all equiv conditionals in order? then the first equiv conditional can be found
+    
     public List<NewConditional> getEqConditionalsList() {
         return eqConditionalsList;
     }

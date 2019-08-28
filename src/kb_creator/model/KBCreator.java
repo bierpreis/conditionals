@@ -203,7 +203,6 @@ public class KBCreator implements Runnable {
         l = requestedList;
     }
 
-    //todo: why is this so slow???
     private List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
