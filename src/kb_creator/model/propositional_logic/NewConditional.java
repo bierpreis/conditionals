@@ -176,7 +176,7 @@ public class NewConditional {
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
     }
-    
+
     public List<NewConditional> getEqConditionalsList() {
         return eqConditionalsList;
     }

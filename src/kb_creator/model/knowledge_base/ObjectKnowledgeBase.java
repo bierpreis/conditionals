@@ -26,8 +26,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //todo: signature should be static in abstract kb and set only once
     //this constructor is only used for initializing 1 element kbs
     public ObjectKnowledgeBase(AbstractSignature signature, int kbNumber) {
-        //todo: init list with 1 if this is only used by 1 element kbs? else delete comment
-        this.conditionalList = new ArrayList<>();
+        this.conditionalList = new ArrayList<>(1);
         this.signature = signature;
         this.kbNumber = kbNumber;
     }
@@ -42,6 +41,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         conditionalList.add(conditionalToAdd);
     }
 
+    //todo: maybe pre compile the regexes for efficiency
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = stringFromFile.replaceAll("\n", "");
