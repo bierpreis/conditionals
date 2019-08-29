@@ -15,6 +15,7 @@ public class Conjunction extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
+    //todo: this and evaluate in disjunction look nested in visualvm? watch! look the construction of the prop formulas
     //if one of the list is false, the whole conjunction is false
     //returning false immediately is a bit faster than always calculating all elements before returning the value
     @Override
