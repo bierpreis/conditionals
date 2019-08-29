@@ -57,13 +57,14 @@ public class CurrentIterationPanel extends JPanel {
         speedLabel.setText("Speed (KBs/Second): " + formatter.format(speed));
     }
 
+    //todo: show consistent and inconsistent here!
     public void showIterationKBs(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
         iterationKBLabel.setText("KnowledgeBases: " + formatter.format(amount) + "\n");
     }
 
-    //todo: show consistent and inconsistent here?
+
     public void showCandidatePairs(int candidatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairslabel.setText("Candidate pairs: " + formatter.format(candidatePairs));

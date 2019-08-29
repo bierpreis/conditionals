@@ -58,7 +58,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     //todo: reader queue is often empty with signature ab!
-    //todo: writing blocks reading so it blocks the main thread in ab!
+    //todo: writing blocks reading so it blocks the main thread in ab! this is actualy what ab makes slow!
     @Override
     public void run() {
         while (running) {
