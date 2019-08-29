@@ -227,10 +227,11 @@ public class KBCreator implements Runnable {
             }
 
             //long start = System.currentTimeMillis();
-            //todo: the following 3 lines are very slow!
+            //todo: the following 4 lines are very slow!
             List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
             conditionalsToAdd.removeAll(D);
             conditionalsToAdd.remove(r.getCounterConditional());
+            conditionalsToAdd.remove(r);
             //System.out.println("time: " + (System.currentTimeMillis() - start));
 
             //no buffering for first iteration because it almost makes no difference
