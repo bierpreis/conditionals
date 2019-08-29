@@ -50,7 +50,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         stringFromFile = NEW_LINE_PATTERN.matcher(stringFromFile).replaceAll("");
         String[] splitString1 = SIGNATURE_PATTERN.split(stringFromFile);
 
-        //todo: not sure if remove
+        //todo: remove if signature gets removed from here
         if (ABC_PATTERN.matcher(splitString1[1]).matches())
             signature = new ABC();
         else if (AB_PATTERN.matcher(splitString1[1]).matches())
