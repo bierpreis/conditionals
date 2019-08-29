@@ -138,18 +138,18 @@ public class NfcCreator {
         }
         Collections.sort(cNfc);
 
-        int counter = 1;
+        int nextConditionalNumber = 1;
 
         //set numbers to the first in every equivalence class
         for (ConditionalList conditionalList : cNfc) {
-            conditionalList.setNumberToFirstConditional(counter);
-            counter++;
+            conditionalList.setNumberToFirstConditional(nextConditionalNumber);
+            nextConditionalNumber++;
         }
 
         //set numbers to all but first in equivalence class
         for (ConditionalList conditionalList : cNfc) {
-            conditionalList.setNumbersToEquivalentConditionals(counter);
-            counter = conditionalList.getHighestConditionalNumber();//todo: highest number is wrong?!
+            conditionalList.setNumbersToEquivalentConditionals(nextConditionalNumber);
+            nextConditionalNumber = conditionalList.getNextConditionalNumber();
         }
         return cNfc;
     }
@@ -166,7 +166,7 @@ public class NfcCreator {
             for (int j = 1; j < conditionalList.getList().size(); j++)
                 conditionalList.get(j).addEqNumbersList(conditionalList.get(0).getEqList());
         }
-    }//todo: highestConditionalNumber is not correct for the sublists?!
+    }
 
     private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
         System.out.println("creating oldCnfc");

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ConditionalList implements Comparable {
     private final List<Conditional> conditionalList;
-    private int highestConditionalNumber;
+    private int nextConditionalNumber;
 
 
     public ConditionalList() {
@@ -52,17 +52,16 @@ public class ConditionalList implements Comparable {
         conditionalList.get(0).setNumber(number);
     }
 
-    public void setNumbersToEquivalentConditionals(int highestNumberOfLastList) {
-        int conditionalNumber = highestNumberOfLastList;
+    public void setNumbersToEquivalentConditionals(int numberForFirstConditional) {
+        nextConditionalNumber= numberForFirstConditional;
         for (int i = 1; i < conditionalList.size(); i++) {
-            conditionalList.get(i).setNumber(conditionalNumber);
-            conditionalNumber++; //todo: this is why highestconditonal number is actually 1 too high
+            conditionalList.get(i).setNumber(nextConditionalNumber);
+            nextConditionalNumber++;
         }
-        highestConditionalNumber = conditionalNumber;
     }
 
-    public int getHighestConditionalNumber() {
-        return highestConditionalNumber;
+    public int getNextConditionalNumber() {
+        return nextConditionalNumber;
     }
 
     public List<Conditional> getList() {
