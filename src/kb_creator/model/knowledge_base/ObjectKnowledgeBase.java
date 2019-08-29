@@ -23,6 +23,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private static final Pattern SIGNATURE_PATTERN = Pattern.compile("signature");
     private static final Pattern CONDITONALS_PATTERN = Pattern.compile("conditionals");
 
+    private static final Pattern CURLY_BRACKET_START = Pattern.compile("\\{");
+    private static final Pattern STOP = Pattern.compile("\\}");
+
     private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
@@ -55,7 +58,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
         String[] splitString2 = CONDITONALS_PATTERN.split(stringFromFile);
-        String[] splitString3 = splitString2[1].split("\\{");
+        String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
         this.kbNumber = Integer.parseInt(splitString3[0]);
         String[] conditionalStringArray = splitString3[1].replaceAll("\\}", "").split(", ");
 
