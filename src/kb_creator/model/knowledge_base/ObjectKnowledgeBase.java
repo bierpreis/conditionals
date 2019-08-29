@@ -19,6 +19,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private static final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
     private static final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
 
+    private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
+    private static final Pattern SIGNATURE_PATTERN = Pattern.compile("signature");
+    private static final Pattern CONDITONALS_PATTERN = Pattern.compile("conditionals");
+
     private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
@@ -39,8 +43,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //todo: maybe pre compile the STATIC regexes for efficiency
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
-        stringFromFile = stringFromFile.replaceAll("\n", "");
-        String[] splitString1 = stringFromFile.split("signature"); //todo: remove
+        stringFromFile = NEW_LINE_PATTERN.matcher(stringFromFile).replaceAll("");
+        String[] splitString1 = SIGNATURE_PATTERN.split(stringFromFile);
+
         //todo: not sure if remove
         if (ABC_PATTERN.matcher(splitString1[1]).matches())
             signature = new ABC();
@@ -49,7 +54,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);
 
 
-        String[] splitString2 = stringFromFile.split("conditionals");
+        String[] splitString2 = CONDITONALS_PATTERN.split(stringFromFile);
         String[] splitString3 = splitString2[1].split("\\{");
         this.kbNumber = Integer.parseInt(splitString3[0]);
         String[] conditionalStringArray = splitString3[1].replaceAll("\\}", "").split(", ");

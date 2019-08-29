@@ -53,7 +53,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.NOT_STARTED;
 
     }
-
+    //todo: reader queue is often empty with signature ab!
     @Override
     public void run() {
         while (running) {
