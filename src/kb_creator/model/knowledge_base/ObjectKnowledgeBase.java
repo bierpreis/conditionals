@@ -26,6 +26,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private static final Pattern CURLY_BRACKET_START = Pattern.compile("\\{");
     private static final Pattern CURLY_BRACKET_STOP = Pattern.compile("\\}");
 
+    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(", ");
+
     private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
@@ -42,8 +44,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         conditionalList.addAll(knowledgeBase.getConditionalList());
         conditionalList.add(conditionalToAdd);
     }
-
-    //todo: maybe pre compile the STATIC regexes for efficiency
+    
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = NEW_LINE_PATTERN.matcher(stringFromFile).replaceAll("");
@@ -60,7 +61,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         String[] splitString2 = CONDITONALS_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
         this.kbNumber = Integer.parseInt(splitString3[0]);
-        String[] conditionalStringArray = CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll("").split(", ");
+        String[] conditionalStringArray = COMMA_SPACE_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
         conditionalList = new ArrayList<>(conditionalStringArray.length);
 
