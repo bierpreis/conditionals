@@ -170,7 +170,7 @@ public class NfcCreator {
 
     private List<Conditional> createCnfc(List<ConditionalList> cnfcEq) {
         System.out.println("creating oldCnfc");
-        List<Conditional> cnfc = new ArrayList<>();
+        List<Conditional> cnfc = new ArrayList<>(cnfcEq.size());
 
         for (ConditionalList sublist : cnfcEq)
             cnfc.add(sublist.get(0));
@@ -194,7 +194,7 @@ public class NfcCreator {
 
         return currentConditionalList;
     }
-    
+
     //this adds the numbers of equivalent conditionals to every new nfc conditional
     //this list is needed to reduce the possible candidates when initialising candidate pairs
     private void setEquivalentListToNewConditionals(List<Conditional> oldNfc, Map<Integer, NewConditional> newNfcMap) {
