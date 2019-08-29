@@ -6,9 +6,15 @@ import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RealListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
+
+    private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
+    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(", ");
+    private static final Pattern DASH_PATTERN = Pattern.compile("-");
+    private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("candidates\n");
 
     public RealListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
@@ -17,10 +23,9 @@ public class RealListPair extends AbstractPair {
     }
 
     public RealListPair(String stringFromFile) {
-        //todo: pre compile regex
 
         //divide string into kb and candidates
-        String[] splitString = stringFromFile.split("candidates\n");
+        String[] splitString = CANDIDATES_NEWLINE_PATTERN.split(stringFromFile);
 
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");
@@ -38,12 +43,12 @@ public class RealListPair extends AbstractPair {
 
         List<NewConditional> listToReturn = new ArrayList<>();
 
-        String[] stringArray = stringFromFile.split(", ");
-        //todo: pre compile in this loop could be best regex improvement
-        for (String string : stringArray) {
-            string = string.replaceAll("\n", "");
+        String[] stringArray = COMMA_SPACE_PATTERN.split(stringFromFile);
 
-            String[] twoString = string.split("-");
+        for (String string : stringArray) {
+            string = NEW_LINE_PATTERN.matcher(string).replaceAll("");
+
+            String[] twoString = DASH_PATTERN.split(string);
 
 
             //this will return empty list if there are no candidates
