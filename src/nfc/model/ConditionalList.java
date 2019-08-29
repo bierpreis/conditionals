@@ -56,7 +56,7 @@ public class ConditionalList implements Comparable {
         int conditionalNumber = highestNumberOfLastList;
         for (int i = 1; i < conditionalList.size(); i++) {
             conditionalList.get(i).setNumber(conditionalNumber);
-            conditionalNumber++;
+            conditionalNumber++; //todo: this is why highestconditonal number is actually 1 too high
         }
         highestConditionalNumber = conditionalNumber;
     }
