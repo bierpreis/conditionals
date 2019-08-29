@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.regex.Pattern;
 
 public class ParallelPairBuffer extends AbstractPairBuffer {
 
@@ -20,6 +21,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private int pairWriterCounter;
 
     private Queue<AbstractPair> queueToReturn;
+
+    private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND_PAIR\n\n");
 
     //if queue to return is lower than this value, a new file will be read and the queue gets filled again
     //this value has almost no impact on speed at all
@@ -53,6 +56,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.NOT_STARTED;
 
     }
+
     //todo: reader queue is often empty with signature ab!
     @Override
     public void run() {
@@ -128,8 +132,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             sb.append("\n");
         }
 
-        //todo: pre compile regex
-        String[] fileStringArray = sb.toString().split("\nEND_PAIR\n\n");
+        String[] fileStringArray = END_PAIR_PATTERN.split(sb.toString());
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
         for (String stringFromFile : fileStringArray) {

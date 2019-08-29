@@ -44,7 +44,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         conditionalList.addAll(knowledgeBase.getConditionalList());
         conditionalList.add(conditionalToAdd);
     }
-    
+
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = NEW_LINE_PATTERN.matcher(stringFromFile).replaceAll("");
