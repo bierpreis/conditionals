@@ -9,13 +9,11 @@ public abstract class AbstractFormula {
 
     abstract public boolean evaluate(AbstractWorld world);
 
-    //todo: final and overwritten in comment?! update!
-    //this will be overwritten in some subclasses
+
     public final AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }
-
-    //this will be overwritten in some subclasses
+    
     public final AbstractFormula or(AbstractFormula otherFormula) {
         return new Disjunction(this, otherFormula);
     }
