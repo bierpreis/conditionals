@@ -95,7 +95,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
     }
 
-    public boolean checkIfShouldRead() {
+    public boolean checkIfShouldRead() {//todo: maybe implement sth to block when flush is requested her?!. should not read if flush is requested!
         return (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN);
     }
 
