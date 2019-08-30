@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
 public class ParallelPairBuffer extends AbstractPairBuffer {
@@ -20,7 +20,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
-    private Queue<AbstractPair> queueToReturn;
+    private BlockingQueue<AbstractPair> queueToReturn;
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND_PAIR\n\n");
 
@@ -43,9 +43,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         //todo: test queues.
         //
-        queueToReturn = new ConcurrentLinkedQueue<>();
+        queueToReturn = new LinkedBlockingQueue<>();
 
-        cpQueueToWrite = new ConcurrentLinkedQueue<>();
+        cpQueueToWrite = new LinkedBlockingQueue<>(2000);
 
         flushRequested = false;
         running = true;
@@ -70,7 +70,12 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 //reading has second priority
             } else if (checkIfShouldRead()) {
                 status = BufferStatus.READING;
-                queueToReturn.addAll(readNextFile());
+                for (AbstractPair pairToPut : readNextFile())
+                    try {
+                        queueToReturn.put(pairToPut);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 //sleep if no writing or reading is needed
             } else {
                 try {
@@ -177,7 +182,11 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
-        cpQueueToWrite.add(new RealListPair(knowledgeBase, candidatesToAdd));
+        try {
+            cpQueueToWrite.put(new RealListPair(knowledgeBase, candidatesToAdd));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

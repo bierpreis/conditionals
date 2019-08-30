@@ -6,13 +6,14 @@ import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.List;
 import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer implements Runnable {
 
 
     protected boolean running;
-    protected Queue<AbstractPair> cpQueueToWrite;
+    protected BlockingQueue<AbstractPair> cpQueueToWrite;
 
     protected BufferStatus status;
 
