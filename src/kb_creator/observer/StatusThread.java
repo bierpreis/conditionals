@@ -2,6 +2,7 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.KBCreator;
+import kb_creator.model.buffer.ParallelPairBuffer;
 import kb_creator.model.writer.AbstractKbWriter;
 
 public class StatusThread implements Runnable {
@@ -34,6 +35,8 @@ public class StatusThread implements Runnable {
                 showBufferStatus();
 
                 checkIfWaitForWriter();
+
+                checkIfNotifyBuffer();
             }
 
             mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
@@ -96,6 +99,17 @@ public class StatusThread implements Runnable {
             synchronized (creatorThread) {
                 creatorThread.notify();
             }
+    }
+
+    private void checkIfNotifyBuffer() {
+        if (creatorThread.getPairBuffer() instanceof ParallelPairBuffer) {
+            if (creatorThread.getPairBuffer().checkIfShouldRead() || creatorThread.getPairBuffer().checkIfShouldWrite())
+                synchronized (creatorThread) {
+                    synchronized (creatorThread.getPairBuffer()) {
+                        creatorThread.getPairBuffer().notify();
+                    }
+                }
+        }
     }
 
 

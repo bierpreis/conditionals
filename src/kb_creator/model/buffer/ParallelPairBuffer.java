@@ -63,19 +63,21 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     public void run() {
         while (running) {
             //writing has first priority
-            if (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0)) {
+            if (checkIfShouldWrite()) {
+                //todo: this status can never be seen. why?
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
                 //reading has second priority
-            } else if (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN) {
+            } else if (checkIfShouldRead()) {
                 status = BufferStatus.READING;
                 queueToReturn.addAll(readNextFile());
                 //sleep if no writing or reading is needed
             } else {
-                //todo: wait not sleep. status thread can notify when time to continue?
                 try {
                     status = BufferStatus.SLEEPING;
-                    Thread.sleep(100); //this sleep also has practically no impact on speed
+                    synchronized (this) {
+                        wait();
+                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -83,6 +85,14 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         }
 
 
+    }
+
+    public boolean checkIfShouldWrite() {
+        return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
+    }
+
+    public boolean checkIfShouldRead() {
+        return (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN);
     }
 
     private void writeNextFile(Queue queueToWrite) {

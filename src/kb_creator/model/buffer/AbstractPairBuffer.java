@@ -80,6 +80,10 @@ public abstract class AbstractPairBuffer implements Runnable {
         this.deleteFiles = deleteFiles;
     }
 
+   abstract public boolean checkIfShouldWrite();
+
+    abstract public boolean checkIfShouldRead();
+
 
 }
 
