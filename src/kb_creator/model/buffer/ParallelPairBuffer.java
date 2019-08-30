@@ -205,7 +205,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return (readingFileNameCounter < iterationNumberOfFiles);
     }
 
-
+    //todo: here blocking queue?!
     @Override
     public AbstractPair getNextPair(int currentK) {
         while (queueToReturn.peek() == null)
