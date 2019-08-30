@@ -214,17 +214,15 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return (readingFileNameCounter < iterationNumberOfFiles);
     }
 
-    //todo: here blocking queue?!
+
     @Override
     public AbstractPair getNextPair(int currentK) {
-        while (queueToReturn.peek() == null)
-            try {
-                System.out.println("buffer sleeping because queue is empty!");
-                Thread.sleep(80);//todo: wait
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        return queueToReturn.poll();
+        try {
+            return queueToReturn.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        throw new RuntimeException("Get next pair failed!");
     }
 
 
