@@ -64,7 +64,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         while (running) {
             //writing has first priority
             if (checkIfShouldWrite()) {
-                //todo: this status can never be seen. why?
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
                 //reading has second priority
@@ -170,7 +169,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
-                Thread.sleep(100);//todo: wait
+                Thread.sleep(100);//todo: wait. but how?
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
