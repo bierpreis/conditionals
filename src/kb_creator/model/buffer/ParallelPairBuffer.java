@@ -165,7 +165,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(100);//todo: wait
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -211,7 +211,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         while (queueToReturn.peek() == null)
             try {
                 System.out.println("buffer sleeping because queue is empty!");
-                Thread.sleep(80);
+                Thread.sleep(80);//todo: wait
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

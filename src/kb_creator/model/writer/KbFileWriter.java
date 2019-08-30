@@ -33,7 +33,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
             if (consistentQueue.isEmpty() && inconsistentQueue.isEmpty()) try {
                 status = WriterStatus.SLEEPING;
                 System.out.println("file writer sleeping");
-                Thread.sleep(500);
+                Thread.sleep(500);//todo: wait
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
