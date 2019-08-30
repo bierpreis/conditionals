@@ -45,7 +45,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         //
         queueToReturn = new LinkedBlockingQueue<>();
 
-        cpQueueToWrite = new LinkedBlockingQueue<>(2000);
+        cpQueueToWrite = new ArrayBlockingQueue<>(5000);
 
         flushRequested = false;
         running = true;
