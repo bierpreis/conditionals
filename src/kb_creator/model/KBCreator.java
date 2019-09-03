@@ -159,12 +159,10 @@ public class KBCreator implements Runnable {
                     } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
                     //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
                 }
-                long overallStart = System.currentTimeMillis();
                 //this both takes almost no time
                 checkIfWaitForWriter();
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-                //System.out.println("overall time: " + (System.currentTimeMillis() - overallStart) + "ms");
                 //this saves a lot of memory
                 //this takes almost no time
                 candidatePair.clear();
