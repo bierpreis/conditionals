@@ -40,8 +40,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
-        
-        queueToReturn = new LinkedBlockingQueue<>();
+
+        queueToReturn = new ArrayBlockingQueue<>(5000);
 
         cpQueueToWrite = new ArrayBlockingQueue<>(10000);
 
