@@ -40,12 +40,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
-
-        //todo: test sizes
-        //todo: ref to queue to both threads? ->bookmark
+        
         queueToReturn = new LinkedBlockingQueue<>();
 
-        cpQueueToWrite = new LinkedBlockingQueue<>(5000);
+        cpQueueToWrite = new ArrayBlockingQueue<>(10000);
 
         flushRequested = false;
         running = true;
