@@ -226,21 +226,21 @@ public class KBCreator implements Runnable {
 
             }
 
-/*            //long start = System.currentTimeMillis();
-            //todo: compare this and version below or try to implement the d thing into this loop at bot
+
             List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
             conditionalsToAdd.removeAll(D);
             conditionalsToAdd.remove(r.getCounterConditional());
             conditionalsToAdd.remove(r);
-            //System.out.println("time: " + (System.currentTimeMillis() - start));*/
 
-            List<NewConditional> conditionalsToAdd = new ArrayList<>();
+            //this is another implementation for initializing the pairs
+            //same speed as version above
+ /*           List<NewConditional> conditionalsToAdd = new ArrayList<>();
             for (NewConditional nfcElement : nfc) {
                 if (!D.contains(nfcElement))
                     if (!nfcElement.equals(r))
                         if (!nfcElement.equals(r.getCounterConditional()))
                             conditionalsToAdd.add(nfcElement);
-            }
+            }*/
 
 
             //no buffering for first iteration because it almost makes no difference
