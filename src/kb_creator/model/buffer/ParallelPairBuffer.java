@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
 public class ParallelPairBuffer extends AbstractPairBuffer {
@@ -20,7 +20,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
-    private Queue<AbstractPair> queueToReturn;
+    private BlockingQueue<AbstractPair> queueToReturn;
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND_PAIR\n\n");
 
@@ -42,10 +42,10 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         writingFileNameCounter = 0;
 
         //todo: test queues.
-        //
-        queueToReturn = new ConcurrentLinkedQueue<>();
+        //todo: ref to queue to both threads? ->bookmark
+        queueToReturn = new LinkedBlockingQueue<>();
 
-        cpQueueToWrite = new ConcurrentLinkedQueue<>();
+        cpQueueToWrite = new LinkedBlockingQueue<>(5000);
 
         flushRequested = false;
         running = true;
@@ -57,20 +57,23 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
 
-    //todo: reader queue is often empty with signature ab!
-    //todo: writing blocks reading so it blocks the main thread in ab! this is actualy what ab makes slow!
+    //todo: fix reader blocking. idea is above checkIfShouldRead
     @Override
     public void run() {
         while (running) {
             //writing has first priority
             if (checkIfShouldWrite()) {
-                //todo: this status can never be seen. why?
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
                 //reading has second priority
             } else if (checkIfShouldRead()) {
                 status = BufferStatus.READING;
-                queueToReturn.addAll(readNextFile());
+                for (AbstractPair pairToPut : readNextFile())
+                    try {
+                        queueToReturn.put(pairToPut);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 //sleep if no writing or reading is needed
             } else {
                 try {
@@ -91,7 +94,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
     }
 
-    public boolean checkIfShouldRead() {
+    //todo: first < should contain the flush?!
+    public boolean checkIfShouldRead() {//todo: maybe implement sth to block when flush is requested her?!. should not read if flush is requested! would help to simplify the run loop
         return (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN);
     }
 
@@ -165,7 +169,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
-                Thread.sleep(100);//todo: wait
+                Thread.sleep(100);//todo: wait. but how?
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -177,7 +181,11 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
-        cpQueueToWrite.add(new RealListPair(knowledgeBase, candidatesToAdd));
+        try {
+            cpQueueToWrite.put(new RealListPair(knowledgeBase, candidatesToAdd));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -205,17 +213,15 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return (readingFileNameCounter < iterationNumberOfFiles);
     }
 
-    //todo: here blocking queue?!
+
     @Override
     public AbstractPair getNextPair(int currentK) {
-        while (queueToReturn.peek() == null)
-            try {
-                System.out.println("buffer sleeping because queue is empty!");
-                Thread.sleep(80);//todo: wait
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        return queueToReturn.poll();
+        try {
+            return queueToReturn.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        throw new RuntimeException("Get next pair failed!");
     }
 
 
