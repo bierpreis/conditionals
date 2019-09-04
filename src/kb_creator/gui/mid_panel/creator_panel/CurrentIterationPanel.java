@@ -56,7 +56,7 @@ public class CurrentIterationPanel extends JPanel {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         speedLabel.setText("Speed (KBs/Second): " + formatter.format(speed));
     }
-    
+
     public void showIterationKBs(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
