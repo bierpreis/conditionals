@@ -9,13 +9,12 @@ public abstract class AbstractFormula {
 
     abstract public boolean evaluate(AbstractWorld world);
 
-
+    //todo: implement for conjunction!
     public final AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }
 
-    //todo: this fucks up the world to formulas and makes long nested disjunctions
-    public final AbstractFormula or(AbstractFormula otherFormula) {
+    public AbstractFormula or(AbstractFormula otherFormula) {
         return new Disjunction(this, otherFormula);
     }
 

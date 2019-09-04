@@ -16,6 +16,10 @@ public class Disjunction extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
+    public Disjunction(List<AbstractFormula> formulaList) {
+        this.formulaList = formulaList;
+    }
+
     @Override
     public boolean evaluate(AbstractWorld world) {
         for (AbstractFormula formula : formulaList) {
@@ -38,6 +42,14 @@ public class Disjunction extends AbstractFormula {
                 sb.append(", ");
         }
         return sb.toString();
+    }
+
+    @Override
+    public AbstractFormula or(AbstractFormula otherFormula) {
+        List<AbstractFormula> newFormulaList = new ArrayList<>(formulaList.size() + 1);
+        newFormulaList.addAll(this.formulaList);
+        newFormulaList.add(otherFormula);
+        return new Disjunction(newFormulaList);
     }
 
 }
