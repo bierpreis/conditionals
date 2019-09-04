@@ -24,4 +24,6 @@ public abstract class AbstractKbWriter implements Runnable {
     public WriterStatus getStatus(){
         return status;
     }
+
+    public abstract void stop();
 }

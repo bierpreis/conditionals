@@ -12,6 +12,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private Queue<AbstractKnowledgeBase> consistentQueue;
     private Queue<AbstractKnowledgeBase> inconsistentQueue;
     private String rootFilePath;
+    private volatile boolean running = true;
 
     private int consistentCounter;
     private int inconsistentCounter;
@@ -19,8 +20,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
 
     @Override
     public void run() {
-        //todo: implement thread closing
-        while (true) {
+        while (running) {
             if (!consistentQueue.isEmpty()) {
                 status = WriterStatus.RUNNING;
                 writeConsistentKbToFile(consistentQueue.poll());
@@ -121,6 +121,11 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     @Override
     public int getInconsistentCounter() {
         return inconsistentCounter;
+    }
+
+    public void stop() {
+        status = WriterStatus.STOPPED;
+        running = false;
     }
 
 }

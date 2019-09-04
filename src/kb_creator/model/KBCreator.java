@@ -276,6 +276,7 @@ public class KBCreator implements Runnable {
 
     public void stop() {
         this.creatorStatus = CreatorStatus.STOPPED;
+        kbWriter.stop();
     }
 
     public int getCurrentK() {

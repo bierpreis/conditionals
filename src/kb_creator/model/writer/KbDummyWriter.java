@@ -45,4 +45,9 @@ public class KbDummyWriter extends AbstractKbWriter {
     public int getInconsistentQueue() {
         return 0;
     }
+
+    @Override
+    public void stop() {
+        //intentionally nothing
+    }
 }
