@@ -20,7 +20,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
-    private Object creatorWaitObject = new Object();
+    private final Object CREATOR_WAIT_OBJECT = new Object();
 
     private BlockingQueue<AbstractPair> queueToReturn;
 
@@ -123,8 +123,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             }
 
             if (flushRequested && queueToWrite.isEmpty())
-                synchronized (creatorWaitObject) {
-                    creatorWaitObject.notify();
+                synchronized (CREATOR_WAIT_OBJECT) {
+                    CREATOR_WAIT_OBJECT.notify();
                 }
 
             writer.print(sb.toString());
@@ -176,8 +176,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
-                synchronized (creatorWaitObject) {
-                    creatorWaitObject.wait();
+                synchronized (CREATOR_WAIT_OBJECT) {
+                    CREATOR_WAIT_OBJECT.wait();
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
