@@ -148,7 +148,7 @@ public class KBCreator implements Runnable {
                         long beforeAddingPair = System.nanoTime();
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
                         //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
-                        
+
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
@@ -215,30 +215,17 @@ public class KBCreator implements Runnable {
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
-            List<NewConditional> D = new ArrayList<>();
 
-            for (NewConditional d : cnfc) {
-                if (d.getEqConditionalsList().get(0).getNumber() < r.getNumber()) {
-                    D.addAll(d.getEqConditionalsList());
-                }
+            //todo: rethink
+            //create candidates
+            List<NewConditional> conditionalsToAdd = new ArrayList<>();
+            for (NewConditional conditional : nfc) {
+                if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
+                    if (!(conditional.equals(r)))
+                        if (!(conditional.equals(r.getCounterConditional())))
+                            conditionalsToAdd.add(conditional);
 
             }
-
-
-            List<NewConditional> conditionalsToAdd = new ArrayList<>(nfc);
-            conditionalsToAdd.removeAll(D);
-            conditionalsToAdd.remove(r.getCounterConditional());
-            conditionalsToAdd.remove(r);
-
-            //this is another implementation for initializing the pairs
-            //same speed as version above
- /*           List<NewConditional> conditionalsToAdd = new ArrayList<>();
-            for (NewConditional nfcElement : nfc) {
-                if (!D.contains(nfcElement))
-                    if (!nfcElement.equals(r))
-                        if (!nfcElement.equals(r.getCounterConditional()))
-                            conditionalsToAdd.add(nfcElement);
-            }*/
 
 
             //no buffering for first iteration because it almost makes no difference
