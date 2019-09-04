@@ -26,6 +26,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND_PAIR\n\n");
 
+    private volatile boolean flushRequested;
+
     //if queue to return is lower than this value, a new file will be read and the queue gets filled again
     //this value has almost no impact on speed at all
     private final int READ_QUEUE_MIN = 2000;

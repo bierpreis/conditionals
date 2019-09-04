@@ -26,9 +26,6 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     protected String tmpFilePath;
 
-    //todo: delete?
-    protected volatile boolean flushRequested;
-
     protected int lastIterationPairAmount;
 
     protected boolean deleteFiles;
