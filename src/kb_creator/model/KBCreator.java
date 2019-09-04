@@ -148,8 +148,7 @@ public class KBCreator implements Runnable {
                         long beforeAddingPair = System.nanoTime();
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
                         //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
-
-                        //todo: pair only added to speed when consistent. thats wrong.
+                        
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
                         totalNumberOfKBs++;
@@ -203,7 +202,6 @@ public class KBCreator implements Runnable {
         l = requestedList;
     }
 
-    //todo: add speed calculation to this
     private List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
