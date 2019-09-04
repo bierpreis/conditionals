@@ -25,6 +25,8 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected int maxNumberOfPairsInFile;
 
     protected String tmpFilePath;
+
+    //todo: delete?
     protected volatile boolean flushRequested;
 
     protected int lastIterationPairAmount;
@@ -81,7 +83,7 @@ public abstract class AbstractPairBuffer implements Runnable {
         this.deleteFiles = deleteFiles;
     }
 
-   abstract public boolean checkIfShouldWrite();
+    abstract public boolean checkIfShouldWrite();
 
     abstract public boolean checkIfShouldRead();
 
