@@ -215,9 +215,10 @@ public class KBCreator implements Runnable {
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
-            
+
             //create candidates
             List<NewConditional> candidatesList = new ArrayList<>();
+
             for (NewConditional conditional : nfc) {
                 if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
                     if (!(conditional.equals(r)))
