@@ -15,7 +15,10 @@ public class Conjunction extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
 
-    //todo: this and evaluate in disjunction look nested in visualvm? watch! look the construction of the prop formulas
+    public Conjunction(List<AbstractFormula> formulaList) {
+        this.formulaList = formulaList;
+    }
+
     //if one of the list is false, the whole conjunction is false
     //returning false immediately is a bit faster than always calculating all elements before returning the value
     @Override
@@ -39,6 +42,14 @@ public class Conjunction extends AbstractFormula {
             sb.append(formula.toString());
         }
         return sb.toString();
+    }
+
+    @Override
+    public AbstractFormula and(AbstractFormula otherFormula) {
+        List<AbstractFormula> newFormulaList = new ArrayList<>(formulaList.size() + 1);
+        newFormulaList.addAll(this.formulaList);
+        newFormulaList.add(otherFormula);
+        return new Conjunction(newFormulaList);
     }
 
 }
