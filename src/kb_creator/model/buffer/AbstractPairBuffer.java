@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer implements Runnable {
 
-    //todo: put more of this in the implementations?
     protected boolean running;
     protected BlockingQueue<AbstractPair> cpQueueToWrite;
 
