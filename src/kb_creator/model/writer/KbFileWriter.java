@@ -29,8 +29,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
                 writeInconsistentKBToFile(inconsistentQueue.poll());
             } else try {
                 status = WriterStatus.SLEEPING;
-                System.out.println("file writer sleeping");
-                Thread.sleep(500);//todo: wait
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
