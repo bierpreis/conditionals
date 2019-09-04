@@ -215,21 +215,20 @@ public class KBCreator implements Runnable {
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationNumberOfKBs);
             rKB.add(r); // rKB is r as 1 element kb
-
-            //todo: rethink
+            
             //create candidates
-            List<NewConditional> conditionalsToAdd = new ArrayList<>();
+            List<NewConditional> candidatesList = new ArrayList<>();
             for (NewConditional conditional : nfc) {
                 if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
                     if (!(conditional.equals(r)))
                         if (!(conditional.equals(r.getCounterConditional())))
-                            conditionalsToAdd.add(conditional);
+                            candidatesList.add(conditional);
 
             }
 
 
             //no buffering for first iteration because it almost makes no difference
-            listToReturn.add(new RealListPair(rKB, conditionalsToAdd));
+            listToReturn.add(new RealListPair(rKB, candidatesList));
             iterationNumberOfKBs++;
             nextCandidatePairAmount++;
 
