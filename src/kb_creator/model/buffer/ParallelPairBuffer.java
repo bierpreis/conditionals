@@ -35,6 +35,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private File folderToWrite;
     private File folderToRead;
 
+    private int writingFileNameCounter;
+    private int readingFileNameCounter;
+
 
     public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
