@@ -13,7 +13,8 @@ public abstract class AbstractFormula {
     public final AbstractFormula and(AbstractFormula otherFormula) {
         return new Conjunction(this, otherFormula);
     }
-    
+
+    //todo: this fucks up the world to formulas and makes long nested disjunctions
     public final AbstractFormula or(AbstractFormula otherFormula) {
         return new Disjunction(this, otherFormula);
     }
