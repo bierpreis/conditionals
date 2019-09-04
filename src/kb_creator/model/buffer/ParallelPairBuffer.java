@@ -172,7 +172,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         flushRequested = true;
 
 
-        //this sleep causes the calling thread to wait until all pairs are written, then the other thread can continue
+        //this wait causes the calling thread to wait until all pairs are written, then the calling thread can continue
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
