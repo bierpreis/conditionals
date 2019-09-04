@@ -62,7 +62,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     }
 
-    //todo: fix reader blocking. idea is above checkIfShouldRead
     @Override
     public void run() {
         while (running) {
@@ -99,8 +98,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
     }
 
-    //todo: first < should contain the flush?!
-    public boolean checkIfShouldRead() {//todo: maybe implement sth to block when flush is requested her?!. should not read if flush is requested! would help to simplify the run loop
+
+    public boolean checkIfShouldRead() {
         return (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN);
     }
 
