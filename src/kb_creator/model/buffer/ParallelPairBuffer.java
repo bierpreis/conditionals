@@ -48,7 +48,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         writingFileNameCounter = 0;
         
-        //todo: test concurrent linked queue
         queueToReturn = new ArrayBlockingQueue<>(5000);
 
         cpQueueToWrite = new ArrayBlockingQueue<>(10000);
