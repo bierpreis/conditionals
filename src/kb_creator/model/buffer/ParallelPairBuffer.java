@@ -104,7 +104,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     }
 
     private void writeNextFile(Queue queueToWrite) {
-        System.out.println("writing file");
         try {
             //add leading zeros so the files can be sorted in correct order in their folder
             String fileName = String.format("%05d", writingFileNameCounter);
