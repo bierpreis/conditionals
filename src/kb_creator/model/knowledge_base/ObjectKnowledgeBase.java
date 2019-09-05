@@ -21,7 +21,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
     private static final Pattern SIGNATURE_PATTERN = Pattern.compile("signature");
-    private static final Pattern CONDITONALS_PATTERN = Pattern.compile("conditionals");
+    private static final Pattern CONDITIONALS_PATTERN = Pattern.compile("conditionals");
 
     private static final Pattern CURLY_BRACKET_START = Pattern.compile("\\{");
     private static final Pattern CURLY_BRACKET_STOP = Pattern.compile("\\}");
@@ -58,7 +58,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);
 
 
-        String[] splitString2 = CONDITONALS_PATTERN.split(stringFromFile);
+        String[] splitString2 = CONDITIONALS_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
         this.kbNumber = Integer.parseInt(splitString3[0]);
         String[] conditionalStringArray = COMMA_SPACE_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
