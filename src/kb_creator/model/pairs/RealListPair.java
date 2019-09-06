@@ -106,7 +106,7 @@ public class RealListPair extends AbstractPair {
         sb.append("\ncandidates\n"); //todo: short
         //if this firstNumber entry is 0, there are no candidates
 
-
+        //todo: rethink the following
         List<CandidateGroup> candidateGroupList = new ArrayList<>();
 
         if (candidatesList.isEmpty())
