@@ -138,7 +138,7 @@ public class RealListPair extends AbstractPair {
         for (int i = 0; i < candidateGroupList.size(); i++) {
             sb.append(candidateGroupList.get(i).toString());
             if (i != (candidateGroupList.size() - 1))
-                sb.append(","); //todo: remove
+                sb.append(",");
         }
 
         return sb.toString();
