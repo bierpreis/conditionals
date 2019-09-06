@@ -107,7 +107,7 @@ public class RealListPair extends AbstractPair {
         //if this firstNumber entry is 0, there are no candidates
 
         //todo: rethink the following
-        List<CandidateGroup> candidateGroupList = new ArrayList<>();
+        List<CandidateGroup> candidateGroupList = new ArrayList<>(); //todo: dont create list when its empty?!
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
