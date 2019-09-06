@@ -167,7 +167,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("conditionals\n");
+        sb.append("conditionals\n"); //todo: remove here and in constructor from string
         sb.append(this.kbNumber);
         sb.append("{");
 
