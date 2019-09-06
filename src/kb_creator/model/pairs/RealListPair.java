@@ -12,7 +12,7 @@ public class RealListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
 
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
-    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(", ");
+    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(",");
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
     private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("candidates\n");
 
@@ -139,7 +139,7 @@ public class RealListPair extends AbstractPair {
         for (int i = 0; i < candidateGroupList.size(); i++) {
             sb.append(candidateGroupList.get(i).toString());
             if (i != (candidateGroupList.size() - 1))
-                sb.append(", "); //todo: remove
+                sb.append(","); //todo: remove
         }
 
         return sb.toString();
