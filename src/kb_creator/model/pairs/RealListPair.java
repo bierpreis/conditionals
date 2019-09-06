@@ -103,7 +103,7 @@ public class RealListPair extends AbstractPair {
         StringBuilder sb = new StringBuilder();
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\ncandidates\n");
+        sb.append("\ncandidates\n"); //todo: short
         //if this firstNumber entry is 0, there are no candidates
 
 
