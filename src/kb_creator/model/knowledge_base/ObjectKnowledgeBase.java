@@ -24,7 +24,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private static final Pattern CURLY_BRACKET_START = Pattern.compile("\\{");
     private static final Pattern CURLY_BRACKET_STOP = Pattern.compile("}");
 
-    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(", "); //todo?
+    private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
     private AbstractFormula consistencyOfKB;
 
@@ -62,7 +62,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         String[] splitString2 = KB_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
         this.kbNumber = Integer.parseInt(splitString3[0]);
-        String[] conditionalStringArray = COMMA_SPACE_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
+        String[] conditionalStringArray = COMMA_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
         conditionalList = new ArrayList<>(conditionalStringArray.length);
 
