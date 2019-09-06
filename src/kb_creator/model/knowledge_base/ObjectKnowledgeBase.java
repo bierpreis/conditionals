@@ -24,9 +24,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private static final Pattern CONDITIONALS_PATTERN = Pattern.compile("conditionals");
 
     private static final Pattern CURLY_BRACKET_START = Pattern.compile("\\{");
-    private static final Pattern CURLY_BRACKET_STOP = Pattern.compile("\\}");
+    private static final Pattern CURLY_BRACKET_STOP = Pattern.compile("}");
 
-    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(", ");
+    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(", "); //todo?
 
     private AbstractFormula consistencyOfKB;
 
@@ -169,14 +169,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         StringBuilder sb = new StringBuilder();
         sb.append("conditionals\n");
         sb.append(this.kbNumber);
-        sb.append("{\n"); //todo: less n
+        sb.append("{");
 
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i).getNumber());
             if (i != conditionalList.size() - 1)
                 sb.append(", ");
         }
-        sb.append("\n}"); //todo: less n
+        sb.append("}");
         return sb.toString();
     }
 
