@@ -48,14 +48,17 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //this constructor takes almost no time
     public ObjectKnowledgeBase(String stringFromFile) {
         stringFromFile = NEW_LINE_PATTERN.matcher(stringFromFile).replaceAll("");
+
+        /*        //this would be needed to read the infOcf kbs
+
         String[] splitString1 = SIGNATURE_PATTERN.split(stringFromFile);
 
-        //todo: remove if signature gets removed from here
+
         if (ABC_PATTERN.matcher(splitString1[1]).matches())
             signature = new ABC();
         else if (AB_PATTERN.matcher(splitString1[1]).matches())
             signature = new AB();
-        else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);
+        else throw new RuntimeException("No valid signature found in file: " + splitString1[1]);*/
 
 
         String[] splitString2 = CONDITIONALS_PATTERN.split(stringFromFile);
@@ -138,7 +141,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return conditionalList;
     }
 
-
+    //this creates infOcf file strings
     @Override
     public String toFileString() {
 
@@ -160,13 +163,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return sb.toString();
     }
 
-    //todo: remove signature from here?
+    //this creates shorter file strings
     @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("signature\n");
-        sb.append(signature.toString());
-        sb.append("\n\n");
         sb.append("conditionals\n");
         sb.append(this.kbNumber);
         sb.append("{\n");
