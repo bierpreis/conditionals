@@ -47,7 +47,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
-        
+
         queueToReturn = new ArrayBlockingQueue<>(5000);
 
         cpQueueToWrite = new ArrayBlockingQueue<>(10000);
@@ -118,7 +118,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
-                    sb.append("\nEND\n\n");
+                    sb.append("\nEND\n\n");//todo: remove n
                 pairToWrite.clear();
                 pairWriterCounter++;
             }

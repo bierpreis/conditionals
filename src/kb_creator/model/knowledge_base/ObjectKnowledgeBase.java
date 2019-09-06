@@ -169,14 +169,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         StringBuilder sb = new StringBuilder();
         sb.append("conditionals\n");
         sb.append(this.kbNumber);
-        sb.append("{\n");
+        sb.append("{\n"); //todo: less n
 
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i).getNumber());
             if (i != conditionalList.size() - 1)
                 sb.append(", ");
         }
-        sb.append("\n}");
+        sb.append("\n}"); //todo: less n
         return sb.toString();
     }
 
