@@ -12,7 +12,7 @@ public class RealListPair extends AbstractPair {
     private List<NewConditional> candidatesList;
 
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
-    private static final Pattern COMMA_SPACE_PATTERN = Pattern.compile(","); //todo: rename
+    private static final Pattern COMMA_PATTERN = Pattern.compile(",");
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
     private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("candidates\n");
 
@@ -43,7 +43,7 @@ public class RealListPair extends AbstractPair {
 
         List<NewConditional> listToReturn = new ArrayList<>();
 
-        String[] stringArray = COMMA_SPACE_PATTERN.split(stringFromFile);
+        String[] stringArray = COMMA_PATTERN.split(stringFromFile);
 
         for (String string : stringArray) {
             string = NEW_LINE_PATTERN.matcher(string).replaceAll("");
