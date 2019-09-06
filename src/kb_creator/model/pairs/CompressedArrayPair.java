@@ -62,15 +62,15 @@ public class CompressedArrayPair extends AbstractPair {
     }
 
     private int[][] createCandidatesArrayFromString(String stringFromFile) {
-        String[] stringArray = stringFromFile.split(", "); //todo: pre compile
+        String[] stringArray = stringFromFile.split(", ");
         int[][] arrayToReturn = new int[stringArray.length][2];
         int counter = 0;
 
 
         for (String string : stringArray) {
-            string = string.replaceAll("\n", ""); //todo: pre compile
+            string = string.replaceAll("\n", "");
 
-            if (string.equals("EMPTY")) { //todo: make variable
+            if (string.equals("EMPTY")) {
                 arrayToReturn[0][0] = 0;
                 arrayToReturn[0][1] = 0;
                 return arrayToReturn;
@@ -142,10 +142,10 @@ public class CompressedArrayPair extends AbstractPair {
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
-        sb.append("\n\n"); //todo: remove, 1 n below
+        sb.append("\n\n");
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\n\n");  //todo: remove, 1 n below
+        sb.append("\n\n");
         sb.append("candidates\n");
         //if this firstNumber entry is 0, there are no candidates
 
@@ -161,7 +161,7 @@ public class CompressedArrayPair extends AbstractPair {
                 sb.append("-");
                 sb.append(compressedCandidatesArray[pairNumber][1]);
                 if (pairNumber != (compressedCandidatesArray.length - 1))
-                    sb.append(", "); //todo: remove space?
+                    sb.append(", ");
             }
             pairNumber++;
         }
