@@ -105,8 +105,7 @@ public class RealListPair extends AbstractPair {
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\nKB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\n\n"); //todo remove and put n below
-        sb.append("candidates\n");
+        sb.append("\ncandidates\n");
         //if this firstNumber entry is 0, there are no candidates
 
 
