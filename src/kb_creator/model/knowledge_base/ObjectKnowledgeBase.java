@@ -171,7 +171,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i).getNumber());
             if (i != conditionalList.size() - 1)
-                sb.append(", ");
+                sb.append(",");
         }
         sb.append("}");
         return sb.toString();
