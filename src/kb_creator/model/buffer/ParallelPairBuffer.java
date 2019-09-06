@@ -24,7 +24,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     private BlockingQueue<AbstractPair> queueToReturn;
 
-    private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n\n");
+    private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
 
     private volatile boolean flushRequested;
 
@@ -118,7 +118,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
-                    sb.append("\nEND\n\n");//todo: remove n
+                    sb.append("\nEND\n");
                 pairToWrite.clear();
                 pairWriterCounter++;
             }
