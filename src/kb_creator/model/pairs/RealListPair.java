@@ -103,10 +103,10 @@ public class RealListPair extends AbstractPair {
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
         sb.append(knowledgeBase.getKbNumber());
-        sb.append("\n\n");
+        sb.append("\n\n"); //todo: remove and put n below
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\n\n");
+        sb.append("\n\n"); //todo remove and put n below
         sb.append("candidates\n");
         //if this firstNumber entry is 0, there are no candidates
 
@@ -139,7 +139,7 @@ public class RealListPair extends AbstractPair {
         for (int i = 0; i < candidateGroupList.size(); i++) {
             sb.append(candidateGroupList.get(i).toString());
             if (i != (candidateGroupList.size() - 1))
-                sb.append(", ");
+                sb.append(", "); //todo: remove
         }
 
         return sb.toString();
