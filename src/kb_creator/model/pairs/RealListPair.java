@@ -101,7 +101,7 @@ public class RealListPair extends AbstractPair {
     //therefore the file is much shorter
     public String toFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("buffer");
+        sb.append("buffer"); //todo: short to buf?
         sb.append(knowledgeBase.getKbNumber());
         sb.append("\nKB\n");
         sb.append(knowledgeBase.toShortFileString());
