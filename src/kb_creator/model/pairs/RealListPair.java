@@ -107,11 +107,11 @@ public class RealListPair extends AbstractPair {
         //if this firstNumber entry is 0, there are no candidates
 
         //todo: rethink the following
-        List<CandidateGroup> candidateGroupList = new ArrayList<>(); //todo: dont create list when its empty?!
 
         if (candidatesList.isEmpty())
             sb.append("EMPTY");
         else {
+            List<CandidateGroup> candidateGroupList = new ArrayList<>();
             int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
 
             candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber()));
@@ -130,12 +130,13 @@ public class RealListPair extends AbstractPair {
 
             }
             candidateGroupList.get(candidateGroupList.size() - 1).setLastNumber(lastConditionalNumber);
-        }
 
-        for (int i = 0; i < candidateGroupList.size(); i++) {
-            sb.append(candidateGroupList.get(i).toString());
-            if (i != (candidateGroupList.size() - 1))
-                sb.append(",");
+
+            for (int i = 0; i < candidateGroupList.size(); i++) {
+                sb.append(candidateGroupList.get(i).toString());
+                if (i != (candidateGroupList.size() - 1))
+                    sb.append(",");
+            }
         }
 
         return sb.toString();

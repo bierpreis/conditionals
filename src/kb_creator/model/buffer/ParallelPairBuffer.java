@@ -234,7 +234,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         throw new RuntimeException("Get next pair failed!");
     }
 
-    //todo: doesnt work. still iterating even if there are 0 files.
+
     @Override
     public boolean hasElementsForK(int requestedK) {
         return hasNextIteration;
@@ -261,7 +261,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             File[] filesArray = folderToRead.listFiles();
             System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
             iterationNumberOfFiles = filesArray.length;
-            
+
     }
 
     }
