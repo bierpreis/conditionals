@@ -5,7 +5,7 @@ import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
 
 public class ConditionalTanslator {
-    private ShortTranslatationMap shortTranslatationMap = new ShortTranslatationMap();
+    private ShortTranslationMap shortTranslationMap = new ShortTranslationMap();
 
 
     public NewConditional transLate(Conditional oldConditional) {
@@ -19,8 +19,8 @@ public class ConditionalTanslator {
     private AbstractFormula worldToFormula(World world) {
 
         //if there is a short formula return this
-        if (shortTranslatationMap.translate(world.getWorldsList()) != null)
-            return shortTranslatationMap.translate(world.getWorldsList());
+        if (shortTranslationMap.translate(world.getWorldsList()) != null)
+            return shortTranslationMap.translate(world.getWorldsList());
 
             //else return the simple translation
         else

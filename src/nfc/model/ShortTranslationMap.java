@@ -6,11 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ShortTranslatationMap {
+public class ShortTranslationMap {
     private Map<List<Integer>, AbstractFormula> translationMap = new HashMap<>();
 
-    public ShortTranslatationMap() {
+    public ShortTranslationMap() {
         //todo: add short translations here
+        //needs to be 1 map for ab and one for abc
     }
 
     public AbstractFormula translate(List<Integer> woldsList) {
