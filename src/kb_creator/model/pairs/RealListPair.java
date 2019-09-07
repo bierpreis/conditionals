@@ -14,7 +14,7 @@ public class RealListPair extends AbstractPair {
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
-    private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("candidates\n");
+    private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("c\n");
 
     public RealListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
@@ -103,7 +103,7 @@ public class RealListPair extends AbstractPair {
         StringBuilder sb = new StringBuilder();
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\ncandidates\n"); //todo: short
+        sb.append("\nc\n");
         //if this firstNumber entry is 0, there are no candidates
 
         //todo: rethink the following
