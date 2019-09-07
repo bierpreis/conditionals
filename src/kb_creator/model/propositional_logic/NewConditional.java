@@ -27,16 +27,21 @@ public class NewConditional {
     }
 
     public NewConditional(Conditional oldConditional) {
-        antecedent = worldToFormula(oldConditional.getAntecedent());
-        consequence = worldToFormula(oldConditional.getConsequence());
+        antecedent = oldWorldToFormula(oldConditional.getAntecedent());
+        consequence = oldWorldToFormula(oldConditional.getConsequence());
         number = oldConditional.getNumber();
     }
 
-    //todo: build some new version which shortens some formulas and uses this for the rest
+    //todo: this. return short formula if possible else return old world to formula. and put this logic into own object.
+    private AbstractFormula newWorldToFormula(World world) {
+        return new Tautology();
+    }
+
+
     //this translates possible worlds to propositional formulas
     //the returned formulas are conjunctions of the list of possible worlds
     //like this the formulas are not as short as possible but correct
-    private AbstractFormula worldToFormula(World world) {
+    private AbstractFormula oldWorldToFormula(World world) {
         AbstractFormula formulaToReturn = null;
 
         if (world.getSignature() instanceof AB) {
