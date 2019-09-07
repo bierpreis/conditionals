@@ -261,7 +261,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             File[] filesArray = folderToRead.listFiles();
             System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
             iterationNumberOfFiles = filesArray.length;
-        }
+            
+    }
 
     }
 
@@ -280,7 +281,6 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
         lastIterationPairAmount = pairWriterCounter;
 
         hasNextIteration = (folderToWrite.listFiles().length > 0);
-        hasNextIteration = true;
 
         clear(requestedK);
 
