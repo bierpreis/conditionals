@@ -26,7 +26,7 @@ public class SignatureOptionsPanel extends JPanel {
 
         signatureButtonGroup.add(abRadioButton);
         signatureButtonGroup.add(abcRadioButton);
-        abRadioButton.setSelected(true);
+        abcRadioButton.setSelected(true);
 
 
         setBorder(BorderFactory.createTitledBorder("Signature"));
