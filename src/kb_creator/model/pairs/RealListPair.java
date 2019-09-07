@@ -108,9 +108,7 @@ public class RealListPair extends AbstractPair {
 
         //todo: rethink the following
 
-        if (candidatesList.isEmpty())
-            sb.append("EMPTY");
-        else {
+        if (!candidatesList.isEmpty()) {
             List<CandidateGroup> candidateGroupList = new ArrayList<>();
             int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
 
@@ -137,7 +135,7 @@ public class RealListPair extends AbstractPair {
                 if (i != (candidateGroupList.size() - 1))
                     sb.append(",");
             }
-        }
+        } else sb.append("EMPTY");
 
         return sb.toString();
     }
