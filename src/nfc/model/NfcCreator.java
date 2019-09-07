@@ -19,6 +19,8 @@ public class NfcCreator {
 
     private final Map<Integer, NewConditional> newNfcMap;
 
+    private final ConditionalTanslator conditionalTanslator = new ConditionalTanslator();
+
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started oldNfc creator");
         worlds = createWorlds(signature);
@@ -248,10 +250,10 @@ public class NfcCreator {
         List<NewConditional> newConditionals = new ArrayList<>(oldConditionals.size());
 
         for (Conditional oldConditional : oldConditionals) {
-            NewConditional newConditional = new NewConditional(oldConditional);
+            NewConditional newConditional = conditionalTanslator.transLate(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
 
-            newConditional.setBasicCounterConditional(oldConditional.getActualCounterConditional());
+            newConditional.setBasicCounterConditional(conditionalTanslator.transLate(oldConditional.getActualCounterConditional()));
             newConditionals.add(newConditional);
 
         }
@@ -269,7 +271,7 @@ public class NfcCreator {
         //for (NewConditional conditional : newConditionals) 
         //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.findCounterConditional().getNumber());
         //4 elements are double fucked!
-        return newConditionals;
+        return newConditionals; //todo: check if counter conditionals set correctly
     }
 
     public List<NewConditional> getNewNfc() {

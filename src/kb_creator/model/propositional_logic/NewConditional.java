@@ -19,110 +19,11 @@ public class NewConditional {
     private List<NewConditional> eqConditionalsList = new ArrayList<>(0);
 
 
-    public NewConditional(AbstractFormula consequence, AbstractFormula antecedent) {
+    public NewConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
         this.consequence = consequence;
         this.antecedent = antecedent;
+        this.number = number;
 
-
-    }
-
-    public NewConditional(Conditional oldConditional) {
-        antecedent = oldWorldToFormula(oldConditional.getAntecedent());
-        consequence = oldWorldToFormula(oldConditional.getConsequence());
-        number = oldConditional.getNumber();
-    }
-
-    //todo: this. return short formula if possible else return old world to formula. and put this logic into own object.
-    private AbstractFormula newWorldToFormula(World world) {
-        return new Tautology();
-    }
-
-
-    //this translates possible worlds to propositional formulas
-    //the returned formulas are conjunctions of the list of possible worlds
-    //like this the formulas are not as short as possible but correct
-    private AbstractFormula oldWorldToFormula(World world) {
-        AbstractFormula formulaToReturn = null;
-
-        if (world.getSignature() instanceof AB) {
-
-            for (int worldInt : world.getWorldsList()) {
-                AbstractFormula firstAtom = new Atom(Variable.a);
-                AbstractFormula secondAtom = new Atom(Variable.b);
-                switch (worldInt) {
-                    case 0:
-                        firstAtom = firstAtom.neg();
-                        secondAtom = secondAtom.neg();
-                        break;
-                    case 1:
-                        firstAtom = firstAtom.neg();
-                        break;
-                    case 2:
-                        secondAtom = secondAtom.neg();
-                        break;
-                    case 3:
-                        break;
-                    default:
-                        throw new RuntimeException("Unknown World: " + worldInt);
-
-                }
-                if (formulaToReturn == null)
-                    formulaToReturn = new Conjunction(firstAtom, secondAtom);
-                else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom));
-            }
-
-        } else if (world.getSignature() instanceof ABC) {
-
-            for (int worldInt : world.getWorldsList()) {
-                AbstractFormula firstAtom = new Atom(Variable.a);
-                AbstractFormula secondAtom = new Atom(Variable.b);
-                AbstractFormula thirdAtom = new Atom(Variable.c);
-
-                switch (worldInt) {
-                    case 0:
-                        firstAtom = firstAtom.neg();
-                        secondAtom = secondAtom.neg();
-                        thirdAtom = thirdAtom.neg();
-                        break;
-                    case 1:
-                        firstAtom = firstAtom.neg();
-                        secondAtom = secondAtom.neg();
-                        break;
-                    case 2:
-                        firstAtom = firstAtom.neg();
-                        thirdAtom = thirdAtom.neg();
-
-                        break;
-                    case 3:
-                        firstAtom = firstAtom.neg();
-                        break;
-
-                    case 4:
-                        secondAtom = secondAtom.neg();
-                        thirdAtom = thirdAtom.neg();
-                        break;
-                    case 5:
-                        secondAtom = secondAtom.neg();
-                        break;
-                    case 6:
-                        thirdAtom = thirdAtom.neg();
-                        break;
-                    case 7:
-                        break;
-                    default:
-                        throw new RuntimeException("Unknown World: " + worldInt);
-
-                }
-                if (formulaToReturn == null)
-                    formulaToReturn = new Conjunction(firstAtom, secondAtom, thirdAtom);
-                else formulaToReturn = formulaToReturn.or(new Conjunction(firstAtom, secondAtom, thirdAtom));
-
-            }
-
-        }
-
-
-        return formulaToReturn;
     }
 
     public String toString() {
@@ -166,9 +67,8 @@ public class NewConditional {
     }
 
 
-    public void setBasicCounterConditional(Conditional oldCounterConditional) {
-        this.counterConditional = new NewConditional(oldCounterConditional);
-        this.counterConditional.setNumber(oldCounterConditional.getNumber());
+    public void setBasicCounterConditional(NewConditional basicCounterConditional) {
+        this.counterConditional = basicCounterConditional;
     }
 
 

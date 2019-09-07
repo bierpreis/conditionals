@@ -60,11 +60,13 @@ public class Test {
         Conditional otherConditional = new Conditional(consequence, otherAntecend);
 
 
-        NewConditional newConditional = new NewConditional(conditional);
+/*        NewConditional newConditional = new NewConditional(conditional);
 
         NewConditional otherNewConditional = new NewConditional(otherConditional);
 
         System.out.println(newConditional + "equals: " + otherNewConditional + newConditional.equals(otherNewConditional));
+        */
+
     }
 
     private static void counterConditionalTest() {
@@ -75,13 +77,13 @@ public class Test {
         World consequence = new World();
         consequence.addInt(2);
 
-        Conditional firsConditonal = new Conditional(consequence, antecend);
+/*        Conditional firsConditonal = new Conditional(consequence, antecend);
 
         NewConditional newFirstConditional = new NewConditional(firsConditonal);
 
         System.out.println(newFirstConditional);
 
-        System.out.println(newFirstConditional.getCounterConditional());
+        System.out.println(newFirstConditional.getCounterConditional());*/
     }
 
     private static void formulaTest() {
