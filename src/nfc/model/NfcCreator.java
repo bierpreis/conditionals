@@ -242,7 +242,7 @@ public class NfcCreator {
         return worlds;
     }
 
-    //todo: some equals test with abstract formulas. them maybe simplify formulas?
+
     private List<NewConditional> translateConditionals(List<Conditional> oldConditionals) {
         System.out.println("translating conditionals");
         List<NewConditional> newConditionals = new ArrayList<>(oldConditionals.size());

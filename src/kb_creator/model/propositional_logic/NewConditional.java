@@ -32,7 +32,7 @@ public class NewConditional {
         number = oldConditional.getNumber();
     }
 
-
+    //todo: build some new version which shortens some formulas and uses this for the rest
     //this translates possible worlds to propositional formulas
     //the returned formulas are conjunctions of the list of possible worlds
     //like this the formulas are not as short as possible but correct
