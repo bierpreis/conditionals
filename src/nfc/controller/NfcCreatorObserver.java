@@ -20,7 +20,7 @@ public class NfcCreatorObserver implements ActionListener {
         mainWindow = new NfcCreatorWindow(this);
         condPanel = mainWindow.getCondPanel();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         mainWindow.applySelectedOptions();
@@ -31,6 +31,7 @@ public class NfcCreatorObserver implements ActionListener {
                 condPanel.printWorlds(nfcCreator.getWorlds());
                 break;
             case "WORLDS_FORMULAS":
+                //todo: parameter should be map of woldslist and formula
                 condPanel.printWorldsAndFormulas(nfcCreator.getWorlds());
                 break;
             case "CONDITIONALS":

@@ -36,7 +36,6 @@ public class StartPanel extends JPanel {
         createWorldsButton.addActionListener(observer);
         basicPanel.add(createWorldsButton);
 
-        //todo: implement in observer
         createWorldsFormulasButton.addActionListener(observer);
         basicPanel.add(createWorldsFormulasButton);
 
