@@ -21,6 +21,8 @@ public abstract class AbstractFormula {
 
     abstract public AbstractFormula neg();
 
+    //todo: implement equality?!
+
     @Override
     public abstract String toString();
 
