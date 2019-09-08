@@ -31,6 +31,7 @@ public class NfcCreatorObserver implements ActionListener {
             case "WORLDS":
                 condPanel.printWorlds(nfcCreator.getWorlds());
                 break;
+            //todo: implement worlds and formula translations
             case "CONDITIONALS":
                 condPanel.printConditionals(nfcCreator.getBasicConditionals());
                 break;
@@ -44,8 +45,8 @@ public class NfcCreatorObserver implements ActionListener {
                 condPanel.printConditionals(nfcCreator.getOldNfc());
                 break;
             case "NFC_COUNTER":
-            condPanel.printConditionalsWithCounters(nfcCreator.getOldNfc());
-            break;
+                condPanel.printConditionalsWithCounters(nfcCreator.getOldNfc());
+                break;
             default:
                 throw new RuntimeException("Unknown command: " + e.getActionCommand());
 
