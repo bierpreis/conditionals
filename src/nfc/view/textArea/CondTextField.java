@@ -41,7 +41,8 @@ public class CondTextField extends JTextArea {
         for (Map.Entry<World, AbstractFormula> entry : translationMap.entrySet()) {
             append("\n" + entry.getKey().toString() + " ->" + entry.getValue().toString());
         }
-        //todo: description
+        //todo: ordering and description
+        description = "number of worlds and formulas: " + translationMap.size();
     }
 
     public void printConditionals(List<Conditional> conditionalList) {
