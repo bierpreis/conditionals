@@ -1,6 +1,7 @@
 package nfc.model;
 
 
+import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
@@ -8,7 +9,7 @@ import java.util.*;
 
 
 public class NfcCreator {
-    private final List<World> worlds;
+    private final List<World> worldList;
     private final List<ConditionalList> oldCnfcEq;
     private final List<Conditional> basicConditionalList;
     private final List<Conditional> oldCnfc;
@@ -23,12 +24,12 @@ public class NfcCreator {
 
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started oldNfc creator");
-        worlds = createWorlds(signature);
+        worldList = createWorlds(signature);
 
         conditionalTanslator = new ConditionalTanslator(signature);
 
         //this is basic conditional list in order from defintion  2
-        basicConditionalList = createBasicConditionalList(worlds);
+        basicConditionalList = createBasicConditionalList(worldList);
 
 
         oldCnfcEq = createCnfcEq(basicConditionalList);
@@ -246,8 +247,14 @@ public class NfcCreator {
         return oldCnfcEq;
     }
 
-    public List<World> getWorlds() {
-        return worlds;
+    public List<World> getWorldList() {
+        return worldList;
+    }
+
+    public Map<World, AbstractFormula> getWorldsFormulasMap() {
+        Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
+        //todo: implement
+        return mapToReturn;
     }
 
 

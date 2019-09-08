@@ -28,11 +28,10 @@ public class NfcCreatorObserver implements ActionListener {
 
         switch (e.getActionCommand()) {
             case "WORLDS":
-                condPanel.printWorlds(nfcCreator.getWorlds());
+                condPanel.printWorlds(nfcCreator.getWorldList());
                 break;
             case "WORLDS_FORMULAS":
-                //todo: parameter should be map of woldslist and formula
-                condPanel.printWorldsAndFormulas(nfcCreator.getWorlds());
+                condPanel.printWorldsAndFormulas(nfcCreator.getWorldsFormulasMap());
                 break;
             case "CONDITIONALS":
                 condPanel.printConditionals(nfcCreator.getBasicConditionals());

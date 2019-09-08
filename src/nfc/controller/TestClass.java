@@ -9,7 +9,7 @@ public class TestClass {
     public static void main(String[] args) {
         World.setView(World.View.LETTERS);
         NfcCreator creator = new NfcCreator(new AB());
-        for (World world : creator.getWorlds())
+        for (World world : creator.getWorldList())
             System.out.println(world);
     }
 

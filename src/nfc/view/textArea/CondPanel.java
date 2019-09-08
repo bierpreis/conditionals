@@ -1,11 +1,13 @@
 package nfc.view.textArea;
 
+import kb_creator.model.propositional_logic.AbstractFormula;
 import nfc.model.Conditional;
 import nfc.model.ConditionalList;
 import nfc.model.World;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.Map;
 
 public class CondPanel extends JPanel {
     private final CondTextField condTextField;
@@ -61,7 +63,7 @@ public class CondPanel extends JPanel {
         infoPanel.printInfo(condTextField.getDescription());
     }
 
-    public void printWorldsAndFormulas(List<World> worldsList) {
+    public void printWorldsAndFormulas(Map<World, AbstractFormula> translationMap) {
         condTextField.setText("");
         System.out.println("worlds and fomulas!");
         //todo: implement
