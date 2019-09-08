@@ -29,9 +29,7 @@ public class ConditionalTanslator {
 
         return new NewConditional(newConsequence, newAntecend, oldConditional.getNumber());
     }
-
-
-    //todo: test translating worldToFormula with oldWorldToFormula
+    
 
     //this translates a world to a propositional formula
     public AbstractFormula worldToFormula(World world) {
