@@ -37,11 +37,10 @@ public class CondTextField extends JTextArea {
         description = numberOfWorlds + numberCounter;
     }
 
-    void printWorldsAndFormulas(Map<World, AbstractFormula> translationMap) {
-        for (Map.Entry<World, AbstractFormula> entry : translationMap.entrySet()) {
-            append("\n" + entry.getKey().toString() + " ->" + entry.getValue().toString());
-        }
-        //todo: ordering and description
+    void printWorldsAndFormulas(List<World> worldList, Map<World, AbstractFormula> translationMap) {
+        for (World world: worldList)
+            append("\n" + world.toString() + " ->" + translationMap.get(world).toString());
+        
         description = "number of worlds and formulas: " + translationMap.size();
     }
 
