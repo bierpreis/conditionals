@@ -12,7 +12,7 @@ public class ConditionalTanslator {
     public ConditionalTanslator(AbstractSignature signature) {
         shortTranslationMap = new ShortTranslationMap(signature);
 
-        //todo: this is needed for test. make that it can be removed
+
         AbstractFormula.setSignature(signature);
     }
 
@@ -29,7 +29,7 @@ public class ConditionalTanslator {
 
         return new NewConditional(newConsequence, newAntecend, oldConditional.getNumber());
     }
-    
+
 
     //this translates a world to a propositional formula
     public AbstractFormula worldToFormula(World world) {

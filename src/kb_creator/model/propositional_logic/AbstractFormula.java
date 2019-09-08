@@ -5,6 +5,8 @@ import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 
 public abstract class AbstractFormula {
+
+    //only purpose if signature is equals, which is only used for test when translating sets of worlds into formulas
     protected static AbstractSignature signature;
 
     abstract public boolean evaluate(AbstractWorld world);
