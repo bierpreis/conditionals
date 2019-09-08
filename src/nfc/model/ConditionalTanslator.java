@@ -21,6 +21,8 @@ public class ConditionalTanslator {
     }
 
 
+    //todo: test translating worldToFormula with oldWorldToFormula
+
     //this translates a world to a propositional formula
     public AbstractFormula worldToFormula(World world) {
 
