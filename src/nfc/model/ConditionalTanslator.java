@@ -3,9 +3,15 @@ package nfc.model;
 import kb_creator.model.propositional_logic.*;
 import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 public class ConditionalTanslator {
-    private ShortTranslationMap shortTranslationMap = new ShortTranslationMap();
+    private AbstractSignature signature;
+    private ShortTranslationMap shortTranslationMap;
+
+    public ConditionalTanslator(AbstractSignature signature){
+        shortTranslationMap = new ShortTranslationMap(signature);
+    }
 
 
     public NewConditional transLate(Conditional oldConditional) {

@@ -19,11 +19,13 @@ public class NfcCreator {
 
     private final Map<Integer, NewConditional> newNfcMap;
 
-    private final ConditionalTanslator conditionalTanslator = new ConditionalTanslator();
+    private final ConditionalTanslator conditionalTanslator;
 
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started oldNfc creator");
         worlds = createWorlds(signature);
+
+        conditionalTanslator = new ConditionalTanslator(signature);
 
         //this is basic conditional list in order from defintion  2
         basicConditionalList = createBasicConditionalList(worlds);
@@ -34,7 +36,7 @@ public class NfcCreator {
         //this is in order on def 5.1
         oldCnfc = createCnfc(oldCnfcEq);
 
-        //this is in order of defintion 5.2
+        //this is in order of definition 5.2
         oldNfc = createNfc(oldCnfcEq);
 
         setEquivalentListToNfc(oldCnfcEq);
