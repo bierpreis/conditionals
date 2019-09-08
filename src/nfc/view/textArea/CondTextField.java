@@ -39,9 +39,9 @@ public class CondTextField extends JTextArea {
 
     void printWorldsAndFormulas(Map<World, AbstractFormula> translationMap) {
         for (Map.Entry<World, AbstractFormula> entry : translationMap.entrySet()) {
-            setText(entry.getKey().toString() + " ->" + entry.getValue().toString() + "/n");
+            append("\n" + entry.getKey().toString() + " ->" + entry.getValue().toString());
         }
-        //todo: test
+        //todo: description
     }
 
     public void printConditionals(List<Conditional> conditionalList) {

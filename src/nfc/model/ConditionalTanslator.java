@@ -22,7 +22,7 @@ public class ConditionalTanslator {
 
 
     //this translates a world to a propositional formula
-    private AbstractFormula worldToFormula(World world) {
+    public AbstractFormula worldToFormula(World world) {
 
         //if there is a short formula return this
         if (shortTranslationMap.translate(world.getNumber()) != null)
