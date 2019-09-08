@@ -22,6 +22,8 @@ public class StartPanel extends JPanel {
 
         AbstractActionButton createWorldsButton = new AbstractActionButton(Action.WORLDS);
 
+        AbstractActionButton createWorldsFormulasButton = new AbstractActionButton(Action.WORLDS_FORMULAS);
+
         AbstractActionButton createBasicConditional = new AbstractActionButton(Action.CONDITIONALS);
 
         AbstractActionButton createCnfcButton = new AbstractActionButton(Action.CNFC);
@@ -33,6 +35,10 @@ public class StartPanel extends JPanel {
 
         createWorldsButton.addActionListener(observer);
         basicPanel.add(createWorldsButton);
+
+        //todo: implement in observer
+        createWorldsFormulasButton.addActionListener(observer);
+        basicPanel.add(createWorldsFormulasButton);
 
         createBasicConditional.addActionListener(observer);
         basicPanel.add(createBasicConditional);

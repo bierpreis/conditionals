@@ -21,7 +21,7 @@ public class NfcCreatorObserver implements ActionListener {
         condPanel = mainWindow.getCondPanel();
     }
 
-
+    //todo: use Action.toString not real strings
     @Override
     public void actionPerformed(ActionEvent e) {
         mainWindow.applySelectedOptions();
@@ -31,7 +31,9 @@ public class NfcCreatorObserver implements ActionListener {
             case "WORLDS":
                 condPanel.printWorlds(nfcCreator.getWorlds());
                 break;
-            //todo: implement worlds and formula translations
+            case "WORLDS_FORMULAS":
+                condPanel.printWorldsAndFormulas(nfcCreator.getWorlds());
+                break;
             case "CONDITIONALS":
                 condPanel.printConditionals(nfcCreator.getBasicConditionals());
                 break;
