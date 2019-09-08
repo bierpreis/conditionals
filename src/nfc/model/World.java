@@ -14,6 +14,9 @@ public class World implements Comparable {
     private static View view = View.NUMBERS; //this default is for kbcreator. maybe delete later
     private static AbstractSignature signature;
 
+    //the number is for identification reasons and for translation into propositional formulas
+    private int number;
+
 
     public World() {
         WORLDS_LIST = new ArrayList<>();
@@ -138,6 +141,14 @@ public class World implements Comparable {
 
     public AbstractSignature getSignature() {
         return signature;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
 }

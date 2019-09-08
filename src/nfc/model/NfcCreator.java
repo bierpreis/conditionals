@@ -74,6 +74,10 @@ public class NfcCreator {
 
         Collections.sort(worldsList);
 
+        for (int i = 1; i <= worldsList.size(); i++)
+            worldsList.get(i - 1).setNumber(i);
+
+
         return worldsList;
     }
 
