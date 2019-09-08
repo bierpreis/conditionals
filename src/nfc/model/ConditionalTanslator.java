@@ -11,12 +11,22 @@ public class ConditionalTanslator {
 
     public ConditionalTanslator(AbstractSignature signature) {
         shortTranslationMap = new ShortTranslationMap(signature);
+
+        //todo: this is needed for test. make that it can be removed
+        AbstractFormula.setSignature(signature);
     }
 
 
     public NewConditional transLate(Conditional oldConditional) {
         AbstractFormula newAntecend = worldToFormula(oldConditional.getAntecedent());
         AbstractFormula newConsequence = worldToFormula(oldConditional.getConsequence());
+
+        //this is a test that translation really works
+        if (!newAntecend.equals(oldWorldToFormula(oldConditional.getAntecedent())))
+            throw new RuntimeException("Translating worlds failed! " + newAntecend + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()));
+        if (!newConsequence.equals(oldWorldToFormula(oldConditional.getConsequence())))
+            throw new RuntimeException("Translating worlds failed!");
+
         return new NewConditional(newConsequence, newAntecend, oldConditional.getNumber());
     }
 

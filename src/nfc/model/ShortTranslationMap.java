@@ -24,7 +24,7 @@ public class ShortTranslationMap {
 
             translationMap.put(11, new Atom(Variable.a).neg().and(new Atom(Variable.b).neg()).neg());
             translationMap.put(12, new Atom(Variable.a).neg().and(new Atom(Variable.b)).neg());
-            translationMap.put(13, new Atom(Variable.a).and(new Atom(Variable.b).neg()));
+            translationMap.put(13, new Atom(Variable.a).and(new Atom(Variable.b).neg()).neg());
             translationMap.put(14, new Atom(Variable.a).and(new Atom(Variable.b)).neg());
             translationMap.put(15, new Tautology());
 
