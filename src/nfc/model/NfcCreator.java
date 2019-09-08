@@ -286,6 +286,9 @@ public class NfcCreator {
         //for (NewConditional conditional : newConditionals) 
         //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.findCounterConditional().getNumber());
         //4 elements are double fucked!
+        
+        //todo: some test to compare old and new worlds translations
+
         return newConditionals;
     }
 
