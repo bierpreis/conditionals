@@ -13,12 +13,12 @@ public class ShortTranslationMap {
     private Map<Integer, AbstractFormula> translationMap = new HashMap<>();
 
     public ShortTranslationMap(AbstractSignature signature) {
-        //todo: add short translations here
+
 
         if (signature instanceof AB) {
             translationMap.put(5, new Atom(Variable.a));
             translationMap.put(6, new Atom(Variable.b));
-
+            //todo: add short translations here
             translationMap.put(9, new Atom(Variable.b).neg());
             translationMap.put(10, new Atom(Variable.a).neg());
 

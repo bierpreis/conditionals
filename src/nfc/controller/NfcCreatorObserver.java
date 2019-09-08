@@ -20,8 +20,7 @@ public class NfcCreatorObserver implements ActionListener {
         mainWindow = new NfcCreatorWindow(this);
         condPanel = mainWindow.getCondPanel();
     }
-
-    //todo: use Action.toString not real strings
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         mainWindow.applySelectedOptions();
