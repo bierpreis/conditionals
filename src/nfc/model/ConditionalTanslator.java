@@ -9,7 +9,7 @@ public class ConditionalTanslator {
     private AbstractSignature signature;
     private ShortTranslationMap shortTranslationMap;
 
-    public ConditionalTanslator(AbstractSignature signature){
+    public ConditionalTanslator(AbstractSignature signature) {
         shortTranslationMap = new ShortTranslationMap(signature);
     }
 
@@ -25,8 +25,8 @@ public class ConditionalTanslator {
     private AbstractFormula worldToFormula(World world) {
 
         //if there is a short formula return this
-        if (shortTranslationMap.translate(world.getWorldsList()) != null)
-            return shortTranslationMap.translate(world.getWorldsList());
+        if (shortTranslationMap.translate(world.getNumber()) != null)
+            return shortTranslationMap.translate(world.getNumber());
 
             //else return the simple translation
         else
