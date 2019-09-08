@@ -1,5 +1,6 @@
 package nfc.view.textArea;
 
+import kb_creator.model.propositional_logic.AbstractFormula;
 import nfc.model.Conditional;
 import nfc.model.ConditionalList;
 import nfc.model.World;
@@ -7,6 +8,7 @@ import nfc.model.World;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 public class CondTextField extends JTextArea {
     private final String numberOfWorlds = "worlds: ";
@@ -33,6 +35,13 @@ public class CondTextField extends JTextArea {
 
         }
         description = numberOfWorlds + numberCounter;
+    }
+
+    void printWorldsAndFormulas(Map<World, AbstractFormula> translationMap) {
+        for (Map.Entry<World, AbstractFormula> entry : translationMap.entrySet()) {
+            setText(entry.getKey().toString() + " ->" + entry.getValue().toString() + "/n");
+        }
+        //todo: test
     }
 
     public void printConditionals(List<Conditional> conditionalList) {
