@@ -14,7 +14,7 @@ public class ShortTranslationMap {
 
     public ShortTranslationMap(AbstractSignature signature) {
 
-        //todo: when finished: uncomment and check if its better
+        
         if (signature instanceof AB) {
             translationMap.put(5, new Atom(Variable.a));
             translationMap.put(6, new Atom(Variable.b));
