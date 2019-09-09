@@ -14,6 +14,10 @@ public class Equality extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulas));
     }
 
+    public Equality(List formulaList) {
+        this.formulaList = formulaList;
+    }
+
     @Override
     public boolean evaluate(AbstractWorld world) {
         for (AbstractFormula formula : formulaList)
@@ -39,5 +43,11 @@ public class Equality extends AbstractFormula {
         return sb.toString();
     }
 
-    //todo: override eq
+    @Override
+    public AbstractFormula eq(AbstractFormula otherFormula) {
+        List<AbstractFormula> newFormulaList = new ArrayList<>(formulaList.size() + 1);
+        newFormulaList.addAll(this.formulaList);
+        newFormulaList.add(otherFormula);
+        return new Equality(newFormulaList);
+    }
 }
