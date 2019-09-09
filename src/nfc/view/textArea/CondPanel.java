@@ -64,8 +64,9 @@ public class CondPanel extends JPanel {
     }
 
     public void printWorldsAndFormulas(List<World> worldsList, Map<World, AbstractFormula> translationMap) {
+
         condTextField.setText("");
-        System.out.println("worlds and fomulas!");
+        System.out.println("worlds and formulas!");
         condTextField.printWorldsAndFormulas(worldsList, translationMap);
         infoPanel.printInfo(condTextField.getDescription());
     }

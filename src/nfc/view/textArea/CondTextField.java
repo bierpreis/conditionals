@@ -28,6 +28,7 @@ public class CondTextField extends JTextArea {
 
     public void printWorlds(List<World> worldsList) {
         setText("");
+        //todo: numbers
         int numberCounter = 0;
         for (int i = 0; i < worldsList.size(); i++) {
             append(getLineNumber(i) + worldsList.get(i).toString() + "\n");
@@ -38,6 +39,7 @@ public class CondTextField extends JTextArea {
     }
 
     void printWorldsAndFormulas(List<World> worldList, Map<World, AbstractFormula> translationMap) {
+        //todo: numbers
         for (World world: worldList)
             append("\n" + world.toString() + " ->" + translationMap.get(world).toString());
         
