@@ -18,7 +18,10 @@ public class ShortTranslationMap {
         if (signature instanceof AB) {
             translationMap.put(5, new Atom(Variable.a));
             translationMap.put(6, new Atom(Variable.b));
-            //todo: add short translations here
+            translationMap.put(7, new Atom(Variable.a).eq(new Atom(Variable.b)));
+
+            translationMap.put(8, new Atom(Variable.a).eq(new Atom(Variable.b)).neg());
+
             translationMap.put(9, new Atom(Variable.b).neg());
             translationMap.put(10, new Atom(Variable.a).neg());
 

@@ -21,9 +21,13 @@ public abstract class AbstractFormula {
         return new Disjunction(this, otherFormula);
     }
 
+    //todo: really needs to be abstract? is this overwritten by anything then negation?
     abstract public AbstractFormula neg();
 
-    //todo: implement equality?!
+    //eq to make the name diffrent than equals
+    public AbstractFormula eq(AbstractFormula otherFormula) {
+        return new Equality(this, otherFormula);
+    }
 
     @Override
     public abstract String toString();
