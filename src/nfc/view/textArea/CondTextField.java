@@ -40,7 +40,6 @@ public class CondTextField extends JTextArea {
     }
 
     void printWorldsAndFormulas(List<World> worldList, Map<World, AbstractFormula> translationMap) {
-        //todo: numbers
         for (World world : worldList) {
             if (isNumberingActive)
                 append(world.getNumber() + ": ");
