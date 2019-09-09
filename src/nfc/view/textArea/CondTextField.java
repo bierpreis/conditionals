@@ -43,7 +43,7 @@ public class CondTextField extends JTextArea {
         for (World world : worldList) {
             if (isNumberingActive)
                 append(world.getNumber() + ": ");
-            append(world.toString() + " ->" + translationMap.get(world).toString() + "\n");
+            append(world.toString() + " -> " + translationMap.get(world).toString() + "\n");
 
         }
 
