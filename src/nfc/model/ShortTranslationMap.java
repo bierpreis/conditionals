@@ -40,6 +40,14 @@ public class ShortTranslationMap {
 
 
         } else if (signature instanceof ABC) {
+            translationMap.put(247, new Atom(Variable.a).neg().and(new Atom(Variable.b).neg()).and(new Atom(Variable.c).neg()).neg());
+            translationMap.put(248, new Atom(Variable.a).neg().and(new Atom(Variable.b).neg()).and(new Atom(Variable.c)).neg());
+            translationMap.put(249, new Atom(Variable.a).neg().and(new Atom(Variable.b)).and(new Atom(Variable.c).neg()).neg());
+            translationMap.put(250, new Atom(Variable.a).neg().and(new Atom(Variable.b)).and(new Atom(Variable.c)).neg());
+            translationMap.put(251, new Atom(Variable.a).and(new Atom(Variable.b).neg()).and(new Atom(Variable.c).neg()).neg());
+            translationMap.put(252, new Atom(Variable.a).and(new Atom(Variable.b).neg()).and(new Atom(Variable.c)).neg());
+            translationMap.put(253, new Atom(Variable.a).and(new Atom(Variable.b)).and(new Atom(Variable.c).neg()).neg());
+            translationMap.put(254, new Atom(Variable.a).and(new Atom(Variable.b)).and(new Atom(Variable.c)).neg());
             translationMap.put(255, new Tautology());
         }
     }
