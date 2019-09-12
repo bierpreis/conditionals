@@ -18,16 +18,16 @@ public class ConditionalTanslator {
 
 
     public NewConditional transLate(Conditional oldConditional) {
-        AbstractFormula newAntecend = worldToFormula(oldConditional.getAntecedent());
+        AbstractFormula newAntecedent = worldToFormula(oldConditional.getAntecedent());
         AbstractFormula newConsequence = worldToFormula(oldConditional.getConsequence());
 
         //this is a test that translation really works
-        if (!newAntecend.equals(oldWorldToFormula(oldConditional.getAntecedent())))
-            throw new RuntimeException("Translating worlds failed! " + newAntecend + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()));
+        if (!newAntecedent.equals(oldWorldToFormula(oldConditional.getAntecedent())))
+            throw new RuntimeException("Translating worlds failed! " + newAntecedent + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()));
         if (!newConsequence.equals(oldWorldToFormula(oldConditional.getConsequence())))
             throw new RuntimeException("Translating worlds failed!");
 
-        return new NewConditional(newConsequence, newAntecend, oldConditional.getNumber());
+        return new NewConditional(newConsequence, newAntecedent, oldConditional.getNumber());
     }
 
 
