@@ -23,7 +23,7 @@ public class ConditionalTanslator {
 
         //this is a test that translation really works
         if (!newAntecedent.equals(oldWorldToFormula(oldConditional.getAntecedent())))
-            throw new RuntimeException("Translating worlds failed! " + newAntecedent + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()));
+            throw new RuntimeException("Translating Worlds failed" + newAntecedent + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()));
         if (!newConsequence.equals(oldWorldToFormula(oldConditional.getConsequence())))
             throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + oldWorldToFormula(oldConditional.getConsequence()));
 
