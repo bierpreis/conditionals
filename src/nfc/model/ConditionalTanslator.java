@@ -25,7 +25,7 @@ public class ConditionalTanslator {
         if (!newAntecedent.equals(oldWorldToFormula(oldConditional.getAntecedent())))
             throw new RuntimeException("Translating worlds failed! " + newAntecedent + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()));
         if (!newConsequence.equals(oldWorldToFormula(oldConditional.getConsequence())))
-            throw new RuntimeException("Translating worlds failed!");
+            throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + oldWorldToFormula(oldConditional.getConsequence()));
 
         return new NewConditional(newConsequence, newAntecedent, oldConditional.getNumber());
     }
