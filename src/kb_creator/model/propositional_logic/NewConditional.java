@@ -66,7 +66,7 @@ public class NewConditional {
         return consequence;
     }
 
-
+    //todo: delete of of the 2 followings?!
     public void setBasicCounterConditional(NewConditional basicCounterConditional) {
         this.counterConditional = basicCounterConditional;
     }
