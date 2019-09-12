@@ -52,6 +52,8 @@ public class ShortTranslationMap {
             translationMap.put(93, new Atom(Variable.a));
             translationMap.put(102, new Atom(Variable.b));
 
+            translationMap.put(113, new Atom(Variable.c));
+
             translationMap.put(142, new Atom(Variable.c).neg());
 
             translationMap.put(153, new Atom(Variable.b).neg());
