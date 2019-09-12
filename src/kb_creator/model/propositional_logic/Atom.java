@@ -16,7 +16,7 @@ public class Atom extends AbstractFormula {
         return variable.toString();
     }
 
-    
+
     public boolean evaluate(AbstractWorld world) {
 
         if (world instanceof ABCWorld) {
@@ -31,9 +31,7 @@ public class Atom extends AbstractFormula {
                 return abcWorld.isC();
 
             throw new RuntimeException("Invalid variable found: " + variable);
-        }
-
-        if (world instanceof ABWorld) {
+        } else if (world instanceof ABWorld) {
             ABWorld abWorld = (ABWorld) world;
             if (variable.equals(Variable.a))
                 return abWorld.isA();
