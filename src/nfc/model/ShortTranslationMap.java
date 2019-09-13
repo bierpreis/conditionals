@@ -63,6 +63,7 @@ public class ShortTranslationMap {
             translationMap.put(153, new Atom(Variable.b).neg());
 
             translationMap.put(162, new Atom(Variable.a).neg());
+            translationMap.put(163, new Atom(Variable.a).or(new Atom(Variable.b).and(new Atom(Variable.c))));
 
 
             translationMap.put(247, new Atom(Variable.a).neg().and(new Atom(Variable.b).neg()).and(new Atom(Variable.c).neg()).neg());
