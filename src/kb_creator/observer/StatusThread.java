@@ -54,7 +54,7 @@ public class StatusThread implements Runnable {
     }
 
     private void showCreatorStatus() {
-
+        //todo: measure time for this
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
         mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
         mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());

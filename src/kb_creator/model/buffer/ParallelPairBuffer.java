@@ -48,6 +48,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         writingFileNameCounter = 0;
 
+        //todo: concurrendlinkedqueue. but problems with size operations!
         queueToReturn = new ArrayBlockingQueue<>(5000);
 
         cpQueueToWrite = new ArrayBlockingQueue<>(100000);
@@ -262,7 +263,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
             System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
             iterationNumberOfFiles = filesArray.length;
 
-    }
+        }
 
     }
 
