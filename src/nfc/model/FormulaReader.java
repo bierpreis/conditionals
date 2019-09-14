@@ -49,6 +49,8 @@ public class FormulaReader {
 
     private AbstractFormula getFormulaFromString(String string) {
         //todo
+        //idea: recursion: split , ->disj
+        //if matches (!)x[n] ->conj
         return new Tautology();
     }
 }
