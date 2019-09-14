@@ -8,7 +8,7 @@ import nfc.view.textArea.CondPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class NfcCreatorWindow {
+public class NfcCreatorWindow { //todo: rename this and window name
     private JFrame mainWindow;
     private CondPanel condPanel;
     private MenuPanel menuPanel;
@@ -35,11 +35,11 @@ public class NfcCreatorWindow {
     }
 
 
-    public AbstractSignature getSignature(){
+    public AbstractSignature getSignature() {
         return menuPanel.getSignature();
     }
 
-    public void applySelectedOptions(){
+    public void applySelectedOptions() {
         menuPanel.applySelectedOptions();
     }
 }
