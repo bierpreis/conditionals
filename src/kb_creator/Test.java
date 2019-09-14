@@ -1,6 +1,5 @@
 package kb_creator;
 
-import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.*;
 import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
@@ -20,11 +19,11 @@ public class Test {
     }
 
     private static void signatureTest() {
-        AbstractFormula a = new Atom(Variable.a);
+        AbstractFormula a = new Atom(Var.a);
         a = a.neg();
-        AbstractFormula b = new Atom(Variable.b);
+        AbstractFormula b = new Atom(Var.b);
         b = b.neg();
-        AbstractFormula c = new Atom(Variable.c);
+        AbstractFormula c = new Atom(Var.c);
 
         ABWorld world = new ABWorld(true, true);
 
@@ -87,11 +86,11 @@ public class Test {
     }
 
     private static void formulaTest() {
-        AbstractFormula a = new Atom(Variable.a);
-        AbstractFormula b = new Atom(Variable.b);
-        AbstractFormula c = new Atom(Variable.c);
+        AbstractFormula a = new Atom(Var.a);
+        AbstractFormula b = new Atom(Var.b);
+        AbstractFormula c = new Atom(Var.c);
 
-        AbstractFormula notB = new Atom(Variable.b).neg();
+        AbstractFormula notB = new Atom(Var.b).neg();
 
         AbstractWorld testWorld = new ABCWorld(true, false, true);
 
@@ -117,9 +116,9 @@ public class Test {
         AbstractFormula.setSignature(new AB());
 
 
-        AbstractFormula a = new Atom(Variable.a);
+        AbstractFormula a = new Atom(Var.a);
 
-        AbstractFormula b = new Atom(Variable.b);
+        AbstractFormula b = new Atom(Var.b);
 
         AbstractFormula first = a.or(b.neg());
 

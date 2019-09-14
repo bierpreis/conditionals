@@ -53,8 +53,8 @@ public class ConditionalTanslator {
         if (world.getSignature() instanceof AB) {
 
             for (int worldInt : world.getWorldsList()) {
-                AbstractFormula firstAtom = new Atom(Variable.a);
-                AbstractFormula secondAtom = new Atom(Variable.b);
+                AbstractFormula firstAtom = new Atom(Var.a);
+                AbstractFormula secondAtom = new Atom(Var.b);
                 switch (worldInt) {
                     case 0:
                         firstAtom = firstAtom.neg();
@@ -80,9 +80,9 @@ public class ConditionalTanslator {
         } else if (world.getSignature() instanceof ABC) {
 
             for (int worldInt : world.getWorldsList()) {
-                AbstractFormula firstAtom = new Atom(Variable.a);
-                AbstractFormula secondAtom = new Atom(Variable.b);
-                AbstractFormula thirdAtom = new Atom(Variable.c);
+                AbstractFormula firstAtom = new Atom(Var.a);
+                AbstractFormula secondAtom = new Atom(Var.b);
+                AbstractFormula thirdAtom = new Atom(Var.c);
 
                 switch (worldInt) {
                     case 0:

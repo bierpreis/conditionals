@@ -5,9 +5,9 @@ import kb_creator.model.propositional_logic.worlds.ABWorld;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 public class Atom extends AbstractFormula {
-    private Variable variable;
+    private Var variable;
 
-    public Atom(Variable variable) {
+    public Atom(Var variable) {
         this.variable = variable;
     }
 
@@ -21,22 +21,22 @@ public class Atom extends AbstractFormula {
 
         if (world instanceof ABCWorld) {
             ABCWorld abcWorld = (ABCWorld) world;
-            if (variable.equals(Variable.a))
+            if (variable.equals(Var.a))
                 return abcWorld.isA();
 
-            if (variable.equals(Variable.b))
+            if (variable.equals(Var.b))
                 return abcWorld.isB();
 
-            if (variable.equals(Variable.c))
+            if (variable.equals(Var.c))
                 return abcWorld.isC();
 
             throw new RuntimeException("Invalid variable found: " + variable);
         } else if (world instanceof ABWorld) {
             ABWorld abWorld = (ABWorld) world;
-            if (variable.equals(Variable.a))
+            if (variable.equals(Var.a))
                 return abWorld.isA();
 
-            if (variable.equals(Variable.b))
+            if (variable.equals(Var.b))
                 return abWorld.isB();
 
             throw new RuntimeException("Invalid variable found: " + variable);
