@@ -65,6 +65,12 @@ public class ShortTranslationMap {
             translationMap.put(162, new Atom(Variable.a).neg());
             translationMap.put(163, new Atom(Variable.a).or(new Atom(Variable.b).and(new Atom(Variable.c))));
 
+            translationMap.put(233, new Atom(Variable.a).neg().or(new Atom(Variable.a).and(new Atom(Variable.b))));
+
+            translationMap.put(236, new Atom(Variable.b).neg().or(new Atom(Variable.c)));
+            translationMap.put(237, new Atom(Variable.b).neg().or(new Atom(Variable.a).eq(new Atom(Variable.c))));
+
+            translationMap.put(239, new Atom(Variable.a).neg().or(new Atom(Variable.b).eq(new Atom(Variable.c))));
 
             translationMap.put(244, new Atom(Variable.a).neg().or(new Atom(Variable.a).and(new Atom(Variable.b).eq(new Atom(Variable.c))).neg()));
             translationMap.put(245, new Atom(Variable.a).neg().or(new Atom(Variable.a).and(new Atom(Variable.c).neg())));
