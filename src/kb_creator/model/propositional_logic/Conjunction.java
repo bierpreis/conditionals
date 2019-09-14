@@ -35,6 +35,7 @@ public class Conjunction extends AbstractFormula {
         return new Negation(this);
     }
 
+    //todo: think about brackets for better readability. read about order!
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
