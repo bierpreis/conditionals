@@ -25,6 +25,7 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (isRunning) {
+            //todo: measure time for this
 
             if (creatorThread != null) {
 
@@ -54,7 +55,7 @@ public class StatusThread implements Runnable {
     }
 
     private void showCreatorStatus() {
-        //todo: measure time for this
+
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
         mainWindow.getMidPanel().getCreatorPanel().showIterationKBs(creatorThread.getIterationNumberOfKBs());
         mainWindow.getMidPanel().getCreatorPanel().showConsistentKBAmount(creatorThread.getTotalKbAmount());
