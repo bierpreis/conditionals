@@ -8,14 +8,15 @@ import nfc.view.textArea.CondPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class NfcCreatorWindow { //todo: rename this and window name
-    private JFrame mainWindow;
+public class NfcViewerWindow {
+
     private CondPanel condPanel;
     private MenuPanel menuPanel;
 
-    public NfcCreatorWindow(NfcCreatorObserver observer) {
+    public NfcViewerWindow(NfcCreatorObserver observer) {
+        JFrame mainWindow;
         mainWindow = new JFrame();
-        mainWindow.setTitle("NFC Creator");
+        mainWindow.setTitle("NFC Viewer");
 
         mainWindow.setLayout(new BorderLayout());
 

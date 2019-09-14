@@ -2,7 +2,7 @@ package nfc.controller;
 
 
 import nfc.model.NfcCreator;
-import nfc.view.NfcCreatorWindow;
+import nfc.view.NfcViewerWindow;
 import nfc.view.textArea.CondPanel;
 
 import java.awt.event.ActionEvent;
@@ -14,10 +14,10 @@ import java.io.IOException;
 
 public class NfcCreatorObserver implements ActionListener {
     private CondPanel condPanel;
-    private NfcCreatorWindow mainWindow;
+    private NfcViewerWindow mainWindow;
 
     public NfcCreatorObserver() {
-        mainWindow = new NfcCreatorWindow(this);
+        mainWindow = new NfcViewerWindow(this);
         condPanel = mainWindow.getCondPanel();
     }
 
