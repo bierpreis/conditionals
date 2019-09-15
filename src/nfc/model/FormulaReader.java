@@ -11,7 +11,7 @@ public class FormulaReader {
 
 
     public static void main(String[] args) {
-        String filePath = "";
+        String filePath = "/home/bierpreis/test";
         FormulaReader formulaReader = new FormulaReader();
 
         List<AbstractFormula> formulaList = formulaReader.getFormulaListFromFile(filePath);
@@ -48,6 +48,7 @@ public class FormulaReader {
     }
 
     private AbstractFormula getFormulaFromString(String string) {
+        System.out.println(string);
         //todo
         //idea: recursion: split , ->disj
         //if matches (!)x[n] ->conj

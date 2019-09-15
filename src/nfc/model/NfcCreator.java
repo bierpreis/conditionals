@@ -268,7 +268,7 @@ public class NfcCreator {
             NewConditional newConditional = conditionalTanslator.transLate(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
 
-            newConditional.setBasicCounterConditional(conditionalTanslator.transLate(oldConditional.getActualCounterConditional()));
+            newConditional.setCounterConditional(conditionalTanslator.transLate(oldConditional.getActualCounterConditional()));
             newConditionals.add(newConditional);
 
         }
@@ -278,7 +278,7 @@ public class NfcCreator {
         for (NewConditional conditional : newConditionals) {
             for (NewConditional possibleCounterConditional : newConditionals) {
                 if (conditional.getCounterConditional().equals(possibleCounterConditional))
-                    conditional.setActualCounterConditional(possibleCounterConditional);
+                    conditional.setCounterConditional(possibleCounterConditional);
             }
         }
         System.out.println("finished setting basic counter conditionals");

@@ -66,13 +66,9 @@ public class NewConditional {
         return consequence;
     }
 
-    //todo: delete of of the 2 followings?!
-    public void setBasicCounterConditional(NewConditional basicCounterConditional) {
-        this.counterConditional = basicCounterConditional;
-    }
 
 
-    public void setActualCounterConditional(NewConditional counterConditional) {
+    public void setCounterConditional(NewConditional counterConditional) {
         this.counterConditional = counterConditional;
     }
 
