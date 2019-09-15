@@ -4,8 +4,10 @@ import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.Tautology;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FormulaReader {
 
@@ -43,8 +45,22 @@ public class FormulaReader {
         return fileToReturn;
     }
 
-    private String[] getStringArrayFromFile(File file) {
-        return file.toString().split("\n");
+    private String[] getStringArrayFromFile(File fileToRead) {
+        Scanner fileScanner = null;
+        try {
+            fileScanner = new Scanner(fileToRead);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (fileScanner.hasNextLine()) {
+            sb.append(fileScanner.nextLine());
+            sb.append("\n");
+        }
+
+        return sb.toString().split("\n");
     }
 
     private AbstractFormula getFormulaFromString(String string) {
