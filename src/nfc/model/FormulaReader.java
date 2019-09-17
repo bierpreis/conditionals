@@ -46,6 +46,7 @@ public class FormulaReader {
     }
 
     private String[] getStringArrayFromFile(File fileToRead) {
+        //todo: warning dialog when file not found?!
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);
