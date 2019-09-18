@@ -11,14 +11,14 @@ import java.util.regex.Pattern;
 
 public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
-    private Pattern conjunctionPattern = Pattern.compile("!?\\D[2*]");
-    private Pattern atomPattern = Pattern.compile("\\D[1]");
+    private Pattern conjunctionPattern = Pattern.compile("!?\\D{3}"); //todo: not just 3, 2 also
+    private Pattern atomPattern = Pattern.compile("\\D{1}");
 
 
-    private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D[1]");
+    private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");
 
     //todo: this doenst work
-    private Pattern compoundNegationPattern = Pattern.compile("![1]\\([1].*\\)[1]$");
+    private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
     static private String testString = "!(abc),abc";
 
@@ -65,7 +65,7 @@ public class FormulaReader {
 
         return new Atom(var);
     }
-    
+
     private AbstractFormula getCompoundNegation(String string) {
         string = string.replaceFirst("^!", "");
         string = string.replaceFirst("\\(", "");
