@@ -10,9 +10,12 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
-    static Pattern worldPattern = Pattern.compile("!?[abc]{1}");
+    private Pattern disjunctionPattern; //todo
+    private Pattern conjunctionPattern = Pattern.compile("!?\\D[2*]");
+    private Pattern AtomPattern = Pattern.compile("\\D[1]");
+    private Pattern NegationPattern = Pattern.compile("^![1].*");
 
-    static private String testString = "!abc, abc";
+    static private String testString = "!abc,abc";
 
 
     public static void main(String[] args) {
@@ -21,12 +24,10 @@ public class FormulaReader {
         System.out.println("formula: " + formula);
 
 
-        String output = "";
-        if (testString.matches("^!.*"))
-            output += "negation";
-        testString = testString.replaceFirst("^!?[abc]{1}", "");
-        System.out.println("output: " + output);
-        System.out.println("test: " + testString);
+    }
+
+    public AbstractFormula getFormula(String baseString) {
+        baseString.matches()
     }
 
     private static AbstractFormula getNextConjunction(String string) {
@@ -62,7 +63,7 @@ public class FormulaReader {
     public static AbstractFormula getDisjunction(String baseString) {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
-        for(String string: stringArray){
+        for (String string : stringArray) {
             formulasToAdd.add(getNextConjunction(string));
         }
 
