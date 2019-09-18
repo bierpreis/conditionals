@@ -13,30 +13,20 @@ import java.util.regex.Pattern;
 public class FormulaReader {
     static Pattern worldPattern = Pattern.compile("!?[abc]{1}");
 
+    static private String testString = "!abc";
+
 
     public static void main(String[] args) {
-        String test = "!abc";
-        System.out.println("formula: " + getNextAtom(test));
-/*
-        String filePath = "/home/bierpreis/test";
-        FormulaReader formulaReader = new FormulaReader();
 
-        List<AbstractFormula> formulaList = formulaReader.getFormulaListFromFile(filePath);
+        System.out.println("formula: " + getNextAtom(testString));
 
-        for (AbstractFormula formula : formulaList)
-            System.out.println(formula);
-
-
-Matcher matcher = worldPattern.matcher(test);
-        System.out.println(matcher.matches());
-*/
 
         String output = "";
-        if (test.matches("^!.*"))
+        if (testString.matches("^!.*"))
             output += "negation";
-        test = test.replaceFirst("^!?[abc]{1}", "");
+        testString = testString.replaceFirst("^!?[abc]{1}", "");
         System.out.println("output: " + output);
-        System.out.println("test: " + test);
+        System.out.println("test: " + testString);
     }
 
     private static AbstractFormula getNextAtom(String string) {
@@ -50,6 +40,7 @@ Matcher matcher = worldPattern.matcher(test);
                 formulaToReturn = new Negation(new Atom(Var.b));
             if (string.matches("^c.*"))
                 formulaToReturn = new Negation(new Atom(Var.c));
+
             return formulaToReturn;
         } else {
 
@@ -59,7 +50,7 @@ Matcher matcher = worldPattern.matcher(test);
                 formulaToReturn = new Atom(Var.b);
             if (string.matches("^c.*"))
                 formulaToReturn = new Atom(Var.c);
-            
+
             return formulaToReturn;
         }
     }
