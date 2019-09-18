@@ -18,7 +18,7 @@ public class FormulaReader {
     private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D[1]");
     private Pattern compoundNegationPattern = Pattern.compile("![1]\\([1]\\).*[1]");
 
-    static private String testString = "!abc,abc";
+    static private String testString = "!(abc),abc";
 
 
     public static void main(String[] args) {
@@ -35,7 +35,7 @@ public class FormulaReader {
         if (negatedAtomPattern.matcher(baseString).matches())
             return getAtomNegation(baseString);
         else if (compoundNegationPattern.matcher(baseString).matches())
-            return getAtomNegation(baseString);
+            return getCompoundNegation(baseString);
         else if (disjunctionPattern.matcher(baseString).matches())
             return getDisjunction(baseString);
         else if (conjunctionPattern.matcher(baseString).matches())
@@ -64,11 +64,12 @@ public class FormulaReader {
         return new Atom(var);
     }
 
+    //todo: this doesnt work
     private AbstractFormula getCompoundNegation(String string) {
         string = string.replaceFirst("^!", "");
         string = string.replaceFirst("\\(", "");
         string = string.replaceFirst("\\)", "");
-        return getFormula(string);
+        return new Negation(getFormula(string));
     }
 
     private AbstractFormula getAtomNegation(String string) {
