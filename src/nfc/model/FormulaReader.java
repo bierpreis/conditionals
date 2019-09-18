@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
@@ -18,7 +17,7 @@ public class FormulaReader {
 
     public static void main(String[] args) {
 
-        System.out.println("formula: " + getNextAtom(testString));
+        System.out.println("formula: " + getNextConjunction(testString));
 
 
         String output = "";
@@ -29,30 +28,44 @@ public class FormulaReader {
         System.out.println("test: " + testString);
     }
 
-    private static AbstractFormula getNextAtom(String string) {
-        AbstractFormula formulaToReturn = null;
-        if (string.matches("^!.*")) {
-            string = string.replaceFirst("^!", "");
+    private static AbstractFormula getNextConjunction(String string) {
+        List<AbstractFormula> formulasToAdd = new ArrayList<>();
+        while (string.length() != 0) {
+            System.out.println("processing: " + string);
+            if (string.matches("^!.*")) {
+                string = string.replaceFirst("^!", "");
 
-            if (string.matches("^a.*"))
-                formulaToReturn = new Negation(new Atom(Var.a));
-            else if (string.matches("^b.*"))
-                formulaToReturn = new Negation(new Atom(Var.b));
-            if (string.matches("^c.*"))
-                formulaToReturn = new Negation(new Atom(Var.c));
+                if (string.matches("^a.*"))
+                    formulasToAdd.add(new Negation(new Atom(Var.a)));
+                else if (string.matches("^b.*"))
+                    formulasToAdd.add(new Negation(new Atom(Var.b)));
+                if (string.matches("^c.*"))
+                    formulasToAdd.add(new Negation(new Atom(Var.c)));
 
-            return formulaToReturn;
-        } else {
+                string = string.replaceFirst("\\D{1}", "");
+            } else {
 
-            if (string.matches("^a.*"))
-                formulaToReturn = new Atom(Var.a);
-            else if (string.matches("^b.*"))
-                formulaToReturn = new Atom(Var.b);
-            if (string.matches("^c.*"))
-                formulaToReturn = new Atom(Var.c);
+                if (string.matches("^a.*"))
+                    formulasToAdd.add(new Atom(Var.a));
+                else if (string.matches("^b.*"))
+                    formulasToAdd.add(new Atom(Var.b));
+                if (string.matches("^c.*"))
+                    formulasToAdd.add(new Atom(Var.c));
 
-            return formulaToReturn;
+                string = string.replaceFirst("\\D{1}", "");
+            }
         }
+        return new Conjunction(formulasToAdd);
+    }
+
+    public static AbstractFormula getDisjunction(String[] strings) {
+        AbstractFormula[] formulaArray = new AbstractFormula[strings.length];
+
+        for (int i = 0; i < formulaArray.length; i++) {
+            formulaArray[i] = getNextConjunction(strings[i]);
+        }
+
+        return new Disjunction(formulaArray);
     }
 
     public List<AbstractFormula> getFormulaListFromFile(String filePath) {
