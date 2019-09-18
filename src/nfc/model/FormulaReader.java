@@ -12,12 +12,13 @@ import java.util.regex.Pattern;
 public class FormulaReader {
     static Pattern worldPattern = Pattern.compile("!?[abc]{1}");
 
-    static private String testString = "!abc";
+    static private String testString = "!abc, abc";
 
 
     public static void main(String[] args) {
+        AbstractFormula formula = getDisjunction(testString);
 
-        System.out.println("formula: " + getNextConjunction(testString));
+        System.out.println("formula: " + formula);
 
 
         String output = "";
@@ -58,14 +59,14 @@ public class FormulaReader {
         return new Conjunction(formulasToAdd);
     }
 
-    public static AbstractFormula getDisjunction(String[] strings) {
-        AbstractFormula[] formulaArray = new AbstractFormula[strings.length];
-
-        for (int i = 0; i < formulaArray.length; i++) {
-            formulaArray[i] = getNextConjunction(strings[i]);
+    public static AbstractFormula getDisjunction(String baseString) {
+        String[] stringArray = baseString.split(",");
+        List<AbstractFormula> formulasToAdd = new ArrayList<>();
+        for(String string: stringArray){
+            formulasToAdd.add(getNextConjunction(string));
         }
 
-        return new Disjunction(formulaArray);
+        return new Disjunction(formulasToAdd);
     }
 
     public List<AbstractFormula> getFormulaListFromFile(String filePath) {
