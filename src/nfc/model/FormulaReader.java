@@ -10,16 +10,21 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
-    private Pattern disjunctionPattern; //todo
+    private Pattern disjunctionPattern = Pattern.compile(".*,.*");
     private Pattern conjunctionPattern = Pattern.compile("!?\\D[2*]");
-    private Pattern AtomPattern = Pattern.compile("\\D[1]");
-    private Pattern NegationPattern = Pattern.compile("^![1].*");
+    private Pattern atomPattern = Pattern.compile("\\D[1]");
+
+
+    private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D[1]");
+    private Pattern compoundNegationPattern = Pattern.compile("![1]\\([1]\\).*[1]");
 
     static private String testString = "!abc,abc";
 
 
     public static void main(String[] args) {
-        AbstractFormula formula = getDisjunction(testString);
+        FormulaReader formulaReader = new FormulaReader();
+
+        AbstractFormula formula = formulaReader.getDisjunction(testString);
 
         System.out.println("formula: " + formula);
 
@@ -27,10 +32,50 @@ public class FormulaReader {
     }
 
     public AbstractFormula getFormula(String baseString) {
-        baseString.matches()
+        if (negatedAtomPattern.matcher(baseString).matches())
+            return getAtomNegation(baseString);
+        else if (compoundNegationPattern.matcher(baseString).matches())
+            return getAtomNegation(baseString);
+        else if (disjunctionPattern.matcher(baseString).matches())
+            return getDisjunction(baseString);
+        else if (conjunctionPattern.matcher(baseString).matches())
+            return getNextConjunction(baseString);
+        if (atomPattern.matcher(baseString).matches())
+            return getAtom(baseString);
+        else throw new RuntimeException("Invalid Formula String: " + baseString);
     }
 
-    private static AbstractFormula getNextConjunction(String string) {
+    private AbstractFormula getAtom(String string) {
+        Var var;
+        switch (string) {
+            case "a":
+                var = Var.a;
+                break;
+            case "b":
+                var = Var.b;
+                break;
+            case "c":
+                var = Var.c;
+                break;
+            default:
+                throw new RuntimeException("Unknown String For Atom: " + string);
+        }
+
+        return new Atom(var);
+    }
+
+    private AbstractFormula getCompoundNegation(String string) {
+        string = string.replaceFirst("^!", "");
+        string = string.replaceFirst("\\(", "");
+        string = string.replaceFirst("\\)", "");
+        return getFormula(string);
+    }
+
+    private AbstractFormula getAtomNegation(String string) {
+        return new Negation(getFormula(string.replaceFirst("^!", "")));
+    }
+
+    private AbstractFormula getNextConjunction(String string) {
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         while (string.length() != 0) {
             System.out.println("processing: " + string);
@@ -60,7 +105,7 @@ public class FormulaReader {
         return new Conjunction(formulasToAdd);
     }
 
-    public static AbstractFormula getDisjunction(String baseString) {
+    public AbstractFormula getDisjunction(String baseString) {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         for (String string : stringArray) {
