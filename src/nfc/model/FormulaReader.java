@@ -32,7 +32,7 @@ public class FormulaReader {
 
     }
 
-    public AbstractFormula getFormula(String baseString) {
+    public AbstractFormula getFormulaFromString(String baseString) {
         if (negatedAtomPattern.matcher(baseString).matches())
             return getAtomNegation(baseString);
         else if (compoundNegationPattern.matcher(baseString).matches())
@@ -69,11 +69,11 @@ public class FormulaReader {
         string = string.replaceFirst("^!", "");
         string = string.replaceFirst("\\(", "");
         string = string.replaceFirst("\\)", "");
-        return new Negation(getFormula(string));
+        return new Negation(getFormulaFromString(string));
     }
 
     private AbstractFormula getAtomNegation(String string) {
-        return new Negation(getFormula(string.replaceFirst("^!", "")));
+        return new Negation(getFormulaFromString(string.replaceFirst("^!", "")));
     }
 
     private AbstractFormula getConjunction(String string) {
@@ -110,12 +110,13 @@ public class FormulaReader {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         for (String string : stringArray) {
-            formulasToAdd.add(getFormula(string));
+            formulasToAdd.add(getFormulaFromString(string));
         }
 
         return new Disjunction(formulasToAdd);
     }
 
+    //todo: put here the simple list and then replace some with the ones from file. compare numbers to be sure it is correct.
     public List<AbstractFormula> getFormulaListFromFile(String filePath) {
         File file = readFile(filePath);
 
@@ -154,13 +155,5 @@ public class FormulaReader {
         }
 
         return sb.toString().split("\n");
-    }
-
-    private AbstractFormula getFormulaFromString(String string) {
-        System.out.println(string);
-        //todo
-        //idea: recursion: split , ->disj
-        //if matches (!)x[n] ->conj
-        return new Tautology();
     }
 }
