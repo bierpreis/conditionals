@@ -17,7 +17,6 @@ public class FormulaReader {
 
     private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");
 
-    //todo: this doenst work
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
     static private String testString = "!(abc),abc";
@@ -41,7 +40,7 @@ public class FormulaReader {
         else if (disjunctionPattern.matcher(baseString).matches())
             return getDisjunction(baseString);
         else if (conjunctionPattern.matcher(baseString).matches())
-            return getNextConjunction(baseString);
+            return getConjunction(baseString);
         if (atomPattern.matcher(baseString).matches())
             return getAtom(baseString);
         else throw new RuntimeException("Invalid Formula String: " + baseString);
@@ -77,7 +76,7 @@ public class FormulaReader {
         return new Negation(getFormula(string.replaceFirst("^!", "")));
     }
 
-    private AbstractFormula getNextConjunction(String string) {
+    private AbstractFormula getConjunction(String string) {
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         while (string.length() != 0) {
             System.out.println("processing: " + string);
