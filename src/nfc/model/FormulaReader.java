@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
-    private Pattern conjunctionPattern = Pattern.compile("!?\\D{3}"); //todo: not just 3, 2 also
+    private Pattern conjunctionPattern = Pattern.compile("!?\\D{2,3}"); //todo: test with ab
     private Pattern atomPattern = Pattern.compile("\\D{1}");
 
 
@@ -79,7 +79,6 @@ public class FormulaReader {
     private AbstractFormula getConjunction(String string) {
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         while (string.length() != 0) {
-            System.out.println("processing: " + string);
             if (string.matches("^!.*")) {
                 string = string.replaceFirst("^!", "");
 
@@ -106,6 +105,7 @@ public class FormulaReader {
         return new Conjunction(formulasToAdd);
     }
 
+    //todo: remove brackets maybe?
     public AbstractFormula getDisjunction(String baseString) {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
