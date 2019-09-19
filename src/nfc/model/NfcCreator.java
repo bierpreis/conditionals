@@ -9,6 +9,7 @@ import java.util.*;
 
 
 public class NfcCreator {
+    //todo: here and everywhere: final should be caps?! read before!
     private final List<World> worldList;
     private final List<ConditionalList> oldCnfcEq;
     private final List<Conditional> basicConditionalList;
