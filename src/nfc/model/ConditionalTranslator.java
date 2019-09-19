@@ -5,13 +5,11 @@ import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
-public class ConditionalTanslator {
-    private AbstractSignature signature;
+public class ConditionalTranslator {
     private ShortTranslationMap shortTranslationMap;
 
-    public ConditionalTanslator(AbstractSignature signature) {
+    public ConditionalTranslator(AbstractSignature signature) {
         shortTranslationMap = new ShortTranslationMap(signature);
-
 
         AbstractFormula.setSignature(signature);
     }

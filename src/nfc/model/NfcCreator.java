@@ -20,15 +20,15 @@ public class NfcCreator {
 
     private final Map<Integer, NewConditional> newNfcMap;
 
-    private final ConditionalTanslator conditionalTanslator;
+    private final ConditionalTranslator conditionalTranslator;
 
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started oldNfc creator");
         worldList = createWorlds(signature);
 
-        conditionalTanslator = new ConditionalTanslator(signature);
+        conditionalTranslator = new ConditionalTranslator(signature);
 
-        //this is basic conditional list in order from defintion  2
+        //this is basic conditional list in order from definition  2
         basicConditionalList = createBasicConditionalList(worldList);
 
 
@@ -254,7 +254,7 @@ public class NfcCreator {
     public Map<World, AbstractFormula> getWorldsFormulasMap() {
         Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
         for (World world : worldList) {
-            mapToReturn.put(world, conditionalTanslator.worldToFormula(world));
+            mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
         }
         return mapToReturn;
     }
@@ -265,10 +265,10 @@ public class NfcCreator {
         List<NewConditional> newConditionals = new ArrayList<>(oldConditionals.size());
 
         for (Conditional oldConditional : oldConditionals) {
-            NewConditional newConditional = conditionalTanslator.transLate(oldConditional);
+            NewConditional newConditional = conditionalTranslator.transLate(oldConditional);
             newConditional.setNumber(oldConditional.getNumber());
 
-            newConditional.setCounterConditional(conditionalTanslator.transLate(oldConditional.getActualCounterConditional()));
+            newConditional.setCounterConditional(conditionalTranslator.transLate(oldConditional.getActualCounterConditional()));
             newConditionals.add(newConditional);
 
         }
