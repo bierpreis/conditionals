@@ -44,9 +44,10 @@ public class FormulaReader {
             return new Tautology();
         if (equalityPattern.matcher(string).matches())
             return getEquality(string);
-        else throw new RuntimeException("Invalid Formula String: " + string);
+        throw new RuntimeException("Invalid Formula String: " + string);
     }
 
+    //todo: rest abc signature
     private AbstractFormula getEquality(String string) {
         String[] splitString = string.split("==");
         List<AbstractFormula> formulas = new ArrayList<>(splitString.length);
