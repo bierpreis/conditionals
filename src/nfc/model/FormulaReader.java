@@ -11,16 +11,12 @@ public class FormulaReader {
     private Pattern conjunctionPattern = Pattern.compile("!?\\D{2,3}"); //todo: test with abc
     private Pattern atomPattern = Pattern.compile("\\D{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
-
     private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");
-
     private Pattern equalityPattern = Pattern.compile(".*==.*");
-
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
-    static private String testString = "!(abc),abc";
 
-    private final String filePath = "/resources/";
+    private final String filePath = "src/resources/ab.txt";
 
 
     public static void main(String[] args) {
@@ -33,7 +29,7 @@ public class FormulaReader {
 
     }
 
-    public AbstractFormula getFormulaFromString(String string) {
+    private AbstractFormula getFormulaFromString(String string) {
         if (negatedAtomPattern.matcher(string).matches())
             return getAtomNegation(string);
         else if (compoundNegationPattern.matcher(string).matches())
@@ -121,7 +117,7 @@ public class FormulaReader {
     }
 
     //todo: remove brackets maybe?
-    public AbstractFormula getDisjunction(String baseString) {
+    private AbstractFormula getDisjunction(String baseString) {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         for (String string : stringArray) {
@@ -131,7 +127,7 @@ public class FormulaReader {
         return new Disjunction(formulasToAdd);
     }
 
-    public Map<Integer, AbstractFormula> getFormulaMapFromFile(String filePath) {
+    private Map<Integer, AbstractFormula> getFormulaMapFromFile(String filePath) {
         File file = readFile(filePath);
 
         String[] formulaStringArray = getStringArrayFromFile(file);
