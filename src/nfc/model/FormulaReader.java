@@ -32,11 +32,11 @@ public class FormulaReader {
     private AbstractFormula getFormulaFromString(String string) {
         if (negatedAtomPattern.matcher(string).matches())
             return getAtomNegation(string);
-        else if (compoundNegationPattern.matcher(string).matches())
+        if (compoundNegationPattern.matcher(string).matches())
             return getCompoundNegation(string);
-        else if (disjunctionPattern.matcher(string).matches())
+        if (disjunctionPattern.matcher(string).matches())
             return getDisjunction(string);
-        else if (conjunctionPattern.matcher(string).matches())
+        if (conjunctionPattern.matcher(string).matches())
             return getConjunction(string);
         if (atomPattern.matcher(string).matches())
             return getAtom(string);
