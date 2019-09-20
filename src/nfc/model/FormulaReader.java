@@ -3,9 +3,7 @@ package nfc.model;
 import kb_creator.model.propositional_logic.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
@@ -26,16 +24,16 @@ public class FormulaReader {
     public static void main(String[] args) {
 
 
-
         FormulaReader formulaReader = new FormulaReader();
 
-        formulaReader.getFormulaListFromFile("src/resources/ab.txt");
+        formulaReader.getFormulaMapFromFile("src/resources/ab.txt");
 
 
     }
 
     //todo: equality
     public AbstractFormula getFormulaFromString(String baseString) {
+        baseString = baseString.replace("^.*: ", "");
         if (negatedAtomPattern.matcher(baseString).matches())
             return getAtomNegation(baseString);
         else if (compoundNegationPattern.matcher(baseString).matches())
@@ -120,19 +118,25 @@ public class FormulaReader {
     }
 
     //todo: put here the simple list and then replace some with the ones from file. compare numbers to be sure it is correct.
-    public List<AbstractFormula> getFormulaListFromFile(String filePath) {
+    public Map<Integer, AbstractFormula> getFormulaMapFromFile(String filePath) {
         File file = readFile(filePath);
 
         String[] formulaStringArray = getStringArrayFromFile(file);
 
-        List<AbstractFormula> formulaList = new ArrayList<>(formulaStringArray.length);
+        Map<Integer, AbstractFormula> formulaMap = new HashMap<>(formulaStringArray.length);
 
         for (String string : formulaStringArray) {
             if (!string.matches("^//")) //todo: test comment out
-                formulaList.add(getFormulaFromString(string));
+                formulaMap.put(getNumberFromString(string), getFormulaFromString(string));
         }
 
-        return formulaList;
+        return formulaMap;
+    }
+
+    private Integer getNumberFromString(String string) {
+        String[] stringArray = string.split(":");
+        Scanner scanner = new Scanner(stringArray[0]);
+        return scanner.nextInt();
     }
 
     private File readFile(String filepath) {
