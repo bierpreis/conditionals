@@ -32,21 +32,18 @@ public class FormulaReader {
     }
 
     //todo: equality
-    public AbstractFormula getFormulaFromString(String baseString) {
-        String[] stringArray = baseString.split(": "); //todo: split should not be here!!
-        if (stringArray.length != 2)
-            System.out.println("wtf");
-        if (negatedAtomPattern.matcher(stringArray[1]).matches())
-            return getAtomNegation(stringArray[1]);
-        else if (compoundNegationPattern.matcher(stringArray[1]).matches())
-            return getCompoundNegation(stringArray[1]);
-        else if (disjunctionPattern.matcher(stringArray[1]).matches())
-            return getDisjunction(stringArray[1]);
-        else if (conjunctionPattern.matcher(stringArray[1]).matches())
-            return getConjunction(stringArray[1]);
-        if (atomPattern.matcher(stringArray[1]).matches())
-            return getAtom(stringArray[1]);
-        else throw new RuntimeException("Invalid Formula String: " + baseString);
+    public AbstractFormula getFormulaFromString(String string) {
+        if (negatedAtomPattern.matcher(string).matches())
+            return getAtomNegation(string);
+        else if (compoundNegationPattern.matcher(string).matches())
+            return getCompoundNegation(string);
+        else if (disjunctionPattern.matcher(string).matches())
+            return getDisjunction(string);
+        else if (conjunctionPattern.matcher(string).matches())
+            return getConjunction(string);
+        if (atomPattern.matcher(string).matches())
+            return getAtom(string);
+        else throw new RuntimeException("Invalid Formula String: " + string);
     }
 
     private AbstractFormula getAtom(String string) {
@@ -128,16 +125,16 @@ public class FormulaReader {
         Map<Integer, AbstractFormula> formulaMap = new HashMap<>(formulaStringArray.length);
 
         for (String string : formulaStringArray) {
+            String[] stringArray = string.split(": ");
             if (!string.matches("^//.*"))
-                formulaMap.put(getNumberFromString(string), getFormulaFromString(string));
+                formulaMap.put(getNumberFromString(stringArray[0]), getFormulaFromString(stringArray[1]));
         }
 
         return formulaMap;
     }
 
     private Integer getNumberFromString(String string) {
-        String[] stringArray = string.split(":");
-        Scanner scanner = new Scanner(stringArray[0]);
+        Scanner scanner = new Scanner(string);
         return scanner.nextInt();
     }
 
