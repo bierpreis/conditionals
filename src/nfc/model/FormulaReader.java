@@ -14,6 +14,8 @@ public class FormulaReader {
 
     private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");
 
+    private Pattern equalityPattern = Pattern.compile(".*==.*");
+
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
     static private String testString = "!(abc),abc";
@@ -45,7 +47,15 @@ public class FormulaReader {
             return getAtom(string);
         if (tautologyPattern.matcher(string).matches())
             return new Tautology();
+        if (equalityPattern.matcher(string).matches())
+            return getEquality(string);
         else throw new RuntimeException("Invalid Formula String: " + string);
+    }
+
+    private AbstractFormula getEquality(String string) {
+        String[] splitString = string.split("==");
+        //todo
+        return new Equality(new Atom(splitString[0]));
     }
 
     private AbstractFormula getAtom(String string) {
