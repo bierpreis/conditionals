@@ -32,6 +32,7 @@ public class FormulaReader {
 
     }
 
+    //todo: equality
     public AbstractFormula getFormulaFromString(String baseString) {
         if (negatedAtomPattern.matcher(baseString).matches())
             return getAtomNegation(baseString);
