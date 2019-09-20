@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
-    private Pattern conjunctionPattern = Pattern.compile("!?\\D{2,3}"); //todo: test with ab
+    private Pattern conjunctionPattern = Pattern.compile("!?\\D{2,3}"); //todo: test with abc
     private Pattern atomPattern = Pattern.compile("\\D{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
 
@@ -28,12 +28,11 @@ public class FormulaReader {
 
         FormulaReader formulaReader = new FormulaReader();
 
-        formulaReader.getFormulaMapFromFile("src/resources/ab.txt");
+        Map<Integer, AbstractFormula> map = formulaReader.getFormulaMapFromFile("src/resources/ab.txt");
 
 
     }
 
-    //todo: equality
     public AbstractFormula getFormulaFromString(String string) {
         if (negatedAtomPattern.matcher(string).matches())
             return getAtomNegation(string);
@@ -54,8 +53,12 @@ public class FormulaReader {
 
     private AbstractFormula getEquality(String string) {
         String[] splitString = string.split("==");
-        //todo
-        return new Equality(new Atom(splitString[0]));
+        List<AbstractFormula> formulas = new ArrayList<>(splitString.length);
+
+        for (String subString : splitString) {
+            formulas.add(getFormulaFromString(subString));
+        }
+        return new Equality(formulas);
     }
 
     private AbstractFormula getAtom(String string) {

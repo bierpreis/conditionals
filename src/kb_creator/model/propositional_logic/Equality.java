@@ -14,7 +14,7 @@ public class Equality extends AbstractFormula {
         formulaList.addAll(Arrays.asList(formulas));
     }
 
-    public Equality(List formulaList) {
+    public Equality(List<AbstractFormula> formulaList) {
         this.formulaList = formulaList;
     }
 
