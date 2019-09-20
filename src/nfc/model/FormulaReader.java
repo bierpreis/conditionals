@@ -33,17 +33,17 @@ public class FormulaReader {
 
     //todo: equality
     public AbstractFormula getFormulaFromString(String baseString) {
-        baseString = baseString.replace("^.*: ", "");
-        if (negatedAtomPattern.matcher(baseString).matches())
-            return getAtomNegation(baseString);
-        else if (compoundNegationPattern.matcher(baseString).matches())
-            return getCompoundNegation(baseString);
-        else if (disjunctionPattern.matcher(baseString).matches())
-            return getDisjunction(baseString);
-        else if (conjunctionPattern.matcher(baseString).matches())
-            return getConjunction(baseString);
-        if (atomPattern.matcher(baseString).matches())
-            return getAtom(baseString);
+        String[] stringArray = baseString.split(": ");
+        if (negatedAtomPattern.matcher(stringArray[1]).matches())
+            return getAtomNegation(stringArray[1]);
+        else if (compoundNegationPattern.matcher(stringArray[1]).matches())
+            return getCompoundNegation(stringArray[1]);
+        else if (disjunctionPattern.matcher(stringArray[1]).matches())
+            return getDisjunction(stringArray[1]);
+        else if (conjunctionPattern.matcher(stringArray[1]).matches())
+            return getConjunction(stringArray[1]);
+        if (atomPattern.matcher(stringArray[1]).matches())
+            return getAtom(stringArray[1]);
         else throw new RuntimeException("Invalid Formula String: " + baseString);
     }
 
