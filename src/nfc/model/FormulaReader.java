@@ -2,8 +2,7 @@ package nfc.model;
 
 import kb_creator.model.propositional_logic.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -21,13 +20,16 @@ public class FormulaReader {
 
     static private String testString = "!(abc),abc";
 
+    private final String filePath = "/resources/";
+
 
     public static void main(String[] args) {
+
+
+
         FormulaReader formulaReader = new FormulaReader();
 
-        AbstractFormula formula = formulaReader.getDisjunction(testString);
-
-        System.out.println("formula: " + formula);
+        formulaReader.getFormulaListFromFile("src/resources/ab.txt");
 
 
     }
@@ -126,7 +128,8 @@ public class FormulaReader {
         List<AbstractFormula> formulaList = new ArrayList<>(formulaStringArray.length);
 
         for (String string : formulaStringArray) {
-            formulaList.add(getFormulaFromString(string));
+            if (!string.matches("^//")) //todo: test comment out
+                formulaList.add(getFormulaFromString(string));
         }
 
         return formulaList;
