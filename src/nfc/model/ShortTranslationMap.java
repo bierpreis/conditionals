@@ -13,7 +13,7 @@ public class ShortTranslationMap {
 
     public ShortTranslationMap(AbstractSignature signature) {
 
-
+        //todo: here start reading file
         if (signature instanceof AB) {
             translationMap.put(5, new Atom(Var.a));
             translationMap.put(6, new Atom(Var.b));
