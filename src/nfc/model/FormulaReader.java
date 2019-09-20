@@ -33,7 +33,9 @@ public class FormulaReader {
 
     //todo: equality
     public AbstractFormula getFormulaFromString(String baseString) {
-        String[] stringArray = baseString.split(": ");
+        String[] stringArray = baseString.split(": "); //todo: split should not be here!!
+        if (stringArray.length != 2)
+            System.out.println("wtf");
         if (negatedAtomPattern.matcher(stringArray[1]).matches())
             return getAtomNegation(stringArray[1]);
         else if (compoundNegationPattern.matcher(stringArray[1]).matches())
@@ -126,7 +128,7 @@ public class FormulaReader {
         Map<Integer, AbstractFormula> formulaMap = new HashMap<>(formulaStringArray.length);
 
         for (String string : formulaStringArray) {
-            if (!string.matches("^//")) //todo: test comment out
+            if (!string.matches("^//.*"))
                 formulaMap.put(getNumberFromString(string), getFormulaFromString(string));
         }
 
