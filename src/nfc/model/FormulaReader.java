@@ -10,7 +10,7 @@ public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
     private Pattern conjunctionPattern = Pattern.compile("!?\\D{2,3}"); //todo: test with ab
     private Pattern atomPattern = Pattern.compile("\\D{1}");
-
+    private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
 
     private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");
 
@@ -43,6 +43,8 @@ public class FormulaReader {
             return getConjunction(string);
         if (atomPattern.matcher(string).matches())
             return getAtom(string);
+        if (tautologyPattern.matcher(string).matches())
+            return new Tautology();
         else throw new RuntimeException("Invalid Formula String: " + string);
     }
 
@@ -116,7 +118,6 @@ public class FormulaReader {
         return new Disjunction(formulasToAdd);
     }
 
-    //todo: put here the simple list and then replace some with the ones from file. compare numbers to be sure it is correct.
     public Map<Integer, AbstractFormula> getFormulaMapFromFile(String filePath) {
         File file = readFile(filePath);
 
