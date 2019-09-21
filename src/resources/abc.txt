@@ -147,56 +147,56 @@
 147: {6, 2, 1, 0} -> ab!c, !ab!c, !a!bc, !a!b!c
 148: {5, 4, 3, 2} -> a!bc, a!b!c, !abc, !ab!c
 149: {5, 4, 3, 1} -> a!bc, a!b!c, !abc, !a!bc
-150: {5, 4, 3, 0} -> a!bc, a!b!c, !abc, !a!b!c
-151: {5, 4, 2, 1} -> a!bc, a!b!c, !ab!c, !a!bc
-152: {5, 4, 2, 0} -> a!bc, a!b!c, !ab!c, !a!b!c
+150: a!bc, a!b!c, !abc, !a!b!c
+151: a!bc, a!b!c, !ab!c, !a!bc
+152: a!bc, a!b!c, !ab!c, !a!b!c
 153: {5, 4, 1, 0} -> !b
-154: {5, 3, 2, 1} -> a!bc, !abc, !ab!c, !a!bc
-155: {5, 3, 2, 0} -> a!bc, !abc, !ab!c, !a!b!c
-156: {5, 3, 1, 0} -> a!bc, !abc, !a!bc, !a!b!c
-157: {5, 2, 1, 0} -> a!bc, !ab!c, !a!bc, !a!b!c
-158: {4, 3, 2, 1} -> a!b!c, !abc, !ab!c, !a!bc
-159: {4, 3, 2, 0} -> a!b!c, !abc, !ab!c, !a!b!c
-160: {4, 3, 1, 0} -> a!b!c, !abc, !a!bc, !a!b!c
-161: {4, 2, 1, 0} -> a!b!c, !ab!c, !a!bc, !a!b!c
+154: a!bc, !abc, !ab!c, !a!bc
+155: a!bc, !abc, !ab!c, !a!b!c
+156: a!bc, !abc, !a!bc, !a!b!c
+157: a!bc, !ab!c, !a!bc, !a!b!c
+158: a!b!c, !abc, !ab!c, !a!bc
+159: a!b!c, !abc, !ab!c, !a!b!c
+160: a!b!c, !abc, !a!bc, !a!b!c
+161: a!b!c, !ab!c, !a!bc, !a!b!c
 162: {3, 2, 1, 0} -> !a
-163: {7, 6, 5, 4, 3} -> a, bc
-164: {7, 6, 5, 4, 2} -> abc, ab!c, a!bc, a!b!c, !ab!c
-165: {7, 6, 5, 4, 1} -> abc, ab!c, a!bc, a!b!c, !a!bc
-166: {7, 6, 5, 4, 0} -> abc, ab!c, a!bc, a!b!c, !a!b!c
-167: {7, 6, 5, 3, 2} -> abc, ab!c, a!bc, !abc, !ab!c
-168: {7, 6, 5, 3, 1} -> abc, ab!c, a!bc, !abc, !a!bc
-169: {7, 6, 5, 3, 0} -> abc, ab!c, a!bc, !abc, !a!b!c
-170: {7, 6, 5, 2, 1} -> abc, ab!c, a!bc, !ab!c, !a!bc
-171: {7, 6, 5, 2, 0} -> abc, ab!c, a!bc, !ab!c, !a!b!c
-172: {7, 6, 5, 1, 0} -> abc, ab!c, a!bc, !a!bc, !a!b!c
-173: {7, 6, 4, 3, 2} -> abc, ab!c, a!b!c, !abc, !ab!c
-174: {7, 6, 4, 3, 1} -> abc, ab!c, a!b!c, !abc, !a!bc
-175: {7, 6, 4, 3, 0} -> abc, ab!c, a!b!c, !abc, !a!b!c
-176: {7, 6, 4, 2, 1} -> abc, ab!c, a!b!c, !ab!c, !a!bc
-177: {7, 6, 4, 2, 0} -> abc, ab!c, a!b!c, !ab!c, !a!b!c
-178: {7, 6, 4, 1, 0} -> abc, ab!c, a!b!c, !a!bc, !a!b!c
-179: {7, 6, 3, 2, 1} -> abc, ab!c, !abc, !ab!c, !a!bc
-180: {7, 6, 3, 2, 0} -> abc, ab!c, !abc, !ab!c, !a!b!c
-181: {7, 6, 3, 1, 0} -> abc, ab!c, !abc, !a!bc, !a!b!c
-182: {7, 6, 2, 1, 0} -> abc, ab!c, !ab!c, !a!bc, !a!b!c
-183: {7, 5, 4, 3, 2} -> abc, a!bc, a!b!c, !abc, !ab!c
-184: {7, 5, 4, 3, 1} -> abc, a!bc, a!b!c, !abc, !a!bc
-185: {7, 5, 4, 3, 0} -> abc, a!bc, a!b!c, !abc, !a!b!c
-186: {7, 5, 4, 2, 1} -> abc, a!bc, a!b!c, !ab!c, !a!bc
-187: {7, 5, 4, 2, 0} -> abc, a!bc, a!b!c, !ab!c, !a!b!c
-188: {7, 5, 4, 1, 0} -> abc, a!bc, a!b!c, !a!bc, !a!b!c
-189: {7, 5, 3, 2, 1} -> abc, a!bc, !abc, !ab!c, !a!bc
-190: {7, 5, 3, 2, 0} -> abc, a!bc, !abc, !ab!c, !a!b!c
-191: {7, 5, 3, 1, 0} -> abc, a!bc, !abc, !a!bc, !a!b!c
-192: {7, 5, 2, 1, 0} -> abc, a!bc, !ab!c, !a!bc, !a!b!c
-193: {7, 4, 3, 2, 1} -> abc, a!b!c, !abc, !ab!c, !a!bc
-194: {7, 4, 3, 2, 0} -> abc, a!b!c, !abc, !ab!c, !a!b!c
-195: {7, 4, 3, 1, 0} -> abc, a!b!c, !abc, !a!bc, !a!b!c
-196: {7, 4, 2, 1, 0} -> abc, a!b!c, !ab!c, !a!bc, !a!b!c
-197: {7, 3, 2, 1, 0} -> abc, !abc, !ab!c, !a!bc, !a!b!c
-198: {6, 5, 4, 3, 2} -> ab!c, a!bc, a!b!c, !abc, !ab!c
-199: {6, 5, 4, 3, 1} -> ab!c, a!bc, a!b!c, !abc, !a!bc
+163: a, bc
+164: abc, ab!c, a!bc, a!b!c, !ab!c
+165: abc, ab!c, a!bc, a!b!c, !a!bc
+166: abc, ab!c, a!bc, a!b!c, !a!b!c
+167: abc, ab!c, a!bc, !abc, !ab!c
+168: abc, ab!c, a!bc, !abc, !a!bc
+169: abc, ab!c, a!bc, !abc, !a!b!c
+170: abc, ab!c, a!bc, !ab!c, !a!bc
+171: abc, ab!c, a!bc, !ab!c, !a!b!c
+172: abc, ab!c, a!bc, !a!bc, !a!b!c
+173: abc, ab!c, a!b!c, !abc, !ab!c
+174: abc, ab!c, a!b!c, !abc, !a!bc
+175: abc, ab!c, a!b!c, !abc, !a!b!c
+176: abc, ab!c, a!b!c, !ab!c, !a!bc
+177: abc, ab!c, a!b!c, !ab!c, !a!b!c
+178: abc, ab!c, a!b!c, !a!bc, !a!b!c
+179: abc, ab!c, !abc, !ab!c, !a!bc
+180: abc, ab!c, !abc, !ab!c, !a!b!c
+181: abc, ab!c, !abc, !a!bc, !a!b!c
+182: abc, ab!c, !ab!c, !a!bc, !a!b!c
+183: abc, a!bc, a!b!c, !abc, !ab!c
+184: abc, a!bc, a!b!c, !abc, !a!bc
+185: abc, a!bc, a!b!c, !abc, !a!b!c
+186: abc, a!bc, a!b!c, !ab!c, !a!bc
+187: abc, a!bc, a!b!c, !ab!c, !a!b!c
+188: abc, a!bc, a!b!c, !a!bc, !a!b!c
+189: abc, a!bc, !abc, !ab!c, !a!bc
+190: abc, a!bc, !abc, !ab!c, !a!b!c
+191: abc, a!bc, !abc, !a!bc, !a!b!c
+192: abc, a!bc, !ab!c, !a!bc, !a!b!c
+193: abc, a!b!c, !abc, !ab!c, !a!bc
+194: abc, a!b!c, !abc, !ab!c, !a!b!c
+195: abc, a!b!c, !abc, !a!bc, !a!b!c
+196: abc, a!b!c, !ab!c, !a!bc, !a!b!c
+197: abc, !abc, !ab!c, !a!bc, !a!b!c
+198: ab!c, a!bc, a!b!c, !abc, !ab!c
+199: ab!c, a!bc, a!b!c, !abc, !a!bc
 200: ab!c, a!bc, a!b!c, !abc, !a!b!c
 201: ab!c, a!bc, a!b!c, !ab!c, !a!bc
 202: ab!c, a!bc, a!b!c, !ab!c, !a!b!c
