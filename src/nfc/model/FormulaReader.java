@@ -9,15 +9,19 @@ import java.util.regex.Pattern;
 
 public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
-    private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}"); //todo: this triggers a==b. but how?
-    private Pattern atomPattern = Pattern.compile("[!]?[a-c]{1}");
+    private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
+    private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
-    private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");
+    private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");  //todo: maybe delete?
     private Pattern equalityPattern = Pattern.compile(".*==.*");
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
 
     private AbstractFormula getFormulaFromString(String string) {
+
+        //remove possible leading space chars
+        string = string.replaceAll("^[ ]+", "");
+
         if (negatedAtomPattern.matcher(string).matches())
             return getAtomNegation(string);
         if (compoundNegationPattern.matcher(string).matches())
