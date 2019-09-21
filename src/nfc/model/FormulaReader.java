@@ -1,6 +1,7 @@
 package nfc.model;
 
 import kb_creator.model.propositional_logic.*;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.io.*;
 import java.util.*;
@@ -15,19 +16,6 @@ public class FormulaReader {
     private Pattern equalityPattern = Pattern.compile(".*==.*");
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
-
-    private final String filePath = "src/resources/ab.txt";
-
-
-    public static void main(String[] args) {
-
-
-        FormulaReader formulaReader = new FormulaReader();
-
-        Map<Integer, AbstractFormula> map = formulaReader.getFormulaMapFromFile("src/resources/ab.txt");
-
-
-    }
 
     private AbstractFormula getFormulaFromString(String string) {
         if (negatedAtomPattern.matcher(string).matches())
@@ -128,8 +116,8 @@ public class FormulaReader {
         return new Disjunction(formulasToAdd);
     }
 
-    private Map<Integer, AbstractFormula> getFormulaMapFromFile(String filePath) {
-        File file = readFile(filePath);
+    public Map<Integer, AbstractFormula> getFormulaMapFromFile(AbstractSignature signature) {
+        File file = readFile("src/resources/" + signature.toString().replaceAll(",", "") + ".txt");
 
         String[] formulaStringArray = getStringArrayFromFile(file);
 

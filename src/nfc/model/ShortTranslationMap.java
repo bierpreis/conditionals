@@ -13,9 +13,12 @@ public class ShortTranslationMap {
 
     public ShortTranslationMap(AbstractSignature signature) {
 
-        //todo: here start reading file
+        //todo: make ab and abc same
         if (signature instanceof AB) {
-            translationMap.put(5, new Atom(Var.a));
+            FormulaReader formulaReader = new FormulaReader();
+            translationMap = formulaReader.getFormulaMapFromFile(signature);
+
+/*            translationMap.put(5, new Atom(Var.a));
             translationMap.put(6, new Atom(Var.b));
             translationMap.put(7, new Atom(Var.a).eq(new Atom(Var.b)));
 
@@ -35,7 +38,7 @@ public class ShortTranslationMap {
             translationMap.put(14, new Atom(Var.a).and(new Atom(Var.b)).neg());
 
 
-            translationMap.put(15, new Tautology());
+            translationMap.put(15, new Tautology());*/
 
 
         } else if (signature instanceof ABC) {
