@@ -197,59 +197,59 @@
 197: {7, 3, 2, 1, 0} -> abc, !abc, !ab!c, !a!bc, !a!b!c
 198: {6, 5, 4, 3, 2} -> ab!c, a!bc, a!b!c, !abc, !ab!c
 199: {6, 5, 4, 3, 1} -> ab!c, a!bc, a!b!c, !abc, !a!bc
-200: {6, 5, 4, 3, 0} -> ab!c, a!bc, a!b!c, !abc, !a!b!c
-201: {6, 5, 4, 2, 1} -> ab!c, a!bc, a!b!c, !ab!c, !a!bc
-202: {6, 5, 4, 2, 0} -> ab!c, a!bc, a!b!c, !ab!c, !a!b!c
-203: {6, 5, 4, 1, 0} -> ab!c, a!bc, a!b!c, !a!bc, !a!b!c
-204: {6, 5, 3, 2, 1} -> ab!c, a!bc, !abc, !ab!c, !a!bc
-205: {6, 5, 3, 2, 0} -> ab!c, a!bc, !abc, !ab!c, !a!b!c
-206: {6, 5, 3, 1, 0} -> ab!c, a!bc, !abc, !a!bc, !a!b!c
-207: {6, 5, 2, 1, 0} -> ab!c, a!bc, !ab!c, !a!bc, !a!b!c
-208: {6, 4, 3, 2, 1} -> ab!c, a!b!c, !abc, !ab!c, !a!bc
-209: {6, 4, 3, 2, 0} -> !ab, !c
-210: {6, 4, 3, 1, 0} -> ab!c, a!b!c, !abc, !a!bc, !a!b!c
-211: {6, 4, 2, 1, 0} -> !a!b, !c
-212: {6, 3, 2, 1, 0} -> !a, b!c
-213: {5, 4, 3, 2, 1} -> a!b, !ab, !a!bc
-214: {5, 4, 3, 2, 0} -> a!b, !ab, !a!b!c
-215: {5, 4, 3, 1, 0} -> !b, !ac
-216: {5, 4, 2, 1, 0} -> !b, !a!c
-217: {5, 3, 2, 1, 0} -> !a, !bc
-218: {4, 3, 2, 1, 0} -> !a, !b!c
-219: {7, 6, 5, 4, 3, 2} -> a, !ab
-220: {7, 6, 5, 4, 3, 1} -> a, !ac
-221: {7, 6, 5, 4, 3, 0} -> a, b==c
-222: {7, 6, 5, 4, 2, 1} -> abc, ab!c, a!bc, a!b!c, !ab!c, !a!bc
-223: {7, 6, 5, 4, 2, 0} -> a, !a!c
-224: {7, 6, 5, 4, 1, 0} -> a, !a!b
-225: {7, 6, 5, 3, 2, 1} -> abc, ab!c, a!bc, !abc, !ab!c, !a!bc
-226: {7, 6, 5, 3, 2, 0} -> abc, ab!c, a!bc, !abc, !ab!c, !a!b!c
-227: {7, 6, 5, 3, 1, 0} -> abc, ab!c, a!bc, !abc, !a!bc, !a!b!c
-228: {7, 6, 5, 2, 1, 0} -> abc, ab!c, a!bc, !ab!c, !a!bc, !a!b!c
-229: {7, 6, 4, 3, 2, 1} -> abc, ab!c, a!b!c, !abc, !ab!c, !a!bc
-230: {7, 6, 4, 3, 2, 0} -> abc, ab!c, a!b!c, !abc, !ab!c, !a!b!c
-231: {7, 6, 4, 3, 1, 0} -> abc, ab!c, a!b!c, !abc, !a!bc, !a!b!c
-232: {7, 6, 4, 2, 1, 0} -> abc, ab!c, a!b!c, !ab!c, !a!bc, !a!b!c
+200: ab!c, a!bc, a!b!c, !abc, !a!b!c
+201: ab!c, a!bc, a!b!c, !ab!c, !a!bc
+202: ab!c, a!bc, a!b!c, !ab!c, !a!b!c
+203: ab!c, a!bc, a!b!c, !a!bc, !a!b!c
+204: ab!c, a!bc, !abc, !ab!c, !a!bc
+205: ab!c, a!bc, !abc, !ab!c, !a!b!c
+206: ab!c, a!bc, !abc, !a!bc, !a!b!c
+207: ab!c, a!bc, !ab!c, !a!bc, !a!b!c
+208: ab!c, a!b!c, !abc, !ab!c, !a!bc
+209: !ab, !c
+210: ab!c, a!b!c, !abc, !a!bc, !a!b!c
+211: !a!b, !c
+212: !a, b!c
+213: a!b, !ab, !a!bc
+214: a!b, !ab, !a!b!c
+215: !b, !ac
+216: !b, !a!c
+217: !a, !bc
+218: !a, !b!c
+219: a, !ab
+220: a, !ac
+221: a, b==c
+222: abc, ab!c, a!bc, a!b!c, !ab!c, !a!bc
+223: a, !a!c
+224: a, !a!b
+225: abc, ab!c, a!bc, !abc, !ab!c, !a!bc
+226: abc, ab!c, a!bc, !abc, !ab!c, !a!b!c
+227: abc, ab!c, a!bc, !abc, !a!bc, !a!b!c
+228: abc, ab!c, a!bc, !ab!c, !a!bc, !a!b!c
+229: abc, ab!c, a!b!c, !abc, !ab!c, !a!bc
+230: abc, ab!c, a!b!c, !abc, !ab!c, !a!b!c
+231: abc, ab!c, a!b!c, !abc, !a!bc, !a!b!c
+232: abc, ab!c, a!b!c, !ab!c, !a!bc, !a!b!c
 233: {7, 6, 3, 2, 1, 0} -> !a, ab
-234: {7, 5, 4, 3, 2, 1} -> abc, a!bc, a!b!c, !abc, !ab!c, !a!bc
-235: {7, 5, 4, 3, 2, 0} -> abc, a!bc, a!b!c, !abc, !ab!c, !a!b!c
-236: {7, 5, 4, 3, 1, 0} -> !b, c
-237: {7, 5, 4, 2, 1, 0} -> !b, a==c
-238: {7, 5, 3, 2, 1, 0} -> abc, a!bc, !abc, !ab!c, !a!bc, !a!b!c
-239: {7, 4, 3, 2, 1, 0} -> !a, b==c
-240: {6, 5, 4, 3, 2, 1} -> ab!c, a!bc, a!b!c, !abc, !ab!c, !a!bc
-241: {6, 5, 4, 3, 2, 0} -> ab!c, a!bc, a!b!c, !abc, !ab!c, !a!b!c
-242: {6, 5, 4, 3, 1, 0} -> ab!c, a!bc, a!b!c, !abc, !a!bc, !a!b!c
-243: {6, 5, 4, 2, 1, 0} -> ab!c, a!bc, a!b!c, !ab!c, !a!bc, !a!b!c
-244: {6, 5, 3, 2, 1, 0} -> !a, !(ab==c)
-245: {6, 4, 3, 2, 1, 0} -> !a, a!c
-246: {5, 4, 3, 2, 1, 0} -> !a, a!b
-247: {7, 6, 5, 4, 3, 2, 1} -> !(!a!b!c)
-248: {7, 6, 5, 4, 3, 2, 0} -> !(!a!bc)
-249: {7, 6, 5, 4, 3, 1, 0} -> !(!ab!c)
-250: {7, 6, 5, 4, 2, 1, 0} -> !(!abc)
-251: {7, 6, 5, 3, 2, 1, 0} -> !(a!b!c)
-252: {7, 6, 4, 3, 2, 1, 0} -> !(a!bc)
-253: {7, 5, 4, 3, 2, 1, 0} -> !(ab!c)
-254: {6, 5, 4, 3, 2, 1, 0} -> !(abc)
-255: {7, 6, 5, 4, 3, 2, 1, 0} -> (true)
+234: abc, a!bc, a!b!c, !abc, !ab!c, !a!bc
+235: abc, a!bc, a!b!c, !abc, !ab!c, !a!b!c
+236: !b, c
+237: !b, a==c
+238: abc, a!bc, !abc, !ab!c, !a!bc, !a!b!c
+239: !a, b==c
+240: ab!c, a!bc, a!b!c, !abc, !ab!c, !a!bc
+241: ab!c, a!bc, a!b!c, !abc, !ab!c, !a!b!c
+242: ab!c, a!bc, a!b!c, !abc, !a!bc, !a!b!c
+243: ab!c, a!bc, a!b!c, !ab!c, !a!bc, !a!b!c
+244: !a, !(ab==c)
+245: !a, a!c
+246: !a, a!b
+247: !(!a!b!c)
+248: !(!a!bc)
+249: !(!ab!c)
+250: !(!abc)
+251: !(a!b!c)
+252: !(a!bc)
+253: !(ab!c)
+254: !(abc)
+255: (true)
