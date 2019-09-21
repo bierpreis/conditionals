@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
-    private Pattern conjunctionPattern = Pattern.compile("(!?\\D{2,3}){1,3}");
+    private Pattern conjunctionPattern = Pattern.compile("(!?\\D{2,3}){1,3}"); //todo: this triggers a==b. but how?
     private Pattern atomPattern = Pattern.compile("\\D{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
     private Pattern negatedAtomPattern = Pattern.compile("^![1]\\D{1}");

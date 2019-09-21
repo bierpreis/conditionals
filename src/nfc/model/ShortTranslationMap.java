@@ -1,15 +1,11 @@
 package nfc.model;
 
 import kb_creator.model.propositional_logic.*;
-import kb_creator.model.propositional_logic.signature.AB;
-import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-
-import java.util.HashMap;
 import java.util.Map;
 
 public class ShortTranslationMap {
-    private Map<Integer, AbstractFormula> translationMap = new HashMap<>();
+    private Map<Integer, AbstractFormula> translationMap;
 
     public ShortTranslationMap(AbstractSignature signature) {
 
