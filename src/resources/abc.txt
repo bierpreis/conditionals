@@ -1,152 +1,152 @@
-1: {7} -> abc
-2: {6} -> ab!c
-3: {5} -> a!bc
-4: {4} -> a!b!c
-5: {3} -> !abc
-6: {2} -> !ab!c
-7: {1} -> !a!bc
-8: {0} -> !a!b!c
-9: {7, 6} -> ab
-10: {7, 5} -> ac
-11: {7, 4} -> abc, a!b!c
-12: {7, 3} -> bc
-13: {7, 2} -> abc, !ab!c
-14: {7, 1} -> abc, !a!bc
-15: {7, 0} -> a==b==c
-16: {6, 5} -> ab!c, a!bc
-17: {6, 4} -> ab!c, a!b!c
-18: {6, 3} -> ab!c, !abc
-19: {6, 2} -> ab!c, !ab!c
-20: {6, 1} -> ab!c, !a!bc
-21: {6, 0} -> ab!c, !a!b!c
-22: {5, 4} -> a!bc, a!b!c
-23: {5, 3} -> a!bc, !abc
-24: {5, 2} -> a!bc, !ab!c
-25: {5, 1} -> a!bc, !a!bc
-26: {5, 0} -> a!bc, !a!b!c
-27: {4, 3} -> a!b!c, !abc
-28: {4, 2} -> a!b!c, !ab!c
-29: {4, 1} -> a!b!c, !a!bc
-30: {4, 0} -> !b!c
-31: {3, 2} -> !ab
-32: {3, 1} -> !ac
-33: {3, 0} -> !abc, !a!b!c
-34: {2, 1} -> !ab!c, !a!bc
-35: {2, 0} -> !ab!c, !a!b!c
-36: {1, 0} -> !a!b
-37: {7, 6, 5} -> abc, ab!c, a!bc
-38: {7, 6, 4} -> abc, ab!c, a!b!c
-39: {7, 6, 3} -> abc, ab!c, !abc
-40: {7, 6, 2} -> abc, ab!c, !ab!c
-41: {7, 6, 1} -> abc, ab!c, !a!bc
-42: {7, 6, 0} -> abc, ab!c, !a!b!c
-43: {7, 5, 4} -> abc, a!bc, a!b!c
-44: {7, 5, 3} -> abc, a!bc, !abc
-45: {7, 5, 2} -> abc, a!bc, !ab!c
-46: {7, 5, 1} -> abc, a!bc, !a!bc
-47: {7, 5, 0} -> abc, a!bc, !a!b!c
-48: {7, 4, 3} -> abc, a!b!c, !abc
-49: {7, 4, 2} -> abc, a!b!c, !ab!c
-50: {7, 4, 1} -> abc, a!b!c, !a!bc
-51: {7, 4, 0} -> abc, a!b!c, !a!b!c
-52: {7, 3, 2} -> abc, !abc, !ab!c
-53: {7, 3, 1} -> abc, !abc, !a!bc
-54: {7, 3, 0} -> abc, !abc, !a!b!c
-55: {7, 2, 1} -> abc, !ab!c, !a!bc
-56: {7, 2, 0} -> abc, !ab!c, !a!b!c
-57: {7, 1, 0} -> abc, !a!bc, !a!b!c
-58: {6, 5, 4} -> ab!c, a!bc, a!b!c
-59: {6, 5, 3} -> ab!c, a!bc, !abc
-60: {6, 5, 2} -> ab!c, a!bc, !ab!c
-61: {6, 5, 1} -> ab!c, a!bc, !a!bc
-62: {6, 5, 0} -> ab!c, a!bc, !a!b!c
-63: {6, 4, 3} -> ab!c, a!b!c, !abc
-64: {6, 4, 2} -> ab!c, a!b!c, !ab!c
-65: {6, 4, 1} -> ab!c, a!b!c, !a!bc
-66: {6, 4, 0} -> ab!c, a!b!c, !a!b!c
-67: {6, 3, 2} -> ab!c, !abc, !ab!c
-68: {6, 3, 1} -> ab!c, !abc, !a!bc
-69: {6, 3, 0} -> ab!c, !abc, !a!b!c
-70: {6, 2, 1} -> ab!c, !ab!c, !a!bc
-71: {6, 2, 0} -> ab!c, !ab!c, !a!b!c
-72: {6, 1, 0} -> ab!c, !a!bc, !a!b!c
-73: {5, 4, 3} -> a!bc, a!b!c, !abc
-74: {5, 4, 2} -> a!bc, a!b!c, !ab!c
-75: {5, 4, 1} -> a!bc, a!b!c, !a!bc
-76: {5, 4, 0} -> a!bc, a!b!c, !a!b!c
-77: {5, 3, 2} -> a!bc, !abc, !ab!c
-78: {5, 3, 1} -> a!bc, !abc, !a!bc
-79: {5, 3, 0} -> a!bc, !abc, !a!b!c
-80: {5, 2, 1} -> a!bc, !ab!c, !a!bc
-81: {5, 2, 0} -> a!bc, !ab!c, !a!b!c
-82: {5, 1, 0} -> a!bc, !a!bc, !a!b!c
-83: {4, 3, 2} -> a!b!c, !abc, !ab!c
-84: {4, 3, 1} -> a!b!c, !abc, !a!bc
-85: {4, 3, 0} -> a!b!c, !abc, !a!b!c
-86: {4, 2, 1} -> a!b!c, !ab!c, !a!bc
-87: {4, 2, 0} -> a!b!c, !ab!c, !a!b!c
-88: {4, 1, 0} -> a!b!c, !a!bc, !a!b!c
-89: {3, 2, 1} -> !abc, !ab!c, !a!bc
-90: {3, 2, 0} -> !abc, !ab!c, !a!b!c
-91: {3, 1, 0} -> !abc, !a!bc, !a!b!c
-92: {2, 1, 0} -> !ab!c, !a!bc, !a!b!c
+1: abc
+2: ab!c
+3: a!bc
+4: a!b!c
+5: !abc
+6: !ab!c
+7: !a!bc
+8: !a!b!c
+9: ab
+10: ac
+11: abc, a!b!c
+12: bc
+13: abc, !ab!c
+14: abc, !a!bc
+15: a==b==c
+16: ab!c, a!bc
+17: ab!c, a!b!c
+18: ab!c, !abc
+19: ab!c, !ab!c
+20: ab!c, !a!bc
+21: ab!c, !a!b!c
+22: a!bc, a!b!c
+23: a!bc, !abc
+24: a!bc, !ab!c
+25: a!bc, !a!bc
+26: a!bc, !a!b!c
+27: a!b!c, !abc
+28: a!b!c, !ab!c
+29: a!b!c, !a!bc
+30: !b!c
+31: !ab
+32: !ac
+33: !abc, !a!b!c
+34: !ab!c, !a!bc
+35: !ab!c, !a!b!c
+36: !a!b
+37: abc, ab!c, a!bc
+38: abc, ab!c, a!b!c
+39: abc, ab!c, !abc
+40: abc, ab!c, !ab!c
+41: abc, ab!c, !a!bc
+42: {abc, ab!c, !a!b!c
+43: abc, a!bc, a!b!c
+44: abc, a!bc, !abc
+45: abc, a!bc, !ab!c
+46: abc, a!bc, !a!bc
+47: abc, a!bc, !a!b!c
+48: abc, a!b!c, !abc
+49: abc, a!b!c, !ab!c
+50: abc, a!b!c, !a!bc
+51: abc, a!b!c, !a!b!c
+52: abc, !abc, !ab!c
+53: abc, !abc, !a!bc
+54: abc, !abc, !a!b!c
+55: abc, !ab!c, !a!bc
+56: abc, !ab!c, !a!b!c
+57: abc, !a!bc, !a!b!c
+58: ab!c, a!bc, a!b!c
+59: ab!c, a!bc, !abc
+60: ab!c, a!bc, !ab!c
+61: ab!c, a!bc, !a!bc
+62: ab!c, a!bc, !a!b!c
+63: ab!c, a!b!c, !abc
+64: ab!c, a!b!c, !ab!c
+65: ab!c, a!b!c, !a!bc
+66: ab!c, a!b!c, !a!b!c
+67: ab!c, !abc, !ab!c
+68: ab!c, !abc, !a!bc
+69: ab!c, !abc, !a!b!c
+70: ab!c, !ab!c, !a!bc
+71: ab!c, !ab!c, !a!b!c
+72: ab!c, !a!bc, !a!b!c
+73: a!bc, a!b!c, !abc
+74: a!bc, a!b!c, !ab!c
+75: a!bc, a!b!c, !a!bc
+76: a!bc, a!b!c, !a!b!c
+77: a!bc, !abc, !ab!c
+78: a!bc, !abc, !a!bc
+79: a!bc, !abc, !a!b!c
+80: a!bc, !ab!c, !a!bc
+81: a!bc, !ab!c, !a!b!c
+82: a!bc, !a!bc, !a!b!c
+83: a!b!c, !abc, !ab!c
+84: a!b!c, !abc, !a!bc
+85: a!b!c, !abc, !a!b!c
+86: a!b!c, !ab!c, !a!bc
+87: a!b!c, !ab!c, !a!b!c
+88: a!b!c, !a!bc, !a!b!c
+89: !abc, !ab!c, !a!bc
+90: !abc, !ab!c, !a!b!c
+91: !abc, !a!bc, !a!b!c
+92: {!ab!c, !a!bc, !a!b!c
 93: {7, 6, 5, 4} -> a
-94: {7, 6, 5, 3} -> abc, ab!c, a!bc, !abc
-95: {7, 6, 5, 2} -> abc, ab!c, a!bc, !ab!c
-96: {7, 6, 5, 1} -> abc, ab!c, a!bc, !a!bc
-97: {7, 6, 5, 0} -> abc, ab!c, a!bc, !a!b!c
-98: {7, 6, 4, 3} -> abc, ab!c, a!b!c, !abc
-99: {7, 6, 4, 2} -> abc, ab!c, a!b!c, !ab!c
-100: {7, 6, 4, 1} -> abc, ab!c, a!b!c, !a!bc
-101: {7, 6, 4, 0} -> abc, ab!c, a!b!c, !a!b!c
+94: abc, ab!c, a!bc, !abc
+95: abc, ab!c, a!bc, !ab!c
+96: abc, ab!c, a!bc, !a!bc
+97: abc, ab!c, a!bc, !a!b!c
+98: abc, ab!c, a!b!c, !abc
+99: abc, ab!c, a!b!c, !ab!c
+100: abc, ab!c, a!b!c, !a!bc
+101: abc, ab!c, a!b!c, !a!b!c
 102: {7, 6, 3, 2} -> b
-103: {7, 6, 3, 1} -> abc, ab!c, !abc, !a!bc
-104: {7, 6, 3, 0} -> abc, ab!c, !abc, !a!b!c
-105: {7, 6, 2, 1} -> abc, ab!c, !ab!c, !a!bc
-106: {7, 6, 2, 0} -> abc, ab!c, !ab!c, !a!b!c
-107: {7, 6, 1, 0} -> abc, ab!c, !a!bc, !a!b!c
-108: {7, 5, 4, 3} -> abc, a!bc, a!b!c, !abc
-109: {7, 5, 4, 2} -> abc, a!bc, a!b!c, !ab!c
-110: {7, 5, 4, 1} -> abc, a!bc, a!b!c, !a!bc
-111: {7, 5, 4, 0} -> abc, a!bc, a!b!c, !a!b!c
-112: {7, 5, 3, 2} -> abc, a!bc, !abc, !ab!c
+103: abc, ab!c, !abc, !a!bc
+104: abc, ab!c, !abc, !a!b!c
+105: abc, ab!c, !ab!c, !a!bc
+106: abc, ab!c, !ab!c, !a!b!c
+107: abc, ab!c, !a!bc, !a!b!c
+108: abc, a!bc, a!b!c, !abc
+109: abc, a!bc, a!b!c, !ab!c
+110: abc, a!bc, a!b!c, !a!bc
+111: abc, a!bc, a!b!c, !a!b!c
+112: abc, a!bc, !abc, !ab!c
 113: {7, 5, 3, 1} -> c
-114: {7, 5, 3, 0} -> abc, a!bc, !abc, !a!b!c
-115: {7, 5, 2, 1} -> abc, a!bc, !ab!c, !a!bc
-116: {7, 5, 2, 0} -> abc, a!bc, !ab!c, !a!b!c
-117: {7, 5, 1, 0} -> abc, a!bc, !a!bc, !a!b!c
-118: {7, 4, 3, 2} -> abc, a!b!c, !abc, !ab!c
-119: {7, 4, 3, 1} -> abc, a!b!c, !abc, !a!bc
-120: {7, 4, 3, 0} -> abc, a!b!c, !abc, !a!b!c
-121: {7, 4, 2, 1} -> abc, a!b!c, !ab!c, !a!bc
-122: {7, 4, 2, 0} -> abc, a!b!c, !ab!c, !a!b!c
-123: {7, 4, 1, 0} -> abc, a!b!c, !a!bc, !a!b!c
-124: {7, 3, 2, 1} -> abc, !abc, !ab!c, !a!bc
-125: {7, 3, 2, 0} -> abc, !abc, !ab!c, !a!b!c
-126: {7, 3, 1, 0} -> abc, !abc, !a!bc, !a!b!c
-127: {7, 2, 1, 0} -> abc, !ab!c, !a!bc, !a!b!c
-128: {6, 5, 4, 3} -> ab!c, a!bc, a!b!c, !abc
-129: {6, 5, 4, 2} -> ab!c, a!bc, a!b!c, !ab!c
-130: {6, 5, 4, 1} -> ab!c, a!bc, a!b!c, !a!bc
-131: {6, 5, 4, 0} -> ab!c, a!bc, a!b!c, !a!b!c
-132: {6, 5, 3, 2} -> ab!c, a!bc, !abc, !ab!c
-133: {6, 5, 3, 1} -> ab!c, a!bc, !abc, !a!bc
-134: {6, 5, 3, 0} -> ab!c, a!bc, !abc, !a!b!c
-135: {6, 5, 2, 1} -> ab!c, a!bc, !ab!c, !a!bc
-136: {6, 5, 2, 0} -> ab!c, a!bc, !ab!c, !a!b!c
-137: {6, 5, 1, 0} -> ab!c, a!bc, !a!bc, !a!b!c
-138: {6, 4, 3, 2} -> ab!c, a!b!c, !abc, !ab!c
-139: {6, 4, 3, 1} -> ab!c, a!b!c, !abc, !a!bc
-140: {6, 4, 3, 0} -> ab!c, a!b!c, !abc, !a!b!c
-141: {6, 4, 2, 1} -> ab!c, a!b!c, !ab!c, !a!bc
+114: abc, a!bc, !abc, !a!b!c
+115: abc, a!bc, !ab!c, !a!bc
+116: abc, a!bc, !ab!c, !a!b!c
+117: abc, a!bc, !a!bc, !a!b!c
+118: abc, a!b!c, !abc, !ab!c
+119: abc, a!b!c, !abc, !a!bc
+120: abc, a!b!c, !abc, !a!b!c
+121: abc, a!b!c, !ab!c, !a!bc
+122: abc, a!b!c, !ab!c, !a!b!c
+123: abc, a!b!c, !a!bc, !a!b!c
+124: abc, !abc, !ab!c, !a!bc
+125: abc, !abc, !ab!c, !a!b!c
+126: abc, !abc, !a!bc, !a!b!c
+127: abc, !ab!c, !a!bc, !a!b!c
+128: ab!c, a!bc, a!b!c, !abc
+129: ab!c, a!bc, a!b!c, !ab!c
+130: ab!c, a!bc, a!b!c, !a!bc
+131: ab!c, a!bc, a!b!c, !a!b!c
+132: ab!c, a!bc, !abc, !ab!c
+133: ab!c, a!bc, !abc, !a!bc
+134: ab!c, a!bc, !abc, !a!b!c
+135: ab!c, a!bc, !ab!c, !a!bc
+136: ab!c, a!bc, !ab!c, !a!b!c
+137: ab!c, a!bc, !a!bc, !a!b!c
+138: ab!c, a!b!c, !abc, !ab!c
+139: ab!c, a!b!c, !abc, !a!bc
+140: ab!c, a!b!c, !abc, !a!b!c
+141: ab!c, a!b!c, !ab!c, !a!bc
 142: {6, 4, 2, 0} -> !c
-143: {6, 4, 1, 0} -> ab!c, a!b!c, !a!bc, !a!b!c
-144: {6, 3, 2, 1} -> ab!c, !abc, !ab!c, !a!bc
-145: {6, 3, 2, 0} -> ab!c, !abc, !ab!c, !a!b!c
-146: {6, 3, 1, 0} -> ab!c, !abc, !a!bc, !a!b!c
-147: {6, 2, 1, 0} -> ab!c, !ab!c, !a!bc, !a!b!c
-148: {5, 4, 3, 2} -> a!bc, a!b!c, !abc, !ab!c
-149: {5, 4, 3, 1} -> a!bc, a!b!c, !abc, !a!bc
+143: ab!c, a!b!c, !a!bc, !a!b!c
+144: ab!c, !abc, !ab!c, !a!bc
+145: ab!c, !abc, !ab!c, !a!b!c
+146: ab!c, !abc, !a!bc, !a!b!c
+147: ab!c, !ab!c, !a!bc, !a!b!c
+148: a!bc, a!b!c, !abc, !ab!c
+149: a!bc, a!b!c, !abc, !a!bc
 150: a!bc, a!b!c, !abc, !a!b!c
 151: a!bc, a!b!c, !ab!c, !a!bc
 152: a!bc, a!b!c, !ab!c, !a!b!c
