@@ -25,8 +25,6 @@ public class StatusThread implements Runnable {
     @Override
     public void run() {
         while (isRunning) {
-            //todo: measure time for this
-
             if (creatorThread != null) {
 
                 showCreatorStatus();
@@ -41,7 +39,6 @@ public class StatusThread implements Runnable {
             }
 
             mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
-
 
             try {
                 Thread.sleep(sleepTime);
