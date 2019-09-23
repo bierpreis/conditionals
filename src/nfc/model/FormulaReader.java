@@ -38,7 +38,7 @@ public class FormulaReader {
             return getEquality(string);
         throw new RuntimeException("Invalid Formula String: " + string);
     }
-    
+
     private AbstractFormula getEquality(String string) {
         String[] splitString = string.split("==");
         List<AbstractFormula> formulas = new ArrayList<>(splitString.length);
@@ -107,15 +107,13 @@ public class FormulaReader {
         }
         return new Conjunction(formulasToAdd);
     }
-
-    //todo: remove brackets maybe?
+    
     private AbstractFormula getDisjunction(String baseString) {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         for (String string : stringArray) {
             formulasToAdd.add(getFormulaFromString(string));
         }
-
         return new Disjunction(formulasToAdd);
     }
 
