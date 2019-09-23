@@ -12,7 +12,7 @@ public class FormulaReader {
     private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
     private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
-    private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");  //todo: maybe delete?
+    private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
     private Pattern equalityPattern = Pattern.compile(".*==.*");
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
