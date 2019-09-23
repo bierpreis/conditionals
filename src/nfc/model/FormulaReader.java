@@ -118,7 +118,7 @@ public class FormulaReader {
     }
 
     public Map<Integer, AbstractFormula> getFormulaMapFromFile(AbstractSignature signature) {
-        File file = readFile("src/resources/" + signature.toString().replaceAll(",", "") + ".txt");
+        File file = new File("src/resources/" + signature.toString().replaceAll(",", "") + ".txt");
 
         String[] formulaStringArray = getStringArrayFromFile(file);
 
@@ -137,14 +137,6 @@ public class FormulaReader {
         Scanner scanner = new Scanner(string);
         return scanner.nextInt();
     }
-
-    private File readFile(String filepath) {
-        //todo: what happens when file not found? exception? null?
-        File fileToReturn = new File(filepath);
-
-        return fileToReturn;
-    }
-
     private String[] getStringArrayFromFile(File fileToRead) {
         //todo: warning dialog when file not found?!
         Scanner fileScanner = null;
