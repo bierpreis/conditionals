@@ -138,7 +138,6 @@ public class FormulaReader {
         return scanner.nextInt();
     }
     private String[] getStringArrayFromFile(File fileToRead) {
-        //todo: warning dialog when file not found?!
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);
