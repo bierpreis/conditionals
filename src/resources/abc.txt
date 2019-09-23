@@ -162,8 +162,8 @@
 162: !a
 163: a, bc
 164: a, b!c
-165: abc, ab!c, a!bc, a!b!c, !a!bc
-166: abc, ab!c, a!bc, a!b!c, !a!b!c
+165: a, !bc
+166: a, !b!c
 167: abc, ab!c, a!bc, !abc, !ab!c
 168: abc, ab!c, a!bc, !abc, !a!bc
 169: abc, ab!c, a!bc, !abc, !a!b!c
