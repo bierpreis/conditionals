@@ -149,7 +149,7 @@
 149: a!bc, a!b!c, !abc, !a!bc
 150: a!bc, a!b!c, !abc, !a!b!c
 151: a!bc, a!b!c, !ab!c, !a!bc
-152: a!bc, a!b!c, !ab!c, !a!b!c
+152: a!b, !a!c
 153: !b
 154: a!bc, !abc, !ab!c, !a!bc
 155: a!bc, !abc, !ab!c, !a!b!c
@@ -165,7 +165,7 @@
 165: a, !bc
 166: a, !b!c
 167: abc, ab!c, a!bc, !abc, !ab!c
-168: abc, ab!c, a!bc, !abc, !a!bc
+168: ab, c
 169: abc, ab!c, a!bc, !abc, !a!b!c
 170: abc, ab!c, a!bc, !ab!c, !a!bc
 171: abc, ab!c, a!bc, !ab!c, !a!b!c
