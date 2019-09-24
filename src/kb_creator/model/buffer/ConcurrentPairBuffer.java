@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.regex.Pattern;
 
@@ -24,7 +22,8 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
-    private final Object CREATOR_WAIT_OBJECT = new Object();
+    //this object is used for the creator to wait until flush is finished
+    private final Object FLUSH_WAIT_OBJECT = new Object();
 
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> cpQueueToWrite;
@@ -127,8 +126,8 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
             //todo: why does this not happen?
             if (flushRequested && queueToWrite.isEmpty())
-                synchronized (CREATOR_WAIT_OBJECT) {
-                    CREATOR_WAIT_OBJECT.notify();
+                synchronized (FLUSH_WAIT_OBJECT) {
+                    FLUSH_WAIT_OBJECT.notify();
                 }
 
             writer.print(sb.toString());
@@ -180,8 +179,8 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
             try {
-                synchronized (CREATOR_WAIT_OBJECT) {
-                    CREATOR_WAIT_OBJECT.wait();
+                synchronized (FLUSH_WAIT_OBJECT) {
+                    FLUSH_WAIT_OBJECT.wait();
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
