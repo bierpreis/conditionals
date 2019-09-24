@@ -2,6 +2,7 @@ package nfc.model;
 
 import kb_creator.model.propositional_logic.*;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
+
 import java.util.Map;
 
 public class ShortTranslationMap {
@@ -15,6 +16,8 @@ public class ShortTranslationMap {
     }
 
     public AbstractFormula translate(int worldsNumber) {
+        //return null to test what happens if nothing gets translated
+        //return null;
         return translationMap.get(worldsNumber);
     }
 }
