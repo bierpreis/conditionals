@@ -3,6 +3,7 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.KBCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.buffer.BlockingPairBuffer;
 import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.buffer.DummyPairBuffer;
 

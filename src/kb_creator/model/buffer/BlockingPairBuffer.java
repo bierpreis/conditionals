@@ -21,6 +21,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private int pairWriterCounter;
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
+    private final Object THREAD_WAIT_OBJECT = new Object();
 
     private BlockingQueue<AbstractPair> queueToReturn;
     private BlockingQueue<AbstractPair> cpQueueToWrite;
@@ -83,8 +84,8 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
-                    synchronized (this) {
-                        wait(); //todo: wait on some object!
+                    synchronized (THREAD_WAIT_OBJECT) {
+                        THREAD_WAIT_OBJECT.wait();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -102,6 +103,13 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     public boolean checkIfShouldRead() {
         return (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN);
+    }
+
+    @Override
+    public void notifyBuffer() {
+        synchronized (THREAD_WAIT_OBJECT) {
+            THREAD_WAIT_OBJECT.notify();
+        }
     }
 
     private void writeNextFile(Queue queueToWrite) {

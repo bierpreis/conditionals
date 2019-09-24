@@ -22,8 +22,8 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
-    //this object is used for the creator to wait until flush is finished
     private final Object FLUSH_WAIT_OBJECT = new Object();
+    private final Object THREAD_WAIT_OBJECT = new Object();
 
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> cpQueueToWrite;
@@ -82,8 +82,8 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
-                    synchronized (this) {
-                        wait(); //todo: wait on this? why not wait on wait object?!?! and think about blocking buffer!
+                    synchronized (THREAD_WAIT_OBJECT) {
+                        THREAD_WAIT_OBJECT.wait();
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -96,6 +96,13 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
     public boolean checkIfShouldWrite() {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
+    }
+
+    @Override
+    public void notifyBuffer() {
+        synchronized (THREAD_WAIT_OBJECT) {
+            THREAD_WAIT_OBJECT.notify();
+        }
     }
 
 
@@ -123,7 +130,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
                 pairWriterCounter++;
             }
 
-            //todo: why does this not happen?
             if (flushRequested && queueToWrite.isEmpty())
                 synchronized (FLUSH_WAIT_OBJECT) {
                     FLUSH_WAIT_OBJECT.notify();
@@ -173,7 +179,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
         flushRequested = true;
 
-        //todo: this wait causes the problem i guess. maybe debug with sleep instead of wait to see why queue is not empty?!
+        //todo: rethink and delete
         //this wait causes the calling thread to wait until all pairs are written, then the calling thread can continue
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {

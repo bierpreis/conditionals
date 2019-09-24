@@ -94,4 +94,9 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         //intentionally nothing
         return false;
     }
+
+    @Override
+    public void notifyBuffer() {
+        //intentionally nothing
+    }
 }
