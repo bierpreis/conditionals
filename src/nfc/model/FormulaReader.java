@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
-    private Pattern disjunctionPattern = Pattern.compile(".*,.*");
+    private Pattern disjunctionPattern = Pattern.compile(".*,.*"); //todo: this makes everything with a comma a conjunction! must be more restrictive
     private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}"); //todo: in conjunction could also be a disjunction or ==
     private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
@@ -16,7 +16,7 @@ public class FormulaReader {
 
     private Pattern doubleEqualityPattern = Pattern.compile("([!]?[abc]{1}){1,2}==([!]?[abc]{1}){1,2}");
     private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]{1}==[!]?[abc]{1}==[!]?[abc]{1}");
-    
+
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
 
