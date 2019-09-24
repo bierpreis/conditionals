@@ -9,11 +9,11 @@ import java.util.regex.Pattern;
 
 public class FormulaReader {
     private Pattern disjunctionPattern = Pattern.compile(".*,.*");
-    private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
+    private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}"); //todo: in conjunction could also be a disjunction or ==
     private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
     private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
-    private Pattern equalityPattern = Pattern.compile(".*==.*");
+    private Pattern equalityPattern = Pattern.compile(".*==.*"); //todo: this is not correct. e.g. a(b==c)
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
 
@@ -107,7 +107,7 @@ public class FormulaReader {
         }
         return new Conjunction(formulasToAdd);
     }
-    
+
     private AbstractFormula getDisjunction(String baseString) {
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
@@ -137,6 +137,7 @@ public class FormulaReader {
         Scanner scanner = new Scanner(string);
         return scanner.nextInt();
     }
+
     private String[] getStringArrayFromFile(File fileToRead) {
         Scanner fileScanner = null;
         try {
