@@ -83,6 +83,7 @@ public class FormulaReader {
         return new Negation(getFormulaFromString(string.replaceFirst("^!", "")));
     }
 
+    //todo: conjunctions like a(b,c) dont work. make compound conjunction?
     private AbstractFormula getConjunction(String string) {
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         while (string.length() != 0) {
