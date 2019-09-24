@@ -8,16 +8,17 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
-    private Pattern disjunctionPattern = Pattern.compile(".*,.*"); //todo: this makes everything with a comma a conjunction! must be more restrictive
+    private Pattern simpleDisjunctionPattern = Pattern.compile("([!]?[abc]{1}){1,3},([ ]?[!]?[!abc,=()]*){1,7}");
+    private Pattern compoundDisjunctionPattern = Pattern.compile("\\(.*\\),\\(.*\\)");
     private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}"); //todo: in conjunction could also be a disjunction or ==
     private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
     private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
 
     private Pattern doubleEqualityPattern = Pattern.compile("([!]?[abc]{1}){1,2}==([!]?[abc]{1}){1,2}");
-    private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]{1}==[!]?[abc]{1}==[!]?[abc]{1}");
+    private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]{1}==[!]?[abc]{1}==[!]?[abc]{1}"); //todo: remove {1}
 
-    private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
+    private Pattern compoundNegationPattern = Pattern.compile("!\\(.*\\)$");
 
 
     private AbstractFormula getFormulaFromString(String string) {
@@ -29,7 +30,7 @@ public class FormulaReader {
             return getAtomNegation(string);
         if (compoundNegationPattern.matcher(string).matches())
             return getCompoundNegation(string);
-        if (disjunctionPattern.matcher(string).matches())
+        if (simpleDisjunctionPattern.matcher(string).matches() || compoundDisjunctionPattern.matcher(string).matches())
             return getDisjunction(string);
         if (conjunctionPattern.matcher(string).matches())
             return getConjunction(string);
@@ -112,6 +113,11 @@ public class FormulaReader {
     }
 
     private AbstractFormula getDisjunction(String baseString) {
+
+        //todo: this can fuck up the formula
+        baseString = baseString.replaceAll("\\(", "");
+        baseString = baseString.replaceAll("\\)", "");
+
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
         for (String string : stringArray) {
