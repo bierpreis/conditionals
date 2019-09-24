@@ -30,9 +30,11 @@
 30: !b!c
 31: !ab
 32: !ac
+//33: !a(b==c)
 33: !abc, !a!b!c
+//34: !a(b,c)
 34: !ab!c, !a!bc
-35: !ab!c, !a!b!c
+35: !a!c
 36: !a!b
 37: abc, ab!c, a!bc
 38: ab, a!b!c
@@ -219,7 +221,7 @@
 219: a, !ab
 220: a, !ac
 221: a, b==c
-222: abc, ab!c, a!bc, a!b!c, !ab!c, !a!bc
+222: a, !(b==c)
 223: a, !a!c
 224: a, !a!b
 225: abc, ab!c, a!bc, !abc, !ab!c, !a!bc
