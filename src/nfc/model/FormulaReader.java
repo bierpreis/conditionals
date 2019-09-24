@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class FormulaReader {
     private Pattern simpleDisjunctionPattern = Pattern.compile("([!]?[abc]{1}){1,3},([ ]?[!]?[!abc,=()]*){1,7}");
     private Pattern compoundDisjunctionPattern = Pattern.compile("\\(.*\\),\\(.*\\)");
-    private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}"); //todo: in conjunction could also be a disjunction or ==
+    private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
     private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
     private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
@@ -114,9 +114,8 @@ public class FormulaReader {
 
     private AbstractFormula getDisjunction(String baseString) {
 
-        //todo: this can fuck up the formula
-        baseString = baseString.replaceAll("\\(", "");
-        baseString = baseString.replaceAll("\\)", "");
+        baseString = baseString.replace("^\\(", "");
+        baseString = baseString.replace("\\)$", "");
 
         String[] stringArray = baseString.split(",");
         List<AbstractFormula> formulasToAdd = new ArrayList<>();
