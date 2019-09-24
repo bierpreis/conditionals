@@ -13,7 +13,10 @@ public class FormulaReader {
     private Pattern atomPattern = Pattern.compile("[a-c]{1}");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
     private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
-    private Pattern equalityPattern = Pattern.compile(".*==.*"); //todo: this is not correct. e.g. a(b==c)
+
+    private Pattern doubleEqualityPattern = Pattern.compile("([!]?[abc]{1}){1,2}==([!]?[abc]{1}){1,2}");
+    private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]{1}==[!]?[abc]{1}==[!]?[abc]{1}");
+    
     private Pattern compoundNegationPattern = Pattern.compile("!{1}\\({1}.*\\){1}$");
 
 
@@ -34,7 +37,7 @@ public class FormulaReader {
             return getAtom(string);
         if (tautologyPattern.matcher(string).matches())
             return new Tautology();
-        if (equalityPattern.matcher(string).matches())
+        if (doubleEqualityPattern.matcher(string).matches() || tripleEqualityPattern.matcher(string).matches())
             return getEquality(string);
         throw new RuntimeException("Invalid Formula String: " + string);
     }
