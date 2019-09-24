@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.Pattern;
 
-public class BlockinglPairBuffer extends AbstractPairBuffer {
+public class BlockingPairBuffer extends AbstractPairBuffer {
 
     private int iterationNumberOfFiles;
     private volatile boolean hasNextIteration;
@@ -40,7 +40,7 @@ public class BlockinglPairBuffer extends AbstractPairBuffer {
     private int readingFileNameCounter;
 
 
-    public BlockinglPairBuffer(String filePath, int maxNumberOfPairsInFile) {
+    public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
         System.out.println("created parallel buffer for candidate pairs");
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
