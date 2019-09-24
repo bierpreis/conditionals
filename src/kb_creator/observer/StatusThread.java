@@ -102,9 +102,9 @@ public class StatusThread implements Runnable {
     private void checkIfNotifyBuffer() {
         if (creatorThread.getPairBuffer() instanceof BlockingPairBuffer) {
             if (creatorThread.getPairBuffer().checkIfShouldRead() || creatorThread.getPairBuffer().checkIfShouldWrite())
-                synchronized (creatorThread) {
+                synchronized (creatorThread) { //todo: double synchronized?!
                     synchronized (creatorThread.getPairBuffer()) {
-                        creatorThread.getPairBuffer().notify();
+                        creatorThread.getPairBuffer().notify(); //todo: change this notify
                     }
                 }
         }
