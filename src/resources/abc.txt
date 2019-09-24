@@ -174,7 +174,7 @@
 174: abc, ab!c, a!b!c, !abc, !a!bc
 175: abc, ab!c, a!b!c, !abc, !a!b!c
 176: abc, ab!c, a!b!c, !ab!c, !a!bc
-177: abc, ab!c, a!b!c, !ab!c, !a!b!c
+177: ab, !c
 178: abc, ab!c, a!b!c, !a!bc, !a!b!c
 179: abc, ab!c, !abc, !ab!c, !a!bc
 180: abc, ab!c, !abc, !ab!c, !a!b!c
@@ -185,7 +185,7 @@
 185: abc, a!bc, a!b!c, !abc, !a!b!c
 186: abc, a!bc, a!b!c, !ab!c, !a!bc
 187: abc, a!bc, a!b!c, !ab!c, !a!b!c
-188: abc, a!bc, a!b!c, !a!bc, !a!b!c
+188: ac, !b
 189: abc, a!bc, !abc, !ab!c, !a!bc
 190: abc, a!bc, !abc, !ab!c, !a!b!c
 191: abc, a!bc, !abc, !a!bc, !a!b!c
