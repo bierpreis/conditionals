@@ -5,16 +5,20 @@ import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.NewConditional;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.regex.Pattern;
 
-public class ParallelPairBuffer extends AbstractPairBuffer {
+public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
     private int iterationNumberOfFiles;
     private volatile boolean hasNextIteration;
@@ -22,8 +26,8 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     private final Object CREATOR_WAIT_OBJECT = new Object();
 
-    private BlockingQueue<AbstractPair> queueToReturn;
-    private BlockingQueue<AbstractPair> cpQueueToWrite;
+    private Queue<AbstractPair> queueToReturn;
+    private Queue<AbstractPair> cpQueueToWrite;
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
 
@@ -40,7 +44,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private int readingFileNameCounter;
 
 
-    public ParallelPairBuffer(String filePath, int maxNumberOfPairsInFile) {
+    public ConcurrentPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
         System.out.println("created parallel buffer for candidate pairs");
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
@@ -49,10 +53,9 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         writingFileNameCounter = 0;
 
-        //todo: concurrendlinkedqueue. but problems with size operations!
-        queueToReturn = new ArrayBlockingQueue<>(5000);
+        queueToReturn = new ConcurrentLinkedQueue<>();
 
-        cpQueueToWrite = new ArrayBlockingQueue<>(100000);
+        cpQueueToWrite = new ConcurrentLinkedQueue<>();
 
         flushRequested = false;
         running = true;
@@ -74,19 +77,16 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 //reading has second priority
             } else if (checkIfShouldRead()) {
                 status = BufferStatus.READING;
-                for (AbstractPair pairToPut : readNextFile())
-                    try {
-                        queueToReturn.put(pairToPut);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                queueToReturn.addAll(readNextFile());
+
                 //sleep if no writing or reading is needed
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
-                    synchronized (this) {
-                        wait();
-                    }
+/*                    synchronized (this) {
+                        wait(); //todo: wait on this? why not wait on wait object?!?!
+                    }*/
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -125,6 +125,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
                 pairWriterCounter++;
             }
 
+            //todo: why does this not happen?
             if (flushRequested && queueToWrite.isEmpty())
                 synchronized (CREATOR_WAIT_OBJECT) {
                     CREATOR_WAIT_OBJECT.notify();
@@ -174,7 +175,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
         flushRequested = true;
 
-
+        //todo: this wait causes the problem i guess. maybe debug with sleep instead of wait to see why queue is not empty?!
         //this wait causes the calling thread to wait until all pairs are written, then the calling thread can continue
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
@@ -193,11 +194,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
-        try {
-            cpQueueToWrite.put(new RealListPair(knowledgeBase, candidatesToAdd));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        cpQueueToWrite.add(new RealListPair(knowledgeBase, candidatesToAdd));
     }
 
     @Override
@@ -228,12 +225,14 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
 
     @Override
     public AbstractPair getNextPair(int currentK) {
-        try {
-            return queueToReturn.take();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        throw new RuntimeException("Get next pair failed!");
+        while (queueToReturn.peek() == null)
+            try {
+                System.out.println("main thread waiting for buffer ...");
+                Thread.sleep(100); //todo: sleep is shit
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        return queueToReturn.poll();
     }
 
 

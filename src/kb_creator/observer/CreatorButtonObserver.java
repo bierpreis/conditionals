@@ -3,7 +3,8 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.KBCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
-import kb_creator.model.buffer.ParallelPairBuffer;
+import kb_creator.model.buffer.BlockinglPairBuffer;
+import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.buffer.DummyPairBuffer;
 
 import javax.swing.*;
@@ -41,7 +42,7 @@ public class CreatorButtonObserver implements ActionListener {
 
             if (mainWindow.isBufferingRequested()) {
                 if (mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
-                    creatorThreadObject.setList(candidateBuffer = new ParallelPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize()));
+                    creatorThreadObject.setList(candidateBuffer = new ConcurrentPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize()));
                 else return; //return if buffer size is 0 because this is no valid value which can be used
             } else creatorThreadObject.setList(candidateBuffer = new DummyPairBuffer(null));
 
