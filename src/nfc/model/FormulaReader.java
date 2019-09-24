@@ -16,7 +16,7 @@ public class FormulaReader {
     private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
 
     private Pattern doubleEqualityPattern = Pattern.compile("([!]?[abc]{1}){1,2}==([!]?[abc]{1}){1,2}");
-    private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]{1}==[!]?[abc]{1}==[!]?[abc]{1}"); //todo: remove {1}
+    private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]==[!]?[abc]==[!]?[abc]");
 
     private Pattern compoundNegationPattern = Pattern.compile("!\\(.*\\)$");
 
