@@ -3,6 +3,7 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.KBCreator;
 import kb_creator.model.buffer.BlockingPairBuffer;
+import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.writer.AbstractKbWriter;
 
 public class StatusThread implements Runnable {
@@ -99,14 +100,14 @@ public class StatusThread implements Runnable {
             }
     }
 
+
     private void checkIfNotifyBuffer() {
-        if (creatorThread.getPairBuffer() instanceof BlockingPairBuffer) {
+        if (creatorThread.getPairBuffer() instanceof BlockingPairBuffer || creatorThread.getPairBuffer() instanceof ConcurrentPairBuffer) {
             if (creatorThread.getPairBuffer().checkIfShouldRead() || creatorThread.getPairBuffer().checkIfShouldWrite())
-                synchronized (creatorThread) { //todo: double synchronized?!
-                    synchronized (creatorThread.getPairBuffer()) {
-                        creatorThread.getPairBuffer().notify(); //todo: change this notify
-                    }
+                synchronized (creatorThread.getPairBuffer()) {
+                    creatorThread.getPairBuffer().notify(); //todo: change this notify
                 }
+
         }
     }
 
