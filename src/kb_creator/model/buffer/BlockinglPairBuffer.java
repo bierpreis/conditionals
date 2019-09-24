@@ -84,7 +84,7 @@ public class BlockinglPairBuffer extends AbstractPairBuffer {
                 try {
                     status = BufferStatus.SLEEPING;
                     synchronized (this) {
-                        wait();
+                        wait(); //todo: wait on some object!
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
