@@ -12,7 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class AbstractPairBuffer implements Runnable {
 
     protected boolean running;
-    protected BlockingQueue<AbstractPair> cpQueueToWrite;
 
     protected BufferStatus status;
 
@@ -54,7 +53,7 @@ public abstract class AbstractPairBuffer implements Runnable {
     protected abstract void clear(int requestedK);
 
     public int getQueueToWriteSize() {
-        return cpQueueToWrite.size();
+        return 0;
     }
 
     public abstract int getReaderBufferSize();

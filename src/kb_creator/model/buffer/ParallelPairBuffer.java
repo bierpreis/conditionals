@@ -23,6 +23,7 @@ public class ParallelPairBuffer extends AbstractPairBuffer {
     private final Object CREATOR_WAIT_OBJECT = new Object();
 
     private BlockingQueue<AbstractPair> queueToReturn;
+    private BlockingQueue<AbstractPair> cpQueueToWrite;
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
 
