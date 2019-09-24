@@ -84,7 +84,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
                 try {
                     status = BufferStatus.SLEEPING;
 /*                    synchronized (this) {
-                        wait(); //todo: wait on this? why not wait on wait object?!?!
+                        wait(); //todo: wait on this? why not wait on wait object?!?! and think about blocking buffer!
                     }*/
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
