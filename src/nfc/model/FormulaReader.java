@@ -97,7 +97,7 @@ public class FormulaReader {
                 if (string.matches("^c.*"))
                     formulasToAdd.add(new Negation(new Atom(Var.c)));
 
-                string = string.replaceFirst("\\D{1}", ""); //todo remove
+                string = string.replaceFirst("\\D", ""); //todo remove
             } else {
 
                 if (string.matches("^a.*"))
@@ -107,7 +107,7 @@ public class FormulaReader {
                 if (string.matches("^c.*"))
                     formulasToAdd.add(new Atom(Var.c));
 
-                string = string.replaceFirst("\\D{1}", ""); //todo: remove
+                string = string.replaceFirst("\\D", "");
             }
         }
         return new Conjunction(formulasToAdd);
