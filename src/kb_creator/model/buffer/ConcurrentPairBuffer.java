@@ -179,7 +179,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
         flushRequested = true;
 
-        //todo: rethink and delete
         //this wait causes the calling thread to wait until all pairs are written, then the calling thread can continue
         long timeBeforeWaiting = System.currentTimeMillis();
         while (!cpQueueToWrite.isEmpty()) {
