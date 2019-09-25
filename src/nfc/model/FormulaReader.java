@@ -8,14 +8,14 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class FormulaReader {
-    private Pattern simpleDisjunctionPattern = Pattern.compile("([!]?[abc]{1}){1,3},([ ]?[!]?[!abc,=()]*){1,7}");
+    private Pattern simpleDisjunctionPattern = Pattern.compile("([!]?[abc]){1,3},([ ]?[!]?[!abc,=()]*){1,7}");
     private Pattern compoundDisjunctionPattern = Pattern.compile("\\(.*\\),\\(.*\\)");
     private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
-    private Pattern atomPattern = Pattern.compile("[a-c]{1}");
+    private Pattern atomPattern = Pattern.compile("[a-c]");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
-    private Pattern negatedAtomPattern = Pattern.compile("[!]{1}[a-c]{1}");
+    private Pattern negatedAtomPattern = Pattern.compile("[!][a-c]");
 
-    private Pattern doubleEqualityPattern = Pattern.compile("([!]?[abc]{1}){1,2}==([!]?[abc]{1}){1,2}");
+    private Pattern doubleEqualityPattern = Pattern.compile("([!]?[abc]){1,2}==([!]?[abc]){1,2}");
     private Pattern tripleEqualityPattern = Pattern.compile("[!]?[abc]==[!]?[abc]==[!]?[abc]");
 
     private Pattern compoundNegationPattern = Pattern.compile("!\\(.*\\)$");
@@ -97,7 +97,7 @@ public class FormulaReader {
                 if (string.matches("^c.*"))
                     formulasToAdd.add(new Negation(new Atom(Var.c)));
 
-                string = string.replaceFirst("\\D{1}", "");
+                string = string.replaceFirst("\\D{1}", ""); //todo remove
             } else {
 
                 if (string.matches("^a.*"))
@@ -107,7 +107,7 @@ public class FormulaReader {
                 if (string.matches("^c.*"))
                     formulasToAdd.add(new Atom(Var.c));
 
-                string = string.replaceFirst("\\D{1}", "");
+                string = string.replaceFirst("\\D{1}", ""); //todo: remove
             }
         }
         return new Conjunction(formulasToAdd);
