@@ -10,7 +10,10 @@ import java.util.regex.Pattern;
 public class FormulaReader {
     private Pattern simpleDisjunctionPattern = Pattern.compile("([!]?[abc]){1,3},([ ]?[!]?[!abc,=()]*){1,7}");
     private Pattern compoundDisjunctionPattern = Pattern.compile("\\(.*\\),\\(.*\\)");
+
     private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
+    private Pattern rightCompundConjunctionPattern = Pattern.compile("(!?[a-c]){1,2}[!]?\\(.*\\)");
+
     private Pattern atomPattern = Pattern.compile("[a-c]");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
     private Pattern negatedAtomPattern = Pattern.compile("[!][a-c]");
@@ -40,7 +43,18 @@ public class FormulaReader {
             return new Tautology();
         if (doubleEqualityPattern.matcher(string).matches() || tripleEqualityPattern.matcher(string).matches())
             return getEquality(string);
+        if (rightCompundConjunctionPattern.matcher(string).matches())
+            return getRightCompoundConjunction(string);
         throw new RuntimeException("Invalid Formula String: " + string);
+    }
+
+    private AbstractFormula getRightCompoundConjunction(String string) {
+        string = string.replaceAll("\\)$", "");
+        String[] splitString = string.split("\\(");
+
+        if (splitString.length != 2)
+            throw new RuntimeException("Invalid Compound Conjunction: " + string);
+        return getFormulaFromString(splitString[0]).and(getFormulaFromString(splitString[1]));
     }
 
     private AbstractFormula getEquality(String string) {

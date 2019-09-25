@@ -34,8 +34,8 @@
 32: !ac
 //33: !a(b==c)
 33: !abc, !a!b!c
-//34: !a(b,c)
-34: !ab!c, !a!bc
+34: !a(!b==c)
+//34: !ab!c, !a!bc
 35: !a!c
 36: !a!b
 37: abc, ab!c, a!bc
