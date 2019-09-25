@@ -16,8 +16,6 @@ public class ConditionalTranslator {
 
 
     public NewConditional transLate(Conditional oldConditional) {
-        if(oldConditional.getAntecedent().getNumber() == 244)
-            System.out.println("here");
         AbstractFormula newAntecedent = worldToFormula(oldConditional.getAntecedent());
         AbstractFormula newConsequence = worldToFormula(oldConditional.getConsequence());
 

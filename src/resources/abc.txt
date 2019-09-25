@@ -18,10 +18,8 @@
 18: ab!c, !abc
 19: ab!c, !ab!c
 20: ab!c, !a!bc
-//21: (a==b)!c
-21: ab!c, !a!b!c
-//22: !b(a==c)
-22: a!bc, a!b!c
+21: !c(a==b)
+22: a!b
 23: a!bc, !abc
 24: a!bc, !ab!c
 25: !bc
@@ -32,10 +30,8 @@
 30: !b!c
 31: !ab
 32: !ac
-//33: !a(b==c)
-33: !abc, !a!b!c
+33: !a(b==c)
 34: !a(!b==c)
-//34: !ab!c, !a!bc
 35: !a!c
 36: !a!b
 37: abc, ab!c, a!bc
