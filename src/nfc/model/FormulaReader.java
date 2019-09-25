@@ -12,7 +12,7 @@ public class FormulaReader {
     private Pattern compoundDisjunctionPattern = Pattern.compile("\\(.*\\),\\(.*\\)");
 
     private Pattern conjunctionPattern = Pattern.compile("((!?[a-c]){2,3}){1,3}");
-    private Pattern rightCompundConjunctionPattern = Pattern.compile("(!?[a-c]){1,2}[!]?\\(.*\\)");
+    private Pattern rightCompoundConjunctionPattern = Pattern.compile("(!?[a-c]){1,2}[!]?\\(.*\\)");
 
     private Pattern atomPattern = Pattern.compile("[a-c]");
     private Pattern tautologyPattern = Pattern.compile("\\(true\\)");
@@ -43,7 +43,7 @@ public class FormulaReader {
             return new Tautology();
         if (doubleEqualityPattern.matcher(string).matches() || tripleEqualityPattern.matcher(string).matches())
             return getEquality(string);
-        if (rightCompundConjunctionPattern.matcher(string).matches())
+        if (rightCompoundConjunctionPattern.matcher(string).matches())
             return getRightCompoundConjunction(string);
         throw new RuntimeException("Invalid Formula String: " + string);
     }
