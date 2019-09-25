@@ -97,7 +97,7 @@ public class FormulaReader {
                 if (string.matches("^c.*"))
                     formulasToAdd.add(new Negation(new Atom(Var.c)));
 
-                string = string.replaceFirst("\\D", ""); //todo remove
+                string = string.replaceFirst("\\D", "");
             } else {
 
                 if (string.matches("^a.*"))
