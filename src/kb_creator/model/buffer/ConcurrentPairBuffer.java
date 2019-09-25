@@ -232,7 +232,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         while (queueToReturn.peek() == null)
             try {
                 System.out.println("main thread waiting for buffer ...");
-                Thread.sleep(100); //todo: sleep is shit
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
