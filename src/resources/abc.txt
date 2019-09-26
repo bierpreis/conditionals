@@ -54,16 +54,16 @@
 54: bc, !a!b!c
 55: abc, !ab!c, !a!bc
 56: abc, !a!c
-57: abc, !a!bc, !a!b!c
-58: ab!c, a!bc, a!b!c
+57: abc, !a!b
+58: ab!c, a!b
 59: ab!c, a!bc, !abc
 60: ab!c, a!bc, !ab!c
-61: ab!c, a!bc, !a!bc
+61: ab!c, !bc
 62: ab!c, a!bc, !a!b!c
 63: ab!c, a!b!c, !abc
-64: ab!c, a!b!c, !ab!c
-65: ab!c, a!b!c, !a!bc
-66: ab!c, a!b!c, !a!b!c
+64: b!c, a!b!c
+65: a!c, !a!bc
+66: !b!c, ab!c
 67: ab!c, !abc, !ab!c
 68: ab!c, !abc, !a!bc
 69: ab!c, !abc, !a!b!c
