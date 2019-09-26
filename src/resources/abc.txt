@@ -126,11 +126,11 @@
 126: bc, bc, !a!b
 127: abc, !ab!c, !a!b
 128: ab!c, a!bc, a!b!c, !abc
-129: ab!c, a!bc, a!b!c, !ab!c
-130: ab!c, a!bc, a!b!c, !a!bc
-131: ab!c, a!bc, a!b!c, !a!b!c
-132: ab!c, a!bc, !abc, !ab!c
-133: ab!c, a!bc, !abc, !a!bc
+129: b!c, a!b
+130: ab!c, a!b, !a!bc
+131: a!bc, a!c, !a!b!c
+132: ab!c, a!bc, !ab
+133: ab!c, a!bc, !ac
 134: ab!c, a!bc, !abc, !a!b!c
 135: ab!c, a!bc, !ab!c, !a!bc
 136: ab!c, a!bc, !ab!c, !a!b!c
