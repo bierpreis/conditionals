@@ -132,13 +132,13 @@
 132: ab!c, a!bc, !ab
 133: ab!c, a!bc, !ac
 134: ab!c, a!bc, !abc, !a!b!c
-135: ab!c, a!bc, !ab!c, !a!bc
-136: ab!c, a!bc, !ab!c, !a!b!c
-137: ab!c, a!bc, !a!bc, !a!b!c
-138: ab!c, a!b!c, !abc, !ab!c
-139: ab!c, a!b!c, !abc, !a!bc
-140: ab!c, a!b!c, !abc, !a!b!c
-141: ab!c, a!b!c, !ab!c, !a!bc
+135: b!c, !bc
+136: ab!c, a!bc, !a!c
+137: ab!c, a!bc, !a!b
+138: a!c,!abc, !ab!c
+139: a!c, !ac
+140: a!c, !abc, !a!b!c
+141: a!c, !ab!c, !a!bc
 142: !c
 143: ab!c, a!b!c, !a!bc, !a!b!c
 144: ab!c, !abc, !ab!c, !a!bc
