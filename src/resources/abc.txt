@@ -69,12 +69,12 @@
 69: ab!c, !abc, !a!b!c
 70: b!c, !a!bc
 71: ab!c, !a!c
-72: ab!c, !a!bc, !a!b!c
-73: a!bc, a!b!c, !abc
-74: a!bc, a!b!c, !ab!c
-75: a!bc, a!b!c, !a!bc
-76: a!bc, a!b!c, !a!b!c
-77: a!bc, !abc, !ab!c
+72: ab!c, !a!b
+73: a!b, !abc
+74: a!b, !ab!c
+75: a!b, !a!bc
+76: a!b, !a!b!c
+77: a!bc, !ab
 78: a!bc, !abc, !a!bc
 79: a!bc, !abc, !a!b!c
 80: a!bc, !ab!c, !a!bc
