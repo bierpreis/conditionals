@@ -100,16 +100,16 @@
 100: ab, a!b!c, !a!bc
 101: ab, a!b!c, !a!b!c
 102: b
-103: abc, ab!c, !abc, !a!bc
-104: abc, ab!c, !abc, !a!b!c
-105: abc, ab!c, !ab!c, !a!bc
-106: abc, ab!c, !ab!c, !a!b!c
-107: abc, ab!c, !a!bc, !a!b!c
-108: abc, a!bc, a!b!c, !abc
-109: abc, a!bc, a!b!c, !ab!c
-110: abc, a!bc, a!b!c, !a!bc
-111: abc, a!bc, a!b!c, !a!b!c
-112: abc, a!bc, !abc, !ab!c
+103: ab, !abc, !a!bc
+104: ab, !abc, !a!b!c
+105: ab, !ab!c, !a!bc
+106: ab, !ab!c, !a!b!c
+107: ab, !a!bc, !a!b!c
+108: a!bc, a!b!c, bc
+109: ac, a!b!c, !ab!c
+110: abc, a!b!c, !bc
+111: ac, a!b!c, !a!b!c
+112: ac, !ab
 113: c
 114: abc, a!bc, !abc, !a!b!c
 115: abc, a!bc, !ab!c, !a!bc
