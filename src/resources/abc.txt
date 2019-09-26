@@ -49,11 +49,11 @@
 49: abc, a!b!c, !ab!c
 50: abc, a!b!c, !a!bc
 51: !b!c, abc
-52: abc, !abc, !ab!c
-53: abc, !abc, !a!bc
-54: abc, !abc, !a!b!c
+52: bc, !ab!c
+53: abc, !ac
+54: bc, !a!b!c
 55: abc, !ab!c, !a!bc
-56: abc, !ab!c, !a!b!c
+56: abc, !a!c
 57: abc, !a!bc, !a!b!c
 58: ab!c, a!bc, a!b!c
 59: ab!c, a!bc, !abc
