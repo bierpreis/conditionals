@@ -119,12 +119,12 @@
 119: bc, a!b!c, bc, !a!bc
 120: bc, a!b!c, !a!b!c
 121: abc, a!b!c, !ab!c, !a!bc
-122: abc, a!b!c, !ab!c, !a!b!c
-123: abc, a!b!c, !a!bc, !a!b!c
-124: abc, !abc, !ab!c, !a!bc
-125: abc, !abc, !ab!c, !a!b!c
-126: abc, !abc, !a!bc, !a!b!c
-127: abc, !ab!c, !a!bc, !a!b!c
+122: abc, a!b!c, !a!c
+123: abc, !a!bc, !b!c
+124: abc, !ab, !a!bc
+125: abc, !ab, !a!b!c
+126: bc, bc, !a!b
+127: abc, !ab!c, !a!b
 128: ab!c, a!bc, a!b!c, !abc
 129: ab!c, a!bc, a!b!c, !ab!c
 130: ab!c, a!bc, a!b!c, !a!bc
