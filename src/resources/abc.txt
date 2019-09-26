@@ -64,11 +64,11 @@
 64: b!c, a!b!c
 65: a!c, !a!bc
 66: !b!c, ab!c
-67: ab!c, !abc, !ab!c
-68: ab!c, !abc, !a!bc
+67: ab!c, !ab
+68: ab!c, !ac
 69: ab!c, !abc, !a!b!c
-70: ab!c, !ab!c, !a!bc
-71: ab!c, !ab!c, !a!b!c
+70: b!c, !a!bc
+71: ab!c, !a!c
 72: ab!c, !a!bc, !a!b!c
 73: a!bc, a!b!c, !abc
 74: a!bc, a!b!c, !ab!c
