@@ -111,13 +111,13 @@
 111: ac, a!b!c, !a!b!c
 112: ac, !ab
 113: c
-114: abc, a!bc, !abc, !a!b!c
-115: abc, a!bc, !ab!c, !a!bc
-116: abc, a!bc, !ab!c, !a!b!c
-117: abc, a!bc, !a!bc, !a!b!c
-118: abc, a!b!c, !abc, !ab!c
-119: abc, a!b!c, !abc, !a!bc
-120: abc, a!b!c, !abc, !a!b!c
+114: a!bc, bc, !a!b!c
+115: ac, !ab!c, !a!bc
+116: ac, !ab!c, !a!b!c
+117: ac, !a!bc, !a!b!c
+118: bc, a!b!c, !ab!c
+119: bc, a!b!c, bc, !a!bc
+120: bc, a!b!c, !a!b!c
 121: abc, a!b!c, !ab!c, !a!bc
 122: abc, a!b!c, !ab!c, !a!b!c
 123: abc, a!b!c, !a!bc, !a!b!c
