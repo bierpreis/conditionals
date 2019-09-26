@@ -82,14 +82,14 @@
 82: a!bc, !a!b
 83: a!b!c, !ab
 84: a!b!c, !ac
-85: a!b!c, !abc, !a!b!c
+85: !abc, !b!c
 86: a!b!c, !ab!c, !a!bc
-87: a!b!c, !ab!c, !a!b!c
-88: a!b!c, !a!bc, !a!b!c
-89: !abc, !ab!c, !a!bc
-90: !abc, !ab!c, !a!b!c
-91: !abc, !a!bc, !a!b!c
-92: !ab!c, !a!bc, !a!b!c
+87: a!b!c, !a!c
+88: a!b!c, !a!b
+89: !ab, !a!bc
+90: !ab, !a!b!c
+91: !abc, !a!b
+92: !ab!c, !a!b
 93: a
 94: abc, ab!c, a!bc, !abc
 95: abc, ab!c, a!bc, !ab!c
