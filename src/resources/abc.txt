@@ -151,14 +151,14 @@
 151: a!b, !ab!c, !a!bc
 152: a!b, !a!c
 153: !b
-154: a!bc, !abc, !ab!c, !a!bc
-155: a!bc, !abc, !ab!c, !a!b!c
-156: a!bc, !abc, !a!bc, !a!b!c
-157: a!bc, !ab!c, !a!bc, !a!b!c
-158: a!b!c, !abc, !ab!c, !a!bc
-159: a!b!c, !abc, !ab!c, !a!b!c
-160: a!b!c, !abc, !a!bc, !a!b!c
-161: a!b!c, !ab!c, !a!bc, !a!b!c
+154: !ab, !bc
+155: a!bc, !ab, !a!b!c
+156: a!bc, !abc, !a!b
+157: a!bc, !ab!c, !a!b
+158: a!b!c, !ab, !a!bc
+159: a!b!c, !abc, !a!c
+160: !ac, !b!c
+161: a!b!c, !a!c, !a!bc
 162: !a
 163: a, bc
 164: a, b!c
