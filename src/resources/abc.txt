@@ -181,33 +181,33 @@
 181: ab, !ac, !a!b!c
 182: ab, !ab!c, !a!b
 183: ac,  a!b!c, !ab
-184: abc, a!bc, a!b!c, !abc, !a!bc
-185: abc, a!bc, a!b!c, !abc, !a!b!c
-186: abc, a!bc, a!b!c, !ab!c, !a!bc
-187: abc, a!bc, a!b!c, !ab!c, !a!b!c
+184: ac, a!b!c, !abc, !a!bc
+185: ac, a!bc, !b!c, !abc
+186: ac, a!b!c, !ab!c, !a!bc
+187: ac, a!bc, a!b!c, !a!c
 188: ac, !b
-189: abc, a!bc, !abc, !ab!c, !a!bc
-190: abc, a!bc, !abc, !ab!c, !a!b!c
+189: ac, a!bc, !ab, !a!bc
+190: ac, a!bc, !ab, !a!b!c
 191: !a!b, c
-192: abc, a!bc, !ab!c, !a!bc, !a!b!c
-193: abc, a!b!c, !abc, !ab!c, !a!bc
+192: ac, !a!c, !a!bc
+193: bc, a!b!c, !ab!c, !a!bc
 194: abc, a!b!c, !abc, !ab!c, !a!b!c
-195: abc, a!b!c, !abc, !a!bc, !a!b!c
+195: bc, !a!bc, !b!c
 196: abc, a!b!c, !ab!c, !a!bc, !a!b!c
 197: !a, bc
-198: ab!c, a!bc, a!b!c, !abc, !ab!c
-199: ab!c, a!bc, a!b!c, !abc, !a!bc
-200: ab!c, a!bc, a!b!c, !abc, !a!b!c
-201: ab!c, a!bc, a!b!c, !ab!c, !a!bc
-202: ab!c, a!bc, a!b!c, !ab!c, !a!b!c
-203: ab!c, a!bc, a!b!c, !a!bc, !a!b!c
-204: ab!c, a!bc, !abc, !ab!c, !a!bc
-205: ab!c, a!bc, !abc, !ab!c, !a!b!c
-206: ab!c, a!bc, !abc, !a!bc, !a!b!c
-207: ab!c, a!bc, !ab!c, !a!bc, !a!b!c
-208: ab!c, a!b!c, !abc, !ab!c, !a!bc
+198: a!c, a!bc, !ab
+199: a!c, a!bc, !ac
+200: a!c, a!bc, !abc, !a!b!c
+201: a!c, !bc, !ab!c
+202: ab!c, a!b, !a!c
+203: a!c, a!bc, !a!b
+204: ab!c, !bc, !ab
+205: ab!c, a!bc, !abc, !a!c
+206: ab!c, a!bc, !abc, !a!b
+207: b!c, a!bc, !a!bc, !a!b!c
+208: b!c, a!b!c, !ac
 209: !ab, !c
-210: ab!c, a!b!c, !abc, !a!bc, !a!b!c
+210: a!c, !ac, !a!b!c
 211: !a!b, !c
 212: !a, b!c
 213: a!b, !ab, !a!bc
