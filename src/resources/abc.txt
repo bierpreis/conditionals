@@ -222,11 +222,11 @@
 222: a, !(b==c)
 223: a, !a!c
 224: a, !a!b
-225: abc, ab!c, a!bc, !abc, !ab!c, !a!bc
-226: abc, ab!c, a!bc, !abc, !ab!c, !a!b!c
-227: abc, ab!c, a!bc, !abc, !a!bc, !a!b!c
-228: abc, ab!c, a!bc, !ab!c, !a!bc, !a!b!c
-229: abc, ab!c, a!b!c, !abc, !ab!c, !a!bc
+225: ac, b!c,  !abc, !a!bc
+226: ac, ab!c, !abc, !a!c
+227: ab, !abc, !bc, !a!b!c
+228: ab, a!bc, !ab!c, !a!b
+229: a!c, bc, !ab!c, !a!bc
 230: abc, ab!c, a!b!c, !abc, !ab!c, !a!b!c
 231: abc, ab!c, a!b!c, !abc, !a!bc, !a!b!c
 232: abc, ab!c, a!b!c, !ab!c, !a!bc, !a!b!c
