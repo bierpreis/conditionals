@@ -227,9 +227,9 @@
 227: ab, !abc, !bc, !a!b!c
 228: ab, a!bc, !ab!c, !a!b
 229: a!c, bc, !ab!c, !a!bc
-230: abc, ab!c, a!b!c, !abc, !ab!c, !a!b!c
-231: abc, ab!c, a!b!c, !abc, !a!bc, !a!b!c
-232: abc, ab!c, a!b!c, !ab!c, !a!bc, !a!b!c
+230: bc, b!c, !b!c
+231: bc, a!c, !a!b
+232: ab, a!b!c, !ab!c, !a!b
 233: !a, ab
 234: abc, a!bc, a!b!c, !abc, !ab!c, !a!bc
 235: abc, a!bc, a!b!c, !abc, !ab!c, !a!b!c
