@@ -180,6 +180,11 @@ public class SimpleCreator extends AbstractCreator {
         l = requestedList;
     }
 
+    @Override
+    protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase){
+        kbWriter.addConsistentKb(knowledgeBase);
+    }
+
 
 }
 

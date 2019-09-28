@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public abstract class AbstractCreator implements Runnable{
+public abstract class AbstractCreator implements Runnable {
 
     protected int totalNumberOfKBs;
     protected int totalInconsistentAmount;
@@ -35,7 +35,6 @@ public abstract class AbstractCreator implements Runnable{
     protected Collection<NewConditional> nfc;
 
     protected Collection<NewConditional> cnfc;
-
 
 
     protected void checkIfWaitForWriter() {
@@ -149,9 +148,12 @@ public abstract class AbstractCreator implements Runnable{
         }
 
         for (AbstractPair candidatePair : listToReturn)
-            kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
+            addConsistentKb(candidatePair.getKnowledgeBase());
+
 
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
+
+    protected abstract void addConsistentKb(AbstractKnowledgeBase knowledgeBase);
 }
