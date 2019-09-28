@@ -1,4 +1,4 @@
-package kb_creator.model;
+package kb_creator.model.creator;
 
 import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.AbstractFormula;
@@ -15,7 +15,7 @@ import nfc.model.NfcCreator;
 
 import java.util.*;
 
-public class KBCreator implements Runnable {
+public class SimpleCreator extends AbstractCreator  {
 
     private int totalNumberOfKBs;
     private int totalInconsistentAmount;
@@ -43,7 +43,7 @@ public class KBCreator implements Runnable {
     private Collection<NewConditional> cnfc;
 
 
-    public KBCreator(AbstractSignature signature, String kbFilePath) {
+    public SimpleCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
 
         AbstractFormula.setSignature(signature);
@@ -180,28 +180,6 @@ public class KBCreator implements Runnable {
         totalInconsistentAmount++;
     }
 
-    private void checkIfWaitForWriter() {
-        if (waitForKbWriter)
-            synchronized (this) {
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                waitForKbWriter = false;
-            }
-
-    }
-
-    public void setSignature(AbstractSignature signature) {
-        this.signature = signature;
-    }
-
-
-    public void setList(AbstractPairBuffer requestedList) {
-        l = requestedList;
-    }
-
     private List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
@@ -281,37 +259,22 @@ public class KBCreator implements Runnable {
         return l;
     }
 
-    public void waitForKbWriter() {
-        creatorStatus = CreatorStatus.WAITING_FOR_WRITER;
-        waitForKbWriter = true;
+
+
+
+
+
+
+
+
+
+    public void setList(AbstractPairBuffer requestedList) {
+        l = requestedList;
     }
 
-    private float calculateProgress(int pairCounter, int lastIterationAmount) {
 
-        //avoid division with zero
-        if (lastIterationAmount == 0) {
-            return 0;
 
-        }
-        return (pairCounter / (float) lastIterationAmount) * 100;
-    }
 
-    public float getProgress() {
-        return progress;
-    }
-
-    public int getLastPairAmount() {
-        return lastIterationAmount;
-    }
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public enum CreatorStatus {
-
-        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED, WAITING_FOR_WRITER
-    }
 
 }
 

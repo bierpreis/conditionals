@@ -1,10 +1,9 @@
 package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
-import kb_creator.model.KBCreator;
+import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.BlockingPairBuffer;
-import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.buffer.DummyPairBuffer;
 
 import javax.swing.*;
@@ -14,7 +13,7 @@ import java.awt.event.ActionListener;
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
 
-    private KBCreator creatorThreadObject;
+    private SimpleCreator creatorThreadObject;
     private StatusThread statusThreadObject;
 
 
@@ -35,7 +34,7 @@ public class CreatorButtonObserver implements ActionListener {
         if (e.getActionCommand().equals("Start")) {
 
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-            creatorThreadObject = new KBCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
+            creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
 
 
             AbstractPairBuffer candidateBuffer;

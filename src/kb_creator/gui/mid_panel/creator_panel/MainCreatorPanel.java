@@ -1,6 +1,6 @@
 package kb_creator.gui.mid_panel.creator_panel;
 
-import kb_creator.model.KBCreator;
+import kb_creator.model.creator.SimpleCreator;
 import kb_creator.gui.left_panel.ActionPanel;
 
 import javax.swing.*;
@@ -27,7 +27,7 @@ public class MainCreatorPanel extends JPanel {
         nextIterationPanel = new NextIterationPanel();
         add(nextIterationPanel);
 
-        showStatus(KBCreator.CreatorStatus.NOT_STARTED);
+        showStatus(SimpleCreator.CreatorStatus.NOT_STARTED);
 
         showConsistentKBAmount(0);
 
@@ -52,7 +52,7 @@ public class MainCreatorPanel extends JPanel {
         overallStatusPanel.showInconsistentKBAmount(kbAmount);
     }
 
-    public void showStatus(KBCreator.CreatorStatus creatorStatus) {
+    public void showStatus(SimpleCreator.CreatorStatus creatorStatus) {
         overallStatusPanel.showStatus(creatorStatus);
     }
 
