@@ -231,16 +231,16 @@
 231: bc, a!c, !a!b
 232: ab, a!b!c, !ab!c, !a!b
 233: !a, ab
-234: abc, a!bc, a!b!c, !abc, !ab!c, !a!bc
-235: abc, a!bc, a!b!c, !abc, !ab!c, !a!b!c
+234: bc, a!b, !ab!c, !a!bc
+235: ac, ac, !ab, !b!c
 236: !b, c
 237: !b, a==c
-238: abc, a!bc, !abc, !ab!c, !a!bc, !a!b!c
+238: ac,  !ab,  !a!b
 239: !a, b==c
-240: ab!c, a!bc, a!b!c, !abc, !ab!c, !a!bc
-241: ab!c, a!bc, a!b!c, !abc, !ab!c, !a!b!c
-242: ab!c, a!bc, a!b!c, !abc, !a!bc, !a!b!c
-243: ab!c, a!bc, a!b!c, !ab!c, !a!bc, !a!b!c
+240: b!c, a!b, !ac,
+241: a!c, a!bc, !abc, !a!c
+242: a!c, !abc, !bc, !a!b!c
+243: b!c, !bc, !b!c
 244: !a, !(ab==c)
 245: !a, a!c
 246: !a, a!b
