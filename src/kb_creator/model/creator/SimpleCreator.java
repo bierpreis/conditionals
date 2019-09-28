@@ -15,32 +15,12 @@ import nfc.model.NfcCreator;
 
 import java.util.*;
 
-public class SimpleCreator extends AbstractCreator  {
+public class SimpleCreator extends AbstractCreator {
 
-    private int totalNumberOfKBs;
-    private int totalInconsistentAmount;
-    private int iterationNumberOfKBs;
-    private int lastIterationAmount;
-
-    private CreatorStatus creatorStatus;
-    private volatile boolean waitForKbWriter;
-
-    private AbstractSignature signature;
-
-    private int k;
-    private int nextCandidatePairAmount;
-
-    private long startTime;
 
     private AbstractKbWriter kbWriter;
 
     private AbstractPairBuffer l;
-
-    private float progress;
-
-    private Collection<NewConditional> nfc;
-
-    private Collection<NewConditional> cnfc;
 
 
     public SimpleCreator(AbstractSignature signature, String kbFilePath) {
@@ -180,76 +160,6 @@ public class SimpleCreator extends AbstractCreator  {
         totalInconsistentAmount++;
     }
 
-    private List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
-        System.out.println("creating 1 element kbs");
-
-        iterationNumberOfKBs = 0;
-        List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
-
-
-        //line 3
-        for (NewConditional r : cnfc) {
-
-            //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationNumberOfKBs);
-            rKB.add(r); // rKB is r as 1 element kb
-
-            //create candidates
-            List<NewConditional> candidatesList = new ArrayList<>();
-
-            for (NewConditional conditional : nfc) {
-                if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
-                    if (!(conditional.equals(r)))
-                        if (!(conditional.equals(r.getCounterConditional())))
-                            candidatesList.add(conditional);
-
-            }
-
-
-            //no buffering for first iteration because it almost makes no difference
-            listToReturn.add(new RealListPair(rKB, candidatesList));
-            iterationNumberOfKBs++;
-            nextCandidatePairAmount++;
-
-        }
-
-        for (AbstractPair candidatePair : listToReturn)
-            kbWriter.addConsistentKb(candidatePair.getKnowledgeBase());
-
-        System.out.println("finished 1 element kbs");
-        return listToReturn;
-    }
-
-
-    public int getTotalKbAmount() {
-        return totalNumberOfKBs;
-    }
-
-    public int getTotalInconsistentAmount() {
-        return totalInconsistentAmount;
-    }
-
-    public int getIterationNumberOfKBs() {
-        return iterationNumberOfKBs;
-    }
-
-    public CreatorStatus getCreatorStatus() {
-        return creatorStatus;
-    }
-
-    public void stop() {
-        this.creatorStatus = CreatorStatus.STOPPED;
-        kbWriter.stop();
-    }
-
-    public int getCurrentK() {
-        return k;
-    }
-
-    public int getNextCandidatePairAmount() {
-        return nextCandidatePairAmount;
-    }
-
 
     public AbstractKbWriter getKbWriterThread() {
         return kbWriter;
@@ -259,21 +169,16 @@ public class SimpleCreator extends AbstractCreator  {
         return l;
     }
 
-
-
-
-
-
-
-
+    @Override
+    public void stop() {
+        super.stop();
+        kbWriter.stop();
+    }
 
 
     public void setList(AbstractPairBuffer requestedList) {
         l = requestedList;
     }
-
-
-
 
 
 }
