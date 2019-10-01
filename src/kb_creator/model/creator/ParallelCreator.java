@@ -93,6 +93,7 @@ public class ParallelCreator extends AbstractCreator {
                 iterationPairCounter++;
 
                 //todo: deal with inconsistent and consistent queues and counters and set numbers to consistent queues
+                //maybe put inconsistent and consistent counters in kb writer?!
 
 /*                nextCandidatePairAmount++;
                 iterationNumberOfKBs++;
