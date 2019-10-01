@@ -81,8 +81,7 @@ public class ParallelCreator extends AbstractCreator {
             while (l.hasMoreElements(k)) {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
-
-                //todo: get from l and add to queue
+                
                 if (inputQueue.remainingCapacity() > 0)
                     try {
                         inputQueue.put(l.getNextPair(k));
