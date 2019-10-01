@@ -3,6 +3,7 @@ package kb_creator.model.creator;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.ArrayList;
@@ -59,7 +60,12 @@ public class CandidateThread implements Runnable {
                     //first create the new knowledge base
                     //takes very little time
                     AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
-                    kbWriter.addConsistentKb(knowledgeBaseToAdd);
+
+                    try {
+                        consistentQueue.put(knowledgeBaseToAdd);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
                     //long beforeCandidates = System.nanoTime();
@@ -77,7 +83,7 @@ public class CandidateThread implements Runnable {
                     long beforeAddingPair = System.nanoTime();
 
                     //todo: add to new pair queue
-                    l.addPair(knowledgeBaseToAdd, candidatesToAdd);
+                    outputqueue.add(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
                     //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
                     nextCandidatePairAmount++;

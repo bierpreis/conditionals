@@ -95,9 +95,12 @@ public class ParallelCreator extends AbstractCreator {
 
 
             }
+            //todo: here wait until all pairs are processed and returned. but how? maybe wait untill threads will close and start them every iteration new?
+
             l.finishIteration(k);
             k = k + 1;
         }
+        //todo: close threads
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
     }
