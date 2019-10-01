@@ -1,7 +1,9 @@
 package kb_creator.model.creator;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,8 +19,9 @@ public class ParallelCreator extends AbstractCreator {
     private BlockingQueue<AbstractPair> inputQueue = new ArrayBlockingQueue<>(500);
 
     private BlockingQueue<AbstractKnowledgeBase> consistentQueue = new ArrayBlockingQueue<>(500);
-
     private BlockingQueue<AbstractKnowledgeBase> inConsistentQueue = new ArrayBlockingQueue<>(500);
+
+    private BlockingQueue<AbstractPair> newPairsQueue = new ArrayBlockingQueue<>(500);
 
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
 
@@ -27,7 +30,8 @@ public class ParallelCreator extends AbstractCreator {
     //todo
     public ParallelCreator() {
         for (int i = 0; i < numberOfThreads; i++) {
-            CandidateThread thread = new CandidateThread(i);
+
+            CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, newPairsQueue);
             threadList.add(thread);
             executorService.submit(thread);
         }
@@ -40,13 +44,62 @@ public class ParallelCreator extends AbstractCreator {
 
         System.out.println("now interrupting!");
 
-        for (CandidateThread thread :threadList)
-            thread.i
+        for (CandidateThread thread : threadList)
+            thread.askToStop();
     }
 
     @Override
     public void run() {
-        //todo
+        creatorStatus = CreatorStatus.RUNNING;
+        System.out.println("creator thread started");
+        l.prepareIteration(0);
+
+        //line 2
+        k = 1;
+
+        //this is actually iteration 0
+        //and line 3-5
+        l.addNewList(initOneElementKBs(nfc, cnfc));
+
+        //k - 1 because actually the init list is iteration 0
+        l.finishIteration(0);
+
+        //line 6
+        while (l.hasElementsForK(k)) {
+            System.gc();
+            l.prepareIteration(k);
+
+            int iterationPairCounter = 0;
+            lastIterationAmount = nextCandidatePairAmount;
+            nextCandidatePairAmount = 0;
+            iterationNumberOfKBs = 0;
+
+            //line  7
+            l.addNewList(new ArrayList<>());
+
+            //this is line 8
+            while (l.hasMoreElements(k)) {
+
+                progress = calculateProgress(iterationPairCounter, lastIterationAmount);
+
+                //todo: get from l and add to queue
+                AbstractPair candidatePair = l.getNextPair(k);
+
+                iterationPairCounter++;
+                //line 9
+
+                //this both takes almost no time
+                checkIfWaitForWriter();
+                if (creatorStatus.equals(CreatorStatus.STOPPED))
+                    return;
+
+
+            }
+            l.finishIteration(k);
+            k = k + 1;
+        }
+        l.setFinished();
+        creatorStatus = CreatorStatus.FINISHED;
     }
 
 

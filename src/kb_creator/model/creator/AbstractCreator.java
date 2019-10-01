@@ -36,6 +36,8 @@ public abstract class AbstractCreator implements Runnable {
 
     protected Collection<NewConditional> cnfc;
 
+    protected AbstractPairBuffer l;
+
 
     protected void checkIfWaitForWriter() {
         if (waitForKbWriter)

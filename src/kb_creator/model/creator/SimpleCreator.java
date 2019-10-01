@@ -20,7 +20,7 @@ public class SimpleCreator extends AbstractCreator {
 
     private AbstractKbWriter kbWriter;
 
-    private AbstractPairBuffer l;
+
 
 
     public SimpleCreator(AbstractSignature signature, String kbFilePath) {
