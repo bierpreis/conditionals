@@ -83,10 +83,21 @@ public class ParallelCreator extends AbstractCreator {
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
                 //todo: get from l and add to queue
-                AbstractPair candidatePair = l.getNextPair(k);
+                if (inputQueue.remainingCapacity() > 0)
+                    try {
+                        inputQueue.put(l.getNextPair(k));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                 iterationPairCounter++;
-                //line 9
+
+                //todo: deal with inconsistent and consistent queues and counters and set numbers to consistent queues
+
+/*                nextCandidatePairAmount++;
+                iterationNumberOfKBs++;
+                totalNumberOfKBs++;*/
+
 
                 //this both takes almost no time
                 checkIfWaitForWriter();
@@ -95,7 +106,7 @@ public class ParallelCreator extends AbstractCreator {
 
 
             }
-            //todo: here wait until all pairs are processed and returned. but how? maybe wait untill threads will close and start them every iteration new?
+            //todo: here wait until all pairs are processed and returned. but how? maybe wait untill threads will close
 
             l.finishIteration(k);
             k = k + 1;

@@ -34,6 +34,13 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         this.kbNumber = kbNumber;
     }
 
+    //this is used by parallel creator
+    public ObjectKnowledgeBase(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+        this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
+        this.conditionalList.addAll(knowledgeBase.getConditionalList());
+        this.conditionalList.add(conditionalToAdd);
+    }
+
     //this constructor is used for all the other iterations
     public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);

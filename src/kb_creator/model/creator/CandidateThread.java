@@ -59,7 +59,7 @@ public class CandidateThread implements Runnable {
                     //long kbCreationStart = System.nanoTime();
                     //first create the new knowledge base
                     //takes very little time
-                    AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
+                    AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
 
                     try {
                         consistentQueue.put(knowledgeBaseToAdd);
@@ -77,18 +77,11 @@ public class CandidateThread implements Runnable {
                             candidatesToAdd.add(conditionalFromCandidates);
                     //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
-                    //line 12
-                    //this takes about 30 percent of time
-                    //collecting pairs and add together is even slower
-                    long beforeAddingPair = System.nanoTime();
 
-                    //todo: add to new pair queue
                     outputqueue.add(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
-                    //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
-                    nextCandidatePairAmount++;
-                    iterationNumberOfKBs++;
-                    totalNumberOfKBs++;
+                    //todo: put in main thread, but how? needs to be connected to queues
+
 
                     //save inconsistent knowledge base
                     //this part takes almost no time
