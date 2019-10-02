@@ -33,9 +33,7 @@ public class CandidateThread implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.interrupted()) {
-
-            System.out.println("thread " + threadNumber + " running...");
+        while (!Thread.interrupted()) { //todo: does it work? or volatile boolean?
 
             AbstractPair candidatePair = null;
 
@@ -88,6 +86,8 @@ public class CandidateThread implements Runnable {
             //this saves a lot of memory
             //this takes almost no time
             candidatePair.clear();
+
+            System.out.println("Thread " + this.threadNumber + "finished one pair");
         }
     }
 
