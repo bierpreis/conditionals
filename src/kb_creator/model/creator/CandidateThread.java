@@ -18,7 +18,7 @@ public class CandidateThread implements Runnable {
     private BlockingQueue<AbstractKnowledgeBase> inconsistentQueue;
 
     private BlockingQueue<AbstractPair> inputQueue;
-    private BlockingQueue<AbstractPair> outputqueue;
+    private BlockingQueue<AbstractPair> outputQueue;
     private volatile boolean running = true;
 
     public CandidateThread(int threadNumber, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
@@ -28,7 +28,7 @@ public class CandidateThread implements Runnable {
         this.inconsistentQueue = inconsistentQueue;
 
         this.inputQueue = inputQueue;
-        this.outputqueue = outputQueue;
+        this.outputQueue = outputQueue;
     }
 
     @Override
@@ -75,10 +75,7 @@ public class CandidateThread implements Runnable {
                     //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
 
-                    outputqueue.add(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
-
-                    //todo: put in main thread, but how? needs to be connected to queues
-
+                    outputQueue.add(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
 
                     //save inconsistent knowledge base
                     //this part takes almost no time
