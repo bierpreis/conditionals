@@ -18,7 +18,6 @@ import java.util.*;
 public class SimpleCreator extends AbstractCreator {
 
 
-    //todo: super constructor
     public SimpleCreator(AbstractSignature signature, String kbFilePath) {
         super(signature, kbFilePath);
         System.out.println("new simple creator");
@@ -59,7 +58,6 @@ public class SimpleCreator extends AbstractCreator {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                //todo: make sure if ordering is necessary. if not, threading could be useful. if yes, make sure it is ordered!
                 AbstractPair candidatePair = l.getNextPair(k);
 
                 iterationPairCounter++;

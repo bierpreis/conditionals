@@ -45,8 +45,7 @@ public abstract class AbstractCreator implements Runnable {
 
     protected AbstractKbWriter kbWriter;
 
-
-    //todo: some super constructor
+    
     public AbstractCreator(AbstractSignature signature, String kbFilePath){
         AbstractFormula.setSignature(signature);
         AbstractKnowledgeBase.setSignature(signature);

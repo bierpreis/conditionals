@@ -21,7 +21,6 @@ public class CandidateThread implements Runnable {
     private BlockingQueue<AbstractPair> outputqueue;
     private volatile boolean running = true;
 
-    //todo: add queues
     public CandidateThread(int threadNumber, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
         this.threadNumber = threadNumber;
 
@@ -30,8 +29,6 @@ public class CandidateThread implements Runnable {
 
         this.inputQueue = inputQueue;
         this.outputqueue = outputQueue;
-
-
     }
 
     @Override
@@ -88,11 +85,12 @@ public class CandidateThread implements Runnable {
                 } else inconsistentQueue.add(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
                 //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
 
-                //todo: is this correct position?
-                //this saves a lot of memory
-                //this takes almost no time
-                candidatePair.clear();
+
             }
+            //todo: check if this is correct position {}
+            //this saves a lot of memory
+            //this takes almost no time
+            candidatePair.clear();
         }
     }
 
