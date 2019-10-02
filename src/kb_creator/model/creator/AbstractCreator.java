@@ -38,6 +38,10 @@ public abstract class AbstractCreator implements Runnable {
 
     protected AbstractPairBuffer l;
 
+    protected AbstractKbWriter kbWriter;
+
+
+    //todo: some super constructor
 
     protected void checkIfWaitForWriter() {
         if (waitForKbWriter)

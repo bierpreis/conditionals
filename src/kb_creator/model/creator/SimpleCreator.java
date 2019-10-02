@@ -18,11 +18,7 @@ import java.util.*;
 public class SimpleCreator extends AbstractCreator {
 
 
-    private AbstractKbWriter kbWriter;
-
-
-
-
+    //todo: super constructor
     public SimpleCreator(AbstractSignature signature, String kbFilePath) {
         System.out.println("new kb creator");
 
@@ -181,7 +177,7 @@ public class SimpleCreator extends AbstractCreator {
     }
 
     @Override
-    protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase){
+    protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
         kbWriter.addConsistentKb(knowledgeBase);
     }
 

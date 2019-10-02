@@ -1,12 +1,9 @@
 package kb_creator.model.creator;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -16,12 +13,11 @@ public class ParallelCreator extends AbstractCreator {
     private int numberOfThreads = 2;
 
 
-    private BlockingQueue<AbstractPair> inputQueue = new ArrayBlockingQueue<>(500);
-
     private BlockingQueue<AbstractKnowledgeBase> consistentQueue = new ArrayBlockingQueue<>(500);
     private BlockingQueue<AbstractKnowledgeBase> inConsistentQueue = new ArrayBlockingQueue<>(500);
 
-    private BlockingQueue<AbstractPair> newPairsQueue = new ArrayBlockingQueue<>(500);
+    private BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
+    private BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
 
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
 
@@ -31,7 +27,7 @@ public class ParallelCreator extends AbstractCreator {
     public ParallelCreator() {
         for (int i = 0; i < numberOfThreads; i++) {
 
-            CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, newPairsQueue);
+            CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);
             threadList.add(thread);
             executorService.submit(thread);
         }
@@ -81,10 +77,10 @@ public class ParallelCreator extends AbstractCreator {
             while (l.hasMoreElements(k)) {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
-                
-                if (inputQueue.remainingCapacity() > 0)
+
+                if (inputPairsQueue.remainingCapacity() > 0)
                     try {
-                        inputQueue.put(l.getNextPair(k));
+                        inputPairsQueue.put(l.getNextPair(k));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -97,7 +93,6 @@ public class ParallelCreator extends AbstractCreator {
 /*                nextCandidatePairAmount++;
                 iterationNumberOfKBs++;
                 totalNumberOfKBs++;*/
-
 
                 //this both takes almost no time
                 checkIfWaitForWriter();
