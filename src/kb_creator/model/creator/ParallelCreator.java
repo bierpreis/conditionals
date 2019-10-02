@@ -29,6 +29,8 @@ public class ParallelCreator extends AbstractCreator {
     public ParallelCreator(AbstractSignature signature, String kbFilePath) {
         super(signature, kbFilePath);
         System.out.println("new parallel creator");
+
+        //todo: starting should be own method which is called every iteration
         for (int i = 0; i < numberOfThreads; i++) {
 
             CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);
@@ -36,6 +38,7 @@ public class ParallelCreator extends AbstractCreator {
             executorService.submit(thread);
         }
 
+        //todo: remove this test stuff
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -46,6 +49,11 @@ public class ParallelCreator extends AbstractCreator {
 
         for (CandidateThread thread : threadList)
             thread.askToStop();
+
+        executorService.shutdown();
+
+        executorService.
+
     }
 
     @Override
@@ -66,7 +74,10 @@ public class ParallelCreator extends AbstractCreator {
 
         //line 6
         while (l.hasElementsForK(k)) {
+
             System.gc();
+
+            //todo: start creator threadsthreads
             l.prepareIteration(k);
 
             int iterationPairCounter = 0;
@@ -105,7 +116,7 @@ public class ParallelCreator extends AbstractCreator {
 
 
             }
-            //todo: here wait until all pairs are processed and returned. but how? maybe wait untill threads will close
+            //todo: wait until inputqueue is empty, then shutdown threads. wait until they finish
 
             l.finishIteration(k);
             k = k + 1;
@@ -115,13 +126,21 @@ public class ParallelCreator extends AbstractCreator {
         creatorStatus = CreatorStatus.FINISHED;
     }
 
+    private void startThreads() {
+        //todo
+        //new executor service?
+    }
+
+    private void waitAndStopThreads() {
+        //todo
+        //when input queue is empty close threads? but how?
+    }
+
 
     @Override
     public void stop() {
         super.stop();
-        //todo: interrupt single executors?
-
-        executorService.shutdown();
+        waitAndStopThreads();
     }
 
     @Override
