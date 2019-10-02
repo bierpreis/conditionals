@@ -20,38 +20,8 @@ public class SimpleCreator extends AbstractCreator {
 
     //todo: super constructor
     public SimpleCreator(AbstractSignature signature, String kbFilePath) {
-        System.out.println("new kb creator");
-
-        AbstractFormula.setSignature(signature);
-        AbstractKnowledgeBase.setSignature(signature);
-
-        creatorStatus = CreatorStatus.NOT_STARTED;
-        this.signature = signature;
-        waitForKbWriter = false;
-
-        //kbFilePath is null when no buffering is requested
-        if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath);
-        else
-            kbWriter = new KbDummyWriter();
-
-        lastIterationAmount = 0;
-
-        creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
-
-        NfcCreator nfcCreator = new NfcCreator(signature);
-
-        nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
-
-        cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
-
-        AbstractPair.setNfc(nfcCreator.getNfcMap());
-        AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
-
-        Thread kbWriterThread = new Thread(kbWriter);
-        kbWriterThread.start();
-
-        startTime = System.currentTimeMillis();
+        super(signature, kbFilePath);
+        System.out.println("new simple creator");
 
     }
 

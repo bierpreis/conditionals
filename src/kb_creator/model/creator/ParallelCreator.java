@@ -2,6 +2,7 @@ package kb_creator.model.creator;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,11 @@ public class ParallelCreator extends AbstractCreator {
 
     private List<CandidateThread> threadList = new ArrayList<>(numberOfThreads);
 
+
     //todo
-    public ParallelCreator() {
+    public ParallelCreator(AbstractSignature signature, String kbFilePath) {
+        super(signature, kbFilePath);
+        System.out.println("new parallel creator");
         for (int i = 0; i < numberOfThreads; i++) {
 
             CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);
@@ -123,10 +127,6 @@ public class ParallelCreator extends AbstractCreator {
     @Override
     protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
         inConsistentQueue.add(knowledgeBase);
-    }
-
-    public static void main(String[] args) {
-        new ParallelCreator();
     }
 
 

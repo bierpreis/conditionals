@@ -5,12 +5,17 @@ import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.KbDummyWriter;
+import kb_creator.model.writer.KbFileWriter;
+import nfc.model.NfcCreator;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractCreator implements Runnable {
@@ -42,6 +47,39 @@ public abstract class AbstractCreator implements Runnable {
 
 
     //todo: some super constructor
+    public AbstractCreator(AbstractSignature signature, String kbFilePath){
+        AbstractFormula.setSignature(signature);
+        AbstractKnowledgeBase.setSignature(signature);
+
+
+        creatorStatus = CreatorStatus.NOT_STARTED;
+        this.signature = signature;
+        waitForKbWriter = false;  //todo: remove and replace it by auto wait with blocking queue in kb writer
+
+        //kbFilePath is null when no buffering is requested
+        if (kbFilePath != null)
+            kbWriter = new KbFileWriter(kbFilePath);
+        else
+            kbWriter = new KbDummyWriter();
+
+        creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
+
+        NfcCreator nfcCreator = new NfcCreator(signature);
+        nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
+        cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
+
+        AbstractPair.setNfc(nfcCreator.getNfcMap());
+        AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
+
+        System.out.println("new kb creator");
+
+        lastIterationAmount = 0;
+
+        Thread kbWriterThread = new Thread(kbWriter);
+        kbWriterThread.start();
+
+        startTime = System.currentTimeMillis();
+    }
 
     protected void checkIfWaitForWriter() {
         if (waitForKbWriter)
