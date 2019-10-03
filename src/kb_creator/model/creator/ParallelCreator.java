@@ -69,12 +69,13 @@ public class ParallelCreator extends AbstractCreator {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                if (inputPairsQueue.remainingCapacity() > 0)
+                if (inputPairsQueue.remainingCapacity() > 0) {
                     try {
                         inputPairsQueue.put(l.getNextPair(k));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                }
 
                 iterationPairCounter++;
 
@@ -126,13 +127,14 @@ public class ParallelCreator extends AbstractCreator {
 
     private void waitAndStopThreads() {
         System.out.println("!!! before sleep");
-        while (!inputPairsQueue.isEmpty())
+        while (!inputPairsQueue.isEmpty()) {
             try {
                 System.out.println("creator sleeping! " + inputPairsQueue.size()); //todo
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
         System.out.println("!!! after sleep");
         for (Future future : futureList)
             future.cancel(true);
