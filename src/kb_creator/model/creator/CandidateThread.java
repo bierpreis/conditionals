@@ -40,7 +40,7 @@ public class CandidateThread implements Runnable {
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) {
-                System.out.println("Thread " + threadNumber + " was interrupted.");
+                System.out.println("thread " + threadNumber + " was interrupted.");
             }
 
             for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -89,9 +89,6 @@ public class CandidateThread implements Runnable {
 
             System.out.println("thread " + this.threadNumber + " finished one pair");
         }
-    }
-
-    public void askToStop() {
-        running = false;
+        System.out.println("!!! thread finished");
     }
 }

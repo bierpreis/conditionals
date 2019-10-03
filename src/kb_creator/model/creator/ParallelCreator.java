@@ -47,9 +47,9 @@ public class ParallelCreator extends AbstractCreator {
         //k - 1 because actually the init list is iteration 0
         l.finishIteration(0);
 
+
         //line 6
         while (l.hasElementsForK(k)) {
-
             System.gc();
 
             startThreads();
@@ -63,6 +63,8 @@ public class ParallelCreator extends AbstractCreator {
 
             //line  7
             l.addNewList(new ArrayList<>());
+
+            waitAndStopThreads();
 
             //this is line 8
             while (l.hasMoreElements(k)) {
@@ -102,7 +104,7 @@ public class ParallelCreator extends AbstractCreator {
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
-
+                System.out.println("!!at end of loop");
             }
             waitAndStopThreads();
 
@@ -128,7 +130,7 @@ public class ParallelCreator extends AbstractCreator {
 
         while (!inputPairsQueue.isEmpty())
             try {
-                System.out.println("creator sleeping!"); //todo
+                System.out.println("creator sleeping! " + inputPairsQueue.size()); //todo
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
