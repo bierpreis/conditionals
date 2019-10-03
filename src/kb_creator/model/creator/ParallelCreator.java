@@ -88,8 +88,14 @@ public class ParallelCreator extends AbstractCreator {
 
                 }
 
-                for (AbstractKnowledgeBase knowledgeBase : consistentQueue) {
-                    kbWriter.addConsistentKb(knowledgeBase);
+                //todo: doenst work
+                while (!consistentQueue.isEmpty()) {
+                    System.out.println("taking..");
+                    try {
+                        kbWriter.addConsistentKb(consistentQueue.take());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     iterationNumberOfKBs++;
                     totalNumberOfKBs++;
                 }

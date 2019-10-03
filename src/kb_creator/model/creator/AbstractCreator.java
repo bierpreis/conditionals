@@ -45,8 +45,8 @@ public abstract class AbstractCreator implements Runnable {
 
     protected AbstractKbWriter kbWriter;
 
-    
-    public AbstractCreator(AbstractSignature signature, String kbFilePath){
+
+    public AbstractCreator(AbstractSignature signature, String kbFilePath) {
         AbstractFormula.setSignature(signature);
         AbstractKnowledgeBase.setSignature(signature);
 
@@ -55,6 +55,7 @@ public abstract class AbstractCreator implements Runnable {
         this.signature = signature;
         waitForKbWriter = false;  //todo: remove and replace it by auto wait with blocking queue in kb writer
 
+        //todo: add queues to writer  and make there one thread for consistent and one for inconsistent. then it can empty the queues and auto block
         //kbFilePath is null when no buffering is requested
         if (kbFilePath != null)
             kbWriter = new KbFileWriter(kbFilePath);
