@@ -26,6 +26,7 @@ public class NewConditional {
 
     }
 
+    //todo: this gets out short formulas! completely useless for writing kbs!
     public String toString() {
         return "(" + consequence + " | " + antecedent + ")";
     }
@@ -65,7 +66,6 @@ public class NewConditional {
     public AbstractFormula getConsequence() {
         return consequence;
     }
-
 
 
     public void setCounterConditional(NewConditional counterConditional) {

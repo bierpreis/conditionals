@@ -125,7 +125,7 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void waitAndStopThreads() {
-
+        System.out.println("!!! before sleep");
         while (!inputPairsQueue.isEmpty())
             try {
                 System.out.println("creator sleeping! " + inputPairsQueue.size()); //todo
@@ -133,7 +133,7 @@ public class ParallelCreator extends AbstractCreator {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
+        System.out.println("!!! after sleep");
         for (Future future : futureList)
             future.cancel(true);
     }
