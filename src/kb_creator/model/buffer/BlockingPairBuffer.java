@@ -208,6 +208,15 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
+    public void addPair(AbstractPair pair) {
+        try {
+            cpQueueToWrite.put(pair);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void clear(int requestedK) {
         //dont delete files for iteration 0 because there wont be any
         if (deleteFiles && requestedK != 0) {

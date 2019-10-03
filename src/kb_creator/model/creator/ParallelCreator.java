@@ -78,15 +78,27 @@ public class ParallelCreator extends AbstractCreator {
 
                 iterationPairCounter++;
 
-                //todo: deal with inconsistent and consistent queues and counters and set numbers to consistent queues
-                //maybe put inconsistent and consistent counters in kb writer?!
 
-/*                nextCandidatePairAmount++;
-                iterationNumberOfKBs++;
-                totalNumberOfKBs++;*/
+                //todo: maybe put inconsistent and consistent counters in kb writer?!
+
+                for (AbstractPair pair : outputPairsQueue) {
+                    l.addPair(pair);
+                    nextCandidatePairAmount++;
+
+                }
+
+                for (AbstractKnowledgeBase knowledgeBase : consistentQueue) {
+                    kbWriter.addConsistentKb(knowledgeBase);
+                    iterationNumberOfKBs++;
+                    totalNumberOfKBs++;
+                }
+
+                //todo: what to do with inconsistent queue?
 
                 //this both takes almost no time
-                checkIfWaitForWriter();
+                checkIfWaitForWriter(); //todo: this could be done with putting kbs into blocking queue
+
+
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
@@ -103,7 +115,7 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void startThreads() {
-        
+
         for (int i = 0; i < numberOfThreads; i++) {
 
             CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);

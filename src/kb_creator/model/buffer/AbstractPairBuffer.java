@@ -45,6 +45,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     public abstract void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd);
 
+    public abstract void addPair(AbstractPair pair);
 
     public BufferStatus getStatus() {
         return status;

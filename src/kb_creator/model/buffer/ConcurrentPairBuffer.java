@@ -201,6 +201,11 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
+    public void addPair(AbstractPair pair) {
+        cpQueueToWrite.add(pair);
+    }
+
+    @Override
     public void clear(int requestedK) {
         //dont delete files for iteration 0 because there wont be any
         if (deleteFiles && requestedK != 0) {

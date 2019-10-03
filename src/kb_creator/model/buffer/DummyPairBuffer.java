@@ -66,6 +66,11 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList.get(candidatePairList.size() - 1).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
+    @Override
+    public void addPair(AbstractPair pair) {
+        candidatePairList.get(candidatePairList.size() - 1).add(pair);
+    }
+
 
     @Override
     public int getQueueToWriteSize() {
