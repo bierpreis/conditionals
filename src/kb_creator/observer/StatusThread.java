@@ -1,13 +1,14 @@
 package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
+import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.buffer.BlockingPairBuffer;
 import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.writer.AbstractKbWriter;
 
 public class StatusThread implements Runnable {
-    private SimpleCreator creatorThread;
+    private AbstractCreator creatorThread;
     private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
@@ -123,7 +124,7 @@ public class StatusThread implements Runnable {
         return kbPerSecond;
     }
 
-    public void setCreatorThread(SimpleCreator kbCreator) {
+    public void setCreatorThread(AbstractCreator kbCreator) {
         this.creatorThread = kbCreator;
         this.kbWriter = creatorThread.getKbWriterThread();
     }

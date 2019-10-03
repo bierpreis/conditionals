@@ -199,4 +199,16 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     protected abstract void addConsistentKb(AbstractKnowledgeBase knowledgeBase);
+
+    public AbstractPairBuffer getPairBuffer() {
+        return l;
+    }
+
+    public AbstractKbWriter getKbWriterThread() {
+        return kbWriter;
+    }
+
+    public void setList(AbstractPairBuffer requestedList) {
+        l = requestedList;
+    }
 }

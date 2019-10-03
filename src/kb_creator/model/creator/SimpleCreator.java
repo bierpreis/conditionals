@@ -125,13 +125,9 @@ public class SimpleCreator extends AbstractCreator {
     }
 
 
-    public AbstractKbWriter getKbWriterThread() {
-        return kbWriter;
-    }
 
-    public AbstractPairBuffer getPairBuffer() {
-        return l;
-    }
+
+
 
     @Override
     public void stop() {
@@ -140,9 +136,7 @@ public class SimpleCreator extends AbstractCreator {
     }
 
 
-    public void setList(AbstractPairBuffer requestedList) {
-        l = requestedList;
-    }
+
 
     @Override
     protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
