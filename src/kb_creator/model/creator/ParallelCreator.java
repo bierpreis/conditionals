@@ -22,8 +22,7 @@ public class ParallelCreator extends AbstractCreator {
 
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-    private List<CandidateThread> threadList = new ArrayList<>(numberOfThreads);
-
+    private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
 
     public ParallelCreator(AbstractSignature signature, String kbFilePath) {
@@ -53,7 +52,8 @@ public class ParallelCreator extends AbstractCreator {
 
             System.gc();
 
-            //todo: start creator threadsthreads
+            startThreads();
+
             l.prepareIteration(k);
 
             int iterationPairCounter = 0;
@@ -92,40 +92,37 @@ public class ParallelCreator extends AbstractCreator {
 
 
             }
-            //todo: wait until inputqueue is empty, then shutdown threads. wait until they finish
+            waitAndStopThreads();
 
             l.finishIteration(k);
             k = k + 1;
         }
-        //todo: close threads
+        //todo: check if threads are closed correctly at this point.
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
     }
 
     private void startThreads() {
-        //todo
+        
         for (int i = 0; i < numberOfThreads; i++) {
 
             CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);
-            threadList.add(thread);
-            executorService.submit(thread);
+
+            futureList.add(executorService.submit(thread));
         }
     }
 
     private void waitAndStopThreads() {
 
-        for (CandidateThread thread : threadList)
-            thread.askToStop();
+        while (!inputPairsQueue.isEmpty())
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        //todo: interrupt
-        for (CandidateThread thread : threadList)
-            thread.
+        for (Future future : futureList)
+            future.cancel(true);
     }
 
 
