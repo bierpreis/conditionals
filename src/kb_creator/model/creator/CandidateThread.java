@@ -82,7 +82,6 @@ public class CandidateThread implements Runnable {
 
 
             }
-            //todo: check if this is correct position {}
             //this saves a lot of memory
             //this takes almost no time
             candidatePair.clear();
