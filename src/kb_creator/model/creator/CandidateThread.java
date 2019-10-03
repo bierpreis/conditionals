@@ -33,14 +33,14 @@ public class CandidateThread implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.interrupted()) { //todo: does it work? or volatile boolean?
+        while (!Thread.interrupted()) { //todo: interrupt this runnable like in bookmark "interrupt runnable" and check if this works
 
             AbstractPair candidatePair = null;
 
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println("Thread " + threadNumber + " was interrupted.");
             }
 
             for (NewConditional r : candidatePair.getCandidatesList()) {
