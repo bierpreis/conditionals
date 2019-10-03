@@ -64,8 +64,6 @@ public class ParallelCreator extends AbstractCreator {
             //line  7
             l.addNewList(new ArrayList<>());
 
-            waitAndStopThreads();
-
             //this is line 8
             while (l.hasMoreElements(k)) {
 
@@ -150,7 +148,8 @@ public class ParallelCreator extends AbstractCreator {
     @Override
     protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
         try {
-            inConsistentQueue.put(knowledgeBase);
+            System.out.println("adding kb to queue");
+            consistentQueue.put(knowledgeBase);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
