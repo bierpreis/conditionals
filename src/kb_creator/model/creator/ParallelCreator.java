@@ -25,34 +25,10 @@ public class ParallelCreator extends AbstractCreator {
     private List<CandidateThread> threadList = new ArrayList<>(numberOfThreads);
 
 
-    //todo
+
     public ParallelCreator(AbstractSignature signature, String kbFilePath) {
         super(signature, kbFilePath);
         System.out.println("new parallel creator");
-
-        //todo: starting should be own method which is called every iteration
-        for (int i = 0; i < numberOfThreads; i++) {
-
-            CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);
-            threadList.add(thread);
-            executorService.submit(thread);
-        }
-
-        //todo: remove this test stuff
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("now interrupting!");
-
-        for (CandidateThread thread : threadList)
-            thread.askToStop();
-
-        executorService.shutdown();
-
-        executorService.
 
     }
 
@@ -128,12 +104,28 @@ public class ParallelCreator extends AbstractCreator {
 
     private void startThreads() {
         //todo
-        //new executor service?
+        for (int i = 0; i < numberOfThreads; i++) {
+
+            CandidateThread thread = new CandidateThread(i, consistentQueue, inConsistentQueue, inputPairsQueue, outputPairsQueue);
+            threadList.add(thread);
+            executorService.submit(thread);
+        }
     }
 
     private void waitAndStopThreads() {
-        //todo
-        //when input queue is empty close threads? but how?
+
+        for (CandidateThread thread : threadList)
+            thread.askToStop();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        //todo: interrupt
+        for (CandidateThread thread : threadList)
+            thread.
     }
 
 
