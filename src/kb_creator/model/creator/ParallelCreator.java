@@ -13,13 +13,6 @@ public class ParallelCreator extends AbstractCreator {
     //todo: gui should set this
     private int numberOfThreads = 3;
 
-
-    private BlockingQueue<AbstractKnowledgeBase> consistentQueue = new ArrayBlockingQueue<>(500);
-    private BlockingQueue<AbstractKnowledgeBase> inConsistentQueue = new ArrayBlockingQueue<>(500);
-
-    private BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
-    private BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
-
     private ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
@@ -88,17 +81,11 @@ public class ParallelCreator extends AbstractCreator {
 
                 }
 
-                //todo: doenst work
-                while (!consistentQueue.isEmpty()) {
-                    System.out.println("taking..");
-                    try {
-                        kbWriter.addConsistentKb(consistentQueue.take());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    iterationNumberOfKBs++;
-                    totalNumberOfKBs++;
-                }
+                //todo: counters need to be in writer not here
+
+                iterationNumberOfKBs++;
+                totalNumberOfKBs++;
+
 
                 //todo: what to do with inconsistent queue?
 

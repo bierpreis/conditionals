@@ -1,17 +1,9 @@
 package kb_creator.model.writer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 
-public abstract class AbstractKbWriter implements Runnable {
+public abstract class AbstractKbWriter{
 
     protected WriterStatus status;
-
-    @Override
-    public abstract void run();
-
-    public abstract void addConsistentKb(AbstractKnowledgeBase knowledgeBase);
-
-    public abstract void addInconsistentKb(AbstractKnowledgeBase knowledgeBase);
 
     public abstract int getInconsistentCounter();
 
@@ -25,5 +17,4 @@ public abstract class AbstractKbWriter implements Runnable {
         return status;
     }
 
-    public abstract void stop();
 }

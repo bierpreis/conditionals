@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
@@ -46,6 +48,13 @@ public abstract class AbstractCreator implements Runnable {
     protected AbstractKbWriter kbWriter;
 
 
+    protected BlockingQueue<AbstractKnowledgeBase> consistentQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<AbstractKnowledgeBase> inConsistentQueue = new ArrayBlockingQueue<>(500);
+
+    protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
+
+
     public AbstractCreator(AbstractSignature signature, String kbFilePath) {
         AbstractFormula.setSignature(signature);
         AbstractKnowledgeBase.setSignature(signature);
@@ -55,12 +64,11 @@ public abstract class AbstractCreator implements Runnable {
         this.signature = signature;
         waitForKbWriter = false;  //todo: remove and replace it by auto wait with blocking queue in kb writer
 
-        //todo: add queues to writer  and make there one thread for consistent and one for inconsistent. then it can empty the queues and auto block
         //kbFilePath is null when no buffering is requested
         if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath);
+            kbWriter = new KbFileWriter(kbFilePath, consistentQueue, inConsistentQueue);
         else
-            kbWriter = new KbDummyWriter();
+            kbWriter = new KbDummyWriter(consistentQueue, inConsistentQueue);
 
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 

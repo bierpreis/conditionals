@@ -1,30 +1,20 @@
 package kb_creator.model.writer;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.pairs.AbstractPair;
+
+import java.util.concurrent.BlockingQueue;
 
 
 //this class is a writer which throws all input away
 //it is a kind of placeholder for test runs
 public class KbDummyWriter extends AbstractKbWriter {
 
-    public KbDummyWriter() {
+    //todo: 2 threads to empty queues
+    public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inConsistentQueue) {
         status = WriterStatus.NOT_STARTED;
     }
 
-    @Override
-    public void run() {
-
-    }
-
-    @Override
-    public void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
-
-    }
-
-    @Override
-    public void addInconsistentKb(AbstractKnowledgeBase knowledgeBase) {
-
-    }
 
     @Override
     public int getInconsistentCounter() {
@@ -46,8 +36,4 @@ public class KbDummyWriter extends AbstractKbWriter {
         return 0;
     }
 
-    @Override
-    public void stop() {
-        //intentionally nothing
-    }
 }
