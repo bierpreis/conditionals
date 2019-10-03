@@ -37,11 +37,13 @@ public class CandidateThread implements Runnable {
 
             AbstractPair candidatePair = null;
 
+            System.out.println("Thread " + threadNumber + " before take");
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) {
                 System.out.println("thread " + threadNumber + " was interrupted.");
             }
+            System.out.println("Thread " + threadNumber + " after take");
 
             for (NewConditional r : candidatePair.getCandidatesList()) {
                 long overallStart = System.nanoTime();
@@ -57,7 +59,9 @@ public class CandidateThread implements Runnable {
                     AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
 
                     try {
-                        consistentQueue.put(knowledgeBaseToAdd);
+                        System.out.println("consistent size: " + consistentQueue.size());
+                        consistentQueue.put(knowledgeBaseToAdd); //todo: threads blocking because queue is full
+                        System.out.println("after put");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -72,12 +76,14 @@ public class CandidateThread implements Runnable {
                             candidatesToAdd.add(conditionalFromCandidates);
                     //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
-
                     outputQueue.add(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
 
                     //save inconsistent knowledge base
                     //this part takes almost no time
-                } else inconsistentQueue.add(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
+                } else
+                    inconsistentQueue.add(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
+
+
                 //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
 
 

@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public class ParallelCreator extends AbstractCreator {
 
     //todo: gui should set this
-    private int numberOfThreads = 2;
+    private int numberOfThreads = 3;
 
 
     private BlockingQueue<AbstractKnowledgeBase> consistentQueue = new ArrayBlockingQueue<>(500);
@@ -20,7 +20,7 @@ public class ParallelCreator extends AbstractCreator {
     private BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
     private BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(2);
+    private ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
@@ -102,8 +102,6 @@ public class ParallelCreator extends AbstractCreator {
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-
-                System.out.println("!!at end of loop");
             }
             waitAndStopThreads();
 
@@ -126,16 +124,13 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void waitAndStopThreads() {
-        System.out.println("!!! before sleep");
         while (!inputPairsQueue.isEmpty()) {
             try {
-                System.out.println("creator sleeping! " + inputPairsQueue.size()); //todo
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        System.out.println("!!! after sleep");
         for (Future future : futureList)
             future.cancel(true);
     }
