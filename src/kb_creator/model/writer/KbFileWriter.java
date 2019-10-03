@@ -17,6 +17,7 @@ public class KbFileWriter extends AbstractKbWriter implements Runnable {
     private int consistentCounter;
     private int inconsistentCounter;
 
+    //todo: idea: make 1 runnable class as writer. than 2 objects of it 1 for consistent and 1 for insconsistent writer
 
     @Override
     public void run() {
