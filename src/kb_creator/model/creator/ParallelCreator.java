@@ -128,6 +128,7 @@ public class ParallelCreator extends AbstractCreator {
 
         while (!inputPairsQueue.isEmpty())
             try {
+                System.out.println("creator sleeping!"); //todo
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -146,7 +147,11 @@ public class ParallelCreator extends AbstractCreator {
 
     @Override
     protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
-        inConsistentQueue.add(knowledgeBase);
+        try {
+            inConsistentQueue.put(knowledgeBase);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
