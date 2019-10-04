@@ -196,7 +196,7 @@ public abstract class AbstractCreator implements Runnable {
 
         }
 
-        //todo: really? is this done twice? think about!
+        //todo: really? this is wrong i think. AND not add but put?!
         for (AbstractPair candidatePair : listToReturn)
             consistentQueue.add(candidatePair.getKnowledgeBase());
 

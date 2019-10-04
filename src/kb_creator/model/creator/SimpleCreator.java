@@ -1,17 +1,11 @@
 package kb_creator.model.creator;
-
-import kb_creator.model.pairs.RealListPair;
-import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
-import kb_creator.model.buffer.AbstractPairBuffer;
+
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import kb_creator.model.writer.AbstractKbWriter;
-import kb_creator.model.writer.KbDummyWriter;
-import kb_creator.model.writer.KbFileWriter;
-import nfc.model.NfcCreator;
+
 
 import java.util.*;
 
