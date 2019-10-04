@@ -1,4 +1,5 @@
 package kb_creator.model.creator;
+
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
@@ -69,7 +70,11 @@ public class SimpleCreator extends AbstractCreator {
                         //first create the new knowledge base
                         //takes very little time
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
-                        consistentWriterQueue.add(knowledgeBaseToAdd);
+                        try {
+                            consistentWriterQueue.put(knowledgeBaseToAdd);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
                         //long beforeCandidates = System.nanoTime();
