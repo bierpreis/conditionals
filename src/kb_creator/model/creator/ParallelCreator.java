@@ -88,10 +88,6 @@ public class ParallelCreator extends AbstractCreator {
 
                 //todo: what to do with inconsistent queue?
 
-                //this both takes almost no time
-                checkIfWaitForWriter(); //todo: this could be done with putting kbs into blocking queue
-
-
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
             }

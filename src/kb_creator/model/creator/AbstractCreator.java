@@ -51,8 +51,8 @@ public abstract class AbstractCreator implements Runnable {
     protected BlockingQueue<AbstractKnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     protected BlockingQueue<AbstractKnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
-    protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
-    protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
+    //protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
+    //protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
 
 
     public AbstractCreator(AbstractSignature signature, String kbFilePath) {
@@ -62,7 +62,6 @@ public abstract class AbstractCreator implements Runnable {
 
         creatorStatus = CreatorStatus.NOT_STARTED;
         this.signature = signature;
-        waitForKbWriter = false;  //todo: remove and replace it by auto wait with blocking queue in kb writer
 
         //kbFilePath is null when no buffering is requested
         if (kbFilePath != null)
@@ -84,19 +83,6 @@ public abstract class AbstractCreator implements Runnable {
         lastIterationAmount = 0;
 
         startTime = System.currentTimeMillis();
-    }
-
-    protected void checkIfWaitForWriter() {
-        if (waitForKbWriter)
-            synchronized (this) {
-                try {
-                    this.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                waitForKbWriter = false;
-            }
-
     }
 
     public void setSignature(AbstractSignature signature) {
