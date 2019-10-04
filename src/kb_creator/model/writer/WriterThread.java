@@ -23,6 +23,7 @@ public class WriterThread implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("New Writer Thread started for " + folderName + " kbs");
         while (running) {
             try {
                 writeConsistentKbToFile(queue.take());

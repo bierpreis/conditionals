@@ -135,15 +135,5 @@ public class ParallelCreator extends AbstractCreator {
         waitAndStopThreads();
     }
 
-    @Override
-    protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
-        try {
-            System.out.println("adding kb to queue");
-            consistentQueue.put(knowledgeBase);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }

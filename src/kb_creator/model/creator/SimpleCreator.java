@@ -24,6 +24,7 @@ public class SimpleCreator extends AbstractCreator {
 
     }
 
+    //todo: recreate this
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
@@ -74,7 +75,7 @@ public class SimpleCreator extends AbstractCreator {
                         //first create the new knowledge base
                         //takes very little time
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
-                        kbWriter.addConsistentKb(knowledgeBaseToAdd);
+                        consistentQueue.add(knowledgeBaseToAdd);
                         //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
                         //long beforeCandidates = System.nanoTime();
@@ -119,30 +120,21 @@ public class SimpleCreator extends AbstractCreator {
     }
 
     private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
-        AbstractKnowledgeBase inconsistentKB = new ObjectKnowledgeBase(iterationNumberOfKBs, knowledgeBase, conditionalToAdd);
-        kbWriter.addInconsistentKb(inconsistentKB);
-        totalInconsistentAmount++;
+        try {
+            inConsistentQueue.put(new ObjectKnowledgeBase(iterationNumberOfKBs, knowledgeBase, conditionalToAdd)); //todo: why number for inconsistent kb???
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        totalInconsistentAmount++; //todo: counter in writer?
     }
-
-
-
-
 
 
     @Override
     public void stop() {
         super.stop();
-        kbWriter.stop();
+
     }
-
-
-
-
-    @Override
-    protected void addConsistentKb(AbstractKnowledgeBase knowledgeBase) {
-        kbWriter.addConsistentKb(knowledgeBase);
-    }
-
 
 }
 

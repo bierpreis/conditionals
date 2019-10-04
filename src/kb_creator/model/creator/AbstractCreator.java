@@ -83,9 +83,6 @@ public abstract class AbstractCreator implements Runnable {
 
         lastIterationAmount = 0;
 
-        Thread kbWriterThread = new Thread(kbWriter);
-        kbWriterThread.start();
-
         startTime = System.currentTimeMillis();
     }
 
@@ -199,15 +196,14 @@ public abstract class AbstractCreator implements Runnable {
 
         }
 
+        //todo: really? is this done twice? think about!
         for (AbstractPair candidatePair : listToReturn)
-            addConsistentKb(candidatePair.getKnowledgeBase());
+            consistentQueue.add(candidatePair.getKnowledgeBase());
 
 
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
-
-    protected abstract void addConsistentKb(AbstractKnowledgeBase knowledgeBase);
 
     public AbstractPairBuffer getPairBuffer() {
         return l;
