@@ -1,7 +1,7 @@
 package kb_creator.model.writer;
 
 
-public abstract class AbstractKbWriter{
+public abstract class AbstractKbWriter {
 
     protected WriterStatus status;
 
@@ -13,8 +13,10 @@ public abstract class AbstractKbWriter{
 
     public abstract int getInconsistentQueue();
 
-    public WriterStatus getStatus(){
+    public WriterStatus getStatus() {
         return status;
     }
+
+    public abstract void stop();
 
 }

@@ -130,6 +130,7 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public void stop() {
+        kbWriter.stop();
         this.creatorStatus = CreatorStatus.STOPPED;
     }
 

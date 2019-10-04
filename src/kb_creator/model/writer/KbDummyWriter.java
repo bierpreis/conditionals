@@ -36,4 +36,9 @@ public class KbDummyWriter extends AbstractKbWriter {
         return 0;
     }
 
+    @Override
+    public void stop() {
+        //intentionally nothing
+    }
+
 }
