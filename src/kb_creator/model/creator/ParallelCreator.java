@@ -61,7 +61,7 @@ public class ParallelCreator extends AbstractCreator {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                    //todo: reactivate
+                //todo: reactivate. make own thread for this to avoid blocking?
 /*                if (inputPairsQueue.remainingCapacity() > 0) {
                     try {
                         inputPairsQueue.put(l.getNextPair(k));
