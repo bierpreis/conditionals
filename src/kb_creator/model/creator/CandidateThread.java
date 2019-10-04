@@ -60,7 +60,7 @@ public class CandidateThread implements Runnable {
 
                     try {
                         System.out.println("consistent size: " + consistentQueue.size());
-                        consistentQueue.put(knowledgeBaseToAdd); //todo: threads blocking because queue is full
+                        consistentQueue.put(knowledgeBaseToAdd);
                         System.out.println("after put");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
