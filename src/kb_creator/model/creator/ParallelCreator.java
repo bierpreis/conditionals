@@ -69,6 +69,7 @@ public class ParallelCreator extends AbstractCreator {
                     }
                 }
 
+                //todo: make this static in creator thread? what about other counters?
                 iterationPairCounter++;
 
 
