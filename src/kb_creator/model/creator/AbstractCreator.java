@@ -48,8 +48,8 @@ public abstract class AbstractCreator implements Runnable {
     protected AbstractKbWriter kbWriter;
 
 
-    protected BlockingQueue<AbstractKnowledgeBase> consistentQueue = new ArrayBlockingQueue<>(500);
-    protected BlockingQueue<AbstractKnowledgeBase> inConsistentQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<AbstractKnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<AbstractKnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
     protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
     protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
@@ -66,9 +66,9 @@ public abstract class AbstractCreator implements Runnable {
 
         //kbFilePath is null when no buffering is requested
         if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath, consistentQueue, inConsistentQueue);
+            kbWriter = new KbFileWriter(kbFilePath, consistentWriterQueue, inconsistentWriterQueue);
         else
-            kbWriter = new KbDummyWriter(consistentQueue, inConsistentQueue);
+            kbWriter = new KbDummyWriter(consistentWriterQueue, inconsistentWriterQueue);
 
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
@@ -196,9 +196,14 @@ public abstract class AbstractCreator implements Runnable {
 
         }
 
-        //todo: really? this is wrong i think. AND not add but put?!
-        for (AbstractPair candidatePair : listToReturn)
-            consistentQueue.add(candidatePair.getKnowledgeBase());
+        for (AbstractPair candidatePair : listToReturn) {
+            try {
+                consistentWriterQueue.put(candidatePair.getKnowledgeBase());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        }
 
 
         System.out.println("finished 1 element kbs");
