@@ -61,13 +61,14 @@ public class ParallelCreator extends AbstractCreator {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                if (inputPairsQueue.remainingCapacity() > 0) {
+                    //todo: reactivate
+/*                if (inputPairsQueue.remainingCapacity() > 0) {
                     try {
                         inputPairsQueue.put(l.getNextPair(k));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                }
+                }*/
 
                 //todo: make this static in creator thread? what about other counters?
                 iterationPairCounter++;
@@ -75,11 +76,12 @@ public class ParallelCreator extends AbstractCreator {
 
                 //todo: maybe put inconsistent and consistent counters in kb writer?!
 
-                for (AbstractPair pair : outputPairsQueue) {
+                //todo: own thread which only adds pairs to queue?
+/*                for (AbstractPair pair : outputPairsQueue) {
                     l.addPair(pair);
                     nextCandidatePairAmount++;
 
-                }
+                }*/
 
                 //todo: counters need to be in writer not here
 
@@ -106,14 +108,16 @@ public class ParallelCreator extends AbstractCreator {
 
         for (int i = 0; i < numberOfThreads; i++) {
 
-            CandidateThread thread = new CandidateThread(i, consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
+            //todo: reactivate
+/*            CandidateThread thread = new CandidateThread(i, consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
-            futureList.add(executorService.submit(thread));
+            futureList.add(executorService.submit(thread));*/
         }
     }
 
+    //todo: reactivate
     private void waitAndStopThreads() {
-        while (!inputPairsQueue.isEmpty()) {
+/*        while (!inputPairsQueue.isEmpty()) {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -121,7 +125,7 @@ public class ParallelCreator extends AbstractCreator {
             }
         }
         for (Future future : futureList)
-            future.cancel(true);
+            future.cancel(true);*/
     }
 
 

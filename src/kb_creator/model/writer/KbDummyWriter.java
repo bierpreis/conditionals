@@ -13,7 +13,7 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
 
     private DummyWriterThread consistentThread;
     private DummyWriterThread inconsistentThread;
-    
+
     public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
         status = WriterStatus.NOT_STARTED;
 
