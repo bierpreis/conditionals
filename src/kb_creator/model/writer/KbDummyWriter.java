@@ -24,7 +24,7 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
         inconsistentThread = new DummyWriterThread(inconsistentKbQueue);
 
         new Thread(consistentThread).start();
-        new Thread(inconsistentThread);
+        new Thread(inconsistentThread).start();
 
 
     }
