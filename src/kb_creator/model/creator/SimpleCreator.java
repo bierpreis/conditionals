@@ -98,7 +98,6 @@ public class SimpleCreator extends AbstractCreator {
                     //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
                 }
                 //this both takes almost no time
-                checkIfWaitForWriter();
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
                 //this saves a lot of memory

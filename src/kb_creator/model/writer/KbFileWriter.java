@@ -50,7 +50,7 @@ public class KbFileWriter extends AbstractKbWriter {
     public int getInconsistentCounter() {
         return inconsistentWriter.getCounter();
     }
-    
+
     public void stop() {
         consistentWriter.stop();
         inconsistentWriter.stop();
