@@ -19,7 +19,7 @@ public class SimpleCreator extends AbstractCreator {
 
     }
 
-    //todo: recreate this
+    //todo: rethink why this is slower now
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
@@ -119,7 +119,7 @@ public class SimpleCreator extends AbstractCreator {
 
     private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
         try {
-            inconsistentWriterQueue.put(new ObjectKnowledgeBase(iterationNumberOfKBs, knowledgeBase, conditionalToAdd)); //todo: why number for inconsistent kb???
+            inconsistentWriterQueue.put(new ObjectKnowledgeBase(knowledgeBase, conditionalToAdd));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
