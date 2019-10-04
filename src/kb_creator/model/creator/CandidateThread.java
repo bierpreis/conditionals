@@ -33,7 +33,7 @@ public class CandidateThread implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.interrupted()) { //todo: interrupt this runnable like in bookmark "interrupt runnable" and check if this works
+        while (running) {
 
             AbstractPair candidatePair = null;
 
@@ -95,5 +95,9 @@ public class CandidateThread implements Runnable {
             System.out.println("thread " + this.threadNumber + " finished one pair");
         }
         System.out.println("!!! thread finished");
+    }
+
+    public void stop(){
+        running = false;
     }
 }
