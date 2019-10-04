@@ -1,20 +1,46 @@
 package kb_creator.model.writer;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.pairs.AbstractPair;
 
 import java.util.concurrent.BlockingQueue;
 
 
 //this class is a writer which throws all input away
 //it is a kind of placeholder for test runs
-public class KbDummyWriter extends AbstractKbWriter {
+public class KbDummyWriter extends AbstractKbWriter implements Runnable {
+    private BlockingQueue consistentKbQueue;
+    private BlockingQueue inconsistentKbQueue;
 
-    //todo: 2 threads to empty queues
-    public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inConsistentQueue) {
+    private DummyWriterThread consistentThread;
+    private DummyWriterThread inconsistentThread;
+    
+    public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
         status = WriterStatus.NOT_STARTED;
+
+        this.consistentKbQueue = consistentKbQueue;
+        this.inconsistentKbQueue = inconsistentKbQueue;
+
+        consistentThread = new DummyWriterThread(consistentKbQueue);
+        inconsistentThread = new DummyWriterThread(inconsistentKbQueue);
+
+        new Thread(consistentThread).start();
+        new Thread(inconsistentThread);
+
+
     }
 
+
+    @Override
+    public void run() {
+        while (running) {
+
+            //this empties the queue so the creator cann put stuff in there again
+            if (!consistentKbQueue.isEmpty())
+                consistentKbQueue.poll();
+            if (inconsistentKbQueue.isEmpty())
+                inconsistentKbQueue.poll();
+        }
+    }
 
     @Override
     public int getInconsistentCounter() {
@@ -38,7 +64,8 @@ public class KbDummyWriter extends AbstractKbWriter {
 
     @Override
     public void stop() {
-        //intentionally nothing
+        consistentThread.stop();
+        inconsistentThread.stop();
     }
 
 }
