@@ -10,8 +10,8 @@ public class QueuePutterThread implements Runnable {
     private volatile boolean running = true;
     private AbstractPairBuffer l;
 
-    public QueuePutterThread(BlockingQueue<AbstractPair> queueu, AbstractPairBuffer l) {
-        this.queue = queueu;
+    public QueuePutterThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l) {
+        this.queue = queue;
         this.l = l;
     }
 
