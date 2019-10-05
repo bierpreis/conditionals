@@ -16,10 +16,20 @@ public class ParallelCreator extends AbstractCreator {
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
+    private QueueTakerThread queueTakerThread;
+    private QueuePutterThread queuePutterThread;
+
 
     public ParallelCreator(AbstractSignature signature, String kbFilePath) {
         super(signature, kbFilePath);
         System.out.println("new parallel creator");
+
+        queueTakerThread = new QueueTakerThread(outputPairsQueue, l);
+        new Thread(queueTakerThread).start();
+
+        queuePutterThread = new QueuePutterThread(inputPairsQueue, l);
+        new Thread(queuePutterThread).start();
+
 
     }
 
@@ -48,6 +58,7 @@ public class ParallelCreator extends AbstractCreator {
 
             l.prepareIteration(k);
 
+
             int iterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
@@ -61,14 +72,6 @@ public class ParallelCreator extends AbstractCreator {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                //todo: reactivate. make own thread for this to avoid blocking?
-/*                if (inputPairsQueue.remainingCapacity() > 0) {
-                    try {
-                        inputPairsQueue.put(l.getNextPair(k));
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }*/
 
                 //todo: make this static in creator thread? what about other counters?
                 iterationPairCounter++;
@@ -76,12 +79,6 @@ public class ParallelCreator extends AbstractCreator {
 
                 //todo: maybe put inconsistent and consistent counters in kb writer?!
 
-                //todo: own thread which only adds pairs to queue?
-/*                for (AbstractPair pair : outputPairsQueue) {
-                    l.addPair(pair);
-                    nextCandidatePairAmount++;
-
-                }*/
 
                 //todo: counters need to be in writer not here
 
@@ -108,16 +105,15 @@ public class ParallelCreator extends AbstractCreator {
 
         for (int i = 0; i < numberOfThreads; i++) {
 
-            //todo: reactivate
-/*            CandidateThread thread = new CandidateThread(i, consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
+            CandidateThread thread = new CandidateThread(i, consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
-            futureList.add(executorService.submit(thread));*/
+            futureList.add(executorService.submit(thread));
         }
     }
 
     //todo: reactivate
     private void waitAndStopThreads() {
-/*        while (!inputPairsQueue.isEmpty()) {
+        while (!inputPairsQueue.isEmpty()) {
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
@@ -125,7 +121,7 @@ public class ParallelCreator extends AbstractCreator {
             }
         }
         for (Future future : futureList)
-            future.cancel(true);*/
+            future.cancel(true);
     }
 
 
@@ -133,6 +129,8 @@ public class ParallelCreator extends AbstractCreator {
     public void stop() {
         super.stop();
         waitAndStopThreads();
+        queuePutterThread.stop();
+        queueTakerThread.stop();
     }
 
 

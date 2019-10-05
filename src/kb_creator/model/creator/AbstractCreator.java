@@ -51,8 +51,8 @@ public abstract class AbstractCreator implements Runnable {
     protected BlockingQueue<AbstractKnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     protected BlockingQueue<AbstractKnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
-    //protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
-    //protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
 
 
     public AbstractCreator(AbstractSignature signature, String kbFilePath) {

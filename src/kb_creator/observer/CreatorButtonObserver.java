@@ -36,7 +36,7 @@ public class CreatorButtonObserver implements ActionListener {
         if (e.getActionCommand().equals("Start")) {
 
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-            creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
+            creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
 
 
             AbstractPairBuffer candidateBuffer;
