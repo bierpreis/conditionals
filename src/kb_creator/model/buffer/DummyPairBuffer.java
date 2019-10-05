@@ -32,7 +32,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasElementsForNextK(int k) {
-        return !candidatePairList.get(1).isEmpty();
+        return !candidatePairList.get(k - 1).isEmpty();
     }
 
     @Override
