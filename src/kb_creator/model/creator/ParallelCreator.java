@@ -48,9 +48,9 @@ public class ParallelCreator extends AbstractCreator {
         while (l.hasElementsForNextK(k)) {
             System.gc();
 
-            startThreads(k); 
+            startThreads(k);
 
-            l.prepareIteration(k); //todo: this should set k to l
+            l.prepareIteration(k);
 
 
             int iterationPairCounter = 0;
