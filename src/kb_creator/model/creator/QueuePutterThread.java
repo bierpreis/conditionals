@@ -21,7 +21,7 @@ public class QueuePutterThread implements Runnable {
     public void run() {
         while (running) {
             try {
-                queue.put(l.getNextPair(0)); //todo: number is needed for dummy buffer!!
+                queue.put(l.getNextPair());
                 counter++;
             } catch (InterruptedException e) {
                 e.printStackTrace();

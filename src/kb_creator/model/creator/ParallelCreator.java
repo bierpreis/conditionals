@@ -1,7 +1,6 @@
 package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
-import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
@@ -52,12 +51,12 @@ public class ParallelCreator extends AbstractCreator {
 
 
         //line 6
-        while (l.hasElementsForK(k)) {
+        while (l.hasElementsForNextK()) {
             System.gc();
 
-            startThreads();
+            startThreads();  //todo. start other threads here too? else rename
 
-            l.prepareIteration(k);
+            l.prepareIteration(k); //todo: this should set k to l
 
 
             int iterationPairCounter = 0;
@@ -69,7 +68,7 @@ public class ParallelCreator extends AbstractCreator {
             l.addNewList(new ArrayList<>());
 
             //this is line 8
-            while (l.hasMoreElements(k)) {
+            while (l.hasMoreElements()) {
 
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);

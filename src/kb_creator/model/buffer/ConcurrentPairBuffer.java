@@ -223,7 +223,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasMoreElements(int currentK) {
+    public boolean hasMoreElements() {
         if (!queueToReturn.isEmpty())
             return true;
 
@@ -232,7 +232,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public AbstractPair getNextPair(int currentK) {
+    public AbstractPair getNextPair() {
         while (queueToReturn.peek() == null)
             try {
                 System.out.println("main thread waiting for buffer ...");
@@ -245,12 +245,13 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasElementsForK(int requestedK) {
+    public boolean hasElementsForNextK() {
         return hasNextIteration;
     }
 
     @Override
     public void prepareIteration(int requestedK) {
+        this.k = requestedK;
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 

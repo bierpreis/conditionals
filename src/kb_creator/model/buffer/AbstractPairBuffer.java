@@ -25,21 +25,26 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     protected boolean deleteFiles;
 
+    //k will be set by prepare iteration methods
+    protected int k;
+
     public AbstractPairBuffer(String baseFilePath) {
         status = BufferStatus.NOT_STARTED;
         this.tmpFilePath = baseFilePath + "/tmp/";
     }
 
 
-    abstract public boolean hasMoreElements(int currentK);
+    abstract public boolean hasMoreElements();
 
-    abstract public AbstractPair getNextPair(int currentK);
+    abstract public AbstractPair getNextPair();
 
-    abstract public boolean hasElementsForK(int requestedK);
+    abstract public boolean hasElementsForNextK();
+
 
     public abstract void prepareIteration(int requestedK);
 
     public abstract void finishIteration(int requestedK);
+
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
@@ -55,7 +60,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     public int getQueueToWriteSize() {
         return 0;
-    }
+    } //todo: wtf is this
 
     public abstract int getReaderBufferSize();
 

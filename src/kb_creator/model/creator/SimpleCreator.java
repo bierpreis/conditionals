@@ -38,7 +38,7 @@ public class SimpleCreator extends AbstractCreator {
         l.finishIteration(0);
 
         //line 6
-        while (l.hasElementsForK(k)) {
+        while (l.hasElementsForNextK()) {
             System.gc();
             l.prepareIteration(k);
 
@@ -51,11 +51,11 @@ public class SimpleCreator extends AbstractCreator {
             l.addNewList(new ArrayList<>());
 
             //this is line 8
-            while (l.hasMoreElements(k)) {
+            while (l.hasMoreElements()) {
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                AbstractPair candidatePair = l.getNextPair(k);
+                AbstractPair candidatePair = l.getNextPair();
 
                 iterationPairCounter++;
                 //line 9

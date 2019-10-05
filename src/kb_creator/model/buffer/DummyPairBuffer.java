@@ -18,24 +18,26 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public AbstractPair getNextPair(int currentK) {
+    public AbstractPair getNextPair() {
+
         nextElementNumber++;
-        return candidatePairList.get(currentK - 1).get(nextElementNumber - 1);
+        return candidatePairList.get(this.k - 1).get(nextElementNumber - 1);
 
     }
 
     @Override
-    public boolean hasMoreElements(int currentK) {
-        return (nextElementNumber) < (candidatePairList.get(currentK - 1).size());
+    public boolean hasMoreElements() {
+        return (nextElementNumber) < (candidatePairList.get(this.k - 1).size());
     }
 
     @Override
-    public boolean hasElementsForK(int requestedK) {
-        return !candidatePairList.get(requestedK - 1).isEmpty();
+    public boolean hasElementsForNextK() {
+        return !candidatePairList.get(this.k - 1).isEmpty();
     }
 
     @Override
     public void prepareIteration(int k) {
+        this.k = k;
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
     }
