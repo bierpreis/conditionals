@@ -205,5 +205,5 @@ public abstract class AbstractCreator implements Runnable {
     public AbstractKbWriter getKbWriterThread() {
         return kbWriter;
     }
-    
+
 }
