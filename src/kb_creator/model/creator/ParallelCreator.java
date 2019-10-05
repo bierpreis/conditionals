@@ -1,5 +1,6 @@
 package kb_creator.model.creator;
 
+import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
@@ -20,8 +21,8 @@ public class ParallelCreator extends AbstractCreator {
     private QueuePutterThread queuePutterThread;
 
 
-    public ParallelCreator(AbstractSignature signature, String kbFilePath) {
-        super(signature, kbFilePath);
+    public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+        super(signature, kbFilePath, l);
         System.out.println("new parallel creator");
 
         queueTakerThread = new QueueTakerThread(outputPairsQueue, l);

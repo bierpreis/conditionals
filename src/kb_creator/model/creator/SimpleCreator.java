@@ -1,5 +1,6 @@
 package kb_creator.model.creator;
 
+import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.propositional_logic.NewConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
@@ -13,8 +14,8 @@ import java.util.*;
 public class SimpleCreator extends AbstractCreator {
 
 
-    public SimpleCreator(AbstractSignature signature, String kbFilePath) {
-        super(signature, kbFilePath);
+    public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+        super(signature, kbFilePath, l);
         System.out.println("new simple creator");
 
     }

@@ -34,18 +34,21 @@ public class CreatorButtonObserver implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
-
-            mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-            creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath());
-
-
             AbstractPairBuffer candidateBuffer;
 
             if (mainWindow.isBufferingRequested()) {
                 if (mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
-                    creatorThreadObject.setList(candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize()));
+                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize());
                 else return; //return if buffer size is 0 because this is no valid value which can be used
-            } else creatorThreadObject.setList(candidateBuffer = new DummyPairBuffer(null));
+            } else candidateBuffer = new DummyPairBuffer(null);
+
+            mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
+            creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
+
+
+
+
+
 
 
             Thread bufferThread = new Thread(candidateBuffer);

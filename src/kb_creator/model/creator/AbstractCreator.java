@@ -55,7 +55,8 @@ public abstract class AbstractCreator implements Runnable {
     protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
 
 
-    public AbstractCreator(AbstractSignature signature, String kbFilePath) {
+    public AbstractCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+        this.l = l;
         AbstractFormula.setSignature(signature);
         AbstractKnowledgeBase.setSignature(signature);
 
@@ -204,8 +205,5 @@ public abstract class AbstractCreator implements Runnable {
     public AbstractKbWriter getKbWriterThread() {
         return kbWriter;
     }
-
-    public void setList(AbstractPairBuffer requestedList) {
-        l = requestedList;
-    }
+    
 }
