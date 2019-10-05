@@ -135,7 +135,6 @@ public class ParallelCreator extends AbstractCreator {
     public void stop() {
         super.stop();
         waitAndStopThreads();
-        queuePutterThread.stop();
         queueTakerThread.stop();
     }
 
