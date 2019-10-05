@@ -10,10 +10,12 @@ public class QueueTakerThread implements Runnable {
     private volatile boolean running = true;
     private int counter = 0;
     private AbstractPairBuffer l;
+    private int currentK;
 
-    public QueueTakerThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l) {
+    public QueueTakerThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int k) {
         this.queue = queue;
         this.l = l;
+        this.currentK = k;
     }
 
 

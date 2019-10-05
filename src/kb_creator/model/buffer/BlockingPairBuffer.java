@@ -234,7 +234,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasMoreElements() {
+    public boolean hasMoreElements(int k) {
         if (!queueToReturn.isEmpty())
             return true;
 
@@ -243,7 +243,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     //todo: currentK is useless? delte?
     @Override
-    public AbstractPair getNextPair() {
+    public AbstractPair getNextPair(int k) {
         try {
             return queueToReturn.take();
         } catch (InterruptedException e) {
@@ -254,13 +254,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasElementsForNextK() {
+    public boolean hasElementsForNextK(int k) {
         return hasNextIteration;
     }
 
     @Override
     public void prepareIteration(int requestedK) {
-        this.k = requestedK;
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 

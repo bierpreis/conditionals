@@ -24,12 +24,6 @@ public class ParallelCreator extends AbstractCreator {
         super(signature, kbFilePath, l);
         System.out.println("new parallel creator");
 
-        queueTakerThread = new QueueTakerThread(outputPairsQueue, l);
-        new Thread(queueTakerThread).start();
-
-        queuePutterThread = new QueuePutterThread(inputPairsQueue, l);
-        new Thread(queuePutterThread).start();
-
 
     }
 
@@ -51,10 +45,10 @@ public class ParallelCreator extends AbstractCreator {
 
 
         //line 6
-        while (l.hasElementsForNextK()) {
+        while (l.hasElementsForNextK(k)) {
             System.gc();
 
-            startThreads();  //todo. start other threads here too? else rename
+            startThreads(k);  //todo. start other threads here too? else rename
 
             l.prepareIteration(k); //todo: this should set k to l
 
@@ -68,7 +62,7 @@ public class ParallelCreator extends AbstractCreator {
             l.addNewList(new ArrayList<>());
 
             //this is line 8
-            while (l.hasMoreElements()) {
+            while (l.hasMoreElements(k)) {
 
 
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
@@ -102,7 +96,14 @@ public class ParallelCreator extends AbstractCreator {
         creatorStatus = CreatorStatus.FINISHED;
     }
 
-    private void startThreads() {
+    private void startThreads(int currentK) {
+
+        queueTakerThread = new QueueTakerThread(outputPairsQueue, l, currentK);
+        new Thread(queueTakerThread).start();
+
+        queuePutterThread = new QueuePutterThread(inputPairsQueue, l, currentK);
+        new Thread(queuePutterThread).start();
+
 
         for (int i = 0; i < numberOfThreads; i++) {
 
@@ -110,6 +111,8 @@ public class ParallelCreator extends AbstractCreator {
 
             futureList.add(executorService.submit(thread));
         }
+
+
     }
 
     //todo: reactivate

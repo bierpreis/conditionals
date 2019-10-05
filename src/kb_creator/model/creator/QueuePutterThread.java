@@ -10,10 +10,12 @@ public class QueuePutterThread implements Runnable {
     private volatile boolean running = true;
     private AbstractPairBuffer l;
     private int counter = 0;
+    private int currentK;
 
-    public QueuePutterThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l) {
+    public QueuePutterThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
         this.queue = queue;
         this.l = l;
+        this.currentK = currentK;
     }
 
     //todo: change to take
@@ -21,7 +23,7 @@ public class QueuePutterThread implements Runnable {
     public void run() {
         while (running) {
             try {
-                queue.put(l.getNextPair());
+                queue.put(l.getNextPair(currentK));
                 counter++;
             } catch (InterruptedException e) {
                 e.printStackTrace();
