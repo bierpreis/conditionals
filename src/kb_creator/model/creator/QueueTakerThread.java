@@ -21,6 +21,7 @@ public class QueueTakerThread implements Runnable {
 
     @Override
     public void run() {
+        System.out.println("started queue taker thread for k= " + currentK);
         while (running) {
             try {
                 l.addPair(queue.take());

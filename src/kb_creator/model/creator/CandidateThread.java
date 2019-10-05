@@ -29,6 +29,7 @@ public class CandidateThread implements Runnable {
 
         this.inputQueue = inputQueue;
         this.outputQueue = outputQueue;
+
     }
 
     @Override

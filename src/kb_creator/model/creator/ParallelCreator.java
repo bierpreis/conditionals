@@ -66,7 +66,7 @@ public class ParallelCreator extends AbstractCreator {
 
             //this is line 8
             while (l.hasMoreElements(k)) {
-
+                System.out.println(System.currentTimeMillis());
                 progress = calculateProgress(currentiterationPairCounter, lastIterationAmount);
 
                 currentiterationPairCounter = queuePutterThread.getCounter();
@@ -81,14 +81,14 @@ public class ParallelCreator extends AbstractCreator {
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
+                try{Thread.sleep(200);}catch(InterruptedException e){
                     e.printStackTrace();
                 }
 
             }
+            System.out.println("before wait");
             waitAndStopThreads();
+            System.out.println("after wait");
 
             l.finishIteration(k);
             k = k + 1;
