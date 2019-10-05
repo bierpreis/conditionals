@@ -30,6 +30,7 @@ public class QueueTakerThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        System.out.println("finished queue putter thread for k= " + currentK);
     }
 
     public void stop() {

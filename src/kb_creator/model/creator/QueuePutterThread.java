@@ -21,7 +21,7 @@ public class QueuePutterThread implements Runnable {
     @Override
     public void run() {
         System.out.println("started queue putter thread for k= " + currentK);
-        while (l.hasMoreElements(currentK)) { //todo: when this works no stop is needed
+        while (l.hasMoreElements(currentK)) {
             try {
                 queue.put(l.getNextPair(currentK));
                 counter++;
@@ -29,6 +29,7 @@ public class QueuePutterThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        System.out.println("finished queue putter thread for k= " + currentK);
     }
 
 
