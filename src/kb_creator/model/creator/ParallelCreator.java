@@ -81,7 +81,9 @@ public class ParallelCreator extends AbstractCreator {
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
-                try{Thread.sleep(200);}catch(InterruptedException e){
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
@@ -117,7 +119,7 @@ public class ParallelCreator extends AbstractCreator {
 
     }
 
-    //todo: reactivate
+    //todo: stop queue taker when finished but how?
     private void waitAndStopThreads() {
         while (!inputPairsQueue.isEmpty()) {
             try {
