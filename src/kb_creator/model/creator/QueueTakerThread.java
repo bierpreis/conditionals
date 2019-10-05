@@ -8,6 +8,7 @@ import java.util.concurrent.BlockingQueue;
 public class QueueTakerThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
     private volatile boolean running = true;
+    private int counter = 0;
     private AbstractPairBuffer l;
 
     public QueueTakerThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l) {
@@ -21,13 +22,18 @@ public class QueueTakerThread implements Runnable {
         while (running) {
             try {
                 l.addPair(queue.take());
+                counter++;
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void stop(){
+    public void stop() {
         running = false;
+    }
+
+    public int getCounter() {
+        return counter;
     }
 }

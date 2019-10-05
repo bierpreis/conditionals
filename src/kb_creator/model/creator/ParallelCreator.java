@@ -71,19 +71,27 @@ public class ParallelCreator extends AbstractCreator {
             //this is line 8
             while (l.hasMoreElements(k)) {
 
-                //todo: counters and progress is wrong here. infinite loop
+
                 progress = calculateProgress(iterationPairCounter, lastIterationAmount);
 
-                iterationPairCounter++;
+                iterationPairCounter = queuePutterThread.getCounter();
 
+                nextCandidatePairAmount = queueTakerThread.getCounter();
 
-                iterationNumberOfKBs++;
+                //todo: get from writer
                 totalNumberOfKBs++;
 
 
                 //todo: what to do with inconsistent queue?
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
+
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             }
             waitAndStopThreads();
 

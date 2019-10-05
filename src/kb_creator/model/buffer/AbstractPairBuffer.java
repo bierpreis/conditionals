@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer implements Runnable {
 
-    protected boolean running;
+    protected boolean running = true;
 
     protected BufferStatus status;
 
