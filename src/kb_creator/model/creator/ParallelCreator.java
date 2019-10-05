@@ -65,7 +65,7 @@ public class ParallelCreator extends AbstractCreator {
             l.addNewList(new ArrayList<>());
 
             //this is line 8
-            while (l.hasMoreElements(k)) {
+            while (l.hasMoreElements(k)) { //todo: when this returns false nothing happens (it will return false once then count again)
                 System.out.println(System.currentTimeMillis());
                 progress = calculateProgress(currentiterationPairCounter, lastIterationAmount);
 
@@ -88,7 +88,7 @@ public class ParallelCreator extends AbstractCreator {
                 }
 
             }
-            System.out.println("before wait");
+            System.out.println("!!!!!!before wait");
             waitAndStopThreads();
             System.out.println("after wait");
 
