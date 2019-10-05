@@ -57,7 +57,6 @@ public class CandidateThread implements Runnable {
                     AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
 
                     try {
-                        System.out.println("consistent size: " + consistentQueue.size());
                         consistentQueue.put(knowledgeBaseToAdd);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

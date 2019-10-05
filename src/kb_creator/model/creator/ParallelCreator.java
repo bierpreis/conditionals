@@ -19,6 +19,8 @@ public class ParallelCreator extends AbstractCreator {
     private QueueTakerThread queueTakerThread;
     private QueuePutterThread queuePutterThread;
 
+    private int allIterationsBeforeCounter = 0;
+
 
     public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
@@ -46,14 +48,15 @@ public class ParallelCreator extends AbstractCreator {
 
         //line 6
         while (l.hasElementsForNextK(k)) {
+            System.out.println("beginning iteration: " + k);
             System.gc();
 
             startThreads(k);
 
             l.prepareIteration(k);
 
-
-            int iterationPairCounter = 0;
+            allIterationsBeforeCounter = iterationNumberOfKBs;
+            int currentiterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
             iterationNumberOfKBs = 0;
@@ -64,15 +67,14 @@ public class ParallelCreator extends AbstractCreator {
             //this is line 8
             while (l.hasMoreElements(k)) {
 
+                progress = calculateProgress(currentiterationPairCounter, lastIterationAmount);
 
-                progress = calculateProgress(iterationPairCounter, lastIterationAmount);
-
-                iterationPairCounter = queuePutterThread.getCounter();
+                currentiterationPairCounter = queuePutterThread.getCounter();
 
                 nextCandidatePairAmount = queueTakerThread.getCounter();
 
-                //todo: get from writer
-                totalNumberOfKBs++;
+                //todo: make this work
+                totalNumberOfKBs = allIterationsBeforeCounter + currentiterationPairCounter;
 
 
                 //todo: what to do with inconsistent queue?
