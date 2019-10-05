@@ -18,10 +18,9 @@ public class QueuePutterThread implements Runnable {
         this.currentK = currentK;
     }
 
-    //todo: change to take
     @Override
     public void run() {
-        while (running) {
+        while (l.hasMoreElements(currentK)) { //todo: when this works no stop is needed
             try {
                 queue.put(l.getNextPair(currentK));
                 counter++;
