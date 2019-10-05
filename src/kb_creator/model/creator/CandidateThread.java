@@ -37,13 +37,11 @@ public class CandidateThread implements Runnable {
 
             AbstractPair candidatePair = null;
 
-            System.out.println("Thread " + threadNumber + " before take");
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) {
                 System.out.println("thread " + threadNumber + " was interrupted.");
             }
-            System.out.println("Thread " + threadNumber + " after take");
 
             for (NewConditional r : candidatePair.getCandidatesList()) {
                 long overallStart = System.nanoTime();
@@ -61,7 +59,6 @@ public class CandidateThread implements Runnable {
                     try {
                         System.out.println("consistent size: " + consistentQueue.size());
                         consistentQueue.put(knowledgeBaseToAdd);
-                        System.out.println("after put");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
