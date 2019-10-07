@@ -32,7 +32,6 @@ public abstract class AbstractPairBuffer implements Runnable {
         this.tmpFilePath = baseFilePath + "/tmp/";
     }
 
-    //todo: maybe impelment k to the next 3 methods
     abstract public boolean hasMoreElements(int k);
 
     abstract public AbstractPair getNextPair(int k);

@@ -89,9 +89,8 @@ public class CandidateThread implements Runnable {
             //this takes almost no time
             candidatePair.clear();
 
-            System.out.println("thread " + this.threadNumber + " finished one pair");
         }
-        System.out.println("!!! thread finished");
+        System.out.println("!!! thread  " + threadNumber + "finished");
     }
 
     public void stop(){

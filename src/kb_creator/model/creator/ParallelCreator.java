@@ -91,9 +91,7 @@ public class ParallelCreator extends AbstractCreator {
 
             }
 
-            System.out.println("!!!!!!before wait");
             waitAndStopThreads();
-            System.out.println("after wait");
 
             l.finishIteration(k);
             k = k + 1;
@@ -133,6 +131,8 @@ public class ParallelCreator extends AbstractCreator {
         }
         for (Future future : futureList)
             future.cancel(true);
+
+        System.out.println("threads canceled");
     }
 
 
