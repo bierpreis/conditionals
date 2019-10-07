@@ -51,7 +51,7 @@ public class ParallelCreator extends AbstractCreator {
             System.out.println("beginning iteration: " + k);
             System.gc();
 
-            //todo: the next 2 lines were twistet. k like that?
+            //todo: the next 2 lines were twisted. k like that?
             l.prepareIteration(k);
 
             startThreads(k);
@@ -67,7 +67,7 @@ public class ParallelCreator extends AbstractCreator {
             l.addNewList(new ArrayList<>());
 
             //this is line 8
-            while (l.hasMoreElements(k)) { //todo: when this returns false nothing happens (it will return false once then count again)
+            while (l.hasMoreElements(k)) {
 
                 progress = calculateProgress(currentiterationPairCounter, lastIterationAmount);
 
