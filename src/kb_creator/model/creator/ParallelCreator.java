@@ -51,9 +51,11 @@ public class ParallelCreator extends AbstractCreator {
             System.out.println("beginning iteration: " + k);
             System.gc();
 
+            //todo: the next 2 lines were twistet. k like that?
+            l.prepareIteration(k);
+
             startThreads(k);
 
-            l.prepareIteration(k);
 
             allIterationsBeforeCounter = iterationNumberOfKBs;
             int currentiterationPairCounter = 0;
