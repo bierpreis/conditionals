@@ -10,6 +10,7 @@ public class QueuePutterThread implements Runnable {
     private AbstractPairBuffer l;
     private int counter = 0;
     private int currentK;
+    private volatile boolean running = true;
 
     public QueuePutterThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
         this.queue = queue;
@@ -22,7 +23,7 @@ public class QueuePutterThread implements Runnable {
         System.out.println("started queue putter thread for k= " + currentK);
 
         //like this the thread will close when the work is finished
-        while (l.hasMoreElements(currentK)) {
+        while (running) { //todo: this causes null pointer
             try {
                 queue.put(l.getNextPair(currentK));
                 counter++;
@@ -35,5 +36,10 @@ public class QueuePutterThread implements Runnable {
 
     public int getCounter() {
         return counter;
+    }
+
+    //todo: use this method
+    public void stop(){
+        running = false;
     }
 }

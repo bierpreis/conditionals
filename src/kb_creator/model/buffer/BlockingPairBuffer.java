@@ -235,6 +235,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasMoreElements(int k) {
+
         if (!queueToReturn.isEmpty())
             return true;
 
