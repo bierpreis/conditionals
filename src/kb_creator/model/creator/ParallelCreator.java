@@ -135,9 +135,7 @@ public class ParallelCreator extends AbstractCreator {
             future.cancel(true);
 
         System.out.println("creator threads canceled");
-        System.out.println("trying to stop taker thread");
         queueTakerThread.stopWhenFinished();
-        System.out.println("after stop taker thread");
     }
 
 

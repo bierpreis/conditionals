@@ -8,7 +8,7 @@ import java.util.concurrent.BlockingQueue;
 public class QueuePutterThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
     private AbstractPairBuffer l;
-    private int counter = 0;
+    private volatile int counter = 0;
     private int currentK;
 
     public QueuePutterThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
