@@ -42,6 +42,7 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
         }
     }
 
+    //todo: here the counters should do sth. can be implemented in counter.
     @Override
     public int getInconsistentCounter() {
         return 0;
@@ -51,6 +52,7 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
     public int getConsistentCounter() {
         return 0;
     }
+
 
     @Override
     public int getConsistentQueue() {
