@@ -30,7 +30,7 @@ public class DummyWriterThread implements Runnable {
                 e.printStackTrace();
             }
         }
-        throw new RuntimeException("STOPPED"); //todo: this can not be seen!?
+        throw new RuntimeException("STOPPED"); //todo: this can not be seen!? interrupt this thread!
     }
 
     public void stop() {
