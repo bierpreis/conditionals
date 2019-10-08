@@ -117,6 +117,7 @@ public abstract class AbstractCreator implements Runnable {
         return (pairCounter / (float) lastIterationAmount) * 100;
     }
 
+    //todo: should be deleted when writer has blocking queue
     public void waitForKbWriter() {
         creatorStatus = CreatorStatus.WAITING_FOR_WRITER;
         waitForKbWriter = true;

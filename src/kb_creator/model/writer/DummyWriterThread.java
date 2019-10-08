@@ -10,7 +10,7 @@ public class DummyWriterThread implements Runnable {
     private boolean bool; //todo: delete when not needed anymore
     private int counter;
 
-    public DummyWriterThread(BlockingQueue queue) {
+    public DummyWriterThread(BlockingQueue<AbstractKnowledgeBase> queue) {
         this.queue = queue;
 
     }
@@ -25,8 +25,7 @@ public class DummyWriterThread implements Runnable {
         while (running) {
             //this should delete all entries and wait if there are no entries
             try {
-                queue.take(); //todo: this is shit!!
-                counter++;
+                queue.take();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
