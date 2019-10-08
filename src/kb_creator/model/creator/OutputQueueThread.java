@@ -10,12 +10,10 @@ public class OutputQueueThread implements Runnable {
     private volatile boolean running = true;
     private int counter = 0;
     private AbstractPairBuffer l;
-    private int currentK; //todo. remove k?
 
-    public OutputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int k) {
+    public OutputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l) {
         this.queue = queue;
         this.l = l;
-        this.currentK = k;
     }
 
 
