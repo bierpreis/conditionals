@@ -11,6 +11,7 @@ import java.util.List;
 public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
+    private volatile int k;
 
     public DummyPairBuffer(String filePath) {
         super(filePath);
@@ -42,6 +43,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int k) {
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
+        this.k = k;
     }
 
     @Override
@@ -68,14 +70,14 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
-        System.out.println("adding pair to " + candidatePairList.get(candidatePairList.size() - 1));
-        candidatePairList.get(candidatePairList.size() - 1).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
+        System.out.println("adding pair to " + k);
+        candidatePairList.get(k).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
     @Override
     public void addPair(AbstractPair pair) {
-        System.out.println("output queue thread adding pair for k: " + (candidatePairList.size() - 1)); //todo: this method adds pairs too early
-        candidatePairList.get(candidatePairList.size() - 1).add(pair);
+        System.out.println("output queue thread adding pair for k: " + (k)); //todo: this method adds pairs too early
+        candidatePairList.get(k).add(pair);
     }
 
 

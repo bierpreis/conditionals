@@ -64,7 +64,7 @@ public class ParallelCreator extends AbstractCreator {
             iterationNumberOfKBs = 0;
 
             //line  7
-            l.addNewList(new ArrayList<>());
+            l.addNewList(new ArrayList<>()); //todo: maybe this is called too late??
 
             //this is line 8
             while (l.hasMoreElements(k)) {
@@ -124,7 +124,7 @@ public class ParallelCreator extends AbstractCreator {
         System.out.println("wait and stop threads");
         while (!inputPairsQueue.isEmpty()) {
             try {
-                System.out.println("creator waiting to finish");
+                System.out.println("creator waiting to finish. queue: " + inputPairsQueue.size()); //todo: this sleeps always when stopped by button
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
