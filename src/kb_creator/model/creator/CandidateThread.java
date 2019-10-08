@@ -12,8 +12,6 @@ import java.util.concurrent.BlockingQueue;
 
 public class CandidateThread implements Runnable {
 
-    private int threadNumber;
-
     private BlockingQueue<AbstractKnowledgeBase> consistentQueue;
     private BlockingQueue<AbstractKnowledgeBase> inconsistentQueue;
 
@@ -21,9 +19,7 @@ public class CandidateThread implements Runnable {
     private BlockingQueue<AbstractPair> outputQueue;
     private volatile boolean running = true;
 
-    public CandidateThread(int threadNumber, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
-        this.threadNumber = threadNumber;
-
+    public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
         this.consistentQueue = consistentQueue;
         this.inconsistentQueue = inconsistentQueue;
 

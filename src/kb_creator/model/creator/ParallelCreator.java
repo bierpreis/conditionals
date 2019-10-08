@@ -108,7 +108,7 @@ public class ParallelCreator extends AbstractCreator {
 
         for (int i = 0; i < numberOfThreads; i++) {
 
-            CandidateThread thread = new CandidateThread(i, consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
+            CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
             futureList.add(executorService.submit(thread));
         }
