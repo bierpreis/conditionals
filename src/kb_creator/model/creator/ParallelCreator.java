@@ -59,12 +59,11 @@ public class ParallelCreator extends AbstractCreator {
             startThreads(k);
 
 
-            allIterationsBeforeCounter = iterationNumberOfKBs; //todo: iterationNumberOfKbs is 0 in iteration 1. this is why it cant work with abc
+            allIterationsBeforeCounter = allIterationsBeforeCounter + lastIterationAmount; //todo: not iteration number of kbs. lastIterationAmount?
             int currentiterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
             iterationNumberOfKBs = 0;
-
 
 
             //this is line 8
@@ -134,7 +133,7 @@ public class ParallelCreator extends AbstractCreator {
         outputQueueThread.stopWhenFinished();
     }
 
-    private void instantStop(){
+    private void instantStop() {
         System.out.println("wait and stop threads");
         for (Future future : futureList)
             future.cancel(true);

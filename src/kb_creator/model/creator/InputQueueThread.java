@@ -24,7 +24,7 @@ public class InputQueueThread implements Runnable {
         //like this the thread will close when the work is finished
         while (l.hasMoreElementsForK(currentK)) {
             try {
-                queue.put(l.getNextPair(currentK));
+                queue.put(l.getNextPair(currentK));  //todo: this caused null pointer exception at k = 7?!
                 counter++;
             } catch (InterruptedException e) {
                 e.printStackTrace();
