@@ -22,7 +22,7 @@ public class InputQueueThread implements Runnable {
         System.out.println("started input queue thread for k= " + currentK);
 
         //like this the thread will close when the work is finished
-        while (l.hasMoreElements(currentK)) {
+        while (l.hasMoreElementsForK(currentK)) {
             try {
                 queue.put(l.getNextPair(currentK));
                 counter++;

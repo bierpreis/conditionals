@@ -228,7 +228,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasMoreElements(int k) {
+    public boolean hasMoreElementsForK(int k) {
         if (!queueToReturn.isEmpty())
             return true;
 
