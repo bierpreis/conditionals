@@ -21,7 +21,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public AbstractPair getNextPair(int k) {
 
         nextElementNumber++;
-        return candidatePairList.get(k - 1).get(nextElementNumber - 1); //todo: null pointer
+        return candidatePairList.get(k - 1).get(nextElementNumber - 1);
 
     }
 
@@ -39,7 +39,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void prepareIteration(int k) { //todo: why is this called 2 times for 1? this is the problem!
+    public void prepareIteration(int k) {
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
     }

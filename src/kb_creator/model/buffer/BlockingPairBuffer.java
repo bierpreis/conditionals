@@ -242,7 +242,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         return (readingFileNameCounter < iterationNumberOfFiles);
     }
 
-    //todo: currentK is useless? delte?
     @Override
     public AbstractPair getNextPair(int k) {
         try {
