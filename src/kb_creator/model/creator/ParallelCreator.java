@@ -70,7 +70,7 @@ public class ParallelCreator extends AbstractCreator {
             //this is line 8
             while (l.hasMoreElements(k)) {
 
-                progress = calculateProgress(currentiterationPairCounter, lastIterationAmount);
+                progress = calculateProgress(currentiterationPairCounter, lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
 
                 currentiterationPairCounter = inputQueueThread.getCounter();
 
