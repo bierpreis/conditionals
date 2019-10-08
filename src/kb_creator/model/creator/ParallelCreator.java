@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 public class ParallelCreator extends AbstractCreator {
 
     //todo: gui should set this
-    private int numberOfThreads = 3;
+    private int numberOfThreads = 4;
 
     private ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
@@ -135,7 +135,7 @@ public class ParallelCreator extends AbstractCreator {
         outputQueueThread.stopWhenFinished();
     }
 
-    private void instantlyStop(){
+    private void instantStop(){
         System.out.println("wait and stop threads");
         for (Future future : futureList)
             future.cancel(true);
@@ -148,7 +148,7 @@ public class ParallelCreator extends AbstractCreator {
     @Override
     public void stop() {
         super.stop();
-        instantlyStop();
+        instantStop();
         outputQueueThread.stopWhenFinished();
     }
 

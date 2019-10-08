@@ -2,6 +2,7 @@ package kb_creator.model.writer;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 
@@ -13,6 +14,9 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
 
     private DummyWriterThread consistentThread;
     private DummyWriterThread inconsistentThread;
+
+    int consistentCounter = 0;
+    int inconsistentCounter = 0;
 
     public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
         status = WriterStatus.NOT_STARTED;
@@ -32,25 +36,30 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
 
     @Override
     public void run() {
+        status = WriterStatus.RUNNING;
         while (running) {
 
             //this empties the queue so the creator cann put stuff in there again
-            if (!consistentKbQueue.isEmpty())
+            if (!consistentKbQueue.isEmpty()) {
                 consistentKbQueue.poll();
-            if (inconsistentKbQueue.isEmpty())
+                consistentCounter++;
+            }
+            if (inconsistentKbQueue.isEmpty()) {
                 inconsistentKbQueue.poll();
+                inconsistentCounter++;
+            }
         }
     }
 
-    //todo: here the counters should do sth. can be implemented in counter.
+    //todo: use this counters?
     @Override
     public int getInconsistentCounter() {
-        return 0;
+        return inconsistentCounter;
     }
 
     @Override
     public int getConsistentCounter() {
-        return 0;
+        return consistentCounter;
     }
 
 
