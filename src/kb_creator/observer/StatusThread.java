@@ -101,7 +101,7 @@ public class StatusThread implements Runnable {
             }
     }
 
-
+    //todo: is this rly neede? better blocking queues?
     private void checkIfNotifyBuffer() {
         if (creatorThread.getPairBuffer() instanceof BlockingPairBuffer || creatorThread.getPairBuffer() instanceof ConcurrentPairBuffer) {
             if (creatorThread.getPairBuffer().checkIfShouldRead() || creatorThread.getPairBuffer().checkIfShouldWrite())
