@@ -2,13 +2,12 @@ package kb_creator.model.writer;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 
-import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 
 //this class is a writer which throws all input away
 //it is a kind of placeholder for test runs
-public class KbDummyWriter extends AbstractKbWriter implements Runnable {
+public class KbDummyWriter extends AbstractKbWriter {
     private BlockingQueue consistentKbQueue;
     private BlockingQueue inconsistentKbQueue;
 
@@ -34,24 +33,6 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
 
     }
 
-    //todo: this thread is never started?!
-    @Override
-    public void run() {
-        status = WriterStatus.RUNNING;
-        while (running) {
-            System.out.println("consistent counter: " + consistentCounter);
-            //this empties the queue so the creator cann put stuff in there again
-            if (!consistentKbQueue.isEmpty()) {
-                consistentKbQueue.poll();
-                consistentCounter++;
-
-            }
-            if (!inconsistentKbQueue.isEmpty()) {
-                inconsistentKbQueue.poll();
-                inconsistentCounter++;
-            }
-        }
-    }
 
     //todo: use this counters?
     @Override
@@ -77,9 +58,11 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
 
     @Override
     public void stop() {
+        //todo: this is never called!!
         consistentThread.stop();
         inconsistentThread.stop();
         System.out.println("consistent counter: " + consistentCounter);
+        throw new RuntimeException("STOP");
     }
 
 }
