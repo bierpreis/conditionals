@@ -29,6 +29,7 @@ public class DummyWriterThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        throw  new RuntimeException("STOPPED");
     }
 
     public void stop() {

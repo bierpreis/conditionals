@@ -94,6 +94,7 @@ public class ParallelCreator extends AbstractCreator {
         }
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
+        super.stop(); //todo: this makes status stopped at end. thats not correct!
     }
 
     private void startThreads(int currentK) {

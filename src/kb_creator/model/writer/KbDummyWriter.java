@@ -58,11 +58,10 @@ public class KbDummyWriter extends AbstractKbWriter {
 
     @Override
     public void stop() {
-        //todo: this is never called!!
+
         consistentThread.stop();
         inconsistentThread.stop();
-        System.out.println("consistent counter: " + consistentCounter);
-        throw new RuntimeException("STOP");
+        System.out.println("consistent counter: " + consistentCounter); //todo: this value doesnt fit with single creator!
     }
 
 }
