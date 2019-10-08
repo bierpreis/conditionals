@@ -53,7 +53,7 @@ public class ParallelCreator extends AbstractCreator {
 
             //line  7
             l.addNewList(new ArrayList<>());
-            
+
             l.prepareIteration(k);
 
             startThreads(k);
@@ -76,11 +76,8 @@ public class ParallelCreator extends AbstractCreator {
 
                 nextCandidatePairAmount = outputQueueThread.getCounter();
 
-                //todo: make this work
+                //todo: make this work with abc
                 totalNumberOfKBs = allIterationsBeforeCounter + currentiterationPairCounter;
-
-                System.out.println("in queue: " + inputPairsQueue.size()); //todo: input pairs full!
-                System.out.println("out queue: " + outputPairsQueue.size());
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
