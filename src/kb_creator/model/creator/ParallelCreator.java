@@ -51,7 +51,9 @@ public class ParallelCreator extends AbstractCreator {
             System.out.println("beginning iteration: " + k);
             System.gc();
 
-            //todo: the next 2 lines were twisted. k like that?
+            //line  7
+            l.addNewList(new ArrayList<>());
+            
             l.prepareIteration(k);
 
             startThreads(k);
@@ -63,8 +65,7 @@ public class ParallelCreator extends AbstractCreator {
             nextCandidatePairAmount = 0;
             iterationNumberOfKBs = 0;
 
-            //line  7
-            l.addNewList(new ArrayList<>()); //todo: maybe this is called too late??
+
 
             //this is line 8
             while (l.hasMoreElements(k)) {
