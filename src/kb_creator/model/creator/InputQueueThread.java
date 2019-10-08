@@ -5,13 +5,14 @@ import kb_creator.model.pairs.AbstractPair;
 
 import java.util.concurrent.BlockingQueue;
 
-public class QueuePutterThread implements Runnable {
+public class InputQueueThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
     private AbstractPairBuffer l;
     private volatile int counter = 0;
     private int currentK;
 
-    public QueuePutterThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
+    public InputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
+        System.out.println("new input queue thread for k: " + currentK);
         this.queue = queue;
         this.l = l;
         this.currentK = currentK;
@@ -19,7 +20,7 @@ public class QueuePutterThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("started queue putter thread for k= " + currentK);
+        System.out.println("started input queue thread for k= " + currentK);
 
         //like this the thread will close when the work is finished
         while (l.hasMoreElements(currentK)) {
@@ -30,7 +31,7 @@ public class QueuePutterThread implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("finished queue putter thread for k= " + currentK);
+        System.out.println("finished input queue thread for k= " + currentK);
     }
 
     public int getCounter() {

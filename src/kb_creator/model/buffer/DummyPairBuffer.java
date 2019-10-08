@@ -29,7 +29,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public boolean hasMoreElements(int k) {
 
-        System.out.println("number < list: " + ((nextElementNumber) + " " + (candidatePairList.get(k - 1).size())));
+        System.out.println("number < list: " + ((nextElementNumber) + " " + (candidatePairList.get(k - 1).size()))); //todo: why size increases sometimes?
         return (nextElementNumber) < (candidatePairList.get(k - 1).size());
     }
 
@@ -46,6 +46,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     protected void clear(int requestedK) {
+        System.out.println("clearing list");
         //don't clear list(-1) it wont work
         if (requestedK > 0)
             candidatePairList.get(requestedK).clear();
@@ -67,11 +68,13 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
+        System.out.println("adding pair to " + candidatePairList.get(candidatePairList.size() - 1));
         candidatePairList.get(candidatePairList.size() - 1).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
     @Override
     public void addPair(AbstractPair pair) {
+        System.out.println("adding pair!"); //todo: this method adds pairs too early
         candidatePairList.get(candidatePairList.size() - 1).add(pair);
     }
 

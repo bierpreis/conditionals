@@ -16,8 +16,8 @@ public class ParallelCreator extends AbstractCreator {
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
-    private QueueTakerThread queueTakerThread;
-    private QueuePutterThread queuePutterThread;
+    private OutputQueueThread outputQueueThread;
+    private InputQueueThread inputQueueThread;
 
     private int allIterationsBeforeCounter = 0;
 
@@ -71,9 +71,9 @@ public class ParallelCreator extends AbstractCreator {
 
                 progress = calculateProgress(currentiterationPairCounter, lastIterationAmount);
 
-                currentiterationPairCounter = queuePutterThread.getCounter();
+                currentiterationPairCounter = inputQueueThread.getCounter();
 
-                nextCandidatePairAmount = queueTakerThread.getCounter();
+                nextCandidatePairAmount = outputQueueThread.getCounter();
 
                 //todo: make this work
                 totalNumberOfKBs = allIterationsBeforeCounter + currentiterationPairCounter;
@@ -104,11 +104,11 @@ public class ParallelCreator extends AbstractCreator {
 
     private void startThreads(int currentK) {
 
-        queueTakerThread = new QueueTakerThread(outputPairsQueue, l, currentK);
-        new Thread(queueTakerThread).start();
+        outputQueueThread = new OutputQueueThread(outputPairsQueue, l, currentK);
+        new Thread(outputQueueThread).start();
 
-        queuePutterThread = new QueuePutterThread(inputPairsQueue, l, currentK);
-        new Thread(queuePutterThread).start();
+        inputQueueThread = new InputQueueThread(inputPairsQueue, l, currentK);
+        new Thread(inputQueueThread).start();
 
 
         for (int i = 0; i < numberOfThreads; i++) {
@@ -135,7 +135,7 @@ public class ParallelCreator extends AbstractCreator {
             future.cancel(true);
 
         System.out.println("creator threads canceled");
-        queueTakerThread.stopWhenFinished();
+        outputQueueThread.stopWhenFinished();
     }
 
 
@@ -143,7 +143,7 @@ public class ParallelCreator extends AbstractCreator {
     public void stop() {
         super.stop();
         waitAndStopThreads();
-        queueTakerThread.stopWhenFinished();
+        outputQueueThread.stopWhenFinished();
     }
 
 
