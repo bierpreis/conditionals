@@ -75,8 +75,7 @@ public class ParallelCreator extends AbstractCreator {
                 currentiterationPairCounter = inputQueueThread.getCounter();
 
                 nextCandidatePairAmount = outputQueueThread.getCounter();
-
-                //todo: make this work with abc
+                
                 totalNumberOfKBs = allIterationsBeforeCounter + currentiterationPairCounter;
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
