@@ -9,7 +9,7 @@ public class InputQueueThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
     private AbstractPairBuffer l;
     private volatile int counter = 0;
-    private int currentK;
+    private volatile int  currentK;
 
     public InputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
         this.queue = queue;
@@ -22,7 +22,8 @@ public class InputQueueThread implements Runnable {
         //like this the thread will close when the work is finished
         while (l.hasMoreElementsForK(currentK)) {
             try {
-                queue.put(l.getNextPair(currentK));  //todo: this caused null pointer exception at k = 7?!
+                queue.put(l.getNextPair(currentK));  //todo: this caused null pointer exception at k = 7?!#
+                //happened again!
                 counter++;
             } catch (InterruptedException e) {
                 e.printStackTrace();

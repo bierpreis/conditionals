@@ -46,7 +46,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     protected void clear(int requestedK) {
-        System.out.println("clearing list");
+        System.out.println("clearing list for k " + requestedK);
         //don't clear list(-1) it wont work
         if (requestedK > 0)
             candidatePairList.get(requestedK).clear();
@@ -74,6 +74,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public void addPair(AbstractPair pair) {
         candidatePairList.get(k).add(pair); //todo: here happened: Exception in thread "Thread-47" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+        //happened again!
     }
 
 

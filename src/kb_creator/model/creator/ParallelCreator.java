@@ -98,7 +98,7 @@ public class ParallelCreator extends AbstractCreator {
 
     private void startThreads(int currentK) {
 
-        outputQueueThread = new OutputQueueThread(outputPairsQueue, l, currentK);
+        outputQueueThread = new OutputQueueThread(outputPairsQueue, l);
         new Thread(outputQueueThread).start();
 
         inputQueueThread = new InputQueueThread(inputPairsQueue, l, currentK);
@@ -116,7 +116,6 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void waitAndStopThreads() {
-        System.out.println("wait and stop threads");
         while (!inputPairsQueue.isEmpty()) {
             try {
                 System.out.println("creator waiting to finish. queue: " + inputPairsQueue.size());
@@ -133,11 +132,9 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void instantStop() {
-        System.out.println("wait and stop threads");
         for (Future future : futureList)
             future.cancel(true);
 
-        System.out.println("creator threads canceled");
         outputQueueThread.stopWhenFinished();
     }
 

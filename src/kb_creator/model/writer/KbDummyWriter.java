@@ -19,12 +19,13 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
     int inconsistentCounter = 0;
 
     public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
+        System.out.println("new dummy writer");
         status = WriterStatus.NOT_STARTED;
 
         this.consistentKbQueue = consistentKbQueue;
         this.inconsistentKbQueue = inconsistentKbQueue;
 
-        consistentThread = new DummyWriterThread(consistentKbQueue);
+        consistentThread = new DummyWriterThread(consistentKbQueue, true);
         inconsistentThread = new DummyWriterThread(inconsistentKbQueue);
 
         new Thread(consistentThread).start();
@@ -33,18 +34,19 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
 
     }
 
-
+    //todo: this thread is never started?!
     @Override
     public void run() {
         status = WriterStatus.RUNNING;
         while (running) {
-
+            System.out.println("consistent counter: " + consistentCounter);
             //this empties the queue so the creator cann put stuff in there again
             if (!consistentKbQueue.isEmpty()) {
                 consistentKbQueue.poll();
                 consistentCounter++;
+
             }
-            if (inconsistentKbQueue.isEmpty()) {
+            if (!inconsistentKbQueue.isEmpty()) {
                 inconsistentKbQueue.poll();
                 inconsistentCounter++;
             }
@@ -77,6 +79,7 @@ public class KbDummyWriter extends AbstractKbWriter implements Runnable {
     public void stop() {
         consistentThread.stop();
         inconsistentThread.stop();
+        System.out.println("consistent counter: " + consistentCounter);
     }
 
 }
