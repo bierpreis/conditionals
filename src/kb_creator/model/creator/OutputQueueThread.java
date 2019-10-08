@@ -31,18 +31,18 @@ public class OutputQueueThread implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("finished queue putter thread for k= " + currentK);
+        System.out.println("finished output queue thread for k= " + currentK);
     }
 
     public void stopWhenFinished() {
-        System.out.println("tying to finish queue taker");
+        System.out.println("tying to finish output queue");
         while (!queue.isEmpty())
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        System.out.println("finsihed queue taker");
+        System.out.println("finsihed output queue thread");
         running = false;
     }
 

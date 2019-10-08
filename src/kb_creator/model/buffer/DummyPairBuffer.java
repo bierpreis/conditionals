@@ -74,7 +74,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractPair pair) {
-        System.out.println("adding pair!"); //todo: this method adds pairs too early
+        System.out.println("output queue thread adding pair for k: " + (candidatePairList.size() - 1)); //todo: this method adds pairs too early
         candidatePairList.get(candidatePairList.size() - 1).add(pair);
     }
 

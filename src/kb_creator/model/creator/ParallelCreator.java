@@ -97,7 +97,6 @@ public class ParallelCreator extends AbstractCreator {
             l.finishIteration(k);
             k = k + 1;
         }
-        //todo: check if threads are closed correctly at this point.
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
     }
@@ -121,11 +120,11 @@ public class ParallelCreator extends AbstractCreator {
 
     }
 
-    //todo: stop queue taker when finished but how?
     private void waitAndStopThreads() {
         System.out.println("wait and stop threads");
         while (!inputPairsQueue.isEmpty()) {
             try {
+                System.out.println("creator waiting to finish");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
