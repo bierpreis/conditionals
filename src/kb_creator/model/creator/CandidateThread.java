@@ -35,7 +35,6 @@ public class CandidateThread implements Runnable {
     @Override
     public void run() {
         while (running) {
-
             AbstractPair candidatePair = null;
 
             try {
@@ -49,6 +48,7 @@ public class CandidateThread implements Runnable {
                 //line 10 //
                 //consistency check takes almost no time
                 if (candidatePair.getKnowledgeBase().isConsistent(r)) {
+                    System.out.println("thread running");
                     //System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
                     //next part is line 11 and 12
 
@@ -73,12 +73,20 @@ public class CandidateThread implements Runnable {
                             candidatesToAdd.add(conditionalFromCandidates);
                     //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
-                    outputQueue.add(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
+                    try {
+                        outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
                     //save inconsistent knowledge base
                     //this part takes almost no time
-                } else
-                    inconsistentQueue.add(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
+                } else try {
+                    inconsistentQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
+                } catch (
+                        InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 
                 //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
@@ -93,7 +101,7 @@ public class CandidateThread implements Runnable {
         System.out.println("!!! thread  " + threadNumber + "finished");
     }
 
-    public void stop(){
+    public void stop() {
         running = false;
     }
 }

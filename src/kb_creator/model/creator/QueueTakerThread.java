@@ -33,7 +33,13 @@ public class QueueTakerThread implements Runnable {
         System.out.println("finished queue putter thread for k= " + currentK);
     }
 
-    public void stop() {
+    public void stopWhenFinished() {
+        while (!queue.isEmpty())
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         running = false;
     }
 

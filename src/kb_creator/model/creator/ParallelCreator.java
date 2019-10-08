@@ -78,8 +78,9 @@ public class ParallelCreator extends AbstractCreator {
                 //todo: make this work
                 totalNumberOfKBs = allIterationsBeforeCounter + currentiterationPairCounter;
 
+                System.out.println("in queue: " + inputPairsQueue.size()); //todo: input pairs full!
+                System.out.println("out queue: " + outputPairsQueue.size());
 
-                //todo: what to do with inconsistent queue?
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
@@ -122,6 +123,7 @@ public class ParallelCreator extends AbstractCreator {
 
     //todo: stop queue taker when finished but how?
     private void waitAndStopThreads() {
+        System.out.println("wait and stop threads");
         while (!inputPairsQueue.isEmpty()) {
             try {
                 Thread.sleep(200);
@@ -132,7 +134,10 @@ public class ParallelCreator extends AbstractCreator {
         for (Future future : futureList)
             future.cancel(true);
 
-        System.out.println("threads canceled");
+        System.out.println("creator threads canceled");
+        System.out.println("trying to stop taker thread");
+        queueTakerThread.stopWhenFinished();
+        System.out.println("after stop taker thread");
     }
 
 
@@ -140,7 +145,7 @@ public class ParallelCreator extends AbstractCreator {
     public void stop() {
         super.stop();
         waitAndStopThreads();
-        queueTakerThread.stop();
+        queueTakerThread.stopWhenFinished();
     }
 
 
