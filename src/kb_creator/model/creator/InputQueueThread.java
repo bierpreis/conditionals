@@ -12,7 +12,6 @@ public class InputQueueThread implements Runnable {
     private int currentK;
 
     public InputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
-        System.out.println("new input queue thread for k: " + currentK);
         this.queue = queue;
         this.l = l;
         this.currentK = currentK;

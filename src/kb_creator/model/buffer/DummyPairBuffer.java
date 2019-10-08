@@ -70,13 +70,11 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
-        System.out.println("adding pair to " + k);
         candidatePairList.get(k).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
     @Override
     public void addPair(AbstractPair pair) {
-        System.out.println("output queue thread adding pair for k: " + (k)); //todo: this method adds pairs too early
         candidatePairList.get(k).add(pair);
     }
 
