@@ -19,8 +19,6 @@ public class InputQueueThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("started input queue thread for k= " + currentK);
-
         //like this the thread will close when the work is finished
         while (l.hasMoreElementsForK(currentK)) {
             try {
@@ -30,7 +28,6 @@ public class InputQueueThread implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("finished input queue thread for k= " + currentK);
     }
 
     public int getCounter() {

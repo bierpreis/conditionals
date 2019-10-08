@@ -10,10 +10,9 @@ public class OutputQueueThread implements Runnable {
     private volatile boolean running = true;
     private int counter = 0;
     private AbstractPairBuffer l;
-    private int currentK;
+    private int currentK; //todo. remove k?
 
     public OutputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int k) {
-        System.out.println("new output queue thread for k: " + k);
         this.queue = queue;
         this.l = l;
         this.currentK = k;
@@ -22,7 +21,6 @@ public class OutputQueueThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("started output queue thread for k= " + currentK);
         while (running) {
             try {
                 l.addPair(queue.take());
@@ -31,18 +29,15 @@ public class OutputQueueThread implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("finished output queue thread for k= " + currentK);
     }
 
     public void stopWhenFinished() {
-        System.out.println("tying to finish output queue");
         while (!queue.isEmpty())
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        System.out.println("finished output queue thread");
         running = false;
     }
 
