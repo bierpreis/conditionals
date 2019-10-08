@@ -135,11 +135,20 @@ public class ParallelCreator extends AbstractCreator {
         outputQueueThread.stopWhenFinished();
     }
 
+    private void instantlyStop(){
+        System.out.println("wait and stop threads");
+        for (Future future : futureList)
+            future.cancel(true);
+
+        System.out.println("creator threads canceled");
+        outputQueueThread.stopWhenFinished();
+    }
+
 
     @Override
     public void stop() {
         super.stop();
-        waitAndStopThreads();
+        instantlyStop();
         outputQueueThread.stopWhenFinished();
     }
 
