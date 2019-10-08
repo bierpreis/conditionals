@@ -56,9 +56,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     protected abstract void clear(int requestedK);
 
-    public int getQueueToWriteSize() {
-        return 0;
-    } //todo: wtf is this
+    public abstract int getQueueToWriteSize();
 
     public abstract int getReaderBufferSize();
 

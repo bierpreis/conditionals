@@ -221,6 +221,11 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         }
     }
 
+    @Override
+    public int getQueueToWriteSize() {
+        return cpQueueToWrite.size();
+    }
+
 
     @Override
     public boolean hasMoreElements(int k) {

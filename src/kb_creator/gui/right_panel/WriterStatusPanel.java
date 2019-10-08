@@ -122,7 +122,7 @@ public class WriterStatusPanel extends JPanel {
 
 
     public void showStatus(WriterStatus status) {
-        statusLabel.setText("Status: " + status.toString()); //todo: null pointer here?!
+        statusLabel.setText("Status: " + status.toString());
     }
 
 
