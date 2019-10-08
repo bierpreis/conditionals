@@ -59,7 +59,7 @@ public class ParallelCreator extends AbstractCreator {
             startThreads(k);
 
 
-            allIterationsBeforeCounter = iterationNumberOfKBs;
+            allIterationsBeforeCounter = iterationNumberOfKBs; //todo: iterationNumberOfKbs is 0 in iteration 1. this is why it cant work with abc
             int currentiterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
@@ -122,7 +122,7 @@ public class ParallelCreator extends AbstractCreator {
         System.out.println("wait and stop threads");
         while (!inputPairsQueue.isEmpty()) {
             try {
-                System.out.println("creator waiting to finish. queue: " + inputPairsQueue.size()); //todo: this sleeps always when stopped by button
+                System.out.println("creator waiting to finish. queue: " + inputPairsQueue.size());
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
