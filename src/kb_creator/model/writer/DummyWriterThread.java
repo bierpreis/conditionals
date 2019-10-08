@@ -33,6 +33,7 @@ public class DummyWriterThread implements Runnable {
         throw new RuntimeException("STOPPED"); //todo: this can not be seen!? interrupt this thread!
     }
 
+    //todo: change to stop and interrupt
     public void stopLoop() {
         System.out.println("trying to stop dummy writer");
         while (!queue.isEmpty()) {
