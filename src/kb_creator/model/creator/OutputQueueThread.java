@@ -42,7 +42,7 @@ public class OutputQueueThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        System.out.println("finsihed output queue thread");
+        System.out.println("finished output queue thread");
         running = false;
     }
 

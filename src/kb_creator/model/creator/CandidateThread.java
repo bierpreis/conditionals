@@ -40,7 +40,8 @@ public class CandidateThread implements Runnable {
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) {
-                System.out.println("thread " + threadNumber + " was interrupted.");
+                //intentionally nothing
+                //this interrupt happens when thread is waiting for queue but gets closed because iteration is finished
             }
 
             for (NewConditional r : candidatePair.getCandidatesList()) {
@@ -97,7 +98,8 @@ public class CandidateThread implements Runnable {
             candidatePair.clear();
 
         }
-        System.out.println("!!! thread  " + threadNumber + "finished");
+        if (!inputQueue.isEmpty())
+            throw new RuntimeException("Finished when input not empty! Elements left: " + inputQueue.size());
     }
 
     public void stop() {

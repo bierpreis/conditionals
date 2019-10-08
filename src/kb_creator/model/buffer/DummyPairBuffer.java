@@ -73,7 +73,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractPair pair) {
-        candidatePairList.get(k).add(pair);
+        candidatePairList.get(k).add(pair); //todo: here happened: Exception in thread "Thread-47" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
     }
 
 
