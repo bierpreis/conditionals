@@ -48,7 +48,6 @@ public class CandidateThread implements Runnable {
                 //line 10 //
                 //consistency check takes almost no time
                 if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-                    System.out.println("thread running");
                     //System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
                     //next part is line 11 and 12
 
@@ -74,7 +73,7 @@ public class CandidateThread implements Runnable {
                     //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
                     try {
-                        outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
+                        outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd)); //todo: inconsistent counter doenst work. put in queue taker?
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
