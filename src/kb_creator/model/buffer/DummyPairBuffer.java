@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DummyPairBuffer extends AbstractPairBuffer {
-    private int nextElementNumber;
+    private volatile int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
     private volatile int k;
 
@@ -18,19 +18,22 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList = new ArrayList<>();
     }
 
-    //todo: maybe this is not thread safe?!
     @Override
     public AbstractPair getNextPair(int k) {
 
-        nextElementNumber++;
-        return candidatePairList.get(k - 1).get(nextElementNumber - 1);
+        synchronized (this) {
+            nextElementNumber++;
+            return candidatePairList.get(k - 1).get(nextElementNumber - 1);
+        }
 
     }
 
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-        return (nextElementNumber) < (candidatePairList.get(k - 1).size());
+        synchronized (this) {
+            return (nextElementNumber) < (candidatePairList.get(k - 1).size());
+        }
     }
 
     @Override
