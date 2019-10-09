@@ -253,9 +253,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         try {
             return queueToReturn.take();
         } catch (InterruptedException e) {
-            e.printStackTrace(); //todo: delte
+
         }
-        throw new RuntimeException("Get next pair failed!"); //todo: this fails when thread gets interrupted
+        return null;
     }
 
 
