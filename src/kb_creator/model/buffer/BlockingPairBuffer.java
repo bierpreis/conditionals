@@ -73,7 +73,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
                 //reading has second priority
-            } else if (checkIfShouldRead()) { //todo: console output show this is more reading than writing? how can it be??
+            } else if (checkIfShouldRead()) {
                 status = BufferStatus.READING;
                 for (AbstractPair pairToPut : readNextFile())
                     try {
