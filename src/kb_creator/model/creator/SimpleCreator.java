@@ -20,7 +20,6 @@ public class SimpleCreator extends AbstractCreator {
 
     }
 
-    //todo: rethink why this is slower now
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
