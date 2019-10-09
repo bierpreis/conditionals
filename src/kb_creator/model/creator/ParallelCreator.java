@@ -91,7 +91,9 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void startThreads(int currentK) {
-        //todo: check if queues are empty when threads are started
+        if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
+            throw new RuntimeException("Queue was not empty! Sth will get lost!");
+
         outputQueueObject = new OutputQueueThread(outputPairsQueue, l);
         new Thread(outputQueueObject).start();
 
@@ -130,7 +132,7 @@ public class ParallelCreator extends AbstractCreator {
     private void instantStop() {
         for (Future future : futureList)
             future.cancel(true);
-
+        //todo: stop input queue thread too
         outputQueueObject.stopLoop();
         outputQueueThread.interrupt();
     }

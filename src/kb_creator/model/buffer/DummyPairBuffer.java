@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DummyPairBuffer extends AbstractPairBuffer {
     private volatile int nextElementNumber;
-    private List<List<AbstractPair>> candidatePairList;
+    private volatile List<List<AbstractPair>> candidatePairList;
     private volatile int k;
 
     public DummyPairBuffer(String filePath) {
@@ -77,8 +77,9 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractPair pair) {
-        candidatePairList.get(k).add(pair); //todo: here happened: Exception in thread "Thread-47" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
-        //happened again!
+        synchronized (this) {
+            candidatePairList.get(k).add(pair); //todo: here happened: Exception in thread "Thread-47" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
+        }//happened again! can sync help?!
     }
 
 
