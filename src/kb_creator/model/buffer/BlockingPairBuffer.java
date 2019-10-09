@@ -50,9 +50,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
         writingFileNameCounter = 0;
 
-        queueToReturn = new ArrayBlockingQueue<>(5000);
+        queueToReturn = new ArrayBlockingQueue<>(5_000);
 
-        cpQueueToWrite = new ArrayBlockingQueue<>(100000);
+        cpQueueToWrite = new ArrayBlockingQueue<>(10_000);
 
         flushRequested = false;
         running = true;
@@ -253,9 +253,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         try {
             return queueToReturn.take();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            e.printStackTrace(); //todo: delte
         }
-        throw new RuntimeException("Get next pair failed!");
+        throw new RuntimeException("Get next pair failed!"); //todo: this fails when thread gets interrupted
     }
 
 

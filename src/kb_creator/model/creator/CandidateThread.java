@@ -17,7 +17,6 @@ public class CandidateThread implements Runnable {
 
     private BlockingQueue<AbstractPair> inputQueue;
     private BlockingQueue<AbstractPair> outputQueue;
-    private volatile boolean running = true;
 
     public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
         this.consistentQueue = consistentQueue;
@@ -89,9 +88,9 @@ public class CandidateThread implements Runnable {
             candidatePair.clear();
 
         }
-        
-        if (!inputQueue.isEmpty())
-            throw new RuntimeException("Finished when input not empty! Elements left: " + inputQueue.size());
-        throw new RuntimeException("Candidate thread ended correct!"); //todo: can this never be seen?
+        throw new RuntimeException("Candidate thread ended correct!"); //todo: can this never be seen? and comment out the lines below
+/*        if (!inputQueue.isEmpty())
+            throw new RuntimeException("Finished when input not empty! Elements left: " + inputQueue.size());*/
+
     }
 }
