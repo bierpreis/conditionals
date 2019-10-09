@@ -31,7 +31,6 @@ public class WriterThread implements Runnable {
                 //intentionally nothing
             }
         }
-        System.out.println("writer stopped: " + folderName);
     }
 
     private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
