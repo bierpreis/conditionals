@@ -70,7 +70,7 @@ public class CandidateThread implements Runnable {
                     //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
                     try {
-                        outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd)); //todo: inconsistent counter doenst work. put in queue taker?
+                        outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

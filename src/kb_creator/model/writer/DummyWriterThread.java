@@ -31,17 +31,14 @@ public class DummyWriterThread implements Runnable {
 
 
     public void stopLoop() {
-        System.out.println("trying to stop dummy writer");
         while (!queue.isEmpty()) {
             try {
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!dummy writer deleting queue until empty");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         running = false;
-        System.out.println(counter); //todo: this counter doesnt fit with gui counter?!
     }
 
     public int getCounter(){
