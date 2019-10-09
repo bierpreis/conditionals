@@ -30,7 +30,7 @@ public class CandidateThread implements Runnable {
 
     @Override
     public void run() {
-        while (running) {
+        while (!Thread.currentThread().isInterrupted()) {
             AbstractPair candidatePair = null;
 
             try {
@@ -89,11 +89,9 @@ public class CandidateThread implements Runnable {
             candidatePair.clear();
 
         }
+        
         if (!inputQueue.isEmpty())
             throw new RuntimeException("Finished when input not empty! Elements left: " + inputQueue.size());
+        throw new RuntimeException("Candidate thread ended correct!"); //todo: can this never be seen?
     }
-
-    public void stop() {
-        running = false;
-    } //todo: why is this never used? remove running variable completely?
 }
