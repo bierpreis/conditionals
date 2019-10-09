@@ -19,8 +19,6 @@ public class ParallelCreator extends AbstractCreator {
     private OutputQueueThread outputQueueThread;
     private InputQueueThread inputQueueThread;
 
-    private int allIterationsBeforeCounter = 0;
-
 
     public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
@@ -58,9 +56,6 @@ public class ParallelCreator extends AbstractCreator {
 
             startThreads(k);
 
-
-            allIterationsBeforeCounter = allIterationsBeforeCounter + lastIterationAmount; //todo: not iteration number of kbs. lastIterationAmount?
-            int currentiterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
             iterationNumberOfKBs = 0;
@@ -68,13 +63,9 @@ public class ParallelCreator extends AbstractCreator {
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
-                progress = calculateProgress(currentiterationPairCounter, lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
-
-                currentiterationPairCounter = inputQueueThread.getCounter();
+                progress = calculateProgress(inputQueueThread.getCounter(), lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
 
                 nextCandidatePairAmount = outputQueueThread.getCounter();
-
-                totalNumberOfKBs = allIterationsBeforeCounter + currentiterationPairCounter; //todo: this is not correct. it shows less than it actualy should
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
@@ -98,7 +89,7 @@ public class ParallelCreator extends AbstractCreator {
     }
 
     private void startThreads(int currentK) {
-
+        //todo: check if queues are empty when threads are started
         outputQueueThread = new OutputQueueThread(outputPairsQueue, l);
         new Thread(outputQueueThread).start();
 

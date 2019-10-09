@@ -7,7 +7,7 @@ import java.util.concurrent.BlockingQueue;
 public class DummyWriterThread implements Runnable {
     private volatile boolean running = true;
     private BlockingQueue<AbstractKnowledgeBase> queue;
-    private int counter;
+    private volatile int counter;
 
     public DummyWriterThread(BlockingQueue<AbstractKnowledgeBase> queue) {
         this.queue = queue;
@@ -41,7 +41,7 @@ public class DummyWriterThread implements Runnable {
         running = false;
     }
 
-    public int getCounter(){
+    public int getCounter() {
         return counter;
     }
 }

@@ -150,11 +150,11 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public int getTotalKbAmount() {
-        return totalNumberOfKBs;
+        return kbWriter.getConsistentCounter();
     }
 
     public int getTotalInconsistentAmount() {
-        return totalInconsistentAmount;
+        return kbWriter.getInconsistentCounter();
     }
 
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
