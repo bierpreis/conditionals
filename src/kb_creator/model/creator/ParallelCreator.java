@@ -45,7 +45,7 @@ public class ParallelCreator extends AbstractCreator {
         //k - 1 because actually the init list is iteration 0
         l.finishIteration(0);
 
-
+        //todo: iteration counter doesnt show in gui
         //line 6
         while (l.hasElementsForNextK(k)) {
             System.out.println("beginning iteration: " + k);
