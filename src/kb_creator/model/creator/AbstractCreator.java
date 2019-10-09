@@ -136,6 +136,11 @@ public abstract class AbstractCreator implements Runnable {
         this.creatorStatus = CreatorStatus.STOPPED;
     }
 
+    public void finish() {
+        kbWriter.stop();
+        this.creatorStatus = CreatorStatus.FINISHED;
+    }
+
     public int getCurrentK() {
         return k;
     }
