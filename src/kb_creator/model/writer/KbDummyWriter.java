@@ -11,11 +11,11 @@ public class KbDummyWriter extends AbstractKbWriter {
     private BlockingQueue consistentKbQueue;
     private BlockingQueue inconsistentKbQueue;
 
-    private DummyWriterThread consistentThread;
-    private DummyWriterThread inconsistentThread;
+    private DummyWriterThread consistentThreadObject;
+    private Thread consistentThread;
 
-    int consistentCounter = 0;
-    int inconsistentCounter = 0;
+    private DummyWriterThread inconsistentThreadObject;
+    private Thread inconsistentThread;
 
     public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
         System.out.println("new dummy writer");
@@ -24,25 +24,27 @@ public class KbDummyWriter extends AbstractKbWriter {
         this.consistentKbQueue = consistentKbQueue;
         this.inconsistentKbQueue = inconsistentKbQueue;
 
-        consistentThread = new DummyWriterThread(consistentKbQueue, true);
-        inconsistentThread = new DummyWriterThread(inconsistentKbQueue);
+        consistentThreadObject = new DummyWriterThread(consistentKbQueue);
+        inconsistentThreadObject = new DummyWriterThread(inconsistentKbQueue);
 
-        new Thread(consistentThread).start();
-        new Thread(inconsistentThread).start();
+        consistentThread = new Thread(consistentThreadObject);
+        consistentThread.start();
+
+        inconsistentThread = new Thread(inconsistentThreadObject);
+        inconsistentThread.start();
 
 
     }
 
 
-    //todo: use this counters?
     @Override
     public int getInconsistentCounter() {
-        return inconsistentCounter;
+        return inconsistentThreadObject.getCounter();
     }
 
     @Override
     public int getConsistentCounter() {
-        return consistentCounter;
+        return consistentThreadObject.getCounter();
     }
 
 
@@ -59,9 +61,15 @@ public class KbDummyWriter extends AbstractKbWriter {
     @Override
     public void stop() {
 
-        consistentThread.stopLoop();
-        inconsistentThread.stopLoop();
-        System.out.println("consistent counter: " + consistentCounter); //todo: this value doesnt fit with single creator!
+        consistentThreadObject.stopLoop();
+        inconsistentThreadObject.stopLoop();
+
+        System.out.println("consistent counter: " + consistentThreadObject.getCounter()); //todo: this value doesnt fit with single creator!
+        System.out.println("inconsistent counter: " + inconsistentThreadObject.getCounter());
+
+        consistentThread.interrupt();
+        inconsistentThread.interrupt();
+
     }
 
 }

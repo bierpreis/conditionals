@@ -7,7 +7,6 @@ import java.util.concurrent.BlockingQueue;
 public class DummyWriterThread implements Runnable {
     private volatile boolean running = true;
     private BlockingQueue<AbstractKnowledgeBase> queue;
-    private boolean bool; //todo: delete when not needed anymore
     private int counter;
 
     public DummyWriterThread(BlockingQueue<AbstractKnowledgeBase> queue) {
@@ -15,10 +14,6 @@ public class DummyWriterThread implements Runnable {
 
     }
 
-    public DummyWriterThread(BlockingQueue<AbstractKnowledgeBase> queue, boolean bool) {
-        this.queue = queue;
-        this.bool = bool;
-    }
 
     @Override
     public void run() {
@@ -26,14 +21,15 @@ public class DummyWriterThread implements Runnable {
             //this should delete all entries and wait if there are no entries
             try {
                 queue.take();
+                counter++;
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //intentionally nothing
             }
         }
-        throw new RuntimeException("STOPPED"); //todo: this can not be seen!? interrupt this thread!
+        System.out.println("dummy writer thread finished");
     }
 
-    //todo: change to stop and interrupt
+
     public void stopLoop() {
         System.out.println("trying to stop dummy writer");
         while (!queue.isEmpty()) {
@@ -45,7 +41,10 @@ public class DummyWriterThread implements Runnable {
             }
         }
         running = false;
-        if (bool)
-            System.out.println(counter); //todo: this counter doesnt fit with gui counter?!
+        System.out.println(counter); //todo: this counter doesnt fit with gui counter?!
+    }
+
+    public int getCounter(){
+        return counter;
     }
 }
