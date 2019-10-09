@@ -28,7 +28,6 @@ public abstract class AbstractCreator implements Runnable {
     protected int lastIterationAmount;
 
     protected CreatorStatus creatorStatus;
-    protected volatile boolean waitForKbWriter;
 
     protected AbstractSignature signature;
 
@@ -104,7 +103,7 @@ public abstract class AbstractCreator implements Runnable {
 
     public enum CreatorStatus {
 
-        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED, WAITING_FOR_WRITER
+        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED
     }
 
     protected float calculateProgress(int pairCounter, int lastIterationAmount) {
@@ -115,12 +114,6 @@ public abstract class AbstractCreator implements Runnable {
 
         }
         return (pairCounter / (float) lastIterationAmount) * 100;
-    }
-
-    //todo: should be deleted when writer has blocking queue
-    public void waitForKbWriter() {
-        creatorStatus = CreatorStatus.WAITING_FOR_WRITER;
-        waitForKbWriter = true;
     }
 
     public int getIterationNumberOfKBs() {

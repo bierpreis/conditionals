@@ -12,7 +12,7 @@ public class StatusThread implements Runnable {
     private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
-    private boolean isRunning = true;
+    private boolean isRunning = true; //todo: when is status thread stopped?
     private AbstractKbWriter kbWriter;
     private MainWindow mainWindow;
 
@@ -34,8 +34,6 @@ public class StatusThread implements Runnable {
                 showWriterStatus();
 
                 showBufferStatus();
-
-                checkIfWaitForWriter();
 
                 checkIfNotifyBuffer();
             }
@@ -77,7 +75,7 @@ public class StatusThread implements Runnable {
         mainWindow.getRightPanel().getWriterStatusPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
         mainWindow.getRightPanel().getWriterStatusPanel().showConsistentConter(kbWriter.getConsistentCounter());
         mainWindow.getRightPanel().getWriterStatusPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
-        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
+        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus()); //todo: kbwriter returns status null when not dummy writer
     }
 
     private void showBufferStatus() {
@@ -89,16 +87,6 @@ public class StatusThread implements Runnable {
             mainWindow.getRightPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
 
         }
-    }
-
-    private void checkIfWaitForWriter() {
-        if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) > 100_000)
-            creatorThread.waitForKbWriter();
-
-        if ((kbWriter.getConsistentQueue() + kbWriter.getInconsistentQueue()) < 5000)
-            synchronized (creatorThread) {
-                creatorThread.notify();
-            }
     }
 
     //todo: is this rly neede? better blocking queues?

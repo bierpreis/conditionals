@@ -18,7 +18,7 @@ public class KbFileWriter extends AbstractKbWriter {
 
     public KbFileWriter(String filePathToSave, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue) {
 
-
+        //todo: the 2 threads are not closed correctly! impossible with local thread variable!
         this.consistentWriter = new WriterThread(filePathToSave, "consistent", consistentQueue);
         Thread consistentWriterThread = new Thread(consistentWriter);
         consistentWriterThread.start();
@@ -27,6 +27,7 @@ public class KbFileWriter extends AbstractKbWriter {
         Thread inconsistentWriterThread = new Thread(inconsistentWriter);
         inconsistentWriterThread.start();
 
+        status = WriterStatus.RUNNING;
     }
 
 

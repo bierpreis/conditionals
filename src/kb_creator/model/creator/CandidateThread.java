@@ -55,7 +55,7 @@ public class CandidateThread implements Runnable {
 
                     try {
                         consistentQueue.put(knowledgeBaseToAdd);
-                    } catch (InterruptedException e) {
+                    } catch (InterruptedException e) { //todo: exception when thread gets interrupted
                         e.printStackTrace();
                     }
                     //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
@@ -81,7 +81,7 @@ public class CandidateThread implements Runnable {
                     inconsistentQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
                 } catch (
                         InterruptedException e) {
-                    e.printStackTrace();
+                    e.printStackTrace(); //todo: exception thrown when gui button stops program
                 }
 
 

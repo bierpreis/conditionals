@@ -35,7 +35,6 @@ public class ActionPanel extends JPanel {
                 stopButton.setEnabled(false);
                 break;
             case RUNNING:
-            case WAITING_FOR_WRITER:
                 startButton.setEnabled(false);
                 stopButton.setEnabled(true);
                 break;

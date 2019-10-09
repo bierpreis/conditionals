@@ -9,7 +9,7 @@ public class InputQueueThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
     private AbstractPairBuffer l;
     private volatile int counter = 0;
-    private volatile int  currentK;
+    private volatile int currentK;
 
     public InputQueueThread(BlockingQueue<AbstractPair> queue, AbstractPairBuffer l, int currentK) {
         this.queue = queue;
@@ -26,7 +26,7 @@ public class InputQueueThread implements Runnable {
                 //happened again!
                 counter++;
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //todo: exception when interrupted!
             }
         }
     }
