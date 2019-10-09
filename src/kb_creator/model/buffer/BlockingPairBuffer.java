@@ -64,6 +64,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     }
 
+    //todo: maybe 2 threads with blocking queues for this instead of this shit?
     @Override
     public void run() {
         while (running) {
@@ -72,7 +73,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
                 //reading has second priority
-            } else if (checkIfShouldRead()) {
+            } else if (checkIfShouldRead()) { //todo: console output show this is more reading than writing? how can it be??
                 status = BufferStatus.READING;
                 for (AbstractPair pairToPut : readNextFile())
                     try {

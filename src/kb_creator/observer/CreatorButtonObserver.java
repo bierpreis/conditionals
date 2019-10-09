@@ -30,8 +30,8 @@ public class CreatorButtonObserver implements ActionListener {
 
     }
 
+    //todo: make sure it can be used again and again. clear button?
     @Override
-
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
             AbstractPairBuffer candidateBuffer;
@@ -44,11 +44,6 @@ public class CreatorButtonObserver implements ActionListener {
 
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
             creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
-
-
-
-
-
 
 
             Thread bufferThread = new Thread(candidateBuffer);

@@ -33,6 +33,8 @@ public class WriterThread implements Runnable {
 
         }
 
+        System.out.println("writer stopped: " + folderName);
+
 
     }
 
@@ -67,6 +69,14 @@ public class WriterThread implements Runnable {
     }
 
     public void stop() {
+
+        //this makes sure queue is empty before it stops
+        while (!queue.isEmpty())
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         running = false;
     }
 }
