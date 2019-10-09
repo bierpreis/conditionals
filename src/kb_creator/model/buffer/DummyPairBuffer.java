@@ -18,6 +18,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList = new ArrayList<>();
     }
 
+    //todo: maybe this is not thread safe?!
     @Override
     public AbstractPair getNextPair(int k) {
 
