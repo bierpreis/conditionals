@@ -64,7 +64,7 @@ public class KbDummyWriter extends AbstractKbWriter {
         consistentThreadObject.stopLoop();
         inconsistentThreadObject.stopLoop();
 
-        System.out.println("consistent counter: " + consistentThreadObject.getCounter()); //todo: this value doesnt fit with single creator!
+        System.out.println("consistent counter: " + consistentThreadObject.getCounter());
         System.out.println("inconsistent counter: " + inconsistentThreadObject.getCounter());
 
         consistentThread.interrupt();

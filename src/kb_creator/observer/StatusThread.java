@@ -75,7 +75,7 @@ public class StatusThread implements Runnable {
         mainWindow.getRightPanel().getWriterStatusPanel().showSpeed(kbWriter.getConsistentCounter() + kbWriter.getInconsistentCounter());
         mainWindow.getRightPanel().getWriterStatusPanel().showConsistentConter(kbWriter.getConsistentCounter());
         mainWindow.getRightPanel().getWriterStatusPanel().showIncosnsistentCounter(kbWriter.getInconsistentCounter());
-        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus()); //todo: kbwriter returns status null when not dummy writer
+        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
     }
 
     private void showBufferStatus() {

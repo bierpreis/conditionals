@@ -81,13 +81,8 @@ public class CandidateThread implements Runnable {
                     inconsistentQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
                 } catch (
                         InterruptedException e) {
-                    e.printStackTrace(); //todo: exception thrown when gui button stops program
+                    //intentionally nothing
                 }
-
-
-                //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
-
-
             }
             //this saves a lot of memory
             //this takes almost no time
@@ -100,5 +95,5 @@ public class CandidateThread implements Runnable {
 
     public void stop() {
         running = false;
-    }
+    } //todo: why is this never used? remove running variable completely?
 }
