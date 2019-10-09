@@ -28,14 +28,10 @@ public class WriterThread implements Runnable {
             try {
                 writeConsistentKbToFile(queue.take());
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                //intentionally nothing
             }
-
         }
-
         System.out.println("writer stopped: " + folderName);
-
-
     }
 
     private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {

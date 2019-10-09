@@ -30,7 +30,6 @@ public class CreatorButtonObserver implements ActionListener {
 
     }
 
-    //todo: make sure it can be used again and again. clear button?
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
@@ -69,6 +68,8 @@ public class CreatorButtonObserver implements ActionListener {
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
+
+            //todo: make sure it can be used again and again. clear button?
             if (answer == 0) {
                 creatorThreadObject.stop();
                 mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);

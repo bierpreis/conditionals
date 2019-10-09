@@ -125,6 +125,7 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public void stop() {
+        System.out.println("!!!abstract creator stop");
         kbWriter.stop();
         this.creatorStatus = CreatorStatus.STOPPED;
     }
