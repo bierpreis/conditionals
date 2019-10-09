@@ -36,7 +36,7 @@ public class OutputQueueThread implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        running = false;
+        running = false; //todo: this doesnt interrupt. how can the thread end? does it end correctly?
     }
 
     public int getCounter() {
