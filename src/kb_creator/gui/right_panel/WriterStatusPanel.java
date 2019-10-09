@@ -121,7 +121,7 @@ public class WriterStatusPanel extends JPanel {
     }
 
 
-    public void showStatus(WriterStatus status) {//todo: status is null when creator is requested
+    public void showStatus(WriterStatus status) {
         statusLabel.setText("Status: " + status.toString());
     }
 

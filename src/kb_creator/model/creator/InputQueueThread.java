@@ -26,7 +26,7 @@ public class InputQueueThread implements Runnable {
                 //happened again!
                 counter++;
             } catch (InterruptedException e) {
-                e.printStackTrace(); //todo: exception when interrupted!
+                //intentionally nothing
             }
         }
     }

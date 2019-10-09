@@ -55,8 +55,8 @@ public class CandidateThread implements Runnable {
 
                     try {
                         consistentQueue.put(knowledgeBaseToAdd);
-                    } catch (InterruptedException e) { //todo: exception when thread gets interrupted
-                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        //intentionally nothing
                     }
                     //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
