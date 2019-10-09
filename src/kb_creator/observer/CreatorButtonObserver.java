@@ -69,7 +69,7 @@ public class CreatorButtonObserver implements ActionListener {
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
 
-            //todo: make sure it can be used again and again. clear button?
+            //todo: make sure it can be used again and again. clear button to clear and activate start button again
             if (answer == 0) {
                 creatorThreadObject.stop();
                 mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);

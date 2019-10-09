@@ -72,7 +72,7 @@ public class CandidateThread implements Runnable {
                     try {
                         outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        //intentionally nothing
                     }
 
                     //save inconsistent knowledge base
