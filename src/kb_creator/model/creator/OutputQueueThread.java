@@ -29,14 +29,15 @@ public class OutputQueueThread implements Runnable {
         }
     }
 
-    public void stopWhenFinished() {
+    public void stopLoop() {
         while (!queue.isEmpty())
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        running = false; //todo: this doesnt interrupt. how can the thread end? does it end correctly?
+        running = false;
+        System.out.println("Output queue Thread stopped. Queue: " + queue.size());
     }
 
     public int getCounter() {

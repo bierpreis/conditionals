@@ -16,8 +16,10 @@ public class ParallelCreator extends AbstractCreator {
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
-    private OutputQueueThread outputQueueThread;
+    private OutputQueueThread outputQueueObject;
     private InputQueueThread inputQueueThread;
+
+    private Thread outputQueueThread;
 
 
     public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
@@ -65,7 +67,7 @@ public class ParallelCreator extends AbstractCreator {
             while (l.hasMoreElementsForK(k)) {
                 progress = calculateProgress(inputQueueThread.getCounter(), lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
 
-                nextCandidatePairAmount = outputQueueThread.getCounter();
+                nextCandidatePairAmount = outputQueueObject.getCounter();
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
@@ -90,11 +92,12 @@ public class ParallelCreator extends AbstractCreator {
 
     private void startThreads(int currentK) {
         //todo: check if queues are empty when threads are started
-        outputQueueThread = new OutputQueueThread(outputPairsQueue, l);
-        new Thread(outputQueueThread).start();
+        outputQueueObject = new OutputQueueThread(outputPairsQueue, l);
+        new Thread(outputQueueObject).start();
 
         inputQueueThread = new InputQueueThread(inputPairsQueue, l, currentK);
-        new Thread(inputQueueThread).start();
+        outputQueueThread = new Thread(inputQueueThread);
+        outputQueueThread.start();
 
 
         for (int i = 0; i < numberOfThreads; i++) {
@@ -120,14 +123,16 @@ public class ParallelCreator extends AbstractCreator {
             future.cancel(true);
 
         System.out.println("creator threads canceled");
-        outputQueueThread.stopWhenFinished();
+        outputQueueObject.stopLoop();
+
     }
 
     private void instantStop() {
         for (Future future : futureList)
             future.cancel(true);
 
-        outputQueueThread.stopWhenFinished();
+        outputQueueObject.stopLoop();
+        outputQueueThread.interrupt();
     }
 
 
@@ -135,7 +140,8 @@ public class ParallelCreator extends AbstractCreator {
     public void stop() {
         super.stop();
         instantStop();
-        outputQueueThread.stopWhenFinished();
+        outputQueueObject.stopLoop();
+        outputQueueThread.interrupt();
     }
 
 
