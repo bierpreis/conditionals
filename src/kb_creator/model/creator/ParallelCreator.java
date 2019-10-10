@@ -126,24 +126,25 @@ public class ParallelCreator extends AbstractCreator {
             future.cancel(true);
 
         System.out.println("creator threads canceled");
-        outputQueueObject.stopLoop();
+        outputQueueObject.finishQueueAndStop();
 
     }
 
+    //todo: rename.
     private void instantStop() {
         for (Future future : futureList)
             future.cancel(true);
         //todo: stop input queue thread too
-        outputQueueObject.stopLoop();
+        outputQueueObject.finishQueueAndStop();
         outputQueueThread.interrupt();
     }
 
-
+    //todo: rename. what is stopped?
     @Override
     public void stop() {
         super.stop();
         instantStop();
-        outputQueueObject.stopLoop();
+        outputQueueObject.finishQueueAndStop();
         outputQueueThread.interrupt();
     }
 

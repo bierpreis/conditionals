@@ -29,7 +29,7 @@ public class OutputQueueThread implements Runnable {
         }
     }
 
-    public void stopLoop() {
+    public void finishQueueAndStop() {
         while (!queue.isEmpty())
             try {
                 Thread.sleep(200);
