@@ -93,7 +93,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
                 }
             }
         }
-
+        //todo: remove? check if this is stopped correctly
         throw new RuntimeException("Buffer ended! nice!"); //todo: this can never be seen! end buffer when program is stopped or finished
 
     }
