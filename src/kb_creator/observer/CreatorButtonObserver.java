@@ -27,6 +27,7 @@ public class CreatorButtonObserver implements ActionListener {
         Thread statusThread = new Thread(statusThreadObject);
 
         statusThread.start();
+        statusThread.setName("StatusThread");
 
     }
 

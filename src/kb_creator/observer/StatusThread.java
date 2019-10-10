@@ -21,6 +21,8 @@ public class StatusThread implements Runnable {
         this.mainWindow = mainWindow;
         sleepTime = 400;
         lastTimeStamp = System.currentTimeMillis();
+
+
     }
 
 

@@ -28,9 +28,11 @@ public class KbDummyWriter extends AbstractKbWriter {
         inconsistentThreadObject = new DummyWriterThread(inconsistentKbQueue);
 
         consistentThread = new Thread(consistentThreadObject);
+        consistentThread.setName("ConsistentDummyWriterThread");
         consistentThread.start();
 
         inconsistentThread = new Thread(inconsistentThreadObject);
+        inconsistentThread.setName("InconsistentDummyWriterThread");
         inconsistentThread.start();
 
 

@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.concurrent.BlockingQueue;
 
-public class WriterThread implements Runnable {
+public class KBWriterThread implements Runnable {
     private String folderName;
     private String rootFilePath;
     private BlockingQueue<AbstractKnowledgeBase> queue;
@@ -15,10 +15,12 @@ public class WriterThread implements Runnable {
 
     private int counter = 0;
 
-    public WriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
+    public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
         this.folderName = folderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
+
+        Thread.currentThread().setName("KBWriterThread");
     }
 
     @Override
