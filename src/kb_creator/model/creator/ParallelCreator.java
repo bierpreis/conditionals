@@ -98,7 +98,8 @@ public class ParallelCreator extends AbstractCreator {
         new Thread(outputQueueObject).start();
 
         inputQueueThread = new InputQueueThread(inputPairsQueue, l, currentK);
-        outputQueueThread = new Thread(inputQueueThread);
+
+        outputQueueThread = new Thread(inputQueueThread); //todo: this is shit wtf !!
         outputQueueThread.start();
 
 
