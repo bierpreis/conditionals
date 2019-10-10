@@ -97,7 +97,7 @@ public class ParallelCreator extends AbstractCreator {
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
 
 
-        //todo: the 2 threads are not closed correctly when stopped by gui button
+        //todo: input thread is not stopped by button. ofc because queue is not empty it wont stop! stop button should stop this thread
         inputQueueObject = new InputQueueThread(inputPairsQueue, l, currentK);
         inputQueueThread = new Thread(inputQueueObject);
         inputQueueThread.setName("InputQueueThread");
@@ -112,6 +112,7 @@ public class ParallelCreator extends AbstractCreator {
         for (int i = 0; i < numberOfThreads; i++) {
 
             //todo: java.util.concurrent.RejectedExecutionException happened here 10.10.!?
+            //Task java.util.concurrent.FutureTask@120e02d6[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@ce47e88[Wrapped task = kb_creator.model.creator.CandidateThread
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
             futureList.add(executorService.submit(thread));
