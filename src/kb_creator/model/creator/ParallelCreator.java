@@ -17,9 +17,10 @@ public class ParallelCreator extends AbstractCreator {
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
     private OutputQueueThread outputQueueObject;
-    private InputQueueThread inputQueueThread;
+    private InputQueueThread inputQueueObject;
 
     private Thread outputQueueThread;
+    private Thread inputQueueThread;
 
 
     public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
@@ -65,7 +66,7 @@ public class ParallelCreator extends AbstractCreator {
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
-                progress = calculateProgress(inputQueueThread.getCounter(), lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
+                progress = calculateProgress(inputQueueObject.getCounter(), lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
 
                 nextCandidatePairAmount = outputQueueObject.getCounter();
 
@@ -94,12 +95,15 @@ public class ParallelCreator extends AbstractCreator {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
 
+        inputQueueObject = new InputQueueThread(inputPairsQueue, l, currentK);
+        inputQueueThread = new Thread(inputQueueObject);
+        inputQueueThread.setName("InputQueueThread");
+        inputQueueThread.start();
+
+        //todo: when creator is finished 2 output queue threads are started and keep running why?
         outputQueueObject = new OutputQueueThread(outputPairsQueue, l);
-        new Thread(outputQueueObject).start();
-
-        inputQueueThread = new InputQueueThread(inputPairsQueue, l, currentK);
-
-        outputQueueThread = new Thread(inputQueueThread); //todo: this is shit wtf !!
+        outputQueueThread = new Thread(outputQueueObject);
+        outputQueueThread.setName("OutputQueueThread");
         outputQueueThread.start();
 
 
