@@ -18,8 +18,6 @@ public class CandidateThread implements Runnable {
     private BlockingQueue<AbstractPair> inputQueue;
     private BlockingQueue<AbstractPair> outputQueue;
 
-    private boolean running = true;
-
     public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
         this.consistentQueue = consistentQueue;
         this.inconsistentQueue = inconsistentQueue;
@@ -31,13 +29,13 @@ public class CandidateThread implements Runnable {
 
     @Override
     public void run() {
-        while (running) {
+        while (!Thread.currentThread().isInterrupted()) {
             AbstractPair candidatePair = null;
 
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) {
-                running = false;
+                return;
                 //this interrupt happens when thread is waiting for queue but gets closed because iteration is finished
             }
 
@@ -57,7 +55,7 @@ public class CandidateThread implements Runnable {
                     try {
                         consistentQueue.put(knowledgeBaseToAdd);
                     } catch (InterruptedException e) {
-                        running = false;
+                        return;
                     }
                     //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
@@ -73,7 +71,7 @@ public class CandidateThread implements Runnable {
                     try {
                         outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
                     } catch (InterruptedException e) {
-                        running = false;
+                        return;
                     }
 
                     //save inconsistent knowledge base
@@ -82,7 +80,7 @@ public class CandidateThread implements Runnable {
                     inconsistentQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
                 } catch (
                         InterruptedException e) {
-                    running = false;
+                    return;
                 }
             }
             //this saves a lot of memory
@@ -90,11 +88,7 @@ public class CandidateThread implements Runnable {
             candidatePair.clear();
 
         }
-        throw new RuntimeException("Candidate thread ended correct!");
-        //todo: can this never be seen? and comment out the lines below. maybe use executors.shutdown now and wait for interrupt here to set running false?
-/*        if (!inputQueue.isEmpty())
-            throw new RuntimeException("Finished when input not empty! Elements left: " + inputQueue.size());*/
-
+        System.out.println("candidate thread finished at end of loop");
     }
 
 }

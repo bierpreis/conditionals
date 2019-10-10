@@ -132,8 +132,9 @@ public class ParallelCreator extends AbstractCreator {
 
     //todo: rename.
     private void instantStop() {
-        for (Future future : futureList)
+        for (Future future : futureList) //todo: try shutdown now should interrupt tasks
             future.cancel(true);
+        executorService.shutdownNow();
         //todo: stop input queue thread too
         outputQueueObject.finishQueueAndStop();
         outputQueueThread.interrupt();

@@ -125,7 +125,6 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public void stop() {
-        System.out.println("!!!abstract creator stop");
         kbWriter.stop();
         this.creatorStatus = CreatorStatus.STOPPED;
     }
@@ -192,8 +191,6 @@ public abstract class AbstractCreator implements Runnable {
             }
 
         }
-
-
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
