@@ -96,6 +96,8 @@ public class ParallelCreator extends AbstractCreator {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
 
+
+        //todo: the 2 threads are not closed correctly when stopped by gui button
         inputQueueObject = new InputQueueThread(inputPairsQueue, l, currentK);
         inputQueueThread = new Thread(inputQueueObject);
         inputQueueThread.setName("InputQueueThread");
@@ -109,6 +111,7 @@ public class ParallelCreator extends AbstractCreator {
 
         for (int i = 0; i < numberOfThreads; i++) {
 
+            //todo: java.util.concurrent.RejectedExecutionException happened here 10.10.!?
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
             futureList.add(executorService.submit(thread));
