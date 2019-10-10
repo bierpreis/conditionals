@@ -33,6 +33,7 @@ public class OutputQueueThread implements Runnable {
     public void finishQueueAndStop() {
         while (!queue.isEmpty())
             try {
+                System.out.println("queue sleeping");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();

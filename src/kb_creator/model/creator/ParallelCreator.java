@@ -12,7 +12,6 @@ public class ParallelCreator extends AbstractCreator {
     //todo: gui should set this
     private int numberOfThreads = 4;
 
-    //todo: executor pool threads keep running after finished. what is after stop?
     private ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
@@ -102,7 +101,6 @@ public class ParallelCreator extends AbstractCreator {
         inputQueueThread.setName("InputQueueThread");
         inputQueueThread.start();
 
-        //todo: when creator is finished 2 output queue threads are started and keep running why?
         outputQueueObject = new OutputQueueThread(outputPairsQueue, l);
         outputQueueThread = new Thread(outputQueueObject);
         outputQueueThread.setName("OutputQueueThread");
@@ -133,10 +131,11 @@ public class ParallelCreator extends AbstractCreator {
 
         System.out.println("creator threads canceled");
         outputQueueObject.finishQueueAndStop();
+        outputQueueThread.interrupt();
 
     }
 
-    //todo: rename. what is stopped?
+
     @Override
     public void stop() {
         super.stop();
