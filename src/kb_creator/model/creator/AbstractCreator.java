@@ -124,6 +124,7 @@ public abstract class AbstractCreator implements Runnable {
         return creatorStatus;
     }
 
+    //todo: rename
     public void stop() {
         kbWriter.stop();
         this.creatorStatus = CreatorStatus.STOPPED;

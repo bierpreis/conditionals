@@ -12,6 +12,7 @@ public class ParallelCreator extends AbstractCreator {
     //todo: gui should set this
     private int numberOfThreads = 4;
 
+    //todo: executor pool threads keep running after finished. what is after stop?
     private ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
@@ -66,6 +67,7 @@ public class ParallelCreator extends AbstractCreator {
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
+                //todo: progress is fucked up!
                 progress = calculateProgress(inputQueueObject.getCounter(), lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
 
                 nextCandidatePairAmount = outputQueueObject.getCounter();
@@ -134,22 +136,17 @@ public class ParallelCreator extends AbstractCreator {
 
     }
 
-    //todo: rename.
-    private void instantStop() {
-        for (Future future : futureList) //todo: try shutdown now should interrupt tasks
-            future.cancel(true);
-        executorService.shutdownNow();
-        //todo: stop input queue thread too
-        outputQueueObject.finishQueueAndStop();
-        outputQueueThread.interrupt();
-    }
-
     //todo: rename. what is stopped?
     @Override
     public void stop() {
         super.stop();
-        instantStop();
-        outputQueueObject.finishQueueAndStop();
+
+        for (Future future : futureList)
+            future.cancel(true);
+
+        executorService.shutdownNow();
+
+        outputQueueObject.finishQueueAndStop(); //todo: rename
         outputQueueThread.interrupt();
     }
 
