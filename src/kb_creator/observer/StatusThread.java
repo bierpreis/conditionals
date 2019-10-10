@@ -12,7 +12,7 @@ public class StatusThread implements Runnable {
     private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
-    private boolean isRunning = true; //todo: when is status thread stopped?
+    private boolean isRunning = true;
     private AbstractKbWriter kbWriter;
     private MainWindow mainWindow;
 
@@ -89,7 +89,7 @@ public class StatusThread implements Runnable {
         }
     }
 
-    //todo: is this rly neede? better blocking queues?
+    //todo: is this rly needed? buffer should have 1 writer and 1 reader thread and blocking queues. then this can be deleted
     private void checkIfNotifyBuffer() {
         if (creatorThread.getPairBuffer() instanceof BlockingPairBuffer || creatorThread.getPairBuffer() instanceof ConcurrentPairBuffer) {
             if (creatorThread.getPairBuffer().checkIfShouldRead() || creatorThread.getPairBuffer().checkIfShouldWrite())
@@ -116,6 +116,4 @@ public class StatusThread implements Runnable {
         this.creatorThread = kbCreator;
         this.kbWriter = creatorThread.getKbWriterThread();
     }
-
-
 }
