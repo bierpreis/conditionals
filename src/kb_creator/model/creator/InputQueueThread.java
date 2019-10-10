@@ -26,7 +26,8 @@ public class InputQueueThread implements Runnable {
                 //happened again!
                 counter++;
             } catch (InterruptedException e) {
-                //intentionally nothing
+                //this will be triggered by gui stop button
+                return;
             }
         }
     }

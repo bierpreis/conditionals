@@ -95,9 +95,7 @@ public class ParallelCreator extends AbstractCreator {
     private void startThreads(int currentK) {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
-
-
-        //todo: input thread is not stopped by button. ofc because queue is not empty it wont stop! stop button should stop this thread
+        
         inputQueueObject = new InputQueueThread(inputPairsQueue, l, currentK);
         inputQueueThread = new Thread(inputQueueObject);
         inputQueueThread.setName("InputQueueThread");
@@ -149,8 +147,10 @@ public class ParallelCreator extends AbstractCreator {
 
         executorService.shutdownNow();
 
-        outputQueueObject.finishQueueAndStop(); //todo: rename
+        outputQueueObject.finishQueueAndStop();
         outputQueueThread.interrupt();
+
+        inputQueueThread.interrupt(); //todo: think if this can cause problems
     }
 
 
