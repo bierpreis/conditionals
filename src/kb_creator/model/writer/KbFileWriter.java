@@ -15,7 +15,7 @@ public class KbFileWriter extends AbstractKbWriter {
 
 
     public KbFileWriter(String filePathToSave, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue) {
-        
+
         this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentQueue);
         consistentWriterThread = new Thread(consistentWriter);
         consistentWriterThread.start();

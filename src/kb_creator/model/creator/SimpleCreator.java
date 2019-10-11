@@ -123,8 +123,6 @@ public class SimpleCreator extends AbstractCreator {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        totalInconsistentAmount++; //todo: counter in writer?
     }
 
 

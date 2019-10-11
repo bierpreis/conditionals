@@ -22,17 +22,16 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
-    protected int totalNumberOfKBs;
-    protected int totalInconsistentAmount;
-    protected int iterationNumberOfKBs;
-    protected int lastIterationAmount;
+    protected int totalNumberOfKBs; //todo
+    protected int iterationNumberOfKBs; //todo
+    protected int lastIterationAmount; //todo
 
     protected CreatorStatus creatorStatus;
 
     protected AbstractSignature signature;
 
     protected int k;
-    protected int nextCandidatePairAmount;
+    protected int nextCandidatePairAmount; //todo
 
     protected long startTime;
 

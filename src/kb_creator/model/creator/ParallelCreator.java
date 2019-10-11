@@ -46,7 +46,7 @@ public class ParallelCreator extends AbstractCreator {
         //k - 1 because actually the init list is iteration 0
         l.finishIteration(0);
 
-        //todo: iteration counter doesnt show in gui
+        //todo: iteration counter doesnt show in gui. this counter needs to be in kb writer. and a reset function for every iteration?
         //line 6
         while (l.hasElementsForNextK(k)) {
             System.out.println("beginning iteration: " + k);
@@ -95,7 +95,7 @@ public class ParallelCreator extends AbstractCreator {
     private void startThreads(int currentK) {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
-        
+
         inputQueueObject = new InputQueueThread(inputPairsQueue, l, currentK);
         inputQueueThread = new Thread(inputQueueObject);
         inputQueueThread.setName("InputQueueThread");
