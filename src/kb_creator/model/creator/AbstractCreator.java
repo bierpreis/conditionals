@@ -22,16 +22,16 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
-    protected int totalNumberOfKBs; //todo
-    protected int iterationNumberOfKBs; //todo
-    protected int lastIterationAmount; //todo
+    protected int totalNumberOfKBs; //todo remove
+    protected int iterationNumberOfKBs; //todo move to kb writer
+    protected int lastIterationAmount; //todo in kb writer. get from nextCandidatePairAmount
 
     protected CreatorStatus creatorStatus;
 
     protected AbstractSignature signature;
 
     protected int k;
-    protected int nextCandidatePairAmount; //todo
+    protected int nextCandidatePairAmount; //todo in kb writer -> when new iteration put this to lastIterationAmount
 
     protected long startTime;
 
