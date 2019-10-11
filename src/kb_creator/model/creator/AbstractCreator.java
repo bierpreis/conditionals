@@ -22,7 +22,6 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
-    protected int totalNumberOfKBs; //todo remove
     protected int iterationNumberOfKBs; //todo move to kb writer
     protected int lastIterationAmount; //todo in kb writer. get from nextCandidatePairAmount
 

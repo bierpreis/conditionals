@@ -59,7 +59,7 @@ public class SimpleCreator extends AbstractCreator {
                 iterationPairCounter++;
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
-                    long overallStart = System.nanoTime();
+
                     //line 10 //
                     //consistency check takes almost no time
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
@@ -89,13 +89,12 @@ public class SimpleCreator extends AbstractCreator {
                         //line 12
                         //this takes about 30 percent of time
                         //collecting pairs and add together is even slower
-                        long beforeAddingPair = System.nanoTime();
+
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
                         //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
                         nextCandidatePairAmount++;
                         iterationNumberOfKBs++;
-                        totalNumberOfKBs++;
 
                         //save inconsistent knowledge base
                         //this part takes almost no time
