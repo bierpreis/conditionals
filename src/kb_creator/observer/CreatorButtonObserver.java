@@ -11,6 +11,7 @@ import kb_creator.model.buffer.DummyPairBuffer;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Parameter;
 
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
@@ -43,7 +44,7 @@ public class CreatorButtonObserver implements ActionListener {
             } else candidateBuffer = new DummyPairBuffer(null);
 
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-            creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
+            creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
 
             Thread bufferThread = new Thread(candidateBuffer);
