@@ -47,6 +47,7 @@ public class CreatorButtonObserver implements ActionListener {
             creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
             //todo: dummy buffer is actually no thread. what to do with this?!
+            //todo: buffer thread is never stopped!
             Thread bufferThread = new Thread(candidateBuffer);
             bufferThread.setName("BufferThread");
             bufferThread.start();
