@@ -73,6 +73,7 @@ public class CreatorButtonObserver implements ActionListener {
 
 
             //todo: make sure it can be used again and again. clear button to clear and activate start button again
+            //todo: stop does NOT stop the executor service. fix!
             if (answer == 0) {
                 creatorThreadObject.stop();
                 mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
