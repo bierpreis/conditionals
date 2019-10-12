@@ -14,7 +14,7 @@ public class KBWriterThread implements Runnable {
     private boolean running = true;
 
     private int iterationCounter = 0;
-    private int totalCounter = 0; //todo: delete?
+    private int totalCounter = 0;
 
     public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
         this.folderName = folderName;
@@ -46,6 +46,7 @@ public class KBWriterThread implements Runnable {
         String filePath = rootFilePath + knowledgeBase.getSize() + "/" + folderName + "/";
         try {
             iterationCounter++;
+            totalCounter++;
             knowledgeBase.setKbNumber(iterationCounter); //todo: where is kb 31 with sig ab??? must be lost somewere!
             File consistentFolder = new File(filePath);
             consistentFolder.mkdirs();
