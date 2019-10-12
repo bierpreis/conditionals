@@ -47,7 +47,7 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
-    public int getConsistentCounter() {
+    public int getTotalConsistentCounter() {
         return consistentThreadObject.getTotalCounter();
     }
 

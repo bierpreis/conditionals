@@ -41,7 +41,7 @@ public class KbFileWriter extends AbstractKbWriter {
 
     //todo: rename total counter
     @Override
-    public int getConsistentCounter() {
+    public int getTotalConsistentCounter() {
         return consistentWriter.getTotalCounter();
     }
 

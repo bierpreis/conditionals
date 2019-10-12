@@ -9,7 +9,7 @@ public abstract class AbstractKbWriter {
 
     public abstract int getTotalInconsistentCounter();
 
-    public abstract int getConsistentCounter();
+    public abstract int getTotalConsistentCounter();
 
     public abstract int getConsistentQueue();
 

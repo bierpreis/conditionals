@@ -138,7 +138,7 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public int getTotalKbAmount() {
-        return kbWriter.getConsistentCounter();
+        return kbWriter.getTotalConsistentCounter();
     }
 
     public abstract int getTotalInconsistentAmount();
