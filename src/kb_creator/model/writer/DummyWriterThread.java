@@ -7,7 +7,9 @@ import java.util.concurrent.BlockingQueue;
 public class DummyWriterThread implements Runnable {
     private volatile boolean running = true;
     private BlockingQueue<AbstractKnowledgeBase> queue;
-    private volatile int counter;
+
+    private int iterationCounter;
+    private int totalCounter;
 
     public DummyWriterThread(BlockingQueue<AbstractKnowledgeBase> queue) {
         this.queue = queue;
@@ -21,7 +23,8 @@ public class DummyWriterThread implements Runnable {
             //this should delete all entries and wait if there are no entries
             try {
                 queue.take();
-                counter++;
+                iterationCounter++;
+                totalCounter++;
             } catch (InterruptedException e) {
                 //intentionally nothing
             }
@@ -41,7 +44,16 @@ public class DummyWriterThread implements Runnable {
         running = false;
     }
 
-    public int getCounter() {
-        return counter;
+    public int getTotalCounter() {
+        return totalCounter;
+    }
+
+    //todo. use this
+    public int getIterationCounter() {
+        return iterationCounter;
+    }
+
+    public void newIteration() {
+        iterationCounter = 0;
     }
 }

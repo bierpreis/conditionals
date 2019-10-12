@@ -8,6 +8,8 @@ import java.util.concurrent.BlockingQueue;
 //this class is a writer which throws all input away
 //it is a kind of placeholder for test runs
 public class KbDummyWriter extends AbstractKbWriter {
+
+    //todo: remove?
     private BlockingQueue consistentKbQueue;
     private BlockingQueue inconsistentKbQueue;
 
@@ -41,12 +43,12 @@ public class KbDummyWriter extends AbstractKbWriter {
 
     @Override
     public int getTotalInconsistentCounter() {
-        return inconsistentThreadObject.getCounter();
+        return inconsistentThreadObject.getTotalCounter();
     }
 
     @Override
     public int getConsistentCounter() {
-        return consistentThreadObject.getCounter();
+        return consistentThreadObject.getTotalCounter();
     }
 
 
@@ -66,8 +68,8 @@ public class KbDummyWriter extends AbstractKbWriter {
         consistentThreadObject.stopLoop();
         inconsistentThreadObject.stopLoop();
 
-        System.out.println("consistent counter: " + consistentThreadObject.getCounter());
-        System.out.println("inconsistent counter: " + inconsistentThreadObject.getCounter());
+        System.out.println("consistent counter: " + consistentThreadObject.getTotalCounter());
+        System.out.println("inconsistent counter: " + inconsistentThreadObject.getTotalCounter());
 
         consistentThread.interrupt();
         inconsistentThread.interrupt();
@@ -76,7 +78,13 @@ public class KbDummyWriter extends AbstractKbWriter {
 
     @Override
     public int getIterationConsistentKbCounter() {
-        return consistentThreadObject.getCounter();
+        return consistentThreadObject.getIterationCounter();
+    }
+
+    @Override
+    public void newIteration() {
+        inconsistentThreadObject.newIteration();
+        consistentThreadObject.newIteration();
     }
 
 }

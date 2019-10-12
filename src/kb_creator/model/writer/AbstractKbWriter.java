@@ -3,9 +3,6 @@ package kb_creator.model.writer;
 
 public abstract class AbstractKbWriter {
 
-    //todo: delete?
-    protected int iterationConsistentKbCounter = 0;
-
     protected boolean running = true;
 
     protected volatile WriterStatus status;
@@ -26,9 +23,7 @@ public abstract class AbstractKbWriter {
 
     public abstract int getIterationConsistentKbCounter();
 
-    public void newIteration() {
-        iterationConsistentKbCounter = 0;
-    }
+    public abstract void newIteration();
 
 
 }

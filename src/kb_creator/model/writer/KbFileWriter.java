@@ -67,5 +67,11 @@ public class KbFileWriter extends AbstractKbWriter {
         return consistentWriter.getIterationCounter();
     }
 
+    @Override
+    public void newIteration() {
+        consistentWriter.newIteration();
+        inconsistentWriter.newIteration();
+    }
+
 }
 

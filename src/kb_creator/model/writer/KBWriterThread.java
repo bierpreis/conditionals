@@ -13,7 +13,7 @@ public class KBWriterThread implements Runnable {
     private BlockingQueue<AbstractKnowledgeBase> queue;
     private boolean running = true;
 
-    private int iterationCounter = 0; //todo: needs total counter and iteration counter and new iteration method
+    private int iterationCounter = 0;
     private int totalCounter = 0;
 
     public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
@@ -34,6 +34,10 @@ public class KBWriterThread implements Runnable {
                 //intentionally nothing
             }
         }
+    }
+
+    public void newIteration() {
+        iterationCounter = 0;
     }
 
     private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
