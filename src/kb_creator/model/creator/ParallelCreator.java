@@ -150,7 +150,7 @@ public class ParallelCreator extends AbstractCreator {
         outputQueueObject.finishQueueAndStop();
         outputQueueThread.interrupt();
 
-        inputQueueThread.interrupt(); //todo: think if this can cause problems
+        inputQueueThread.interrupt();
     }
 
 
