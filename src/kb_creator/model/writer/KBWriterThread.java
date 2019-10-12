@@ -47,7 +47,9 @@ public class KBWriterThread implements Runnable {
         try {
             iterationCounter++;
             totalCounter++;
-            knowledgeBase.setKbNumber(iterationCounter); //todo: where is kb 31 with sig ab??? must be lost somewere!
+            //todo: where is kb 31 with sig ab??? must be lost somewere!
+            //todo: why does iteration 2 cconsistent numbers ontinue counting from iteration 1?
+            knowledgeBase.setKbNumber(iterationCounter);
             File consistentFolder = new File(filePath);
             consistentFolder.mkdirs();
 

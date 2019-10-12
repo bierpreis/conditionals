@@ -157,7 +157,7 @@ public abstract class AbstractCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(); //todo: set numbers to kbs in kbWriter instead here
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase();
             rKB.add(r); // rKB is r as 1 element kb
 
             //create candidates
