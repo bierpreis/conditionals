@@ -54,7 +54,7 @@ public class KBWriterThread implements Runnable {
             consistentFolder.mkdirs();
 
             PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-
+            System.out.println("writing: " + folderName + iterationCounter);
             writer.print(knowledgeBase.toFileString());
 
             writer.close();
@@ -79,7 +79,7 @@ public class KBWriterThread implements Runnable {
     }
 
     public void finishAndStopLoop() {
-
+        System.out.println("closing " + folderName);
         //this makes sure queue is empty before it stops
         while (!queue.isEmpty())
             try {

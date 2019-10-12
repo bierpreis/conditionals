@@ -70,9 +70,10 @@ public class KbFileWriter extends AbstractKbWriter {
         return inconsistentWriter.getIterationCounter();
     }
 
-    //todo: this is called before writing finished?!
+    //todo: this is called before writing finished!!
     @Override
     public void newIteration() {
+        System.out.println("new iteration");
         consistentWriter.newIteration();
         inconsistentWriter.newIteration();
     }
