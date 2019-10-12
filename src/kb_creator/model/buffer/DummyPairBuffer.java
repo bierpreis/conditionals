@@ -78,8 +78,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     @Override
     public void addPair(AbstractPair pair) {
         synchronized (this) {
-            candidatePairList.get(k).add(pair); //todo: here happened: Exception in thread "Thread-47" java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 0
-        }//happened again! can sync help?!
+            candidatePairList.get(k).add(pair);
+        }
     }
 
 

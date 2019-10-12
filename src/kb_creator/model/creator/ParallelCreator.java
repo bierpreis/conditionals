@@ -111,6 +111,7 @@ public class ParallelCreator extends AbstractCreator {
             //Task java.util.concurrent.FutureTask@120e02d6[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@ce47e88[Wrapped task = kb_creator.model.creator.CandidateThread
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
+            //todo: Exception in thread "CreatorThread" java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@1d184c6e[Not completed,
             futureList.add(executorService.submit(thread));
         }
 
