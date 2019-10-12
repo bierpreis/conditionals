@@ -70,7 +70,7 @@ public class SimpleCreator extends AbstractCreator {
                         //long kbCreationStart = System.nanoTime();
                         //first create the new knowledge base
                         //takes very little time
-                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r); //todo: set kb numbers in kb writer not here
+                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
