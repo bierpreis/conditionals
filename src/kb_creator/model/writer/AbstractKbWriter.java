@@ -5,7 +5,7 @@ public abstract class AbstractKbWriter {
 
     protected boolean running = true;
 
-    protected WriterStatus status;
+    protected volatile WriterStatus status;
 
     public abstract int getInconsistentCounter();
 

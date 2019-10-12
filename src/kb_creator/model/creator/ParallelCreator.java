@@ -66,8 +66,8 @@ public class ParallelCreator extends AbstractCreator {
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
-                //todo: progress is fucked up!
-                progress = calculateProgress(inputQueueObject.getCounter(), lastIterationAmount); //todo: currentIerationPairCounter is instantly queue max size. thats why progress starts at 30%
+                //todo: first value is wrong. it counts queue.put but should count queue.take
+                progress = calculateProgress(inputQueueObject.getCounter(), lastIterationAmount);
 
                 nextCandidatePairAmount = outputQueueObject.getCounter();
 
