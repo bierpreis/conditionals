@@ -47,7 +47,7 @@ public class DummyWriterThread implements Runnable {
     public int getTotalCounter() {
         return totalCounter;
     }
-    
+
     public int getIterationCounter() {
         return iterationCounter;
     }

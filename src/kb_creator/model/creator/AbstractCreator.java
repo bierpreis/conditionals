@@ -148,10 +148,7 @@ public abstract class AbstractCreator implements Runnable {
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
-
-
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
-
 
         //line 3
         for (NewConditional r : cnfc) {
@@ -175,7 +172,6 @@ public abstract class AbstractCreator implements Runnable {
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, candidatesList));
             nextCandidatePairAmount++;
-
         }
 
         for (AbstractPair candidatePair : listToReturn) {
