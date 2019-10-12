@@ -2,6 +2,7 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
+import kb_creator.model.creator.ParallelCreator;
 import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.BlockingPairBuffer;
@@ -42,7 +43,7 @@ public class CreatorButtonObserver implements ActionListener {
             } else candidateBuffer = new DummyPairBuffer(null);
 
             mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-            creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
+            creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
             //todo: dummy buffer is actually no thread. what to do with this?!
             Thread bufferThread = new Thread(candidateBuffer);
@@ -74,7 +75,6 @@ public class CreatorButtonObserver implements ActionListener {
                 creatorThreadObject.stopLoop();
                 mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
                 candidateBuffer.stopLoop();
-                //todo: simple creator is not stopped by this
             }
 
 

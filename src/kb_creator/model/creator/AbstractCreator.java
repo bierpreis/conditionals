@@ -25,7 +25,7 @@ public abstract class AbstractCreator implements Runnable {
     protected int iterationNumberOfKBs; //todo move to kb writer
     protected int lastIterationAmount; //todo in kb writer. get from nextCandidatePairAmount
 
-    protected CreatorStatus creatorStatus;
+    protected volatile CreatorStatus creatorStatus;
 
     protected AbstractSignature signature;
 
