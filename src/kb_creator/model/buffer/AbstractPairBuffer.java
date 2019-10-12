@@ -1,5 +1,6 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.NewConditional;
@@ -11,9 +12,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer implements Runnable {
 
-    protected boolean running = true;
+    protected volatile boolean running = true;
 
-    protected BufferStatus status;
+    protected volatile BufferStatus status;
 
     protected int pairReaderCounter;
 
@@ -66,9 +67,14 @@ public abstract class AbstractPairBuffer implements Runnable {
         status = BufferStatus.FINISHED;
     }
 
+    public void stopLoop() {
+        running = false;
+        status = BufferStatus.STOPPED;
+    }
+
 
     public enum BufferStatus {
-        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED
+        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED, STOPPED
     }
 
     public void setDeletingFiles(boolean deleteFiles) {

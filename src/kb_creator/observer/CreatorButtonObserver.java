@@ -15,6 +15,7 @@ import java.lang.reflect.Parameter;
 
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
+    private AbstractPairBuffer candidateBuffer;
 
     private AbstractCreator creatorThreadObject;
     private StatusThread statusThreadObject;
@@ -35,7 +36,6 @@ public class CreatorButtonObserver implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Start")) {
-            AbstractPairBuffer candidateBuffer;
 
             if (mainWindow.isBufferingRequested()) {
                 if (mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
@@ -47,7 +47,6 @@ public class CreatorButtonObserver implements ActionListener {
             creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
             //todo: dummy buffer is actually no thread. what to do with this?!
-            //todo: buffer thread is never stopped!
             Thread bufferThread = new Thread(candidateBuffer);
             bufferThread.setName("BufferThread");
             bufferThread.start();
@@ -74,8 +73,9 @@ public class CreatorButtonObserver implements ActionListener {
 
             //todo: make sure it can be used again and again. clear button to clear and activate start button again
             if (answer == 0) {
-                creatorThreadObject.stop();
+                creatorThreadObject.stop(); //todo: rename
                 mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
+                candidateBuffer.stopLoop();
                 //todo: simple creator is not stopped by this
             }
 
