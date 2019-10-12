@@ -14,7 +14,7 @@ public class KBWriterThread implements Runnable {
     private boolean running = true;
 
     private int iterationCounter = 0;
-    private int totalCounter = 0;
+    private int totalCounter = 0; //todo: delete?
 
     public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
         this.folderName = folderName;
@@ -29,7 +29,7 @@ public class KBWriterThread implements Runnable {
         System.out.println("New Writer Thread started for " + folderName + " kbs");
         while (running) {
             try {
-                writeConsistentKbToFile(queue.take()); //todo: counter here
+                writeConsistentKbToFile(queue.take());
             } catch (InterruptedException e) {
                 //intentionally nothing
             }
