@@ -2,7 +2,6 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
-import kb_creator.model.creator.ParallelCreator;
 import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.BlockingPairBuffer;
@@ -11,7 +10,6 @@ import kb_creator.model.buffer.DummyPairBuffer;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Parameter;
 
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
@@ -73,7 +71,7 @@ public class CreatorButtonObserver implements ActionListener {
 
             //todo: make sure it can be used again and again. clear button to clear and activate start button again
             if (answer == 0) {
-                creatorThreadObject.stop(); //todo: rename
+                creatorThreadObject.stopLoop();
                 mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
                 candidateBuffer.stopLoop();
                 //todo: simple creator is not stopped by this

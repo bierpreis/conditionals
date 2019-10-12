@@ -126,8 +126,8 @@ public class SimpleCreator extends AbstractCreator {
 
 
     @Override
-    public void stop() {
-        super.stop();
+    public void stopLoop() {
+        super.stopLoop();
 
     }
 

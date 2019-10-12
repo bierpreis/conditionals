@@ -139,8 +139,8 @@ public class ParallelCreator extends AbstractCreator {
 
 
     @Override
-    public void stop() {
-        super.stop();
+    public void stopLoop() {
+        super.stopLoop();
 
         for (Future future : futureList)
             future.cancel(true);
