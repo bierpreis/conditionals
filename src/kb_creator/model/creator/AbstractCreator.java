@@ -22,7 +22,7 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
-    protected int iterationNumberOfKBs; //todo move to kb writer
+    protected int iterationNumberOfKBs; //todo move to kb writer. what is this? number of finished candidates in current iteration? created kbs this iteration? rename!
     protected int lastIterationAmount; //todo in kb writer. get from nextCandidatePairAmount
 
     protected volatile CreatorStatus creatorStatus;
