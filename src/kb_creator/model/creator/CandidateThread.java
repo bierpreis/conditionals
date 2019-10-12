@@ -29,7 +29,7 @@ public class CandidateThread implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
+        while (!Thread.interrupted()) {
             AbstractPair candidatePair = null;
 
             try {
