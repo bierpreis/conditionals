@@ -39,13 +39,11 @@ public class KbFileWriter extends AbstractKbWriter {
         return inconsistentWriter.getSize();
     }
 
-    //todo: rename total counter
     @Override
     public int getTotalConsistentCounter() {
         return consistentWriter.getTotalCounter();
     }
-
-    //todo: rename total counter
+    
     @Override
     public int getTotalInconsistentCounter() {
         return inconsistentWriter.getTotalCounter();
