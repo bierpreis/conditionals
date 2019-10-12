@@ -58,7 +58,7 @@ public class ParallelCreator extends AbstractCreator {
             l.prepareIteration(k);
             kbWriter.newIteration();
 
-            startThreads(k);
+            startQueueThreads(k);
 
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
@@ -91,7 +91,7 @@ public class ParallelCreator extends AbstractCreator {
         super.finish();
     }
 
-    private void startThreads(int currentK) {
+    private void startQueueThreads(int currentK) {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
 
