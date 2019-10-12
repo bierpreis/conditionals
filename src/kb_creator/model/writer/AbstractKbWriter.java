@@ -7,13 +7,22 @@ public abstract class AbstractKbWriter {
 
     protected volatile WriterStatus status;
 
+
+    //getters for counters
     public abstract int getTotalInconsistentCounter();
 
     public abstract int getTotalConsistentCounter();
 
+    public abstract int getIterationConsistentCounter();
+
+    public abstract int getIterationInconsistentCounter(); //todo. use this and show in gui
+
+
+    //getters for queue
     public abstract int getConsistentQueue();
 
     public abstract int getInconsistentQueue();
+
 
     public WriterStatus getStatus() {
         return status;
@@ -21,7 +30,6 @@ public abstract class AbstractKbWriter {
 
     public abstract void stopThreads();
 
-    public abstract int getIterationConsistentKbCounter();
 
     public abstract void newIteration();
 
