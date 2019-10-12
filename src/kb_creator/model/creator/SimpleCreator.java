@@ -44,7 +44,7 @@ public class SimpleCreator extends AbstractCreator {
             int iterationPairCounter = 0;
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
-            iterationNumberOfKBs = 0;
+            iterationConsistentKbCounter = 0;
 
             //line  7
             l.addNewList(new ArrayList<>());
@@ -69,7 +69,7 @@ public class SimpleCreator extends AbstractCreator {
                         //long kbCreationStart = System.nanoTime();
                         //first create the new knowledge base
                         //takes very little time
-                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationNumberOfKBs, candidatePair.getKnowledgeBase(), r);
+                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(iterationConsistentKbCounter, candidatePair.getKnowledgeBase(), r);
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
@@ -94,7 +94,7 @@ public class SimpleCreator extends AbstractCreator {
                         //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
                         nextCandidatePairAmount++;
-                        iterationNumberOfKBs++;
+                        iterationConsistentKbCounter++;
 
                         //save inconsistent knowledge base
                         //this part takes almost no time

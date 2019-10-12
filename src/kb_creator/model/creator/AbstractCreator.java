@@ -22,7 +22,7 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
-    protected int iterationNumberOfKBs; //todo move to kb writer. what is this? number of finished candidates in current iteration? created kbs this iteration? rename!
+    protected int iterationConsistentKbCounter; //todo move to kb writer.
     protected int lastIterationAmount; //todo in kb writer. get from nextCandidatePairAmount
 
     protected volatile CreatorStatus creatorStatus;
@@ -114,8 +114,8 @@ public abstract class AbstractCreator implements Runnable {
         return (pairCounter / (float) lastIterationAmount) * 100;
     }
 
-    public int getIterationNumberOfKBs() {
-        return iterationNumberOfKBs;
+    public int getIterationConsistentKbCounter() {
+        return iterationConsistentKbCounter;
     }
 
     public CreatorStatus getCreatorStatus() {
@@ -151,7 +151,7 @@ public abstract class AbstractCreator implements Runnable {
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
-        iterationNumberOfKBs = 0;
+        iterationConsistentKbCounter = 0;
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
 
@@ -159,7 +159,7 @@ public abstract class AbstractCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationNumberOfKBs);
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationConsistentKbCounter);
             rKB.add(r); // rKB is r as 1 element kb
 
             //create candidates
@@ -176,7 +176,7 @@ public abstract class AbstractCreator implements Runnable {
 
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, candidatesList));
-            iterationNumberOfKBs++;
+            iterationConsistentKbCounter++;
             nextCandidatePairAmount++;
 
         }

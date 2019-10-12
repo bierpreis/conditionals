@@ -61,7 +61,7 @@ public class ParallelCreator extends AbstractCreator {
 
             lastIterationAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
-            iterationNumberOfKBs = 0;
+            iterationConsistentKbCounter = 0;
 
 
             //this is line 8
