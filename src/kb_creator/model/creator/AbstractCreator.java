@@ -33,7 +33,7 @@ public abstract class AbstractCreator implements Runnable {
 
     protected long startTime;
 
-    protected float progress; //todo: move to kb writer? would fit if the other counters are there
+    protected float progress;
 
     protected Collection<NewConditional> nfc;
 
