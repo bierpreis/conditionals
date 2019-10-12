@@ -51,10 +51,10 @@ public class KbFileWriter extends AbstractKbWriter {
 
     public void stopThreads() {
 
-        consistentWriter.stop();
+        consistentWriter.finishAndStopLoop();
         consistentWriterThread.interrupt();
 
-        inconsistentWriter.stop();
+        inconsistentWriter.finishAndStopLoop();
         inconsistentWriterThread.interrupt();
         status = WriterStatus.STOPPED;
         System.out.println("main kb writer thread stopped");

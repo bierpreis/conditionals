@@ -78,7 +78,7 @@ public class KBWriterThread implements Runnable {
         return queue.size();
     }
 
-    public void stop() {
+    public void finishAndStopLoop() {
 
         //this makes sure queue is empty before it stops
         while (!queue.isEmpty())
