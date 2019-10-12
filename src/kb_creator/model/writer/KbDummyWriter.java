@@ -9,9 +9,6 @@ import java.util.concurrent.BlockingQueue;
 //it is a kind of placeholder for test runs
 public class KbDummyWriter extends AbstractKbWriter {
 
-    //todo: remove?
-    private BlockingQueue consistentKbQueue;
-    private BlockingQueue inconsistentKbQueue;
 
     private DummyWriterThread consistentThreadObject;
     private Thread consistentThread;
@@ -22,9 +19,6 @@ public class KbDummyWriter extends AbstractKbWriter {
     public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
         System.out.println("new dummy writer");
         status = WriterStatus.NOT_STARTED;
-
-        this.consistentKbQueue = consistentKbQueue;
-        this.inconsistentKbQueue = inconsistentKbQueue;
 
         consistentThreadObject = new DummyWriterThread(consistentKbQueue);
         inconsistentThreadObject = new DummyWriterThread(inconsistentKbQueue);
