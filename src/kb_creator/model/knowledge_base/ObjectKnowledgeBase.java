@@ -29,9 +29,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
-    public ObjectKnowledgeBase(int kbNumber) {
+    public ObjectKnowledgeBase() {
         this.conditionalList = new ArrayList<>(1);
-        this.kbNumber = kbNumber;
     }
 
     //this is used by parallel creator

@@ -22,7 +22,6 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractCreator implements Runnable {
 
-    protected int iterationConsistentKbCounter; //todo move to kb writer.
     protected int lastIterationAmount; //todo in kb writer. get from nextCandidatePairAmount
 
     protected volatile CreatorStatus creatorStatus;
@@ -114,9 +113,7 @@ public abstract class AbstractCreator implements Runnable {
         return (pairCounter / (float) lastIterationAmount) * 100;
     }
 
-    public int getIterationConsistentKbCounter() {
-        return iterationConsistentKbCounter;
-    }
+
 
     public CreatorStatus getCreatorStatus() {
         return creatorStatus;
@@ -151,7 +148,8 @@ public abstract class AbstractCreator implements Runnable {
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
-        iterationConsistentKbCounter = 0;
+
+
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
 
@@ -159,7 +157,7 @@ public abstract class AbstractCreator implements Runnable {
         for (NewConditional r : cnfc) {
 
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(iterationConsistentKbCounter);
+            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase(); //todo: set numbers to kbs in kbWriter instead here
             rKB.add(r); // rKB is r as 1 element kb
 
             //create candidates
@@ -176,7 +174,6 @@ public abstract class AbstractCreator implements Runnable {
 
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, candidatesList));
-            iterationConsistentKbCounter++;
             nextCandidatePairAmount++;
 
         }
