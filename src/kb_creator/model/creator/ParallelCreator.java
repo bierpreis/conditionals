@@ -46,7 +46,7 @@ public class ParallelCreator extends AbstractCreator {
 
         //k - 1 because actually the init list is iteration 0
         l.finishIteration(0);
-        
+
         //line 6
         while (l.hasElementsForNextK(k)) {
             System.out.println("beginning iteration: " + k);
@@ -149,6 +149,11 @@ public class ParallelCreator extends AbstractCreator {
         outputQueueThread.interrupt();
 
         inputQueueThread.interrupt();
+    }
+
+    @Override
+    public int getTotalInconsistentAmount() {
+        return kbWriter.getTotalInconsistentCounter();
     }
 
 

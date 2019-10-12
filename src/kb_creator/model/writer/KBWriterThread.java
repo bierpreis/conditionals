@@ -13,7 +13,8 @@ public class KBWriterThread implements Runnable {
     private BlockingQueue<AbstractKnowledgeBase> queue;
     private boolean running = true;
 
-    private int counter = 0;
+    private int iterationCounter = 0; //todo: needs total counter and iteration counter and new iteration method
+    private int totalCounter = 0;
 
     public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
         this.folderName = folderName;
@@ -49,7 +50,7 @@ public class KBWriterThread implements Runnable {
             writer.print(knowledgeBase.toFileString());
 
             writer.close();
-            counter++;
+            iterationCounter++;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,8 +58,12 @@ public class KBWriterThread implements Runnable {
         }
     }
 
-    public int getCounter() {
-        return counter;
+    public int getIterationCounter() {
+        return iterationCounter;
+    }
+
+    public int getTotalCounter() {
+        return totalCounter;
     }
 
     public int getSize() {

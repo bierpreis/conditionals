@@ -124,6 +124,10 @@ public class SimpleCreator extends AbstractCreator {
         }
     }
 
+    public int getTotalInconsistentAmount() {
+        return kbWriter.getTotalInconsistentCounter();
+    }
+
 
     @Override
     public void stopLoop() {

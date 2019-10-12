@@ -39,14 +39,16 @@ public class KbFileWriter extends AbstractKbWriter {
         return inconsistentWriter.getSize();
     }
 
+    //todo: rename total counter
     @Override
     public int getConsistentCounter() {
-        return consistentWriter.getCounter();
+        return consistentWriter.getTotalCounter();
     }
 
+    //todo: rename total counter
     @Override
-    public int getInconsistentCounter() {
-        return inconsistentWriter.getCounter();
+    public int getTotalInconsistentCounter() {
+        return inconsistentWriter.getTotalCounter();
     }
 
     public void stopThreads() {
@@ -58,6 +60,11 @@ public class KbFileWriter extends AbstractKbWriter {
         inconsistentWriterThread.interrupt();
         status = WriterStatus.STOPPED;
         System.out.println("main kb writer thread stopped");
+    }
+
+    @Override
+    public int getIterationConsistentKbCounter() {
+        return consistentWriter.getIterationCounter();
     }
 
 }

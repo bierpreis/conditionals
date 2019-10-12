@@ -3,13 +3,14 @@ package kb_creator.model.writer;
 
 public abstract class AbstractKbWriter {
 
+    //todo: delete?
     protected int iterationConsistentKbCounter = 0;
 
     protected boolean running = true;
 
     protected volatile WriterStatus status;
 
-    public abstract int getInconsistentCounter();
+    public abstract int getTotalInconsistentCounter();
 
     public abstract int getConsistentCounter();
 
@@ -23,14 +24,11 @@ public abstract class AbstractKbWriter {
 
     public abstract void stopThreads();
 
-    public int getIterationConsistentKbCounter() {
-        return iterationConsistentKbCounter;
-    }
+    public abstract int getIterationConsistentKbCounter();
 
-    public void newIteration(){
+    public void newIteration() {
         iterationConsistentKbCounter = 0;
     }
-
 
 
 }

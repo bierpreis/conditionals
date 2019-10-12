@@ -141,9 +141,9 @@ public abstract class AbstractCreator implements Runnable {
         return kbWriter.getConsistentCounter();
     }
 
-    public int getTotalInconsistentAmount() {
-        return kbWriter.getInconsistentCounter();
-    }
+    public abstract int getTotalInconsistentAmount();
+
+
 
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
