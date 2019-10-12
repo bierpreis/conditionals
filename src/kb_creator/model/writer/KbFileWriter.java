@@ -43,7 +43,7 @@ public class KbFileWriter extends AbstractKbWriter {
     public int getTotalConsistentCounter() {
         return consistentWriter.getTotalCounter();
     }
-    
+
     @Override
     public int getTotalInconsistentCounter() {
         return inconsistentWriter.getTotalCounter();

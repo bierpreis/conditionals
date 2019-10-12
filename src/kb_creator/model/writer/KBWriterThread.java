@@ -29,7 +29,7 @@ public class KBWriterThread implements Runnable {
         System.out.println("New Writer Thread started for " + folderName + " kbs");
         while (running) {
             try {
-                writeConsistentKbToFile(queue.take());
+                writeConsistentKbToFile(queue.take()); //todo: counter here
             } catch (InterruptedException e) {
                 //intentionally nothing
             }
@@ -45,7 +45,8 @@ public class KBWriterThread implements Runnable {
 
         String filePath = rootFilePath + knowledgeBase.getSize() + "/" + folderName + "/";
         try {
-
+            iterationCounter++;
+            knowledgeBase.setKbNumber(iterationCounter); //todo: where is kb 31 with sig ab??? must be lost somewere!
             File consistentFolder = new File(filePath);
             consistentFolder.mkdirs();
 
@@ -54,7 +55,7 @@ public class KBWriterThread implements Runnable {
             writer.print(knowledgeBase.toFileString());
 
             writer.close();
-            iterationCounter++;
+
 
         } catch (IOException e) {
             e.printStackTrace();

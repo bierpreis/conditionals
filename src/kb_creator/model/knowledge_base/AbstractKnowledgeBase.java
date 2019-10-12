@@ -44,4 +44,13 @@ public abstract class AbstractKnowledgeBase {
     public static void setSignature(AbstractSignature signatureToSet) {
         signature = signatureToSet;
     }
+
+    public void setKbNumber(int kbNumber) {
+
+        //exception to make sure numbers are set only once
+        if (this.kbNumber != 0)
+            throw new RuntimeException("Cant set kb number two times!");
+
+        this.kbNumber = kbNumber;
+    }
 }
