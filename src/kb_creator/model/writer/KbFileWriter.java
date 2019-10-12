@@ -49,7 +49,7 @@ public class KbFileWriter extends AbstractKbWriter {
         return inconsistentWriter.getCounter();
     }
 
-    public void stop() {
+    public void stopThreads() {
 
         consistentWriter.stop();
         consistentWriterThread.interrupt();

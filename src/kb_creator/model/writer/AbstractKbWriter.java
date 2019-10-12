@@ -19,6 +19,8 @@ public abstract class AbstractKbWriter {
         return status;
     }
 
-    public abstract void stop();
+    public abstract void stopThreads();
+
+
 
 }

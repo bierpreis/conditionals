@@ -123,12 +123,12 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public void stopLoop() {
-        kbWriter.stop();
+        kbWriter.stopThreads();
         this.creatorStatus = CreatorStatus.STOPPED;
     }
 
     public void finish() {
-        kbWriter.stop();
+        kbWriter.stopThreads();
         this.creatorStatus = CreatorStatus.FINISHED;
     }
 
