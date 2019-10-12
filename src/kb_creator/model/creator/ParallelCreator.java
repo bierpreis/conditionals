@@ -109,7 +109,6 @@ public class ParallelCreator extends AbstractCreator {
 
         for (int i = 0; i < numberOfThreads; i++) {
 
-            //todo: java.util.concurrent.RejectedExecutionException happened here 10.10.!?
             //Task java.util.concurrent.FutureTask@120e02d6[Not completed, task = java.util.concurrent.Executors$RunnableAdapter@ce47e88[Wrapped task = kb_creator.model.creator.CandidateThread
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
