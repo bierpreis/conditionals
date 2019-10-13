@@ -30,7 +30,7 @@ public class MainCreatorPanel extends JPanel {
         showStatus(SimpleCreator.CreatorStatus.NOT_STARTED);
 
         showTotalConsistentKBAmount(0);
-        
+
         showIterationInconsistentKBs(0);
 
         showProgress(0);
