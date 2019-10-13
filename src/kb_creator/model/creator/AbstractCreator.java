@@ -90,9 +90,9 @@ public abstract class AbstractCreator implements Runnable {
         return progress;
     }
 
-    public int getLastPairAmount() {
+    public int getCurrentAmount() {
         return currentPairAmount;
-    } //todo: rename method
+    }
 
     public long getStartTime() {
         return startTime;
