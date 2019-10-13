@@ -90,7 +90,7 @@ public abstract class AbstractCreator implements Runnable {
         return progress;
     }
 
-    public int getCurrentAmount() {
+    public int getCurrentPairAmount() {
         return currentPairAmount;
     }
 
