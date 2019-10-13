@@ -15,7 +15,7 @@ public abstract class AbstractKbWriter {
 
     public abstract int getIterationConsistentCounter();
 
-    public abstract int getIterationInconsistentCounter(); //todo. use this and show in gui
+    public abstract int getIterationInconsistentCounter();
 
 
     //getters for queue

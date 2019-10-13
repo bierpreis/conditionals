@@ -7,7 +7,8 @@ import java.util.Locale;
 
 
 public class CurrentIterationPanel extends JPanel {
-    private JLabel iterationKBLabel;
+    private JLabel iterationConsistentLabel;
+    private JLabel iterationInconsistentLabel;
     private JLabel speedLabel;
     private JLabel currentKLabel;
     private JLabel candidatePairslabel;
@@ -32,8 +33,11 @@ public class CurrentIterationPanel extends JPanel {
         vBox.add(speedLabel);
 
 
-        iterationKBLabel = new JLabel();
-        vBox.add(iterationKBLabel);
+        iterationConsistentLabel = new JLabel();
+        vBox.add(iterationConsistentLabel);
+
+        iterationInconsistentLabel = new JLabel();
+        vBox.add(iterationInconsistentLabel);
 
         candidatePairslabel = new JLabel();
         vBox.add(candidatePairslabel);
@@ -41,7 +45,7 @@ public class CurrentIterationPanel extends JPanel {
         progressLabel = new JLabel();
         vBox.add(progressLabel);
 
-        showIterationKBs(0);
+        showIterationConsistentAmount(0);
         //showCandidatePairs(0);
         showSpeed(0);
         showCurrentK(0);
@@ -57,10 +61,16 @@ public class CurrentIterationPanel extends JPanel {
         speedLabel.setText("Speed (KBs/Second): " + formatter.format(speed));
     }
 
-    public void showIterationKBs(int amount) {
+    public void showIterationConsistentAmount(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
-        iterationKBLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
+        iterationConsistentLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
+    }
+
+    public void showIterationInconsistentAmount(int amount){
+        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+
+        iterationInconsistentLabel.setText("Inconsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
 

@@ -112,7 +112,7 @@ public class ParallelCreator extends AbstractCreator {
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
             //todo: Exception in thread "CreatorThread" java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@1d184c6e[Not completed,
-            futureList.add(executorService.submit(thread));
+            futureList.add(executorService.submit(thread)); //this happened conce when stop button was pressed!
         }
 
 
