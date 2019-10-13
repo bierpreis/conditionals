@@ -251,7 +251,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         try {
             return queueToReturn.take();
         } catch (InterruptedException e) {
-
+            //todo: nothing here?
         }
         return null;
     }

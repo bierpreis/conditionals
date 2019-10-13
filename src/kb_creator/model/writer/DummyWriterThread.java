@@ -15,7 +15,7 @@ public class DummyWriterThread implements Runnable {
         this.queue = queue;
 
     }
-    
+
     @Override
     public void run() {
         while (running) {

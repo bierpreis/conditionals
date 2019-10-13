@@ -72,7 +72,7 @@ public abstract class AbstractPairBuffer implements Runnable {
         status = BufferStatus.STOPPED;
     }
 
-
+    //todo: think about status. if there are 2 threads, writing and reading are useless!
     public enum BufferStatus {
         WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED, STOPPED
     }
