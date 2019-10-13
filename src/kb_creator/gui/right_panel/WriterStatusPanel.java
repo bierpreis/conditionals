@@ -7,7 +7,7 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-
+//todo. this panel is somehow useless. what to do with it?
 public class WriterStatusPanel extends JPanel {
 
     private JLabel speedLabel;
