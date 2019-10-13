@@ -43,7 +43,7 @@ public class SimpleCreator extends AbstractCreator {
             kbWriter.newIteration();
 
             int iterationPairCounter = 0;
-            lastIterationAmount = nextCandidatePairAmount;
+            currentPairAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
 
 
@@ -53,7 +53,7 @@ public class SimpleCreator extends AbstractCreator {
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
 
-                progress = calculateProgress(iterationPairCounter, lastIterationAmount);
+                progress = calculateProgress(iterationPairCounter, currentPairAmount);
 
                 AbstractPair candidatePair = l.getNextPair(k);
 

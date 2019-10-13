@@ -60,13 +60,13 @@ public class ParallelCreator extends AbstractCreator {
 
             startQueueThreads(k);
 
-            lastIterationAmount = nextCandidatePairAmount;
+            currentPairAmount = nextCandidatePairAmount;
             nextCandidatePairAmount = 0;
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
                 //todo: first value is wrong. it counts queue.put but should count queue.take. but thats impossible? make own queue by extending the real one + counter?
-                progress = calculateProgress(inputQueueObject.getCounter(), lastIterationAmount);
+                progress = calculateProgress(inputQueueObject.getCounter(), currentPairAmount);
 
                 nextCandidatePairAmount = outputQueueObject.getCounter();
 
