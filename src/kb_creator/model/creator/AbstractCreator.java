@@ -114,7 +114,6 @@ public abstract class AbstractCreator implements Runnable {
     }
 
 
-
     public CreatorStatus getCreatorStatus() {
         return creatorStatus;
     }
@@ -142,7 +141,6 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public abstract int getTotalInconsistentAmount();
-
 
 
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
@@ -182,6 +180,8 @@ public abstract class AbstractCreator implements Runnable {
             }
 
         }
+        waitForWriterFinished();
+        System.out.println("consistent queue: " + consistentWriterQueue.size());
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
@@ -192,6 +192,15 @@ public abstract class AbstractCreator implements Runnable {
 
     public AbstractKbWriter getKbWriterThread() {
         return kbWriter;
+    }
+
+    protected void waitForWriterFinished() {
+        while (!consistentWriterQueue.isEmpty())
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
     }
 
 }

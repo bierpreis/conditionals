@@ -37,6 +37,14 @@ public class KBWriterThread implements Runnable {
     }
 
     public void newIteration() {
+        while (!queue.isEmpty()) {
+            try {
+                Thread.sleep(100);
+                System.out.println("sleeping");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         iterationCounter = 0;
     }
 
@@ -47,14 +55,12 @@ public class KBWriterThread implements Runnable {
         try {
             iterationCounter++;
             totalCounter++;
-            //todo: where is kb 31 with sig ab??? must be lost somewere!
-            //todo: why does iteration 2 cconsistent numbers ontinue counting from iteration 1?
+
             knowledgeBase.setKbNumber(iterationCounter);
             File consistentFolder = new File(filePath);
             consistentFolder.mkdirs();
 
             PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-            System.out.println("writing: " + folderName + iterationCounter);
             writer.print(knowledgeBase.toFileString());
 
             writer.close();
