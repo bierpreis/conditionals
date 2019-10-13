@@ -15,8 +15,7 @@ public class DummyWriterThread implements Runnable {
         this.queue = queue;
 
     }
-
-    //todo: try drain to remove all elements and check if this is faster
+    
     @Override
     public void run() {
         while (running) {
