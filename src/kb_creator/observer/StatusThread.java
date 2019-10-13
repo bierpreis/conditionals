@@ -64,7 +64,6 @@ public class StatusThread implements Runnable {
         mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
         mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
-        mainWindow.getMidPanel().getCreatorPanel().showNextCandidatePairs(1337); //todo: remove this and the next iteration panel?
 
         if (creatorThread.getCreatorStatus().equals(SimpleCreator.CreatorStatus.RUNNING))
             mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());

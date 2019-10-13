@@ -10,7 +10,6 @@ public class MainCreatorPanel extends JPanel {
 
     private OverallStatusPanel overallStatusPanel;
     private CurrentIterationPanel currentIterationPanel;
-    private NextIterationPanel nextIterationPanel;
 
     public MainCreatorPanel(ActionPanel actionPanel) {
         setPreferredSize(new Dimension(350, 300));
@@ -24,8 +23,6 @@ public class MainCreatorPanel extends JPanel {
         currentIterationPanel = new CurrentIterationPanel();
         add(currentIterationPanel);
 
-        nextIterationPanel = new NextIterationPanel();
-        add(nextIterationPanel);
 
         showStatus(SimpleCreator.CreatorStatus.NOT_STARTED);
 
@@ -68,10 +65,6 @@ public class MainCreatorPanel extends JPanel {
 
     public void showCurrentCandidatePairs(int candidatePairs) {
         currentIterationPanel.showCandidatePairs(candidatePairs);
-    }
-
-    public void showNextCandidatePairs(int nextCandidatepairs) {
-        nextIterationPanel.showCandidates(nextCandidatepairs);
     }
 
     public void showProgress(float progress) {
