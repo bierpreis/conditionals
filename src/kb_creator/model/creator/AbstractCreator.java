@@ -31,8 +31,6 @@ public abstract class AbstractCreator implements Runnable {
 
     protected int k;
 
-    protected int nextCandidatePairAmount; //todo: this value is actually useless. its the same like iteration consistent kbs
-
     protected long startTime;
 
     protected float progress;
@@ -94,7 +92,7 @@ public abstract class AbstractCreator implements Runnable {
 
     public int getLastPairAmount() {
         return currentPairAmount;
-    }
+    } //todo: rename method
 
     public long getStartTime() {
         return startTime;
@@ -134,10 +132,6 @@ public abstract class AbstractCreator implements Runnable {
         return k;
     }
 
-    public int getNextCandidatePairAmount() {
-        return nextCandidatePairAmount;
-    }
-
     public int getTotalKbAmount() {
         return kbWriter.getTotalConsistentCounter();
     }
@@ -171,7 +165,6 @@ public abstract class AbstractCreator implements Runnable {
 
             //no buffering for first iteration because it almost makes no difference
             listToReturn.add(new RealListPair(rKB, candidatesList));
-            nextCandidatePairAmount++;
         }
 
         for (AbstractPair candidatePair : listToReturn) {

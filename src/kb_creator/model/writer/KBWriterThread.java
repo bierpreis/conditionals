@@ -36,7 +36,7 @@ public class KBWriterThread implements Runnable {
         }
     }
 
-    public void newIteration() {
+    public void finishIteration(){
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);
@@ -45,6 +45,9 @@ public class KBWriterThread implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void newIteration() {
         iterationCounter = 0;
     }
 

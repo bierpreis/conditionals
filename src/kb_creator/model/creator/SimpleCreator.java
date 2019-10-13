@@ -40,12 +40,11 @@ public class SimpleCreator extends AbstractCreator {
         while (l.hasElementsForNextK(k)) {
             System.gc();
             l.prepareIteration(k);
+
+            currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
 
             int iterationPairCounter = 0;
-            currentPairAmount = nextCandidatePairAmount;
-            nextCandidatePairAmount = 0;
-
 
             //line  7
             l.addNewList(new ArrayList<>());
@@ -94,8 +93,6 @@ public class SimpleCreator extends AbstractCreator {
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
                         //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
-                        nextCandidatePairAmount++;
-
                         //save inconsistent knowledge base
                         //this part takes almost no time
                     } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
@@ -109,6 +106,7 @@ public class SimpleCreator extends AbstractCreator {
                 candidatePair.clear();
 
             }
+            kbWriter.finishIteration();
             l.finishIteration(k);
             k = k + 1;
         }

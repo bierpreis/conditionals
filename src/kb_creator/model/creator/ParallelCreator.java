@@ -56,19 +56,16 @@ public class ParallelCreator extends AbstractCreator {
             l.addNewList(new ArrayList<>());
 
             l.prepareIteration(k);
+
+            currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
 
             startQueueThreads(k);
-
-            currentPairAmount = nextCandidatePairAmount;
-            nextCandidatePairAmount = 0;
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
                 //todo: first value is wrong. it counts queue.put but should count queue.take. but thats impossible? make own queue by extending the real one + counter?
                 progress = calculateProgress(inputQueueObject.getCounter(), currentPairAmount);
-
-                nextCandidatePairAmount = outputQueueObject.getCounter();
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
@@ -80,9 +77,9 @@ public class ParallelCreator extends AbstractCreator {
                 }
 
             }
-
             waitAndStopThreads();
 
+            kbWriter.finishIteration();
             l.finishIteration(k);
             k = k + 1;
         }
@@ -112,7 +109,7 @@ public class ParallelCreator extends AbstractCreator {
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
             //todo: Exception in thread "CreatorThread" java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@1d184c6e[Not completed,
-            futureList.add(executorService.submit(thread)); //this happened conce when stop button was pressed!
+            futureList.add(executorService.submit(thread)); //this happeneds often when stop button is pressed!
         }
 
 

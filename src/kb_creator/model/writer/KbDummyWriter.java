@@ -71,6 +71,11 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
+    public void finishIteration() {
+        //intentionally nothing
+    }
+
+    @Override
     public int getIterationConsistentCounter() {
         return consistentThreadObject.getIterationCounter();
     }

@@ -30,6 +30,7 @@ public abstract class AbstractKbWriter {
 
     public abstract void stopThreads();
 
+    public abstract void finishIteration();
 
     public abstract void newIteration();
 

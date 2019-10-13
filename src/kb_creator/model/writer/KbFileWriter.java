@@ -60,6 +60,8 @@ public class KbFileWriter extends AbstractKbWriter {
         System.out.println("main kb writer thread stopped");
     }
 
+
+
     @Override
     public int getIterationConsistentCounter() {
         return consistentWriter.getIterationCounter();
@@ -68,6 +70,13 @@ public class KbFileWriter extends AbstractKbWriter {
     @Override
     public int getIterationInconsistentCounter() {
         return inconsistentWriter.getIterationCounter();
+    }
+
+
+    @Override
+    public void finishIteration() {
+        consistentWriter.finishIteration();
+        inconsistentWriter.finishIteration();
     }
 
     @Override
