@@ -53,6 +53,7 @@ public class StatusThread implements Runnable {
 
     }
 
+    //todo: sort and use average speed panel
     private void showCreatorStatus() {
 
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());

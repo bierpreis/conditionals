@@ -13,6 +13,7 @@ public class OverallStatusPanel extends JPanel {
 
     private JLabel statusLabel;
     private ActionPanel actionPanel;
+    private JLabel averageSpeedLabel;
     private JLabel consistentAmountLabel;
     private JLabel inconsistentAmountLabel;
     private JLabel timeLabel;
@@ -34,6 +35,9 @@ public class OverallStatusPanel extends JPanel {
 
         vBox.add(new JLabel(" "));
 
+        averageSpeedLabel = new JLabel();
+        vBox.add(averageSpeedLabel);
+
         consistentAmountLabel = new JLabel();
         vBox.add(consistentAmountLabel);
 
@@ -45,7 +49,16 @@ public class OverallStatusPanel extends JPanel {
         timeLabel.setText("Running Time: 00:00:00");
 
         showInconsistentKBAmount(0);
+        showAverageSpeed(0, 0);
 
+    }
+
+    //todo: use this but how to put in speed?
+    public void showAverageSpeed(int kbAmount, long time) {
+        //avoid division by zero
+        if (time != 0)
+            averageSpeedLabel.setText("average speed: " + (kbAmount / time) + " consistent kb/s");
+        else averageSpeedLabel.setText("average speed: " + 0 + " consistent kb/s");
     }
 
     public void showStatus(SimpleCreator.CreatorStatus creatorStatus) {
