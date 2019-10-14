@@ -17,8 +17,7 @@ public class OverallStatusPanel extends JPanel {
     private JLabel consistentAmountLabel;
     private JLabel inconsistentAmountLabel;
     private JLabel timeLabel;
-
-    //todo: think about some average speed
+    
     public OverallStatusPanel(ActionPanel actionPanel) {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         this.actionPanel = actionPanel;
@@ -53,12 +52,15 @@ public class OverallStatusPanel extends JPanel {
 
     }
 
-    //todo: use this but how to put in speed?
-    public void showAverageSpeed(int kbAmount, long time) {
+    public void showAverageSpeed(int kbAmount, long startTime) {
+        long timeInSeconds = (System.currentTimeMillis() - startTime) / 1000;
+
         //avoid division by zero
-        if (time != 0)
-            averageSpeedLabel.setText("average speed: " + (kbAmount / time) + " consistent kb/s");
-        else averageSpeedLabel.setText("average speed: " + 0 + " consistent kb/s");
+        if (timeInSeconds != 0) {
+            int speed = (int) (kbAmount / timeInSeconds);
+            NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
+            averageSpeedLabel.setText("average speed (consistent kb/s): " + formatter.format(speed));
+        } else averageSpeedLabel.setText("average speed (consistent kb/s): " + 0);
     }
 
     public void showStatus(SimpleCreator.CreatorStatus creatorStatus) {

@@ -53,21 +53,24 @@ public class StatusThread implements Runnable {
 
     }
 
-    //todo: sort and use average speed panel
     private void showCreatorStatus() {
 
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
+
         mainWindow.getMidPanel().getCreatorPanel().showIterationConsistentKBs(kbWriter.getIterationConsistentCounter());
         mainWindow.getMidPanel().getCreatorPanel().showIterationInconsistentKBs(kbWriter.getIterationInconsistentCounter());
         mainWindow.getMidPanel().getCreatorPanel().showTotalConsistentKBAmount(creatorThread.getTotalKbAmount());
         mainWindow.getMidPanel().getCreatorPanel().showTotalInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
+
         mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.getProgress());
         mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
         mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
 
-        if (creatorThread.getCreatorStatus().equals(SimpleCreator.CreatorStatus.RUNNING))
+        if (creatorThread.getCreatorStatus().equals(SimpleCreator.CreatorStatus.RUNNING)) {
             mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
+            mainWindow.getMidPanel().getCreatorPanel().showAverageSpeed(creatorThread.getTotalKbAmount(), creatorThread.getStartTime());
+        }
     }
 
     private void showWriterStatus() {

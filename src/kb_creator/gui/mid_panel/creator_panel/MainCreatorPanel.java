@@ -75,5 +75,7 @@ public class MainCreatorPanel extends JPanel {
         overallStatusPanel.showRunningTime(startTime);
     }
 
+    public void showAverageSpeed(int kbAmount, long startTime){overallStatusPanel.showAverageSpeed(kbAmount, startTime);}
+
 
 }
