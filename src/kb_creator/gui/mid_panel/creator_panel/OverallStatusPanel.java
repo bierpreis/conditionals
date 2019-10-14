@@ -17,7 +17,7 @@ public class OverallStatusPanel extends JPanel {
     private JLabel inconsistentAmountLabel;
     private JLabel timeLabel;
 
-
+    //todo: think about some average speed
     public OverallStatusPanel(ActionPanel actionPanel) {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         this.actionPanel = actionPanel;
