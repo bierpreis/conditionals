@@ -251,7 +251,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         try {
             return queueToReturn.take();
         } catch (InterruptedException e) {
-            //todo: this is called when stop is pressed. only then! but what should happen? return? nothing?
+            //intentionally nothing. when interrupted, the thread is supposed to shut down.
         }
         return null;
     }
