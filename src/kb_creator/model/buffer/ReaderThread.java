@@ -114,8 +114,7 @@ public class ReaderThread implements Runnable {
     public int getQueueSize() {
         return queueToReturn.size();
     }
-
-    //todo: rename?
+    
     public void deleteOldData(int requestedK) {
         //dont delete files for iteration 0 because there wont be any
         File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
