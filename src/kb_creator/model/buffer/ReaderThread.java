@@ -25,26 +25,32 @@ public class ReaderThread implements Runnable {
 
     private String tmpFilePath;
 
-    private volatile boolean running = true;
-
-    public ReaderThread(String tmpFilePath) {
+    public ReaderThread(String tmpFilePath, int requestedK) {
         this.queueToReturn = new ArrayBlockingQueue<>(5_000); //todo
         this.tmpFilePath = tmpFilePath;
+
+        System.out.println("prepare iteration " + requestedK);
+        readingFileNameCounter = 0;
+
+        //for iteration 0 there are no files to read
+
+        folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
+        File[] filesArray = folderToRead.listFiles();
+
+        //files array is null when there are no files to read(this happens in iteration 0)
+        if (filesArray != null) {
+            System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
+            iterationNumberOfFiles = filesArray.length;
+        } else System.out.println("no files to read for iteration: " + requestedK);
+
     }
 
     @Override
     public void run() {
-        System.out.println("buffer reader thread started");
-        while (running) { //todo: start this thread for every iteration and close if all files are read.
+        System.out.println("buffer reader thread started for number of files: " + iterationNumberOfFiles);
+        while (readingFileNameCounter < iterationNumberOfFiles ) { //todo: start this thread for every iteration and close if all files are read.
             List<AbstractPair> pairsList = readNextFile();
-            if (pairsList == null) {
-                try {
-                    System.out.println("reader buffer sleeping. no files found.");
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            } else
+            if (pairsList != null)
                 for (AbstractPair pairToPut : pairsList)
                     try {
                         queueToReturn.put(pairToPut);
@@ -52,7 +58,11 @@ public class ReaderThread implements Runnable {
                         e.printStackTrace();
                     }
         }
-        System.out.println("buffer reader thread closed");
+        System.out.println("buffer reader thread closed. queue size: " + queueToReturn.size());
+    }
+
+    private boolean hasMoreFilesToRead() {
+        return true;
     }
 
 
@@ -107,10 +117,6 @@ public class ReaderThread implements Runnable {
         return queueToReturn.size();
     }
 
-    public void stopLoop() {
-        running = false;
-    }
-
     //todo: rename?
     public void clear(int requestedK) {
         //dont delete files for iteration 0 because there wont be any
@@ -127,19 +133,6 @@ public class ReaderThread implements Runnable {
     }
 
     public void prepareIteration(int requestedK) {
-        System.out.println("prepare iteration " + requestedK);
-        readingFileNameCounter = 0;
-
-        //for iteration 0 there are no files to read
-
-        folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
-        File[] filesArray = folderToRead.listFiles();
-
-        //files array is null when there are no files to read(this happens in iteration 0)
-        if (filesArray != null) {
-            System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
-            iterationNumberOfFiles = filesArray.length;
-        } else System.out.println("no files to read for iteration: " + requestedK);
 
     }
 }

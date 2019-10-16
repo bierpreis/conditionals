@@ -45,10 +45,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         System.out.println("created parallel buffer for candidate pairs");
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
-        readerThreadObject = new ReaderThread(tmpFilePath);
-        readerThread = new Thread(readerThreadObject);
-        readerThread.setName("Reader Thread");
-
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
@@ -66,10 +62,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     }
 
-    //todo: maybe 2 threads with blocking queues for this instead of this shit?
+    //todo: remove this
     @Override
     public void run() {
-        readerThread.start();
         while (running) {
             //writing has first priority
             if (checkIfShouldWrite()) {
@@ -219,8 +214,11 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
         folderToWrite.mkdirs();
 
+        readerThreadObject = new ReaderThread(tmpFilePath, requestedK);
+        Thread readerThread = new Thread(readerThreadObject);
+        readerThread.setName("reader thread for k " + requestedK);
+        readerThread.start();
 
-        readerThreadObject.prepareIteration(requestedK);
 
         System.out.println("prepare iteration finished " + requestedK);
 
