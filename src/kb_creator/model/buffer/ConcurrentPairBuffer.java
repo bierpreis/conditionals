@@ -206,7 +206,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void clear(int requestedK) {
+    public void deleteOldData(int requestedK) {
         //dont delete files for iteration 0 because there wont be any
         if (deleteFiles && requestedK != 0) {
             File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
@@ -296,7 +296,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
         hasNextIteration = (folderToWrite.listFiles().length > 0);
 
-        clear(requestedK);
+        deleteOldData(requestedK);
 
         System.out.println("finished iteration: " + requestedK);
     }

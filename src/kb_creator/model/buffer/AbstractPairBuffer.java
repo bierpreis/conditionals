@@ -55,7 +55,7 @@ public abstract class AbstractPairBuffer implements Runnable {
         return status;
     }
 
-    protected abstract void clear(int requestedK);
+    protected abstract void deleteOldData(int requestedK);
 
     public abstract int getQueueToWriteSize();
 

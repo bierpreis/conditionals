@@ -170,12 +170,10 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         }
     }
 
-    //todo: rename?
     @Override
-    public void clear(int requestedK) {
-
+    public void deleteOldData(int requestedK) {
         if (deleteFiles && requestedK != 0) {
-            readerThreadObject.clear(requestedK);
+            readerThreadObject.deleteOldData(requestedK);
         }
     }
 
@@ -240,7 +238,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
         hasNextIteration = (folderToWrite.listFiles().length > 0);
 
-        clear(requestedK);
+        deleteOldData(requestedK);
 
         System.out.println("finished iteration: " + requestedK);
     }

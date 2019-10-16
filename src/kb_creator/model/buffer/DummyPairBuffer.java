@@ -49,7 +49,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    protected void clear(int requestedK) {
+    protected void deleteOldData(int requestedK) {
         System.out.println("clearing list for k " + requestedK);
         //don't clear list(-1) it wont work
         if (requestedK > 0)
@@ -62,7 +62,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
 
 
-        clear(requestedK - 1);
+        deleteOldData(requestedK - 1);
     }
 
     @Override
