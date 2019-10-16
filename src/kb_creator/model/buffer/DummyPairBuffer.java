@@ -105,11 +105,6 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return false;
     }
 
-    @Override
-    public boolean checkIfShouldRead() {
-        //intentionally nothing
-        return false;
-    }
 
     @Override
     public void notifyBuffer() {

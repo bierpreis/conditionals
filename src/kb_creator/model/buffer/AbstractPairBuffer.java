@@ -85,8 +85,6 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     abstract public boolean checkIfShouldWrite();
 
-    abstract public boolean checkIfShouldRead();
-
     public abstract void notifyBuffer();
 
 }

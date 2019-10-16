@@ -94,7 +94,7 @@ public class StatusThread implements Runnable {
     //todo: is this rly needed? buffer should have 1 writer and 1 reader thread and blocking queues. then this can be deleted
     private void checkIfNotifyBuffer() {
         if (creatorThread.getPairBuffer() instanceof BlockingPairBuffer || creatorThread.getPairBuffer() instanceof ConcurrentPairBuffer) {
-            if (creatorThread.getPairBuffer().checkIfShouldRead() || creatorThread.getPairBuffer().checkIfShouldWrite())
+            if (creatorThread.getPairBuffer().checkIfShouldWrite())
                 synchronized (creatorThread.getPairBuffer()) {
                     creatorThread.getPairBuffer().notifyBuffer();
                 }

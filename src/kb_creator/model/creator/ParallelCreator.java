@@ -26,8 +26,6 @@ public class ParallelCreator extends AbstractCreator {
     public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
         System.out.println("new parallel creator");
-
-
     }
 
     @Override

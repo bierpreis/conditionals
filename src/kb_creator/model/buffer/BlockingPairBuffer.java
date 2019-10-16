@@ -7,7 +7,6 @@ import kb_creator.model.propositional_logic.NewConditional;
 
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
@@ -16,14 +15,15 @@ import java.util.regex.Pattern;
 
 public class BlockingPairBuffer extends AbstractPairBuffer {
 
-    private int iterationNumberOfFiles;
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
     private final Object THREAD_WAIT_OBJECT = new Object();
 
-    private BlockingQueue<AbstractPair> queueToReturn;
+    private ReaderThread readerThreadObject;
+    private Thread readerThread;
+
     private BlockingQueue<AbstractPair> cpQueueToWrite;
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
@@ -35,10 +35,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private final int READ_QUEUE_MIN = 2000;
 
     private File folderToWrite;
-    private File folderToRead;
+
 
     private int writingFileNameCounter;
-    private int readingFileNameCounter;
 
 
     public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile) {
@@ -46,11 +45,14 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         System.out.println("created parallel buffer for candidate pairs");
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
+        readerThreadObject = new ReaderThread(tmpFilePath);
+        readerThread = new Thread(readerThreadObject);
+        readerThread.setName("Reader Thread");
+
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         writingFileNameCounter = 0;
 
-        queueToReturn = new ArrayBlockingQueue<>(5_000);
 
         cpQueueToWrite = new ArrayBlockingQueue<>(10_000);
 
@@ -67,21 +69,13 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     //todo: maybe 2 threads with blocking queues for this instead of this shit?
     @Override
     public void run() {
+        readerThread.start();
         while (running) {
             //writing has first priority
             if (checkIfShouldWrite()) {
                 status = BufferStatus.WRITING;
                 writeNextFile(cpQueueToWrite);
                 //reading has second priority
-            } else if (checkIfShouldRead()) {
-                status = BufferStatus.READING;
-                for (AbstractPair pairToPut : readNextFile())
-                    try {
-                        queueToReturn.put(pairToPut);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                //sleep if no writing or reading is needed
             } else {
                 try {
                     status = BufferStatus.SLEEPING;
@@ -99,10 +93,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
     }
 
-
-    public boolean checkIfShouldRead() {
-        return (readingFileNameCounter < iterationNumberOfFiles && queueToReturn.size() < READ_QUEUE_MIN);
-    }
 
     @Override
     public void notifyBuffer() {
@@ -144,36 +134,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         }
     }
 
-    private List<AbstractPair> readNextFile() {
-
-        //read String
-        File fileToRead = new File(folderToRead + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
-        System.out.println("reading file: " + fileToRead.getAbsolutePath());
-        Scanner fileScanner = null;
-        try {
-            fileScanner = new Scanner(fileToRead);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        StringBuilder sb = new StringBuilder();
-
-        while (fileScanner.hasNextLine()) {
-            sb.append(fileScanner.nextLine());
-            sb.append("\n");
-        }
-
-        String[] fileStringArray = END_PAIR_PATTERN.split(sb.toString());
-        List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
-
-        for (String stringFromFile : fileStringArray) {
-            pairsList.add(new RealListPair(stringFromFile));
-            pairReaderCounter++;
-        }
-
-        readingFileNameCounter++;
-        return pairsList;
-    }
 
     private void flushWritingElements() {
         System.out.println("flushing " + cpQueueToWrite.size() + " elements");
@@ -215,19 +175,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         }
     }
 
+    //todo: rename?
     @Override
     public void clear(int requestedK) {
-        //dont delete files for iteration 0 because there wont be any
+
         if (deleteFiles && requestedK != 0) {
-            File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
-
-            if (folderToDelete.exists()) {
-                for (File subFile : folderToDelete.listFiles())
-                    subFile.delete();
-
-                folderToDelete.delete();
-
-            }
+            readerThreadObject.clear(requestedK);
         }
     }
 
@@ -240,20 +193,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     @Override
     public boolean hasMoreElementsForK(int k) {
 
-        if (!queueToReturn.isEmpty())
-            return true;
-
-        return (readingFileNameCounter < iterationNumberOfFiles);
+        return readerThreadObject.hasMoreElementsForK(k);
     }
 
     @Override
     public AbstractPair getNextPair(int k) {
-        try {
-            return queueToReturn.take();
-        } catch (InterruptedException e) {
-            //intentionally nothing. when interrupted, the thread is supposed to shut down.
-        }
-        return null;
+        return readerThreadObject.getNextPair(k);
     }
 
 
@@ -275,16 +220,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         folderToWrite.mkdirs();
 
 
-        readingFileNameCounter = 0;
+        readerThreadObject.prepareIteration(requestedK);
 
-        //for iteration 0 there are no files to read
-        if (requestedK != 0) {
-            folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
-            File[] filesArray = folderToRead.listFiles();
-            System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
-            iterationNumberOfFiles = filesArray.length;
-
-        }
+        System.out.println("prepare iteration finished " + requestedK);
 
     }
 
@@ -311,7 +249,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     @Override
     public int getReaderBufferSize() {
-        return queueToReturn.size();
+        return readerThreadObject.getQueueSize();
     }
 
 }
