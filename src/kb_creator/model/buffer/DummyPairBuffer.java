@@ -88,23 +88,11 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return 0;
     }
 
-    @Override
-    public void run() {
-        //nothing
-    }
 
     @Override
     public int getReaderBufferSize() {
         return 0;
     }
-
-
-    @Override
-    public boolean checkIfShouldWrite() {
-        //intentionally nothing
-        return false;
-    }
-
 
     @Override
     public void notifyBuffer() {

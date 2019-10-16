@@ -64,9 +64,11 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
         status = BufferStatus.NOT_STARTED;
 
+        throw new RuntimeException("This Class does not work anymore. No run method. Delete?");
+
     }
 
-    @Override
+/*    @Override
     public void run() {
         while (running) {
             //writing has first priority
@@ -92,7 +94,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         }
 
 
-    }
+    }*/
 
     public boolean checkIfShouldWrite() {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));

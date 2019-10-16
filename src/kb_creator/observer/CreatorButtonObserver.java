@@ -49,13 +49,6 @@ public class CreatorButtonObserver implements ActionListener {
             creatorThread.setName("CreatorThread");
             creatorThread.start();
 
-            Thread bufferThread = new Thread(candidateBuffer);
-            bufferThread.setName("BufferThread");
-            bufferThread.start();
-            System.out.println("buffer thread started");
-
-
-
             creatorThread.setPriority(Thread.MAX_PRIORITY);
 
             statusThreadObject.setCreatorThread(creatorThreadObject);

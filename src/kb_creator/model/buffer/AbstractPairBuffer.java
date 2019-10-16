@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class AbstractPairBuffer implements Runnable {
+public abstract class AbstractPairBuffer {
 
     protected volatile boolean running = true;
 
@@ -18,7 +18,7 @@ public abstract class AbstractPairBuffer implements Runnable {
 
     protected int pairReaderCounter;
 
-    protected int maxNumberOfPairsInFile;
+    protected int maxNumberOfPairsInFile = 2000;
 
     protected String tmpFilePath;
 
@@ -82,8 +82,6 @@ public abstract class AbstractPairBuffer implements Runnable {
             System.out.println("set deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;
     }
-
-    abstract public boolean checkIfShouldWrite();
 
     public abstract void notifyBuffer();
 
