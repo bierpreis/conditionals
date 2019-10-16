@@ -62,7 +62,7 @@ public class BufferWriterThread implements Runnable {
             else try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-                e.printStackTrace(); //todo. stop button throws this 
+                return; //this is triggered by stop button in gui
             }
 
         }
@@ -76,7 +76,7 @@ public class BufferWriterThread implements Runnable {
     private void writeNextFile(Queue queueToWrite) {
         try {
             //add leading zeros so the files can be sorted in correct order in their folder
-            String fileName = String.format("%05d", writingFileNameCounter);
+            String fileName = String.format("%05d", writingFileNameCounter); //todo: leading zeroes are shit
             writingFileNameCounter++;
 
             PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
