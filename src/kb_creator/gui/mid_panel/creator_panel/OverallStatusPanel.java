@@ -59,8 +59,8 @@ public class OverallStatusPanel extends JPanel {
         if (timeInSeconds != 0) {
             int speed = (int) (kbAmount / timeInSeconds);
             NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-            averageSpeedLabel.setText("average speed (consistent kb/s): " + formatter.format(speed));
-        } else averageSpeedLabel.setText("average speed (consistent kb/s): " + 0);
+            averageSpeedLabel.setText("Average speed (consistent kb/s): " + formatter.format(speed));
+        } else averageSpeedLabel.setText("Average speed (consistent kb/s): " + 0);
     }
 
     public void showStatus(SimpleCreator.CreatorStatus creatorStatus) {
