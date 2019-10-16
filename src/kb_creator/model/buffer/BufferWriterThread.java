@@ -10,7 +10,7 @@ import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class WriterThread implements Runnable {
+public class BufferWriterThread implements Runnable {
 
     private File folderToWrite;
     private int maxNumberOfPairsInFile;
@@ -32,7 +32,7 @@ public class WriterThread implements Runnable {
     private int requestedK;
 
 
-    public WriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, boolean deleteFiles) {
+    public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, boolean deleteFiles) {
         this.deleteFiles = deleteFiles;
         this.requestedK = requestedK;
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
@@ -56,9 +56,7 @@ public class WriterThread implements Runnable {
     @Override
     public void run() {
         System.out.println("buffer writer thread started for k " + requestedK);
-        int counter = 0;
         while (running) {
-            System.out.println(counter++);
             if (checkIfShouldWrite())
                 writeNextFile(cpQueueToWrite);
             else try {

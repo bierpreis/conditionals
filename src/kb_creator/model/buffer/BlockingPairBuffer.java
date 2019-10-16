@@ -20,8 +20,8 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private final Object FLUSH_WAIT_OBJECT = new Object();
     private final Object THREAD_WAIT_OBJECT = new Object();
 
-    private ReaderThread readerThreadObject;
-    private WriterThread writerThreadObject;
+    private BufferReaderThread readerThreadObject;
+    private BufferWriterThread writerThreadObject;
 
 
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
@@ -96,12 +96,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new WriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, deleteFiles);
+        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, deleteFiles);
         writerThread = new Thread(writerThreadObject);
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
 
-        readerThreadObject = new ReaderThread(tmpFilePath, requestedK);
+        readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK);
         readerThread = new Thread(readerThreadObject);
         readerThread.setName("buffer reader thread for k " + requestedK);
         readerThread.start();

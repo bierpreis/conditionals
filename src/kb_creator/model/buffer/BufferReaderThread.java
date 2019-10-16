@@ -12,7 +12,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.regex.Pattern;
 
-public class ReaderThread implements Runnable {
+public class BufferReaderThread implements Runnable {
 
     private BlockingQueue<AbstractPair> queueToReturn;
 
@@ -25,7 +25,7 @@ public class ReaderThread implements Runnable {
 
     private String tmpFilePath;
 
-    public ReaderThread(String tmpFilePath, int requestedK) {
+    public BufferReaderThread(String tmpFilePath, int requestedK) {
         this.queueToReturn = new ArrayBlockingQueue<>(500);
         this.tmpFilePath = tmpFilePath;
 
