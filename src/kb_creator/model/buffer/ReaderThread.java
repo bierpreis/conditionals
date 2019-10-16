@@ -26,7 +26,7 @@ public class ReaderThread implements Runnable {
     private String tmpFilePath;
 
     public ReaderThread(String tmpFilePath, int requestedK) {
-        this.queueToReturn = new ArrayBlockingQueue<>(5_000); //todo
+        this.queueToReturn = new ArrayBlockingQueue<>(500);
         this.tmpFilePath = tmpFilePath;
 
         System.out.println("prepare iteration " + requestedK);
