@@ -17,8 +17,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private Thread readerThread;
     private Thread writerThread;
 
-    private final Object FLUSH_WAIT_OBJECT = new Object();
-    private final Object THREAD_WAIT_OBJECT = new Object();
 
     private BufferReaderThread readerThreadObject;
     private BufferWriterThread writerThreadObject;
@@ -40,14 +38,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         System.out.println("created parallel buffer for candidate pairs");
 
         status = BufferStatus.NOT_STARTED;
-    }
-
-    //todo
-    @Override
-    public void notifyBuffer() {
-        synchronized (THREAD_WAIT_OBJECT) {
-            THREAD_WAIT_OBJECT.notify();
-        }
     }
 
 
@@ -110,7 +100,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         System.out.println("prepare iteration finished " + requestedK);
 
     }
-    
+
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
         writerThreadObject.addList(listToAdd);

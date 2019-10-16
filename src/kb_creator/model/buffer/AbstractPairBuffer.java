@@ -83,8 +83,6 @@ public abstract class AbstractPairBuffer {
         this.deleteFiles = deleteFiles;
     }
 
-    public abstract void notifyBuffer();
-
 }
 
 

@@ -100,12 +100,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
     }
 
-    @Override
-    public void notifyBuffer() {
-        synchronized (THREAD_WAIT_OBJECT) {
-            THREAD_WAIT_OBJECT.notify();
-        }
-    }
 
 
     public boolean checkIfShouldRead() {
