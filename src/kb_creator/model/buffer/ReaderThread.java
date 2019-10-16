@@ -47,8 +47,7 @@ public class ReaderThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("buffer reader thread started for number of files: " + iterationNumberOfFiles);
-        while (readingFileNameCounter < iterationNumberOfFiles ) { //todo: start this thread for every iteration and close if all files are read.
+        while (readingFileNameCounter < iterationNumberOfFiles ) {
             List<AbstractPair> pairsList = readNextFile();
             if (pairsList != null)
                 for (AbstractPair pairToPut : pairsList)
@@ -58,7 +57,6 @@ public class ReaderThread implements Runnable {
                         e.printStackTrace();
                     }
         }
-        System.out.println("buffer reader thread closed. queue size: " + queueToReturn.size());
     }
 
     private boolean hasMoreFilesToRead() {
