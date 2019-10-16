@@ -28,7 +28,7 @@ public class DummyWriterThread implements Runnable {
                 //intentionally nothing
             }
         }
-        System.out.println("dummy writer thread finished");
+        System.out.println("dummy kbWriter thread finished");
     }
 
 

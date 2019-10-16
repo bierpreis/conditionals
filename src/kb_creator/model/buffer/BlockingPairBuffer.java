@@ -42,7 +42,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.NOT_STARTED;
     }
 
-
+    //todo
     @Override
     public void notifyBuffer() {
         synchronized (THREAD_WAIT_OBJECT) {
@@ -96,15 +96,14 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
-        //todo. close writer thread when stop
         writerThreadObject = new WriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, deleteFiles);
         writerThread = new Thread(writerThreadObject);
-        writerThread.setName("writer thread for k " + requestedK);
+        writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
 
         readerThreadObject = new ReaderThread(tmpFilePath, requestedK);
         readerThread = new Thread(readerThreadObject);
-        readerThread.setName("reader thread for k " + requestedK);
+        readerThread.setName("buffer reader thread for k " + requestedK);
         readerThread.start();
 
 
@@ -123,9 +122,11 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     public void finishIteration(int requestedK) {
         status = BufferStatus.FINISHING_ITERATION;
         lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
-        hasNextIteration = writerThreadObject.hasNextIteration();
+
 
         writerThreadObject.finishIteration(requestedK);
+
+        hasNextIteration = writerThreadObject.hasNextIteration();
 
 
         System.out.println("finished iteration: " + requestedK);
@@ -140,6 +141,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     public void stopLoop() {
         super.stopLoop();
         readerThread.interrupt();
+
+
+        writerThreadObject.stopLoop();
         writerThread.interrupt();
     }
 

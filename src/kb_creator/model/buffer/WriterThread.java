@@ -55,20 +55,20 @@ public class WriterThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("writer thread started for k " + requestedK);
+        System.out.println("buffer writer thread started for k " + requestedK);
         int counter = 0;
         while (running) {
             System.out.println(counter++);
             if (checkIfShouldWrite())
                 writeNextFile(cpQueueToWrite);
             else try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
-        System.out.println("writer thread finished for k " + requestedK);
+        System.out.println("buffer writer thread finished for k " + requestedK);
     }
 
     public boolean checkIfShouldWrite() {

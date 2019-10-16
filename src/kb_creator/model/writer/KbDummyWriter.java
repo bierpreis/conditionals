@@ -17,18 +17,18 @@ public class KbDummyWriter extends AbstractKbWriter {
     private Thread inconsistentThread;
 
     public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
-        System.out.println("new dummy writer");
+        System.out.println("new dummy KbWriter");
         status = WriterStatus.NOT_STARTED;
 
         consistentThreadObject = new DummyWriterThread(consistentKbQueue);
         inconsistentThreadObject = new DummyWriterThread(inconsistentKbQueue);
 
         consistentThread = new Thread(consistentThreadObject);
-        consistentThread.setName("ConsistentDummyWriterThread");
+        consistentThread.setName("ConsistentDummyKbWriterThread");
         consistentThread.start();
 
         inconsistentThread = new Thread(inconsistentThreadObject);
-        inconsistentThread.setName("InconsistentDummyWriterThread");
+        inconsistentThread.setName("InconsistentDummyKbWriterThread");
         inconsistentThread.start();
 
 
