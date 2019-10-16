@@ -110,8 +110,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         System.out.println("prepare iteration finished " + requestedK);
 
     }
-
-    //todo: delete adding list method?
+    
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
         writerThreadObject.addList(listToAdd);
