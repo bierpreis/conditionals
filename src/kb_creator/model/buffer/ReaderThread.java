@@ -47,20 +47,16 @@ public class ReaderThread implements Runnable {
 
     @Override
     public void run() {
-        while (readingFileNameCounter < iterationNumberOfFiles ) {
+        while (readingFileNameCounter < iterationNumberOfFiles) {
             List<AbstractPair> pairsList = readNextFile();
             if (pairsList != null)
                 for (AbstractPair pairToPut : pairsList)
                     try {
                         queueToReturn.put(pairToPut);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        return; //this is triggered by stop button in gui and will close this thread
                     }
         }
-    }
-
-    private boolean hasMoreFilesToRead() {
-        return true;
     }
 
 

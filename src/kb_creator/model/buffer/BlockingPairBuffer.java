@@ -18,11 +18,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
     private int pairWriterCounter;
 
+    private Thread readerThread;
+
     private final Object FLUSH_WAIT_OBJECT = new Object();
     private final Object THREAD_WAIT_OBJECT = new Object();
 
     private ReaderThread readerThreadObject;
-    private Thread readerThread; //todo: close reader thread with stop button
 
     private BlockingQueue<AbstractPair> cpQueueToWrite;
 
@@ -213,7 +214,8 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         folderToWrite.mkdirs();
 
         readerThreadObject = new ReaderThread(tmpFilePath, requestedK);
-        Thread readerThread = new Thread(readerThreadObject);
+
+        readerThread = new Thread(readerThreadObject);
         readerThread.setName("reader thread for k " + requestedK);
         readerThread.start();
 
@@ -246,6 +248,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     @Override
     public int getReaderBufferSize() {
         return readerThreadObject.getQueueSize();
+    }
+
+    @Override
+    public void stopLoop() {
+        super.stopLoop();
+        readerThread.interrupt();
     }
 
 }
