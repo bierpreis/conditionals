@@ -17,7 +17,7 @@ public class OverallStatusPanel extends JPanel {
     private JLabel consistentAmountLabel;
     private JLabel inconsistentAmountLabel;
     private JLabel timeLabel;
-    
+
     public OverallStatusPanel(ActionPanel actionPanel) {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         this.actionPanel = actionPanel;
