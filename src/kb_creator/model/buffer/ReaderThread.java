@@ -114,7 +114,7 @@ public class ReaderThread implements Runnable {
     public int getQueueSize() {
         return queueToReturn.size();
     }
-    
+
     public void deleteOldData(int requestedK) {
         //dont delete files for iteration 0 because there wont be any
         File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
@@ -126,10 +126,6 @@ public class ReaderThread implements Runnable {
             folderToDelete.delete();
 
         }
-
-    }
-
-    public void prepareIteration(int requestedK) {
 
     }
 }

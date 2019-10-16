@@ -22,7 +22,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private final Object THREAD_WAIT_OBJECT = new Object();
 
     private ReaderThread readerThreadObject;
-    private Thread readerThread;
+    private Thread readerThread; //todo: close reader thread with stop button
 
     private BlockingQueue<AbstractPair> cpQueueToWrite;
 
