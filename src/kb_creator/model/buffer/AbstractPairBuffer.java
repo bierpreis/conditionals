@@ -14,7 +14,6 @@ public abstract class AbstractPairBuffer {
 
     protected volatile boolean running = true;
 
-    protected volatile BufferStatus status;
 
     protected int pairReaderCounter;
 
@@ -29,7 +28,6 @@ public abstract class AbstractPairBuffer {
     //k will be set by prepare iteration methods
 
     public AbstractPairBuffer(String baseFilePath) {
-        status = BufferStatus.NOT_STARTED;
         this.tmpFilePath = baseFilePath + "/tmp/";
     }
 
@@ -51,10 +49,6 @@ public abstract class AbstractPairBuffer {
 
     public abstract void addPair(AbstractPair pair);
 
-    public BufferStatus getStatus() {
-        return status;
-    }
-
     protected abstract void deleteOldData(int requestedK);
 
     public abstract int getQueueToWriteSize();
@@ -64,17 +58,10 @@ public abstract class AbstractPairBuffer {
 
     public void setFinished() {
         running = false;
-        status = BufferStatus.FINISHED;
     }
 
     public void stopLoop() {
         running = false;
-        status = BufferStatus.STOPPED;
-    }
-
-    //todo: useless?
-    public enum BufferStatus {
-        WRITING, READING, NOT_STARTED, SLEEPING, FINISHING_ITERATION, PREPARING_NEXT_ITERATION, FINISHED, STOPPED
     }
 
     public void setDeletingFiles(boolean deleteFiles) {

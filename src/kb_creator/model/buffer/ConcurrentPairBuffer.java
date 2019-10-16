@@ -62,7 +62,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         File tmpFile = new File(this.tmpFilePath);
         tmpFile.mkdirs();
 
-        status = BufferStatus.NOT_STARTED;
 
         throw new RuntimeException("This Class does not work anymore. No run method. Delete?");
 
@@ -252,7 +251,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int requestedK) {
-        status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
         pairWriterCounter = 0;
@@ -284,8 +282,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-
-        status = BufferStatus.FINISHING_ITERATION;
 
         flushWritingElements();
         lastIterationPairAmount = pairWriterCounter;

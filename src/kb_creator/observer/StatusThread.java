@@ -81,7 +81,6 @@ public class StatusThread implements Runnable {
     private void showBufferStatus() {
         //cp writer thread is started after this thread, so this will avoid the null pointer exception
         if (creatorThread.getPairBuffer() != null) {
-            mainWindow.getRightPanel().getBufferStatusPanel().showStatus(creatorThread.getPairBuffer().getStatus());
 
             mainWindow.getRightPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
             mainWindow.getRightPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());

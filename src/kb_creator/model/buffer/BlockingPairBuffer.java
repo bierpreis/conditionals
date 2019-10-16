@@ -36,8 +36,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
         System.out.println("created parallel buffer for candidate pairs");
-
-        status = BufferStatus.NOT_STARTED;
     }
 
 
@@ -83,7 +81,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int requestedK) {
-        status = BufferStatus.PREPARING_NEXT_ITERATION;
         System.out.println("preparing iteration: " + requestedK);
 
         writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, deleteFiles);
@@ -109,7 +106,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        status = BufferStatus.FINISHING_ITERATION;
         lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
 
 

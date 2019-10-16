@@ -29,15 +29,11 @@ public class BufferStatusPanel extends JPanel {
         vBox.add(writerLabel);
         vBox.add(readerLabel);
         vBox.setAlignmentX(Component.LEFT_ALIGNMENT);
-        showStatus(AbstractPairBuffer.BufferStatus.NOT_STARTED);
         showWriterQueue(0);
         showReaderBuffer(0);
 
     }
-    
-    public void showStatus(AbstractPairBuffer.BufferStatus status) {
-        statusLabel.setText("Status: " + status.toString());
-    }
+
 
 
     public void showWriterQueue(int alreadyFinishedNumber) {
