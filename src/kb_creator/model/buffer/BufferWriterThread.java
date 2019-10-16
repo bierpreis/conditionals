@@ -62,7 +62,7 @@ public class BufferWriterThread implements Runnable {
             else try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //todo. stop button throws this 
             }
 
         }
