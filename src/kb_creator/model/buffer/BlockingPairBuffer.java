@@ -128,6 +128,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
         hasNextIteration = writerThreadObject.hasNextIteration();
 
+        deleteOldData(requestedK);
 
         System.out.println("finished iteration: " + requestedK);
     }

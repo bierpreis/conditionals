@@ -134,7 +134,6 @@ public class BufferWriterThread implements Runnable {
 
     public void finishIteration(int requestedK) {
         flushWritingElements();
-        //todo: delete files
 
     }
 
