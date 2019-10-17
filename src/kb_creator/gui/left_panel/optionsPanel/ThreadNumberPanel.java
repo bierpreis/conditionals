@@ -16,6 +16,7 @@ public class ThreadNumberPanel extends JPanel {
         add(numberOfThreadsField);
 
         //todo: this only works if enter is pressed. thats wrong. also: red line?
+        //look bookmark for this!
         numberOfThreadsField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
