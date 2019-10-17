@@ -9,10 +9,9 @@ import java.util.concurrent.*;
 
 public class ParallelCreator extends AbstractCreator {
 
-    //todo: gui should set this
-    private int numberOfThreads = 4;
+    private int numberOfThreads;
 
-    private ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
+    private ExecutorService executorService;
 
     private List<Future> futureList = new ArrayList<>(numberOfThreads);
 
@@ -23,9 +22,11 @@ public class ParallelCreator extends AbstractCreator {
     private Thread inputQueueThread;
 
 
-    public ParallelCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+    public ParallelCreator(AbstractSignature signature, String kbFilePath, int numberOfThreads, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
+        executorService = Executors.newFixedThreadPool(numberOfThreads);
         System.out.println("new parallel creator");
+        this.numberOfThreads = numberOfThreads;
     }
 
     @Override

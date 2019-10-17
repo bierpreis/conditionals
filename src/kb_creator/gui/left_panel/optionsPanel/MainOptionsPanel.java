@@ -13,14 +13,17 @@ public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private MainBufferPanel mainBufferPanel;
     private SignatureOptionsPanel signatureOptionsPanel;
+    private ThreadNumberPanel threadNumberPanel;
 
     public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
 
         add(signatureOptionsPanel = new SignatureOptionsPanel());
+        add(threadNumberPanel = new ThreadNumberPanel());
         add(mainBufferPanel = new MainBufferPanel());
         add(mainKbSafePanel = new MainKbSafePanel());
+
     }
 
     public AbstractSignature getSignature() {
@@ -61,5 +64,9 @@ public class MainOptionsPanel extends JPanel {
 
     public boolean isDeletingBufferFilesRequested() {
         return mainBufferPanel.getDeleteCheckbox().isSelected();
+    }
+
+    public int getNumberOfThreads() {
+        return threadNumberPanel.getThreadNumber();
     }
 }
