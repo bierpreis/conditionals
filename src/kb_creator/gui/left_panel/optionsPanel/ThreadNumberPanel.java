@@ -4,8 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ThreadNumberPanel extends JPanel {
-
-    //todo: set field grey like rest of options when creator running
+    
     private JTextField numberOfThreadsField = new JTextField("4");
 
 
@@ -19,6 +18,13 @@ public class ThreadNumberPanel extends JPanel {
     //todo: waring dialog if invalid value
     public int getThreadNumber() {
         return Integer.parseInt(numberOfThreadsField.getText());
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
     }
 
 }
