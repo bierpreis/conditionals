@@ -4,12 +4,13 @@ package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 import kb_creator.gui.left_panel.optionsPanel.WrongInputDialog;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BufferSizePanel extends JPanel {
-    private JTextField bufferSizeField;
+    private JTextField bufferSizeField; //todo: set fixed size. it resizes if small number is put in
     private JLabel descriptionLabel;
 
     public BufferSizePanel() {
@@ -33,13 +34,7 @@ public class BufferSizePanel extends JPanel {
     }
 
     public int getBufferSize() {
-        int bufferSize = 1;
-        try {
-            bufferSize = Integer.parseInt(bufferSizeField.getText());
-        } catch (NumberFormatException e) {
-            new WrongInputDialog();
-        }
-        return bufferSize;
+        return Integer.parseInt(bufferSizeField.getText());
     }
 
     public boolean isValueValid() {
@@ -47,6 +42,7 @@ public class BufferSizePanel extends JPanel {
         try {
             Integer.parseInt(bufferSizeField.getText());
         } catch (NumberFormatException e) {
+            bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.RED));
             new WrongInputDialog();
             return false;
 
@@ -56,6 +52,7 @@ public class BufferSizePanel extends JPanel {
             new WrongInputDialog();
             return false;
         }
+        bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
         return true;
     }
 
