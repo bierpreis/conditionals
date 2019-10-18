@@ -31,8 +31,22 @@ public class ThreadNumberPanel extends JPanel {
 
     }
 
-    public int getThreadNumber() {
+    public int getNumberOfThreads() {
         return Integer.parseInt(numberOfThreadsField.getText());
+    }
+
+    public boolean isValueValid() {
+        try {
+            Integer.parseInt(numberOfThreadsField.getText());
+        } catch (NumberFormatException e) {
+            new WrongInputDialog(); //todo: own waring field for thread number
+            return false;
+        }
+        if (Integer.parseInt(numberOfThreadsField.getText()) < 1) {
+            new WrongInputDialog(); //todo: own waring field for thread number
+            return false;
+        }
+        return true;
     }
 
     @Override

@@ -34,27 +34,28 @@ public class CreatorButtonObserver implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Start")) {
 
-            if (mainWindow.isBufferingRequested()) {
-                if (mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize() != 0)
-                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferSize());
-                else return; //return if buffer size is 0 because this is no valid value which can be used
-            } else candidateBuffer = new DummyPairBuffer(null);
+        if (mainWindow.getMainLeftPanel().getMainOptionsPanel().areValuesValid()) {
+            if (e.getActionCommand().equals("Start")) {
 
-            mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-            creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
+                if (mainWindow.isBufferingRequested())
+                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize());
+                else candidateBuffer = new DummyPairBuffer(null);
 
-            Thread creatorThread = new Thread(creatorThreadObject);
-            creatorThread.setName("CreatorThread");
-            creatorThread.start();
+                mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
+                creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
 
-            creatorThread.setPriority(Thread.MAX_PRIORITY);
+                Thread creatorThread = new Thread(creatorThreadObject);
+                creatorThread.setName("CreatorThread");
+                creatorThread.start();
 
-            statusThreadObject.setCreatorThread(creatorThreadObject);
+                creatorThread.setPriority(Thread.MAX_PRIORITY);
 
-            creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getMainLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
+                statusThreadObject.setCreatorThread(creatorThreadObject);
 
+                creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getMainLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
+
+            }
         }
 
         if (e.getActionCommand().equals("Stop")) {
@@ -73,6 +74,7 @@ public class CreatorButtonObserver implements ActionListener {
 
 
         }
-
     }
+
+
 }

@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//todo: abstract input waring
 public class WrongInputDialog extends JDialog {
     JButton okButton;
 

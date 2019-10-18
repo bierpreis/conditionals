@@ -58,8 +58,8 @@ public class MainOptionsPanel extends JPanel {
         }
     }
 
-    public int getBufferSize() {
-        return mainBufferPanel.getBufferSize();
+    public MainBufferPanel getBufferPanel() {
+        return mainBufferPanel;
     }
 
     public boolean isDeletingBufferFilesRequested() {
@@ -67,6 +67,18 @@ public class MainOptionsPanel extends JPanel {
     }
 
     public int getNumberOfThreads() {
-        return threadNumberPanel.getThreadNumber();
+        return threadNumberPanel.getNumberOfThreads();
+    }
+
+    //todo: red borders for wrong values!
+    public boolean areValuesValid() {
+        boolean valid = true;
+        if (!mainBufferPanel.isValueValid())
+            valid = false;
+
+        if (!threadNumberPanel.isValueValid())
+            valid = false;
+
+        return valid;
     }
 }

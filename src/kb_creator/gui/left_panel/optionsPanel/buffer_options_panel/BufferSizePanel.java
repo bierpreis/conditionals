@@ -31,17 +31,32 @@ public class BufferSizePanel extends JPanel {
         });
 
     }
-    
-    public int getBufferSize() {
-        int returnvalue = 0;
 
+    public int getBufferSize() {
+        int bufferSize = 1;
         try {
-            returnvalue = Integer.parseInt(bufferSizeField.getText());
+            bufferSize = Integer.parseInt(bufferSizeField.getText());
         } catch (NumberFormatException e) {
             new WrongInputDialog();
+        }
+        return bufferSize;
+    }
+
+    public boolean isValueValid() {
+
+        try {
+            Integer.parseInt(bufferSizeField.getText());
+        } catch (NumberFormatException e) {
+            new WrongInputDialog();
+            return false;
 
         }
-        return returnvalue;
+
+        if (Integer.parseInt(bufferSizeField.getText()) < 1) {
+            new WrongInputDialog();
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -51,8 +66,6 @@ public class BufferSizePanel extends JPanel {
         descriptionLabel.setEnabled(enabled);
 
     }
-
-
 
 
 }
