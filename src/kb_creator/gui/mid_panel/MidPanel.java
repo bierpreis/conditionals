@@ -2,9 +2,6 @@ package kb_creator.gui.mid_panel;
 
 import kb_creator.gui.left_panel.ActionPanel;
 import kb_creator.gui.mid_panel.creator_panel.MainCreatorPanel;
-import kb_creator.gui.right_panel.BufferStatusPanel;
-import kb_creator.gui.right_panel.MemoryPanel;
-import kb_creator.gui.right_panel.WriterStatusPanel;
 
 import javax.swing.*;
 

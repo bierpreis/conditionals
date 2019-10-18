@@ -1,4 +1,4 @@
-package kb_creator.gui.right_panel;
+package kb_creator.gui.mid_panel;
 
 
 import kb_creator.model.buffer.AbstractPairBuffer;
