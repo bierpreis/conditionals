@@ -1,5 +1,8 @@
 package kb_creator.gui.left_panel.optionsPanel;
 
+import kb_creator.gui.left_panel.optionsPanel.Warnings.SizeWarningDialog;
+import kb_creator.gui.left_panel.optionsPanel.Warnings.ThreadWarningDialog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +17,7 @@ public class ThreadNumberPanel extends JPanel {
         setBorder(BorderFactory.createTitledBorder("Number of Working Threads"));
 
         add(numberOfThreadsField);
-        
+
         numberOfThreadsField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -22,7 +25,7 @@ public class ThreadNumberPanel extends JPanel {
                     Integer.parseInt(numberOfThreadsField.getText());
 
                 } catch (NumberFormatException e) {
-                    new WrongInputDialog();
+                    new SizeWarningDialog();
                 }
             }
         });
@@ -39,15 +42,16 @@ public class ThreadNumberPanel extends JPanel {
         } catch (NumberFormatException e) {
             numberOfThreadsField.setBorder(BorderFactory.createLineBorder(Color.RED));
             repaint();
-            new WrongInputDialog(); //todo: own waring field for thread number
+            new ThreadWarningDialog();
             return false;
         }
         if (Integer.parseInt(numberOfThreadsField.getText()) < 1) {
             this.setBorder(BorderFactory.createLineBorder(Color.RED));
-            new WrongInputDialog(); //todo: own waring field for thread number
+            new ThreadWarningDialog();
             return false;
         }
         numberOfThreadsField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+        numberOfThreadsField.repaint();
         return true;
     }
 

@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AlreadyExistsDialog {
+public class AlreadyExistsDialog { //todo: abstract dialog?
     public AlreadyExistsDialog(String pathOfExistingFolder) {
         JDialog warningDialog = new JDialog();
         warningDialog.setTitle("Warning");

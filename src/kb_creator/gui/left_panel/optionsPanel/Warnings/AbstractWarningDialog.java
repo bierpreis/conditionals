@@ -1,19 +1,19 @@
-package kb_creator.gui.left_panel.optionsPanel;
+package kb_creator.gui.left_panel.optionsPanel.Warnings;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//todo: abstract input waring
-public class WrongInputDialog extends JDialog {
-    JButton okButton;
+public abstract class AbstractWarningDialog extends JDialog {
+    protected JButton okButton;
+    protected JLabel descriptionLabel = new JLabel(" ");
 
+    public AbstractWarningDialog(){
 
-    public WrongInputDialog() {
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setTitle("Warning");
-        add(new JLabel("Invalid input for File Size. Enter valid Number."));
+        add(descriptionLabel);
         setLocationRelativeTo(null);
 
         okButton = new JButton("Ok");
@@ -23,6 +23,14 @@ public class WrongInputDialog extends JDialog {
         buttonPanel.add(okButton);
         add(buttonPanel);
 
+
+
+        setPreferredSize(new Dimension(350, 120));
+        setModal(true);
+        pack();
+
+
+
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -30,12 +38,5 @@ public class WrongInputDialog extends JDialog {
                     dispose();
             }
         });
-
-
-        setPreferredSize(new Dimension(350, 120));
-        setModal(true);
-        pack();
-        setVisible(true);
     }
-
 }

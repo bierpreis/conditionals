@@ -1,10 +1,9 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
 
-import kb_creator.gui.left_panel.optionsPanel.WrongInputDialog;
+import kb_creator.gui.left_panel.optionsPanel.Warnings.SizeWarningDialog;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +25,7 @@ public class BufferSizePanel extends JPanel {
                     Integer.parseInt(bufferSizeField.getText());
 
                 } catch (NumberFormatException e) {
-                    new WrongInputDialog();
+                    new SizeWarningDialog();
                 }
             }
         });
@@ -43,13 +42,13 @@ public class BufferSizePanel extends JPanel {
             Integer.parseInt(bufferSizeField.getText());
         } catch (NumberFormatException e) {
             bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            new WrongInputDialog();
+            new SizeWarningDialog();
             return false;
 
         }
 
         if (Integer.parseInt(bufferSizeField.getText()) < 1) {
-            new WrongInputDialog();
+            new SizeWarningDialog();
             return false;
         }
         bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
