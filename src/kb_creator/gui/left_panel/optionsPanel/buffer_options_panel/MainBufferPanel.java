@@ -13,7 +13,9 @@ public class MainBufferPanel extends JPanel {
     private JPanel optionsPanel;
     private JPanel actionPanel;
     private JCheckBox deleteTempFilesCheckbox;
+
     private BufferSizePanel bufferSizePanel;
+    //todo: add field for leading zeros for files
 
 
     public MainBufferPanel() {
