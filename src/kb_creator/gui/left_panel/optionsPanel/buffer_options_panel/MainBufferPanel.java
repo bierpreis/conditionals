@@ -95,7 +95,7 @@ public class MainBufferPanel extends JPanel {
 
     public BufferLocationPanel getBufferLocationPanel() {
         return bufferLocationPanel;
-    }
+    } //todo
 
     public BufferSizePanel getBufferSizePanel() {
         return bufferSizePanel;
