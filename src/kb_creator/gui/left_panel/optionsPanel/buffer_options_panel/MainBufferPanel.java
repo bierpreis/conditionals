@@ -64,7 +64,7 @@ public class MainBufferPanel extends JPanel {
         return bufferCheckboxPanel.isSelected();
     }
 
-    public String getPath() {
+    public String getBufferFilePath() {
         return bufferLocationPanel.getFilePath();
     }
 
@@ -92,10 +92,6 @@ public class MainBufferPanel extends JPanel {
     public BufferCheckboxPanel getBufferCheckboxPanel() {
         return bufferCheckboxPanel;
     }
-
-    public BufferLocationPanel getBufferLocationPanel() {
-        return bufferLocationPanel;
-    } //todo
 
     public BufferSizePanel getBufferSizePanel() {
         return bufferSizePanel;

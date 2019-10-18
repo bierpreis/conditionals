@@ -41,7 +41,7 @@ public class MainOptionsPanel extends JPanel {
     }
 
     public String getBufferPath() {
-        return mainBufferPanel.getPath();
+        return mainBufferPanel.getBufferFilePath();
     }
 
     public boolean isBufferingRequested() {
