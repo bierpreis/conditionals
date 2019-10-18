@@ -17,7 +17,6 @@ public class MainWindow {
 
     private LeftPanel leftPanel;
     private MidPanel midPanel;
-    private RightPanel rightPanel;
 
     public MainWindow(CreatorButtonObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
@@ -26,7 +25,6 @@ public class MainWindow {
         //todo: left options panel right status panel. grey the inactive.
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(midPanel = new MidPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
-        mainWindow.add(rightPanel = new RightPanel(), BorderLayout.EAST);
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,11 +55,6 @@ public class MainWindow {
 
     public String getCpFilePath() {
         return leftPanel.getCpFilePath();
-    }
-
-
-    public RightPanel getRightPanel() {
-        return rightPanel;
     }
 
     public MidPanel getMidPanel() {

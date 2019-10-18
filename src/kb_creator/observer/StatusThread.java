@@ -38,7 +38,7 @@ public class StatusThread implements Runnable {
                 showBufferStatus();
             }
 
-            mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
+            mainWindow.getMidPanel().getMemoryPanel().showFreeMemory();
 
             try {
                 Thread.sleep(sleepTime);
@@ -72,18 +72,18 @@ public class StatusThread implements Runnable {
     }
 
     private void showWriterStatus() {
-        mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
-        mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+        mainWindow.getMidPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
+        mainWindow.getMidPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
-        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
+        mainWindow.getMidPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
     }
 
     private void showBufferStatus() {
         //cp writer thread is started after this thread, so this will avoid the null pointer exception
         if (creatorThread.getPairBuffer() != null) {
 
-            mainWindow.getRightPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
-            mainWindow.getRightPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
+            mainWindow.getMidPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
+            mainWindow.getMidPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
 
         }
     }
