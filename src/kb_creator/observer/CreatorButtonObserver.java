@@ -3,7 +3,6 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.creator.ParallelCreator;
-import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.BlockingPairBuffer;
 import kb_creator.model.buffer.DummyPairBuffer;
@@ -35,15 +34,15 @@ public class CreatorButtonObserver implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (mainWindow.getMainLeftPanel().getMainOptionsPanel().areValuesValid()) {
+        if (mainWindow.getLeftPanel().getMainOptionsPanel().areValuesValid()) {
             if (e.getActionCommand().equals("Start")) {
 
                 if (mainWindow.isBufferingRequested())
-                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize());
+                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize());
                 else candidateBuffer = new DummyPairBuffer(null);
 
-                mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(false);
-                creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getMainLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
+                mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
+                creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("CreatorThread");
@@ -53,7 +52,7 @@ public class CreatorButtonObserver implements ActionListener {
 
                 statusThreadObject.setCreatorThread(creatorThreadObject);
 
-                creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getMainLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
+                creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
 
             }
         }
@@ -68,7 +67,7 @@ public class CreatorButtonObserver implements ActionListener {
             //todo: make sure it can be used again and again. clear button to clear and activate start button again
             if (answer == 0) {
                 creatorThreadObject.stopLoop();
-                mainWindow.getMainLeftPanel().getMainOptionsPanel().setActive(true);
+                mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
                 candidateBuffer.stopLoop();
             }
 

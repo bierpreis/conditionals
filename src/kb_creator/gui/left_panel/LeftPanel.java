@@ -7,14 +7,14 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import javax.swing.*;
 
 
-public class MainLeftPanel extends JPanel {
+public class LeftPanel extends JPanel {
 
 
     private ActionPanel actionPanel;
     private MainOptionsPanel mainOptionsPanel;
 
 
-    public MainLeftPanel(CreatorButtonObserver observer) {
+    public LeftPanel(CreatorButtonObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         actionPanel = new ActionPanel(observer);
