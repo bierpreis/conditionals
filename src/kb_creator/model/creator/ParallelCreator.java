@@ -59,7 +59,7 @@ public class ParallelCreator extends AbstractCreator {
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
 
-            startQueueThreads(k);
+            startQueueThreads(k); //todo: when this is interrupted, exception is thrown
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
@@ -109,6 +109,7 @@ public class ParallelCreator extends AbstractCreator {
 
             //todo: Exception in thread "CreatorThread" java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@1d184c6e[Not completed,
             futureList.add(executorService.submit(thread)); //this happeneds often when stop button is pressed!
+            //exception happens while iteration is prepared.
         }
 
 
