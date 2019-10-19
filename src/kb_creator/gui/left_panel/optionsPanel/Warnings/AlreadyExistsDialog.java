@@ -14,7 +14,7 @@ public class AlreadyExistsDialog extends AbstractWarningDialog {
 
         descriptionLabel.setText("The Folder you chosse already exits.");
         descriptionLabel2.setText("(" + pathOfExistingFolder + ")");
-        descriptionLabel3.setText("Choose diffrent Folder or delete it go continue.");
+        descriptionLabel3.setText("Choose different Folder or delete it go continue.");
 
         repaint();
         setVisible(true);
