@@ -22,8 +22,9 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     private int numberOfDigits;
 
-    public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {//todo
+    public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         super(filePath);
+        this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         numberOfDigits = bufferFileLength;
         System.out.println("created parallel buffer for candidate pairs");
     }

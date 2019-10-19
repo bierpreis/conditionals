@@ -6,9 +6,6 @@ import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.NewConditional;
 
 import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer {
 
@@ -17,7 +14,7 @@ public abstract class AbstractPairBuffer {
 
     protected int pairReaderCounter;
 
-    protected int maxNumberOfPairsInFile = 2000; //todo
+    protected int maxNumberOfPairsInFile;
 
     protected String tmpFilePath;
 
