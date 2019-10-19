@@ -62,4 +62,14 @@ public class WriterStatusPanel extends JPanel {
     }
 
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+
+        statusLabel.setEnabled(enabled);
+        consistentLabel.setEnabled(enabled);
+        inconsistentLabel.setEnabled(enabled);
+    }
 }

@@ -26,4 +26,12 @@ public class MemoryPanel extends JPanel {
     private long calculateFreeMemory() {
         return ((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().totalMemory()) / 1_000_000);
     }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+
+    }
 }

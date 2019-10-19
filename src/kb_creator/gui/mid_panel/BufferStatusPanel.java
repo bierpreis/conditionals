@@ -46,4 +46,14 @@ public class BufferStatusPanel extends JPanel {
     }
 
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+
+        readerLabel.setEnabled(enabled);
+        writerLabel.setEnabled(enabled);
+    }
+
 }

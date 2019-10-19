@@ -4,6 +4,7 @@ import kb_creator.gui.left_panel.ActionPanel;
 import kb_creator.gui.mid_panel.creator_panel.MainCreatorPanel;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MidPanel extends JPanel {
 
@@ -45,6 +46,16 @@ public class MidPanel extends JPanel {
 
     public MemoryPanel getMemoryPanel() {
         return memoryPanel;
+    }
+
+    public void setActive(boolean active) {
+
+        //avoid iterating without use
+       if (active != this.isEnabled()) {
+            super.setEnabled(active);
+            for (Component component : getComponents())
+                component.setEnabled(active);
+        }
     }
 
 

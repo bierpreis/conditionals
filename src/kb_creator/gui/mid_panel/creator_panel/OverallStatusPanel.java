@@ -12,7 +12,7 @@ public class OverallStatusPanel extends JPanel {
 
 
     private JLabel statusLabel;
-    private ActionPanel actionPanel;
+    private ActionPanel actionPanel; //todo. why is this here??
     private JLabel averageSpeedLabel;
     private JLabel consistentAmountLabel;
     private JLabel inconsistentAmountLabel;
@@ -90,6 +90,19 @@ public class OverallStatusPanel extends JPanel {
         timeLabel.setText("Running Time: " + String.format("%02d:%02d:%02d", hour, minute, second));
 
 
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+
+        statusLabel.setEnabled(enabled);
+        averageSpeedLabel.setEnabled(enabled);
+        consistentAmountLabel.setEnabled(enabled);
+        inconsistentAmountLabel.setEnabled(enabled);
+        timeLabel.setEnabled(enabled);
     }
 
 

@@ -11,7 +11,7 @@ public class CurrentIterationPanel extends JPanel {
     private JLabel iterationInconsistentLabel;
     private JLabel speedLabel;
     private JLabel currentKLabel;
-    private JLabel candidatePairslabel;
+    private JLabel candidatePairsLabel;
     private JLabel progressLabel;
 
     public CurrentIterationPanel() {
@@ -39,8 +39,8 @@ public class CurrentIterationPanel extends JPanel {
         iterationInconsistentLabel = new JLabel();
         vBox.add(iterationInconsistentLabel);
 
-        candidatePairslabel = new JLabel();
-        vBox.add(candidatePairslabel);
+        candidatePairsLabel = new JLabel();
+        vBox.add(candidatePairsLabel);
 
         progressLabel = new JLabel();
         vBox.add(progressLabel);
@@ -76,11 +76,25 @@ public class CurrentIterationPanel extends JPanel {
 
     public void showCandidatePairs(int candidatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        candidatePairslabel.setText("Candidate pairs: " + formatter.format(candidatePairs));
+        candidatePairsLabel.setText("Candidate pairs: " + formatter.format(candidatePairs));
     }
 
 
     public void showProgress(float progress) {
         progressLabel.setText("Progress: " + String.format("%.2f", progress) + "%");
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+
+        iterationConsistentLabel.setEnabled(enabled);
+        iterationInconsistentLabel.setEnabled(enabled);
+        speedLabel.setEnabled(enabled);
+        currentKLabel.setEnabled(enabled);
+        candidatePairsLabel.setEnabled(enabled);
+        progressLabel.setEnabled(enabled);
     }
 }

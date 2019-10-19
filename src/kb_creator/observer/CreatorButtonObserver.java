@@ -36,6 +36,7 @@ public class CreatorButtonObserver implements ActionListener {
 
         if (mainWindow.getLeftPanel().getMainOptionsPanel().areValuesValid()) {
             if (e.getActionCommand().equals("Start")) {
+                mainWindow.getMidPanel().setActive(true);
 
                 if (mainWindow.isBufferingRequested())
                     candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize());
@@ -63,14 +64,13 @@ public class CreatorButtonObserver implements ActionListener {
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
-
             //todo: make sure it can be used again and again. clear button to clear and activate start button again
             if (answer == 0) {
+                mainWindow.getMidPanel().setActive(false);
                 creatorThreadObject.stopLoop();
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
                 candidateBuffer.stopLoop();
             }
-
 
         }
     }

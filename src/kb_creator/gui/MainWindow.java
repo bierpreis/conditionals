@@ -21,9 +21,11 @@ public class MainWindow {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
 
-        //todo: left options panel right status panel. grey the inactive.
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
         mainWindow.add(midPanel = new MidPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
+
+        midPanel.setActive(false);
+
 
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

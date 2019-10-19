@@ -77,5 +77,12 @@ public class MainCreatorPanel extends JPanel {
 
     public void showAverageSpeed(int kbAmount, long startTime){overallStatusPanel.showAverageSpeed(kbAmount, startTime);}
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
+    }
+
 
 }
