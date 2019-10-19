@@ -24,9 +24,6 @@ public class ActionPanel extends JPanel {
         stopButton.addActionListener(observer);
         add(stopButton);
 
-        //todo: pause button
-
-
         revalidate();
     }
     
