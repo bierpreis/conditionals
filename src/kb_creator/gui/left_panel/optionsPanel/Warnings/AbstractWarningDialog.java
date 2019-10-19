@@ -8,12 +8,19 @@ import java.awt.event.ActionListener;
 public abstract class AbstractWarningDialog extends JDialog {
     protected JButton okButton;
     protected JLabel descriptionLabel = new JLabel(" ");
+    protected JLabel descriptionLabel2 = new JLabel(" ");
+    protected JLabel descriptionLabel3 = new JLabel(" ");
 
     public AbstractWarningDialog(){
+
+        //this is placeholder for empty first line
+        add(new JLabel(" "));
 
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         setTitle("Warning");
         add(descriptionLabel);
+        add(descriptionLabel2);
+        add(descriptionLabel3);
         setLocationRelativeTo(null);
 
         okButton = new JButton("Ok");
@@ -25,7 +32,7 @@ public abstract class AbstractWarningDialog extends JDialog {
 
 
 
-        setPreferredSize(new Dimension(350, 120));
+        setPreferredSize(new Dimension(350, 140));
         setModal(true);
         pack();
 
