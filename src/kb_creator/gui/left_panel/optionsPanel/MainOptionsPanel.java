@@ -70,7 +70,6 @@ public class MainOptionsPanel extends JPanel {
         return threadNumberPanel.getNumberOfThreads();
     }
 
-    //todo: red borders for wrong values!
     public boolean areValuesValid() {
         boolean valid = true;
         if (!mainBufferPanel.isValueValid())
