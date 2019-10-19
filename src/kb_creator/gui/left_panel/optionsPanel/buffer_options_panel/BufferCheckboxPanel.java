@@ -9,7 +9,7 @@ import java.awt.*;
 public class BufferCheckboxPanel extends JPanel {
     private JCheckBox saveCheckBox;
     private MainBufferPanel mainBufferPanel;
-    
+
     BufferCheckboxPanel(MainBufferPanel mainBufferPanel) {
 
         saveCheckBox = new JCheckBox("Buffer Files to Disk");
@@ -27,7 +27,6 @@ public class BufferCheckboxPanel extends JPanel {
     }
 
     public void setBoxEnabled(boolean active) {
-        System.out.println("setting enabled: " + active);
         saveCheckBox.setEnabled(active);
     }
 
