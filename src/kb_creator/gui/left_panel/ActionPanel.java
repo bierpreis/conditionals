@@ -30,7 +30,7 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
     
-    public void setStatus(SimpleCreator.CreatorStatus creatorStatus) {
+    public void updateButtons(SimpleCreator.CreatorStatus creatorStatus) {
         switch (creatorStatus) {
             case CREATING_CONDITIONALS:
                 startButton.setEnabled(false);

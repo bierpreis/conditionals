@@ -10,9 +10,10 @@ import java.util.Locale;
 
 public class OverallStatusPanel extends JPanel {
 
+    private ActionPanel actionPanel;
 
     private JLabel statusLabel;
-    private ActionPanel actionPanel; //todo. why is this here??
+
     private JLabel averageSpeedLabel;
     private JLabel consistentAmountLabel;
     private JLabel inconsistentAmountLabel;
@@ -65,7 +66,7 @@ public class OverallStatusPanel extends JPanel {
 
     public void showStatus(SimpleCreator.CreatorStatus creatorStatus) {
         statusLabel.setText("Status: " + creatorStatus.toString());
-        actionPanel.setStatus(creatorStatus);
+        actionPanel.updateButtons(creatorStatus);
     }
 
     public void showConsistentKBAmount(int amount) {
