@@ -9,8 +9,6 @@ import java.util.List;
 
 public abstract class AbstractPairBuffer {
 
-    protected volatile boolean running = true; //todo
-
 
     protected int pairReaderCounter;
 
@@ -53,13 +51,9 @@ public abstract class AbstractPairBuffer {
     public abstract int getReaderBufferSize();
 
 
-    public void setFinished() {
-        running = false;
-    }
+    public abstract void setFinished();
 
-    public void stopLoop() {
-        running = false;
-    }
+    public abstract void stopLoop();
 
     public void setDeletingFiles(boolean deleteFiles) {
         if (!(this instanceof DummyPairBuffer))

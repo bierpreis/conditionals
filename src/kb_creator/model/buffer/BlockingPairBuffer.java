@@ -115,8 +115,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
+    public void setFinished() {
+
+    }
+
+    @Override
     public void stopLoop() {
-        super.stopLoop();
         readerThread.interrupt();
 
 

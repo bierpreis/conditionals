@@ -94,5 +94,15 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         return 0;
     }
 
+    @Override
+    public void setFinished() {
+        //nothing
+    }
+
+    @Override
+    public void stopLoop() {
+        //nothing
+    }
+
 
 }

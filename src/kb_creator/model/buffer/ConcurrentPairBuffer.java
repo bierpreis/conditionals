@@ -23,7 +23,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     private int pairWriterCounter;
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
-    private final Object THREAD_WAIT_OBJECT = new Object();
+    private final Object THREAD_WAIT_OBJECT = new Object(); //todo
 
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> cpQueueToWrite;
@@ -57,7 +57,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         cpQueueToWrite = new ConcurrentLinkedQueue<>();
 
         flushRequested = false;
-        running = true;
 
         File tmpFile = new File(this.tmpFilePath);
         tmpFile.mkdirs();
@@ -296,6 +295,16 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     @Override
     public int getReaderBufferSize() {
         return queueToReturn.size();
+    }
+
+    @Override
+    public void setFinished() {
+        //nothing
+    }
+
+    @Override
+    public void stopLoop() {
+        //nothing
     }
 
 }
