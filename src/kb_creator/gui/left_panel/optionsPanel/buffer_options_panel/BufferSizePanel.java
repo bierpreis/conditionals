@@ -9,12 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BufferSizePanel extends JPanel {
-    private JTextField bufferSizeField; //todo: set fixed size. it resizes if small number is put in
+    private JTextField bufferSizeField;
     private JLabel descriptionLabel;
 
     public BufferSizePanel() {
         descriptionLabel = new JLabel("Number of Candidates in File: ");
         bufferSizeField = new JTextField("2000");
+        bufferSizeField.setPreferredSize(new Dimension(64, 16));
         add(descriptionLabel);
         add(bufferSizeField);
 

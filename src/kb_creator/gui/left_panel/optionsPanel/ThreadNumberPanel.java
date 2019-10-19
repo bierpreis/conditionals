@@ -15,7 +15,7 @@ public class ThreadNumberPanel extends JPanel {
 
     public ThreadNumberPanel() {
         setBorder(BorderFactory.createTitledBorder("Number of Working Threads"));
-
+        numberOfThreadsField.setPreferredSize(new Dimension(40, 16));
         add(numberOfThreadsField);
 
         numberOfThreadsField.addActionListener(new ActionListener() {
