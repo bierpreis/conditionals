@@ -26,16 +26,13 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean running = true;
 
-    private boolean deleteFiles; //todo
-
     private int requestedK;
 
     private String numberOfDigitsString;
 
 
-    public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, boolean deleteFiles, int fileNameDigits) {
+    public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
         numberOfDigitsString = "%0" + fileNameDigits + "d";
-        this.deleteFiles = deleteFiles;
         this.requestedK = requestedK;
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 

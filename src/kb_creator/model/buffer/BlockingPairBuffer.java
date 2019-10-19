@@ -74,7 +74,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, deleteFiles, numberOfDigits);
+        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, numberOfDigits);
         writerThread = new Thread(writerThreadObject);
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
