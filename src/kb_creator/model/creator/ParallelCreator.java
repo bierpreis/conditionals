@@ -104,7 +104,7 @@ public class ParallelCreator extends AbstractCreator {
 
 
         for (int i = 0; i < numberOfThreads; i++) {
-            
+
             CandidateThread thread = new CandidateThread(consistentWriterQueue, inconsistentWriterQueue, inputPairsQueue, outputPairsQueue);
 
             //this is to avoid adding tasks to already shutdown executor service. this only happens when stop button is pressed and things are shutting down.

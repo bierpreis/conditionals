@@ -20,7 +20,7 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean flushRequested = false;
 
-    private BlockingQueue<AbstractPair> cpQueueToWrite = new ArrayBlockingQueue<>(5_000);
+    private BlockingQueue<AbstractPair> cpQueueToWrite = new ArrayBlockingQueue<>(10_000);
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
 
@@ -81,9 +81,9 @@ public class BufferWriterThread implements Runnable {
             StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < maxNumberOfPairsInFile && !cpQueueToWrite.isEmpty(); i++) {
-                AbstractPair pairToWrite = null;
+                AbstractPair pairToWrite;
                 try {
-                    pairToWrite = cpQueueToWrite.take(); //todo wtf why poll?
+                    pairToWrite = cpQueueToWrite.take(); //todo. think about this gain. is take good? any locks?
                 } catch (InterruptedException e) {
                     throw new RuntimeException("Put something here! return?");
                 }
