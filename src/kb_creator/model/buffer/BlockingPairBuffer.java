@@ -7,7 +7,6 @@ import kb_creator.model.propositional_logic.NewConditional;
 
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class BlockingPairBuffer extends AbstractPairBuffer {
 
@@ -23,19 +22,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     private int numberOfDigits;
 
-
-    private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
-
-
-    //if queue to return is lower than this value, a new file will be read and the queue gets filled again
-    //this value has almost no impact on speed at all
-    private final int READ_QUEUE_MIN = 2000;
-
-
-    private int writingFileNameCounter; //todo
-
-
-    public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+    public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {//todo
         super(filePath);
         numberOfDigits = bufferFileLength;
         System.out.println("created parallel buffer for candidate pairs");

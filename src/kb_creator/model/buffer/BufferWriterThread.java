@@ -15,7 +15,7 @@ public class BufferWriterThread implements Runnable {
     private File folderToWrite;
     private int maxNumberOfPairsInFile;
     private int writingFileNameCounter;
-    private String tmpFilePath;
+    private String tmpFilePath; //todo
 
     private int pairWriterCounter;
 
@@ -27,7 +27,7 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean running = true;
 
-    private boolean deleteFiles;
+    private boolean deleteFiles; //todo
 
     private int requestedK;
 
@@ -63,7 +63,7 @@ public class BufferWriterThread implements Runnable {
             if (checkIfShouldWrite())
                 writeNextFile(cpQueueToWrite);
             else try {
-                Thread.sleep(100);
+                Thread.sleep(100); //todo: increase?
             } catch (InterruptedException e) {
                 return; //this is triggered by stop button in gui
             }

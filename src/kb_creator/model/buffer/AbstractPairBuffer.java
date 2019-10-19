@@ -17,7 +17,7 @@ public abstract class AbstractPairBuffer {
 
     protected int pairReaderCounter;
 
-    protected int maxNumberOfPairsInFile = 2000;
+    protected int maxNumberOfPairsInFile = 2000; //todo
 
     protected String tmpFilePath;
 
