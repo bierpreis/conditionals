@@ -98,7 +98,7 @@ public class MainBufferPanel extends JPanel {
     }
 
     public boolean isValueValid(){
-        return bufferSizePanel.isValueValid();
+        return bufferSizePanel.isValueValid() && fileNameLengthPanel.isValueValid();
     }
 
     public BufferCheckboxPanel getBufferCheckboxPanel() {

@@ -6,18 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FileNameLengthPanel extends JPanel {
-    private JLabel desctiptionLabel = new JLabel("File name length: ");
+    private JLabel descriptionLabel = new JLabel("File Name Number of Digits: ");
     private JTextField numberOfDigitsField = new JTextField("6");
 
     public FileNameLengthPanel() {
         numberOfDigitsField.setPreferredSize(new Dimension(36, 16));
 
-        add(desctiptionLabel);
+        add(descriptionLabel);
         add(numberOfDigitsField);
 
     }
-
-    //todo: use
+    
     public boolean isValueValid() {
 
         try {
@@ -40,7 +39,7 @@ public class FileNameLengthPanel extends JPanel {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        desctiptionLabel.setEnabled(enabled);
+        descriptionLabel.setEnabled(enabled);
         numberOfDigitsField.setEnabled(enabled);
 
     }
