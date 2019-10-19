@@ -54,10 +54,10 @@ public class BufferWriterThread implements Runnable {
     public void run() {
         System.out.println("buffer writer thread started for k " + requestedK);
         while (running) {
-            if (checkIfShouldWrite())
+            if (checkIfShouldWrite()) {
                 writeNextFile(cpQueueToWrite);
-            else try {
-                Thread.sleep(100); //todo: increase?
+            } else try {
+                Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
             } catch (InterruptedException e) {
                 return; //this is triggered by stop button in gui
             }
@@ -82,7 +82,7 @@ public class BufferWriterThread implements Runnable {
 
             for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
 
-                AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll();
+                AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll(); //todo wtf why poll?
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
                     sb.append("\nEND\n");
