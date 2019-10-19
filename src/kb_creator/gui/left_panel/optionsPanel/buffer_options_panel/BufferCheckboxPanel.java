@@ -9,8 +9,7 @@ import java.awt.*;
 public class BufferCheckboxPanel extends JPanel {
     private JCheckBox saveCheckBox;
     private MainBufferPanel mainBufferPanel;
-
-    //todo: checkbox should disable the panel again if deactivated
+    
     BufferCheckboxPanel(MainBufferPanel mainBufferPanel) {
 
         saveCheckBox = new JCheckBox("Buffer Files to Disk");
@@ -52,11 +51,15 @@ public class BufferCheckboxPanel extends JPanel {
         public void stateChanged(ChangeEvent changeEvent) {
             if (!saveCheckBox.isSelected()) {
                 mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
-                //mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false); //todo: it should disable itself
+                mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
             }
+
+            //checkbox should disable itself if deselected
+            if (saveCheckBox.isSelected())
+                mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(true);
         }
     }
 
