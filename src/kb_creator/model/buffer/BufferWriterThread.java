@@ -55,7 +55,7 @@ public class BufferWriterThread implements Runnable {
         System.out.println("buffer writer thread started for k " + requestedK);
         while (running) {
             if (checkIfShouldWrite()) {
-                writeNextFile(cpQueueToWrite);
+                writeNextFile();
             } else try {
                 Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
             } catch (InterruptedException e) {
@@ -70,7 +70,7 @@ public class BufferWriterThread implements Runnable {
         return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
     }
 
-    private void writeNextFile(Queue queueToWrite) {
+    private void writeNextFile() {
         try {
             //add leading zeros so the files can be sorted in correct order in their folder
             String fileName = String.format(numberOfDigitsString, writingFileNameCounter);
@@ -80,9 +80,13 @@ public class BufferWriterThread implements Runnable {
 
             StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < maxNumberOfPairsInFile && !queueToWrite.isEmpty(); i++) {
-
-                AbstractPair pairToWrite = (AbstractPair) queueToWrite.poll(); //todo wtf why poll?
+            for (int i = 0; i < maxNumberOfPairsInFile && !cpQueueToWrite.isEmpty(); i++) {
+                AbstractPair pairToWrite = null;
+                try {
+                    pairToWrite = cpQueueToWrite.take(); //todo wtf why poll?
+                } catch (InterruptedException e) {
+                    throw new RuntimeException("Put something here! return?");
+                }
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
                     sb.append("\nEND\n");
@@ -90,7 +94,7 @@ public class BufferWriterThread implements Runnable {
                 pairWriterCounter++;
             }
 
-            if (flushRequested && queueToWrite.isEmpty())
+            if (flushRequested && cpQueueToWrite.isEmpty())
                 synchronized (FLUSH_WAIT_OBJECT) {
                     FLUSH_WAIT_OBJECT.notify();
                 }
@@ -141,6 +145,7 @@ public class BufferWriterThread implements Runnable {
     public int getPairWriterCounter() {
         return pairWriterCounter;
     }
+
 
     public void addPair(AbstractPair pairToAdd) {
         try {
