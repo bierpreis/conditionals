@@ -23,7 +23,7 @@ public class InputQueueThread implements Runnable {
         while (l.hasMoreElementsForK(currentK)) {
             try {
                 //queue would throw null pointer exception when the element is null. but this never happened so its just ok.
-                queue.put(l.getNextPair(currentK)); //todo: Exception in thread "InputQueueThread" java.lang.NullPointerException with buffering and not deleting files?!
+                queue.put(l.getNextPair(currentK)); //todo: Exception in thread "InputQueueThread" java.lang.NullPointerException with buffering and not deleting files?! (put threw the exception)
                 counter++;
             } catch (InterruptedException e) {
                 //this is triggered by gui stop button and ends this thread
