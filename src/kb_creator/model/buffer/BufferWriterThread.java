@@ -15,7 +15,6 @@ public class BufferWriterThread implements Runnable {
     private File folderToWrite;
     private int maxNumberOfPairsInFile;
     private int writingFileNameCounter;
-    private String tmpFilePath; //todo
 
     private int pairWriterCounter;
 
@@ -42,9 +41,7 @@ public class BufferWriterThread implements Runnable {
 
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
-        this.tmpFilePath = tmpFilePath;
-
-        File tmpFile = new File(this.tmpFilePath);
+        File tmpFile = new File(tmpFilePath);
         tmpFile.mkdirs();
 
 
@@ -52,7 +49,7 @@ public class BufferWriterThread implements Runnable {
         writingFileNameCounter = 0;
 
 
-        folderToWrite = new File(this.tmpFilePath + "/" + requestedK + "/");
+        folderToWrite = new File(tmpFilePath + "/" + requestedK + "/");
         folderToWrite.mkdirs();
     }
 

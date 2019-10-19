@@ -7,6 +7,7 @@ import java.awt.*;
 public class BufferCheckboxPanel extends JPanel {
     private JCheckBox saveCheckBox;
 
+    //todo: checkbox should disable the panel again if deactivated
     BufferCheckboxPanel() {
 
         saveCheckBox = new JCheckBox("Buffer Files to Disk");
