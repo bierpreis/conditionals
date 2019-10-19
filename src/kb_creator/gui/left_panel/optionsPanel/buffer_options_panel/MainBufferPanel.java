@@ -24,7 +24,7 @@ public class MainBufferPanel extends JPanel {
 
         descriptionPanel = new JPanel();
 
-        bufferCheckboxPanel = new BufferCheckboxPanel();
+        bufferCheckboxPanel = new BufferCheckboxPanel(this);
 
         bufferLocationPanel = new BufferLocationPanel(this);
 

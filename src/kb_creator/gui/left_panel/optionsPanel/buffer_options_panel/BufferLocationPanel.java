@@ -31,6 +31,7 @@ public class BufferLocationPanel extends JPanel {
             this.bufferLocationPanel = bufferLocationPanel;
         }
 
+
         @Override
         public void actionPerformed(ActionEvent e) {
             JFileChooser fileChooser = new JFileChooser();
@@ -42,7 +43,7 @@ public class BufferLocationPanel extends JPanel {
 
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
-                mainBufferPanel.getBufferCheckboxPanel().setActive(true);
+                mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(true);
                 mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(true);
                 mainBufferPanel.getBufferSizePanel().setEnabled(true);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(true);
@@ -62,6 +63,7 @@ public class BufferLocationPanel extends JPanel {
                 }
 
             } else {
+                System.out.println("!!!");//todo
                 mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
                 mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
