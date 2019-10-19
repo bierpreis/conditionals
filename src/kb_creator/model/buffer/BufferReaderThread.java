@@ -24,8 +24,11 @@ public class BufferReaderThread implements Runnable {
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
 
     private String tmpFilePath;
+    private String numberOfDigitsString;
 
-    public BufferReaderThread(String tmpFilePath, int requestedK) {
+
+    public BufferReaderThread(String tmpFilePath, int requestedK, int numberOfDigits) {
+        this.numberOfDigitsString = numberOfDigitsString = "%0" + numberOfDigits + "d";
         this.queueToReturn = new ArrayBlockingQueue<>(500);
         this.tmpFilePath = tmpFilePath;
 
@@ -62,8 +65,7 @@ public class BufferReaderThread implements Runnable {
 
     private List<AbstractPair> readNextFile() {
         //read String
-        //todo: %5d is not great.
-        File fileToRead = new File(folderToRead + "/" + String.format("%05d", readingFileNameCounter) + ".txt");
+        File fileToRead = new File(folderToRead + "/" + String.format(numberOfDigitsString, readingFileNameCounter) + ".txt");
         System.out.println("reading file: " + fileToRead.getAbsolutePath());
         Scanner fileScanner = null;
         try {

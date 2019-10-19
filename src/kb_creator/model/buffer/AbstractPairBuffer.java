@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class AbstractPairBuffer {
 
-    protected volatile boolean running = true;
+    protected volatile boolean running = true; //todo
 
 
     protected int pairReaderCounter;

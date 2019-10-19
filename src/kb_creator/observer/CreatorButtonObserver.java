@@ -39,7 +39,7 @@ public class CreatorButtonObserver implements ActionListener {
                 mainWindow.getMidPanel().setActive(true);
 
                 if (mainWindow.isBufferingRequested())
-                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize());
+                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
                 else candidateBuffer = new DummyPairBuffer(null);
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);

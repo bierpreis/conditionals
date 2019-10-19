@@ -31,8 +31,11 @@ public class BufferWriterThread implements Runnable {
 
     private int requestedK;
 
+    private String numberOfDigitsString;
 
-    public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, boolean deleteFiles) {
+
+    public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, boolean deleteFiles, int fileNameDigits) {
+        numberOfDigitsString = "%0" + fileNameDigits + "d";
         this.deleteFiles = deleteFiles;
         this.requestedK = requestedK;
         System.out.println("set buffer size to " + maxNumberOfPairsInFile);
@@ -76,7 +79,7 @@ public class BufferWriterThread implements Runnable {
     private void writeNextFile(Queue queueToWrite) {
         try {
             //add leading zeros so the files can be sorted in correct order in their folder
-            String fileName = String.format("%05d", writingFileNameCounter); //todo: leading zeroes are shit
+            String fileName = String.format(numberOfDigitsString, writingFileNameCounter);
             writingFileNameCounter++;
 
             PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
