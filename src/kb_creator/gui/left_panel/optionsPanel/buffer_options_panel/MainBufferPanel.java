@@ -15,7 +15,7 @@ public class MainBufferPanel extends JPanel {
     private JCheckBox deleteTempFilesCheckbox;
 
     private BufferSizePanel bufferSizePanel;
-    //todo: add field for leading zeros for files
+    private FileNameLengthPanel fileNameLengthPanel;
 
 
     public MainBufferPanel() {
@@ -31,6 +31,8 @@ public class MainBufferPanel extends JPanel {
         actionPanel = new JPanel();
 
         bufferSizePanel = new BufferSizePanel();
+
+        fileNameLengthPanel = new FileNameLengthPanel();
 
 
         add(descriptionPanel);
@@ -55,6 +57,11 @@ public class MainBufferPanel extends JPanel {
         bufferCheckboxPanel.setBoxSelected(false);
         bufferCheckboxPanel.setBoxEnabled(false);
         bufferSizePanel.setEnabled(false);
+        fileNameLengthPanel.setEnabled(false);
+
+        add(fileNameLengthPanel);
+
+
         getDeleteCheckbox().setEnabled(false);
 
 
@@ -76,6 +83,7 @@ public class MainBufferPanel extends JPanel {
 
         deleteTempFilesCheckbox.setEnabled(enabled);
         bufferSizePanel.setEnabled(enabled);
+        fileNameLengthPanel.setEnabled(enabled);
 
         descriptionPanel.getComponent(0).setEnabled(enabled);
 
@@ -103,5 +111,9 @@ public class MainBufferPanel extends JPanel {
 
     public JCheckBox getDeleteCheckbox() {
         return deleteTempFilesCheckbox;
+    }
+
+    public FileNameLengthPanel getFileNameLengthPanel(){
+        return fileNameLengthPanel;
     }
 }
