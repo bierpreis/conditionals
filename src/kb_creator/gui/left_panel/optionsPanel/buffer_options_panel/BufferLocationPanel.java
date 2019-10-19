@@ -63,7 +63,6 @@ public class BufferLocationPanel extends JPanel {
                 }
 
             } else {
-                System.out.println("!!!");//todo
                 mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
                 mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
