@@ -23,7 +23,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     private int pairWriterCounter;
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
-    private final Object THREAD_WAIT_OBJECT = new Object(); //todo
 
     private Queue<AbstractPair> queueToReturn;
     private Queue<AbstractPair> cpQueueToWrite;
