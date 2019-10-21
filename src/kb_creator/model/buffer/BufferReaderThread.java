@@ -28,7 +28,7 @@ public class BufferReaderThread implements Runnable {
 
 
     public BufferReaderThread(String tmpFilePath, int requestedK, int numberOfDigits) {
-        this.numberOfDigitsString = numberOfDigitsString = "%0" + numberOfDigits + "d";
+        this.numberOfDigitsString =  "%0" + numberOfDigits + "d";
         this.queueToReturn = new ArrayBlockingQueue<>(500);
         this.tmpFilePath = tmpFilePath;
 
