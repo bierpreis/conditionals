@@ -66,6 +66,7 @@ public class CreatorButtonObserver implements ActionListener {
 
             //todo: make sure it can be used again and again. clear button to clear and activate start button again
             //check if pressing start again checks if buffer folder already exists!? think not!
+            //when finished, left stays grey right is black. fix!
             if (answer == 0) {
                 mainWindow.getMidPanel().setActive(false);
                 creatorThreadObject.stopLoop();
