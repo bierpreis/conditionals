@@ -83,7 +83,7 @@ public class BufferWriterThread implements Runnable {
             for (int i = 0; i < maxNumberOfPairsInFile && !cpQueueToWrite.isEmpty(); i++) {
                 AbstractPair pairToWrite;
                 try {
-                    pairToWrite = cpQueueToWrite.take(); //todo. think about this gain. is take good? any locks?
+                    pairToWrite = cpQueueToWrite.take();
                 } catch (InterruptedException e) {
                     throw new RuntimeException("Put something here! return?");
                 }
