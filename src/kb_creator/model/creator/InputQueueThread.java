@@ -36,6 +36,6 @@ public class InputQueueThread implements Runnable {
     }
 
     public int getCounter() {
-        return counter;
+        return (counter - queue.size());
     }
 }
