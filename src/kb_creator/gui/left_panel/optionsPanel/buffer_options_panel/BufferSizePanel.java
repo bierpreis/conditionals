@@ -1,7 +1,7 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
 
-import kb_creator.gui.left_panel.optionsPanel.Warnings.SizeWarningDialog;
+import kb_creator.gui.left_panel.optionsPanel.warnings.SizeWarningDialog;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package kb_creator.gui.left_panel.optionsPanel.Warnings;
+package kb_creator.gui.left_panel.optionsPanel.warnings;
 
 import javax.swing.*;
 import java.awt.*;

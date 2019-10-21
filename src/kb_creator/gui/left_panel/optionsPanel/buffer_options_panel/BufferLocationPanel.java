@@ -1,6 +1,6 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
-import kb_creator.gui.left_panel.optionsPanel.Warnings.AlreadyExistsDialog;
+import kb_creator.gui.left_panel.optionsPanel.warnings.AlreadyExistsDialog;
 
 import javax.swing.*;
 import java.awt.*;
