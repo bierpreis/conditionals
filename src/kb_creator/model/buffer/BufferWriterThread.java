@@ -94,14 +94,16 @@ public class BufferWriterThread implements Runnable {
                 pairWriterCounter++;
             }
 
+            writer.print(sb.toString());
+            writer.flush();
+            writer.close();
+
             if (flushRequested && cpQueueToWrite.isEmpty())
                 synchronized (FLUSH_WAIT_OBJECT) {
                     FLUSH_WAIT_OBJECT.notify();
                 }
 
-            writer.print(sb.toString());
-            writer.flush();
-            writer.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
