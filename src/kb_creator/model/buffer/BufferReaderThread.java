@@ -114,7 +114,7 @@ public class BufferReaderThread implements Runnable {
     }
 
     public void deleteOldData(int requestedK) {
-        //dont delete files for iteration 0 because there wont be any
+        //don't delete files for iteration 0 because there wont be any
         File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
 
         if (folderToDelete.exists()) {

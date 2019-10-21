@@ -40,11 +40,11 @@ public class Test {
     }
 
     private static void otherTest() {
-        World antecend = new World();
-        antecend.addInt(1);
+        World antecedent = new World();
+        antecedent.addInt(1);
 
-        antecend.addInt(2);
-        antecend.addInt(3);
+        antecedent.addInt(2);
+        antecedent.addInt(3);
 
         World otherAntecend = new World();
         otherAntecend.addInt(1);
@@ -55,7 +55,7 @@ public class Test {
         World consequence = new World();
         consequence.addInt(2);
 
-        Conditional conditional = new Conditional(consequence, antecend);
+        Conditional conditional = new Conditional(consequence, antecedent);
         Conditional otherConditional = new Conditional(consequence, otherAntecend);
 
 

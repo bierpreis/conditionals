@@ -90,7 +90,7 @@ public class CondTextField extends JTextArea {
             sb.append("\n");
             append(sb.toString());
         }
-        description = this.numberOfEquivalenceClasses + eqClassList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line seperator doesnt work?!
+        description = this.numberOfEquivalenceClasses + eqClassList.size() + System.lineSeparator() + "   " + this.numberOfConditionals + numberOfConditionals; //line separator doesn't work?!
     }
 
     private String createWhiteSpaceString(int conditionalLength) {

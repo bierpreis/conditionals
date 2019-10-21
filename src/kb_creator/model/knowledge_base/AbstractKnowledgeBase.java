@@ -6,8 +6,8 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import java.util.List;
 import java.util.Map;
 
-//this class is made to use diffrent knowledge base implementations
-//but the actual impelementation seems not to be important
+//this class is made to use different knowledge base implementations
+//but the actual implementation seems not to be important
 public abstract class AbstractKnowledgeBase {
 
     protected static Map<Integer, NewConditional> nfcMap;

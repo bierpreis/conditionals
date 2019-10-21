@@ -49,10 +49,10 @@ public class Conditional implements Comparable {
     @Override
     public String toString() {
         String consequenceString = consequence.toString();
-        String antecendString = antecedent.toString();
+        String antecedentString = antecedent.toString();
         consequenceString = consequenceString.replace("},", "}");
-        antecendString = antecendString.replace("},", "}");
-        return "(" + consequenceString + " | " + antecendString + ")";
+        antecedentString = antecedentString.replace("},", "}");
+        return "(" + consequenceString + " | " + antecedentString + ")";
     }
 
 
