@@ -62,7 +62,7 @@ public class ParallelCreator extends AbstractCreator {
             startQueueThreads(k);
 
             //this is line 8
-            while (l.hasMoreElementsForK(k)) {
+            while (l.hasMoreElementsForK(k)) { //idea: progress = counter-size?!
                 //todo: first value is wrong. it counts queue.put but should count queue.take. but thats impossible? make own queue by extending the real one + counter?
                 //possible solution: access input queue only by input queue object. it could have a correct counter
                 progress = calculateProgress(inputQueueObject.getCounter(), currentPairAmount);
