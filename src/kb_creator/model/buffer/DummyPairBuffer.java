@@ -48,6 +48,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         this.k = k;
     }
 
+    //todo: check if this could k+1 instead of k. cleans k0 when k2 is finished.
     @Override
     protected void deleteOldData(int requestedK) {
         System.out.println("clearing list for k " + requestedK);
