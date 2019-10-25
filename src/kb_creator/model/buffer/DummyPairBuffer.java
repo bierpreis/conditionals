@@ -77,7 +77,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractPair pair) {
-        synchronized (this) {
+        synchronized (this) { //todo: is this needed?
             candidatePairList.get(k).add(pair);
         }
     }
