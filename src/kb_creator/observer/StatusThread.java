@@ -7,12 +7,13 @@ import kb_creator.model.buffer.BlockingPairBuffer;
 import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.writer.AbstractKbWriter;
 
+//todo: rename sth with gui?
 public class StatusThread implements Runnable {
     private AbstractCreator creatorThread;
     private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
-    private boolean isRunning = true;
+    private boolean isRunning = true; //todo: delete?
     private AbstractKbWriter kbWriter;
     private MainWindow mainWindow;
 
@@ -51,6 +52,7 @@ public class StatusThread implements Runnable {
 
     }
 
+    //todo: sort
     private void showCreatorStatus() {
 
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
