@@ -83,8 +83,9 @@ public class ParallelCreator extends AbstractCreator {
             l.finishIteration(k);
             k = k + 1;
         }
-        //todo. pool threads not stopped when finished. pressing stop finishes them.
+
         l.setFinished();
+        executorService.shutdown();
         creatorStatus = CreatorStatus.FINISHED;
         super.finish();
     }
