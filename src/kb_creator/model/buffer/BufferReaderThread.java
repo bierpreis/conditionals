@@ -28,7 +28,7 @@ public class BufferReaderThread implements Runnable {
 
 
     public BufferReaderThread(String tmpFilePath, int requestedK, int numberOfDigits) {
-        this.numberOfDigitsString =  "%0" + numberOfDigits + "d";
+        this.numberOfDigitsString = "%0" + numberOfDigits + "d";
         this.queueToReturn = new ArrayBlockingQueue<>(500);
         this.tmpFilePath = tmpFilePath;
 
@@ -113,6 +113,7 @@ public class BufferReaderThread implements Runnable {
         return queueToReturn.size();
     }
 
+    //todo: check if correct file get deleted
     public void deleteOldData(int requestedK) {
         //don't delete files for iteration 0 because there wont be any
         File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
