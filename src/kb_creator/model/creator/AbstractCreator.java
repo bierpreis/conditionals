@@ -82,63 +82,7 @@ public abstract class AbstractCreator implements Runnable {
         startTime = System.currentTimeMillis();
     }
 
-    public void setSignature(AbstractSignature signature) {
-        this.signature = signature;
-    }
-
-    public float getProgress() {
-        return progress;
-    }
-
-    public int getCurrentPairAmount() {
-        return currentPairAmount;
-    }
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public enum CreatorStatus {
-
-        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED
-    }
-
-    protected float calculateProgress(int pairCounter, int lastIterationAmount) {
-
-        //avoid division with zero
-        if (lastIterationAmount == 0) {
-            return 0;
-
-        }
-        return (pairCounter / (float) lastIterationAmount) * 100;
-    }
-
-
-    public CreatorStatus getCreatorStatus() {
-        return creatorStatus;
-    }
-
-    public void stopLoop() {
-        kbWriter.stopThreads();
-        this.creatorStatus = CreatorStatus.STOPPED;
-    }
-
-    public void finish() {
-        kbWriter.stopThreads();
-        this.creatorStatus = CreatorStatus.FINISHED;
-    }
-
-    public int getCurrentK() {
-        return k;
-    }
-
-    public int getTotalKbAmount() {
-        return kbWriter.getTotalConsistentCounter();
-    }
-
-    public abstract int getTotalInconsistentAmount();
-
-
+    //todo: check line comments
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
@@ -181,13 +125,23 @@ public abstract class AbstractCreator implements Runnable {
         return listToReturn;
     }
 
-    public AbstractPairBuffer getPairBuffer() {
-        return l;
+    //todo: move out?
+    public enum CreatorStatus {
+
+        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED
     }
 
-    public AbstractKbWriter getKbWriterThread() {
-        return kbWriter;
+
+    public void stopLoop() {
+        kbWriter.stopThreads();
+        this.creatorStatus = CreatorStatus.STOPPED;
     }
+
+    public void finish() {
+        kbWriter.stopThreads();
+        this.creatorStatus = CreatorStatus.FINISHED;
+    }
+
 
     protected void waitForWriterFinished() {
         while (!consistentWriterQueue.isEmpty())
@@ -196,6 +150,61 @@ public abstract class AbstractCreator implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+    }
+
+    //setters
+
+    //todo: is this still needed?
+    public void setSignature(AbstractSignature signature) {
+        this.signature = signature;
+    }
+
+    //getters
+
+    public AbstractPairBuffer getPairBuffer() {
+        return l;
+    }
+
+    public AbstractKbWriter getKbWriterThread() {
+        return kbWriter;
+    }
+
+    public int getCurrentK() {
+        return k;
+    }
+
+    public int getTotalKbAmount() {
+        return kbWriter.getTotalConsistentCounter();
+    }
+
+    public abstract int getTotalInconsistentAmount();
+
+    //todo: delete getter or rename and move the one below
+    public float getProgress() {
+        return progress;
+    }
+
+    protected float getProgress(int pairCounter, int lastIterationAmount) {
+
+        //avoid division with zero
+        if (lastIterationAmount == 0) {
+            return 0;
+
+        }
+        return (pairCounter / (float) lastIterationAmount) * 100;
+    }
+
+
+    public CreatorStatus getCreatorStatus() {
+        return creatorStatus;
+    }
+
+    public int getCurrentPairAmount() {
+        return currentPairAmount;
+    }
+
+    public long getStartTime() {
+        return startTime;
     }
 
 }
