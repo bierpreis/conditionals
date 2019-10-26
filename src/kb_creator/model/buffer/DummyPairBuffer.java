@@ -71,14 +71,16 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList.add(listToAdd);
     }
 
+    //this is only used by simple creator. so no synchronized.
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
         candidatePairList.get(k).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
+    //this is used by parallel creator threads so it is synchronized.
     @Override
     public void addPair(AbstractPair pair) {
-        synchronized (this) { //todo: is this needed?
+        synchronized (this) {
             candidatePairList.get(k).add(pair);
         }
     }
