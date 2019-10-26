@@ -145,13 +145,7 @@ public abstract class AbstractCreator implements Runnable {
                 e.printStackTrace();
             }
     }
-
-    //setters
-
-    //todo: is this still needed?
-    public void setSignature(AbstractSignature signature) {
-        this.signature = signature;
-    }
+    
 
     //getters
 
@@ -172,7 +166,7 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public abstract int getTotalInconsistentAmount();
-    
+
     public float getProgress() {
         return progress;
     }
