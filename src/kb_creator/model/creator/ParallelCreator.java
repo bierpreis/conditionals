@@ -64,7 +64,6 @@ public class ParallelCreator extends AbstractCreator {
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
-                progress = calculateProgress(inputQueueObject.getCounter(), currentPairAmount);
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
@@ -150,6 +149,16 @@ public class ParallelCreator extends AbstractCreator {
         outputQueueThread.interrupt();
 
         inputQueueThread.interrupt();
+    }
+
+    @Override
+    public float calculateProgress() {
+        //avoid division with zero
+        if (currentPairAmount == 0) {
+            return 0;
+
+        }
+        return (inputQueueObject.getCounter() / (float) currentPairAmount) * 100;
     }
 
     @Override

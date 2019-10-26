@@ -167,20 +167,7 @@ public abstract class AbstractCreator implements Runnable {
 
     public abstract int getTotalInconsistentAmount();
 
-    public float getProgress() {
-        return progress;
-    }
-
-    protected float calculateProgress(int pairCounter, int lastIterationAmount) {
-
-        //avoid division with zero
-        if (lastIterationAmount == 0) {
-            return 0;
-
-        }
-        return (pairCounter / (float) lastIterationAmount) * 100;
-    }
-
+    public abstract float calculateProgress();
 
     public CreatorStatus getCreatorStatus() {
         return creatorStatus;

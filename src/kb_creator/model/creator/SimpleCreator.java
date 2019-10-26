@@ -13,6 +13,8 @@ import java.util.*;
 
 public class SimpleCreator extends AbstractCreator {
 
+    private int iterationPairCounter = 0;
+
     //todo: use this when gui requests only one thread
     public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
@@ -44,15 +46,13 @@ public class SimpleCreator extends AbstractCreator {
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
 
-            int iterationPairCounter = 0;
+            iterationPairCounter = 0;
 
             //line  7
             l.addNewList(new ArrayList<>());
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
-
-                progress = calculateProgress(iterationPairCounter, currentPairAmount);
 
                 AbstractPair candidatePair = l.getNextPair(k);
 
@@ -124,6 +124,19 @@ public class SimpleCreator extends AbstractCreator {
 
     public int getTotalInconsistentAmount() {
         return kbWriter.getTotalInconsistentCounter();
+    }
+
+
+    //todo. test progress in simple creator
+    @Override
+    public float calculateProgress() {
+
+        //avoid division with zero
+        if (currentPairAmount == 0) {
+            return 0;
+
+        }
+        return (iterationPairCounter / (float) currentPairAmount) * 100;
     }
 
 

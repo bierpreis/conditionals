@@ -56,7 +56,7 @@ public class GuiStatusThread implements Runnable {
 
         mainWindow.getMidPanel().getCreatorPanel().showTotalConsistentKBAmount(creatorThread.getTotalKbAmount());
         mainWindow.getMidPanel().getCreatorPanel().showTotalInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
-        mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.getProgress());
+        mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.calculateProgress());
         mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
         mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
