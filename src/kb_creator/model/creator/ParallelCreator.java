@@ -62,16 +62,15 @@ public class ParallelCreator extends AbstractCreator {
 
             startIterationThreads(k);
 
-            //todo: this is useless. calculate progress by progress getter and remove this by wait?
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
-                progress = getProgress(inputQueueObject.getCounter(), currentPairAmount);
+                progress = calculateProgress(inputQueueObject.getCounter(), currentPairAmount);
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
 
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(300);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

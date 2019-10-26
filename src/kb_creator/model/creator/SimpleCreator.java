@@ -52,7 +52,7 @@ public class SimpleCreator extends AbstractCreator {
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
 
-                progress = getProgress(iterationPairCounter, currentPairAmount);
+                progress = calculateProgress(iterationPairCounter, currentPairAmount);
 
                 AbstractPair candidatePair = l.getNextPair(k);
 

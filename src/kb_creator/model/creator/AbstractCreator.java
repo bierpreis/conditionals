@@ -125,7 +125,7 @@ public abstract class AbstractCreator implements Runnable {
         return listToReturn;
     }
 
-    
+
     public void stopLoop() {
         kbWriter.stopThreads();
         this.creatorStatus = CreatorStatus.STOPPED;
@@ -172,13 +172,12 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     public abstract int getTotalInconsistentAmount();
-
-    //todo: delete getter or rename and move the one below
+    
     public float getProgress() {
         return progress;
     }
 
-    protected float getProgress(int pairCounter, int lastIterationAmount) {
+    protected float calculateProgress(int pairCounter, int lastIterationAmount) {
 
         //avoid division with zero
         if (lastIterationAmount == 0) {
