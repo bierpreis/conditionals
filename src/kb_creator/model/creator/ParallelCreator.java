@@ -60,7 +60,7 @@ public class ParallelCreator extends AbstractCreator {
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
 
-            startQueueThreads(k);
+            startIterationThreads(k);
 
             //todo: this is useless. calculate progress by progress getter and remove this by wait?
             //this is line 8
@@ -83,14 +83,13 @@ public class ParallelCreator extends AbstractCreator {
             l.finishIteration(k);
             k = k + 1;
         }
-        //todo. pool threads not stopped when finished.
+        //todo. pool threads not stopped when finished. pressing stop finishes them.
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
         super.finish();
     }
 
-    //todo: rename because not only queue threads here
-    private void startQueueThreads(int currentK) {
+    private void startIterationThreads(int currentK) {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
 
