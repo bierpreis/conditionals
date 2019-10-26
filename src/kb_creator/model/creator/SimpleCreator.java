@@ -19,7 +19,7 @@ public class SimpleCreator extends AbstractCreator {
         System.out.println("new simple creator");
 
     }
-
+    //todo: check line comments
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
