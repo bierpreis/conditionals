@@ -83,11 +83,13 @@ public class ParallelCreator extends AbstractCreator {
             l.finishIteration(k);
             k = k + 1;
         }
+        //todo. pool threads not stopped when finished.
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
         super.finish();
     }
 
+    //todo: rename because not only queue threads here
     private void startQueueThreads(int currentK) {
         if (!inputPairsQueue.isEmpty() || !outputPairsQueue.isEmpty())
             throw new RuntimeException("Queue was not empty! Sth will get lost!");
