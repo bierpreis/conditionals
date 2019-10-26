@@ -44,8 +44,7 @@ public class CreatorButtonObserver implements ActionListener {
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
                 creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
-
-                //todo: is this thread closed correctly? yes when finished. an when stopped?
+                
                 Thread creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");
                 creatorThread.start();
