@@ -68,7 +68,7 @@ public class ParallelCreator extends AbstractCreator {
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-
+                //todo: wait would be great here
                 try {
                     Thread.sleep(300);
                 } catch (InterruptedException e) {
