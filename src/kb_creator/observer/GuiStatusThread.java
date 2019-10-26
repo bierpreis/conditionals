@@ -5,18 +5,16 @@ import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.writer.AbstractKbWriter;
 
-//todo: rename sth with gui?
-public class StatusThread implements Runnable {
+public class GuiStatusThread implements Runnable {
     private AbstractCreator creatorThread;
     private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
-    private boolean isRunning = true; //todo: delete?
     private AbstractKbWriter kbWriter;
     private MainWindow mainWindow;
 
 
-    public StatusThread(MainWindow mainWindow) {
+    public GuiStatusThread(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
         sleepTime = 400;
         lastTimeStamp = System.currentTimeMillis();
@@ -27,7 +25,7 @@ public class StatusThread implements Runnable {
 
     @Override
     public void run() {
-        while (isRunning) {
+        while (!Thread.currentThread().isInterrupted()) {
             if (creatorThread != null) {
 
                 showCreatorStatus();
@@ -61,7 +59,6 @@ public class StatusThread implements Runnable {
         mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
         mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
-
 
 
         if (creatorThread.getCreatorStatus().equals(SimpleCreator.CreatorStatus.RUNNING)) {

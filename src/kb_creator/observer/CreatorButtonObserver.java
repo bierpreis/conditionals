@@ -16,13 +16,13 @@ public class CreatorButtonObserver implements ActionListener {
     private AbstractPairBuffer candidateBuffer;
 
     private AbstractCreator creatorThreadObject;
-    private StatusThread statusThreadObject;
+    private GuiStatusThread statusThreadObject;
 
 
     public CreatorButtonObserver() {
 
         mainWindow = new MainWindow(this);
-        statusThreadObject = new StatusThread(mainWindow);
+        statusThreadObject = new GuiStatusThread(mainWindow);
 
         Thread statusThread = new Thread(statusThreadObject);
 
