@@ -13,7 +13,7 @@ import java.util.*;
 
 public class SimpleCreator extends AbstractCreator {
 
-
+    //todo: use this when gui requests only one thread
     public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
         System.out.println("new simple creator");
