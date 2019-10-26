@@ -126,10 +126,7 @@ public abstract class AbstractCreator implements Runnable {
     }
 
     //todo: move out?
-    public enum CreatorStatus {
 
-        NOT_STARTED, CREATING_CONDITIONALS, RUNNING, FINISHED, STOPPED
-    }
 
 
     public void stopLoop() {
