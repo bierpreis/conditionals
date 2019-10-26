@@ -29,6 +29,7 @@ public class ParallelCreator extends AbstractCreator {
         this.numberOfThreads = numberOfThreads;
     }
 
+    //todo: check line comments
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
@@ -61,9 +62,10 @@ public class ParallelCreator extends AbstractCreator {
 
             startQueueThreads(k);
 
+            //todo: this is useless. calculate progress by progress getter and remove this by wait?
             //this is line 8
-            while (l.hasMoreElementsForK(k)) { //idea: progress = counter-size?!
-               progress = getProgress(inputQueueObject.getCounter(), currentPairAmount);
+            while (l.hasMoreElementsForK(k)) {
+                progress = getProgress(inputQueueObject.getCounter(), currentPairAmount);
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
