@@ -125,10 +125,7 @@ public abstract class AbstractCreator implements Runnable {
         return listToReturn;
     }
 
-    //todo: move out?
-
-
-
+    
     public void stopLoop() {
         kbWriter.stopThreads();
         this.creatorStatus = CreatorStatus.STOPPED;
