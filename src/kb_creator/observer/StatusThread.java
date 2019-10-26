@@ -3,8 +3,6 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.creator.SimpleCreator;
-import kb_creator.model.buffer.BlockingPairBuffer;
-import kb_creator.model.buffer.ConcurrentPairBuffer;
 import kb_creator.model.writer.AbstractKbWriter;
 
 //todo: rename sth with gui?
@@ -52,20 +50,19 @@ public class StatusThread implements Runnable {
 
     }
 
-    //todo: sort
     private void showCreatorStatus() {
 
         mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
 
-        mainWindow.getMidPanel().getCreatorPanel().showIterationConsistentKBs(kbWriter.getIterationConsistentCounter());
-        mainWindow.getMidPanel().getCreatorPanel().showIterationInconsistentKBs(kbWriter.getIterationInconsistentCounter());
+
         mainWindow.getMidPanel().getCreatorPanel().showTotalConsistentKBAmount(creatorThread.getTotalKbAmount());
         mainWindow.getMidPanel().getCreatorPanel().showTotalInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
-
         mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.getProgress());
         mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
         mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
         mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
+
+
 
         if (creatorThread.getCreatorStatus().equals(SimpleCreator.CreatorStatus.RUNNING)) {
             mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
@@ -74,6 +71,9 @@ public class StatusThread implements Runnable {
     }
 
     private void showWriterStatus() {
+        mainWindow.getMidPanel().getCreatorPanel().showIterationConsistentKBs(kbWriter.getIterationConsistentCounter());
+        mainWindow.getMidPanel().getCreatorPanel().showIterationInconsistentKBs(kbWriter.getIterationInconsistentCounter());
+
         mainWindow.getMidPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
         mainWindow.getMidPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
