@@ -112,8 +112,7 @@ public class BufferReaderThread implements Runnable {
     public int getQueueSize() {
         return queueToReturn.size();
     }
-
-    //todo: check if correct file get deleted
+    
     public void deleteOldData(int requestedK) {
         //don't delete files for iteration 0 because there wont be any
         File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
