@@ -126,7 +126,6 @@ public class SimpleCreator extends AbstractCreator {
     }
 
 
-    //todo. test progress in simple creator
     @Override
     public float calculateProgress() {
 
