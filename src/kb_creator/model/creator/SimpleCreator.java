@@ -30,42 +30,42 @@ public class SimpleCreator extends AbstractCreator {
         //line 2
         k = 1;
 
-        //this is actually iteration 0
-        //and line 3-5
-        l.addNewList(initOneElementKBs(nfc, cnfc));
 
-        //k - 1 because actually the init list is iteration 0
+        //line 3-5
+        l.addNewList(initOneElementKBs(nfc, cnfc));
+        //0 because actually the init list is iteration 0
         l.finishIteration(0);
+
 
         //line 6
         while (l.hasElementsForNextK(k)) {
             System.gc();
             l.prepareIteration(k);
-
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
-
             iterationPairCounter = 0;
+
 
             //line  7
             l.addNewList(new ArrayList<>());
 
-            //this is line 8
+
+            //line 8
             while (l.hasMoreElementsForK(k)) {
-
                 AbstractPair candidatePair = l.getNextPair(k);
-
                 iterationPairCounter++;
+
+
                 //line 9
                 for (NewConditional r : candidatePair.getCandidatesList()) {
 
-                    //line 10 //
+
+                    //line 10
                     //consistency check takes almost no time
                     if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-                        //System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
-                        //next part is line 11 and 12
 
-                        //long kbCreationStart = System.nanoTime();
+
+                        //next part is line 11 and 12
                         //first create the new knowledge base
                         //takes very little time
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
@@ -74,16 +74,13 @@ public class SimpleCreator extends AbstractCreator {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
 
-                        //long beforeCandidates = System.nanoTime();
                         //create candidates set
                         //this loop takes most of the time (70 percent)
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                                 candidatesToAdd.add(conditionalFromCandidates);
-                        //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
 
                         //line 12
                         //this takes about 30 percent of time

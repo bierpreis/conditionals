@@ -29,7 +29,7 @@ public class ParallelCreator extends AbstractCreator {
         this.numberOfThreads = numberOfThreads;
     }
 
-    //todo: check line comments
+    //todo: rethink line comments
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
@@ -44,7 +44,7 @@ public class ParallelCreator extends AbstractCreator {
         //and line 3-5
         l.addNewList(initOneElementKBs(nfc, cnfc));
 
-        //k - 1 because actually the init list is iteration 0
+        //0 because the init list is actually iteration 0
         l.finishIteration(0);
 
         //line 6
