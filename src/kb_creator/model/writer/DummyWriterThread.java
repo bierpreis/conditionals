@@ -25,7 +25,7 @@ public class DummyWriterThread implements Runnable {
                 iterationCounter++;
                 totalCounter++;
             } catch (InterruptedException e) {
-                //intentionally nothing
+                return; //can be triggered by stop button
             }
         }
         System.out.println("dummy kbWriter thread finished");

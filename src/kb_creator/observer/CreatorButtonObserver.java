@@ -69,7 +69,7 @@ public class CreatorButtonObserver implements ActionListener {
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
-            //todo: make sure it can be used again and again. clear button to clear and activate start button again
+            //todo: maybe clear button.
             //check if pressing start again checks if buffer folder already exists!? think not!
             //when finished, left stays grey right is black. fix!
             if (answer == 0) {

@@ -56,10 +56,10 @@ public class KbDummyWriter extends AbstractKbWriter {
         return 0;
     }
 
-    //todo: stopping sometimes doenst work?
+
     @Override
     public void stopThreads() {
-
+        System.out.println("!!tried to stop queue threads");
         consistentThreadObject.stopLoop();
         inconsistentThreadObject.stopLoop();
 
