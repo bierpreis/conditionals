@@ -69,11 +69,8 @@ public class CreatorButtonObserver implements ActionListener {
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
 
-
-            //check if pressing start again checks if buffer folder already exists!? think not!
-            //when finished, left stays grey right is black. fix!
+            //todo pressing stop and start again muted the warning messages for existing folder!!!
             if (answer == 0) {
-                //todo: finish should do this 2 things too. reactivate left and deactivate right.
                 mainWindow.getMidPanel().setActive(false);
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
 

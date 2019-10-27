@@ -34,6 +34,8 @@ public class GuiStatusThread implements Runnable {
                 showWriterStatus();
 
                 showBufferStatus();
+
+                checkIfFinished();
             }
 
             mainWindow.getMidPanel().getMemoryPanel().showFreeMemory();
@@ -47,6 +49,13 @@ public class GuiStatusThread implements Runnable {
         }
 
 
+    }
+
+    private void checkIfFinished() {
+        if (creatorThread.getCreatorStatus().equals(CreatorStatus.FINISHED)) {
+            mainWindow.getMidPanel().setActive(false);
+            mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
+        }
     }
 
     private void showCreatorStatus() {
