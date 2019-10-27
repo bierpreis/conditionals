@@ -31,65 +31,52 @@ public class CandidateThread implements Runnable {
     @Override
     public void run() {
         while (!Thread.interrupted()) {
-            AbstractPair candidatePair = null;
+            AbstractPair candidatePair;
 
             try {
                 candidatePair = inputQueue.take();
-            } catch (InterruptedException e) {
+            } catch (InterruptedException e) { //this interrupt happens when thread is waiting for queue but gets closed because iteration is finished
                 return;
-                //this interrupt happens when thread is waiting for queue but gets closed because iteration is finished
             }
 
             for (NewConditional r : candidatePair.getCandidatesList()) {
-                long overallStart = System.nanoTime();
-                //line 10 //
-                //consistency check takes almost no time
-                if (candidatePair.getKnowledgeBase().isConsistent(r)) {
-                    //System.out.println("consistency check: " + (System.nanoTime() - overallStart) / 1000);
-                    //next part is line 11 and 12
 
-                    //long kbCreationStart = System.nanoTime();
-                    //first create the new knowledge base
+                //line 10
+                //check takes almost no time
+                if (candidatePair.getKnowledgeBase().isConsistent(r)) {
+
+
+                    //next part is line 11 and 12
                     //takes very little time
                     AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
-
                     try {
                         consistentQueue.put(knowledgeBaseToAdd);
                     } catch (InterruptedException e) {
                         return;
                     }
-                    //System.out.println("kb creation:: " + (System.nanoTime() - kbCreationStart) / 1000);
-
-                    //long beforeCandidates = System.nanoTime();
                     //create candidates set
                     //this loop takes most of the time (70 percent)
                     List<NewConditional> candidatesToAdd = new ArrayList<>();
-                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList())
+                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {
                         if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                             candidatesToAdd.add(conditionalFromCandidates);
-                    //System.out.println("candidate time: " + (System.nanoTime() - beforeCandidates) / 1000);
-
+                    }
                     try {
                         outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
                     } catch (InterruptedException e) {
-                        return;
+                        return; //this triggers when thread is closed
                     }
-
-                    //save inconsistent knowledge base
-                    //this part takes almost no time
                 } else try {
                     inconsistentQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
                 } catch (
                         InterruptedException e) {
-                    return;
+                    return; //this triggers when thread is closed
                 }
             }
-            //this saves a lot of memory
-            //this takes almost no time
+            //this saves a lot of memory, takes almost no time
             candidatePair.clear();
-
         }
-        System.out.println("candidate thread finished at end of loop");
+        System.out.println("candidate thread finished");
     }
 
 }
