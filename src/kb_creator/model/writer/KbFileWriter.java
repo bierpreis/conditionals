@@ -13,7 +13,7 @@ public class KbFileWriter extends AbstractKbWriter {
     private Thread consistentWriterThread;
     private Thread inconsistentWriterThread;
 
-
+    //todo: check if writer gets stopped correctly
     public KbFileWriter(String filePathToSave, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue) {
 
         this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentQueue);
@@ -59,7 +59,6 @@ public class KbFileWriter extends AbstractKbWriter {
         status = WriterStatus.STOPPED;
         System.out.println("main kb writer thread stopped");
     }
-
 
 
     @Override
