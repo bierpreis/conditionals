@@ -6,6 +6,7 @@ import kb_creator.model.creator.ParallelCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.BlockingPairBuffer;
 import kb_creator.model.buffer.DummyPairBuffer;
+import kb_creator.model.creator.SimpleCreator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -43,7 +44,11 @@ public class CreatorButtonObserver implements ActionListener {
                 else candidateBuffer = new DummyPairBuffer();
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
-                creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
+
+                if (mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads() > 1)
+                    creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
+                else
+                    creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");
