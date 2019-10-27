@@ -56,7 +56,7 @@ public class KbDummyWriter extends AbstractKbWriter {
         return 0;
     }
 
-    //closing in parallel creator is not triggered here?!
+    //todo: stopping sometimes doenst work?
     @Override
     public void stopThreads() {
 
