@@ -32,6 +32,8 @@ public class CandidateThread implements Runnable {
     public void run() {
         while (!Thread.interrupted()) {
             AbstractPair candidatePair;
+
+            //line 8
             try {
                 candidatePair = inputQueue.take();
             } catch (InterruptedException e) { //this interrupt happens when thread is waiting for queue but gets closed because iteration is finished
@@ -42,22 +44,22 @@ public class CandidateThread implements Runnable {
             //line 9
             for (NewConditional r : candidatePair.getCandidatesList()) {
 
+
                 //line 10
-                //check takes almost no time
-                if (candidatePair.getKnowledgeBase().isConsistent(r)) {
+                if (candidatePair.getKnowledgeBase().isConsistent(r)) {// takes almost no time
 
 
                     //next part is line 11 and 12
-                    //this takes very little time
-                    AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
+
+                    AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);//very little time
                     try {
                         consistentQueue.put(knowledgeBaseToAdd);
                     } catch (InterruptedException e) {
                         return;
                     }
-                    //this loop takes most of the time
+
                     List<NewConditional> candidatesToAdd = new ArrayList<>();
-                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {
+                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {//this loop takes most of the time
                         if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                             candidatesToAdd.add(conditionalFromCandidates);
                     }
@@ -73,8 +75,7 @@ public class CandidateThread implements Runnable {
                     return; //triggers when thread is closed
                 }
             }
-            //saves a lot of memory, takes almost no time
-            candidatePair.clear();
+            candidatePair.clear();  //saves a lot of memory, takes almost no time
         }
         System.out.println("candidate thread finished");
     }

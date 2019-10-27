@@ -63,7 +63,7 @@ public class ParallelCreator extends AbstractCreator {
             startIterationThreads(k);
 
 
-            //this is line 8
+            //this is line 8 !
             while (l.hasMoreElementsForK(k)) {
 
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
