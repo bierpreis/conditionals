@@ -12,18 +12,18 @@ import java.util.concurrent.BlockingQueue;
 
 public class CandidateThread implements Runnable {
 
-    private BlockingQueue<AbstractKnowledgeBase> consistentQueue;
-    private BlockingQueue<AbstractKnowledgeBase> inconsistentQueue;
+    private BlockingQueue<AbstractKnowledgeBase> consistentKBsQueue;
+    private BlockingQueue<AbstractKnowledgeBase> inconsistentKBsQueue;
 
-    private BlockingQueue<AbstractPair> inputQueue;
-    private BlockingQueue<AbstractPair> outputQueue;
+    private BlockingQueue<AbstractPair> inputPairsQueue;
+    private BlockingQueue<AbstractPair> outputPairsQueue;
 
-    public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue, BlockingQueue<AbstractPair> inputQueue, BlockingQueue<AbstractPair> outputQueue) {
-        this.consistentQueue = consistentQueue;
-        this.inconsistentQueue = inconsistentQueue;
+    public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentKBsQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKBsQueue, BlockingQueue<AbstractPair> inputPairsQueue, BlockingQueue<AbstractPair> outputPairsQueue) {
+        this.consistentKBsQueue = consistentKBsQueue;
+        this.inconsistentKBsQueue = inconsistentKBsQueue;
 
-        this.inputQueue = inputQueue;
-        this.outputQueue = outputQueue;
+        this.inputPairsQueue = inputPairsQueue;
+        this.outputPairsQueue = outputPairsQueue;
 
     }
 
@@ -31,13 +31,13 @@ public class CandidateThread implements Runnable {
     @Override
     public void run() {
         while (!Thread.interrupted()) {
-            AbstractPair candidatePair;
 
             //line 8
+            AbstractPair candidatePair;
             try {
-                candidatePair = inputQueue.take();
-            } catch (InterruptedException e) { //this interrupt happens when thread is waiting for queue but gets closed because iteration is finished
-                return;
+                candidatePair = inputPairsQueue.take();
+            } catch (InterruptedException e) {
+                return; //triggers when thread is closed or finished
             }
 
 
@@ -49,30 +49,28 @@ public class CandidateThread implements Runnable {
                 if (candidatePair.getKnowledgeBase().isConsistent(r)) {// takes almost no time
 
 
-                    //next part is line 11 and 12
-
+                    //line 11 and 12
                     AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);//very little time
                     try {
-                        consistentQueue.put(knowledgeBaseToAdd);
+                        consistentKBsQueue.put(knowledgeBaseToAdd);
                     } catch (InterruptedException e) {
                         return;
                     }
-
                     List<NewConditional> candidatesToAdd = new ArrayList<>();
-                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {//this loop takes most of the time
+                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {//loop takes most of the time
                         if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                             candidatesToAdd.add(conditionalFromCandidates);
                     }
                     try {
-                        outputQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
+                        outputPairsQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
                     } catch (InterruptedException e) {
-                        return; //triggers when thread is closed
+                        return; //triggers when thread is closed or finished
                     }
                 } else try {
-                    inconsistentQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
+                    inconsistentKBsQueue.put(new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r));
                 } catch (
                         InterruptedException e) {
-                    return; //triggers when thread is closed
+                    return; //triggers when thread is closed or finished
                 }
             }
             candidatePair.clear();  //saves a lot of memory, takes almost no time
