@@ -37,30 +37,31 @@ public class ParallelCreator extends AbstractCreator {
         l.prepareIteration(0);
         kbWriter.newIteration();
 
+
         //line 2
         k = 1;
 
-        //this is actually iteration 0
-        //and line 3-5
-        l.addNewList(initOneElementKBs(nfc, cnfc));
 
+        //line 3-5
+        l.addNewList(initOneElementKBs(nfc, cnfc));
         //0 because the init list is actually iteration 0
         l.finishIteration(0);
+
 
         //line 6
         while (l.hasElementsForNextK(k)) {
             System.out.println("beginning iteration: " + k);
             System.gc();
 
+
             //line  7
             l.addNewList(new ArrayList<>());
 
             l.prepareIteration(k);
-
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration();
-
             startIterationThreads(k);
+
 
             //this is line 8
             while (l.hasMoreElementsForK(k)) {
