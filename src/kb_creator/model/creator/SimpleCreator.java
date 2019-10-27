@@ -20,7 +20,8 @@ public class SimpleCreator extends AbstractCreator {
         System.out.println("new simple creator");
 
     }
-    //todo: check line comments
+
+
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
@@ -66,7 +67,6 @@ public class SimpleCreator extends AbstractCreator {
 
 
                         //next part is line 11 and 12
-                        //first create the new knowledge base
                         //takes very little time
                         AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r);
                         try {
@@ -83,25 +83,19 @@ public class SimpleCreator extends AbstractCreator {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
-                        //this takes about 30 percent of time
-                        //collecting pairs and add together is even slower
-
+                        //this takes about 30 percent of time, collecting pairs and add together is even slower
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd);
-                        //System.out.println("adding time: " + (System.nanoTime() - beforeAddingPair) / 1000);
 
-                        //save inconsistent knowledge base
-                        //this part takes almost no time
+                        //save inconsistent knowledge base, takes almost no time
                     } else addInconsistentKb(candidatePair.getKnowledgeBase(), r);
-                    //System.out.println("complete time: " + (System.nanoTime() - overallStart) / 1000);
                 }
-                //this both takes almost no time
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-                //this saves a lot of memory
-                //this takes almost no time
+                //this saves a lot of memory and takes almost no time
                 candidatePair.clear();
 
             }
+            //line 13
             kbWriter.finishIteration();
             l.finishIteration(k);
             k = k + 1;
