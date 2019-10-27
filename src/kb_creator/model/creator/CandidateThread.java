@@ -27,7 +27,6 @@ public class CandidateThread implements Runnable {
 
     }
 
-    //todo: comments and line breaks and line numbers
     @Override
     public void run() {
         while (!Thread.interrupted()) {
