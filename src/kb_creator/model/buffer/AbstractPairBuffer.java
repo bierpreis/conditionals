@@ -1,6 +1,5 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.NewConditional;

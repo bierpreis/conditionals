@@ -59,7 +59,6 @@ public class KbDummyWriter extends AbstractKbWriter {
 
     @Override
     public void stopThreads() {
-        System.out.println("!!tried to stop queue threads");
         consistentThreadObject.stopLoop();
         inconsistentThreadObject.stopLoop();
 
