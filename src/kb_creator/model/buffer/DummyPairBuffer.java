@@ -13,8 +13,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     private volatile List<List<AbstractPair>> candidatePairList;
     private volatile int k;
 
-    public DummyPairBuffer(String filePath) {
-        super(filePath);
+    public DummyPairBuffer() {
+        super(null);
         candidatePairList = new ArrayList<>();
     }
 
