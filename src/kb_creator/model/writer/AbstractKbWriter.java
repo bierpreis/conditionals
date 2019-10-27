@@ -3,8 +3,6 @@ package kb_creator.model.writer;
 
 public abstract class AbstractKbWriter {
 
-    protected boolean running = true;
-
     protected volatile WriterStatus status;
 
 

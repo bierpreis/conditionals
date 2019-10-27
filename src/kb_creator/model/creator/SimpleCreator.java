@@ -111,6 +111,7 @@ public class SimpleCreator extends AbstractCreator {
         }
         l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
+        super.finish();
     }
 
     private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {

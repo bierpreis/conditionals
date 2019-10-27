@@ -56,19 +56,16 @@ public class KbDummyWriter extends AbstractKbWriter {
         return 0;
     }
 
-    //todo: threads are not closed with simple creator when finished.
+    //closing in parallel creator is not triggered here?!
     @Override
     public void stopThreads() {
 
         consistentThreadObject.stopLoop();
         inconsistentThreadObject.stopLoop();
 
-        System.out.println("consistent counter: " + consistentThreadObject.getTotalCounter());
-        System.out.println("inconsistent counter: " + inconsistentThreadObject.getTotalCounter());
 
         consistentThread.interrupt();
         inconsistentThread.interrupt();
-
     }
 
     @Override
