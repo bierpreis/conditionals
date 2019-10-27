@@ -14,7 +14,7 @@ import java.util.*;
 public class SimpleCreator extends AbstractCreator {
 
     private int iterationPairCounter = 0;
-    
+
     public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
         System.out.println("new simple creator");

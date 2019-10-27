@@ -56,6 +56,7 @@ public class KbDummyWriter extends AbstractKbWriter {
         return 0;
     }
 
+    //todo: threads are not closed with simple creator when finished.
     @Override
     public void stopThreads() {
 
