@@ -85,7 +85,7 @@ public class BufferWriterThread implements Runnable {
                 try {
                     pairToWrite = cpQueueToWrite.take();
                 } catch (InterruptedException e) {
-                    throw new RuntimeException("Put something here! return?");
+                    throw new RuntimeException("Put something here! return?"); //todo: this triggered when pressing stop. what to do? return?
                 }
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
