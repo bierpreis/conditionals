@@ -135,7 +135,7 @@ public class BufferWriterThread implements Runnable {
         return cpQueueToWrite.size();
     }
 
-    public void finishIteration(int requestedK) {
+    public void finishIteration(int requestedK) { //todo: delete parameter?
         flushWritingElements();
 
     }
