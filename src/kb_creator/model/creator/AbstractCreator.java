@@ -33,8 +33,6 @@ public abstract class AbstractCreator implements Runnable {
 
     protected long startTime;
 
-    protected float progress;
-
     protected Collection<NewConditional> nfc;
 
     protected Collection<NewConditional> cnfc;
@@ -81,8 +79,7 @@ public abstract class AbstractCreator implements Runnable {
 
         startTime = System.currentTimeMillis();
     }
-
-    //todo: check line comments
+    
     protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
