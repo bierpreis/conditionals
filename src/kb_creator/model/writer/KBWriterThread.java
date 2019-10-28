@@ -3,6 +3,7 @@ package kb_creator.model.writer;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.concurrent.BlockingQueue;
@@ -63,9 +64,16 @@ public class KBWriterThread implements Runnable {
             File consistentFolder = new File(filePath);
             consistentFolder.mkdirs();
 
+            PrintWriter writer;
             //todo: this line throws exception when hdd is full.
             //java.io.FileNotFoundException: /home/bierpreis/KBs/3/consistent/8061370.txt (Auf dem Gerät ist kein Speicherplatz mehr verfügbar)
-            PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+            try {
+                writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                System.exit(0);
+                return; //just to hide compiler warning
+            }
             writer.print(knowledgeBase.toFileString());
 
             writer.close();
