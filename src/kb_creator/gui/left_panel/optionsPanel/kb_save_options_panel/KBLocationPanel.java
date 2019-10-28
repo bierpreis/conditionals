@@ -71,4 +71,8 @@ public class KBLocationPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
+    public void init(){
+        saveButton.setEnabled(true);
+    }
+
 }

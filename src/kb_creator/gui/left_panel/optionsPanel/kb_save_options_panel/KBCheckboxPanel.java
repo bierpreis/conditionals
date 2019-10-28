@@ -14,7 +14,8 @@ public class KBCheckboxPanel extends JPanel {
         add(checkBox);
         this.mainKbSafePanel = mainKbSafePanel;
         checkBox.addActionListener(new CheckboxListener());
-        checkBox.setEnabled(false);
+
+        init();
     }
 
     class CheckboxListener implements ActionListener {
@@ -38,8 +39,13 @@ public class KBCheckboxPanel extends JPanel {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-setBoxEnabled(enabled);
+        setBoxEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);
+    }
+
+    public void init() {
+        checkBox.setSelected(false);
+        checkBox.setEnabled(false);
     }
 }

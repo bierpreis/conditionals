@@ -37,4 +37,9 @@ public class MainKbSafePanel extends JPanel {
             component.setEnabled(enabled);
     }
 
+    public void init(){
+        kbCheckboxPanel.init();
+        kbLocationPanel.init();
+    }
+
 }

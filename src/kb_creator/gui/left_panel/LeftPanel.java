@@ -24,7 +24,7 @@ public class LeftPanel extends JPanel {
         add(mainOptionsPanel);
         add(actionPanel);
 
-
+        mainOptionsPanel.init();
         revalidate();
     }
 
@@ -49,10 +49,9 @@ public class LeftPanel extends JPanel {
         return actionPanel;
     }
 
-    public MainOptionsPanel getMainOptionsPanel(){
+    public MainOptionsPanel getMainOptionsPanel() {
         return mainOptionsPanel;
     }
-
 
 
 }

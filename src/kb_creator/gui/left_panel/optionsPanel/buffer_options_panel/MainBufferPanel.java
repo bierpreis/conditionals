@@ -47,22 +47,15 @@ public class MainBufferPanel extends JPanel {
 
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         optionsPanel.add(deleteTempFilesCheckbox);
-        deleteTempFilesCheckbox.setSelected(true);
+
 
 
         add(optionsPanel);
-
         add(bufferSizePanel);
-
-        bufferCheckboxPanel.setBoxSelected(false);
-        bufferCheckboxPanel.setBoxEnabled(false);
-        bufferSizePanel.setEnabled(false);
-        fileNameLengthPanel.setEnabled(false);
-
         add(fileNameLengthPanel);
 
 
-        getDeleteCheckbox().setEnabled(false);
+
 
 
     }
@@ -115,5 +108,14 @@ public class MainBufferPanel extends JPanel {
 
     public FileNameLengthPanel getFileNameLengthPanel(){
         return fileNameLengthPanel;
+    }
+
+    public void init(){
+        deleteTempFilesCheckbox.setSelected(true);
+        bufferCheckboxPanel.setBoxSelected(false);
+        bufferCheckboxPanel.setBoxEnabled(false);
+        bufferSizePanel.setEnabled(false);
+        fileNameLengthPanel.setEnabled(false);
+        deleteTempFilesCheckbox.setEnabled(false);
     }
 }

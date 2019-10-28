@@ -80,4 +80,9 @@ public class MainOptionsPanel extends JPanel {
 
         return valid;
     }
+
+    public void init(){
+        mainBufferPanel.init();
+        mainKbSafePanel.init();
+    }
 }

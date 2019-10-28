@@ -74,6 +74,7 @@ public class CreatorButtonObserver implements ActionListener {
             if (answer == 0) {
                 mainWindow.getRightPanel().setActive(false);
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
+                mainWindow.getLeftPanel().getMainOptionsPanel().init();
 
                 creatorThreadObject.stopLoop();
                 candidateBuffer.stopLoop();
