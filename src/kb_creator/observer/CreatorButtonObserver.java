@@ -37,7 +37,7 @@ public class CreatorButtonObserver implements ActionListener {
 
         if (mainWindow.getLeftPanel().getMainOptionsPanel().areValuesValid()) {
             if (e.getActionCommand().equals("Start")) {
-                mainWindow.getMidPanel().setActive(true);
+                mainWindow.getRightPanel().setActive(true);
 
                 if (mainWindow.isBufferingRequested())
                     candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
@@ -72,7 +72,7 @@ public class CreatorButtonObserver implements ActionListener {
             //todo pressing stop and start again muted the warning messages for existing folder!!! both kb save and buffer have the problem.
             //solution: reset left panel. activating checkboxes activates warnings.
             if (answer == 0) {
-                mainWindow.getMidPanel().setActive(false);
+                mainWindow.getRightPanel().setActive(false);
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
 
                 creatorThreadObject.stopLoop();

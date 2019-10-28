@@ -6,7 +6,7 @@ import kb_creator.gui.mid_panel.creator_panel.MainCreatorPanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class MidPanel extends JPanel {
+public class RightPanel extends JPanel {
 
     private MainCreatorPanel mainCreatorPanel;
 
@@ -14,7 +14,7 @@ public class MidPanel extends JPanel {
     private WriterStatusPanel writerStatusPanel;
     private MemoryPanel memoryPanel;
 
-    public MidPanel(ActionPanel actionPanel) {
+    public RightPanel(ActionPanel actionPanel) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createEmptyBorder());
 

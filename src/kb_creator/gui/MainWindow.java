@@ -1,6 +1,6 @@
 package kb_creator.gui;
 
-import kb_creator.gui.mid_panel.MidPanel;
+import kb_creator.gui.mid_panel.RightPanel;
 import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.LeftPanel;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
@@ -15,16 +15,16 @@ public class MainWindow {
 
 
     private LeftPanel leftPanel;
-    private MidPanel midPanel;
+    private RightPanel rightPanel;
 
     public MainWindow(CreatorButtonObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
 
         mainWindow.add(leftPanel = new LeftPanel(observer), BorderLayout.WEST);
-        mainWindow.add(midPanel = new MidPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
+        mainWindow.add(rightPanel = new RightPanel(leftPanel.getActionPanel()), BorderLayout.CENTER);
 
-        midPanel.setActive(false);
+        rightPanel.setActive(false);
 
 
 
@@ -58,8 +58,8 @@ public class MainWindow {
         return leftPanel.getCpFilePath();
     }
 
-    public MidPanel getMidPanel() {
-        return midPanel;
+    public RightPanel getRightPanel() {
+        return rightPanel;
     }
 
     public LeftPanel getLeftPanel() {

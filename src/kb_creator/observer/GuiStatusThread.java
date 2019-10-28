@@ -3,7 +3,6 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.creator.CreatorStatus;
-import kb_creator.model.creator.SimpleCreator;
 import kb_creator.model.writer.AbstractKbWriter;
 
 public class GuiStatusThread implements Runnable {
@@ -38,7 +37,7 @@ public class GuiStatusThread implements Runnable {
                 checkIfFinished();
             }
 
-            mainWindow.getMidPanel().getMemoryPanel().showFreeMemory();
+            mainWindow.getRightPanel().getMemoryPanel().showFreeMemory();
 
             try {
                 Thread.sleep(sleepTime);
@@ -53,46 +52,46 @@ public class GuiStatusThread implements Runnable {
 
     private void checkIfFinished() {
         if (creatorThread.getCreatorStatus().equals(CreatorStatus.FINISHED)) {
-            mainWindow.getMidPanel().setActive(false);
+            mainWindow.getRightPanel().setActive(false);
             mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
         }
     }
 
     private void showCreatorStatus() {
 
-        mainWindow.getMidPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
+        mainWindow.getRightPanel().getCreatorPanel().showStatus(creatorThread.getCreatorStatus());
 
 
-        mainWindow.getMidPanel().getCreatorPanel().showTotalConsistentKBAmount(creatorThread.getTotalKbAmount());
-        mainWindow.getMidPanel().getCreatorPanel().showTotalInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
-        mainWindow.getMidPanel().getCreatorPanel().showProgress(creatorThread.calculateProgress());
-        mainWindow.getMidPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
-        mainWindow.getMidPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
-        mainWindow.getMidPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
+        mainWindow.getRightPanel().getCreatorPanel().showTotalConsistentKBAmount(creatorThread.getTotalKbAmount());
+        mainWindow.getRightPanel().getCreatorPanel().showTotalInconsistentKBAmount(creatorThread.getTotalInconsistentAmount());
+        mainWindow.getRightPanel().getCreatorPanel().showProgress(creatorThread.calculateProgress());
+        mainWindow.getRightPanel().getCreatorPanel().showCurrentK(creatorThread.getCurrentK());
+        mainWindow.getRightPanel().getCreatorPanel().showSpeed(calcSpeed(creatorThread.getTotalKbAmount()));
+        mainWindow.getRightPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
 
 
         if (creatorThread.getCreatorStatus().equals(CreatorStatus.RUNNING)) {
-            mainWindow.getMidPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
-            mainWindow.getMidPanel().getCreatorPanel().showAverageSpeed(creatorThread.getTotalKbAmount(), creatorThread.getStartTime());
+            mainWindow.getRightPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
+            mainWindow.getRightPanel().getCreatorPanel().showAverageSpeed(creatorThread.getTotalKbAmount(), creatorThread.getStartTime());
         }
     }
 
     private void showWriterStatus() {
-        mainWindow.getMidPanel().getCreatorPanel().showIterationConsistentKBs(kbWriter.getIterationConsistentCounter());
-        mainWindow.getMidPanel().getCreatorPanel().showIterationInconsistentKBs(kbWriter.getIterationInconsistentCounter());
+        mainWindow.getRightPanel().getCreatorPanel().showIterationConsistentKBs(kbWriter.getIterationConsistentCounter());
+        mainWindow.getRightPanel().getCreatorPanel().showIterationInconsistentKBs(kbWriter.getIterationInconsistentCounter());
 
-        mainWindow.getMidPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
-        mainWindow.getMidPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+        mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
+        mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
-        mainWindow.getMidPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
+        mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
     }
 
     private void showBufferStatus() {
         //cp writer thread is started after this thread, so this will avoid the null pointer exception
         if (creatorThread.getPairBuffer() != null) {
 
-            mainWindow.getMidPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
-            mainWindow.getMidPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
+            mainWindow.getRightPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
+            mainWindow.getRightPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
 
         }
     }
