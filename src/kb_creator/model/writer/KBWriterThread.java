@@ -23,7 +23,6 @@ public class KBWriterThread implements Runnable {
         this.rootFilePath = rootFilePath;
     }
 
-    //todo: this thread is not closed by stop. return on interrupt?!
     @Override
     public void run() {
         System.out.println("New Writer Thread started for " + folderName + " kbs");
