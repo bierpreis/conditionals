@@ -20,10 +20,9 @@ public class KBWriterThread implements Runnable {
         this.folderName = folderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
-
-        Thread.currentThread().setName("KBWriterThread");
     }
 
+    //todo: this thread is not closed by stop. return on interrupt?!
     @Override
     public void run() {
         System.out.println("New Writer Thread started for " + folderName + " kbs");
@@ -34,6 +33,7 @@ public class KBWriterThread implements Runnable {
                 //intentionally nothing
             }
         }
+        System.out.println("Writer Thread closed for " + folderName + " kbs");
     }
 
     public void finishIteration() {
@@ -63,6 +63,8 @@ public class KBWriterThread implements Runnable {
             File consistentFolder = new File(filePath);
             consistentFolder.mkdirs();
 
+            //todo: this line throws exception when hdd is full.
+            //java.io.FileNotFoundException: /home/bierpreis/KBs/3/consistent/8061370.txt (Auf dem Gerät ist kein Speicherplatz mehr verfügbar)
             PrintWriter writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
             writer.print(knowledgeBase.toFileString());
 

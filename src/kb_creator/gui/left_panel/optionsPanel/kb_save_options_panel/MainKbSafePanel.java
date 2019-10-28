@@ -7,14 +7,12 @@ import java.awt.*;
 public class MainKbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
     private KBLocationPanel kbLocationPanel;
-    
+
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
-
         kbCheckboxPanel = new KBCheckboxPanel(this);
         kbLocationPanel = new KBLocationPanel(kbCheckboxPanel);
-
 
         add(kbLocationPanel);
         add(kbCheckboxPanel);
