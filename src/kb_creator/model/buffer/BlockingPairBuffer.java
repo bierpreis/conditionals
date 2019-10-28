@@ -76,7 +76,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
         writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, numberOfDigits);
         writerThread = new Thread(writerThreadObject);
-        writerThread.setName("buffer writer thread for k " + requestedK); //todo: this thread is not closed. the reader is closed correctly.
+        writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
 
         readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK, numberOfDigits);
@@ -101,6 +101,8 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
 
         writerThreadObject.finishIteration();
+        writerThreadObject.stopLoop();
+        writerThread.interrupt();
 
         hasNextIteration = writerThreadObject.hasNextIteration();
 
