@@ -36,7 +36,7 @@ public class KBWriterThread implements Runnable {
         }
     }
 
-    public void finishIteration(){
+    public void finishIteration() {
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);
@@ -97,5 +97,13 @@ public class KBWriterThread implements Runnable {
                 e.printStackTrace();
             }
         running = false;
+    }
+
+    public void stopLoop() {
+        System.out.println("closing " + folderName);
+        //this makes sure queue is empty before it stops
+
+        running = false;
+        System.out.println("closing " + folderName + "finished");
     }
 }

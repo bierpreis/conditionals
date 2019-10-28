@@ -68,6 +68,12 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
+    public void finishAndStopThreads() {
+        //intentionally this. methods are different in real writer.
+        stopThreads();
+    }
+
+    @Override
     public void finishIteration() {
         //intentionally nothing
     }
