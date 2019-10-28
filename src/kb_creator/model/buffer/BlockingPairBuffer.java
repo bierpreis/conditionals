@@ -100,7 +100,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
 
 
-        writerThreadObject.finishIteration(requestedK);
+        writerThreadObject.finishIteration();
 
         hasNextIteration = writerThreadObject.hasNextIteration();
 
