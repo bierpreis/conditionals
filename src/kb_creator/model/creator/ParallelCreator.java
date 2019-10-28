@@ -160,7 +160,7 @@ public class ParallelCreator extends AbstractCreator {
             return 0;
 
         }
-        return (inputQueueObject.getCounter() / (float) currentPairAmount) * 100; //todo. null pointer with buffering. must have been inputQueueObject!
+        return (inputQueueObject.getCounter() / (float) currentPairAmount) * 100; //null pointer happened here once 28.10.!?
     }
 
     @Override
