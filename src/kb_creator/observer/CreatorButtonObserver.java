@@ -68,7 +68,7 @@ public class CreatorButtonObserver implements ActionListener {
             UIManager.put("OptionPane.noButtonText", "No, Continue.");
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
-            
+
             if (answer == 0) {
                 mainWindow.getRightPanel().setActive(false);
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
