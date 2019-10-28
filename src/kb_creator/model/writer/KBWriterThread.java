@@ -65,8 +65,8 @@ public class KBWriterThread implements Runnable {
             consistentFolder.mkdirs();
 
             PrintWriter writer;
-            //todo: this line throws exception when hdd is full.
-            //java.io.FileNotFoundException: /home/bierpreis/KBs/3/consistent/8061370.txt (Auf dem Gerät ist kein Speicherplatz mehr verfügbar)
+
+            //this will trigger when hdd space is full or there are too much files
             try {
                 writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
             } catch (FileNotFoundException e) {
