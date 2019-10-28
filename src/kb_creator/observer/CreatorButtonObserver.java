@@ -68,9 +68,7 @@ public class CreatorButtonObserver implements ActionListener {
             UIManager.put("OptionPane.noButtonText", "No, Continue.");
 
             int answer = JOptionPane.showConfirmDialog(mainWindow.getMainWindow(), "Do you really want to Stop?", "Warning", JOptionPane.YES_NO_OPTION);
-
-            //todo pressing stop and start again muted the warning messages for existing folder!!! both kb save and buffer have the problem.
-            //solution: reset left panel. activating checkboxes activates warnings.
+            
             if (answer == 0) {
                 mainWindow.getRightPanel().setActive(false);
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
