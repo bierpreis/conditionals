@@ -8,6 +8,7 @@ public class MainKbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
     private KBLocationPanel kbLocationPanel;
 
+    //todo: if rejected because folder already exists, kb writer is still started!!
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
@@ -37,7 +38,7 @@ public class MainKbSafePanel extends JPanel {
             component.setEnabled(enabled);
     }
 
-    public void init(){
+    public void init() {
         kbCheckboxPanel.init();
         kbLocationPanel.init();
     }
