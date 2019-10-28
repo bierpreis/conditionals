@@ -42,5 +42,4 @@ public class MainKbSafePanel extends JPanel {
         kbCheckboxPanel.init();
         kbLocationPanel.init();
     }
-
 }

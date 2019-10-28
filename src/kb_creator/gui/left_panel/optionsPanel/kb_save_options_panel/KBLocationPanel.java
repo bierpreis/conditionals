@@ -44,8 +44,8 @@ public class KBLocationPanel extends JPanel {
                 checkboxPanel.setBoxSelected(true);
 
                 if (fileToSave.exists()) {
-
                     new AlreadyExistsDialog(filePathToSave);
+                    filePathToSave = null;
                     checkboxPanel.setEnabled(false);
                     checkboxPanel.setBoxSelected(false);
                 }

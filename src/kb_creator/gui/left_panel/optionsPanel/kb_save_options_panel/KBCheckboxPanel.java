@@ -48,4 +48,5 @@ public class KBCheckboxPanel extends JPanel {
         checkBox.setSelected(false);
         checkBox.setEnabled(false);
     }
+
 }
