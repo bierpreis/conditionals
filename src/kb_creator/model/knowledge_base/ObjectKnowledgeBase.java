@@ -109,6 +109,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //this increases overall speed about 20%
 
     //idea: create tolerates formula for every conditional and then check trough list if everyone tolerates
+    //return false if one element not tolerates else return true
     private AbstractFormula createConsistencyFormula() {
 
         for (NewConditional conditionalFromList : conditionalList) {
