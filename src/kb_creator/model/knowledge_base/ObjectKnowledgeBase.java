@@ -107,6 +107,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //todo: maybe use this as an method with && instead creating a formula is faster?
     //create consistency formula to be reused for every consistency test
     //this increases overall speed about 20%
+
+    //idea: create tolerates formula for every conditional and then check trough list if everyone tolerates
     private AbstractFormula createConsistencyFormula() {
 
         for (NewConditional conditionalFromList : conditionalList) {
