@@ -266,7 +266,6 @@ public class NfcCreator {
 
         for (Conditional oldConditional : oldConditionals) {
             NewConditional newConditional = conditionalTranslator.transLate(oldConditional);
-            newConditional.setNumber(oldConditional.getNumber());
 
             newConditional.setCounterConditional(conditionalTranslator.transLate(oldConditional.getActualCounterConditional()));
             newConditionals.add(newConditional);

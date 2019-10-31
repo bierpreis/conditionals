@@ -7,12 +7,13 @@ import java.util.List;
 
 //todo: make stuff final
 public class NewConditional {
-    private int number;
+    private final int number;
     private final AbstractFormula antecedent;
     private final AbstractFormula consequence;
-    private NewConditional counterConditional;
-    private final AbstractFormula TOLERANCE_FORMULA;
+    private final AbstractFormula toleranceFormula;
 
+
+    private NewConditional counterConditional;
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<NewConditional> eqConditionalsList = new ArrayList<>(0);
 
@@ -22,7 +23,7 @@ public class NewConditional {
         this.antecedent = antecedent;
         this.number = number;
 
-        this.TOLERANCE_FORMULA = antecedent.neg().or(consequence);
+        this.toleranceFormula = antecedent.neg().or(consequence);
     }
 
     public String toString() {
@@ -53,10 +54,6 @@ public class NewConditional {
         return counterConditional;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     public AbstractFormula getAntecedent() {
         return antecedent;
     }
@@ -81,7 +78,7 @@ public class NewConditional {
     }
 
     public boolean tolerates(AbstractWorld world) {
-        return TOLERANCE_FORMULA.evaluate(world);
+        return toleranceFormula.evaluate(world);
     }
 
 }
