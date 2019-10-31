@@ -1,14 +1,17 @@
 package kb_creator.model.propositional_logic;
 
+import kb_creator.model.propositional_logic.worlds.AbstractWorld;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
+//todo: make stuff final
 public class NewConditional {
     private int number;
     private final AbstractFormula antecedent;
     private final AbstractFormula consequence;
     private NewConditional counterConditional;
+    private final AbstractFormula TOLERANCE_FORMULA;
 
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<NewConditional> eqConditionalsList = new ArrayList<>(0);
@@ -19,6 +22,7 @@ public class NewConditional {
         this.antecedent = antecedent;
         this.number = number;
 
+        this.TOLERANCE_FORMULA = antecedent.neg().or(consequence);
     }
 
     public String toString() {
@@ -74,6 +78,10 @@ public class NewConditional {
 
     public List<NewConditional> getEqConditionalsList() {
         return eqConditionalsList;
+    }
+
+    public boolean tolerates(AbstractWorld world) {
+        return TOLERANCE_FORMULA.evaluate(world);
     }
 
 }

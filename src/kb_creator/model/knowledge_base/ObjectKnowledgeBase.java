@@ -78,7 +78,26 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
+    public boolean newIsConsistent(NewConditional conditionalToTest) {
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
+            if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
+                boolean toleratesAll = true;
+                for (NewConditional conditional : conditionalList) {
+                    if (!conditional.tolerates(world))
+                        toleratesAll = false;
+                }
+                if (toleratesAll)
+                    return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isConsistent(NewConditional conditionalToTest) {
+
+        return newIsConsistent(conditionalToTest);
+
+/*
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //
@@ -100,11 +119,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
             }
         }
         //System.out.println("time: " + (System.nanoTime() - start) / 1000);
-        return false;
+        return false;*/
 
     }
 
-    //todo: maybe use this as an method with && instead creating a formula is faster?
     //create consistency formula to be reused for every consistency test
     //this increases overall speed about 20%
 
