@@ -34,7 +34,6 @@ public class BufferWriterThread implements Runnable {
     public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
         numberOfDigitsString = "%0" + fileNameDigits + "d";
         this.requestedK = requestedK;
-        System.out.println("set buffer size to " + maxNumberOfPairsInFile);
 
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
