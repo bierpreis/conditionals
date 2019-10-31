@@ -1,10 +1,5 @@
 package kb_creator.model.propositional_logic;
 
-import kb_creator.model.propositional_logic.signature.AB;
-import kb_creator.model.propositional_logic.signature.ABC;
-import nfc.model.Conditional;
-import nfc.model.World;
-
 import java.util.ArrayList;
 import java.util.List;
 
