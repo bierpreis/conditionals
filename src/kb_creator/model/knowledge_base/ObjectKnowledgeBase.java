@@ -78,6 +78,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
+    //todo: test: is it faster in ab? maybe faster with increasing kb size?
+    //todo: rethink. make it faster?
     public boolean newIsConsistent(NewConditional conditionalToTest) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
