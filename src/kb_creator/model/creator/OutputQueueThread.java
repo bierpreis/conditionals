@@ -7,7 +7,6 @@ import java.util.concurrent.BlockingQueue;
 
 public class OutputQueueThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
-    private volatile int counter = 0;
     private AbstractPairBuffer l;
 
     private volatile boolean running = true;
@@ -23,7 +22,6 @@ public class OutputQueueThread implements Runnable {
         while (running) {
             try {
                 l.addPair(queue.take());
-                counter++;
             } catch (InterruptedException e) {
                 return;
             }
@@ -39,9 +37,4 @@ public class OutputQueueThread implements Runnable {
             }
         running = false;
     }
-
-    public int getCounter() {
-        return counter;
-    }
-
 }
