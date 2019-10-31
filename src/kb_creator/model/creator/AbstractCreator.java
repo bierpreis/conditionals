@@ -117,7 +117,6 @@ public abstract class AbstractCreator implements Runnable {
 
         }
         waitForWriterFinished();
-        System.out.println("consistent queue: " + consistentWriterQueue.size());
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
