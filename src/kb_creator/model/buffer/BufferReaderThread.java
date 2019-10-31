@@ -42,7 +42,7 @@ public class BufferReaderThread implements Runnable {
 
         //files array is null when there are no files to read(this happens in iteration 0)
         if (filesArray != null) {
-            System.out.println("number of files found for " + requestedK + " iteration: " + filesArray.length);
+            System.out.println("number of files found for iteration " + requestedK  + ": " + filesArray.length);
             iterationNumberOfFiles = filesArray.length;
         } else System.out.println("no files to read for iteration: " + requestedK);
 

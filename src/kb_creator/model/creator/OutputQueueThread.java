@@ -38,7 +38,6 @@ public class OutputQueueThread implements Runnable {
                 e.printStackTrace();
             }
         running = false;
-        System.out.println("output queue Thread stopped. Queue: " + queue.size());
     }
 
     public int getCounter() {
