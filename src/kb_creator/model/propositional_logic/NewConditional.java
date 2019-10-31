@@ -26,7 +26,6 @@ public class NewConditional {
 
     }
 
-    //todo: this gets out short formulas! completely useless for writing kbs!
     public String toString() {
         return "(" + consequence + " | " + antecedent + ")";
     }
