@@ -20,12 +20,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private BufferReaderThread readerThreadObject;
     private BufferWriterThread writerThreadObject;
 
-    private int numberOfDigits;
+    private final int NUMBER_OF_DIGITS;
 
     public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         super(filePath);
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
-        numberOfDigits = bufferFileLength;
+        NUMBER_OF_DIGITS = bufferFileLength;
         System.out.println("created parallel buffer for candidate pairs");
     }
 
@@ -74,12 +74,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, numberOfDigits);
+        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, NUMBER_OF_DIGITS);
         writerThread = new Thread(writerThreadObject);
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
 
-        readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK, numberOfDigits);
+        readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK, NUMBER_OF_DIGITS);
         readerThread = new Thread(readerThreadObject);
         readerThread.setName("buffer reader thread for k " + requestedK);
         readerThread.start();
