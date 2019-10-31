@@ -27,8 +27,11 @@ public class NfcViewerWindow {
         mainWindow.getContentPane().add(condPanel, BorderLayout.CENTER);
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         mainWindow.pack();
         mainWindow.setVisible(true);
+
+        mainWindow.setLocationRelativeTo(null);
     }
 
     public CondPanel getCondPanel() {
