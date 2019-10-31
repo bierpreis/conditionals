@@ -5,7 +5,6 @@ import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: make stuff final
 public class NewConditional {
     private final int number;
     private final AbstractFormula antecedent;
