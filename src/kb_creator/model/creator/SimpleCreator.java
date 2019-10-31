@@ -14,7 +14,7 @@ import java.util.*;
 public class SimpleCreator extends AbstractCreator {
 
     private int iterationPairCounter = 0;
-    
+
     public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
         System.out.println("new simple creator");
@@ -39,6 +39,7 @@ public class SimpleCreator extends AbstractCreator {
 
         //line 6
         while (l.hasElementsForNextK(k)) {
+            long startTime = System.currentTimeMillis();
             System.gc();
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
@@ -88,6 +89,7 @@ public class SimpleCreator extends AbstractCreator {
                 candidatePair.clear(); //saves a lot of memory and takes almost no time
 
             }
+            System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
             //line 13
             kbWriter.finishIteration();
             l.finishIteration(k);
