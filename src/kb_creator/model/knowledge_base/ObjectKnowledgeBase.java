@@ -78,8 +78,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
-    //todo: test: is it faster in ab? maybe faster with increasing kb size?
+
     //todo: rethink. make it faster?
+    //this is about 20% faster than old consistent method.
+    //it is faster at higher kb size and same speed at kb size 1
     public boolean newIsConsistent(NewConditional conditionalToTest) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
@@ -99,14 +101,13 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
         return newIsConsistent(conditionalToTest);
 
-/*
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        //only create this formula once for performance reasons
+/*        //only create this formula once for performance reasons
         if (consistencyOfKB == null)
             consistencyOfKB = createConsistencyFormula();
 
