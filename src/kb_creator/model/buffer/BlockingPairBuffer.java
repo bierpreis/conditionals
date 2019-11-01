@@ -22,6 +22,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     private final int NUMBER_OF_DIGITS;
 
+
     public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         super(filePath);
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
@@ -30,15 +31,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     }
 
 
-    @Override
-    public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
-        writerThreadObject.addPair(new RealListPair(knowledgeBase, candidatesToAdd));
-    }
-
-    @Override
-    public void addPair(AbstractPair pairToAdd) {
-        writerThreadObject.addPair(pairToAdd);
-    }
+    //iteration change methods
 
     @Override
     protected void deleteOldData(int requestedK) {
@@ -47,23 +40,11 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         }
     }
 
-    @Override
-    public int getQueueToWriteSize() {
-        return writerThreadObject.getQueueSize();
-    }
-
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-
         return readerThreadObject.hasMoreElementsForK(k);
     }
-
-    @Override
-    public AbstractPair getNextPair(int k) {
-        return readerThreadObject.getNextPair(k);
-    }
-
 
     @Override
     public boolean hasElementsForIteration(int k) {
@@ -84,22 +65,12 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         readerThread.setName("buffer reader thread for k " + requestedK);
         readerThread.start();
 
-
         System.out.println("prepare iteration finished " + requestedK);
-
     }
-
-    @Override
-    public void addNewList(List<AbstractPair> listToAdd) {
-        writerThreadObject.addList(listToAdd);
-    }
-
 
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
-
-
         writerThreadObject.finishIteration();
         writerThreadObject.stopLoop();
         writerThread.interrupt();
@@ -112,13 +83,8 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public int getReaderBufferSize() {
-        return readerThreadObject.getQueueSize();
-    }
-
-    @Override
     public void setFinished() {
-
+        //todo?!
     }
 
     @Override
@@ -130,4 +96,38 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
         writerThread.interrupt();
     }
 
+
+    //add pair methods
+    @Override
+    public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
+        writerThreadObject.addPair(new RealListPair(knowledgeBase, candidatesToAdd));
+    }
+
+    @Override
+    public void addPair(AbstractPair pairToAdd) {
+        writerThreadObject.addPair(pairToAdd);
+    }
+
+
+    @Override
+    public void addNewList(List<AbstractPair> listToAdd) {
+        writerThreadObject.addList(listToAdd);
+    }
+
+    
+    //getters
+    @Override
+    public int getReaderBufferSize() {
+        return readerThreadObject.getQueueSize();
+    }
+
+    @Override
+    public int getQueueToWriteSize() {
+        return writerThreadObject.getQueueSize();
+    }
+
+    @Override
+    public AbstractPair getNextPair(int k) {
+        return readerThreadObject.getNextPair(k);
+    }
 }
