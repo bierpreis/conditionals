@@ -149,6 +149,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         conditionalList.add(conditionalToAdd);
     }
 
+    //todo: remove? this is never used
     @Override
     public void add(AbstractKnowledgeBase knowledgeBaseToAdd) {
         conditionalList.addAll(knowledgeBaseToAdd.getConditionalList());

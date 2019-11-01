@@ -65,7 +65,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public void addNewList(List<AbstractPair> listToAdd) {
         candidatePairList.add(listToAdd);
     }
-    
+
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
         candidatePairList.get(k).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
