@@ -17,12 +17,10 @@ public class BufferReaderThread implements Runnable {
     private BlockingQueue<AbstractPair> queueToReturn;
 
     private int iterationNumberOfFiles;
-
     private int readingFileNameCounter;
+
     private File folderToRead;
-
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
-
     private String tmpFilePath;
     private String numberOfDigitsString;
 
@@ -35,14 +33,12 @@ public class BufferReaderThread implements Runnable {
         System.out.println("prepare iteration " + requestedK);
         readingFileNameCounter = 0;
 
-        //for iteration 0 there are no files to read
-
         folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
         File[] filesArray = folderToRead.listFiles();
 
         //files array is null when there are no files to read(this happens in iteration 0)
         if (filesArray != null) {
-            System.out.println("number of files found for iteration " + requestedK  + ": " + filesArray.length);
+            System.out.println("number of files found for iteration " + requestedK + ": " + filesArray.length);
             iterationNumberOfFiles = filesArray.length;
         } else System.out.println("no files to read for iteration: " + requestedK);
 
@@ -92,6 +88,8 @@ public class BufferReaderThread implements Runnable {
         return pairsList;
     }
 
+    //iteration change methods
+
     public boolean hasMoreElementsForK(int k) {
 
         if (!queueToReturn.isEmpty())
@@ -100,19 +98,6 @@ public class BufferReaderThread implements Runnable {
         return (readingFileNameCounter < iterationNumberOfFiles);
     }
 
-    public AbstractPair getNextPair(int k) {
-        try {
-            return queueToReturn.take();
-        } catch (InterruptedException e) {
-            //intentionally nothing. when interrupted, the thread is supposed to shut down.
-        }
-        return null;
-    }
-
-    public int getQueueSize() {
-        return queueToReturn.size();
-    }
-    
     public void deleteOldData(int requestedK) {
         //don't delete files for iteration 0 because there wont be any
         File folderToDelete = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
@@ -126,4 +111,20 @@ public class BufferReaderThread implements Runnable {
         }
 
     }
+
+    //getters
+
+    public int getQueueSize() {
+        return queueToReturn.size();
+    }
+
+    public AbstractPair getNextPair(int k) {
+        try {
+            return queueToReturn.take();
+        } catch (InterruptedException e) {
+            //intentionally nothing. when interrupted, the thread is supposed to shut down.
+        }
+        return null;
+    }
+
 }
