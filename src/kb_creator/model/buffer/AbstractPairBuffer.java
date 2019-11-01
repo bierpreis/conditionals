@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class AbstractPairBuffer {
 
-
+    //variables
     protected int pairReaderCounter;
 
     protected int maxNumberOfPairsInFile;
@@ -25,17 +25,32 @@ public abstract class AbstractPairBuffer {
         this.tmpFilePath = baseFilePath + "/tmp/";
     }
 
+    //methods for iteration changes
+    //todo: wtf 2 almost same sounding methods?!
     abstract public boolean hasMoreElementsForK(int k);
 
-    abstract public AbstractPair getNextPair(int k);
-
     abstract public boolean hasElementsForNextK(int k);
-
 
     public abstract void prepareIteration(int requestedK);
 
     public abstract void finishIteration(int requestedK);
 
+    //todo: remove and put in blocking buffer?
+    protected abstract void deleteOldData(int requestedK);
+
+    public abstract void setFinished();
+
+    public abstract void stopLoop();
+
+
+    //todo: put into blocking buffer
+    public void setDeletingFiles(boolean deleteFiles) {
+        if (!(this instanceof DummyPairBuffer))
+            System.out.println("set deleting buffer files: " + deleteFiles);
+        this.deleteFiles = deleteFiles;
+    }
+
+    //add pair methods
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
@@ -43,23 +58,13 @@ public abstract class AbstractPairBuffer {
 
     public abstract void addPair(AbstractPair pair);
 
-    protected abstract void deleteOldData(int requestedK);
 
+    //getters
     public abstract int getQueueToWriteSize();
 
     public abstract int getReaderBufferSize();
 
-
-    public abstract void setFinished();
-
-    public abstract void stopLoop();
-
-    public void setDeletingFiles(boolean deleteFiles) {
-        if (!(this instanceof DummyPairBuffer))
-            System.out.println("set deleting buffer files: " + deleteFiles);
-        this.deleteFiles = deleteFiles;
-    }
-
+    abstract public AbstractPair getNextPair(int k);
 }
 
 
