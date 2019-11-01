@@ -24,9 +24,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-        synchronized (this) {
             return (nextElementNumber) < (candidatePairList.get(k - 1).size());
-        }
     }
 
     @Override
@@ -78,9 +76,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     //this is used by parallel creator threads so it is synchronized.
     @Override
     public void addPair(AbstractPair pair) {
-        synchronized (this) {
             candidatePairList.get(k).add(pair);
-        }
     }
 
 
@@ -88,10 +84,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public AbstractPair getNextPair(int k) {
-        synchronized (this) {
             nextElementNumber++;
             return candidatePairList.get(k - 1).get(nextElementNumber - 1);
-        }
     }
 
     @Override
