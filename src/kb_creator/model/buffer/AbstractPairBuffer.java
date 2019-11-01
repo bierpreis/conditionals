@@ -39,9 +39,7 @@ public abstract class AbstractPairBuffer {
     public abstract void setFinished();
 
     public abstract void stopLoop();
-
-
-    //todo: put into blocking buffer
+    
     public void setDeletingFiles(boolean deleteFiles) {
         if (!(this instanceof DummyPairBuffer))
             System.out.println("set deleting buffer files: " + deleteFiles);
