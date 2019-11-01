@@ -95,7 +95,6 @@ public class SimpleCreator extends AbstractCreator {
             l.finishIteration(k);
             k = k + 1;
         }
-        l.setFinished();
         creatorStatus = CreatorStatus.FINISHED;
         super.finishAndStopLoop();
     }

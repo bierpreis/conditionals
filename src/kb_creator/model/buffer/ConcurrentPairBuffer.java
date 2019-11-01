@@ -297,11 +297,6 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void setFinished() {
-        //nothing
-    }
-
-    @Override
     public void stopLoop() {
         //nothing
     }

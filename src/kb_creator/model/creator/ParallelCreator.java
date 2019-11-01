@@ -85,8 +85,7 @@ public class ParallelCreator extends AbstractCreator {
             //line 13
             k = k + 1;
         }
-
-        l.setFinished();
+        
         executorService.shutdown();
         creatorStatus = CreatorStatus.FINISHED;
         super.finishAndStopLoop();

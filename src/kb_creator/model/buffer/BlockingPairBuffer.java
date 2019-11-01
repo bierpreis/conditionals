@@ -83,11 +83,6 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void setFinished() {
-        //todo?!
-    }
-
-    @Override
     public void stopLoop() {
         readerThread.interrupt();
 
