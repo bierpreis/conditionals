@@ -8,6 +8,7 @@ import kb_creator.model.propositional_logic.NewConditional;
 import java.util.ArrayList;
 import java.util.List;
 
+//todo: maybe change sync methods because not needed? delete when no threading at all? make two methods one for threading and one for single?
 public class DummyPairBuffer extends AbstractPairBuffer {
     private volatile int nextElementNumber;
     private volatile List<List<AbstractPair>> candidatePairList;
@@ -18,17 +19,9 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList = new ArrayList<>();
     }
 
-    @Override
-    public AbstractPair getNextPair(int k) {
 
-        synchronized (this) {
-            nextElementNumber++;
-            return candidatePairList.get(k - 1).get(nextElementNumber - 1);
-        }
-
-    }
-
-
+    //iteration change methods
+    
     @Override
     public boolean hasMoreElementsForK(int k) {
         synchronized (this) {
@@ -60,10 +53,21 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
-
-
         deleteOldData(requestedK - 1);
     }
+
+    @Override
+    public void setFinished() {
+        //nothing
+    }
+
+    @Override
+    public void stopLoop() {
+        //nothing
+    }
+
+
+    // add pair methods
 
     @Override
     public void addNewList(List<AbstractPair> listToAdd) {
@@ -85,6 +89,16 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     }
 
 
+    //getters
+
+    @Override
+    public AbstractPair getNextPair(int k) {
+        synchronized (this) {
+            nextElementNumber++;
+            return candidatePairList.get(k - 1).get(nextElementNumber - 1);
+        }
+    }
+
     @Override
     public int getQueueToWriteSize() {
         return 0;
@@ -95,16 +109,5 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public int getReaderBufferSize() {
         return 0;
     }
-
-    @Override
-    public void setFinished() {
-        //nothing
-    }
-
-    @Override
-    public void stopLoop() {
-        //nothing
-    }
-
 
 }
