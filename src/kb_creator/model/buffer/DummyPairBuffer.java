@@ -10,9 +10,9 @@ import java.util.List;
 
 //todo: maybe change sync methods because not needed? delete when no threading at all? make two methods one for threading and one for single?
 public class DummyPairBuffer extends AbstractPairBuffer {
-    private volatile int nextElementNumber;
-    private volatile List<List<AbstractPair>> candidatePairList;
-    private volatile int k;
+    private int nextElementNumber;
+    private List<List<AbstractPair>> candidatePairList;
+    private int k;
 
     public DummyPairBuffer() {
         super(null);
