@@ -48,7 +48,7 @@ public class ParallelCreator extends AbstractCreator {
 
 
         //line 6
-        while (l.hasElementsForNextK(k)) {
+        while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
             System.out.println("beginning iteration: " + k);
             System.gc();

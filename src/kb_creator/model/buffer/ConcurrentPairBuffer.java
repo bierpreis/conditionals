@@ -243,7 +243,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasElementsForNextK(int k) {
+    public boolean hasElementsForIteration(int k) {
         return hasNextIteration;
     }
 

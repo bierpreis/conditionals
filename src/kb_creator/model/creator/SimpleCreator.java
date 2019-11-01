@@ -38,7 +38,7 @@ public class SimpleCreator extends AbstractCreator {
 
 
         //line 6
-        while (l.hasElementsForNextK(k)) {
+        while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
             System.gc();
             l.prepareIteration(k);

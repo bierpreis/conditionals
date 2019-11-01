@@ -66,7 +66,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
 
     @Override
-    public boolean hasElementsForNextK(int k) {
+    public boolean hasElementsForIteration(int k) {
         return hasNextIteration;
     }
 
