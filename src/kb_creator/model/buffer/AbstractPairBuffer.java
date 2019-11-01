@@ -35,7 +35,6 @@ public abstract class AbstractPairBuffer {
 
     public abstract void finishIteration(int requestedK);
 
-    //todo: remove and put in blocking buffer?
     protected abstract void deleteOldData(int requestedK);
 
     public abstract void setFinished();

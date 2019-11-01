@@ -41,7 +41,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void deleteOldData(int requestedK) {
+    protected void deleteOldData(int requestedK) {
         if (deleteFiles && requestedK != 0) {
             readerThreadObject.deleteOldData(requestedK);
         }
