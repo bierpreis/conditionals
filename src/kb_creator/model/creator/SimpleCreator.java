@@ -75,7 +75,7 @@ public class SimpleCreator extends AbstractCreator {
 
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
                         for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) //loop takes most of the time (70 percent)
-                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
+                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
