@@ -8,7 +8,6 @@ import kb_creator.model.propositional_logic.NewConditional;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: maybe change sync methods because not needed? delete when no threading at all? make two methods one for threading and one for single?
 public class DummyPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
@@ -66,14 +65,12 @@ public class DummyPairBuffer extends AbstractPairBuffer {
     public void addNewList(List<AbstractPair> listToAdd) {
         candidatePairList.add(listToAdd);
     }
-
-    //this is only used by simple creator. so no synchronized.
+    
     @Override
     public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
         candidatePairList.get(k).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 
-    //this is used by parallel creator threads so it is synchronized.
     @Override
     public void addPair(AbstractPair pair) {
             candidatePairList.get(k).add(pair);
