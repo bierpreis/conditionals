@@ -21,7 +21,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
 
     //iteration change methods
-    
+
     @Override
     public boolean hasMoreElementsForK(int k) {
         synchronized (this) {

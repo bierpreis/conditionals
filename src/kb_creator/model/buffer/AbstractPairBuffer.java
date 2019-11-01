@@ -26,7 +26,6 @@ public abstract class AbstractPairBuffer {
     }
 
     //methods for iteration changes
-    //todo: wtf 2 almost same sounding methods?!
     abstract public boolean hasMoreElementsForK(int k);
 
     abstract public boolean hasElementsForIteration(int k);
