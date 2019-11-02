@@ -21,8 +21,7 @@ public class KBWriterThread implements Runnable {
         this.queue = queue;
         this.rootFilePath = rootFilePath;
     }
-
-    //todo: start and stop iterations here
+    
     @Override
     public void run() {
         System.out.println("New Writer Thread started for " + folderName + " kbs");
