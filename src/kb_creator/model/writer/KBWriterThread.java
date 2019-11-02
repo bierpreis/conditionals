@@ -40,7 +40,7 @@ public class KBWriterThread implements Runnable {
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);
-                System.out.println("sleeping");
+                System.out.println("writer finishing iteration..");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
