@@ -59,8 +59,8 @@ public class KBWriterThread implements Runnable {
             iterationCounter++;
             totalCounter++;
 
-            knowledgeBase.setKbNumber(iterationCounter);
-            File consistentFolder = new File(filePath);
+            knowledgeBase.setKbNumber(iterationCounter); //todo: why is this here?
+            File consistentFolder = new File(filePath); //todo: why is folder made for very file? this sucks
             consistentFolder.mkdirs();
 
             PrintWriter writer;
