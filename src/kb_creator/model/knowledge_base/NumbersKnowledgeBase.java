@@ -63,13 +63,6 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     @Override
-    public void add(AbstractKnowledgeBase knowledgeBaseToAdd) {
-        for (NewConditional conditionalToAdd : knowledgeBaseToAdd.getConditionalList()) {
-            conditionalNumbersList.add(conditionalToAdd.getNumber());
-        }
-    }
-
-    @Override
     public int getSize() {
         return conditionalNumbersList.size();
     }
