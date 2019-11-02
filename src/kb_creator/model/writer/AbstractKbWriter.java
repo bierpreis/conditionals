@@ -5,6 +5,15 @@ public abstract class AbstractKbWriter {
 
     protected volatile WriterStatus status;
 
+    //abstract methods
+
+    public abstract void stopThreads();
+
+    public abstract void finishAndStopThreads();
+
+    public abstract void finishIteration();
+
+    public abstract void newIteration(int k);
 
     //getters for counters
     public abstract int getTotalInconsistentCounter();
@@ -21,18 +30,9 @@ public abstract class AbstractKbWriter {
 
     public abstract int getInconsistentQueue();
 
-
     public WriterStatus getStatus() {
         return status;
     }
-
-    public abstract void stopThreads();
-
-    public abstract void finishAndStopThreads();
-
-    public abstract void finishIteration();
-
-    public abstract void newIteration(int k);
 
 
 }
