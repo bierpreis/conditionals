@@ -130,9 +130,7 @@ public class BufferWriterThread implements Runnable {
         writingFileNameCounter = 0;
     }
 
-    public int getQueueSize() {
-        return cpQueueToWrite.size();
-    }
+
 
     public void finishIteration() {
         flushWritingElements();
@@ -143,9 +141,7 @@ public class BufferWriterThread implements Runnable {
         return (folderToWrite.listFiles().length > 0);
     }
 
-    public int getPairWriterCounter() {
-        return pairWriterCounter;
-    }
+
 
 
     public void addPair(AbstractPair pairToAdd) {
@@ -167,5 +163,15 @@ public class BufferWriterThread implements Runnable {
 
     public void stopLoop() {
         running = false;
+    }
+
+    //getters
+
+    public int getPairWriterCounter() {
+        return pairWriterCounter;
+    }
+
+    public int getQueueSize() {
+        return cpQueueToWrite.size();
     }
 }
