@@ -49,7 +49,7 @@ public class KBWriterThread implements Runnable {
 
     public void newIteration() {
         iterationCounter = 0;
-    }
+    } //todo make new file here
 
     private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
 
