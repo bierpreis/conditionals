@@ -52,7 +52,7 @@ public class KBWriterThread implements Runnable {
 
     public void newIteration(int k) {
         iterationCounter = 0;
-        filePath = rootFilePath + (k) + "/" + folderName + "/"; //todo. rethink if k+1 is correct
+        filePath = rootFilePath + (k) + "/" + folderName + "/";
         File consistentFolder = new File(filePath);
         consistentFolder.mkdirs();
     }
@@ -65,7 +65,7 @@ public class KBWriterThread implements Runnable {
             iterationCounter++;
             totalCounter++;
 
-            knowledgeBase.setKbNumber(iterationCounter); //todo: why is this here?
+            knowledgeBase.setKbNumber(iterationCounter); //todo: this should not be here but it is because fucked multi threading
 
 
             PrintWriter writer;
@@ -89,17 +89,6 @@ public class KBWriterThread implements Runnable {
         }
     }
 
-    public int getIterationCounter() {
-        return iterationCounter;
-    }
-
-    public int getTotalCounter() {
-        return totalCounter;
-    }
-
-    public int getSize() {
-        return queue.size();
-    }
 
     public void finishAndStopLoop() {
         System.out.println("closing " + folderName);
@@ -118,6 +107,19 @@ public class KBWriterThread implements Runnable {
         //this makes sure queue is empty before it stops
 
         running = false;
-        System.out.println("closing " + folderName + "finished");
+    }
+
+    //getters
+
+    public int getIterationCounter() {
+        return iterationCounter;
+    }
+
+    public int getTotalCounter() {
+        return totalCounter;
+    }
+
+    public int getSize() {
+        return queue.size();
     }
 }
