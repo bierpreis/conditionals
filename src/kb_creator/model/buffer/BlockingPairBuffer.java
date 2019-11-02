@@ -3,7 +3,7 @@ package kb_creator.model.buffer;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 
 
 import java.util.*;
@@ -94,7 +94,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
 
     //add pair methods
     @Override
-    public void addPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidatesToAdd) {
+    public void addPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
         writerThreadObject.addPair(new RealListPair(knowledgeBase, candidatesToAdd));
     }
 

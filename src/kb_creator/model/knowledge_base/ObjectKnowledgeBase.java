@@ -1,7 +1,6 @@
 package kb_creator.model.knowledge_base;
 
-import kb_creator.model.propositional_logic.NewConditional;
-import kb_creator.model.propositional_logic.AbstractFormula;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 
@@ -11,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
-    private final List<NewConditional> conditionalList;
+    private final List<PConditional> conditionalList;
 
     //making theese static saves A LOT of memory
     private static final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
@@ -34,14 +33,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     //this is used by parallel creator
-    public ObjectKnowledgeBase(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+    public ObjectKnowledgeBase(AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.conditionalList.addAll(knowledgeBase.getConditionalList());
         this.conditionalList.add(conditionalToAdd);
     }
 
     //this constructor is used for all the other iterations
-    public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+    public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.kbNumber = kbNumber;
 
@@ -81,11 +80,11 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //todo: rethink. make it faster?
     //this is about 20% faster than old consistent method.
     //it is faster at higher kb size and same speed at kb size 1
-    public boolean newIsConsistent(NewConditional conditionalToTest) {
+    public boolean newIsConsistent(PConditional conditionalToTest) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
                 boolean toleratesAll = true;
-                for (NewConditional conditional : conditionalList) {
+                for (PConditional conditional : conditionalList) {
                     if (!conditional.tolerates(world))
                         toleratesAll = false;
                 }
@@ -96,7 +95,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return false;
     }
 
-    public boolean isConsistentWith(NewConditional conditionalToTest) {
+    public boolean isConsistentWith(PConditional conditionalToTest) {
 
         return newIsConsistent(conditionalToTest);
 
@@ -146,7 +145,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
     @Override
-    public void add(NewConditional conditionalToAdd) {
+    public void add(PConditional conditionalToAdd) {
         conditionalList.add(conditionalToAdd);
     }
 
@@ -163,7 +162,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
 
-    public List<NewConditional> getConditionalList() {
+    public List<PConditional> getConditionalList() {
         return conditionalList;
     }
 

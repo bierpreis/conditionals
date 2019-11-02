@@ -1,7 +1,7 @@
 package nfc.view.textArea;
 
 import kb_creator.model.propositional_logic.AbstractFormula;
-import nfc.model.Conditional;
+import nfc.model.WConditional;
 import nfc.model.ConditionalList;
 import nfc.model.World;
 
@@ -50,12 +50,12 @@ public class CondTextField extends JTextArea {
         description = "number of worlds and formulas: " + translationMap.size();
     }
 
-    public void printConditionals(List<Conditional> conditionalList) {
+    public void printConditionals(List<WConditional> conditionalList) {
 
         setText("");
         String conditionalString;
         int conditionalCounter = 0;
-        for (Conditional conditional : conditionalList) {
+        for (WConditional conditional : conditionalList) {
 
             conditionalString = conditional.toString() + "\n";
 
@@ -79,7 +79,7 @@ public class CondTextField extends JTextArea {
 
         for (ConditionalList currentEqList : eqClassList) {
             StringBuilder sb = new StringBuilder();
-            for (Conditional currentConditional : currentEqList.getList()) {
+            for (WConditional currentConditional : currentEqList.getList()) {
                 if (isNumberingActive)
                     sb.append(currentConditional.getNumber() + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length()));
                 else
@@ -94,7 +94,7 @@ public class CondTextField extends JTextArea {
     }
 
     private String createWhiteSpaceString(int conditionalLength) {
-        int numberOfWhiteSpaces = Conditional.getLongestConditional() - conditionalLength;
+        int numberOfWhiteSpaces = WConditional.getLongestConditional() - conditionalLength;
         String whiteSpaceString = "";
         for (int i = 0; i < numberOfWhiteSpaces; i++) {
             whiteSpaceString = whiteSpaceString + " ";
@@ -112,10 +112,10 @@ public class CondTextField extends JTextArea {
         return lineNumber + "   ";
     }
 
-    public void printConditionalsWithCounters(List<Conditional> conditionals) {
+    public void printConditionalsWithCounters(List<WConditional> conditionals) {
         setText("");
         {
-            for (Conditional conditional : conditionals) {
+            for (WConditional conditional : conditionals) {
                 if (isNumberingActive)
                     append(conditional.getNumber() + ": " + conditional.toString() + "  counter: " + conditional.getActualCounterConditional().getNumber() + ": " + conditional.getActualCounterConditional().toString() + "\n");
                 else

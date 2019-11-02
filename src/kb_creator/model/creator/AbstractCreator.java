@@ -6,7 +6,7 @@ import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.AbstractFormula;
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
 import kb_creator.model.writer.KbDummyWriter;
@@ -33,9 +33,9 @@ public abstract class AbstractCreator implements Runnable {
 
     protected long startTime;
 
-    protected Collection<NewConditional> nfc;
+    protected Collection<PConditional> nfc;
 
-    protected Collection<NewConditional> cnfc;
+    protected Collection<PConditional> cnfc;
 
     protected AbstractPairBuffer l;
 
@@ -80,22 +80,22 @@ public abstract class AbstractCreator implements Runnable {
         startTime = System.currentTimeMillis();
     }
 
-    protected List<AbstractPair> initOneElementKBs(Collection<NewConditional> nfc, Collection<NewConditional> cnfc) {
+    protected List<AbstractPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
 
         //line 3
-        for (NewConditional r : cnfc) {
+        for (PConditional r : cnfc) {
 
             //line 4 and 5
             AbstractKnowledgeBase rKB = new ObjectKnowledgeBase();
             rKB.add(r); // rKB is r as 1 element kb
 
             //create candidates
-            List<NewConditional> candidatesList = new ArrayList<>();
+            List<PConditional> candidatesList = new ArrayList<>();
 
-            for (NewConditional conditional : nfc) {
+            for (PConditional conditional : nfc) {
                 if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
                     if (!(conditional.equals(r)))
                         if (!(conditional.equals(r.getCounterConditional())))

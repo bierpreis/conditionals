@@ -5,19 +5,19 @@ import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewConditional {
+public class PConditional {
     private final int number;
     private final AbstractFormula antecedent;
     private final AbstractFormula consequence;
     private final AbstractFormula toleranceFormula;
 
 
-    private NewConditional counterConditional;
+    private PConditional counterConditional;
     //empty list as default for all conditionals who will not have any equivalent conditionals
-    private List<NewConditional> eqConditionalsList = new ArrayList<>(0);
+    private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
 
-    public NewConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
+    public PConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
         this.consequence = consequence;
         this.antecedent = antecedent;
         this.number = number;
@@ -35,9 +35,9 @@ public class NewConditional {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof NewConditional))
+        if (!(o instanceof PConditional))
             return false;
-        NewConditional otherConditional = (NewConditional) o;
+        PConditional otherConditional = (PConditional) o;
 
         //uncomment for testing purposes
         //if (this.number == 0 || otherConditional.getNumber() == 0)
@@ -49,7 +49,7 @@ public class NewConditional {
 
     }
 
-    public NewConditional getCounterConditional() {
+    public PConditional getCounterConditional() {
         return counterConditional;
     }
 
@@ -62,17 +62,17 @@ public class NewConditional {
     }
 
 
-    public void setCounterConditional(NewConditional counterConditional) {
+    public void setCounterConditional(PConditional counterConditional) {
         this.counterConditional = counterConditional;
     }
 
-    public void setEqList(List<NewConditional> eqConditionalsList) {
+    public void setEqList(List<PConditional> eqConditionalsList) {
         if (this.eqConditionalsList.size() != 0)
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
     }
 
-    public List<NewConditional> getEqConditionalsList() {
+    public List<PConditional> getEqConditionalsList() {
         return eqConditionalsList;
     }
 

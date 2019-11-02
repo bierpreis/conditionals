@@ -1,6 +1,6 @@
 package kb_creator.model.knowledge_base;
 
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.Map;
 //but the actual implementation seems not to be important
 public abstract class AbstractKnowledgeBase {
 
-    protected static Map<Integer, NewConditional> nfcMap;
+    protected static Map<Integer, PConditional> nfcMap;
     protected static AbstractSignature signature;
     protected int kbNumber;
 
@@ -18,13 +18,13 @@ public abstract class AbstractKnowledgeBase {
 
     public abstract String toShortFileString();
 
-    public abstract void add(NewConditional conditional);
+    public abstract void add(PConditional conditional);
 
-    public abstract boolean isConsistentWith(NewConditional conditional);
+    public abstract boolean isConsistentWith(PConditional conditional);
 
     //setters
 
-    public static void setNfcMap(Map<Integer, NewConditional> nfcMapToAdd) {
+    public static void setNfcMap(Map<Integer, PConditional> nfcMapToAdd) {
         nfcMap = nfcMapToAdd;
     }
 
@@ -51,7 +51,7 @@ public abstract class AbstractKnowledgeBase {
         return kbNumber;
     }
 
-    public abstract List<NewConditional> getConditionalList();
+    public abstract List<PConditional> getConditionalList();
 
     public abstract int getSize();
 }

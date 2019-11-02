@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ConditionalList implements Comparable {
-    private final List<Conditional> conditionalList;
+    private final List<WConditional> conditionalList;
     private int nextConditionalNumber;
 
 
@@ -13,7 +13,7 @@ public class ConditionalList implements Comparable {
         conditionalList = new ArrayList<>();
     }
 
-    public void add(Conditional newConditional) {
+    public void add(WConditional newConditional) {
         conditionalList.add(newConditional);
         Collections.sort(conditionalList);
 
@@ -27,22 +27,22 @@ public class ConditionalList implements Comparable {
             throw new RuntimeException("Cant compare " + o.getClass() + " to ConditionalList");
         else {
             ConditionalList otherConditionalList = ((ConditionalList) o);
-            Conditional firstConditional = conditionalList.get(0);
-            Conditional otherFirstConditional = otherConditionalList.get(0);
+            WConditional firstConditional = conditionalList.get(0);
+            WConditional otherFirstConditional = otherConditionalList.get(0);
 
             return firstConditional.compareTo(otherFirstConditional);
 
         }
     }
 
-    public Conditional get(int i) {
+    public WConditional get(int i) {
         return conditionalList.get(i);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Conditional conditional : conditionalList)
+        for (WConditional conditional : conditionalList)
             sb.append(conditional.toString());
         return sb.toString();
 
@@ -64,7 +64,7 @@ public class ConditionalList implements Comparable {
         return nextConditionalNumber;
     }
 
-    public List<Conditional> getList() {
+    public List<WConditional> getList() {
         return conditionalList;
     }
 }

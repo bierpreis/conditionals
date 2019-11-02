@@ -1,7 +1,7 @@
 package nfc.view.textArea;
 
 import kb_creator.model.propositional_logic.AbstractFormula;
-import nfc.model.Conditional;
+import nfc.model.WConditional;
 import nfc.model.ConditionalList;
 import nfc.model.World;
 
@@ -35,7 +35,7 @@ public class CondPanel extends JPanel {
     }
 
 
-    public void printConditionals(List<Conditional> conditionalList) {
+    public void printConditionals(List<WConditional> conditionalList) {
         condTextField.setText("");
 
 
@@ -76,7 +76,7 @@ public class CondPanel extends JPanel {
         return condTextField.getContentAsString();
     }
 
-    public void printConditionalsWithCounters(List<Conditional> conditionals) {
+    public void printConditionalsWithCounters(List<WConditional> conditionals) {
         condTextField.setText("");
         condTextField.printConditionalsWithCounters(conditionals);
         infoPanel.printInfo(condTextField.getDescription());

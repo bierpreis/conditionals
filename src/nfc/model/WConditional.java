@@ -3,11 +3,11 @@ package nfc.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Conditional implements Comparable {
+public class WConditional implements Comparable {
     private final World consequence;
     private final World antecedent;
 
-    private Conditional counterConditional;
+    private WConditional counterConditional;
 
     //this is needed for proper columns in conditional field
     private static int longestConditional = 0;
@@ -18,7 +18,7 @@ public class Conditional implements Comparable {
     private int number;
     private static String spaceFillCharacter = " ";
 
-    public Conditional(World consequence, World antecedent) {
+    public WConditional(World consequence, World antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
@@ -26,7 +26,7 @@ public class Conditional implements Comparable {
         eqConditionalNumbers = new ArrayList<>();
     }
 
-    public boolean isEquivalent(Conditional otherConditional) {
+    public boolean isEquivalent(WConditional otherConditional) {
         return consequence.isEquivalent(otherConditional.consequence) && antecedent.isEquivalent(otherConditional.antecedent);
 
     }
@@ -34,11 +34,11 @@ public class Conditional implements Comparable {
     //this is ordering according to definition 3
     @Override
     public int compareTo(Object o) {
-        if (!(o instanceof Conditional))
+        if (!(o instanceof WConditional))
             throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
 
 
-        Conditional otherConditional = (Conditional) o;
+        WConditional otherConditional = (WConditional) o;
 
         if (this.antecedent.compareTo(otherConditional.getAntecedent()) != 0)
             return this.antecedent.compareTo(otherConditional.getAntecedent());
@@ -76,10 +76,10 @@ public class Conditional implements Comparable {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Conditional))
+        if (!(o instanceof WConditional))
             return false;
         else {
-            Conditional otherConditional = (Conditional) o;
+            WConditional otherConditional = (WConditional) o;
             boolean leftEquals = otherConditional.getConsequence().equals(consequence);
             boolean rightEquals = otherConditional.getAntecedent().equals(antecedent);
 
@@ -106,23 +106,23 @@ public class Conditional implements Comparable {
         return longestConditional;
     }
 
-    public Conditional createCopy() {
-        return new Conditional(this.consequence, this.antecedent);
+    public WConditional createCopy() {
+        return new WConditional(this.consequence, this.antecedent);
     }
 
     //this returns a new counter conditional
     //which is used to find the actual counter conditional
-    public Conditional getBasicCounterConditional() {
+    public WConditional getBasicCounterConditional() {
 
         World newConsequence = new World();
         newConsequence.addList(antecedent.getWorldsList());
         newConsequence.removeWorld(consequence);
-        return new Conditional(newConsequence, antecedent);
+        return new WConditional(newConsequence, antecedent);
 
     }
 
     //this sets the counter conditional as the real object
-    public void setActualCounterConditional(Conditional counterConditional) {
+    public void setActualCounterConditional(WConditional counterConditional) {
         if (counterConditional == null)
             throw new RuntimeException("Null is no valid counter conditional!");
         this.counterConditional = counterConditional;
@@ -132,7 +132,7 @@ public class Conditional implements Comparable {
         //System.out.println("counter: " + this.counterConditional.getNumber() + this.counterConditional);
     }
 
-    public Conditional getActualCounterConditional() {
+    public WConditional getActualCounterConditional() {
         if (counterConditional == null)
             throw new RuntimeException("No Counter Conditional found");
         return counterConditional;

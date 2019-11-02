@@ -1,6 +1,6 @@
 package kb_creator.model.knowledge_base;
 
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.Tautology;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
@@ -20,11 +20,11 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     @Override
-    public boolean isConsistentWith(NewConditional conditionalToTest) {
+    public boolean isConsistentWith(PConditional conditionalToTest) {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        List<NewConditional> conditionalList = new ArrayList<>();
+        List<PConditional> conditionalList = new ArrayList<>();
         for (Integer conditionalNumber : conditionalNumbersList) {
             conditionalList.add(nfcMap.get(conditionalNumber));
         }
@@ -32,7 +32,7 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
 
         AbstractFormula concistecyOfKB = new Tautology();
 
-        for (NewConditional conditionalFromList : conditionalList) {
+        for (PConditional conditionalFromList : conditionalList) {
             concistecyOfKB = concistecyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
 
@@ -68,7 +68,7 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     @Override
-    public void add(NewConditional conditionalToAdd) {
+    public void add(PConditional conditionalToAdd) {
         conditionalNumbersList.add(conditionalToAdd.getNumber());
     }
 
@@ -83,7 +83,7 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
         sb.append(this.kbNumber);
         sb.append("{\n");
 
-        List<NewConditional> conditionalList = getConditionalList();
+        List<PConditional> conditionalList = getConditionalList();
         for (int i = 0; i < conditionalList.size(); i++) {
             sb.append(conditionalList.get(i));
             if (i != conditionalList.size() - 1)
@@ -101,8 +101,8 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     @Override
-    public List<NewConditional> getConditionalList() {
-        List<NewConditional> conditionalList = new ArrayList<>();
+    public List<PConditional> getConditionalList() {
+        List<PConditional> conditionalList = new ArrayList<>();
         for (Integer conditionalNumber : conditionalNumbersList) {
             conditionalList.add(nfcMap.get(conditionalNumber));
         }

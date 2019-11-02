@@ -4,7 +4,7 @@ import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class CandidateThread implements Runnable {
 
 
             //line 9
-            for (NewConditional r : candidatePair.getCandidatesList()) {
+            for (PConditional r : candidatePair.getCandidatesList()) {
 
 
                 //line 10
@@ -55,8 +55,8 @@ public class CandidateThread implements Runnable {
                     } catch (InterruptedException e) {
                         return;
                     }
-                    List<NewConditional> candidatesToAdd = new ArrayList<>();
-                    for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {//loop takes most of the time
+                    List<PConditional> candidatesToAdd = new ArrayList<>();
+                    for (PConditional conditionalFromCandidates : candidatePair.getCandidatesList()) {//loop takes most of the time
                         if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional()))
                             candidatesToAdd.add(conditionalFromCandidates);
                     }

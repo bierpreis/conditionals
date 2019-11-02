@@ -1,6 +1,6 @@
 package kb_creator.model.pairs;
 
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 
@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class RealListPair extends AbstractPair {
-    private List<NewConditional> candidatesList;
+    private List<PConditional> candidatesList;
 
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
     private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("c\n");
 
-    public RealListPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+    public RealListPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
         this.candidatesList = candidates;
@@ -39,9 +39,9 @@ public class RealListPair extends AbstractPair {
     }
 
     //this method takes 0-1 ms so pre compiling regexes may be useless
-    private List<NewConditional> createCandidatesListFromString(String stringFromFile) {
+    private List<PConditional> createCandidatesListFromString(String stringFromFile) {
 
-        List<NewConditional> listToReturn = new ArrayList<>();
+        List<PConditional> listToReturn = new ArrayList<>();
 
         String[] stringArray = COMMA_PATTERN.split(stringFromFile);
 
@@ -74,7 +74,7 @@ public class RealListPair extends AbstractPair {
     }
 
     @Override
-    public List<NewConditional> getCandidatesList() {
+    public List<PConditional> getCandidatesList() {
         return candidatesList;
     }
 
@@ -113,7 +113,7 @@ public class RealListPair extends AbstractPair {
             candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber()));
 
             //loop all the other candidates
-            for (NewConditional currentCandidate : candidatesList) {
+            for (PConditional currentCandidate : candidatesList) {
 
                 //increment lastConditionalNumber is candidate is 1 above the last
                 if (currentCandidate.getNumber() == lastConditionalNumber + 1)

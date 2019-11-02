@@ -1,7 +1,7 @@
 package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 
@@ -58,7 +58,7 @@ public class SimpleCreator extends AbstractCreator {
 
 
                 //line 9
-                for (NewConditional r : currentPair.getCandidatesList()) {
+                for (PConditional r : currentPair.getCandidatesList()) {
 
 
                     //line 10
@@ -73,8 +73,8 @@ public class SimpleCreator extends AbstractCreator {
                             e.printStackTrace();
                         }
 
-                        List<NewConditional> candidatesToAdd = new ArrayList<>();
-                        for (NewConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
+                        List<PConditional> candidatesToAdd = new ArrayList<>();
+                        for (PConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
                                 candidatesToAdd.add(conditionalFromCandidates);
 
@@ -99,7 +99,7 @@ public class SimpleCreator extends AbstractCreator {
         super.finishAndStopLoop();
     }
 
-    private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, NewConditional conditionalToAdd) {
+    private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         try {
             inconsistentWriterQueue.put(new ObjectKnowledgeBase(knowledgeBase, conditionalToAdd));
         } catch (InterruptedException e) {

@@ -15,7 +15,7 @@ public class ConditionalTranslator {
     }
 
 
-    public NewConditional transLate(Conditional oldConditional) {
+    public PConditional transLate(WConditional oldConditional) {
         AbstractFormula newAntecedent = worldToFormula(oldConditional.getAntecedent());
         AbstractFormula newConsequence = worldToFormula(oldConditional.getConsequence());
 
@@ -25,7 +25,7 @@ public class ConditionalTranslator {
         if (!newConsequence.equals(oldWorldToFormula(oldConditional.getConsequence())))
             throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + oldWorldToFormula(oldConditional.getConsequence()) + " (line" + oldConditional.getConsequence().getNumber() + ")");
 
-        return new NewConditional(newConsequence, newAntecedent, oldConditional.getNumber());
+        return new PConditional(newConsequence, newAntecedent, oldConditional.getNumber());
     }
 
 

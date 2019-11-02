@@ -7,7 +7,7 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.worlds.ABCWorld;
 import kb_creator.model.propositional_logic.worlds.ABWorld;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
-import nfc.model.Conditional;
+import nfc.model.WConditional;
 import nfc.model.World;
 
 public class Test {
@@ -55,8 +55,8 @@ public class Test {
         World consequence = new World();
         consequence.addInt(2);
 
-        Conditional conditional = new Conditional(consequence, antecedent);
-        Conditional otherConditional = new Conditional(consequence, otherAntecend);
+        WConditional conditional = new WConditional(consequence, antecedent);
+        WConditional otherConditional = new WConditional(consequence, otherAntecend);
 
 
 /*        NewConditional newConditional = new NewConditional(conditional);

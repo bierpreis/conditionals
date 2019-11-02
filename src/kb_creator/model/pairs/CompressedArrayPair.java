@@ -1,7 +1,7 @@
 package kb_creator.model.pairs;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.propositional_logic.NewConditional;
+import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class CompressedArrayPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
-    public CompressedArrayPair(AbstractKnowledgeBase knowledgeBase, List<NewConditional> candidates) {
+    public CompressedArrayPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
 
@@ -19,7 +19,7 @@ public class CompressedArrayPair extends AbstractPair {
 
         List<List<Integer>> temporaryList = new ArrayList<>();
 
-        for (NewConditional currentCandidate : candidates) {
+        for (PConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
 
                 //this should not be executed in the firstNumber iteration
@@ -92,8 +92,8 @@ public class CompressedArrayPair extends AbstractPair {
     }
 
     @Override
-    public List<NewConditional> getCandidatesList() {
-        List<NewConditional> candidatesList = new ArrayList<>();
+    public List<PConditional> getCandidatesList() {
+        List<PConditional> candidatesList = new ArrayList<>();
         for (int[] candidateBounds : compressedCandidatesArray) {
             //if it is 0, all candidates are found
             if (candidateBounds[0] == 0) {
@@ -110,7 +110,7 @@ public class CompressedArrayPair extends AbstractPair {
 
     @Override
     public String toString() {
-        List<NewConditional> candidatesList = getCandidatesList();
+        List<PConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
         sb.append("<(");
         sb.append(knowledgeBase.toShortFileString());
