@@ -36,28 +36,6 @@ public class KbDummyWriter extends AbstractKbWriter {
 
 
     @Override
-    public int getTotalInconsistentCounter() {
-        return inconsistentThreadObject.getTotalCounter();
-    }
-
-    @Override
-    public int getTotalConsistentCounter() {
-        return consistentThreadObject.getTotalCounter();
-    }
-
-
-    @Override
-    public int getConsistentQueue() {
-        return 0;
-    }
-
-    @Override
-    public int getInconsistentQueue() {
-        return 0;
-    }
-
-
-    @Override
     public void stopThreads() {
         consistentThreadObject.stopLoop();
         inconsistentThreadObject.stopLoop();
@@ -79,6 +57,14 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
+    public void newIteration(int k) {
+        inconsistentThreadObject.newIteration();
+        consistentThreadObject.newIteration();
+    }
+
+    //getter
+
+    @Override
     public int getIterationConsistentCounter() {
         return consistentThreadObject.getIterationCounter();
     }
@@ -89,9 +75,25 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
-    public void newIteration(int k) {
-        inconsistentThreadObject.newIteration();
-        consistentThreadObject.newIteration();
+    public int getTotalInconsistentCounter() {
+        return inconsistentThreadObject.getTotalCounter();
     }
+
+    @Override
+    public int getTotalConsistentCounter() {
+        return consistentThreadObject.getTotalCounter();
+    }
+
+
+    @Override
+    public int getConsistentQueue() {
+        return 0;
+    }
+
+    @Override
+    public int getInconsistentQueue() {
+        return 0;
+    }
+
 
 }
