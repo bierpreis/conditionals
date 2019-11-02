@@ -49,7 +49,6 @@ public class BufferCheckboxPanel extends JPanel {
         public void stateChanged(ChangeEvent changeEvent) {
             if (!saveCheckBox.isSelected()) {
                 mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
-                mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
