@@ -6,7 +6,6 @@ import java.util.concurrent.BlockingQueue;
 
 public class KbFileWriter extends AbstractKbWriter {
 
-
     private KBWriterThread consistentWriter;
     private KBWriterThread inconsistentWriter;
 
@@ -28,28 +27,7 @@ public class KbFileWriter extends AbstractKbWriter {
 
         status = WriterStatus.RUNNING;
     }
-
-
-    @Override
-    public int getConsistentQueue() {
-        return consistentWriter.getSize();
-
-    }
-
-    @Override
-    public int getInconsistentQueue() {
-        return inconsistentWriter.getSize();
-    }
-
-    @Override
-    public int getTotalConsistentCounter() {
-        return consistentWriter.getTotalCounter();
-    }
-
-    @Override
-    public int getTotalInconsistentCounter() {
-        return inconsistentWriter.getTotalCounter();
-    }
+    
 
     public void stopThreads() {
 
@@ -74,16 +52,6 @@ public class KbFileWriter extends AbstractKbWriter {
     }
 
 
-    @Override
-    public int getIterationConsistentCounter() {
-        return consistentWriter.getIterationCounter();
-    }
-
-    @Override
-    public int getIterationInconsistentCounter() {
-        return inconsistentWriter.getIterationCounter();
-    }
-
 
     @Override
     public void finishIteration() {
@@ -97,5 +65,38 @@ public class KbFileWriter extends AbstractKbWriter {
         inconsistentWriter.newIteration(k);
     }
 
+
+    //getters
+
+    @Override
+    public int getIterationConsistentCounter() {
+        return consistentWriter.getIterationCounter();
+    }
+
+    @Override
+    public int getIterationInconsistentCounter() {
+        return inconsistentWriter.getIterationCounter();
+    }
+
+    @Override
+    public int getConsistentQueue() {
+        return consistentWriter.getSize();
+
+    }
+
+    @Override
+    public int getInconsistentQueue() {
+        return inconsistentWriter.getSize();
+    }
+
+    @Override
+    public int getTotalConsistentCounter() {
+        return consistentWriter.getTotalCounter();
+    }
+
+    @Override
+    public int getTotalInconsistentCounter() {
+        return inconsistentWriter.getTotalCounter();
+    }
 }
 
