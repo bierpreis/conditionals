@@ -79,7 +79,7 @@ public class MainBufferPanel extends JPanel {
         return bufferSizePanel.isValueValid() && fileNameLengthPanel.isValueValid();
     }
 
-    public void init(){ //todo: rename
+    public void init(){
         deleteTempFilesCheckbox.setSelected(true);
         bufferCheckboxPanel.setBoxSelected(false);
         bufferCheckboxPanel.setBoxEnabled(false);
