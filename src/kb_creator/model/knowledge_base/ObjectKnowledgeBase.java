@@ -151,20 +151,10 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
     @Override
-    public int getSize() {
-        return conditionalList.size();
-    }
-
-
-    @Override
     public String toString() {
         return conditionalList.toString();
     }
-
-
-    public List<PConditional> getConditionalList() {
-        return conditionalList;
-    }
+    
 
     //this creates infOcf file strings
     @Override
@@ -204,5 +194,15 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return sb.toString();
     }
 
+    //getters
+
+    public List<PConditional> getConditionalList() {
+        return conditionalList;
+    }
+
+    @Override
+    public int getSize() {
+        return conditionalList.size();
+    }
 
 }
