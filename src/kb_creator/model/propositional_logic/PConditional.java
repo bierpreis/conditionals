@@ -13,7 +13,7 @@ public class PConditional {
 
 
     private PConditional counterConditional;
-    
+
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 

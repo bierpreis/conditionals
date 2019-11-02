@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class AB extends AbstractSignature {
 
-
+    //todo: this is opposite order of abc world. fix.
     public AB() {
         possibleWorlds = new ArrayList<>(4);
         possibleWorlds.add(new ABWorld(true, true));

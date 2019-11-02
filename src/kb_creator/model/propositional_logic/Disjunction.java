@@ -34,6 +34,7 @@ public class Disjunction extends AbstractFormula {
         return new Negation(this);
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < formulaList.size(); i++) {

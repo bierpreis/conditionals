@@ -9,8 +9,6 @@ public class Conjunction extends AbstractFormula {
     private List<AbstractFormula> formulaList;
 
     public Conjunction(AbstractFormula... formulasToAdd) {
-
-
         formulaList = new ArrayList<>(formulasToAdd.length);
         formulaList.addAll(Arrays.asList(formulasToAdd));
     }
