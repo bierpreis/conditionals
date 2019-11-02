@@ -2,10 +2,7 @@ package kb_creator.model.writer;
 
 import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.concurrent.BlockingQueue;
 
 public class KBWriterThread implements Runnable {
@@ -31,7 +28,7 @@ public class KBWriterThread implements Runnable {
         System.out.println("New Writer Thread started for " + folderName + " kbs");
         while (running) {
             try {
-                writeConsistentKbToFile(queue.take());
+                writeKbToFile(queue.take());
             } catch (InterruptedException e) {
                 //intentionally nothing
             }
@@ -57,36 +54,29 @@ public class KBWriterThread implements Runnable {
         consistentFolder.mkdirs();
     }
 
-    //todo: name is wrong? it is used for consistent and inconsistent. anything to change for inconsistent?
-    private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
 
+    private void writeKbToFile(AbstractKnowledgeBase knowledgeBase) {
 
+        iterationCounter++;
+        totalCounter++;
+
+        knowledgeBase.setKbNumber(iterationCounter); //todo: this should not be here but it is because fucked multi threading
+
+        PrintWriter writer;
+
+        //this will trigger when hdd space is full or there are too much files
         try {
-            iterationCounter++;
-            totalCounter++;
-
-            knowledgeBase.setKbNumber(iterationCounter); //todo: this should not be here but it is because fucked multi threading
-
-
-            PrintWriter writer;
-
-            //this will trigger when hdd space is full or there are too much files
-            try {
-                writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                System.exit(0);
-                return; //just to hide compiler warning
-            }
-            writer.print(knowledgeBase.toFileString());
-
-            writer.close();
-
-
-        } catch (IOException e) {
+            writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-
+            System.exit(0);
+            return; //just to hide compiler warning
+        } catch (UnsupportedEncodingException ue) {
+            ue.printStackTrace();
+            return;
         }
+        writer.print(knowledgeBase.toFileString());
+        writer.close();
     }
 
 
