@@ -260,22 +260,22 @@ public class NfcCreator {
     }
 
 
-    private List<PConditional> translateConditionals(List<WConditional> oldConditionals) {
+    private List<PConditional> translateConditionals(List<WConditional> wConditionalList) {
         System.out.println("translating conditionals");
-        List<PConditional> pConditionals = new ArrayList<>(oldConditionals.size());
+        List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
 
-        for (WConditional oldConditional : oldConditionals) {
+        for (WConditional oldConditional : wConditionalList) {
             PConditional pConditional = conditionalTranslator.transLate(oldConditional);
 
             pConditional.setCounterConditional(conditionalTranslator.transLate(oldConditional.getActualCounterConditional()));
-            pConditionals.add(pConditional);
+            pConditionalList.add(pConditional);
 
         }
         System.out.println("setting basic counter conditionals");
         //this takes the basic counter conditional and replaces it with the actual counter conditional reference
         //this saves some memory space, but not very much.
-        for (PConditional conditional : pConditionals) {
-            for (PConditional possibleCounterConditional : pConditionals) {
+        for (PConditional conditional : pConditionalList) {
+            for (PConditional possibleCounterConditional : pConditionalList) {
                 if (conditional.getCounterConditional().equals(possibleCounterConditional))
                     conditional.setCounterConditional(possibleCounterConditional);
             }
@@ -287,7 +287,7 @@ public class NfcCreator {
         //4 elements are double fucked!
 
 
-        return pConditionals;
+        return pConditionalList;
     }
 
     public List<PConditional> getNewNfc() {
