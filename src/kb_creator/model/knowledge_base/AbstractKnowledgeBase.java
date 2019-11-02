@@ -20,7 +20,7 @@ public abstract class AbstractKnowledgeBase {
 
     public abstract void add(NewConditional conditional);
 
-    public abstract boolean isConsistent(NewConditional conditional);
+    public abstract boolean isConsistentWith(NewConditional conditional);
 
     //setters
 

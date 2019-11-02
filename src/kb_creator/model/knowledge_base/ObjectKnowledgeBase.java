@@ -96,7 +96,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return false;
     }
 
-    public boolean isConsistent(NewConditional conditionalToTest) {
+    public boolean isConsistentWith(NewConditional conditionalToTest) {
 
         return newIsConsistent(conditionalToTest);
 

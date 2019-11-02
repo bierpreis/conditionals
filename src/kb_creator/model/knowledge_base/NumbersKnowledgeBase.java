@@ -20,7 +20,7 @@ public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     @Override
-    public boolean isConsistent(NewConditional conditionalToTest) {
+    public boolean isConsistentWith(NewConditional conditionalToTest) {
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //siehe auch infofc s 4 dazu. auch s 9 dort.
 

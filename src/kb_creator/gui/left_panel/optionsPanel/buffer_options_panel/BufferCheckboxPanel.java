@@ -31,14 +31,13 @@ public class BufferCheckboxPanel extends JPanel {
     }
 
     public void setBoxSelected(boolean selected) {
-
-
         saveCheckBox.setSelected(selected);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
+        saveCheckBox.setEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);
     }
@@ -57,8 +56,11 @@ public class BufferCheckboxPanel extends JPanel {
             }
 
             //checkbox should disable itself if deselected
-            if (saveCheckBox.isSelected())
+            if (saveCheckBox.isSelected()) {
+                //todo: this causes the active box problem i guess
                 mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(true);
+
+            }
         }
     }
 

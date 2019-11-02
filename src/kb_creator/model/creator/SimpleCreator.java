@@ -53,20 +53,20 @@ public class SimpleCreator extends AbstractCreator {
 
             //line 8
             while (l.hasMoreElementsForK(k)) {
-                AbstractPair candidatePair = l.getNextPair(k);
+                AbstractPair currentPair = l.getNextPair(k);
                 iterationPairCounter++;
 
 
                 //line 9
-                for (NewConditional r : candidatePair.getCandidatesList()) {
+                for (NewConditional r : currentPair.getCandidatesList()) {
 
 
                     //line 10
-                    if (candidatePair.getKnowledgeBase().isConsistent(r)) { //takes almost no time
+                    if (currentPair.getKnowledgeBase().isConsistentWith(r)) { //takes almost no time
 
 
                         //next part is line 11 and 12
-                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(candidatePair.getKnowledgeBase(), r); //takes little time
+                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(currentPair.getKnowledgeBase(), r); //takes little time
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
@@ -74,7 +74,7 @@ public class SimpleCreator extends AbstractCreator {
                         }
 
                         List<NewConditional> candidatesToAdd = new ArrayList<>();
-                        for (NewConditional conditionalFromCandidates : candidatePair.getCandidatesList()) //loop takes most of the time (70 percent)
+                        for (NewConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
                                 candidatesToAdd.add(conditionalFromCandidates);
 
@@ -82,11 +82,11 @@ public class SimpleCreator extends AbstractCreator {
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time
 
 
-                    } else addInconsistentKb(candidatePair.getKnowledgeBase(), r); //takes almost no time
+                    } else addInconsistentKb(currentPair.getKnowledgeBase(), r); //takes almost no time
                 }
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
-                candidatePair.clear(); //saves a lot of memory and takes almost no time
+                currentPair.clear(); //saves a lot of memory and takes almost no time
 
             }
             System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");

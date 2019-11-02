@@ -45,7 +45,7 @@ public class CandidateThread implements Runnable {
 
 
                 //line 10
-                if (candidatePair.getKnowledgeBase().isConsistent(r)) {// takes almost no time
+                if (candidatePair.getKnowledgeBase().isConsistentWith(r)) {// takes almost no time
 
 
                     //line 11 and 12
