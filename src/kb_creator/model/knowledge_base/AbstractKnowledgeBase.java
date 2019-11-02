@@ -10,7 +10,6 @@ import java.util.Map;
 //but the actual implementation seems not to be important
 public abstract class AbstractKnowledgeBase {
 
-    //todo: sort stuff
     protected static Map<Integer, NewConditional> nfcMap;
     protected static AbstractSignature signature;
     protected int kbNumber;
@@ -21,22 +20,12 @@ public abstract class AbstractKnowledgeBase {
 
     public abstract void add(NewConditional conditional);
 
-    public abstract int getSize();
-
-    public abstract List<NewConditional> getConditionalList();
-
     public abstract boolean isConsistent(NewConditional conditional);
+
+    //setters
 
     public static void setNfcMap(Map<Integer, NewConditional> nfcMapToAdd) {
         nfcMap = nfcMapToAdd;
-    }
-
-    public int getKbNumber() {
-        return kbNumber;
-    }
-
-    public AbstractSignature getSignature() {
-        return signature;
     }
 
     public static void setSignature(AbstractSignature signatureToSet) {
@@ -51,4 +40,18 @@ public abstract class AbstractKnowledgeBase {
 
         this.kbNumber = kbNumber;
     }
+
+    //getters
+
+    public AbstractSignature getSignature() {
+        return signature;
+    }
+
+    public int getKbNumber() {
+        return kbNumber;
+    }
+
+    public abstract List<NewConditional> getConditionalList();
+
+    public abstract int getSize();
 }
