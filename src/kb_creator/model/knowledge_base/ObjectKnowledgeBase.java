@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
-    private List<NewConditional> conditionalList;
+    private final List<NewConditional> conditionalList;
 
     //making theese static saves A LOT of memory
     private static final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
@@ -26,7 +26,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-    private AbstractFormula consistencyOfKB;
+    //private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
     public ObjectKnowledgeBase() {
@@ -77,7 +77,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
     }
-
 
     //todo: rethink. make it faster?
     //this is about 20% faster than old consistent method.
@@ -131,7 +130,9 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     //idea: create tolerates formula for every conditional and then check trough list if everyone tolerates
     //return false if one element not tolerates else return true
-    private AbstractFormula createConsistencyFormula() {
+
+
+/*    private AbstractFormula createConsistencyFormula() {
 
         for (NewConditional conditionalFromList : conditionalList) {
             if (consistencyOfKB == null)
@@ -141,7 +142,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
                 consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
         }
         return consistencyOfKB;
-    }
+    }*/
 
 
     @Override
