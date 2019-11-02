@@ -62,7 +62,9 @@ public class BufferLocationPanel extends JPanel {
                     mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
                 }
 
-            } else {
+            }
+            //this triggers when path is null so no file selected
+            else {
                 mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
                 mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
