@@ -11,25 +11,29 @@ public class PConditional {
     private final AbstractFormula consequence;
     private final AbstractFormula toleranceFormula;
 
+    private static int counter;
+
 
     private PConditional counterConditional;
 
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
-    //todo: check how often this is instantiated
     public PConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
         this.consequence = consequence;
         this.antecedent = antecedent;
         this.number = number;
 
         this.toleranceFormula = antecedent.neg().or(consequence);
+
+        counter++;
+
+        System.out.println(counter); //todo: why so much??
     }
 
     public String toString() {
         return "(" + consequence + " | " + antecedent + ")";
     }
-
 
 
     @Override
@@ -57,7 +61,6 @@ public class PConditional {
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
     }
-
 
 
     public boolean tolerates(AbstractWorld world) {
