@@ -43,10 +43,6 @@ public abstract class AbstractKnowledgeBase {
 
     //getters
 
-    public AbstractSignature getSignature() {
-        return signature;
-    }
-
     public int getKbNumber() {
         return kbNumber;
     }
