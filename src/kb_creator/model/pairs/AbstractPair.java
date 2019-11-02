@@ -6,7 +6,6 @@ import kb_creator.model.propositional_logic.PConditional;
 import java.util.List;
 import java.util.Map;
 
-//the reason for this abstract class is to test different candidate pair implementations for performance reasons
 public abstract class AbstractPair {
 
     protected AbstractKnowledgeBase knowledgeBase;

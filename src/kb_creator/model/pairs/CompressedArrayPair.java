@@ -7,13 +7,14 @@ import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import java.util.ArrayList;
 import java.util.List;
 
+//this class takes much less memory than the real list pair but its slower
+
 public class CompressedArrayPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
     public CompressedArrayPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
-
 
         int lastConditionalNumber = 0;
 
@@ -50,6 +51,7 @@ public class CompressedArrayPair extends AbstractPair {
 
     }
 
+    //this is old and probably wont work anymore
     public CompressedArrayPair(String stringFromFile) {
         String[] splitString = stringFromFile.split("candidates\n");
         if (splitString.length != 2)

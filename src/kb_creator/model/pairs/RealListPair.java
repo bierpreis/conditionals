@@ -18,7 +18,6 @@ public class RealListPair extends AbstractPair {
 
     public RealListPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
-
         this.candidatesList = candidates;
     }
 
