@@ -33,8 +33,7 @@ public class MainBufferPanel extends JPanel {
         bufferSizePanel = new BufferSizePanel();
 
         fileNameLengthPanel = new FileNameLengthPanel();
-
-
+        
         add(descriptionPanel);
         descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save Main Memory"));
 
@@ -42,31 +41,20 @@ public class MainBufferPanel extends JPanel {
         actionPanel.add(add(bufferCheckboxPanel));
         add(actionPanel);
 
-
         optionsPanel = new JPanel();
 
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         optionsPanel.add(deleteTempFilesCheckbox);
-
-
 
         add(optionsPanel);
         add(bufferSizePanel);
         add(fileNameLengthPanel);
 
 
-
-
-
     }
 
-    public boolean isBufferingRequested() {
-        return bufferCheckboxPanel.isSelected();
-    }
 
-    public String getBufferFilePath() {
-        return bufferLocationPanel.getFilePath();
-    }
+
 
 
     @Override
@@ -80,23 +68,27 @@ public class MainBufferPanel extends JPanel {
 
         descriptionPanel.getComponent(0).setEnabled(enabled);
 
-
         super.setEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);
     }
 
-    public int getBufferSize() {
-        return bufferSizePanel.getBufferSize();
-    }
+
 
     public boolean isValueValid(){
         return bufferSizePanel.isValueValid() && fileNameLengthPanel.isValueValid();
     }
 
-    public BufferCheckboxPanel getBufferCheckboxPanel() {
-        return bufferCheckboxPanel;
+    public void init(){ //todo: rename
+        deleteTempFilesCheckbox.setSelected(true);
+        bufferCheckboxPanel.setBoxSelected(false);
+        bufferCheckboxPanel.setBoxEnabled(false);
+        bufferSizePanel.setEnabled(false);
+        fileNameLengthPanel.setEnabled(false);
+        deleteTempFilesCheckbox.setEnabled(false);
     }
+
+    //getters
 
     public BufferSizePanel getBufferSizePanel() {
         return bufferSizePanel;
@@ -110,12 +102,20 @@ public class MainBufferPanel extends JPanel {
         return fileNameLengthPanel;
     }
 
-    public void init(){
-        deleteTempFilesCheckbox.setSelected(true);
-        bufferCheckboxPanel.setBoxSelected(false);
-        bufferCheckboxPanel.setBoxEnabled(false);
-        bufferSizePanel.setEnabled(false);
-        fileNameLengthPanel.setEnabled(false);
-        deleteTempFilesCheckbox.setEnabled(false);
+    public int getBufferSize() {
+        return bufferSizePanel.getBufferSize();
     }
+
+    public BufferCheckboxPanel getBufferCheckboxPanel() {
+        return bufferCheckboxPanel;
+    }
+
+    public String getBufferFilePath() {
+        return bufferLocationPanel.getFilePath();
+    }
+
+    public boolean isBufferingRequested() {
+        return bufferCheckboxPanel.isSelected();
+    }
+
 }

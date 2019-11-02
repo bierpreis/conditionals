@@ -55,14 +55,10 @@ public class BufferCheckboxPanel extends JPanel {
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
             }
 
-            //checkbox should disable itself if deselected
-            if (saveCheckBox.isSelected()) {
-                //todo: this causes the active box problem i guess
-                mainBufferPanel.getBufferCheckboxPanel().setBoxEnabled(true);
 
-            }
         }
     }
-
-
 }
+
+
+
