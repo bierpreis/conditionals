@@ -89,7 +89,7 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
-    public void newIteration() {
+    public void newIteration(int k) {
         inconsistentThreadObject.newIteration();
         consistentThreadObject.newIteration();
     }

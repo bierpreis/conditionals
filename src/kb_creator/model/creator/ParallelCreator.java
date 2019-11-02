@@ -35,7 +35,7 @@ public class ParallelCreator extends AbstractCreator {
         creatorStatus = CreatorStatus.RUNNING;
         System.out.println("creator thread started");
         l.prepareIteration(0);
-        kbWriter.newIteration();
+        kbWriter.newIteration(0);
 
 
         //line 2
@@ -59,7 +59,7 @@ public class ParallelCreator extends AbstractCreator {
 
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
-            kbWriter.newIteration();
+            kbWriter.newIteration(k);
             startIterationThreads(k);
 
 

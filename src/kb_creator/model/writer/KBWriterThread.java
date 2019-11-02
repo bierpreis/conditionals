@@ -17,6 +17,8 @@ public class KBWriterThread implements Runnable {
     private int iterationCounter = 0;
     private int totalCounter = 0;
 
+    private String filePath;
+
     public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
         this.folderName = folderName;
         this.queue = queue;
@@ -48,21 +50,23 @@ public class KBWriterThread implements Runnable {
         }
     }
 
-    public void newIteration() {
+    public void newIteration(int k) {
         iterationCounter = 0;
-    } //todo make new file here
+        filePath = rootFilePath + (k) + "/" + folderName + "/"; //todo. rethink if k+1 is correct
+        File consistentFolder = new File(filePath);
+        consistentFolder.mkdirs();
+    }
 
+    //todo: name is wrong? it is used for consistent and inconsistent. anything to change for inconsistent?
     private void writeConsistentKbToFile(AbstractKnowledgeBase knowledgeBase) {
 
 
-        String filePath = rootFilePath + knowledgeBase.getSize() + "/" + folderName + "/";
         try {
             iterationCounter++;
             totalCounter++;
 
             knowledgeBase.setKbNumber(iterationCounter); //todo: why is this here?
-            File consistentFolder = new File(filePath); //todo: why is folder made for very file? this sucks
-            consistentFolder.mkdirs();
+
 
             PrintWriter writer;
 

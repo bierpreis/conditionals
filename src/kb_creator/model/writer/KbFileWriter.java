@@ -92,9 +92,9 @@ public class KbFileWriter extends AbstractKbWriter {
     }
 
     @Override
-    public void newIteration() {
-        consistentWriter.newIteration();
-        inconsistentWriter.newIteration();
+    public void newIteration(int k) {
+        consistentWriter.newIteration(k);
+        inconsistentWriter.newIteration(k);
     }
 
 }

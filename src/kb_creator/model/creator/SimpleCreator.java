@@ -43,7 +43,7 @@ public class SimpleCreator extends AbstractCreator {
             System.gc();
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
-            kbWriter.newIteration();
+            kbWriter.newIteration(k);
             iterationPairCounter = 0;
 
 
