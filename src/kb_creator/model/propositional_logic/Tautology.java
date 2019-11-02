@@ -9,6 +9,7 @@ public class Tautology extends AbstractFormula {
         return true;
     }
 
+    @Override
     public String toString() {
         return "(true)";
     }

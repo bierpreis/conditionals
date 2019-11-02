@@ -13,10 +13,11 @@ public class PConditional {
 
 
     private PConditional counterConditional;
+    
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
-
+    //todo: check how often this is instantiated
     public PConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
         this.consequence = consequence;
         this.antecedent = antecedent;
@@ -29,9 +30,7 @@ public class PConditional {
         return "(" + consequence + " | " + antecedent + ")";
     }
 
-    public int getNumber() {
-        return number;
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -49,6 +48,24 @@ public class PConditional {
 
     }
 
+    public void setCounterConditional(PConditional counterConditional) {
+        this.counterConditional = counterConditional;
+    }
+
+    public void setEqList(List<PConditional> eqConditionalsList) {
+        if (this.eqConditionalsList.size() != 0)
+            throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
+        this.eqConditionalsList = eqConditionalsList;
+    }
+
+
+
+    public boolean tolerates(AbstractWorld world) {
+        return toleranceFormula.evaluate(world);
+    }
+
+    //getters
+
     public PConditional getCounterConditional() {
         return counterConditional;
     }
@@ -61,23 +78,12 @@ public class PConditional {
         return consequence;
     }
 
-
-    public void setCounterConditional(PConditional counterConditional) {
-        this.counterConditional = counterConditional;
-    }
-
-    public void setEqList(List<PConditional> eqConditionalsList) {
-        if (this.eqConditionalsList.size() != 0)
-            throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
-        this.eqConditionalsList = eqConditionalsList;
+    public int getNumber() {
+        return number;
     }
 
     public List<PConditional> getEqConditionalsList() {
         return eqConditionalsList;
-    }
-
-    public boolean tolerates(AbstractWorld world) {
-        return toleranceFormula.evaluate(world);
     }
 
 }
