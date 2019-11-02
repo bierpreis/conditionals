@@ -27,7 +27,7 @@ public class KbFileWriter extends AbstractKbWriter {
 
         status = WriterStatus.RUNNING;
     }
-    
+
 
     public void stopThreads() {
 

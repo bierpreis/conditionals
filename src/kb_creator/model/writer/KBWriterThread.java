@@ -24,7 +24,7 @@ public class KBWriterThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("New Writer Thread started for " + folderName + " kbs");
+        System.out.println("new writer thread started for " + folderName + " kbs");
         while (running) {
             try {
                 writeKbToFile(queue.take());
@@ -32,7 +32,7 @@ public class KBWriterThread implements Runnable {
                 //intentionally nothing
             }
         }
-        System.out.println("Writer Thread closed for " + folderName + " kbs");
+        System.out.println("writer thread closed for " + folderName + " kbs");
     }
 
     public void finishIteration() {
