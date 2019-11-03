@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WConditional implements Comparable {
-    private final World consequence;
     private final World antecedent;
+    private final World consequence;
+
 
     private WConditional counterConditional;
 
@@ -13,7 +14,6 @@ public class WConditional implements Comparable {
     private static int longestConditional = 0;
 
     private List<Integer> eqConditionalNumbers;
-
 
     private int number;
     private static String spaceFillCharacter = " ";
@@ -36,7 +36,6 @@ public class WConditional implements Comparable {
     public int compareTo(Object o) {
         if (!(o instanceof WConditional))
             throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
-
 
         WConditional otherConditional = (WConditional) o;
 
@@ -68,12 +67,6 @@ public class WConditional implements Comparable {
         else spaceFillCharacter = " ";
     }
 
-
-    public int getNumber() {
-        return number;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof WConditional))
@@ -88,22 +81,6 @@ public class WConditional implements Comparable {
             return leftEquals && rightEquals;
         }
 
-    }
-
-    public List<Integer> getEqList() {
-        return eqConditionalNumbers;
-    }
-
-    public World getAntecedent() {
-        return antecedent;
-    }
-
-    public World getConsequence() {
-        return consequence;
-    }
-
-    public static int getLongestConditional() {
-        return longestConditional;
     }
 
     public WConditional createCopy() {
@@ -132,11 +109,6 @@ public class WConditional implements Comparable {
         //System.out.println("counter: " + this.counterConditional.getNumber() + this.counterConditional);
     }
 
-    public WConditional getActualCounterConditional() {
-        if (counterConditional == null)
-            throw new RuntimeException("No Counter Conditional found");
-        return counterConditional;
-    }
 
     public void addEqConditionalNumber(int eqNumber) {
         this.eqConditionalNumbers.add(eqNumber);
@@ -144,6 +116,35 @@ public class WConditional implements Comparable {
 
     public void addEqNumbersList(List<Integer> eqConditionalList) {
             this.eqConditionalNumbers.addAll(eqConditionalList);
+    }
+
+    //getters
+
+    public int getNumber() {
+        return number;
+    }
+
+    public WConditional getActualCounterConditional() {
+        if (counterConditional == null)
+            throw new RuntimeException("No Counter Conditional found");
+        return counterConditional;
+    }
+
+
+    public List<Integer> getEqList() {
+        return eqConditionalNumbers;
+    }
+
+    public World getAntecedent() {
+        return antecedent;
+    }
+
+    public World getConsequence() {
+        return consequence;
+    }
+
+    public static int getLongestConditional() {
+        return longestConditional;
     }
 
 }

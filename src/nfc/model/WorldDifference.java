@@ -53,7 +53,15 @@ public class WorldDifference {
 
     }
 
-    class WorldsPair {
+    public boolean areEqual() {
+        return areEqual;
+    }
+
+    public static void setSignature(AbstractSignature requestedSignature) {
+        signature = requestedSignature;
+    }
+
+    private class WorldsPair {
         private final int firstInt;
         private final int secondInt;
 
@@ -80,12 +88,5 @@ public class WorldDifference {
 
     }
 
-    public boolean areEqual() {
-        return areEqual;
-    }
-
-    public static void setSignature(AbstractSignature requestedSignature) {
-        signature = requestedSignature;
-    }
 
 }

@@ -17,7 +17,6 @@ public class World implements Comparable {
     //the number is for identification reasons and for translation into propositional formulas
     private int number;
 
-
     public World() {
         worldsList = new ArrayList<>();
 
@@ -51,15 +50,6 @@ public class World implements Comparable {
         return 0;
 
 
-    }
-
-
-    public List<Integer> getWorldsList() {
-        return worldsList;
-    }
-
-    public int getSize() {
-        return worldsList.size();
     }
 
     public void addInt(int worldToAdd) {
@@ -139,16 +129,26 @@ public class World implements Comparable {
         NUMBERS, LETTERS
     }
 
-    public AbstractSignature getSignature() {
-        return signature;
-    }
-
     public void setNumber(int number) {
         this.number = number;
     }
 
+    //getters
+
+    public List<Integer> getWorldsList() {
+        return worldsList;
+    }
+
+    public int getSize() {
+        return worldsList.size();
+    }
+
     public int getNumber() {
         return number;
+    }
+
+    public AbstractSignature getSignature() {
+        return signature;
     }
 
 }

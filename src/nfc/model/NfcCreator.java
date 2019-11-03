@@ -7,7 +7,6 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.*;
 
-//todo: structure methods
 public class NfcCreator {
     private final List<World> worldList;
     private final List<ConditionalList> oldCnfcEq;
@@ -229,7 +228,7 @@ public class NfcCreator {
         return subSetList;
     }
 
-    
+
     private List<PConditional> translateConditionals(List<WConditional> wConditionalList) {
         System.out.println("translating conditionals");
         List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
