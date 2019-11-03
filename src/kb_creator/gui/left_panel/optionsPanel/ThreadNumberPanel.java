@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class ThreadNumberPanel extends JPanel {
 
-    private JTextField numberOfThreadsField = new JTextField("4");
+    private JTextField numberOfThreadsField = new JTextField("1");
 
 
     public ThreadNumberPanel() {
