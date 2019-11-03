@@ -28,7 +28,7 @@ public class PConditional {
 
         counter++;
 
-        System.out.println(counter); //todo: why so much??
+        System.out.println(counter + " " + number); //todo: why so much??
     }
 
     public String toString() {

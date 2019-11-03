@@ -233,6 +233,7 @@ public class NfcCreator {
         System.out.println("translating conditionals");
         List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
 
+        //todo: check if the counter contitional at this point has the number. if yes, take it from map not translate.
         for (WConditional oldConditional : wConditionalList) {
             PConditional pConditional = conditionalTranslator.transLate(oldConditional);
 
