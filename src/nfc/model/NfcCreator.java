@@ -245,8 +245,10 @@ public class NfcCreator {
         //this saves some memory space, but not very much.
         for (PConditional conditional : pConditionalList) {
             for (PConditional possibleCounterConditional : pConditionalList) {
-                if (conditional.getCounterConditional().equals(possibleCounterConditional))
-                    conditional.setCounterConditional(possibleCounterConditional); //todo break at this point?
+                if (conditional.getCounterConditional().equals(possibleCounterConditional)) {
+                    conditional.setCounterConditional(possibleCounterConditional);
+                    break;
+                }
             }
         }
         System.out.println("finished setting basic counter conditionals");
