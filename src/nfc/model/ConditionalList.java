@@ -8,7 +8,6 @@ public class ConditionalList implements Comparable {
     private final List<WConditional> conditionalList;
     private int nextConditionalNumber;
 
-
     public ConditionalList() {
         conditionalList = new ArrayList<>();
     }
@@ -35,10 +34,6 @@ public class ConditionalList implements Comparable {
         }
     }
 
-    public WConditional get(int i) {
-        return conditionalList.get(i);
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -53,12 +48,14 @@ public class ConditionalList implements Comparable {
     }
 
     public void setNumbersToEquivalentConditionals(int numberForFirstConditional) {
-        nextConditionalNumber= numberForFirstConditional;
+        nextConditionalNumber = numberForFirstConditional;
         for (int i = 1; i < conditionalList.size(); i++) {
             conditionalList.get(i).setNumber(nextConditionalNumber);
             nextConditionalNumber++;
         }
     }
+
+    //getters
 
     public int getNextConditionalNumber() {
         return nextConditionalNumber;
@@ -66,5 +63,9 @@ public class ConditionalList implements Comparable {
 
     public List<WConditional> getList() {
         return conditionalList;
+    }
+
+    public WConditional get(int i) {
+        return conditionalList.get(i);
     }
 }
