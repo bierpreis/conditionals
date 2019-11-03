@@ -292,6 +292,14 @@ public class NfcCreator {
         return Collections.unmodifiableMap(conditionalMap);
     }
 
+    public Map<World, AbstractFormula> createWorldsFormulasMap() {
+        Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
+        for (World world : worldList) {
+            mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
+        }
+        return mapToReturn;
+    }
+
     //getters
 
     public List<PConditional> getNewNfc() {
@@ -322,19 +330,12 @@ public class NfcCreator {
         return worldList;
     }
 
-    public Map<World, AbstractFormula> getWorldsFormulasMap() {
-        Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
-        for (World world : worldList) {
-            mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
-        }
-        return mapToReturn;
-    }
+
 
     public Map<Integer, PConditional> getNfcMap() {
         return newNfcMap;
     }
-
-
+    
 }
 
 

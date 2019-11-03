@@ -31,7 +31,7 @@ public class NfcCreatorObserver implements ActionListener {
                 condPanel.printWorlds(nfcCreator.getWorldList());
                 break;
             case "WORLDS_FORMULAS":
-                condPanel.printWorldsAndFormulas(nfcCreator.getWorldList(), nfcCreator.getWorldsFormulasMap());
+                condPanel.printWorldsAndFormulas(nfcCreator.getWorldList(), nfcCreator.createWorldsFormulasMap());
                 break;
             case "CONDITIONALS":
                 condPanel.printConditionals(nfcCreator.getWConditionalList());
