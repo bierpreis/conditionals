@@ -261,8 +261,9 @@ public class NfcCreator {
 
     private void setCounterConditionals(List<WConditional> nfc) {
         System.out.println("creating counter conditionals");
-        long startTime = System.currentTimeMillis();
+
         //this takes very long. but is maybe the only way to set the counter conditional numbers?
+        long startTime = System.currentTimeMillis();
         for (WConditional conditional : nfc) {
             conditional.setActualCounterConditional(findCounterConditional(conditional, nfc));
         }
