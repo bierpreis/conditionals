@@ -11,9 +11,6 @@ public class PConditional {
     private final AbstractFormula consequence;
     private final AbstractFormula toleranceFormula;
 
-    private static int counter;
-
-
     private PConditional counterConditional;
 
     //empty list as default for all conditionals who will not have any equivalent conditionals
@@ -26,9 +23,6 @@ public class PConditional {
 
         this.toleranceFormula = antecedent.neg().or(consequence);
 
-        counter++;
-
-        System.out.println(counter + " " + number); //todo: why so much??
     }
 
     public String toString() {

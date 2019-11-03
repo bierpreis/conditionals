@@ -236,9 +236,6 @@ public class NfcCreator {
         for (WConditional wConditional : wConditionalList) {
             PConditional pConditional = conditionalTranslator.transLate(wConditional);
 
-            //todo: idea: create nfc map at very this point?
-
-            //todo: dont translate counter conditional but take the one from nfc map. map doenst exist at that point. split into one translate then create map then set counters?
             pConditional.setCounterConditional(conditionalTranslator.transLate(wConditional.getActualCounterConditional()));
             pConditionalList.add(pConditional);
 
@@ -249,7 +246,7 @@ public class NfcCreator {
         for (PConditional conditional : pConditionalList) {
             for (PConditional possibleCounterConditional : pConditionalList) {
                 if (conditional.getCounterConditional().equals(possibleCounterConditional))
-                    conditional.setCounterConditional(possibleCounterConditional);
+                    conditional.setCounterConditional(possibleCounterConditional); //todo break at this point?
             }
         }
         System.out.println("finished setting basic counter conditionals");
