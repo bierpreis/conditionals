@@ -11,7 +11,7 @@ import java.util.*;
 public class NfcCreator {
     private final List<World> worldList;
     private final List<ConditionalList> oldCnfcEq;
-    private final List<WConditional> basicConditionalList;
+    private final List<WConditional> wConditionalList;
     private final List<WConditional> oldCnfc;
     private final List<WConditional> oldNfc;
 
@@ -29,10 +29,10 @@ public class NfcCreator {
         conditionalTranslator = new ConditionalTranslator(signature);
 
         //this is basic conditional list in order from definition  2
-        basicConditionalList = createBasicConditionalList(worldList);
+        wConditionalList = createBasicConditionalList(worldList);
 
 
-        oldCnfcEq = createCnfcEq(basicConditionalList);
+        oldCnfcEq = createCnfcEq(wConditionalList);
 
         //this is in order on def 5.1
         oldCnfc = createCnfc(oldCnfcEq);
@@ -57,12 +57,11 @@ public class NfcCreator {
 
         newNfcMap = createNfcMap(newNfc);
 
-        setEquivalentListToNewConditionals(oldNfc, newNfcMap);
+        setEquivalentListToPConditionals(oldNfc, newNfcMap);
         System.out.println("oldNfc creator finished");
     }
 
 
-    //3 creators
     private List<World> createWorlds(AbstractSignature signature) {
         World.setSignature(signature);
         int numberOfWorlds = signature.getPossibleWorlds().size();
@@ -187,8 +186,6 @@ public class NfcCreator {
     }
 
 
-    //sub methods
-
     private List<WConditional> createConditionalsForWorld(World currentWorld) {
         List<WConditional> currentConditionalList = new ArrayList<>();
 
@@ -206,7 +203,7 @@ public class NfcCreator {
 
     //this adds the numbers of equivalent conditionals to every new nfc conditional
     //this list is needed to reduce the possible candidates when initialising candidate pairs
-    private void setEquivalentListToNewConditionals(List<WConditional> oldNfc, Map<Integer, PConditional> newNfcMap) {
+    private void setEquivalentListToPConditionals(List<WConditional> oldNfc, Map<Integer, PConditional> newNfcMap) {
         for (WConditional oldConditional : oldNfc) {
             List<PConditional> tempEqList = new ArrayList<>(oldConditional.getEqList().size());
             for (int eqNumber : oldConditional.getEqList())
@@ -232,34 +229,7 @@ public class NfcCreator {
         return subSetList;
     }
 
-
-    //getters
-
-    public List<WConditional> getOldCnfc() {
-        return oldCnfc;
-    }
-
-    public List<WConditional> getBasicConditionals() {
-        return basicConditionalList;
-    }
-
-    public List<ConditionalList> getOldCnfcEq() {
-        return oldCnfcEq;
-    }
-
-    public List<World> getWorldList() {
-        return worldList;
-    }
-
-    public Map<World, AbstractFormula> getWorldsFormulasMap() {
-        Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
-        for (World world : worldList) {
-            mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
-        }
-        return mapToReturn;
-    }
-
-
+    
     private List<PConditional> translateConditionals(List<WConditional> wConditionalList) {
         System.out.println("translating conditionals");
         List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
@@ -290,13 +260,6 @@ public class NfcCreator {
         return pConditionalList;
     }
 
-    public List<PConditional> getNewNfc() {
-        return newNfc;
-    }
-
-    public List<PConditional> getNewCnfc() {
-        return newCnfc;
-    }
 
     private void setCounterConditionals(List<WConditional> nfc) {
         System.out.println("creating counter conditionals");
@@ -316,10 +279,6 @@ public class NfcCreator {
         return null;
     }
 
-    public List<WConditional> getOldNfc() {
-        return oldNfc;
-    }
-
     private Map<Integer, PConditional> createNfcMap(Collection<PConditional> nfc) {
         Map<Integer, PConditional> conditionalMap = new HashMap<>(nfc.size());
         for (PConditional conditional : nfc) {
@@ -331,6 +290,44 @@ public class NfcCreator {
 
         //make it unmodifiable so no accidentally changed to this map can happen
         return Collections.unmodifiableMap(conditionalMap);
+    }
+
+    //getters
+
+    public List<PConditional> getNewNfc() {
+        return newNfc;
+    }
+
+    public List<PConditional> getNewCnfc() {
+        return newCnfc;
+    }
+
+    public List<WConditional> getOldNfc() {
+        return oldNfc;
+    }
+
+    public List<WConditional> getOldCnfc() {
+        return oldCnfc;
+    }
+
+    public List<WConditional> getWConditionalList() {
+        return wConditionalList;
+    }
+
+    public List<ConditionalList> getOldCnfcEq() {
+        return oldCnfcEq;
+    }
+
+    public List<World> getWorldList() {
+        return worldList;
+    }
+
+    public Map<World, AbstractFormula> getWorldsFormulasMap() {
+        Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
+        for (World world : worldList) {
+            mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
+        }
+        return mapToReturn;
     }
 
     public Map<Integer, PConditional> getNfcMap() {
