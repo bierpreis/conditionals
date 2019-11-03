@@ -81,7 +81,7 @@ public class NfcCreator {
     }
 
     private List<WConditional> createNfc(List<ConditionalList> cnfc) {
-        System.out.println("creating oldNfc");
+        System.out.println("creating wNfc");
         List<WConditional> nfc = new ArrayList<>();
 
         //add the first one of every equivalence class
@@ -335,7 +335,7 @@ public class NfcCreator {
     public Map<Integer, PConditional> getNfcMap() {
         return newNfcMap;
     }
-    
+
 }
 
 
