@@ -232,12 +232,12 @@ public class NfcCreator {
     private List<PConditional> translateConditionals(List<WConditional> wConditionalList) {
         System.out.println("translating conditionals");
         List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
+        
+        for (WConditional wConditional : wConditionalList) {
+            PConditional pConditional = conditionalTranslator.transLate(wConditional);
 
-        //todo: check if the counter contitional at this point has the number. if yes, take it from map not translate.
-        for (WConditional oldConditional : wConditionalList) {
-            PConditional pConditional = conditionalTranslator.transLate(oldConditional);
-
-            pConditional.setCounterConditional(conditionalTranslator.transLate(oldConditional.getActualCounterConditional()));
+            //todo: dont translate counter conditional but take the one from nfc map. map doenst exist at that point. create it before?
+            pConditional.setCounterConditional(conditionalTranslator.transLate(wConditional.getActualCounterConditional()));
             pConditionalList.add(pConditional);
 
         }
