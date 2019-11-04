@@ -6,7 +6,6 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 public class WorldDifference {
@@ -16,14 +15,14 @@ public class WorldDifference {
     private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     private static AbstractSignature signature;
-    private final World world1;
-    private final World world2;
+    private final WorldSet world1;
+    private final WorldSet world2;
 
     private final List<WorldsPair> differenceList;
 
     private boolean areEqual;
 
-    public WorldDifference(World world1, World world2) {
+    public WorldDifference(WorldSet world1, WorldSet world2) {
         this.world1 = world1;
         this.world2 = world2;
 

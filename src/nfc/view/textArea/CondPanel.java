@@ -3,7 +3,7 @@ package nfc.view.textArea;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import nfc.model.WConditional;
 import nfc.model.ConditionalList;
-import nfc.model.World;
+import nfc.model.WorldSet;
 
 import javax.swing.*;
 import java.util.List;
@@ -57,13 +57,13 @@ public class CondPanel extends JPanel {
         revalidate();
     }
 
-    public void printWorlds(List<World> worldsList) {
+    public void printWorlds(List<WorldSet> worldsList) {
         condTextField.setText("");
         condTextField.printWorlds(worldsList);
         infoPanel.printInfo(condTextField.getDescription());
     }
 
-    public void printWorldsAndFormulas(List<World> worldsList, Map<World, AbstractFormula> translationMap) {
+    public void printWorldsAndFormulas(List<WorldSet> worldsList, Map<WorldSet, AbstractFormula> translationMap) {
 
         condTextField.setText("");
         System.out.println("worlds and formulas!");

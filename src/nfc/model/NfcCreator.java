@@ -8,7 +8,7 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import java.util.*;
 
 public class NfcCreator {
-    private final List<World> worldList;
+    private final List<WorldSet> worldList;
     private final List<ConditionalList> oldCnfcEq;
     private final List<WConditional> wConditionalList;
     private final List<WConditional> oldCnfc;
@@ -61,15 +61,15 @@ public class NfcCreator {
     }
 
 
-    private List<World> createWorlds(AbstractSignature signature) {
-        World.setSignature(signature);
+    private List<WorldSet> createWorlds(AbstractSignature signature) {
+        WorldSet.setSignature(signature);
         int numberOfWorlds = signature.getPossibleWorlds().size();
         List<Integer> initWorldsList = new ArrayList<>();
         for (int i = numberOfWorlds - 1; i >= 0; i--) {
             initWorldsList.add(i);
         }
 
-        List<World> worldsList = createSubSetList(initWorldsList);
+        List<WorldSet> worldsList = createSubSetList(initWorldsList);
 
         Collections.sort(worldsList);
 
@@ -98,11 +98,11 @@ public class NfcCreator {
     }
 
 
-    private List<WConditional> createBasicConditionalList(List<World> worldsList) {
+    private List<WConditional> createBasicConditionalList(List<WorldSet> worldsList) {
         System.out.println("creating basic conditionals");
         List<WConditional> basicConditionalList = new ArrayList<>();
 
-        for (World world : worldsList)
+        for (WorldSet world : worldsList)
             basicConditionalList.addAll(createConditionalsForWorld(world));
 
 
@@ -185,13 +185,13 @@ public class NfcCreator {
     }
 
 
-    private List<WConditional> createConditionalsForWorld(World currentWorld) {
+    private List<WConditional> createConditionalsForWorld(WorldSet currentWorld) {
         List<WConditional> currentConditionalList = new ArrayList<>();
 
         List<Integer> currentWorldIntList = currentWorld.getWorldsList();
-        List<World> allSubSetsOfCurrentWorld = createSubSetList(new ArrayList<>(currentWorldIntList));
+        List<WorldSet> allSubSetsOfCurrentWorld = createSubSetList(new ArrayList<>(currentWorldIntList));
 
-        for (World currentSubSworld : allSubSetsOfCurrentWorld) {
+        for (WorldSet currentSubSworld : allSubSetsOfCurrentWorld) {
             //only add real subsets not equal sets
             if (!currentSubSworld.equals(currentWorld))
                 currentConditionalList.add(new WConditional(currentSubSworld, currentWorld));
@@ -212,16 +212,16 @@ public class NfcCreator {
     }
 
 
-    private List<World> createSubSetList(List<Integer> inputList) {
-        List<World> subSetList = new ArrayList<>();
+    private List<WorldSet> createSubSetList(List<Integer> inputList) {
+        List<WorldSet> subSetList = new ArrayList<>();
         for (Integer world : inputList) {
-            for (ListIterator<World> setsIterator = subSetList.listIterator(); setsIterator.hasNext(); ) {
-                World newWorld = new World();
+            for (ListIterator<WorldSet> setsIterator = subSetList.listIterator(); setsIterator.hasNext(); ) {
+                WorldSet newWorld = new WorldSet();
                 newWorld.addList(setsIterator.next().getWorldsList());
                 newWorld.addInt(world);
                 setsIterator.add(newWorld);
             }
-            World otherWorld = new World();
+            WorldSet otherWorld = new WorldSet();
             otherWorld.addInt(world);
             subSetList.add(otherWorld);
         }
@@ -292,9 +292,9 @@ public class NfcCreator {
         return Collections.unmodifiableMap(conditionalMap);
     }
 
-    public Map<World, AbstractFormula> createWorldsFormulasMap() {
-        Map<World, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
-        for (World world : worldList) {
+    public Map<WorldSet, AbstractFormula> createWorldsFormulasMap() {
+        Map<WorldSet, AbstractFormula> mapToReturn = new HashMap<>(worldList.size());
+        for (WorldSet world : worldList) {
             mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
         }
         return mapToReturn;
@@ -326,7 +326,7 @@ public class NfcCreator {
         return oldCnfcEq;
     }
 
-    public List<World> getWorldList() {
+    public List<WorldSet> getWorldList() {
         return worldList;
     }
 

@@ -20,17 +20,17 @@ public class ConditionalTranslator {
         AbstractFormula newConsequence = worldToFormula(oldConditional.getConsequence());
 
         //this is a test that translation really works
-        if (!newAntecedent.equals(oldWorldToFormula(oldConditional.getAntecedent())))
-            throw new RuntimeException("Translating Worlds failed! " + newAntecedent + "  !=  " + oldWorldToFormula(oldConditional.getAntecedent()) + " (line "+ oldConditional.getAntecedent().getNumber() + ")");
-        if (!newConsequence.equals(oldWorldToFormula(oldConditional.getConsequence())))
-            throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + oldWorldToFormula(oldConditional.getConsequence()) + " (line" + oldConditional.getConsequence().getNumber() + ")");
+        if (!newAntecedent.equals(simpleWorldToFormula(oldConditional.getAntecedent())))
+            throw new RuntimeException("Translating Worlds failed! " + newAntecedent + "  !=  " + simpleWorldToFormula(oldConditional.getAntecedent()) + " (line "+ oldConditional.getAntecedent().getNumber() + ")");
+        if (!newConsequence.equals(simpleWorldToFormula(oldConditional.getConsequence())))
+            throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + simpleWorldToFormula(oldConditional.getConsequence()) + " (line" + oldConditional.getConsequence().getNumber() + ")");
 
         return new PConditional(newConsequence, newAntecedent, oldConditional.getNumber());
     }
 
 
     //this translates a world to a propositional formula
-    public AbstractFormula worldToFormula(World world) {
+    public AbstractFormula worldToFormula(WorldSet world) {
 
         //if there is a short formula return this
         if (shortTranslationMap.translate(world.getNumber()) != null)
@@ -38,14 +38,14 @@ public class ConditionalTranslator {
 
             //else return the simple translation
         else
-            return oldWorldToFormula(world);
+            return simpleWorldToFormula(world);
     }
 
 
     //this translates possible worlds to propositional formulas
     //the returned formulas are conjunctions of the list of possible worlds
     //like this the formulas are not as short as possible but correct
-    private AbstractFormula oldWorldToFormula(World world) {
+    private AbstractFormula simpleWorldToFormula(WorldSet world) {
         AbstractFormula formulaToReturn = null;
 
         if (world.getSignature() instanceof AB) {

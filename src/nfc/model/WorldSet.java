@@ -7,7 +7,7 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-public class World implements Comparable {
+public class WorldSet implements Comparable {
 
     private final List<Integer> worldsList;
 
@@ -17,12 +17,12 @@ public class World implements Comparable {
     //the number is for identification reasons and for translation into propositional formulas
     private int number;
 
-    public World() {
+    public WorldSet() {
         worldsList = new ArrayList<>();
 
     }
 
-    public boolean isEquivalent(World otherWorld) {
+    public boolean isEquivalent(WorldSet otherWorld) {
         WorldDifference worldDifference = new WorldDifference(this, otherWorld);
         return worldDifference.areEqual();
 
@@ -31,7 +31,7 @@ public class World implements Comparable {
     //this ordering is ordering according to definition 1 and 2
     @Override
     public int compareTo(Object o) {
-        World otherWorld = (World) o;
+        WorldSet otherWorld = (WorldSet) o;
 
         if (worldsList.size() < otherWorld.getWorldsList().size())
             return -1;
@@ -87,16 +87,16 @@ public class World implements Comparable {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof World))
+        if (!(o instanceof WorldSet))
             return false;
-        World worldToCompare = (World) o;
+        WorldSet worldToCompare = (WorldSet) o;
 
 
         return this.worldsList.equals(worldToCompare.getWorldsList());
 
     }
 
-    public void removeWorld(World worldsToRemove) {
+    public void removeWorld(WorldSet worldsToRemove) {
         worldsList.removeAll(worldsToRemove.getWorldsList());
     }
 

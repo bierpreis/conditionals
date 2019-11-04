@@ -3,7 +3,7 @@ package nfc.view.textArea;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import nfc.model.WConditional;
 import nfc.model.ConditionalList;
-import nfc.model.World;
+import nfc.model.WorldSet;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,10 +26,10 @@ public class CondTextField extends JTextArea {
     }
 
 
-    public void printWorlds(List<World> worldsList) {
+    public void printWorlds(List<WorldSet> worldsList) {
         setText("");
 
-        for (World world : worldsList) {
+        for (WorldSet world : worldsList) {
             if (isNumberingActive)
                 append(world.getNumber() + ": ");
             append(world.toString() + "\n");
@@ -39,8 +39,8 @@ public class CondTextField extends JTextArea {
         description = numberOfWorlds + worldsList.size();
     }
 
-    void printWorldsAndFormulas(List<World> worldList, Map<World, AbstractFormula> translationMap) {
-        for (World world : worldList) {
+    void printWorldsAndFormulas(List<WorldSet> worldList, Map<WorldSet, AbstractFormula> translationMap) {
+        for (WorldSet world : worldList) {
             if (isNumberingActive)
                 append(world.getNumber() + ": ");
             append(world.toString() + " -> " + translationMap.get(world).toString() + "\n");

@@ -8,7 +8,7 @@ import kb_creator.model.propositional_logic.worlds.ABCWorld;
 import kb_creator.model.propositional_logic.worlds.ABWorld;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 import nfc.model.WConditional;
-import nfc.model.World;
+import nfc.model.WorldSet;
 
 public class Test {
 
@@ -40,19 +40,19 @@ public class Test {
     }
 
     private static void otherTest() {
-        World antecedent = new World();
+        WorldSet antecedent = new WorldSet();
         antecedent.addInt(1);
 
         antecedent.addInt(2);
         antecedent.addInt(3);
 
-        World otherAntecend = new World();
+        WorldSet otherAntecend = new WorldSet();
         otherAntecend.addInt(1);
         otherAntecend.addInt(2);
         otherAntecend.addInt(3);
 
 
-        World consequence = new World();
+        WorldSet consequence = new WorldSet();
         consequence.addInt(2);
 
         WConditional conditional = new WConditional(consequence, antecedent);
@@ -69,11 +69,11 @@ public class Test {
     }
 
     private static void counterConditionalTest() {
-        World antecend = new World();
+        WorldSet antecend = new WorldSet();
         antecend.addInt(1);
         antecend.addInt(2);
 
-        World consequence = new World();
+        WorldSet consequence = new WorldSet();
         consequence.addInt(2);
 
 /*        Conditional firsConditonal = new Conditional(consequence, antecend);
