@@ -77,7 +77,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
-    //todo: rethink. make it faster?
     //this is about 20% faster than old consistent method.
     //it is faster at higher kb size and same speed at kb size 1
     public boolean newIsConsistent(PConditional conditionalToTest) {
@@ -86,7 +85,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
                     if (!conditional.tolerates(world))
-                        toleratesAll = false; //todo: return true if it tolerates?
+                        toleratesAll = false;
                 }
                 if (toleratesAll)
                     return true;

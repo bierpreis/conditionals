@@ -31,6 +31,7 @@ public abstract class AbstractFormula {
     @Override
     public abstract String toString();
 
+    //this gets never overridden
     @Override
     public final boolean equals(Object o) {
         if (!(o instanceof AbstractFormula))
