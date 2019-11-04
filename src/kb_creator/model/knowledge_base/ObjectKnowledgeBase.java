@@ -86,7 +86,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
                     if (!conditional.tolerates(world))
-                        toleratesAll = false;
+                        toleratesAll = false; //todo: return true if it tolerates?
                 }
                 if (toleratesAll)
                     return true;
@@ -154,7 +154,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     public String toString() {
         return conditionalList.toString();
     }
-    
+
 
     //this creates infOcf file strings
     @Override
