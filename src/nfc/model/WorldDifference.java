@@ -15,29 +15,33 @@ public class WorldDifference {
     private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     private static AbstractSignature signature;
-    private final WorldSet world1;
-    private final WorldSet world2;
+    private final WorldSet worldSet1;
+    private final WorldSet worldSet2;
 
     private final List<WorldsPair> differenceList;
 
-    private boolean areEqual;
+    private boolean areEquivalent;
 
-    public WorldDifference(WorldSet world1, WorldSet world2) {
-        this.world1 = world1;
-        this.world2 = world2;
+    public WorldDifference(WorldSet worldSet1, WorldSet worldSet2) {
+        this.worldSet1 = worldSet1;
+        this.worldSet2 = worldSet2;
 
         differenceList = new ArrayList<>();
-        areEqual = false;
+        areEquivalent = false;
 
         calculateDifference();
     }
 
     private void calculateDifference() {
-        if (world1.getSize() != world2.getSize())
+
+        //if the sets are different sizes, they cant be equal
+        if (worldSet1.getSize() != worldSet2.getSize())
             return;
-        for (int i = 0; i < world1.getSize(); i++) {
-            if (!world1.getWorldsList().get(i).equals(world2.getWorldsList().get(i)))
-                differenceList.add(new WorldsPair(world1.getWorldsList().get(i), world2.getWorldsList().get(i)));
+
+        //iterate trough list and collect differences in difference list
+        for (int i = 0; i < worldSet1.getSize(); i++) {
+            if (!worldSet1.getWorldsList().get(i).equals(worldSet2.getWorldsList().get(i)))
+                differenceList.add(new WorldsPair(worldSet1.getWorldsList().get(i), worldSet2.getWorldsList().get(i)));
         }
 
         List<WorldsPair> cleanedDifferenceList = new ArrayList<>();
@@ -47,13 +51,13 @@ public class WorldDifference {
         }
 
         if (cleanedDifferenceList.size() == 0)
-            areEqual = true;
+            areEquivalent = true;
 
 
     }
 
-    public boolean areEqual() {
-        return areEqual;
+    public boolean areEquivalent() {
+        return areEquivalent;
     }
 
     public static void setSignature(AbstractSignature requestedSignature) {

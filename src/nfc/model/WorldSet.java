@@ -24,7 +24,7 @@ public class WorldSet implements Comparable {
 
     public boolean isEquivalent(WorldSet otherWorld) {
         WorldDifference worldDifference = new WorldDifference(this, otherWorld);
-        return worldDifference.areEqual();
+        return worldDifference.areEquivalent();
 
     }
 
