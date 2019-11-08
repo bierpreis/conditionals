@@ -1,6 +1,6 @@
 package nfc.view.menu.options;
 
-import nfc.model.WorldSet;
+import nfc.model.WorldList;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -44,12 +44,12 @@ public class ViewPanel extends JPanel {
         }
     }
 
-    public WorldSet.View getRequestedView() {
+    public WorldList.View getRequestedView() {
         String command = viewButtonGroup.getSelection().getActionCommand();
         if (viewButtonGroup.getSelection().getActionCommand().equals("letters"))
-            return WorldSet.View.LETTERS;
+            return WorldList.View.LETTERS;
         if (viewButtonGroup.getSelection().getActionCommand().equals("numbers"))
-            return WorldSet.View.NUMBERS;
+            return WorldList.View.NUMBERS;
         throw new RuntimeException("No valid view found.");
     }
 }

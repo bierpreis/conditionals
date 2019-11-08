@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WConditional implements Comparable {
-    private final WorldSet antecedent;
-    private final WorldSet consequence;
+    private final WorldList antecedent;
+    private final WorldList consequence;
 
     private WConditional counterConditional;
 
@@ -17,7 +17,7 @@ public class WConditional implements Comparable {
     private int number;
     private static String spaceFillCharacter = " ";
 
-    public WConditional(WorldSet consequence, WorldSet antecedent) {
+    public WConditional(WorldList consequence, WorldList antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
@@ -90,7 +90,7 @@ public class WConditional implements Comparable {
     //which is used to find the actual counter conditional
     public WConditional getBasicCounterConditional() {
 
-        WorldSet newConsequence = new WorldSet();
+        WorldList newConsequence = new WorldList();
         newConsequence.addList(antecedent.getWorldsList());
         newConsequence.removeWorld(consequence);
         return new WConditional(newConsequence, antecedent);
@@ -134,11 +134,11 @@ public class WConditional implements Comparable {
         return eqConditionalNumbers;
     }
 
-    public WorldSet getAntecedent() {
+    public WorldList getAntecedent() {
         return antecedent;
     }
 
-    public WorldSet getConsequence() {
+    public WorldList getConsequence() {
         return consequence;
     }
 

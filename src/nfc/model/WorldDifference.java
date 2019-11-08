@@ -15,16 +15,16 @@ public class WorldDifference {
     private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     private static AbstractSignature signature;
-    private final WorldSet worldSet1;
-    private final WorldSet worldSet2;
+    private final WorldList worldList1;
+    private final WorldList worldList2;
 
     private final List<WorldsPair> differenceList;
 
     private boolean areEquivalent;
 
-    public WorldDifference(WorldSet worldSet1, WorldSet worldSet2) {
-        this.worldSet1 = worldSet1;
-        this.worldSet2 = worldSet2;
+    public WorldDifference(WorldList worldList1, WorldList worldList2) {
+        this.worldList1 = worldList1;
+        this.worldList2 = worldList2;
 
         differenceList = new ArrayList<>();
         areEquivalent = false;
@@ -35,13 +35,13 @@ public class WorldDifference {
     private void calculateDifference() {
 
         //if the sets are different sizes, they cant be equal
-        if (worldSet1.getSize() != worldSet2.getSize())
+        if (worldList1.getSize() != worldList2.getSize())
             return;
 
         //iterate trough list and collect differences in difference list
-        for (int i = 0; i < worldSet1.getSize(); i++) {
-            if (!worldSet1.getWorldsList().get(i).equals(worldSet2.getWorldsList().get(i)))
-                differenceList.add(new WorldsPair(worldSet1.getWorldsList().get(i), worldSet2.getWorldsList().get(i)));
+        for (int i = 0; i < worldList1.getSize(); i++) {
+            if (!worldList1.getWorldsList().get(i).equals(worldList2.getWorldsList().get(i)))
+                differenceList.add(new WorldsPair(worldList1.getWorldsList().get(i), worldList2.getWorldsList().get(i)));
         }
 
         List<WorldsPair> cleanedDifferenceList = new ArrayList<>();
