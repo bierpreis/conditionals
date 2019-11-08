@@ -9,7 +9,6 @@ public class WConditional implements Comparable {
 
     private WConditional counterConditional;
 
-    //todo: rethink
     private List<Integer> eqConditionalNumbers;
 
     private int number;
@@ -24,7 +23,6 @@ public class WConditional implements Comparable {
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
 
-        //todo: init is useless?
         eqConditionalNumbers = new ArrayList<>();
     }
 
@@ -133,7 +131,7 @@ public class WConditional implements Comparable {
     }
 
 
-    public List<Integer> getEqList() {
+    public List<Integer> getEqNumbersList() {
         return eqConditionalNumbers;
     }
 
