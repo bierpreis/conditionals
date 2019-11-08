@@ -9,12 +9,13 @@ public class WConditional implements Comparable {
 
     private WConditional counterConditional;
 
-    //this is needed for proper columns in conditional field
-    private static int longestConditional = 0;
-
+    //todo: rethink
     private List<Integer> eqConditionalNumbers;
 
     private int number;
+
+    //these are needed for dis play functions in nfc viewer
+    private static int longestConditional = 0;
     private static String spaceFillCharacter = " ";
 
     public WConditional(WorldList consequence, WorldList antecedent) {
@@ -22,6 +23,8 @@ public class WConditional implements Comparable {
         this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
+
+        //todo: init is useless?
         eqConditionalNumbers = new ArrayList<>();
     }
 
@@ -114,7 +117,7 @@ public class WConditional implements Comparable {
     }
 
     public void addEqNumbersList(List<Integer> eqConditionalList) {
-            this.eqConditionalNumbers.addAll(eqConditionalList);
+        this.eqConditionalNumbers.addAll(eqConditionalList);
     }
 
     //getters
