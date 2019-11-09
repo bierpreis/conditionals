@@ -9,7 +9,7 @@ public class WConditional implements Comparable {
 
     private WConditional counterConditional;
 
-    private List<Integer> eqConditionalNumbers;
+    private List<WConditional> eqList;
 
     private int number;
 
@@ -23,7 +23,7 @@ public class WConditional implements Comparable {
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
 
-        eqConditionalNumbers = new ArrayList<>();
+        eqList = new ArrayList<>();
     }
 
     public boolean isEquivalent(WConditional otherConditional) {
@@ -110,12 +110,12 @@ public class WConditional implements Comparable {
     }
 
 
-    public void addEqConditionalNumber(int eqNumber) {
-        this.eqConditionalNumbers.add(eqNumber);
+    public void addEqConditional(WConditional conditionalToAdd) {
+        this.eqList.add(conditionalToAdd);
     }
 
-    public void addEqNumbersList(List<Integer> eqConditionalList) {
-        this.eqConditionalNumbers.addAll(eqConditionalList);
+    public void addEqList(List<WConditional> eqListToAdd) {
+        this.eqList = eqListToAdd;
     }
 
     //getters
@@ -131,8 +131,8 @@ public class WConditional implements Comparable {
     }
 
 
-    public List<Integer> getEqNumbersList() {
-        return eqConditionalNumbers;
+    public List<WConditional> getEqList() {
+        return eqList;
     }
 
     public WorldList getAntecedent() {
