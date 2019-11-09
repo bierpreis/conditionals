@@ -9,12 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WorldDifference {
-
     private static AbstractSignature signature;
     private final WorldList worldList1;
     private final WorldList worldList2;
-
-    private final List<WorldsPair> differenceList;
 
     private boolean areEquivalent;
 
@@ -22,17 +19,16 @@ public class WorldDifference {
         this.worldList1 = worldList1;
         this.worldList2 = worldList2;
 
-        differenceList = new ArrayList<>();
-        areEquivalent = false;
 
-        calculateDifference();
+        areEquivalent = calculateDifference();
     }
 
-    private void calculateDifference() { //todo: return type boolean and public
+    private boolean calculateDifference() { //todo: return type boolean and public
+        List<WorldsPair> differenceList = new ArrayList<>();
 
         //if the sets are different sizes, they cant be equal //todo: equal or equivalent?
         if (worldList1.getSize() != worldList2.getSize())
-            return;
+            return false;
 
         //iterate trough list and collect differences in difference list
         for (int i = 0; i < worldList1.getSize(); i++) {
@@ -40,14 +36,11 @@ public class WorldDifference {
                 differenceList.add(new WorldsPair(worldList1.getWorldsList().get(i), worldList2.getWorldsList().get(i)));
         }
 
-        List<WorldsPair> cleanedDifferenceList = new ArrayList<>();
         for (WorldsPair worldsPair : differenceList) {
             if (!worldsPair.isEquivalent())
-                cleanedDifferenceList.add(worldsPair);
+                return false;
         }
-
-        if (cleanedDifferenceList.size() == 0)
-            areEquivalent = true;
+        return true;
 
 
     }
