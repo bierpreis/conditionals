@@ -31,7 +31,7 @@ public class CondTextField extends JTextArea {
 
         for (WorldList world : worldsList) {
             if (isNumberingActive)
-                append(world.getNumber() + ": ");
+                append(String.format("%04d", world.getNumber()) + ": ");
             append(world.toString() + "\n");
 
         }
@@ -42,7 +42,7 @@ public class CondTextField extends JTextArea {
     void printWorldsAndFormulas(List<WorldList> worldList, Map<WorldList, AbstractFormula> translationMap) {
         for (WorldList world : worldList) {
             if (isNumberingActive)
-                append(world.getNumber() + ": ");
+                append(String.format("%04d",world.getNumber()) + ": ");
             append(world.toString() + " -> " + translationMap.get(world).toString() + "\n");
 
         }
@@ -61,7 +61,7 @@ public class CondTextField extends JTextArea {
 
 
             if (isNumberingActive)
-                conditionalString = conditional.getNumber() + ": " + conditionalString;
+                conditionalString = String.format("%04d",conditional.getNumber()) + ": " + conditionalString;
             conditionalCounter++;
 
 
@@ -81,7 +81,7 @@ public class CondTextField extends JTextArea {
             StringBuilder sb = new StringBuilder();
             for (WConditional currentConditional : currentEqList.getList()) {
                 if (isNumberingActive)
-                    sb.append(currentConditional.getNumber() + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length()));
+                    sb.append(String.format("%04d",currentConditional.getNumber()) + ": " + currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length()));
                 else
                     sb.append(currentConditional.toString() + createWhiteSpaceString(currentConditional.toString().length()));
                 numberOfConditionals++;
@@ -117,7 +117,7 @@ public class CondTextField extends JTextArea {
         {
             for (WConditional conditional : conditionals) {
                 if (isNumberingActive)
-                    append(conditional.getNumber() + ": " + conditional.toString() + "  counter: " + conditional.getActualCounterConditional().getNumber() + ": " + conditional.getActualCounterConditional().toString() + "\n");
+                    append(String.format("%04d",conditional.getNumber()) + ": " + conditional.toString() + "  counter: " + String.format("%04d",conditional.getActualCounterConditional().getNumber()) + ": " + conditional.getActualCounterConditional().toString() + "\n");
                 else
                     append(conditional.toString() + "  counter: " + conditional.getActualCounterConditional().toString() + "\n");
             }
