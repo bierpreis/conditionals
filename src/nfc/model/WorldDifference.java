@@ -9,10 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class WorldDifference {
-    private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
-
-    private final List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
-    private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
 
     private static AbstractSignature signature;
     private final WorldList worldList1;
@@ -32,7 +28,7 @@ public class WorldDifference {
         calculateDifference();
     }
 
-    private void calculateDifference() { //todo: return type boolean
+    private void calculateDifference() { //todo: return type boolean and public
 
         //if the sets are different sizes, they cant be equal //todo: equal or equivalent?
         if (worldList1.getSize() != worldList2.getSize())
@@ -65,6 +61,13 @@ public class WorldDifference {
     }
 
     private class WorldsPair {
+        //todo: eq group in signature?
+        private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
+
+        private final List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
+        private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
+
+
         private final int firstInt;
         private final int secondInt;
 
