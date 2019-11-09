@@ -13,20 +13,17 @@ public class WorldDifference {
     private final WorldList worldList1;
     private final WorldList worldList2;
 
-    private boolean areEquivalent;
 
     public WorldDifference(WorldList worldList1, WorldList worldList2) {
         this.worldList1 = worldList1;
         this.worldList2 = worldList2;
 
-
-        areEquivalent = calculateDifference();
     }
 
-    private boolean calculateDifference() { //todo: return type boolean and public
+    public boolean areEquivalent() {
         List<WorldsPair> differenceList = new ArrayList<>();
 
-        //if the sets are different sizes, they cant be equal //todo: equal or equivalent?
+        //if the sets are different sizes, they cant be equivalent
         if (worldList1.getSize() != worldList2.getSize())
             return false;
 
@@ -41,12 +38,6 @@ public class WorldDifference {
                 return false;
         }
         return true;
-
-
-    }
-
-    public boolean areEquivalent() {
-        return areEquivalent;
     }
 
     public static void setSignature(AbstractSignature requestedSignature) {
