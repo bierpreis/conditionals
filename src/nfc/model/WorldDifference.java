@@ -1,11 +1,7 @@
 package nfc.model;
 
-import kb_creator.model.propositional_logic.signature.AB;
-import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class WorldDifference {
@@ -17,7 +13,6 @@ public class WorldDifference {
     public WorldDifference(WorldList worldList1, WorldList worldList2) {
         this.worldList1 = worldList1;
         this.worldList2 = worldList2;
-
     }
 
     public boolean areEquivalent() {
