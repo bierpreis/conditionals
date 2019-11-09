@@ -26,6 +26,7 @@ public class WConditional implements Comparable {
         eqList = new ArrayList<>();
     }
 
+    //todo: is this true for abc? do they need to be in the same equivalence group??
     public boolean isEquivalent(WConditional otherConditional) {
         return consequence.isEquivalent(otherConditional.consequence) && antecedent.isEquivalent(otherConditional.antecedent);
 
