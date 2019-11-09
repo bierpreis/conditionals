@@ -32,9 +32,9 @@ public class WorldDifference {
         calculateDifference();
     }
 
-    private void calculateDifference() {
+    private void calculateDifference() { //todo: return type boolean
 
-        //if the sets are different sizes, they cant be equal
+        //if the sets are different sizes, they cant be equal //todo: equal or equivalent?
         if (worldList1.getSize() != worldList2.getSize())
             return;
 
