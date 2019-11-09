@@ -17,11 +17,11 @@ public class ViewPanel extends JPanel {
 
         changes = new PropertyChangeSupport(this);
 
-        JRadioButton numbersButton = new JRadioButton("Numbers");
+        JRadioButton numbersButton = new JRadioButton("numbers");
         numbersButton.setActionCommand("numbers");
         add(numbersButton);
 
-        lettersButton = new JRadioButton("Letters");
+        lettersButton = new JRadioButton("letters");
         lettersButton.setActionCommand("letters");
         add(lettersButton);
 

@@ -13,7 +13,7 @@ import java.util.Map;
 public class CondTextField extends JTextArea {
     private final String numberOfWorlds = "worlds: ";
     private final String numberOfConditionals = "conditionals: ";
-    private final String numberOfEquivalenceClasses = "Equivalence Classes: ";
+    private final String numberOfEquivalenceClasses = "equivalence classes: ";
 
     private String description;
 

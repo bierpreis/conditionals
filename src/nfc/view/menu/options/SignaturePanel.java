@@ -29,7 +29,7 @@ public class SignaturePanel extends JPanel {
         abcRadioButton.setSelected(true);
 
 
-        setBorder(BorderFactory.createTitledBorder("signature"));
+        setBorder(BorderFactory.createTitledBorder("Signature"));
 
     }
 
