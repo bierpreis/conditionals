@@ -12,7 +12,7 @@ public class StartPanel extends JPanel {
     public StartPanel(NfcCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //setLayout(new GridLayout());
-        setBorder(BorderFactory.createTitledBorder("start"));
+        setBorder(BorderFactory.createTitledBorder("Start"));
 
         JPanel basicPanel = new JPanel();
         add(basicPanel);

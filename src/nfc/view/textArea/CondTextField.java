@@ -20,7 +20,7 @@ public class CondTextField extends JTextArea {
     private static boolean isNumberingActive = false;
 
     public CondTextField() {
-        super(40, 70);
+        super(40, 90);
 
         setFont(new Font("monospaced", Font.PLAIN, 12));
     }
