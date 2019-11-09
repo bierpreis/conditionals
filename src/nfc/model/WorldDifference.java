@@ -45,12 +45,6 @@ public class WorldDifference {
     }
 
     private class WorldsPair {
-        //todo: eq group in signature?
-        private List<Integer> equivalenceGroup = Arrays.asList(2, 1);
-
-        private final List<Integer> equivalenceGroup1 = Arrays.asList(6, 5, 3);
-        private final List<Integer> equivalenceGroup2 = Arrays.asList(4, 2, 1);
-
 
         private final int firstInt;
         private final int secondInt;
@@ -61,18 +55,11 @@ public class WorldDifference {
         }
 
         public boolean isEquivalent() {
-            if (signature instanceof AB)
-                return (equivalenceGroup.contains(firstInt) && equivalenceGroup.contains(secondInt));
-
-
-            if (signature instanceof ABC) {
-                if (equivalenceGroup1.contains(firstInt) && equivalenceGroup1.contains(secondInt))
+            for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
+                if (equivalenceGroup.contains(firstInt) && equivalenceGroup.contains(secondInt))
                     return true;
-                else return (equivalenceGroup2.contains(firstInt) && equivalenceGroup2.contains(secondInt));
             }
-
-            throw new RuntimeException("Wrong signature: " + signature);
-
+            return false;
         }
 
 

@@ -4,6 +4,8 @@ package kb_creator.model.propositional_logic.signature;
 import kb_creator.model.propositional_logic.worlds.ABWorld;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AB extends AbstractSignature {
 
@@ -13,6 +15,8 @@ public class AB extends AbstractSignature {
         possibleWorlds.add(new ABWorld(true, false));
         possibleWorlds.add(new ABWorld(false, true));
         possibleWorlds.add(new ABWorld(false, false));
+
+        equivalenceGroups.add(Arrays.asList(2, 1));
     }
 
     @Override
