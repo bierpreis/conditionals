@@ -28,7 +28,31 @@ public class WConditional implements Comparable {
 
     //todo: is this true for abc? do they need to be in the same equivalence group??
     public boolean isEquivalent(WConditional otherConditional) {
-        return consequence.isEquivalent(otherConditional.consequence) && antecedent.isEquivalent(otherConditional.antecedent);
+
+/*        problems with signature, examples. this says they are eq, but is it true?
+
+         ({ab!c} | {ab!c, !a!bc}) eq ({ab!c} | {ab!c, a!b!c})
+
+        ({a!bc} | {a!bc, !ab!c}) eq ({ab!c} | {ab!c, a!b!c})
+
+        ({!ab!c} | {a!bc, !ab!c}) eq ({a!b!c} | {ab!c, a!b!c})
+
+        //remove? does equals induce equivalent?
+        if (this.equals(otherConditional))
+            return false;
+
+            */
+
+
+        boolean consequenceEq = consequence.isEquivalent(otherConditional.consequence);
+        boolean antecedentEq = antecedent.isEquivalent(otherConditional.antecedent);
+
+
+/*        if (consequenceEq && antecedentEq)
+            System.out.println(this + " eq " + otherConditional);
+        */
+
+        return consequenceEq && antecedentEq;
 
     }
 
