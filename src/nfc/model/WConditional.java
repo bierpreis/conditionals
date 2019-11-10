@@ -1,5 +1,7 @@
 package nfc.model;
 
+import kb_creator.model.propositional_logic.worlds.AbstractWorld;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +28,12 @@ public class WConditional implements Comparable {
         eqList = new ArrayList<>();
     }
 
-    //todo: is this true for abc? do they need to be in the same equivalence group??
+    //todo: is this true for abc? do they need to be in the same equivalence group?? choose between this and the new eq!
     public boolean isEquivalent(WConditional otherConditional) {
+        return newIsEquivalent(otherConditional);
 
-/*        problems with signature, examples. this says they are eq, but is it true?
+        /*
+         *//*        problems with signature, examples. this says they are eq, but is it true?
 
          ({ab!c} | {ab!c, !a!bc}) eq ({ab!c} | {ab!c, a!b!c})
 
@@ -41,19 +45,27 @@ public class WConditional implements Comparable {
         if (this.equals(otherConditional))
             return false;
 
-            */
+            *//*
 
 
         boolean consequenceEq = consequence.isEquivalent(otherConditional.consequence);
         boolean antecedentEq = antecedent.isEquivalent(otherConditional.antecedent);
 
 
-/*        if (consequenceEq && antecedentEq)
+*//*        if (consequenceEq && antecedentEq)
             System.out.println(this + " eq " + otherConditional);
-        */
+        *//*
 
-        return consequenceEq && antecedentEq;
+        return consequenceEq && antecedentEq;*/
 
+    }
+
+    public boolean newIsEquivalent(WConditional otherConditional) {
+        for (List<Integer> eqGroup : consequence.getSignature().getEqGroups())
+            if (antecedent.newIsEquivalent(otherConditional.getAntecedent(), eqGroup) && consequence.newIsEquivalent(otherConditional.getConsequence(), eqGroup))
+                return true;
+
+        return false;
     }
 
     //this is ordering according to definition 3
