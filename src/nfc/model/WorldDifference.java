@@ -1,6 +1,7 @@
 package nfc.model;
 
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,6 @@ public class WorldDifference {
     }
 
     public boolean areEquivalent() {
-        List<WorldsPair> differenceList = new ArrayList<>();
 
         //if the sets are different sizes, they cant be equivalent
         if (worldList1.getSize() != worldList2.getSize())
@@ -24,14 +24,14 @@ public class WorldDifference {
 
         //iterate trough list and collect differences in difference list
         for (int i = 0; i < worldList1.getSize(); i++) {
-            if (!worldList1.getWorldsList().get(i).equals(worldList2.getWorldsList().get(i)))
-                differenceList.add(new WorldsPair(worldList1.getWorldsList().get(i), worldList2.getWorldsList().get(i)));
+            if (!worldList1.getWorldsList().get(i).equals(worldList2.getWorldsList().get(i))) {
+
+                WorldsPair pair = new WorldsPair(worldList1.getWorldsList().get(i), worldList2.getWorldsList().get(i));
+                if (!pair.isEquivalent())
+                    return false;
+            }
         }
 
-        for (WorldsPair worldsPair : differenceList) {
-            if (!worldsPair.isEquivalent())
-                return false;
-        }
         return true;
     }
 
