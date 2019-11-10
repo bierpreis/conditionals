@@ -2,7 +2,6 @@ package nfc.model;
 
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WorldDifference {
