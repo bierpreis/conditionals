@@ -22,43 +22,30 @@ public class WorldDifference {
         if (worldList1.getSize() != worldList2.getSize())
             return false;
 
-        //iterate trough list and collect differences in difference list
+        //iterate trough lists and check if element pairs are equivalent
         for (int i = 0; i < worldList1.getSize(); i++) {
+
+            //get a pair of worlds
             if (!worldList1.getWorldsList().get(i).equals(worldList2.getWorldsList().get(i))) {
                 boolean equivalent = false;
+
+                //check if the pair is equivalent
                 for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
                     if ((equivalenceGroup.contains(worldList1.getWorldsList().get(i)) && equivalenceGroup.contains(worldList2.getWorldsList().get(i))))
                         equivalent = true;
                 }
+
+                //return false when the first pair is not equivalent
                 if (!equivalent)
                     return false;
             }
         }
 
+        //return true if all pairs are equivalent
         return true;
     }
 
     public static void setSignature(AbstractSignature requestedSignature) {
         signature = requestedSignature;
     }
-
-    private class WorldsPair {
-
-        private final int firstInt;
-        private final int secondInt;
-
-        public WorldsPair(int firstInt, int secondInt) {
-            this.firstInt = firstInt;
-            this.secondInt = secondInt;
-        }
-
-        public boolean isEquivalent() {
-
-            return false;
-        }
-
-
-    }
-
-
 }
