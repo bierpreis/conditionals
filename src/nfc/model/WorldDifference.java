@@ -25,9 +25,12 @@ public class WorldDifference {
         //iterate trough list and collect differences in difference list
         for (int i = 0; i < worldList1.getSize(); i++) {
             if (!worldList1.getWorldsList().get(i).equals(worldList2.getWorldsList().get(i))) {
-
-                WorldsPair pair = new WorldsPair(worldList1.getWorldsList().get(i), worldList2.getWorldsList().get(i));
-                if (!pair.isEquivalent())
+                boolean equivalent = false;
+                for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
+                    if ((equivalenceGroup.contains(worldList1.getWorldsList().get(i)) && equivalenceGroup.contains(worldList2.getWorldsList().get(i))))
+                        equivalent = true;
+                }
+                if (!equivalent)
                     return false;
             }
         }
@@ -50,10 +53,7 @@ public class WorldDifference {
         }
 
         public boolean isEquivalent() {
-            for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
-                if (equivalenceGroup.contains(firstInt) && equivalenceGroup.contains(secondInt))
-                    return true;
-            }
+
             return false;
         }
 
