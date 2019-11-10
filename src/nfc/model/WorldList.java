@@ -22,9 +22,33 @@ public class WorldList implements Comparable {
 
     }
 
-    public boolean isEquivalent(WorldList otherWorld) {
-        WorldDifference worldDifference = new WorldDifference(this, otherWorld);
-        return worldDifference.areEquivalent();
+    public boolean isEquivalent(WorldList otherWorldList) {
+
+        //if the sets are different sizes, they cant be equivalent
+        if (this.getSize() != otherWorldList.getSize())
+            return false;
+
+        //iterate trough lists and check if element pairs are equivalent
+        for (int i = 0; i < this.getSize(); i++) {
+
+            //get a pair of worlds
+            if (!this.getWorldsList().get(i).equals(otherWorldList.getWorldsList().get(i))) {
+                boolean equivalent = false;
+
+                //check if the pair is equivalent
+                for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
+                    if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldList.getWorldsList().get(i))))
+                        equivalent = true;
+                }
+
+                //return false when the first pair is not equivalent
+                if (!equivalent)
+                    return false;
+            }
+        }
+
+        //return true if all pairs are equivalent
+        return true;
 
     }
 
@@ -82,7 +106,6 @@ public class WorldList implements Comparable {
 
     public static void setSignature(AbstractSignature requestedSignature) {
         signature = requestedSignature;
-        WorldDifference.setSignature(requestedSignature);
     }
 
     @Override
