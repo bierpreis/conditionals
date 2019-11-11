@@ -28,7 +28,7 @@ public class WConditional implements Comparable {
         eqList = new ArrayList<>();
     }
 
-    //todo: is this true for abc? do they need to be in the same equivalence group?? choose between this and the new eq!
+    //todo: this is still wrong. see examples. maybe change things around: create equivalents from a given conditional and then search for it?
     public boolean isEquivalent(WConditional otherConditional) {
         return newIsEquivalent(otherConditional);
 
