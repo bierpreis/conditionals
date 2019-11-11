@@ -20,18 +20,15 @@ public class ConditionalList implements Comparable {
 
     @Override
     public int compareTo(Object o) {
+        //todo: this cant be correct?!
         if (conditionalList.size() == 0)
             return 0;
-        if (!(o instanceof ConditionalList))
-            throw new RuntimeException("Cant compare " + o.getClass() + " to ConditionalList");
-        else {
-            ConditionalList otherConditionalList = ((ConditionalList) o);
-            WConditional firstConditional = conditionalList.get(0);
-            WConditional otherFirstConditional = otherConditionalList.get(0);
 
-            return firstConditional.compareTo(otherFirstConditional);
+        ConditionalList otherConditionalList = ((ConditionalList) o);
+        WConditional firstConditional = conditionalList.get(0);
+        WConditional otherFirstConditional = otherConditionalList.get(0);
 
-        }
+        return firstConditional.compareTo(otherFirstConditional);
     }
 
     @Override
