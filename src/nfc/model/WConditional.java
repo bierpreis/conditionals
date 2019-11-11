@@ -72,9 +72,6 @@ public class WConditional implements Comparable {
     //this is ordering according to definition 3
     @Override
     public int compareTo(Object o) {
-        if (!(o instanceof WConditional))
-            throw new RuntimeException("Cant compare " + o.getClass().getName() + "to Conditional");
-
         WConditional otherConditional = (WConditional) o;
 
         if (this.antecedent.compareTo(otherConditional.getAntecedent()) != 0)
