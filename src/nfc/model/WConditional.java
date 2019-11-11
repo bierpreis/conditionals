@@ -29,6 +29,7 @@ public class WConditional implements Comparable {
     }
 
     //todo: this is still wrong. see examples. maybe change things around: create equivalents from a given conditional and then search for it?
+    //idea: if equivalence group is included, then swap all by other eq group. this should be equivalent conditional. but how search for it? make same elements method?
     public boolean isEquivalent(WConditional otherConditional) {
         return newIsEquivalent(otherConditional);
 
