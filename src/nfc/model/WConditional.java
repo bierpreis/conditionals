@@ -30,6 +30,7 @@ public class WConditional implements Comparable {
     //idea: equivalence is only possible if eq group is inside. but renaming would possibly change every world except 0 and 7.
     //maybe make a rename method? rename a for b and a for c and all. every renaming would make characteristic change of worlds.
     //create eq worlds like that then search for the real conditionals?
+    //are 3 renamings possible? a-b, a-c, b-c. is rename simply swap?
     public boolean isEquivalent(WConditional otherConditional) {
         return newIsEquivalent(otherConditional);
 
