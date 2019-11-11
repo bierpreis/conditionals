@@ -20,10 +20,6 @@ public class ConditionalList implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        //todo: this cant be correct?!
-        if (conditionalList.size() == 0)
-            return 0;
-
         ConditionalList otherConditionalList = ((ConditionalList) o);
         WConditional firstConditional = conditionalList.get(0);
         WConditional otherFirstConditional = otherConditionalList.get(0);
