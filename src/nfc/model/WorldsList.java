@@ -150,7 +150,7 @@ public class WorldsList implements Comparable {
 
     }
 
-    public void removeWorld(WorldsList worldsToRemove) {
+    public void removeWorlds(WorldsList worldsToRemove) {
         worldsList.removeAll(worldsToRemove.getWorldsList());
     }
 

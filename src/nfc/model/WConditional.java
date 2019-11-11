@@ -126,7 +126,7 @@ public class WConditional implements Comparable {
 
         WorldsList newConsequence = new WorldsList();
         newConsequence.addList(antecedent.getWorldsList());
-        newConsequence.removeWorld(consequence);
+        newConsequence.removeWorlds(consequence);
         return new WConditional(newConsequence, antecedent);
 
     }
