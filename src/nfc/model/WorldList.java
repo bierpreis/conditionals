@@ -7,6 +7,7 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import java.util.ArrayList;
 import java.util.List;
 
+//todo: einheitlich entweder alles worldslist oder worldlist! besser mid s?!
 public class WorldList implements Comparable {
 
     private final List<Integer> worldsList;
@@ -67,8 +68,8 @@ public class WorldList implements Comparable {
 
                 //check if the pair is equivalent
 
-                    if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldList.getWorldsList().get(i))))
-                        equivalent = true;
+                if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldList.getWorldsList().get(i))))
+                    equivalent = true;
 
 
                 //return false when the first pair is not equivalent
