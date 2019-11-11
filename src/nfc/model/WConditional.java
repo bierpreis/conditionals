@@ -27,7 +27,9 @@ public class WConditional implements Comparable {
     }
 
     //todo: this is still wrong. see examples. maybe change things around: create equivalents from a given conditional and then search for it?
-    //idea: if equivalence group is included, then swap all by other eq group. this should be equivalent conditional. but how search for it? make same elements method?
+    //idea: equivalence is only possible if eq group is inside. but renaming would possibly change every world except 0 and 7.
+    //maybe make a rename method? rename a for b and a for c and all. every renaming would make characteristic change of worlds.
+    //create eq worlds like that then search for the real conditionals?
     public boolean isEquivalent(WConditional otherConditional) {
         return newIsEquivalent(otherConditional);
 
