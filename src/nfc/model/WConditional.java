@@ -1,13 +1,11 @@
 package nfc.model;
 
-import kb_creator.model.propositional_logic.worlds.AbstractWorld;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class WConditional implements Comparable {
-    private final WorldList antecedent;
-    private final WorldList consequence;
+    private final WorldsList antecedent;
+    private final WorldsList consequence;
 
     private WConditional counterConditional;
 
@@ -19,7 +17,7 @@ public class WConditional implements Comparable {
     private static int longestConditional = 0;
     private static String spaceFillCharacter = " ";
 
-    public WConditional(WorldList consequence, WorldList antecedent) {
+    public WConditional(WorldsList consequence, WorldsList antecedent) {
         this.consequence = consequence;
         this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
@@ -126,7 +124,7 @@ public class WConditional implements Comparable {
     //which is used to find the actual counter conditional
     public WConditional getBasicCounterConditional() {
 
-        WorldList newConsequence = new WorldList();
+        WorldsList newConsequence = new WorldsList();
         newConsequence.addList(antecedent.getWorldsList());
         newConsequence.removeWorld(consequence);
         return new WConditional(newConsequence, antecedent);
@@ -170,11 +168,11 @@ public class WConditional implements Comparable {
         return eqList;
     }
 
-    public WorldList getAntecedent() {
+    public WorldsList getAntecedent() {
         return antecedent;
     }
 
-    public WorldList getConsequence() {
+    public WorldsList getConsequence() {
         return consequence;
     }
 

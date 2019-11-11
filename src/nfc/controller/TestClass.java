@@ -3,13 +3,13 @@ package nfc.controller;
 
 import kb_creator.model.propositional_logic.signature.AB;
 import nfc.model.NfcCreator;
-import nfc.model.WorldList;
+import nfc.model.WorldsList;
 
 public class TestClass {
     public static void main(String[] args) {
-        WorldList.setView(WorldList.View.LETTERS);
+        WorldsList.setView(WorldsList.View.LETTERS);
         NfcCreator creator = new NfcCreator(new AB());
-        for (WorldList world : creator.getWorldList())
+        for (WorldsList world : creator.getWorldsList())
             System.out.println(world);
     }
 

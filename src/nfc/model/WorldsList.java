@@ -7,8 +7,8 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: einheitlich entweder alles worldslist oder worldlist! besser mid s?!
-public class WorldList implements Comparable {
+
+public class WorldsList implements Comparable {
 
     private final List<Integer> worldsList;
 
@@ -18,27 +18,27 @@ public class WorldList implements Comparable {
     //the number is for identification reasons and for translation into propositional formulas
     private int number;
 
-    public WorldList() {
+    public WorldsList() {
         worldsList = new ArrayList<>();
 
     }
 
-    public boolean isEquivalent(WorldList otherWorldList) {
+    public boolean isEquivalent(WorldsList otherWorldsList) {
 
         //if the sets are different sizes, they cant be equivalent
-        if (this.getSize() != otherWorldList.getSize())
+        if (this.getSize() != otherWorldsList.getSize())
             return false;
 
         //iterate trough lists and check if element pairs are equivalent
         for (int i = 0; i < this.getSize(); i++) {
 
             //get a pair of worlds
-            if (!this.getWorldsList().get(i).equals(otherWorldList.getWorldsList().get(i))) {
+            if (!this.getWorldsList().get(i).equals(otherWorldsList.getWorldsList().get(i))) {
                 boolean equivalent = false;
 
                 //check if the pair is equivalent
                 for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
-                    if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldList.getWorldsList().get(i))))
+                    if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldsList.getWorldsList().get(i))))
                         equivalent = true;
                 }
 
@@ -53,22 +53,22 @@ public class WorldList implements Comparable {
 
     }
 
-    public boolean newIsEquivalent(WorldList otherWorldList, List<Integer> equivalenceGroup) {
+    public boolean newIsEquivalent(WorldsList otherWorldsList, List<Integer> equivalenceGroup) {
 
         //if the sets are different sizes, they cant be equivalent
-        if (this.getSize() != otherWorldList.getSize())
+        if (this.getSize() != otherWorldsList.getSize())
             return false;
 
         //iterate trough lists and check if element pairs are equivalent
         for (int i = 0; i < this.getSize(); i++) {
 
             //get a pair of worlds
-            if (!this.getWorldsList().get(i).equals(otherWorldList.getWorldsList().get(i))) {
+            if (!this.getWorldsList().get(i).equals(otherWorldsList.getWorldsList().get(i))) {
                 boolean equivalent = false;
 
                 //check if the pair is equivalent
 
-                if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldList.getWorldsList().get(i))))
+                if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldsList.getWorldsList().get(i))))
                     equivalent = true;
 
 
@@ -86,7 +86,7 @@ public class WorldList implements Comparable {
     //this ordering is ordering according to definition 1 and 2
     @Override
     public int compareTo(Object o) {
-        WorldList otherWorld = (WorldList) o;
+        WorldsList otherWorld = (WorldsList) o;
 
         if (worldsList.size() < otherWorld.getWorldsList().size())
             return -1;
@@ -141,16 +141,16 @@ public class WorldList implements Comparable {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof WorldList))
+        if (!(o instanceof WorldsList))
             return false;
-        WorldList worldToCompare = (WorldList) o;
+        WorldsList worldToCompare = (WorldsList) o;
 
 
         return this.worldsList.equals(worldToCompare.getWorldsList());
 
     }
 
-    public void removeWorld(WorldList worldsToRemove) {
+    public void removeWorld(WorldsList worldsToRemove) {
         worldsList.removeAll(worldsToRemove.getWorldsList());
     }
 

@@ -30,7 +30,7 @@ public class ConditionalTranslator {
 
 
     //this translates a world to a propositional formula
-    public AbstractFormula worldToFormula(WorldList world) {
+    public AbstractFormula worldToFormula(WorldsList world) {
 
         //if there is a short formula return this
         if (shortTranslationMap.translate(world.getNumber()) != null)
@@ -45,7 +45,7 @@ public class ConditionalTranslator {
     //this translates possible worlds to propositional formulas
     //the returned formulas are conjunctions of the list of possible worlds
     //like this the formulas are not as short as possible but correct
-    private AbstractFormula simpleWorldToFormula(WorldList world) {
+    private AbstractFormula simpleWorldToFormula(WorldsList world) {
         AbstractFormula formulaToReturn = null;
 
         if (world.getSignature() instanceof AB) {

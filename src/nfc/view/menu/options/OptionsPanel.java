@@ -2,7 +2,7 @@ package nfc.view.menu.options;
 
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import nfc.model.WConditional;
-import nfc.model.WorldList;
+import nfc.model.WorldsList;
 import nfc.view.textArea.CondTextField;
 
 import javax.swing.*;
@@ -30,8 +30,8 @@ public class OptionsPanel extends JPanel {
 
 
     public void applySelectedOptions() {
-        WorldList.setView(viewPanel.getRequestedView());
-        WorldList.setSignature(signaturePanel.getRequestedSignature());
+        WorldsList.setView(viewPanel.getRequestedView());
+        WorldsList.setSignature(signaturePanel.getRequestedSignature());
         WConditional.setSpaceDot(dotsPanel.isDotsViewActive());
         CondTextField.setNumberingActive(numbersPanel.isNumbersActive());
 
