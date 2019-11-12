@@ -131,6 +131,7 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
+    //todo: problems occur in this method!
     private List<ConditionalList> createCnfcEq(final List<WConditional> basicConditionalList) {
         System.out.println("creating oldCnfc eq");
 
@@ -175,6 +176,7 @@ public class NfcCreator {
             conditionalList.setNumbersToEquivalentConditionals(nextConditionalNumber);
             nextConditionalNumber = conditionalList.getNextConditionalNumber();
         }
+        System.out.println("finished oldCnfc eq");
         return cNfc;
     }
 
@@ -193,11 +195,13 @@ public class NfcCreator {
     }
 
     private List<WConditional> createCnfc(List<ConditionalList> cnfcEq) {
-        System.out.println("creating oldCnfc");
+        System.out.println("reating oldCnfc");
         List<WConditional> cnfc = new ArrayList<>(cnfcEq.size());
 
         for (ConditionalList sublist : cnfcEq)
             cnfc.add(sublist.get(0));
+
+
         return cnfc;
     }
 
