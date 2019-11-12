@@ -81,13 +81,13 @@ public class WConditional implements Comparable {
             //dont add it then because that would be useless
             if (!this.equals(possibleEqConditional))
                 basicEqList.add(possibleEqConditional);
-            else System.out.println("didnt add!");
         }
 
 
         return basicEqList;
     }
 
+    //todo: this takes epic long!
     public boolean isEquivalent3(WConditional otherConditional) {
         for (WConditional eqConditional : getBasicEquivalents())
             if (otherConditional.equals(eqConditional))
