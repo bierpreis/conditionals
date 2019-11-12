@@ -152,13 +152,13 @@ public class NfcCreator {
                 ConditionalList subList = new ConditionalList();
                 subList.add(conditionalToAdd.createCopy());
                 //iterate over base list
-                for (WConditional currentConditional : basicConditionalList) {
+                for (WConditional possibleEquivalentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
-                    if (currentConditional.isEquivalent(conditionalToAdd)) {
+                    if (conditionalToAdd.isEquivalent(possibleEquivalentConditional)) {
                         //avoid adding the same base conditionals again
-                        if (!currentConditional.equals(conditionalToAdd)) {
-                            subList.add(currentConditional.createCopy());
-                            alreadyAddedSet.add(currentConditional); //!todo: why add current and not conditionalTOAdd?
+                        if (!possibleEquivalentConditional.equals(conditionalToAdd)) {
+                            subList.add(possibleEquivalentConditional.createCopy());
+                            alreadyAddedSet.add(possibleEquivalentConditional);
                         }
                     }
                 }
