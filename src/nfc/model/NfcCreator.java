@@ -167,7 +167,7 @@ public class NfcCreator {
         Collections.sort(cNfc);
 
 
-        //todo: own method for this
+        //set the numbers
         int nextConditionalNumber = 1;
 
         //set numbers to the first in every equivalence class
