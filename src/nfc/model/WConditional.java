@@ -68,24 +68,7 @@ public class WConditional implements Comparable {
 
     }
 
-    public List<WConditional> getBasicEquivalents() {
-        List<WorldsList> antecedentList = antecedent.createRenamings();
-        List<WorldsList> consequenceList = consequence.createRenamings();
 
-        List<WConditional> basicEqList = new ArrayList<>(antecedentList.size());
-
-        for (int i = 0; i < antecedentList.size(); i++) {
-            WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
-
-            //if there is no equivalent conditional, possible conditional will be equal the actual conditional
-            //dont add it then because that would be useless
-            if (!this.equals(possibleEqConditional))
-                basicEqList.add(possibleEqConditional);
-        }
-
-
-        return basicEqList;
-    }
 
     //todo: this takes epic long!
     public boolean isEquivalent3(WConditional otherConditional) {
@@ -105,6 +88,26 @@ public class WConditional implements Comparable {
         return false;
     }
 
+
+    public List<WConditional> getBasicEquivalents() {
+        List<WorldsList> antecedentList = antecedent.createRenamings();
+        List<WorldsList> consequenceList = consequence.createRenamings();
+
+        List<WConditional> basicEqList = new ArrayList<>(antecedentList.size());
+
+        for (int i = 0; i < antecedentList.size(); i++) {
+            WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
+
+            //if there is no equivalent conditional, possible conditional will be equal the actual conditional
+            //dont add it then because that would be useless
+            if (!this.equals(possibleEqConditional))
+                basicEqList.add(possibleEqConditional);
+        }
+
+
+        return basicEqList;
+    }
+    
     //this is ordering according to definition 3
     @Override
     public int compareTo(Object o) {
