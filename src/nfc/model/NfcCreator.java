@@ -158,7 +158,7 @@ public class NfcCreator {
                         //avoid adding the same base conditionals again
                         if (!currentConditional.equals(conditionalToAdd)) {
                             subList.add(currentConditional.createCopy());
-                            alreadyAddedSet.add(currentConditional);
+                            alreadyAddedSet.add(currentConditional); //!todo: why add current and not conditionalTOAdd?
                         }
                     }
                 }
