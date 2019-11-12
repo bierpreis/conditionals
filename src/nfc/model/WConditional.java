@@ -85,7 +85,7 @@ public class WConditional implements Comparable {
 
         return false;
     }
-    
+
     private void createBasicEquivalents() {
         basicEqList = new ArrayList<>();
         List<WorldsList> antecedentList = antecedent.createRenamings();
@@ -97,7 +97,7 @@ public class WConditional implements Comparable {
 
             //if there is no equivalent conditional, possible conditional will be equal the actual conditional
             //dont add it then because that would be useless
-            if (!this.equals(possibleEqConditional))  //todo: really? compare with old stuff!
+            if (!this.equals(possibleEqConditional))  //todo: really? compare with old stuff! and: could renamings return the same?
                 basicEqList.add(possibleEqConditional);
         }
 
