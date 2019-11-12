@@ -142,6 +142,8 @@ public class NfcCreator {
         System.out.println("creating oldCnfc eq");
 
         List<ConditionalList> cNfc = new ArrayList<>();
+
+        //todo: maybe try set for this?
         List<WConditional> alreadyAddedList = new ArrayList<>();
 
         //iterate basic conditionals
