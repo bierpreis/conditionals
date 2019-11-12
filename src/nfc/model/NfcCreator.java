@@ -87,6 +87,7 @@ public class NfcCreator {
     }
 
     private void setEquivalents(List<WConditional> conditionalList) {
+
         for (WConditional baseConditional : conditionalList) {
             for (WConditional basicEqConditional : baseConditional.getBasicEquivalents()) {
                 for (WConditional conditionalFromList : conditionalList) {
@@ -97,6 +98,7 @@ public class NfcCreator {
                 }
             }
         }
+
     }
 
     private List<WConditional> createNfc(List<ConditionalList> cnfc) {

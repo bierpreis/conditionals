@@ -5,6 +5,7 @@ import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -109,10 +110,12 @@ public class WorldsList implements Comparable {
 
     public void addInt(int worldToAdd) {
         worldsList.add(worldToAdd);
+        Collections.sort(worldsList, Collections.reverseOrder());
     }
 
     public void addList(List<Integer> newList) {
         worldsList.addAll(newList);
+        Collections.sort(worldsList, Collections.reverseOrder());
     }
 
     @Override
