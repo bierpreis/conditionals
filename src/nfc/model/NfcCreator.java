@@ -155,7 +155,7 @@ public class NfcCreator {
                     //try to find equivalent conditionals
                     if (possibleEquivalentConditional.isEquivalent(firstConditional)) {
                         //avoid adding the same base conditionals again
-                        if (!possibleEquivalentConditional.equals(firstConditional)) { //todo: really? why not? compare with old stuff!
+                        if (!possibleEquivalentConditional.equals(firstConditional)) { //todo: really? why not? compare with old stuff! could not happen with old stuff!
                             subList.add(possibleEquivalentConditional.createCopy());
                             alreadyAddedSet.add(possibleEquivalentConditional);
                         }
