@@ -154,7 +154,7 @@ public class WorldsList implements Comparable {
         worldsList.removeAll(worldsToRemove.getWorldsList());
     }
 
-    public String translateNumbersToLetters(String string) {
+    private String translateNumbersToLetters(String string) {
 
         if (signature instanceof ABC) {
 
@@ -185,6 +185,40 @@ public class WorldsList implements Comparable {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public List<WorldsList> createRenamings() {
+        List<WorldsList> renamingsList = null;
+
+        if (signature instanceof AB) {
+            renamingsList = new ArrayList<>(1);
+            renamingsList.add(new WorldsList());
+
+            List<Integer> newWorldsList = new ArrayList<>(worldsList.size());
+
+            for (int world : worldsList) {
+                switch (world) {
+                    case 0:
+                        newWorldsList.add(0);
+                        break;
+                    case 1:
+                        newWorldsList.add(2);
+                        break;
+                    case 2:
+                        newWorldsList.add(1);
+                        break;
+                    case 3:
+                        newWorldsList.add(3);
+                        break;
+                    default:
+                        throw new RuntimeException("Finding equivalent WorldsList failed!");
+
+                }
+            }
+            renamingsList.get(renamingsList.size() - 1).addList(newWorldsList);
+        }
+
+        return renamingsList;
     }
 
     //getters

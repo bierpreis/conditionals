@@ -1,5 +1,9 @@
 package nfc.model;
 
+import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.propositional_logic.signature.ABC;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +64,17 @@ public class WConditional implements Comparable {
 
         return consequenceEq && antecedentEq;*/
 
+    }
+
+    public List<WConditional> getBasicEquivalents(){
+        if(antecedent.getSignature() instanceof AB){
+
+        }
+
+        if(antecedent.getSignature() instanceof ABC){
+
+        }
+        return null;
     }
 
     public boolean newIsEquivalent(WConditional otherConditional) {
