@@ -1,9 +1,5 @@
 package nfc.model;
 
-import kb_creator.model.propositional_logic.signature.AB;
-import kb_creator.model.propositional_logic.signature.ABC;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +10,8 @@ public class WConditional implements Comparable {
     private WConditional counterConditional;
 
     private List<WConditional> eqList;
+
+    private List<WConditional> basicEqList;
 
     private int number;
 
@@ -26,6 +24,7 @@ public class WConditional implements Comparable {
         this.antecedent = antecedent;
         if (this.toString().length() > longestConditional)
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
+
 
         eqList = new ArrayList<>();
     }
@@ -71,7 +70,7 @@ public class WConditional implements Comparable {
 
     //todo: this takes epic long!
     public boolean isEquivalent3(WConditional otherConditional) {
-        for (WConditional eqConditional : getBasicEquivalents())
+        for (WConditional eqConditional : getBasicEqList())
             if (otherConditional.equals(eqConditional))
                 return true;
 
@@ -88,23 +87,22 @@ public class WConditional implements Comparable {
     }
 
     //todo: maybe only create this once?
-    public List<WConditional> getBasicEquivalents() {
+    private void createBasicEquivalents() {
+        basicEqList = new ArrayList<>();
         List<WorldsList> antecedentList = antecedent.createRenamings();
         List<WorldsList> consequenceList = consequence.createRenamings();
 
-        List<WConditional> basicEqList = new ArrayList<>(antecedentList.size());
 
         for (int i = 0; i < antecedentList.size(); i++) {
             WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
 
             //if there is no equivalent conditional, possible conditional will be equal the actual conditional
             //dont add it then because that would be useless
-            if (!this.equals(possibleEqConditional))
+            if (!this.equals(possibleEqConditional))  //todo: really? compare with old stuff!
                 basicEqList.add(possibleEqConditional);
         }
 
 
-        return basicEqList;
     }
 
     //this is ordering according to definition 3
@@ -220,4 +218,11 @@ public class WConditional implements Comparable {
         return longestConditional;
     }
 
+    public List<WConditional> getBasicEqList() {
+
+        //not nice but this cant be in constructor it would be stack overflow
+        if (basicEqList == null)
+            createBasicEquivalents();
+        return basicEqList;
+    }
 }

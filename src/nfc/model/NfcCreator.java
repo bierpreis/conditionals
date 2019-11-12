@@ -90,7 +90,7 @@ public class NfcCreator {
 
     private void setEquivalents(List<WConditional> conditionalList) {
         for (WConditional baseConditional : conditionalList) {
-            for (WConditional basicEqConditional : baseConditional.getBasicEquivalents()) {
+            for (WConditional basicEqConditional : baseConditional.getBasicEqList()) {
                 for (WConditional conditionalFromList : conditionalList) {
                     if (basicEqConditional.equals(conditionalFromList)) {
                         baseConditional.addEqConditional(conditionalFromList);
