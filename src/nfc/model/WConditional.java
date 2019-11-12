@@ -30,6 +30,8 @@ public class WConditional implements Comparable {
         eqList = new ArrayList<>();
     }
 
+    //todo: idea: this can check if otherConditional is equals one of the eq list.
+
     //todo: this is still wrong. see examples. maybe change things around: create equivalents from a given conditional and then search for it?
     //idea: equivalence is only possible if eq group is inside. but renaming would possibly change every world except 0 and 7.
     //maybe make a rename method? rename a for b and a for c and all. every renaming would make characteristic change of worlds.
