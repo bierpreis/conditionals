@@ -143,14 +143,14 @@ public class NfcCreator {
             //only create new sublist if conditional was not added before as second conditional
             if (!alreadyAddedSet.contains(firstConditional)) {
                 ConditionalList subList = new ConditionalList();
-                subList.add(firstConditional.createCopy()); //todo: create copy makes a new conditional with NO number! really? why they have numbers at this point?
+                subList.add(firstConditional);
                 //iterate over base list
                 for (WConditional possibleEquivalentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
                     if (possibleEquivalentConditional.isEquivalent(firstConditional)) {
                         //avoid adding the same base conditionals again
-                        if (!possibleEquivalentConditional.equals(firstConditional)) { //todo: really? why not? compare with old stuff! could not happen with old stuff!
-                            subList.add(possibleEquivalentConditional.createCopy());
+                        if (!possibleEquivalentConditional.equals(firstConditional)) {
+                            subList.add(possibleEquivalentConditional);
                             alreadyAddedSet.add(possibleEquivalentConditional);
                         }
                     }
