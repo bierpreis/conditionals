@@ -195,31 +195,50 @@ public class WorldsList implements Comparable {
 
         if (signature instanceof AB) {
             renamingsList = new ArrayList<>(1);
-            renamingsList.add(new WorldsList());
 
-            List<Integer> newWorldsList = new ArrayList<>(worldsList.size());
+
+            List<Integer> intList = new ArrayList<>(worldsList.size());
 
             for (int world : worldsList) {
                 switch (world) {
                     case 0:
-                        newWorldsList.add(0);
+                        intList.add(0);
                         break;
                     case 1:
-                        newWorldsList.add(2);
+                        intList.add(2);
                         break;
                     case 2:
-                        newWorldsList.add(1);
+                        intList.add(1);
                         break;
                     case 3:
-                        newWorldsList.add(3);
+                        intList.add(3);
                         break;
                     default:
                         throw new RuntimeException("Finding equivalent WorldsList failed!");
 
                 }
             }
+            WorldsList worldsList = new WorldsList();
+            worldsList.addList(intList);
+            renamingsList.add(worldsList);
+
+        } else if (signature instanceof ABC) {
+            renamingsList = new ArrayList<>(1);
+            renamingsList.add(new WorldsList());
+
+            List<Integer> newWorldsList = new ArrayList<>(worldsList.size());
+
+            for (int world : worldsList) {
+                switch (world) {
+
+                    default:
+                        throw new RuntimeException("Finding equivalent WorldsList failed!");
+
+                }
+            }
             renamingsList.get(renamingsList.size() - 1).addList(newWorldsList);
-        }
+        } else throw new RuntimeException("No Valid Signature found!");
+
 
         return renamingsList;
     }
