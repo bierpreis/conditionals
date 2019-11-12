@@ -143,13 +143,12 @@ public class NfcCreator {
 
         List<ConditionalList> cNfc = new ArrayList<>();
 
-        //todo: maybe try set for this?
-        List<WConditional> alreadyAddedList = new ArrayList<>();
+        Set<WConditional> alreadyAddedSet = new HashSet<>();
 
         //iterate basic conditionals
         for (WConditional conditionalToAdd : basicConditionalList) {
             //only create new sublist if conditional was not added before as second conditional
-            if (!alreadyAddedList.contains(conditionalToAdd)) {
+            if (!alreadyAddedSet.contains(conditionalToAdd)) {
                 ConditionalList subList = new ConditionalList();
                 subList.add(conditionalToAdd.createCopy());
                 //iterate over base list
@@ -159,7 +158,7 @@ public class NfcCreator {
                         //avoid adding the same base conditionals again
                         if (!currentConditional.equals(conditionalToAdd)) {
                             subList.add(currentConditional.createCopy());
-                            alreadyAddedList.add(currentConditional);
+                            alreadyAddedSet.add(currentConditional);
                         }
                     }
                 }
