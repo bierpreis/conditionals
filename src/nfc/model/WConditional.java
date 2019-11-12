@@ -69,10 +69,10 @@ public class WConditional implements Comparable {
     }
 
     public List<WConditional> getBasicEquivalents() {
-        List<WConditional> basicEqList = new ArrayList<>();
-
         List<WorldsList> antecedentList = antecedent.createRenamings();
         List<WorldsList> consequenceList = consequence.createRenamings();
+
+        List<WConditional> basicEqList = new ArrayList<>(antecedentList.size());
 
         for (int i = 0; i < antecedentList.size(); i++) {
             WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
