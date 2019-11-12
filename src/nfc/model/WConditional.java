@@ -30,10 +30,10 @@ public class WConditional implements Comparable {
     }
 
 
-    //todo: what to do? there are 6050 basic conditionals but later more?! what is wrong?
-    //are 3 renamings possible? a-b, a-c, b-c. is rename simply swap?
+    //todo: what to do? there are 6050 basic conditionals but later more?! what is wrong? and how can the eq methods increase this number?
+    //where does the number come from?
     public boolean isEquivalent(WConditional otherConditional) {
-        return isEquivalent3(otherConditional);
+        return isEquivalent1(otherConditional);
     }
 
     //this is the oldest eq method and wrong for abc
@@ -58,7 +58,6 @@ public class WConditional implements Comparable {
     }
 
 
-
     private boolean isEquivalent3(WConditional otherConditional) {
         for (WConditional eqConditional : getBasicEqList())
             if (otherConditional.equals(eqConditional))
@@ -66,7 +65,6 @@ public class WConditional implements Comparable {
 
         return false;
     }
-
 
 
     private void createBasicEquivalents() {
