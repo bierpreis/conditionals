@@ -85,8 +85,7 @@ public class WConditional implements Comparable {
 
         return false;
     }
-
-    //todo: maybe only create this once?
+    
     private void createBasicEquivalents() {
         basicEqList = new ArrayList<>();
         List<WorldsList> antecedentList = antecedent.createRenamings();
