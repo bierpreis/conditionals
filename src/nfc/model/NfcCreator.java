@@ -35,7 +35,7 @@ public class NfcCreator {
         //new stuff
         setEquivalents(wConditionalList);
 
-        
+
         oldCnfcEq = createCnfcEq(wConditionalList);
 
         //this is in order on def 5.1
@@ -145,17 +145,17 @@ public class NfcCreator {
         Set<WConditional> alreadyAddedSet = new HashSet<>();
 
         //iterate basic conditionals
-        for (WConditional conditionalToAdd : basicConditionalList) {
+        for (WConditional firstConditional : basicConditionalList) {
             //only create new sublist if conditional was not added before as second conditional
-            if (!alreadyAddedSet.contains(conditionalToAdd)) {
+            if (!alreadyAddedSet.contains(firstConditional)) {
                 ConditionalList subList = new ConditionalList();
-                subList.add(conditionalToAdd.createCopy());
+                subList.add(firstConditional.createCopy());
                 //iterate over base list
                 for (WConditional possibleEquivalentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
-                    if (conditionalToAdd.isEquivalent(possibleEquivalentConditional)) {
+                    if (possibleEquivalentConditional.isEquivalent(firstConditional)) {
                         //avoid adding the same base conditionals again
-                        if (!possibleEquivalentConditional.equals(conditionalToAdd)) {
+                        if (!possibleEquivalentConditional.equals(firstConditional)) { //todo: really? why not? compare with old stuff!
                             subList.add(possibleEquivalentConditional.createCopy());
                             alreadyAddedSet.add(possibleEquivalentConditional);
                         }
@@ -166,6 +166,8 @@ public class NfcCreator {
         }
         Collections.sort(cNfc);
 
+
+        //todo: own method for this
         int nextConditionalNumber = 1;
 
         //set numbers to the first in every equivalence class
