@@ -28,47 +28,38 @@ public class WConditional implements Comparable {
 
         eqList = new ArrayList<>();
     }
-    
 
-    //todo: this is still wrong. see examples. maybe change things around: create equivalents from a given conditional and then search for it?
-    //idea: equivalence is only possible if eq group is inside. but renaming would possibly change every world except 0 and 7.
-    //maybe make a rename method? rename a for b and a for c and all. every renaming would make characteristic change of worlds.
-    //create eq worlds like that then search for the real conditionals?
+
+    //todo: what to do? there are 6050 basic conditionals but later more?! what is wrong?
     //are 3 renamings possible? a-b, a-c, b-c. is rename simply swap?
     public boolean isEquivalent(WConditional otherConditional) {
         return isEquivalent3(otherConditional);
+    }
 
-        /*
-         *//*        problems with signature, examples. this says they are eq, but is it true?
-
-         ({ab!c} | {ab!c, !a!bc}) eq ({ab!c} | {ab!c, a!b!c})
-
-        ({a!bc} | {a!bc, !ab!c}) eq ({ab!c} | {ab!c, a!b!c})
-
-        ({!ab!c} | {a!bc, !ab!c}) eq ({a!b!c} | {ab!c, a!b!c})
-
+    //this is the oldest eq method and wrong for abc
+    private boolean isEquivalent1(WConditional otherConditional) {
         //remove? does equals induce equivalent?
         if (this.equals(otherConditional))
             return false;
 
-            *//*
-
-
         boolean consequenceEq = consequence.isEquivalent(otherConditional.consequence);
         boolean antecedentEq = antecedent.isEquivalent(otherConditional.antecedent);
 
+        return consequenceEq && antecedentEq;
+    }
 
-*//*        if (consequenceEq && antecedentEq)
-            System.out.println(this + " eq " + otherConditional);
-        *//*
+    //this doesnt work with abc
+    private boolean isEquivalent2(WConditional otherConditional) {
+        for (List<Integer> eqGroup : consequence.getSignature().getEqGroups())
+            if (antecedent.newIsEquivalent(otherConditional.getAntecedent(), eqGroup) && consequence.newIsEquivalent(otherConditional.getConsequence(), eqGroup))
+                return true;
 
-        return consequenceEq && antecedentEq;*/
-
+        return false;
     }
 
 
-    //todo: this takes epic long!
-    public boolean isEquivalent3(WConditional otherConditional) {
+
+    private boolean isEquivalent3(WConditional otherConditional) {
         for (WConditional eqConditional : getBasicEqList())
             if (otherConditional.equals(eqConditional))
                 return true;
@@ -76,14 +67,7 @@ public class WConditional implements Comparable {
         return false;
     }
 
-    //this doesnt work with abc
-    public boolean isEquivalent2(WConditional otherConditional) {
-        for (List<Integer> eqGroup : consequence.getSignature().getEqGroups())
-            if (antecedent.newIsEquivalent(otherConditional.getAntecedent(), eqGroup) && consequence.newIsEquivalent(otherConditional.getConsequence(), eqGroup))
-                return true;
 
-        return false;
-    }
 
     private void createBasicEquivalents() {
         basicEqList = new ArrayList<>();
