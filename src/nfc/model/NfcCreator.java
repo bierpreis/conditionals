@@ -150,10 +150,10 @@ public class NfcCreator {
                     //try to find equivalent conditionals
                     if (possibleEquivalentConditional.isEquivalent(firstConditional)) {
                         //avoid adding the same base conditionals again
-                        if (!possibleEquivalentConditional.equals(firstConditional)) {
-                            subList.add(possibleEquivalentConditional);
-                            alreadyAddedSet.add(possibleEquivalentConditional);
-                        }
+                        //if (!possibleEquivalentConditional.equals(firstConditional)) {
+                        subList.add(possibleEquivalentConditional);
+                        alreadyAddedSet.add(possibleEquivalentConditional);
+                        //}
                     }
                 }
                 cNfc.add(subList);
@@ -302,9 +302,9 @@ public class NfcCreator {
 
     private Map<Integer, PConditional> createNfcMap(Collection<PConditional> nfc) {
         Map<Integer, PConditional> conditionalMap = new HashMap<>(nfc.size());
-        for (PConditional conditional : nfc) {
+        for (PConditional conditional : nfc) { //todo: there must be doubles in nfc!
             if (conditionalMap.containsKey(conditional.getNumber())) {
-                throw new RuntimeException("Double conditional detected!");
+                throw new RuntimeException("Double conditional detected! (" + conditional.getNumber() + ")");
             }
             conditionalMap.put(conditional.getNumber(), conditional);
         }

@@ -196,8 +196,7 @@ public class WorldsList implements Comparable {
     }
 
     public List<WorldsList> createRenamings() {
-        System.out.println("creating..");
-        List<WorldsList> renamingsList = null;
+        List<WorldsList> renamingsList ;
 
         if (signature instanceof AB) {
             renamingsList = new ArrayList<>(1);
