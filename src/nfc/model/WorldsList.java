@@ -222,21 +222,133 @@ public class WorldsList implements Comparable {
             worldsList.addList(intList);
             renamingsList.add(worldsList);
 
+            //todo: check this in paper and here again. this shall not fail!
         } else if (signature instanceof ABC) {
-            renamingsList = new ArrayList<>(1);
-            renamingsList.add(new WorldsList());
+            renamingsList = new ArrayList<>(3);
 
-            List<Integer> newWorldsList = new ArrayList<>(worldsList.size());
+            //renaming a-b and b-a
+            {
+                List<Integer> intList = new ArrayList<>(worldsList.size());
 
-            for (int world : worldsList) {
-                switch (world) {
+                for (int world : worldsList) {
+                    switch (world) {
+                        case 0:
+                            intList.add(0);
+                            break;
+                        case 1:
+                            intList.add(1);
+                            break;
+                        case 2:
+                            intList.add(4);
+                            break;
+                        case 3:
+                            intList.add(5);
+                            break;
+                        case 4:
+                            intList.add(2);
+                            break;
+                        case 5:
+                            intList.add(3);
+                            break;
+                        case 6:
+                            intList.add(6);
+                            break;
+                        case 7:
+                            intList.add(7);
+                            break;
+                        default:
+                            throw new RuntimeException("Finding equivalent WorldsList failed!");
 
-                    default:
-                        throw new RuntimeException("Finding equivalent WorldsList failed!");
-
+                    }
                 }
+                WorldsList worldsList = new WorldsList();
+                worldsList.addList(intList);
+                renamingsList.add(worldsList);
             }
-            renamingsList.get(renamingsList.size() - 1).addList(newWorldsList);
+
+
+            //renaming a-c and c - a
+            {
+                List<Integer> intList = new ArrayList<>(worldsList.size());
+
+                for (int world : worldsList) {
+                    switch (world) {
+                        case 0:
+                            intList.add(0);
+                            break;
+                        case 1:
+                            intList.add(4);
+                            break;
+                        case 2:
+                            intList.add(2);
+                            break;
+                        case 3:
+                            intList.add(6);
+                            break;
+                        case 4:
+                            intList.add(1);
+                            break;
+                        case 5:
+                            intList.add(5);
+                            break;
+                        case 6:
+                            intList.add(3);
+                            break;
+                        case 7:
+                            intList.add(7);
+                            break;
+                        default:
+                            throw new RuntimeException("Finding equivalent WorldsList failed!");
+
+                    }
+                }
+                WorldsList worldsList = new WorldsList();
+                worldsList.addList(intList);
+                renamingsList.add(worldsList);
+            }
+
+
+            //renaming b-c and c-b
+            {
+                List<Integer> intList = new ArrayList<>(worldsList.size());
+
+                for (int world : worldsList) {
+                    switch (world) {
+                        case 0:
+                            intList.add(0);
+                            break;
+                        case 1:
+                            intList.add(2);
+                            break;
+                        case 2:
+                            intList.add(1);
+                            break;
+                        case 3:
+                            intList.add(3);
+                            break;
+                        case 4:
+                            intList.add(4);
+                            break;
+                        case 5:
+                            intList.add(6);
+                            break;
+                        case 6:
+                            intList.add(5);
+                            break;
+                        case 7:
+                            intList.add(7);
+                            break;
+                        default:
+                            throw new RuntimeException("Finding equivalent WorldsList failed!");
+
+                    }
+                }
+                WorldsList worldsList = new WorldsList();
+                worldsList.addList(intList);
+                renamingsList.add(worldsList);
+            }
+
+
         } else throw new RuntimeException("No Valid Signature found!");
 
 
