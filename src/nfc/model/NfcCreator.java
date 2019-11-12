@@ -127,12 +127,6 @@ public class NfcCreator {
 
 
         Collections.sort(basicConditionalList);
-        //this simple numbering is just for basicConditionalList view and not really useful
-        int counter = 1;
-        for (WConditional conditional : basicConditionalList) {
-            conditional.setNumber(counter);
-            counter++;
-        }
 
         return basicConditionalList;
     }
