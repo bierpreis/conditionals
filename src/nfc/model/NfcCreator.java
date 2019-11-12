@@ -149,7 +149,7 @@ public class NfcCreator {
             //only create new sublist if conditional was not added before as second conditional
             if (!alreadyAddedSet.contains(firstConditional)) {
                 ConditionalList subList = new ConditionalList();
-                subList.add(firstConditional.createCopy());
+                subList.add(firstConditional.createCopy()); //todo: create copy makes a new conditional with NO number! really? why they have numbers at this point?
                 //iterate over base list
                 for (WConditional possibleEquivalentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
