@@ -31,6 +31,7 @@ public class WConditional implements Comparable {
 
 
     //todo: what to do? there are 6050 basic conditionals but later more?! what is wrong? and how can the eq methods increase this number?
+    //idea: new method will say the actual conditiional is not equivalent to itself.
     //where does the number come from?
     public boolean isEquivalent(WConditional otherConditional) {
         return isEquivalent1(otherConditional);
