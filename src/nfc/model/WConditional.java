@@ -38,7 +38,7 @@ public class WConditional implements Comparable {
     //create eq worlds like that then search for the real conditionals?
     //are 3 renamings possible? a-b, a-c, b-c. is rename simply swap?
     public boolean isEquivalent(WConditional otherConditional) {
-        return newIsEquivalent(otherConditional);
+        return isEquivalent3(otherConditional);
 
         /*
          *//*        problems with signature, examples. this says they are eq, but is it true?
@@ -75,14 +75,29 @@ public class WConditional implements Comparable {
         List<WorldsList> consequenceList = consequence.createRenamings();
 
         for (int i = 0; i < antecedentList.size(); i++) {
-            basicEqList.add(new WConditional(consequenceList.get(i), antecedentList.get(i)));
+            WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
+
+            //if there is no equivalent conditional, possible conditional will be equal the actual conditional
+            //dont add it then because that would be useless
+            if (!this.equals(possibleEqConditional))
+                basicEqList.add(possibleEqConditional);
+            else System.out.println("didnt add!");
         }
 
 
         return basicEqList;
     }
 
-    public boolean newIsEquivalent(WConditional otherConditional) {
+    public boolean isEquivalent3(WConditional otherConditional) {
+        for (WConditional eqConditional : getBasicEquivalents())
+            if (otherConditional.equals(eqConditional))
+                return true;
+
+        return false;
+    }
+
+    //this doesnt work with abc
+    public boolean isEquivalent2(WConditional otherConditional) {
         for (List<Integer> eqGroup : consequence.getSignature().getEqGroups())
             if (antecedent.newIsEquivalent(otherConditional.getAntecedent(), eqGroup) && consequence.newIsEquivalent(otherConditional.getConsequence(), eqGroup))
                 return true;
