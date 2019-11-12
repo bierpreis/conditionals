@@ -195,7 +195,9 @@ public class WorldsList implements Comparable {
         this.number = number;
     }
 
+    //todo: maybe only create this once?
     public List<WorldsList> createRenamings() {
+        System.out.println("creating..");
         List<WorldsList> renamingsList = null;
 
         if (signature instanceof AB) {

@@ -69,7 +69,6 @@ public class WConditional implements Comparable {
     }
 
 
-
     //todo: this takes epic long!
     public boolean isEquivalent3(WConditional otherConditional) {
         for (WConditional eqConditional : getBasicEquivalents())
@@ -88,7 +87,7 @@ public class WConditional implements Comparable {
         return false;
     }
 
-
+    //todo: maybe only create this once?
     public List<WConditional> getBasicEquivalents() {
         List<WorldsList> antecedentList = antecedent.createRenamings();
         List<WorldsList> consequenceList = consequence.createRenamings();
@@ -107,7 +106,7 @@ public class WConditional implements Comparable {
 
         return basicEqList;
     }
-    
+
     //this is ordering according to definition 3
     @Override
     public int compareTo(Object o) {
