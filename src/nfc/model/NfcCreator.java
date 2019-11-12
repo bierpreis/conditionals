@@ -30,6 +30,10 @@ public class NfcCreator {
         //this is basic conditional list in order from definition  2
         wConditionalList = createBasicConditionalList(worldsList);
 
+        //new stuff
+
+        setEquivalents(wConditionalList);
+
 
         oldCnfcEq = createCnfcEq(wConditionalList);
 
@@ -39,7 +43,7 @@ public class NfcCreator {
         //this is in order of definition 5.2
         oldNfc = createNfc(oldCnfcEq);
 
-        setEquivalentListToNfc(oldCnfcEq);
+        //setEquivalentListToNfc(oldCnfcEq);
 
         //this method takes much time
         setCounterConditionals(oldNfc);
@@ -78,6 +82,19 @@ public class NfcCreator {
 
 
         return worldsList;
+    }
+
+    private void setEquivalents(List<WConditional> conditionalList) {
+        for (WConditional baseConditional : conditionalList) {
+            for (WConditional basicEqConditional : baseConditional.getBasicEquivalents()) {
+                for (WConditional conditionalFromList : conditionalList) {
+                    if (basicEqConditional.equals(conditionalFromList)) {
+                        baseConditional.addEqConditional(conditionalFromList);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     private List<WConditional> createNfc(List<ConditionalList> cnfc) {

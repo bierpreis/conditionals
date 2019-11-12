@@ -66,15 +66,18 @@ public class WConditional implements Comparable {
 
     }
 
-    public List<WConditional> getBasicEquivalents(){
-        if(antecedent.getSignature() instanceof AB){
+    public List<WConditional> getBasicEquivalents() {
+        List<WConditional> basicEqList = new ArrayList<>();
 
+        List<WorldsList> antecedentList = antecedent.createRenamings();
+        List<WorldsList> consequenceList = consequence.createRenamings();
+
+        for (int i = 0; i < antecedentList.size(); i++) {
+            basicEqList.add(new WConditional(consequenceList.get(i), antecedentList.get(i)));
         }
 
-        if(antecedent.getSignature() instanceof ABC){
 
-        }
-        return null;
+        return basicEqList;
     }
 
     public boolean newIsEquivalent(WConditional otherConditional) {
