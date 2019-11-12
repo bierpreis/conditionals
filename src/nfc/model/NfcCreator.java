@@ -35,8 +35,7 @@ public class NfcCreator {
         //new stuff
         setEquivalents(wConditionalList);
 
-
-        //todo: this takes long now. why?
+        
         oldCnfcEq = createCnfcEq(wConditionalList);
 
         //this is in order on def 5.1
