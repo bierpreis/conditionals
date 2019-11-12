@@ -23,6 +23,8 @@ public class NfcCreator {
 
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started oldNfc creator");
+
+        //first create WConditionals
         worldsList = createWorlds(signature);
 
         conditionalTranslator = new ConditionalTranslator(signature);
@@ -31,9 +33,7 @@ public class NfcCreator {
         wConditionalList = createBasicConditionalList(worldsList);
 
         //new stuff
-
         setEquivalents(wConditionalList);
-
 
         oldCnfcEq = createCnfcEq(wConditionalList);
 
@@ -48,6 +48,8 @@ public class NfcCreator {
         //this method takes much time
         setCounterConditionals(oldNfc);
 
+
+        //-----from here PConditionals------
 
         newNfc = translateConditionals(oldNfc);
 
