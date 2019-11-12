@@ -109,6 +109,11 @@ public class WorldsList implements Comparable {
     }
 
     public void addInt(int worldToAdd) {
+
+        //comment in to make sure that never 2 same worlds will get added
+/*        if (worldsList.contains(worldToAdd))
+            throw new RuntimeException("OMG");*/
+
         worldsList.add(worldToAdd);
         Collections.sort(worldsList, Collections.reverseOrder());
     }
@@ -223,6 +228,7 @@ public class WorldsList implements Comparable {
             renamingsList.add(worldsList);
 
             //todo: check this in paper and here again. this shall not fail!
+            //todo: sort this?
         } else if (signature instanceof ABC) {
             renamingsList = new ArrayList<>(3);
 
