@@ -9,15 +9,15 @@ import java.util.*;
 
 public class NfcCreator {
     private final List<WorldsList> worldsList;
-    private final List<ConditionalList> oldCnfcEq;
+    private final List<ConditionalList> wCnfcEq;
     private final List<WConditional> wConditionalList;
-    private final List<WConditional> oldCnfc;
-    private final List<WConditional> oldNfc;
+    private final List<WConditional> wCnfc;
+    private final List<WConditional> wNfc;
 
-    private final List<PConditional> newNfc;
-    private final List<PConditional> newCnfc;
+    private final List<PConditional> pNfc;
+    private final List<PConditional> pCnfc;
 
-    private final Map<Integer, PConditional> newNfcMap;
+    private final Map<Integer, PConditional> pNfcMap;
 
     private final ConditionalTranslator conditionalTranslator;
 
@@ -34,40 +34,40 @@ public class NfcCreator {
         wConditionalList = createBasicConditionalList(worldsList);
 
         //this creates a list of conditional lists which simplifies numbering and eq setting
-        oldCnfcEq = createCnfcEq(wConditionalList);
+        wCnfcEq = createWCnfcEq(wConditionalList);
 
         //this is in order on def 5.1
-        oldCnfc = createCnfc(oldCnfcEq);
+        wCnfc = createWCnfc(wCnfcEq);
 
         //this is in order of definition 5.2
-        oldNfc = createNfc(oldCnfcEq);
+        wNfc = createWNfc(wCnfcEq);
 
         //
-        setRealEquivalentList(oldCnfcEq);
+        setRealEquivalentList(wCnfcEq);
 
-        setCounterConditionals(oldNfc);
+        setCounterConditionals(wNfc);
 
 
         System.out.println("now creating PConditionals");
 
-        newNfc = translateConditionals(oldNfc);
+        pNfc = translateConditionals(wNfc);
 
-        newCnfc = createPCnfc();
+        pCnfc = createPCnfc();
 
-        newNfcMap = createNfcMap(newNfc);
+        pNfcMap = createNfcMap(pNfc);
 
-        setEquivalentListToPConditionals(oldNfc, newNfcMap);
+        setEquivalentListToPConditionals(wNfc, pNfcMap);
 
         System.out.println("finished creating conditionals");
     }
 
     private List<PConditional> createPCnfc() {
-        List<PConditional> pCnfc = new ArrayList<>(oldCnfc.size());
+        List<PConditional> pCnfc = new ArrayList<>(wCnfc.size());
 
         //add the conditionals from nfc instead of translating this again
         //because translating would create NEW conditionals
-        for (int i = 0; i < oldCnfc.size(); i++)
-            pCnfc.add(newNfc.get(i));
+        for (int i = 0; i < wCnfc.size(); i++)
+            pCnfc.add(pNfc.get(i));
 
         return pCnfc;
     }
@@ -93,7 +93,7 @@ public class NfcCreator {
     }
 
 
-    private List<WConditional> createNfc(List<ConditionalList> cnfc) {
+    private List<WConditional> createWNfc(List<ConditionalList> cnfc) {
         List<WConditional> nfc = new ArrayList<>();
 
         //add the first one of every equivalence class
@@ -123,7 +123,7 @@ public class NfcCreator {
     }
 
 
-    private List<ConditionalList> createCnfcEq(final List<WConditional> basicConditionalList) {
+    private List<ConditionalList> createWCnfcEq(final List<WConditional> basicConditionalList) {
 
         List<ConditionalList> cNfc = new ArrayList<>();
 
@@ -185,7 +185,7 @@ public class NfcCreator {
         }
     }
 
-    private List<WConditional> createCnfc(List<ConditionalList> cnfcEq) {
+    private List<WConditional> createWCnfc(List<ConditionalList> cnfcEq) {
         List<WConditional> cnfc = new ArrayList<>(cnfcEq.size());
 
         for (ConditionalList sublist : cnfcEq)
@@ -213,12 +213,12 @@ public class NfcCreator {
 
     //this adds the numbers of equivalent conditionals to every new nfc conditional
     //this list is needed to reduce the possible candidates when initialising candidate pairs
-    private void setEquivalentListToPConditionals(List<WConditional> oldNfc, Map<Integer, PConditional> newNfcMap) {
-        for (WConditional oldConditional : oldNfc) {
-            List<PConditional> tempEqList = new ArrayList<>(oldConditional.getRealEqList().size());
-            for (WConditional wConditional : oldConditional.getRealEqList())
-                tempEqList.add(this.newNfcMap.get(wConditional.getNumber()));
-            newNfcMap.get(oldConditional.getNumber()).setEqList(tempEqList);
+    private void setEquivalentListToPConditionals(List<WConditional> wNfc, Map<Integer, PConditional> wNfcMap) {
+        for (WConditional conditional : wNfc) {
+            List<PConditional> tempEqList = new ArrayList<>(conditional.getRealEqList().size());
+            for (WConditional eqConditional : conditional.getRealEqList())
+                tempEqList.add(this.pNfcMap.get(eqConditional.getNumber()));
+            wNfcMap.get(conditional.getNumber()).setEqList(tempEqList);
         }
     }
 
@@ -263,7 +263,7 @@ public class NfcCreator {
         }
 
         //comment out the following 2 lines and you can see if the counter conditionals are set correct
-        //for (NewConditional conditional : newConditionals) 
+        //for (WConditional conditional : pConditionals)
         //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.findCounterConditional().getNumber());
 
         return pConditionalList;
@@ -316,35 +316,35 @@ public class NfcCreator {
         return worldsList;
     }
 
-    public List<ConditionalList> getOldCnfcEq() {
-        return oldCnfcEq;
+    public List<ConditionalList> getwCnfcEq() {
+        return wCnfcEq;
     }
 
     public List<WConditional> getWConditionalList() {
         return wConditionalList;
     }
 
-    public List<WConditional> getOldNfc() {
-        return oldNfc;
+    public List<WConditional> getwNfc() {
+        return wNfc;
     }
 
-    public List<WConditional> getOldCnfc() {
-        return oldCnfc;
+    public List<WConditional> getwCnfc() {
+        return wCnfc;
     }
 
 
     //getters for creator
 
     public Map<Integer, PConditional> getNfcMap() {
-        return newNfcMap;
+        return pNfcMap;
     }
 
-    public List<PConditional> getNewNfc() {
-        return newNfc;
+    public List<PConditional> getpNfc() {
+        return pNfc;
     }
 
-    public List<PConditional> getNewCnfc() {
-        return newCnfc;
+    public List<PConditional> getpCnfc() {
+        return pCnfc;
     }
 
 

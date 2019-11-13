@@ -67,8 +67,8 @@ public abstract class AbstractCreator implements Runnable {
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
         NfcCreator nfcCreator = new NfcCreator(signature);
-        nfc = Collections.unmodifiableCollection(nfcCreator.getNewNfc());
-        cnfc = Collections.unmodifiableCollection(nfcCreator.getNewCnfc());
+        nfc = Collections.unmodifiableCollection(nfcCreator.getpNfc());
+        cnfc = Collections.unmodifiableCollection(nfcCreator.getpCnfc());
 
         AbstractPair.setNfc(nfcCreator.getNfcMap());
         AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
