@@ -23,7 +23,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-            return (nextElementNumber) < (candidatePairList.get(k - 1).size());
+        return (nextElementNumber) < (candidatePairList.get(k - 1).size());
     }
 
     @Override
@@ -40,8 +40,9 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     protected void deleteOldData(int requestedK) {
-        System.out.println("clearing list for k " + requestedK);
-        //don't clear list(-1) it wont work
+        //System.out.println("clearing list for k " + requestedK);
+
+        //don't clear list(-1) it wont work :D
         if (requestedK > 0)
             candidatePairList.get(requestedK).clear();
     }
@@ -73,7 +74,7 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(AbstractPair pair) {
-            candidatePairList.get(k).add(pair);
+        candidatePairList.get(k).add(pair);
     }
 
 
@@ -81,8 +82,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
 
     @Override
     public AbstractPair getNextPair(int k) {
-            nextElementNumber++;
-            return candidatePairList.get(k - 1).get(nextElementNumber - 1);
+        nextElementNumber++;
+        return candidatePairList.get(k - 1).get(nextElementNumber - 1);
     }
 
     @Override

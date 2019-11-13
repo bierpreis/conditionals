@@ -21,8 +21,8 @@ public class NfcCreator {
 
     private final ConditionalTranslator conditionalTranslator;
 
-    //todo: clean console output. clean "old" "new" and stuff.
-    //todo: make clear what nfc and cnfc whill be passed to kb creator
+
+    //todo: make clear what nfc and cnfc will be passed to kb creator
     public NfcCreator(AbstractSignature signature) {
         System.out.println("now creating WConditionals");
 
