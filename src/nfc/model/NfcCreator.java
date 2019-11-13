@@ -132,7 +132,7 @@ public class NfcCreator {
         return basicConditionalList;
     }
 
-    //todo: problems occur in this method!
+
     private List<ConditionalList> createCnfcEq(final List<WConditional> basicConditionalList) {
         System.out.println("creating oldCnfc eq");
 
@@ -169,7 +169,7 @@ public class NfcCreator {
 
         //set numbers to the first in every equivalence class
         for (ConditionalList conditionalList : cNfc) {
-            conditionalList.setNumberToFirstConditional(nextConditionalNumber); //todo: this overwrites number!
+            conditionalList.setNumberToFirstConditional(nextConditionalNumber);
             nextConditionalNumber++;
         }
 
