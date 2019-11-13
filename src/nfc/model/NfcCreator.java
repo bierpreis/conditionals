@@ -22,7 +22,7 @@ public class NfcCreator {
     private final ConditionalTranslator conditionalTranslator;
 
 
-    //todo: make clear what nfc and cnfc will be passed to kb creator
+    //todo: remove "old" completely
     public NfcCreator(AbstractSignature signature) {
         System.out.println("now creating WConditionals");
 
@@ -310,14 +310,18 @@ public class NfcCreator {
         return mapToReturn;
     }
 
-    //getters
 
-    public List<PConditional> getNewNfc() {
-        return newNfc;
+    //getters only for viewer
+    public List<WorldsList> getWorldsList() {
+        return worldsList;
     }
 
-    public List<PConditional> getNewCnfc() {
-        return newCnfc;
+    public List<ConditionalList> getOldCnfcEq() {
+        return oldCnfcEq;
+    }
+
+    public List<WConditional> getWConditionalList() {
+        return wConditionalList;
     }
 
     public List<WConditional> getOldNfc() {
@@ -328,22 +332,21 @@ public class NfcCreator {
         return oldCnfc;
     }
 
-    public List<WConditional> getWConditionalList() {
-        return wConditionalList;
-    }
 
-    public List<ConditionalList> getOldCnfcEq() {
-        return oldCnfcEq;
-    }
-
-    public List<WorldsList> getWorldsList() {
-        return worldsList;
-    }
-
+    //getters for creator
 
     public Map<Integer, PConditional> getNfcMap() {
         return newNfcMap;
     }
+
+    public List<PConditional> getNewNfc() {
+        return newNfc;
+    }
+
+    public List<PConditional> getNewCnfc() {
+        return newCnfc;
+    }
+
 
 }
 
