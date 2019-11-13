@@ -41,7 +41,7 @@ public class NfcCreator {
         //this is in order of definition 5.2
         oldNfc = createNfc(oldCnfcEq);
 
-        setEquivalentListToNfc(oldCnfcEq); //todo: wtf?
+        setEquivalentListToNfc(oldCnfcEq); //todo: wtf? this was commented out. delete or rename.
 
         //this method takes much time
         setCounterConditionals(oldNfc);
