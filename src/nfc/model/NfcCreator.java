@@ -289,7 +289,7 @@ public class NfcCreator {
 
     private Map<Integer, PConditional> createNfcMap(Collection<PConditional> nfc) {
         Map<Integer, PConditional> conditionalMap = new HashMap<>(nfc.size());
-        for (PConditional conditional : nfc) { //todo: there must be doubles in nfc!
+        for (PConditional conditional : nfc) {
             if (conditionalMap.containsKey(conditional.getNumber())) {
                 throw new RuntimeException("Double conditional detected! (" + conditional.getNumber() + ")");
             }

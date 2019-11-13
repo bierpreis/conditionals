@@ -37,7 +37,7 @@ public class WConditional implements Comparable {
 
         return false;
     }
-    
+
 
     private void createBasicEquivalents() {
         basicEqList = new ArrayList<>();
