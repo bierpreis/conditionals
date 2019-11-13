@@ -32,9 +32,6 @@ public class NfcCreator {
         //this is basic conditional list in order from definition  2
         wConditionalList = createBasicConditionalList(worldsList);
 
-        //new stuff
-        setEquivalents(wConditionalList); //todo: what does it do what others wont?
-
 
         oldCnfcEq = createCnfcEq(wConditionalList); //todo: recreate this. why this creates some order?
 
@@ -87,19 +84,7 @@ public class NfcCreator {
 
         return worldsList;
     }
-
-    private void setEquivalents(List<WConditional> conditionalList) {
-        for (WConditional baseConditional : conditionalList) {
-            for (WConditional basicEqConditional : baseConditional.getBasicEqList()) {
-                for (WConditional conditionalFromList : conditionalList) {
-                    if (basicEqConditional.equals(conditionalFromList)) {
-                        baseConditional.addEqConditional(conditionalFromList);
-                        break;
-                    }
-                }
-            }
-        }
-    }
+    
 
     private List<WConditional> createNfc(List<ConditionalList> cnfc) {
         System.out.println("creating wNfc");
