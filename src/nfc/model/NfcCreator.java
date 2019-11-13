@@ -21,10 +21,9 @@ public class NfcCreator {
 
     private final ConditionalTranslator conditionalTranslator;
 
+    //todo: clean console output. clean "old" "new" and stuff.
     public NfcCreator(AbstractSignature signature) {
-        System.out.println("started oldNfc creator");
-
-        //first the methods around WConditionals
+        System.out.println("now creating WConditionals");
 
         worldsList = createWorlds(signature);
 
@@ -45,14 +44,14 @@ public class NfcCreator {
         //
         setRealEquivalentList(oldCnfcEq);
 
-        //this method takes much time
         setCounterConditionals(oldNfc);
 
 
-        //-----from here PConditionals------
+        System.out.println("now creating PConditionals");
 
         newNfc = translateConditionals(oldNfc);
 
+        //todo own method for this
         newCnfc = new ArrayList<>(oldCnfc.size());
         //add the conditionals from nfc instead of translating this again
         //because translating would create NEW conditionals
@@ -64,7 +63,7 @@ public class NfcCreator {
 
         setEquivalentListToPConditionals(oldNfc, newNfcMap);
 
-        System.out.println("oldNfc creator finished");
+        System.out.println("finished creating conditionals");
     }
 
 
@@ -89,7 +88,6 @@ public class NfcCreator {
 
 
     private List<WConditional> createNfc(List<ConditionalList> cnfc) {
-        System.out.println("creating wNfc");
         List<WConditional> nfc = new ArrayList<>();
 
         //add the first one of every equivalence class
@@ -107,7 +105,6 @@ public class NfcCreator {
 
 
     private List<WConditional> createBasicConditionalList(List<WorldsList> worldsList) {
-        System.out.println("creating basic conditionals");
         List<WConditional> basicConditionalList = new ArrayList<>();
 
         for (WorldsList world : worldsList)
@@ -121,7 +118,6 @@ public class NfcCreator {
 
 
     private List<ConditionalList> createCnfcEq(final List<WConditional> basicConditionalList) {
-        System.out.println("creating oldCnfc eq");
 
         List<ConditionalList> cNfc = new ArrayList<>();
 
@@ -184,7 +180,6 @@ public class NfcCreator {
     }
 
     private List<WConditional> createCnfc(List<ConditionalList> cnfcEq) {
-        System.out.println("reating oldCnfc");
         List<WConditional> cnfc = new ArrayList<>(cnfcEq.size());
 
         for (ConditionalList sublist : cnfcEq)
