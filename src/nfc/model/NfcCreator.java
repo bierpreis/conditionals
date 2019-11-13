@@ -146,10 +146,11 @@ public class NfcCreator {
             if (!alreadyAddedSet.contains(firstConditional)) {
                 ConditionalList subList = new ConditionalList();
                 subList.add(firstConditional);
+                alreadyAddedSet.add(firstConditional);
                 //iterate over base list
                 for (WConditional possibleEquivalentConditional : basicConditionalList) {
                     //try to find equivalent conditionals
-                    if (possibleEquivalentConditional.isEquivalent(firstConditional)) {
+                    if (possibleEquivalentConditional.isEquivalent(firstConditional) && !alreadyAddedSet.contains(possibleEquivalentConditional)) {
                         //avoid adding the same base conditionals again
                         //if (!possibleEquivalentConditional.equals(firstConditional)) {
                         subList.add(possibleEquivalentConditional);
