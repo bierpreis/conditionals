@@ -180,7 +180,7 @@ public class NfcCreator {
 
             //add eq list to all but the first in the conditional list
             for (int j = 1; j < conditionalList.getList().size(); j++)
-                conditionalList.get(j).addEqList(conditionalList.get(0).getEqList());
+                conditionalList.get(j).addEqList(conditionalList.get(0).getRealEqList());
         }
     }
 
@@ -215,8 +215,8 @@ public class NfcCreator {
     //this list is needed to reduce the possible candidates when initialising candidate pairs
     private void setEquivalentListToPConditionals(List<WConditional> oldNfc, Map<Integer, PConditional> newNfcMap) {
         for (WConditional oldConditional : oldNfc) {
-            List<PConditional> tempEqList = new ArrayList<>(oldConditional.getEqList().size());
-            for (WConditional wConditional : oldConditional.getEqList())
+            List<PConditional> tempEqList = new ArrayList<>(oldConditional.getRealEqList().size());
+            for (WConditional wConditional : oldConditional.getRealEqList())
                 tempEqList.add(this.newNfcMap.get(wConditional.getNumber()));
             newNfcMap.get(oldConditional.getNumber()).setEqList(tempEqList);
         }

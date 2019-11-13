@@ -9,9 +9,13 @@ public class WConditional implements Comparable {
 
     private WConditional counterConditional;
 
-    private List<WConditional> eqList;
 
+    //this list will contain equal but not the actual eq conditionals and will be null later
+    //it is only used for creating the conditionals
     private List<WConditional> basicEqList;
+
+    //this list contains the actual eq conditionals
+    private List<WConditional> realEqList;
 
     private int number;
 
@@ -26,7 +30,7 @@ public class WConditional implements Comparable {
             longestConditional = this.toString().length() + 4; // + 4 reserves the space for the numbering for good column look
 
 
-        eqList = new ArrayList<>();
+        realEqList = new ArrayList<>();
     }
 
 
@@ -133,11 +137,11 @@ public class WConditional implements Comparable {
 
 
     public void addEqConditional(WConditional conditionalToAdd) {
-        this.eqList.add(conditionalToAdd);
+        this.realEqList.add(conditionalToAdd);
     }
 
     public void addEqList(List<WConditional> eqListToAdd) {
-        this.eqList = eqListToAdd;
+        this.realEqList = eqListToAdd;
     }
 
     //getters
@@ -153,8 +157,8 @@ public class WConditional implements Comparable {
     }
 
 
-    public List<WConditional> getEqList() {
-        return eqList;
+    public List<WConditional> getRealEqList() {
+        return realEqList;
     }
 
     public WorldsList getAntecedent() {
