@@ -36,7 +36,7 @@ public class NfcCreator {
         setEquivalents(wConditionalList); //todo: what does it do what others wont?
 
 
-        oldCnfcEq = createCnfcEq(wConditionalList);
+        oldCnfcEq = createCnfcEq(wConditionalList); //todo: recreate this. why this creates some order?
 
         //this is in order on def 5.1
         oldCnfc = createCnfc(oldCnfcEq);
