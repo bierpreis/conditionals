@@ -33,7 +33,7 @@ public class NfcCreator {
         wConditionalList = createBasicConditionalList(worldsList);
 
         //new stuff
-        setEquivalents(wConditionalList);
+        setEquivalents(wConditionalList); //todo: what does it do what others wont?
 
 
         oldCnfcEq = createCnfcEq(wConditionalList);
@@ -64,6 +64,7 @@ public class NfcCreator {
         newNfcMap = createNfcMap(newNfc);
 
         setEquivalentListToPConditionals(oldNfc, newNfcMap);
+
         System.out.println("oldNfc creator finished");
     }
 
