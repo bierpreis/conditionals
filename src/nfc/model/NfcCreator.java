@@ -24,7 +24,8 @@ public class NfcCreator {
     public NfcCreator(AbstractSignature signature) {
         System.out.println("started oldNfc creator");
 
-        //first create WConditionals
+        //first the methods around WConditionals
+
         worldsList = createWorlds(signature);
 
         conditionalTranslator = new ConditionalTranslator(signature);
@@ -32,7 +33,7 @@ public class NfcCreator {
         //this is basic conditional list in order from definition  2
         wConditionalList = createBasicConditionalList(worldsList);
 
-
+        //this creates a list of conditional lists which simplifies numbering and eq setting
         oldCnfcEq = createCnfcEq(wConditionalList);
 
         //this is in order on def 5.1
@@ -41,6 +42,7 @@ public class NfcCreator {
         //this is in order of definition 5.2
         oldNfc = createNfc(oldCnfcEq);
 
+        //
         setRealEquivalentList(oldCnfcEq);
 
         //this method takes much time
@@ -167,6 +169,7 @@ public class NfcCreator {
         return cNfc;
     }
 
+    //todo: maybe this could delete the basic eq list?
     private void setRealEquivalentList(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
 
