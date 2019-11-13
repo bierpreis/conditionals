@@ -30,43 +30,14 @@ public class WConditional implements Comparable {
     }
 
 
-    //todo: what to do? there are 6050 basic conditionals but later more?! what is wrong? and how can the eq methods increase this number?
-    //check the warnings!! when do they happen? creating oldCnfc eq
-    //where does the number come from?
     public boolean isEquivalent(WConditional otherConditional) {
-        return isEquivalent3(otherConditional);
-    }
-
-    //this is the oldest eq method and wrong for abc
-    private boolean isEquivalent1(WConditional otherConditional) {
-        //remove? does equals induce equivalent?
-        if (this.equals(otherConditional))
-            return false;
-
-        boolean consequenceEq = consequence.isEquivalent(otherConditional.consequence);
-        boolean antecedentEq = antecedent.isEquivalent(otherConditional.antecedent);
-
-        return consequenceEq && antecedentEq;
-    }
-
-    //this doesnt work with abc
-    private boolean isEquivalent2(WConditional otherConditional) {
-        for (List<Integer> eqGroup : consequence.getSignature().getEqGroups())
-            if (antecedent.newIsEquivalent(otherConditional.getAntecedent(), eqGroup) && consequence.newIsEquivalent(otherConditional.getConsequence(), eqGroup))
-                return true;
-
-        return false;
-    }
-
-
-    private boolean isEquivalent3(WConditional otherConditional) {
         for (WConditional eqConditional : getBasicEqList())
             if (otherConditional.equals(eqConditional))
                 return true;
 
         return false;
     }
-
+    
 
     private void createBasicEquivalents() {
         basicEqList = new ArrayList<>();
