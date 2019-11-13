@@ -236,7 +236,6 @@ public class NfcCreator {
 
 
     private List<PConditional> translateConditionals(List<WConditional> wConditionalList) {
-        System.out.println("translating conditionals");
         List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
 
         for (WConditional wConditional : wConditionalList) {
@@ -246,7 +245,7 @@ public class NfcCreator {
             pConditionalList.add(pConditional);
 
         }
-        System.out.println("setting basic counter conditionals");
+
         //this takes the basic counter conditional and replaces it with the actual counter conditional reference
         //this saves some memory space, but not very much.
         for (PConditional conditional : pConditionalList) {
@@ -257,7 +256,7 @@ public class NfcCreator {
                 }
             }
         }
-        System.out.println("finished setting basic counter conditionals");
+
         //comment out the following 2 lines and you can see if the counter conditionals are set correct
         //for (NewConditional conditional : newConditionals) 
         //   System.out.println("org: " + conditional.getNumber() + " counter: " + conditional.findCounterConditional().getNumber());

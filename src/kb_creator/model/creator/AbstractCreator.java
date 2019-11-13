@@ -73,8 +73,6 @@ public abstract class AbstractCreator implements Runnable {
         AbstractPair.setNfc(nfcCreator.getNfcMap());
         AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
-        System.out.println("new kb creator");
-
         currentPairAmount = 0;
 
         startTime = System.currentTimeMillis();

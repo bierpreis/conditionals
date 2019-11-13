@@ -80,7 +80,7 @@ public class ParallelCreator extends AbstractCreator {
             kbWriter.finishIteration();
             l.finishIteration(k);
 
-            System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
+            System.out.println("finished iteration " + k + ": in " + (System.currentTimeMillis() - startTime) / 1000 + "s");
 
             //line 13
             k = k + 1;
