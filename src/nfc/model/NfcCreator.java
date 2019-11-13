@@ -33,7 +33,7 @@ public class NfcCreator {
         wConditionalList = createBasicConditionalList(worldsList);
 
 
-        oldCnfcEq = createCnfcEq(wConditionalList); //why this creates some order?
+        oldCnfcEq = createCnfcEq(wConditionalList);
 
         //this is in order on def 5.1
         oldCnfc = createCnfc(oldCnfcEq);
