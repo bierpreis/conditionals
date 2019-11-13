@@ -165,7 +165,6 @@ public class NfcCreator {
             conditionalList.setNumbersToEquivalentConditionals(nextConditionalNumber);
             nextConditionalNumber = conditionalList.getNextConditionalNumber();
         }
-        System.out.println("finished oldCnfc eq");
         return cNfc;
     }
 
