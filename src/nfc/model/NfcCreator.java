@@ -169,7 +169,7 @@ public class NfcCreator {
         return cNfc;
     }
 
-    //todo: maybe this could delete the basic eq list?
+
     private void setRealEquivalentList(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
 
