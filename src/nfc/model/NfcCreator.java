@@ -44,7 +44,7 @@ public class NfcCreator {
         //this is in order of definition 5.2
         oldNfc = createNfc(oldCnfcEq);
 
-        //setEquivalentListToNfc(oldCnfcEq);
+        setEquivalentListToNfc(oldCnfcEq); //todo: wtf?
 
         //this method takes much time
         setCounterConditionals(oldNfc);
@@ -168,7 +168,7 @@ public class NfcCreator {
 
         //set numbers to the first in every equivalence class
         for (ConditionalList conditionalList : cNfc) {
-            conditionalList.setNumberToFirstConditional(nextConditionalNumber);
+            conditionalList.setNumberToFirstConditional(nextConditionalNumber); //todo: this overwrites number!
             nextConditionalNumber++;
         }
 

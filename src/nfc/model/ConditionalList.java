@@ -37,7 +37,7 @@ public class ConditionalList implements Comparable {
     }
 
     public void setNumberToFirstConditional(int number) {
-        conditionalList.get(0).setNumber(number);
+        conditionalList.get(0).setNumber(number); //todo: this overwrites number?!
     }
 
     public void setNumbersToEquivalentConditionals(int numberForFirstConditional) {
