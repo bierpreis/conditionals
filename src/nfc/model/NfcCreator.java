@@ -113,8 +113,20 @@ public class NfcCreator {
     private List<WConditional> createBasicConditionalList(List<WorldsList> worldsList) {
         List<WConditional> basicConditionalList = new ArrayList<>();
 
-        for (WorldsList world : worldsList)
-            basicConditionalList.addAll(createConditionalsForWorld(world));
+        for (WorldsList currentWorld : worldsList) {
+            List<WConditional> currentConditionalList = new ArrayList<>();
+
+            List<Integer> currentWorldIntList = currentWorld.getWorldsList();
+            List<WorldsList> allSubSetsOfCurrentWorld = createSubSetList(new ArrayList<>(currentWorldIntList));
+
+            for (WorldsList currentSubSworld : allSubSetsOfCurrentWorld) {
+                //only add real subsets not equal sets
+                if (!currentSubSworld.equals(currentWorld))
+                    currentConditionalList.add(new WConditional(currentSubSworld, currentWorld));
+            }
+            basicConditionalList.addAll(currentConditionalList);
+
+        }
 
 
         Collections.sort(basicConditionalList);
@@ -193,22 +205,6 @@ public class NfcCreator {
 
 
         return cnfc;
-    }
-
-
-    private List<WConditional> createConditionalsForWorld(WorldsList currentWorld) {
-        List<WConditional> currentConditionalList = new ArrayList<>();
-
-        List<Integer> currentWorldIntList = currentWorld.getWorldsList();
-        List<WorldsList> allSubSetsOfCurrentWorld = createSubSetList(new ArrayList<>(currentWorldIntList));
-
-        for (WorldsList currentSubSworld : allSubSetsOfCurrentWorld) {
-            //only add real subsets not equal sets
-            if (!currentSubSworld.equals(currentWorld))
-                currentConditionalList.add(new WConditional(currentSubSworld, currentWorld));
-        }
-
-        return currentConditionalList;
     }
 
     //this adds the numbers of equivalent conditionals to every new nfc conditional
