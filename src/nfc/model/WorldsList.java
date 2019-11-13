@@ -13,7 +13,7 @@ public class WorldsList implements Comparable {
 
     private final List<Integer> worldsList;
 
-    private static View view = View.NUMBERS; //this default is for kbcreator. maybe delete later
+    private static View view = View.NUMBERS;
     private static AbstractSignature signature;
 
     //the number is for identification reasons and for translation into propositional formulas
@@ -21,66 +21,6 @@ public class WorldsList implements Comparable {
 
     public WorldsList() {
         worldsList = new ArrayList<>();
-
-    }
-
-    public boolean isEquivalent(WorldsList otherWorldsList) {
-
-        //if the sets are different sizes, they cant be equivalent
-        if (this.getSize() != otherWorldsList.getSize())
-            return false;
-
-        //iterate trough lists and check if element pairs are equivalent
-        for (int i = 0; i < this.getSize(); i++) {
-
-            //get a pair of worlds
-            if (!this.getWorldsList().get(i).equals(otherWorldsList.getWorldsList().get(i))) {
-                boolean equivalent = false;
-
-                //check if the pair is equivalent
-                for (List<Integer> equivalenceGroup : signature.getEqGroups()) {
-                    if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldsList.getWorldsList().get(i))))
-                        equivalent = true;
-                }
-
-                //return false when the first pair is not equivalent
-                if (!equivalent)
-                    return false;
-            }
-        }
-
-        //return true if all pairs are equivalent
-        return true;
-
-    }
-
-    public boolean newIsEquivalent(WorldsList otherWorldsList, List<Integer> equivalenceGroup) {
-
-        //if the sets are different sizes, they cant be equivalent
-        if (this.getSize() != otherWorldsList.getSize())
-            return false;
-
-        //iterate trough lists and check if element pairs are equivalent
-        for (int i = 0; i < this.getSize(); i++) {
-
-            //get a pair of worlds
-            if (!this.getWorldsList().get(i).equals(otherWorldsList.getWorldsList().get(i))) {
-                boolean equivalent = false;
-
-                //check if the pair is equivalent
-
-                if ((equivalenceGroup.contains(this.getWorldsList().get(i)) && equivalenceGroup.contains(otherWorldsList.getWorldsList().get(i))))
-                    equivalent = true;
-
-
-                //return false when the first pair is not equivalent
-                if (!equivalent)
-                    return false;
-            }
-        }
-
-        //return true if all pairs are equivalent
-        return true;
 
     }
 
