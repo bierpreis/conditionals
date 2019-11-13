@@ -227,7 +227,7 @@ public class WorldsList implements Comparable {
             worldsList.addList(intList);
             renamingsList.add(worldsList);
 
-            //todo: check this in paper and here again. this shall not fail!
+
         } else if (signature instanceof ABC) {
             renamingsList = new ArrayList<>(3);
 
