@@ -52,19 +52,24 @@ public class NfcCreator {
 
         newNfc = translateConditionals(oldNfc);
 
-        //todo own method for this
-        newCnfc = new ArrayList<>(oldCnfc.size());
-        //add the conditionals from nfc instead of translating this again
-        //because translating would create NEW conditionals
-        //e.g. for settingEquivalentLists to set the lists for both nfc and nfceq
-        for (int i = 0; i < oldCnfc.size(); i++)
-            newCnfc.add(newNfc.get(i));
+        newCnfc = createPCnfc();
 
         newNfcMap = createNfcMap(newNfc);
 
         setEquivalentListToPConditionals(oldNfc, newNfcMap);
 
         System.out.println("finished creating conditionals");
+    }
+
+    private List<PConditional> createPCnfc() {
+        List<PConditional> pCnfc = new ArrayList<>(oldCnfc.size());
+
+        //add the conditionals from nfc instead of translating this again
+        //because translating would create NEW conditionals
+        for (int i = 0; i < oldCnfc.size(); i++)
+            pCnfc.add(newNfc.get(i));
+
+        return pCnfc;
     }
 
 
