@@ -41,7 +41,7 @@ public class NfcCreator {
         //this is in order of definition 5.2
         oldNfc = createNfc(oldCnfcEq);
 
-        setEquivalentListToNfc(oldCnfcEq); //todo: wtf? this was commented out. delete or rename.
+        setRealEquivalentList(oldCnfcEq);
 
         //this method takes much time
         setCounterConditionals(oldNfc);
@@ -167,7 +167,7 @@ public class NfcCreator {
         return cNfc;
     }
 
-    private void setEquivalentListToNfc(List<ConditionalList> cnfcEq) {
+    private void setRealEquivalentList(List<ConditionalList> cnfcEq) {
         for (ConditionalList conditionalList : cnfcEq) {
 
             //collect all equivalent conditionals into the first in the eq class
