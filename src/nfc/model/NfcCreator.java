@@ -115,20 +115,17 @@ public class NfcCreator {
 
         for (WorldsList currentWorld : worldsList) {
             List<WConditional> currentConditionalList = new ArrayList<>();
-
             List<Integer> currentWorldIntList = currentWorld.getWorldsList();
             List<WorldsList> allSubSetsOfCurrentWorld = createSubSetList(new ArrayList<>(currentWorldIntList));
 
-            for (WorldsList currentSubSworld : allSubSetsOfCurrentWorld) {
+            for (WorldsList currentSubWorld : allSubSetsOfCurrentWorld) {
                 //only add real subsets not the set itself
-                if (!currentSubSworld.equals(currentWorld))
-                    currentConditionalList.add(new WConditional(currentSubSworld, currentWorld));
+                if (!currentSubWorld.equals(currentWorld))
+                    currentConditionalList.add(new WConditional(currentSubWorld, currentWorld));
             }
             basicConditionalList.addAll(currentConditionalList);
 
         }
-
-
         Collections.sort(basicConditionalList);
 
         return basicConditionalList;
