@@ -109,10 +109,6 @@ public class WConditional implements Comparable {
 
     }
 
-    public WConditional createCopy() {
-        return new WConditional(this.consequence, this.antecedent);
-    }
-
     //this returns a new counter conditional
     //which is used to find the actual counter conditional
     public WConditional getBasicCounterConditional() {
