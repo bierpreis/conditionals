@@ -38,7 +38,6 @@ public class WConditional implements Comparable {
         for (WConditional eqConditional : getBasicEqList())
             if (otherConditional.equals(eqConditional))
                 return true;
-
         return false;
     }
 
@@ -48,7 +47,6 @@ public class WConditional implements Comparable {
         List<WorldsList> antecedentList = antecedent.createRenamings();
         List<WorldsList> consequenceList = consequence.createRenamings();
 
-
         for (int i = 0; i < antecedentList.size(); i++) {
             WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
 
@@ -56,8 +54,6 @@ public class WConditional implements Comparable {
             if (!this.equals(possibleEqConditional))
                 basicEqList.add(possibleEqConditional);
         }
-
-
     }
 
     //this is ordering according to definition 3
