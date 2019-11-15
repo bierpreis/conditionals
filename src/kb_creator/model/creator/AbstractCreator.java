@@ -11,7 +11,7 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
 import kb_creator.model.writer.KbDummyWriter;
 import kb_creator.model.writer.KbFileWriter;
-import nfc.model.NfcCreator;
+import nfc_creator.model.NfcCreator;
 
 import java.util.ArrayList;
 import java.util.Collection;

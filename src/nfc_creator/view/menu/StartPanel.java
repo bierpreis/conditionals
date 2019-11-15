@@ -1,10 +1,9 @@
-package nfc.view.menu;
+package nfc_creator.view.menu;
 
-import nfc.controller.NfcCreatorObserver;
-import nfc.model.Action;
+import nfc_creator.controller.NfcCreatorObserver;
+import nfc_creator.model.Action;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class StartPanel extends JPanel {
 

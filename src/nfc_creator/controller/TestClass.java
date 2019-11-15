@@ -1,9 +1,9 @@
-package nfc.controller;
+package nfc_creator.controller;
 
 
 import kb_creator.model.propositional_logic.signature.AB;
-import nfc.model.NfcCreator;
-import nfc.model.WorldsList;
+import nfc_creator.model.NfcCreator;
+import nfc_creator.model.WorldsList;
 
 public class TestClass {
     public static void main(String[] args) {

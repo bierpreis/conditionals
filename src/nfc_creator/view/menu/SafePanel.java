@@ -1,6 +1,6 @@
-package nfc.view.menu;
+package nfc_creator.view.menu;
 
-import nfc.controller.NfcCreatorObserver;
+import nfc_creator.controller.NfcCreatorObserver;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,9 +1,9 @@
-package nfc.controller;
+package nfc_creator.controller;
 
 
-import nfc.model.NfcCreator;
-import nfc.view.NfcViewerWindow;
-import nfc.view.textArea.CondPanel;
+import nfc_creator.model.NfcCreator;
+import nfc_creator.view.NfcViewerWindow;
+import nfc_creator.view.textArea.CondPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,9 +1,9 @@
-package nfc.view;
+package nfc_creator.view;
 
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import nfc.controller.NfcCreatorObserver;
-import nfc.view.menu.MenuPanel;
-import nfc.view.textArea.CondPanel;
+import nfc_creator.controller.NfcCreatorObserver;
+import nfc_creator.view.menu.MenuPanel;
+import nfc_creator.view.textArea.CondPanel;
 
 import javax.swing.*;
 import java.awt.*;

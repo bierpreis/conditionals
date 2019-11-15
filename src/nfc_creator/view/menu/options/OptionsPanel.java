@@ -1,9 +1,9 @@
-package nfc.view.menu.options;
+package nfc_creator.view.menu.options;
 
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import nfc.model.WConditional;
-import nfc.model.WorldsList;
-import nfc.view.textArea.CondTextField;
+import nfc_creator.model.WConditional;
+import nfc_creator.model.WorldsList;
+import nfc_creator.view.textArea.CondTextField;
 
 import javax.swing.*;
 

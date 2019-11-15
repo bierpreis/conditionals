@@ -1,6 +1,6 @@
-package nfc.view.menu.options;
+package nfc_creator.view.menu.options;
 
-import nfc.model.WorldsList;
+import nfc_creator.model.WorldsList;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

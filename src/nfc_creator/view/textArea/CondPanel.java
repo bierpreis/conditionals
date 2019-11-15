@@ -1,9 +1,9 @@
-package nfc.view.textArea;
+package nfc_creator.view.textArea;
 
 import kb_creator.model.propositional_logic.AbstractFormula;
-import nfc.model.WConditional;
-import nfc.model.ConditionalList;
-import nfc.model.WorldsList;
+import nfc_creator.model.WConditional;
+import nfc_creator.model.ConditionalList;
+import nfc_creator.model.WorldsList;
 
 import javax.swing.*;
 import java.util.List;

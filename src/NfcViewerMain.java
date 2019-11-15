@@ -1,4 +1,4 @@
-import nfc.controller.NfcCreatorObserver;
+import nfc_creator.controller.NfcCreatorObserver;
 
 public class NfcViewerMain {
 

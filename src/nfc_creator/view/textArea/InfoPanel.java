@@ -1,4 +1,4 @@
-package nfc.view.textArea;
+package nfc_creator.view.textArea;
 
 import javax.swing.*;
 

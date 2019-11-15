@@ -1,4 +1,4 @@
-package nfc.model;
+package nfc_creator.model;
 
 import kb_creator.model.propositional_logic.*;
 import kb_creator.model.propositional_logic.signature.AB;

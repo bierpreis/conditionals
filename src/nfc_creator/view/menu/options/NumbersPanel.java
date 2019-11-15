@@ -1,4 +1,4 @@
-package nfc.view.menu.options;
+package nfc_creator.view.menu.options;
 
 import javax.swing.*;
 

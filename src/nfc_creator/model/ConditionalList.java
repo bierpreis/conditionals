@@ -1,4 +1,4 @@
-package nfc.model;
+package nfc_creator.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

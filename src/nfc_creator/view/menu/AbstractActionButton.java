@@ -1,6 +1,6 @@
-package nfc.view.menu;
+package nfc_creator.view.menu;
 
-import nfc.model.Action;
+import nfc_creator.model.Action;
 
 import javax.swing.*;
 

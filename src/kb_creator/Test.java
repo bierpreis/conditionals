@@ -7,8 +7,8 @@ import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.worlds.ABCWorld;
 import kb_creator.model.propositional_logic.worlds.ABWorld;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
-import nfc.model.WConditional;
-import nfc.model.WorldsList;
+import nfc_creator.model.WConditional;
+import nfc_creator.model.WorldsList;
 
 public class Test {
 
