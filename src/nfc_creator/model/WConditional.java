@@ -50,7 +50,9 @@ public class WConditional implements Comparable {
         for (int i = 0; i < antecedentList.size(); i++) {
             WConditional possibleEqConditional = new WConditional(consequenceList.get(i), antecedentList.get(i));
 
-            //dont add the conditional to itselfs eq conditionals
+            //don't add the conditional to itself's eq conditionals
+            //equal conditionals will occur here when creating renamings of conditionals which have no renamings
+            //because renaming the conditional will create the same conditional again
             if (!this.equals(possibleEqConditional))
                 basicEqList.add(possibleEqConditional);
         }
