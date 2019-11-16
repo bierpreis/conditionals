@@ -136,7 +136,7 @@ public class WorldsList implements Comparable {
     }
 
     public List<WorldsList> createRenamings() {
-        List<WorldsList> renamingsList ;
+        List<WorldsList> renamingsList;
 
         if (signature instanceof AB) {
             renamingsList = new ArrayList<>(1);
@@ -165,7 +165,7 @@ public class WorldsList implements Comparable {
             }
             WorldsList worldsList = new WorldsList();
             worldsList.addList(intList);
-            renamingsList.add(worldsList);
+            renamingsList.add(worldsList); //todo: compare if this equals worldslist to avoid equal renamings!
 
 
         } else if (signature instanceof ABC) {
