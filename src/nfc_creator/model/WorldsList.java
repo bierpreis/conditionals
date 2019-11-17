@@ -165,7 +165,7 @@ public class WorldsList implements Comparable {
             }
             WorldsList worldsList = new WorldsList();
             worldsList.addList(intList);
-            renamingsList.add(worldsList); //todo: compare if this equals worldslist to avoid equal renamings!
+            renamingsList.add(worldsList);
 
 
         } else if (signature instanceof ABC) {
