@@ -22,7 +22,6 @@ public class NfcCreator {
     private final ConditionalTranslator conditionalTranslator;
 
 
-    //todo: remove "old" completely
     public NfcCreator(AbstractSignature signature) {
         System.out.println("now creating WConditionals");
 
@@ -160,7 +159,6 @@ public class NfcCreator {
         }
         Collections.sort(cNfc);
 
-        //todo: own method for this
         //set the numbers
         int nextConditionalNumber = 1;
 

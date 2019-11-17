@@ -29,7 +29,7 @@ public class Disjunction extends AbstractFormula {
         return false;
     }
 
-    //todo: wtf? delete? check others!
+
     @Override
     public AbstractFormula neg() {
         return new Negation(this);
