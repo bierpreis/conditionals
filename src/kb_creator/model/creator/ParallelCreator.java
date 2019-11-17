@@ -21,7 +21,7 @@ public class ParallelCreator extends AbstractCreator {
     private Thread outputQueueThread;
     private Thread inputQueueThread;
 
-
+    //todo: make sure ordering is correct when collecting conditionals and pairs
     public ParallelCreator(AbstractSignature signature, String kbFilePath, int numberOfThreads, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
         executorService = Executors.newFixedThreadPool(numberOfThreads);
@@ -85,7 +85,7 @@ public class ParallelCreator extends AbstractCreator {
             //line 13
             k = k + 1;
         }
-        
+
         executorService.shutdown();
         creatorStatus = CreatorStatus.FINISHED;
         super.finishAndStopLoop();
