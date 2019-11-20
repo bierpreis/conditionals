@@ -46,6 +46,13 @@ public class PConditional {
 
     }
 
+
+    public boolean tolerates(AbstractWorld world) {
+        return toleranceFormula.evaluate(world);
+    }
+
+
+    //setters
     public void setCounterConditional(PConditional counterConditional) {
         this.counterConditional = counterConditional;
     }
@@ -54,11 +61,6 @@ public class PConditional {
         if (this.eqConditionalsList.size() != 0)
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
-    }
-
-
-    public boolean tolerates(AbstractWorld world) {
-        return toleranceFormula.evaluate(world);
     }
 
     //getters
