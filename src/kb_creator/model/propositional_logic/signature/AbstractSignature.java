@@ -17,9 +17,4 @@ public abstract class AbstractSignature {
         return possibleWorlds;
     }
 
-    public List<List<Integer>> getEqGroups() {
-        return equivalenceGroups;
-    }
-
-
 }
