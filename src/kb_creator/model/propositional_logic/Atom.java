@@ -43,12 +43,4 @@ public class Atom extends AbstractFormula {
         }
         throw new RuntimeException("No possible World found!" + world);
     }
-
-
-    @Override
-    public AbstractFormula neg() {
-        return new Negation(this);
-    }
-
-
 }

@@ -4,6 +4,12 @@ import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 public class Tautology extends AbstractFormula {
 
+
+    public Tautology(){
+
+    }
+
+
     @Override
     public boolean evaluate(AbstractWorld world) {
         return true;

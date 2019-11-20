@@ -21,7 +21,10 @@ public abstract class AbstractFormula {
         return new Disjunction(this, otherFormula);
     }
 
-    abstract public AbstractFormula neg(); //todo: who overrides this really? make concrete like 2 above?
+    //gets overridden by negation (and contradiction/tautology - but they are never used)
+    public AbstractFormula neg() {
+        return new Negation(this);
+    }
 
     //eq to make the name different than equals
     public AbstractFormula eq(AbstractFormula otherFormula) {

@@ -30,10 +30,6 @@ public class Disjunction extends AbstractFormula {
     }
 
 
-    @Override
-    public AbstractFormula neg() {
-        return new Negation(this);
-    }
 
     @Override
     public String toString() {

@@ -27,10 +27,7 @@ public class Equality extends AbstractFormula {
 
     }
 
-    @Override
-    public AbstractFormula neg() {
-        return new Negation(this);
-    }
+
 
     @Override
     public String toString() {

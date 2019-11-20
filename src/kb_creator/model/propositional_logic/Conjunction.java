@@ -28,10 +28,7 @@ public class Conjunction extends AbstractFormula {
         return true;
     }
 
-    @Override
-    public AbstractFormula neg() {
-        return new Negation(this);
-    }
+
     
     @Override
     public String toString() {
