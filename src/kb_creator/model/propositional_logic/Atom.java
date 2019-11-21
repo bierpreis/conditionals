@@ -17,6 +17,7 @@ public class Atom extends AbstractFormula {
     }
 
 
+    //todo: this is shit. maybe use abc world for both?
     public boolean evaluate(AbstractWorld world) {
 
         if (world instanceof ABCWorld) {
