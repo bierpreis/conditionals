@@ -1,5 +1,7 @@
 package kb_creator.model.propositional_logic.worlds;
 
+import kb_creator.model.propositional_logic.Var;
+
 public class ABCWorld extends AbstractWorld {
     private boolean a, b, c;
 
@@ -14,16 +16,15 @@ public class ABCWorld extends AbstractWorld {
         return a + "," + b + "," + c;
     }
 
-    public boolean isA() {
-        return a;
-    }
-
-    public boolean isB() {
-        return b;
-    }
-
-    public boolean isC() {
-        return c;
+    @Override
+    public boolean get(Var var) {
+        if (var.equals(Var.a))
+            return a;
+        if (var.equals(Var.b))
+            return b;
+        if (var.equals(Var.c))
+            return c;
+        else throw new RuntimeException("Invalid variable in AB World: " + var);
     }
 
 }
