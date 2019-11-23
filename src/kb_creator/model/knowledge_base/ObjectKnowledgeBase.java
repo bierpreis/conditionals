@@ -40,6 +40,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     //this constructor is used for all the other iterations
+    //legacy
     public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.kbNumber = kbNumber;
@@ -77,9 +78,14 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     }
 
-    //this is about 20% faster than old consistent method.
-    //it is faster at higher kb size and same speed at kb size 1
-    public boolean newIsConsistent(PConditional conditionalToTest) {
+    public boolean isConsistentWith(PConditional conditionalToTest) {
+
+        //hauptquelle:
+        //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
+        //
+        // nicht so wichtig dazu, vlt comment streichen:
+        // siehe auch infofc s 4 dazu. auch s 9 dort.
+
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
                 boolean toleratesAll = true;
@@ -92,55 +98,8 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
             }
         }
         return false;
-    }
-
-    public boolean isConsistentWith(PConditional conditionalToTest) {
-        //todo
-        return newIsConsistent(conditionalToTest);
-
-        //hauptquelle:
-        //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
-        //
-        // nicht so wichtig dazu, vlt comment streichen:
-        // siehe auch infofc s 4 dazu. auch s 9 dort.
-
-/*        //only create this formula once for performance reasons
-        if (consistencyOfKB == null)
-            consistencyOfKB = createConsistencyFormula();
-
-
-        //long start = System.nanoTime();
-
-        //this takes about 4 micosecs
-        for (AbstractWorld world : signature.getPossibleWorlds()) {
-            //System.out.println(conditionalToTest);
-            if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world) && consistencyOfKB.evaluate(world)) {
-                return true;
-            }
-        }
-        //System.out.println("time: " + (System.nanoTime() - start) / 1000);
-        return false;*/
 
     }
-
-    //create consistency formula to be reused for every consistency test
-    //this increases overall speed about 20%
-
-    //idea: create tolerates formula for every conditional and then check trough list if everyone tolerates
-    //return false if one element not tolerates else return true
-
-
-/*    private AbstractFormula createConsistencyFormula() {
-
-        for (NewConditional conditionalFromList : conditionalList) {
-            if (consistencyOfKB == null)
-                //this is actually the implication
-                consistencyOfKB = conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence());
-            else
-                consistencyOfKB = consistencyOfKB.and(conditionalFromList.getAntecedent().neg().or(conditionalFromList.getConsequence()));
-        }
-        return consistencyOfKB;
-    }*/
 
 
     @Override
