@@ -1,4 +1,4 @@
-package kb_creator.model.creator;
+package kb_creator.model.creator.parallel;
 
 
 import kb_creator.model.pairs.AbstractPair;

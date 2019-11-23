@@ -1,6 +1,8 @@
-package kb_creator.model.creator;
+package kb_creator.model.creator.parallel;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.creator.AbstractCreator;
+import kb_creator.model.creator.CreatorStatus;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public class ParallelCreator extends AbstractCreator {
     private Thread inputQueueThread;
 
     //todo: make sure ordering is correct when collecting conditionals and pairs
+    //idea: could this be in input and output threads? at least in output!
     public ParallelCreator(AbstractSignature signature, String kbFilePath, int numberOfThreads, AbstractPairBuffer l) {
         super(signature, kbFilePath, l);
         executorService = Executors.newFixedThreadPool(numberOfThreads);
