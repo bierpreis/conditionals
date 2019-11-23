@@ -21,6 +21,7 @@ public class CandidateThread implements Runnable {
     public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentKBsQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKBsQueue, BlockingQueue<AbstractPair> inputPairsQueue, BlockingQueue<AbstractPair> outputPairsQueue) {
 
         //todo idea: collect not to this queue but to a collector which orders and then puts to this queue
+        //needed: kb collector (inconsistent and consistent) and pair collector
         this.consistentKBsQueue = consistentKBsQueue;
         this.inconsistentKBsQueue = inconsistentKBsQueue;
 
@@ -37,6 +38,7 @@ public class CandidateThread implements Runnable {
             AbstractPair candidatePair;
             try {
                 candidatePair = inputPairsQueue.take();
+                //todo: at this point the number of pair.kb could be used to create a return pair!?
             } catch (InterruptedException e) {
                 return; //triggers when thread is closed or finished
             }

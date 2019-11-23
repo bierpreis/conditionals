@@ -95,7 +95,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     public boolean isConsistentWith(PConditional conditionalToTest) {
-
+        //todo
         return newIsConsistent(conditionalToTest);
 
         //hauptquelle:

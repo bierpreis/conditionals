@@ -13,6 +13,7 @@ import java.util.List;
 public class NumbersKnowledgeBase extends AbstractKnowledgeBase {
     private List<Integer> conditionalNumbersList;
 
+    //todo: delete?!
     public NumbersKnowledgeBase(AbstractSignature signature, int kbNumber) {
         conditionalNumbersList = new ArrayList<>();
         this.signature = signature;
