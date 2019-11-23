@@ -1,7 +1,7 @@
 package kb_creator.model.propositional_logic.signature;
 
 
-import kb_creator.model.propositional_logic.worlds.ABWorld;
+import kb_creator.model.propositional_logic.signature.worlds.ABWorld;
 
 import java.util.ArrayList;
 

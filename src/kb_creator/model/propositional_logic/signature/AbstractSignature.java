@@ -1,8 +1,7 @@
 package kb_creator.model.propositional_logic.signature;
 
-import kb_creator.model.propositional_logic.worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.signature.worlds.AbstractWorld;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSignature {

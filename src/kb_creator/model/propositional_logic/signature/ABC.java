@@ -1,11 +1,9 @@
 package kb_creator.model.propositional_logic.signature;
 
 
-import kb_creator.model.propositional_logic.worlds.ABCWorld;
+import kb_creator.model.propositional_logic.signature.worlds.ABCWorld;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ABC extends AbstractSignature {
 

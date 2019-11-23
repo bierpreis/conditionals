@@ -1,6 +1,6 @@
 package kb_creator.model.writer;
 
-import kb_creator.model.creator.KnowledgeBase;
+import kb_creator.model.propositional_logic.KnowledgeBase;
 
 import java.io.*;
 import java.util.concurrent.BlockingQueue;

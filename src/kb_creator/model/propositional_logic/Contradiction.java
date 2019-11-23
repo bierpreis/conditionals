@@ -1,7 +1,6 @@
 package kb_creator.model.propositional_logic;
 
-import kb_creator.model.buffer.ConcurrentPairBuffer;
-import kb_creator.model.propositional_logic.worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.signature.worlds.AbstractWorld;
 
 public class Contradiction extends AbstractFormula {
 

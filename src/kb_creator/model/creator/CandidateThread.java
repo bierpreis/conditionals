@@ -3,6 +3,7 @@ package kb_creator.model.creator;
 
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.ArrayList;

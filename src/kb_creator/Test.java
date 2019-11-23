@@ -4,9 +4,9 @@ import kb_creator.model.propositional_logic.*;
 import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import kb_creator.model.propositional_logic.worlds.ABCWorld;
-import kb_creator.model.propositional_logic.worlds.ABWorld;
-import kb_creator.model.propositional_logic.worlds.AbstractWorld;
+import kb_creator.model.propositional_logic.signature.worlds.ABCWorld;
+import kb_creator.model.propositional_logic.signature.worlds.ABWorld;
+import kb_creator.model.propositional_logic.signature.worlds.AbstractWorld;
 import nfc_creator.model.WConditional;
 import nfc_creator.model.WorldsList;
 

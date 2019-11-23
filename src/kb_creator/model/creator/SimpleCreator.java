@@ -1,6 +1,7 @@
 package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
 
 import kb_creator.model.pairs.AbstractPair;

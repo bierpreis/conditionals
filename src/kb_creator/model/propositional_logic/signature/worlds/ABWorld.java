@@ -1,4 +1,4 @@
-package kb_creator.model.propositional_logic.worlds;
+package kb_creator.model.propositional_logic.signature.worlds;
 
 
 import kb_creator.model.propositional_logic.Var;

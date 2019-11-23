@@ -4,6 +4,7 @@ import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.AbstractFormula;
+import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
