@@ -40,7 +40,7 @@ public abstract class AbstractCreator implements Runnable {
 
     protected AbstractKbWriter kbWriter;
 
-
+    //todo: when threading stuff is new maybe no need for concurrent queues?
     protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
@@ -138,7 +138,7 @@ public abstract class AbstractCreator implements Runnable {
                 e.printStackTrace();
             }
     }
-    
+
 
     //getters
 
