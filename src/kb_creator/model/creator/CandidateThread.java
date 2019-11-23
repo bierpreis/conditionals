@@ -19,6 +19,8 @@ public class CandidateThread implements Runnable {
     private BlockingQueue<AbstractPair> outputPairsQueue;
 
     public CandidateThread(BlockingQueue<AbstractKnowledgeBase> consistentKBsQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKBsQueue, BlockingQueue<AbstractPair> inputPairsQueue, BlockingQueue<AbstractPair> outputPairsQueue) {
+
+        //todo idea: collect not to this queue but to a collector which orders and then puts to this queue
         this.consistentKBsQueue = consistentKBsQueue;
         this.inconsistentKBsQueue = inconsistentKBsQueue;
 
