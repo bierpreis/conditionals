@@ -21,8 +21,6 @@ public class ABC extends AbstractSignature {
         possibleWorlds.add(new ABCWorld(false, false, false));
 
 
-        equivalenceGroups.add(Arrays.asList(6, 5, 3));
-        equivalenceGroups.add(Arrays.asList(4, 2, 1));
     }
 
 

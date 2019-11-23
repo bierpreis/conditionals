@@ -8,8 +8,6 @@ import java.util.List;
 public abstract class AbstractSignature {
     protected List<AbstractWorld> possibleWorlds;
 
-    protected List<List<Integer>> equivalenceGroups = new ArrayList<>(); //todo: is this used?
-
     @Override
     abstract public String toString();
 
