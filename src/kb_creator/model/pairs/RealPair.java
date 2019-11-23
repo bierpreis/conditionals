@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class RealListPair extends AbstractPair {
+public class RealPair extends AbstractPair {
     private List<PConditional> candidatesList;
 
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
@@ -15,12 +15,12 @@ public class RealListPair extends AbstractPair {
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
     private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("c\n");
 
-    public RealListPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
+    public RealPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         this.candidatesList = candidates;
     }
 
-    public RealListPair(String stringFromFile) {
+    public RealPair(String stringFromFile) {
 
         //divide string into kb and candidates
         String[] splitString = CANDIDATES_NEWLINE_PATTERN.split(stringFromFile);

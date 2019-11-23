@@ -2,7 +2,7 @@ package kb_creator.model.creator.parallel;
 
 
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.pairs.RealPair;
 import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
 
@@ -65,7 +65,7 @@ public class CandidateThread implements Runnable {
                             candidatesToAdd.add(conditionalFromCandidates);
                     }
                     try {
-                        outputPairsQueue.put(new RealListPair(knowledgeBaseToAdd, candidatesToAdd));
+                        outputPairsQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                     } catch (InterruptedException e) {
                         return; //triggers when thread is closed or finished
                     }

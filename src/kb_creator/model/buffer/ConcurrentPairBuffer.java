@@ -2,7 +2,7 @@ package kb_creator.model.buffer;
 
 import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.pairs.RealPair;
 import kb_creator.model.propositional_logic.PConditional;
 
 import java.io.File;
@@ -159,7 +159,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
         for (String stringFromFile : fileStringArray) {
-            pairsList.add(new RealListPair(stringFromFile));
+            pairsList.add(new RealPair(stringFromFile));
             pairReaderCounter++;
         }
 
@@ -190,7 +190,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
-        cpQueueToWrite.add(new RealListPair(knowledgeBase, candidatesToAdd));
+        cpQueueToWrite.add(new RealPair(knowledgeBase, candidatesToAdd));
     }
 
     @Override

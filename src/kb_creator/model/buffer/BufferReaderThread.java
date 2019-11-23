@@ -1,7 +1,7 @@
 package kb_creator.model.buffer;
 
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.pairs.RealPair;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -81,7 +81,7 @@ public class BufferReaderThread implements Runnable {
         List<AbstractPair> pairsList = new ArrayList<>(fileStringArray.length);
 
         for (String stringFromFile : fileStringArray) {
-            pairsList.add(new RealListPair(stringFromFile));
+            pairsList.add(new RealPair(stringFromFile));
         }
 
         readingFileNameCounter++;

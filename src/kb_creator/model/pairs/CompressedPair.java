@@ -8,11 +8,11 @@ import java.util.List;
 
 //this class takes much less memory than the real list pair but its slower
 
-public class CompressedArrayPair extends AbstractPair {
+public class CompressedPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
-    public CompressedArrayPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
+    public CompressedPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
         int lastConditionalNumber = 0;
@@ -51,7 +51,7 @@ public class CompressedArrayPair extends AbstractPair {
     }
 
     //this is old and probably wont work anymore
-    public CompressedArrayPair(String stringFromFile) {
+    public CompressedPair(String stringFromFile) {
         String[] splitString = stringFromFile.split("candidates\n");
         if (splitString.length != 2)
             throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");

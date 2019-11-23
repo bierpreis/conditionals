@@ -2,7 +2,7 @@ package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.RealListPair;
+import kb_creator.model.pairs.RealPair;
 import kb_creator.model.propositional_logic.AbstractFormula;
 import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
@@ -102,7 +102,7 @@ public abstract class AbstractCreator implements Runnable {
 
 
             //no buffering for first iteration because it almost makes no difference
-            listToReturn.add(new RealListPair(rKB, candidatesList));
+            listToReturn.add(new RealPair(rKB, candidatesList));
         }
 
         for (AbstractPair candidatePair : listToReturn) {
