@@ -1,17 +1,17 @@
 package kb_creator.model.writer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 
 import java.util.concurrent.BlockingQueue;
 
 public class DummyWriterThread implements Runnable {
     private volatile boolean running = true;
-    private BlockingQueue<AbstractKnowledgeBase> queue;
+    private BlockingQueue<KnowledgeBase> queue;
 
     private int iterationCounter;
     private int totalCounter;
 
-    public DummyWriterThread(BlockingQueue<AbstractKnowledgeBase> queue) {
+    public DummyWriterThread(BlockingQueue<KnowledgeBase> queue) {
         this.queue = queue;
 
     }

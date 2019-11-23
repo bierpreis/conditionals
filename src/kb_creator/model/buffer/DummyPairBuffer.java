@@ -1,6 +1,6 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedArrayPair;
 import kb_creator.model.propositional_logic.PConditional;
@@ -67,8 +67,8 @@ public class DummyPairBuffer extends AbstractPairBuffer {
         candidatePairList.add(listToAdd);
     }
 
-    @Override
-    public void addPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
+
+    public void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
         candidatePairList.get(k).add(new CompressedArrayPair(knowledgeBase, candidatesToAdd));
     }
 

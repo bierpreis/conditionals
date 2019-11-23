@@ -1,8 +1,6 @@
 package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealListPair;
 import kb_creator.model.propositional_logic.AbstractFormula;
@@ -42,8 +40,8 @@ public abstract class AbstractCreator implements Runnable {
     protected AbstractKbWriter kbWriter;
 
 
-    protected BlockingQueue<AbstractKnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
-    protected BlockingQueue<AbstractKnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
+    protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
     protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
     protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
@@ -52,7 +50,7 @@ public abstract class AbstractCreator implements Runnable {
     public AbstractCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         this.l = l;
         AbstractFormula.setSignature(signature);
-        AbstractKnowledgeBase.setSignature(signature);
+        KnowledgeBase.setSignature(signature);
 
 
         creatorStatus = CreatorStatus.NOT_STARTED;
@@ -71,7 +69,7 @@ public abstract class AbstractCreator implements Runnable {
         cnfc = Collections.unmodifiableCollection(nfcCreator.getpCnfc());
 
         AbstractPair.setNfc(nfcCreator.getNfcMap());
-        AbstractKnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
+        KnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
 
         currentPairAmount = 0;
 
@@ -87,7 +85,7 @@ public abstract class AbstractCreator implements Runnable {
         for (PConditional r : cnfc) {
 
             //line 4 and 5
-            AbstractKnowledgeBase rKB = new ObjectKnowledgeBase();
+            KnowledgeBase rKB = new KnowledgeBase();
             rKB.add(r); // rKB is r as 1 element kb
 
             //create candidates

@@ -1,6 +1,6 @@
 package kb_creator.model.writer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 
 import java.io.*;
 import java.util.concurrent.BlockingQueue;
@@ -8,7 +8,7 @@ import java.util.concurrent.BlockingQueue;
 public class KBWriterThread implements Runnable {
     private String folderName;
     private String rootFilePath;
-    private BlockingQueue<AbstractKnowledgeBase> queue;
+    private BlockingQueue<KnowledgeBase> queue;
     private boolean running = true;
 
     private int iterationCounter = 0;
@@ -16,7 +16,7 @@ public class KBWriterThread implements Runnable {
 
     private String filePath;
 
-    public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<AbstractKnowledgeBase> queue) {
+    public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<KnowledgeBase> queue) {
         this.folderName = folderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
@@ -54,7 +54,7 @@ public class KBWriterThread implements Runnable {
     }
 
 
-    private void writeKbToFile(AbstractKnowledgeBase knowledgeBase) {
+    private void writeKbToFile(KnowledgeBase knowledgeBase) {
 
         iterationCounter++;
         totalCounter++;

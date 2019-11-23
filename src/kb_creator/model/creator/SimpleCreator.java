@@ -2,8 +2,6 @@ package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.propositional_logic.PConditional;
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
 
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
@@ -66,7 +64,7 @@ public class SimpleCreator extends AbstractCreator {
 
 
                         //next part is line 11 and 12
-                        AbstractKnowledgeBase knowledgeBaseToAdd = new ObjectKnowledgeBase(currentPair.getKnowledgeBase(), r); //takes little time
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(currentPair.getKnowledgeBase(), r); //takes little time
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
@@ -99,9 +97,9 @@ public class SimpleCreator extends AbstractCreator {
         super.finishAndStopLoop();
     }
 
-    private void addInconsistentKb(AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
+    private void addInconsistentKb(KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         try {
-            inconsistentWriterQueue.put(new ObjectKnowledgeBase(knowledgeBase, conditionalToAdd));
+            inconsistentWriterQueue.put(new KnowledgeBase(knowledgeBase, conditionalToAdd));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

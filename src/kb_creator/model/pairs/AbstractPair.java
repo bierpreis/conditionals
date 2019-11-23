@@ -1,6 +1,6 @@
 package kb_creator.model.pairs;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.List;
@@ -8,11 +8,11 @@ import java.util.Map;
 
 public abstract class AbstractPair {
 
-    protected AbstractKnowledgeBase knowledgeBase;
+    protected KnowledgeBase knowledgeBase;
     protected static Map<Integer, PConditional> nfcMap;
 
     //concrete methods
-    public AbstractKnowledgeBase getKnowledgeBase() {
+    public KnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
 

@@ -1,8 +1,7 @@
 package kb_creator.model.pairs;
 
 import kb_creator.model.propositional_logic.PConditional;
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
-import kb_creator.model.knowledge_base.ObjectKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ public class RealListPair extends AbstractPair {
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
     private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("c\n");
 
-    public RealListPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidates) {
+    public RealListPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
         this.candidatesList = candidates;
     }
@@ -32,7 +31,7 @@ public class RealListPair extends AbstractPair {
 
         //create both from subString
         //long startTime = System.currentTimeMillis();
-        knowledgeBase = new ObjectKnowledgeBase(splitString[0]);
+        knowledgeBase = new KnowledgeBase(splitString[0]);
         //System.out.println("time + " + (System.currentTimeMillis() - startTime));
         candidatesList = createCandidatesListFromString(splitString[1]);
     }

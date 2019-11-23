@@ -1,6 +1,6 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.PConditional;
 
@@ -48,7 +48,7 @@ public abstract class AbstractPairBuffer {
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
 
-    public abstract void addPair(AbstractKnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd);
+    public abstract void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd);
 
     public abstract void addPair(AbstractPair pair);
 

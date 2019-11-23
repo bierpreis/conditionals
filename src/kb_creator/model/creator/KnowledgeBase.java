@@ -1,14 +1,51 @@
-package kb_creator.model.knowledge_base;
+package kb_creator.model.creator;
 
 import kb_creator.model.propositional_logic.PConditional;
+import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.worlds.AbstractWorld;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
-public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
+public class KnowledgeBase {
+
+
+    private static Map<Integer, PConditional> nfcMap;
+    private static AbstractSignature signature;
+    private int kbNumber;
+
+
+
+    //setters
+
+    public static void setNfcMap(Map<Integer, PConditional> nfcMapToAdd) {
+        nfcMap = nfcMapToAdd;
+    }
+
+    public static void setSignature(AbstractSignature signatureToSet) {
+        signature = signatureToSet;
+    }
+
+    public void setKbNumber(int kbNumber) {
+
+        //exception to make sure numbers are set only once
+        if (this.kbNumber != 0)
+            throw new RuntimeException("Cant set kb number two times!");
+
+        this.kbNumber = kbNumber;
+    }
+
+    //getters
+
+    public int getKbNumber() {
+        return kbNumber;
+    }
+
+
+
 
     private final List<PConditional> conditionalList;
 
@@ -28,12 +65,12 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     //private AbstractFormula consistencyOfKB;
 
     //this constructor is only used for initializing 1 element kbs
-    public ObjectKnowledgeBase() {
+    public KnowledgeBase() {
         this.conditionalList = new ArrayList<>(1);
     }
 
     //this is used by parallel creator
-    public ObjectKnowledgeBase(AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
+    public KnowledgeBase(KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.conditionalList.addAll(knowledgeBase.getConditionalList());
         this.conditionalList.add(conditionalToAdd);
@@ -41,7 +78,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
     //this constructor is used for all the other iterations
     //legacy
-    public ObjectKnowledgeBase(int kbNumber, AbstractKnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
+    public KnowledgeBase(int kbNumber, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.kbNumber = kbNumber;
 
@@ -50,7 +87,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     //this constructor takes almost no time
-    public ObjectKnowledgeBase(String stringFromFile) {
+    public KnowledgeBase(String stringFromFile) {
         stringFromFile = NEW_LINE_PATTERN.matcher(stringFromFile).replaceAll("");
 
         /*        //this would be needed to read the infOcf kbs
@@ -102,7 +139,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
 
-    @Override
     public void add(PConditional conditionalToAdd) {
         conditionalList.add(conditionalToAdd);
     }
@@ -115,7 +151,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
 
 
     //this creates infOcf file strings
-    @Override
     public String toFileString() {
 
         StringBuilder sb = new StringBuilder();
@@ -137,7 +172,6 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
     }
 
     //this creates shorter file strings
-    @Override
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.kbNumber);
@@ -158,7 +192,7 @@ public class ObjectKnowledgeBase extends AbstractKnowledgeBase {
         return conditionalList;
     }
 
-    @Override
+
     public int getSize() {
         return conditionalList.size();
     }

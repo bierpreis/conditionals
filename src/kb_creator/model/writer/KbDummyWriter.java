@@ -1,6 +1,7 @@
 package kb_creator.model.writer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+
+import kb_creator.model.creator.KnowledgeBase;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -16,7 +17,7 @@ public class KbDummyWriter extends AbstractKbWriter {
     private DummyWriterThread inconsistentThreadObject;
     private Thread inconsistentThread;
 
-    public KbDummyWriter(BlockingQueue<AbstractKnowledgeBase> consistentKbQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentKbQueue) {
+    public KbDummyWriter(BlockingQueue<KnowledgeBase> consistentKbQueue, BlockingQueue<KnowledgeBase> inconsistentKbQueue) {
         System.out.println("new dummy KbWriter");
         status = WriterStatus.NOT_STARTED;
 

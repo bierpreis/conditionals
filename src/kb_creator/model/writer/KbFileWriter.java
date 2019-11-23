@@ -1,6 +1,6 @@
 package kb_creator.model.writer;
 
-import kb_creator.model.knowledge_base.AbstractKnowledgeBase;
+import kb_creator.model.creator.KnowledgeBase;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -12,7 +12,7 @@ public class KbFileWriter extends AbstractKbWriter {
     private Thread consistentWriterThread;
     private Thread inconsistentWriterThread;
 
-    public KbFileWriter(String filePathToSave, BlockingQueue<AbstractKnowledgeBase> consistentQueue, BlockingQueue<AbstractKnowledgeBase> inconsistentQueue) {
+    public KbFileWriter(String filePathToSave, BlockingQueue<KnowledgeBase> consistentQueue, BlockingQueue<KnowledgeBase> inconsistentQueue) {
 
         this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentQueue);
         consistentWriterThread = new Thread(consistentWriter);
