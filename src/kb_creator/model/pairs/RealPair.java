@@ -100,15 +100,15 @@ public class RealPair extends AbstractPair {
         StringBuilder sb = new StringBuilder();
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\nc\n");
-        
+        sb.append("\nc\n"); //todo: make big c here!
+
 
         if (!candidatesList.isEmpty()) {
 
             //init the first candidate in list
             List<CandidateGroup> candidateGroupList = new ArrayList<>();
             int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
-            candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber()));
+            candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber())); //todo: number is always 0!!! it is set by kb writer?!
 
             //loop all the other candidates
             for (PConditional currentCandidate : candidatesList) {
