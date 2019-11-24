@@ -13,7 +13,7 @@ public class RealPair extends AbstractPair {
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
     private static final Pattern DASH_PATTERN = Pattern.compile("-");
-    private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("c\n");
+    private static final Pattern CANDIDATES_NEWLINE_PATTERN = Pattern.compile("C\n");
 
     public RealPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
@@ -100,7 +100,7 @@ public class RealPair extends AbstractPair {
         StringBuilder sb = new StringBuilder();
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());
-        sb.append("\nc\n"); //todo: make big c here!
+        sb.append("\nC\n");
 
 
         if (!candidatesList.isEmpty()) {
