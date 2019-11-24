@@ -39,7 +39,7 @@ public abstract class AbstractPairBuffer {
     public abstract void stopLoop();
 
     public void setDeletingFiles(boolean deleteFiles) {
-        if (!(this instanceof DummyPairBuffer))
+        if (!(this instanceof RamPairBuffer))
             System.out.println("set deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;
     }

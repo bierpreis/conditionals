@@ -8,7 +8,7 @@ import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.*;
 
-public class BlockingPairBuffer extends AbstractPairBuffer {
+public class HddPairBuffer extends AbstractPairBuffer {
 
     private volatile boolean hasNextIteration;
 
@@ -23,7 +23,7 @@ public class BlockingPairBuffer extends AbstractPairBuffer {
     private final int NUMBER_OF_DIGITS;
 
 
-    public BlockingPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+    public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         super(filePath);
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         NUMBER_OF_DIGITS = bufferFileLength;

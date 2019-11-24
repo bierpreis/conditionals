@@ -4,8 +4,8 @@ import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.creator.parallel.ParallelCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
-import kb_creator.model.buffer.BlockingPairBuffer;
-import kb_creator.model.buffer.DummyPairBuffer;
+import kb_creator.model.buffer.HddPairBuffer;
+import kb_creator.model.buffer.RamPairBuffer;
 import kb_creator.model.creator.SimpleCreator;
 
 import javax.swing.*;
@@ -40,8 +40,8 @@ public class CreatorButtonObserver implements ActionListener {
                 mainWindow.getRightPanel().setActive(true);
 
                 if (mainWindow.isBufferingRequested())
-                    candidateBuffer = new BlockingPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
-                else candidateBuffer = new DummyPairBuffer();
+                    candidateBuffer = new HddPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
+                else candidateBuffer = new RamPairBuffer();
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
 

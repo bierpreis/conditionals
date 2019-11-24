@@ -42,6 +42,7 @@ public class ConcurrentPairBuffer extends AbstractPairBuffer {
     private int readingFileNameCounter;
 
 
+    //todo: delete?!
     public ConcurrentPairBuffer(String filePath, int maxNumberOfPairsInFile) {
         super(filePath);
         System.out.println("created parallel buffer for candidate pairs");

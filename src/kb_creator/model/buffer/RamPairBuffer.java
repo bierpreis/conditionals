@@ -8,12 +8,12 @@ import kb_creator.model.propositional_logic.PConditional;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DummyPairBuffer extends AbstractPairBuffer {
+public class RamPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
     private int k;
 
-    public DummyPairBuffer() {
+    public RamPairBuffer() {
         super(null);
         candidatePairList = new ArrayList<>();
     }
