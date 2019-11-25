@@ -28,22 +28,25 @@ public abstract class AbstractPairBuffer {
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
+    abstract public void addNewList(List<AbstractPair> pairToAdd);
+
 
     //add pair methods
-
-    abstract public void addNewList(List<AbstractPair> pairToAdd);
 
     public abstract void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd);
 
     public abstract void addPair(AbstractPair pair);
 
+    //get pair method
 
-    //getters
+    abstract public AbstractPair getNextPair(int k);
+
+    //other getters
     public abstract int getQueueToWriteSize();
 
     public abstract int getReaderBufferSize();
 
-    abstract public AbstractPair getNextPair(int k);
+
 }
 
 
