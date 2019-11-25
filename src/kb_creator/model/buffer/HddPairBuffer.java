@@ -105,6 +105,11 @@ public class HddPairBuffer extends AbstractPairBuffer {
         this.deleteFiles = deleteFiles;
     }
 
+    @Override
+    public void addNewList(List<AbstractPair> listToAdd) {
+        writerThreadObject.addList(listToAdd);
+    }
+
 
     //add pair methods
     @Override
@@ -117,11 +122,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
         writerThreadObject.addPair(pairToAdd);
     }
 
-
-    @Override
-    public void addNewList(List<AbstractPair> listToAdd) {
-        writerThreadObject.addList(listToAdd);
-    }
 
 
     //getters
