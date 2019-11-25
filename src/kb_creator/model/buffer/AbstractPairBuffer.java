@@ -33,8 +33,10 @@ public abstract class AbstractPairBuffer {
 
     //add pair methods
 
+    //todo: only simple creator used this. wtf.
     public abstract void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd);
 
+    //only parallel creator uses this.
     public abstract void addPair(AbstractPair pair);
 
     //get pair method
