@@ -10,6 +10,13 @@ import java.util.*;
 
 public class HddPairBuffer extends AbstractPairBuffer {
 
+
+    protected boolean deleteFiles;
+
+    private int maxNumberOfPairsInFile;
+
+    private String tmpFilePath;
+
     private volatile boolean hasNextIteration;
 
 
@@ -24,7 +31,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
 
     public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
-        super(filePath);
+        this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         NUMBER_OF_DIGITS = bufferFileLength;
         System.out.println("created parallel buffer for candidate pairs");
@@ -89,6 +96,13 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
         writerThreadObject.stopLoop();
         writerThread.interrupt();
+    }
+
+    @Override
+
+    public void setDeletingFiles(boolean deleteFiles) {
+        System.out.println("set deleting buffer files: " + deleteFiles);
+        this.deleteFiles = deleteFiles;
     }
 
 

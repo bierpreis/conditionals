@@ -10,19 +10,13 @@ public abstract class AbstractPairBuffer {
 
     //variables
 
-    protected int maxNumberOfPairsInFile;
 
-    protected String tmpFilePath;
+
+
 
     protected int lastIterationPairAmount;
 
-    protected boolean deleteFiles;
 
-    //k will be set by prepare iteration methods
-
-    public AbstractPairBuffer(String baseFilePath) {
-        this.tmpFilePath = baseFilePath + "/tmp/";
-    }
 
     //methods for iteration changes
     abstract public boolean hasMoreElementsForK(int k);
@@ -37,11 +31,8 @@ public abstract class AbstractPairBuffer {
 
     public abstract void stopLoop();
 
-    public void setDeletingFiles(boolean deleteFiles) {
-        if (!(this instanceof RamPairBuffer))
-            System.out.println("set deleting buffer files: " + deleteFiles);
-        this.deleteFiles = deleteFiles;
-    }
+    public abstract void setDeletingFiles(boolean deleteFiles);
+
 
     //add pair methods
 

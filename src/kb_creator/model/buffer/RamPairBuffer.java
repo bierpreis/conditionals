@@ -14,7 +14,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
     private int k;
 
     public RamPairBuffer() {
-        super(null);
         candidatePairList = new ArrayList<>();
     }
 
@@ -59,6 +58,11 @@ public class RamPairBuffer extends AbstractPairBuffer {
         //nothing
     }
 
+    @Override
+    public void setDeletingFiles(boolean deleteFiles) {
+        //intentionally nothing
+    }
+
 
     // add pair methods
 
@@ -68,6 +72,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     }
 
 
+    //todo: what is this?!
     public void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
         candidatePairList.get(k).add(new CompressedPair(knowledgeBase, candidatesToAdd));
     }
