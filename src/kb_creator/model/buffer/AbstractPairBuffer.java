@@ -9,7 +9,6 @@ import java.util.List;
 public abstract class AbstractPairBuffer {
 
     //variables
-    protected int pairReaderCounter;
 
     protected int maxNumberOfPairsInFile;
 
