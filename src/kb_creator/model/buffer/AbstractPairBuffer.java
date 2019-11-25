@@ -10,12 +10,7 @@ public abstract class AbstractPairBuffer {
 
     //variables
 
-
-
-
-
     protected int lastIterationPairAmount;
-
 
 
     //methods for iteration changes

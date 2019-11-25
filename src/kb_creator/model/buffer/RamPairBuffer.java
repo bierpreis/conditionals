@@ -72,7 +72,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     }
 
 
-    //todo: what is this?!
+    @Override
     public void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
         candidatePairList.get(k).add(new CompressedPair(knowledgeBase, candidatesToAdd));
     }
