@@ -89,7 +89,6 @@ public class BufferWriterThread implements Runnable {
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
                     sb.append("\nEND\n");
-                pairToWrite.clear();
                 pairWriterCounter++;
             }
 
