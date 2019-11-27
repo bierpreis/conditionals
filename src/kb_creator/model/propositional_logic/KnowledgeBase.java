@@ -25,12 +25,6 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-
-    //this constructor is only used for initializing 1 element kbs, therefore the init to size 1 //todo
-    public KnowledgeBase() {
-        this.conditionalList = new ArrayList<>(1);
-    }
-
     //this is used for init 1 element kbs
     public KnowledgeBase(PConditional conditional) {
         this.conditionalList = new ArrayList<>(1);
