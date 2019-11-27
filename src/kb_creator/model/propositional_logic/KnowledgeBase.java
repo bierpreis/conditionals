@@ -31,14 +31,14 @@ public class KnowledgeBase {
         this.conditionalList.add(conditional);
     }
 
-    //this is used by parallel creator //todo shit comment
+    //this is used by parallel creator //todo: really? think about after parallel is working
     public KnowledgeBase(KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.conditionalList.addAll(knowledgeBase.getConditionalList());
         this.conditionalList.add(conditionalToAdd);
     }
 
-    //todo: simple creator should use that?!
+    //todo: really? think about after parallel is working
     public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.number = number;
