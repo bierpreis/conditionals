@@ -10,16 +10,7 @@ import java.util.*;
 
 public class HddPairBuffer extends AbstractPairBuffer {
 
-
-    protected boolean deleteFiles;
-
-    private int maxNumberOfPairsInFile;
-
-    private String tmpFilePath;
-
-    private volatile boolean hasNextIteration;
-
-
+    //threads
     private Thread readerThread;
     private Thread writerThread;
 
@@ -27,13 +18,21 @@ public class HddPairBuffer extends AbstractPairBuffer {
     private BufferReaderThread readerThreadObject;
     private BufferWriterThread writerThreadObject;
 
-    private final int NUMBER_OF_DIGITS;
+
+    //options
+    private boolean deleteFiles;
+    private int maxNumberOfPairsInFile;
+    private String tmpFilePath;
+    private int fileNameLength;
+
+    //other
+    private volatile boolean hasNextIteration;
 
 
     public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
-        NUMBER_OF_DIGITS = bufferFileLength;
+        fileNameLength = bufferFileLength;
         System.out.println("created parallel buffer for candidate pairs");
     }
 
@@ -62,12 +61,12 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, NUMBER_OF_DIGITS);
+        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
         writerThread = new Thread(writerThreadObject);
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
 
-        readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK, NUMBER_OF_DIGITS);
+        readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK, fileNameLength);
         readerThread = new Thread(readerThreadObject);
         readerThread.setName("buffer reader thread for k " + requestedK);
         readerThread.start();
@@ -121,7 +120,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void addPair(AbstractPair pairToAdd) {
         writerThreadObject.addPair(pairToAdd);
     }
-
 
 
     //getters
