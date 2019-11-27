@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 public class KnowledgeBase {
     private static Map<Integer, PConditional> nfcMap;
     private static AbstractSignature signature;
+
     private int number;
     private final List<PConditional> conditionalList;
 
@@ -101,7 +102,7 @@ public class KnowledgeBase {
 
     public void add(PConditional conditionalToAdd) {
         conditionalList.add(conditionalToAdd);
-    }
+    } //todo: is is useful to add and not to create a new one?
 
 
     @Override
