@@ -26,7 +26,7 @@ public class KnowledgeBase {
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
 
-    //this constructor is only used for initializing 1 element kbs, therefore the init to size 1
+    //this constructor is only used for initializing 1 element kbs, therefore the init to size 1 //todo
     public KnowledgeBase() {
         this.conditionalList = new ArrayList<>(1);
     }
@@ -102,7 +102,7 @@ public class KnowledgeBase {
 
     public void add(PConditional conditionalToAdd) {
         conditionalList.add(conditionalToAdd);
-    } //todo: is is useful to add and not to create a new one?
+    } //todo: this should be a constructor!
 
 
     @Override
@@ -132,7 +132,7 @@ public class KnowledgeBase {
         return sb.toString();
     }
 
-    //this creates shorter file strings
+    //this creates shorter file strings. used by pair writer.
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.number);
@@ -149,9 +149,9 @@ public class KnowledgeBase {
 
     //getters
 
-    public List<PConditional> getConditionalList() {
+    private List<PConditional> getConditionalList() {
         return conditionalList;
-    } //todo: private? delete?
+    }
 
     public int getNumber() {
         return number;
