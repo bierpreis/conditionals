@@ -1,7 +1,10 @@
-package kb_creator.model.writer;
+package kb_creator.model.writer.dummy;
 
 
 import kb_creator.model.propositional_logic.KnowledgeBase;
+import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.WriterStatus;
+import kb_creator.model.writer.dummy.DummyWriterThread;
 
 import java.util.concurrent.BlockingQueue;
 

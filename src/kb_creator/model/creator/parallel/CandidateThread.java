@@ -55,7 +55,7 @@ public class CandidateThread implements Runnable {
                     //line 11 and 12
                     KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(candidatePair.getKnowledgeBase(), r);//very little time
                     try {
-                        consistentKBsQueue.put(knowledgeBaseToAdd);
+                        consistentKBsQueue.put(knowledgeBaseToAdd); //todo: this needs to change. here should be a collector
                     } catch (InterruptedException e) {
                         return;
                     }

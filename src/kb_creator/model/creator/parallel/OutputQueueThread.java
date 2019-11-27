@@ -5,6 +5,7 @@ import kb_creator.model.pairs.AbstractPair;
 
 import java.util.concurrent.BlockingQueue;
 
+//todo: this needs to change to pair collector?!
 public class OutputQueueThread implements Runnable {
     private BlockingQueue<AbstractPair> queue;
     private AbstractPairBuffer l;

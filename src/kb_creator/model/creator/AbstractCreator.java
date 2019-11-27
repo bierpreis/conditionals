@@ -8,7 +8,7 @@ import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.propositional_logic.PConditional;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
-import kb_creator.model.writer.KbDummyWriter;
+import kb_creator.model.writer.dummy.KbDummyWriter;
 import kb_creator.model.writer.KbFileWriter;
 import nfc_creator.model.NfcCreator;
 
