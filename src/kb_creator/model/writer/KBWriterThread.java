@@ -6,18 +6,22 @@ import java.io.*;
 import java.util.concurrent.BlockingQueue;
 
 public class KBWriterThread implements Runnable {
+
+    //todo: clean this
     private String folderName;
     private String rootFilePath;
+    private String filePath;
+
     private BlockingQueue<KnowledgeBase> queue;
     private boolean running = true;
 
     private int iterationCounter = 0;
     private int totalCounter = 0;
 
-    private String filePath;
+
 
     public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<KnowledgeBase> queue) {
-        this.folderName = folderName;
+        this.folderName = folderName; //todo: sth null here?!
         this.queue = queue;
         this.rootFilePath = rootFilePath;
     }
@@ -64,7 +68,7 @@ public class KBWriterThread implements Runnable {
 
         //this will trigger when hdd space is full or there are too much files
         try {
-            writer = new PrintWriter(filePath + knowledgeBase.getNumber() + ".txt", "UTF-8");
+            writer = new PrintWriter(filePath + knowledgeBase.getNumber() + ".txt", "UTF-8"); //todo: filepath null!
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
