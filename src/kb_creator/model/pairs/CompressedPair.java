@@ -142,7 +142,7 @@ public class CompressedPair extends AbstractPair {
     private String toShortFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
-        sb.append(knowledgeBase.getKbNumber());
+        sb.append(knowledgeBase.getNumber());
         sb.append("\n\n");
         sb.append("KB\n");
         sb.append(knowledgeBase.toShortFileString());

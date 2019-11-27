@@ -3,57 +3,20 @@ package kb_creator.model.propositional_logic;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
 import kb_creator.model.propositional_logic.signature.worlds.AbstractWorld;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 public class KnowledgeBase {
-
-
     private static Map<Integer, PConditional> nfcMap;
     private static AbstractSignature signature;
-    private int kbNumber;
-
-
-
-    //setters
-
-    public static void setNfcMap(Map<Integer, PConditional> nfcMapToAdd) {
-        nfcMap = nfcMapToAdd;
-    }
-
-    public static void setSignature(AbstractSignature signatureToSet) {
-        signature = signatureToSet;
-    }
-
-    public void setKbNumber(int kbNumber) {
-
-        //exception to make sure numbers are set only once
-        if (this.kbNumber != 0)
-            throw new RuntimeException("Cant set kb number two times!");
-
-        this.kbNumber = kbNumber;
-    }
-
-    //getters
-
-    public int getKbNumber() {
-        return kbNumber;
-    }
-
-
-
-
+    private int number;
     private final List<PConditional> conditionalList;
 
-    //making theese static saves A LOT of memory
-    private static final Pattern AB_PATTERN = Pattern.compile("^a,b.*");
-    private static final Pattern ABC_PATTERN = Pattern.compile("^a,b,c.*");
+    //making these patterns static saves A LOT of memory
 
     private static final Pattern NEW_LINE_PATTERN = Pattern.compile("\n");
-    private static final Pattern SIGNATURE_PATTERN = Pattern.compile("signature");
     private static final Pattern KB_PATTERN = Pattern.compile("KB");
 
     private static final Pattern CURLY_BRACKET_START = Pattern.compile("\\{");
@@ -61,9 +24,8 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-    //private AbstractFormula consistencyOfKB;
 
-    //this constructor is only used for initializing 1 element kbs
+    //this constructor is only used for initializing 1 element kbs, therefore the init to size 1
     public KnowledgeBase() {
         this.conditionalList = new ArrayList<>(1);
     }
@@ -75,11 +37,10 @@ public class KnowledgeBase {
         this.conditionalList.add(conditionalToAdd);
     }
 
-    //this constructor is used for all the other iterations
-    //legacy
-    public KnowledgeBase(int kbNumber, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
+    //todo: simple creator should use that?!
+    public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
-        this.kbNumber = kbNumber;
+        this.number = number;
 
         conditionalList.addAll(knowledgeBase.getConditionalList());
         conditionalList.add(conditionalToAdd);
@@ -103,7 +64,7 @@ public class KnowledgeBase {
 
         String[] splitString2 = KB_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
-        this.kbNumber = Integer.parseInt(splitString3[0]);
+        this.number = Integer.parseInt(splitString3[0]);
         String[] conditionalStringArray = COMMA_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
         conditionalList = new ArrayList<>(conditionalStringArray.length);
@@ -157,7 +118,7 @@ public class KnowledgeBase {
         sb.append(signature.toString().toLowerCase());
         sb.append("\n\n");
         sb.append("conditionals\n");
-        sb.append(this.kbNumber);
+        sb.append(this.number);
         sb.append("{\n");
 
         for (int i = 0; i < conditionalList.size(); i++) {
@@ -173,7 +134,7 @@ public class KnowledgeBase {
     //this creates shorter file strings
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.kbNumber);
+        sb.append(this.number);
         sb.append("{");
 
         for (int i = 0; i < conditionalList.size(); i++) {
@@ -189,11 +150,31 @@ public class KnowledgeBase {
 
     public List<PConditional> getConditionalList() {
         return conditionalList;
-    }
+    } //todo: private? delete?
 
+    public int getNumber() {
+        return number;
+    }
 
     public int getSize() {
         return conditionalList.size();
+    }
+
+
+    //setters
+
+    public static void setNfcMap(Map<Integer, PConditional> nfcMapToAdd) {
+        nfcMap = nfcMapToAdd;
+    }
+
+    public static void setSignature(AbstractSignature signatureToSet) {
+        signature = signatureToSet;
+    }
+
+    public void setNumber(int number) {
+        if (this.number != 0)//exception to make sure numbers are set only once
+            throw new RuntimeException("Cant set kb number two times!");
+        this.number = number;
     }
 
 }

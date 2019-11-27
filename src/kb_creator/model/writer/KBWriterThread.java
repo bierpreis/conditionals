@@ -59,12 +59,12 @@ public class KBWriterThread implements Runnable {
         iterationCounter++;
         totalCounter++;
 
-        knowledgeBase.setKbNumber(iterationCounter); //todo: this should not be here but in it kb collector
+        knowledgeBase.setNumber(iterationCounter); //todo: this should not be here but in it kb collector
         PrintWriter writer;
 
         //this will trigger when hdd space is full or there are too much files
         try {
-            writer = new PrintWriter(filePath + knowledgeBase.getKbNumber() + ".txt", "UTF-8");
+            writer = new PrintWriter(filePath + knowledgeBase.getNumber() + ".txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
