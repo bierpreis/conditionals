@@ -31,7 +31,13 @@ public class KnowledgeBase {
         this.conditionalList = new ArrayList<>(1);
     }
 
-    //this is used by parallel creator
+    //this is used for init 1 element kbs
+    public KnowledgeBase(PConditional conditional) {
+        this.conditionalList = new ArrayList<>(1);
+        this.conditionalList.add(conditional);
+    }
+
+    //this is used by parallel creator //todo shit comment
     public KnowledgeBase(KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.conditionalList.addAll(knowledgeBase.getConditionalList());
@@ -98,11 +104,6 @@ public class KnowledgeBase {
         return false;
 
     }
-
-
-    public void add(PConditional conditionalToAdd) {
-        conditionalList.add(conditionalToAdd);
-    } //todo: this should be a constructor!
 
 
     @Override

@@ -85,8 +85,7 @@ public abstract class AbstractCreator implements Runnable {
         for (PConditional r : cnfc) {
 
             //line 4 and 5
-            KnowledgeBase rKB = new KnowledgeBase();
-            rKB.add(r); // rKB is r as 1 element kb
+            KnowledgeBase rKB = new KnowledgeBase(r);
 
             //create candidates
             List<PConditional> candidatesList = new ArrayList<>();
