@@ -30,6 +30,7 @@ public class SimpleCreator extends AbstractCreator {
         //line 2
         k = 1;
 
+        kbWriter.newIteration(0);
 
         //line 3-5
         l.addNewList(initOneElementKBs(nfc, cnfc));

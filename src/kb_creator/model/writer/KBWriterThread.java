@@ -20,8 +20,8 @@ public class KBWriterThread implements Runnable {
 
 
 
-    public KBWriterThread(String rootFilePath, String folderName, BlockingQueue<KnowledgeBase> queue) {
-        this.folderName = folderName; //todo: sth null here?!
+    public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue) {
+        this.folderName = subFolderName; //todo: sth null here?!
         this.queue = queue;
         this.rootFilePath = rootFilePath;
     }
@@ -49,7 +49,7 @@ public class KBWriterThread implements Runnable {
             }
         }
     }
-
+    //todo: this is not called for iteration 0! init kbs.
     public void newIteration(int k) {
         iterationCounter = 0;
         filePath = rootFilePath + (k) + "/" + folderName + "/";
@@ -68,7 +68,7 @@ public class KBWriterThread implements Runnable {
 
         //this will trigger when hdd space is full or there are too much files
         try {
-            writer = new PrintWriter(filePath + knowledgeBase.getNumber() + ".txt", "UTF-8"); //todo: filepath null!
+            writer = new PrintWriter(filePath + knowledgeBase.getNumber() + ".txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
