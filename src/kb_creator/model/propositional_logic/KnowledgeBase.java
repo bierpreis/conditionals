@@ -89,7 +89,7 @@ public class KnowledgeBase {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
                     if (!conditional.tolerates(world))
-                        toleratesAll = false;
+                        toleratesAll = false; //todo: it could break the inner loop. how to do that?
                 }
                 if (toleratesAll)
                     return true;
