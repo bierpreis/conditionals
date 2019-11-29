@@ -41,9 +41,6 @@ public class SimpleCreator implements Runnable {
     private BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
-    protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
-    protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
-
     private int iterationPairCounter = 0;
 
     public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
@@ -206,20 +203,9 @@ public class SimpleCreator implements Runnable {
         }
     }
 
-    public int getTotalInconsistentAmount() {
-        return kbWriter.getTotalInconsistentCounter();
-    }
 
 
-    public float calculateProgress() {
-
-        //avoid division with zero
-        if (currentPairAmount == 0) {
-            return 0;
-
-        }
-        return (iterationPairCounter / (float) currentPairAmount) * 100;
-    }
+    //iteration change methods
 
     public void stopLoop() {
         kbWriter.stopThreads();
@@ -271,6 +257,21 @@ public class SimpleCreator implements Runnable {
     public long getStartTime() {
         return startTime;
     }
+
+    public int getTotalInconsistentAmount() {
+        return kbWriter.getTotalInconsistentCounter();
+    }
+
+    public float calculateProgress() {
+
+        //avoid division with zero
+        if (currentPairAmount == 0) {
+            return 0;
+
+        }
+        return (iterationPairCounter / (float) currentPairAmount) * 100;
+    }
+
 
 }
 
