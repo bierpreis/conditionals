@@ -114,7 +114,6 @@ public class SimpleCreator implements Runnable {
             }
 
         }
-        waitForWriterFinished();
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
@@ -223,14 +222,6 @@ public class SimpleCreator implements Runnable {
     }
 
 
-    private void waitForWriterFinished() { //todo: this is only used in iteration 0! why? delete? use it in every iteration?
-        while (!consistentWriterQueue.isEmpty())
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-    }
 
     //getters
 
