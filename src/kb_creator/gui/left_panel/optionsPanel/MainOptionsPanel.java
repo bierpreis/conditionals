@@ -13,14 +13,12 @@ public class MainOptionsPanel extends JPanel {
     private MainKbSafePanel mainKbSafePanel;
     private MainBufferPanel mainBufferPanel;
     private SignatureOptionsPanel signatureOptionsPanel;
-    private ThreadNumberPanel threadNumberPanel;
 
     public MainOptionsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Options"));
 
         add(signatureOptionsPanel = new SignatureOptionsPanel());
-        add(threadNumberPanel = new ThreadNumberPanel());
         add(mainBufferPanel = new MainBufferPanel());
         add(mainKbSafePanel = new MainKbSafePanel());
 
@@ -66,17 +64,13 @@ public class MainOptionsPanel extends JPanel {
         return mainBufferPanel.getDeleteCheckbox().isSelected();
     }
 
-    public int getNumberOfThreads() {
-        return threadNumberPanel.getNumberOfThreads();
-    }
+
 
     public boolean areValuesValid() {
         boolean valid = true;
         if (!mainBufferPanel.isValueValid())
             valid = false;
 
-        if (!threadNumberPanel.isValueValid())
-            valid = false;
 
         return valid;
     }

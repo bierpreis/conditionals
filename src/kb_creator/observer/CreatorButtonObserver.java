@@ -43,7 +43,7 @@ public class CreatorButtonObserver implements ActionListener {
                 else candidateBuffer = new RamPairBuffer();
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
-                
+
                 creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
