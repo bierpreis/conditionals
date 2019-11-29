@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.concurrent.BlockingQueue;
 
 public class KBWriterThread implements Runnable {
-    
+
     private String subFolderName;
     private String rootFilePath;
     private String currentIterationFilePath;

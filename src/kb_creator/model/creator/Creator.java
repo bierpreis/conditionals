@@ -137,7 +137,6 @@ public class Creator implements Runnable {
         //line 6
         while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
-            System.gc();
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration(k);
@@ -145,7 +144,7 @@ public class Creator implements Runnable {
 
 
             //line  7
-            l.addNewList(new ArrayList<>()); //todo: maybe combine this and l.prepareIteration() some lines before?
+            l.addNewList(new ArrayList<>());
 
             int consistentKbCounter = 1;
             int inconsistentKbCounter = 1;
