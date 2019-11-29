@@ -2,7 +2,6 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.AbstractCreator;
-import kb_creator.model.creator.parallel.ParallelCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.HddPairBuffer;
 import kb_creator.model.buffer.RamPairBuffer;
@@ -44,11 +43,8 @@ public class CreatorButtonObserver implements ActionListener {
                 else candidateBuffer = new RamPairBuffer();
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
-
-                if (mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads() > 1)
-                    creatorThreadObject = new ParallelCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getNumberOfThreads(), candidateBuffer);
-                else
-                    creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
+                
+                creatorThreadObject = new SimpleCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");
