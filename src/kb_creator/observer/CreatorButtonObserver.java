@@ -1,7 +1,6 @@
 package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
-import kb_creator.model.creator.AbstractCreator;
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.HddPairBuffer;
 import kb_creator.model.buffer.RamPairBuffer;
@@ -15,7 +14,7 @@ public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
     private AbstractPairBuffer candidateBuffer;
 
-    private AbstractCreator creatorThreadObject;
+    private SimpleCreator creatorThreadObject;
     private GuiStatusThread statusThreadObject;
 
 
