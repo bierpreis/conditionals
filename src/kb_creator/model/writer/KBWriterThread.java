@@ -6,11 +6,10 @@ import java.io.*;
 import java.util.concurrent.BlockingQueue;
 
 public class KBWriterThread implements Runnable {
-
-    //todo: clean this
-    private String folderName;
+    
+    private String subFolderName;
     private String rootFilePath;
-    private String filePath;
+    private String currentIterationFilePath;
 
     private BlockingQueue<KnowledgeBase> queue;
     private boolean running = true;
@@ -19,16 +18,15 @@ public class KBWriterThread implements Runnable {
     private int totalCounter = 0;
 
 
-
     public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue) {
-        this.folderName = subFolderName;
+        this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
     }
 
     @Override
     public void run() {
-        System.out.println("new writer thread started for " + folderName + " kbs");
+        System.out.println("new writer thread started for " + subFolderName + " kbs");
         while (running) {
             try {
                 writeKbToFile(queue.take());
@@ -36,7 +34,7 @@ public class KBWriterThread implements Runnable {
                 //intentionally nothing
             }
         }
-        System.out.println("writer thread closed for " + folderName + " kbs");
+        System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
 
     public void finishIteration() {
@@ -52,8 +50,8 @@ public class KBWriterThread implements Runnable {
 
     public void newIteration(int k) {
         iterationCounter = 0;
-        filePath = rootFilePath + (k) + "/" + folderName + "/";
-        File consistentFolder = new File(filePath);
+        currentIterationFilePath = rootFilePath + (k) + "/" + subFolderName + "/";
+        File consistentFolder = new File(currentIterationFilePath);
         consistentFolder.mkdirs();
     }
 
@@ -67,7 +65,7 @@ public class KBWriterThread implements Runnable {
 
         //this will trigger when hdd space is full or there are too much files
         try {
-            writer = new PrintWriter(filePath + knowledgeBase.getNumber() + ".txt", "UTF-8");
+            writer = new PrintWriter(currentIterationFilePath + knowledgeBase.getNumber() + ".txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
@@ -82,7 +80,7 @@ public class KBWriterThread implements Runnable {
 
 
     public void finishAndStopLoop() {
-        System.out.println("closing " + folderName);
+        System.out.println("closing " + subFolderName);
         //this makes sure queue is empty before it stops
         while (!queue.isEmpty())
             try {
@@ -94,7 +92,7 @@ public class KBWriterThread implements Runnable {
     }
 
     public void stopLoop() {
-        System.out.println("closing " + folderName);
+        System.out.println("closing " + subFolderName);
         //this makes sure queue is empty before it stops
 
         running = false;
