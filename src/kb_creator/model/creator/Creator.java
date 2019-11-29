@@ -18,7 +18,7 @@ import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class SimpleCreator implements Runnable {
+public class Creator implements Runnable {
 
     private int currentPairAmount;
 
@@ -43,7 +43,7 @@ public class SimpleCreator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    public SimpleCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+    public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         System.out.println("new simple creator");
 
 
