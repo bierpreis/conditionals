@@ -63,7 +63,6 @@ public class KBWriterThread implements Runnable {
         iterationCounter++;
         totalCounter++;
 
-        knowledgeBase.setNumber(iterationCounter); //todo: parallel this should not be here but in it kb collector
         PrintWriter writer;
 
         //this will trigger when hdd space is full or there are too much files

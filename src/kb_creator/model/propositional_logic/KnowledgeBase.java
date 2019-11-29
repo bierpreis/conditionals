@@ -25,23 +25,18 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-    //this is used for init 1 element kbs
-    public KnowledgeBase(PConditional conditional) {
+
+    public KnowledgeBase(int number, PConditional conditional) {
+        this.number = number;
         this.conditionalList = new ArrayList<>(1);
         this.conditionalList.add(conditional);
     }
 
-    public KnowledgeBase(KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
-        this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
-        this.conditionalList.addAll(knowledgeBase.getConditionalList());
-        this.conditionalList.add(conditionalToAdd);
-    }
-
-    //todo: paralell: delete?
+    //todo: comments for this and above
     public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
-        this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         this.number = number;
 
+        this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
         conditionalList.addAll(knowledgeBase.getConditionalList());
         conditionalList.add(conditionalToAdd);
     }

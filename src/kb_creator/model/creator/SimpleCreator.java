@@ -81,12 +81,14 @@ public class SimpleCreator implements Runnable {
         System.out.println("creating 1 element kbs");
 
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
+        int numberCounter = 1;
 
         //line 3
         for (PConditional r : cnfc) {
 
             //line 4 and 5
-            KnowledgeBase rKB = new KnowledgeBase(r);
+            KnowledgeBase rKB = new KnowledgeBase(numberCounter, r);
+            numberCounter++;
 
             //create candidates
             List<PConditional> candidatesList = new ArrayList<>();
@@ -146,6 +148,8 @@ public class SimpleCreator implements Runnable {
             //line  7
             l.addNewList(new ArrayList<>()); //todo: maybe combine this and l.prepareIteration() some lines before?
 
+            int consistentKbCounter = 1;
+            int inconsistentKbCounter = 1;
 
             //line 8
             while (l.hasMoreElementsForK(k)) {
@@ -162,7 +166,9 @@ public class SimpleCreator implements Runnable {
 
 
                         //next part is line 11 and 12
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(currentPair.getKnowledgeBase(), r); //takes little time
+                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
+                        consistentKbCounter++;
+
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
@@ -178,7 +184,15 @@ public class SimpleCreator implements Runnable {
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time
 
 
-                    } else addInconsistentKb(currentPair.getKnowledgeBase(), r); //takes almost no time
+                    } else {
+
+                        try {
+                            inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        inconsistentKbCounter++;
+                    }
                 }
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
                     return;
@@ -194,15 +208,6 @@ public class SimpleCreator implements Runnable {
         creatorStatus = CreatorStatus.FINISHED;
         finishAndStopLoop();
     }
-
-    private void addInconsistentKb(KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
-        try {
-            inconsistentWriterQueue.put(new KnowledgeBase(knowledgeBase, conditionalToAdd));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 
     //iteration change methods
