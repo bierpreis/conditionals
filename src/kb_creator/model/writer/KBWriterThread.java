@@ -21,7 +21,7 @@ public class KBWriterThread implements Runnable {
 
 
     public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue) {
-        this.folderName = subFolderName; //todo: sth null here?!
+        this.folderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
     }
@@ -49,7 +49,7 @@ public class KBWriterThread implements Runnable {
             }
         }
     }
-    //todo: this is not called for iteration 0! init kbs.
+
     public void newIteration(int k) {
         iterationCounter = 0;
         filePath = rootFilePath + (k) + "/" + folderName + "/";
@@ -63,7 +63,7 @@ public class KBWriterThread implements Runnable {
         iterationCounter++;
         totalCounter++;
 
-        knowledgeBase.setNumber(iterationCounter); //todo: this should not be here but in it kb collector
+        knowledgeBase.setNumber(iterationCounter); //todo: parallel this should not be here but in it kb collector
         PrintWriter writer;
 
         //this will trigger when hdd space is full or there are too much files

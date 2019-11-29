@@ -108,7 +108,7 @@ public class RealPair extends AbstractPair {
             //init the first candidate in list
             List<CandidateGroup> candidateGroupList = new ArrayList<>();
             int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
-            candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber())); //todo: number is always 0!!! it is set by kb writer?!
+            candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber())); //todo: parallel: number is always 0!!! it is set by kb writer?!
 
             //loop all the other candidates
             for (PConditional currentCandidate : candidatesList) {
