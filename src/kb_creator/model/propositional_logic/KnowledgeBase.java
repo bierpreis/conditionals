@@ -88,8 +88,10 @@ public class KnowledgeBase {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
-                    if (!conditional.tolerates(world))
-                        toleratesAll = false; //todo: it could break the inner loop. how to do that?
+                    if (!conditional.tolerates(world)) {
+                        toleratesAll = false;
+                        break;
+                    }
                 }
                 if (toleratesAll)
                     return true;
