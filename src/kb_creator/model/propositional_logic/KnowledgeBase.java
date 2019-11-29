@@ -25,14 +25,14 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-
+    //this is used for first iterations
     public KnowledgeBase(int number, PConditional conditional) {
         this.number = number;
         this.conditionalList = new ArrayList<>(1);
         this.conditionalList.add(conditional);
     }
 
-    //todo: comments for this and above
+    //this is used for all but first iteration
     public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.number = number;
 
