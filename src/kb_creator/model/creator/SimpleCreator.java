@@ -34,7 +34,7 @@ public class SimpleCreator extends AbstractCreator {
 
         //line 3-5
         l.addNewList(initOneElementKBs(nfc, cnfc));
-        l.finishIteration(0); /
+        l.finishIteration(0);
 
 
         //line 6
