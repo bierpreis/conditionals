@@ -128,7 +128,7 @@ public abstract class AbstractCreator implements Runnable {
     }
 
 
-    protected void waitForWriterFinished() {
+    protected void waitForWriterFinished() { //todo: this is only used in iteration 0! why? delete? use it in every iteration?
         while (!consistentWriterQueue.isEmpty())
             try {
                 Thread.sleep(200);
