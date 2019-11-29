@@ -20,26 +20,26 @@ import java.util.concurrent.BlockingQueue;
 
 public class SimpleCreator implements Runnable {
 
-    protected int currentPairAmount;
+    private int currentPairAmount;
 
-    protected volatile CreatorStatus creatorStatus;
+    private volatile CreatorStatus creatorStatus;
 
     protected AbstractSignature signature;
 
     protected int k;
 
-    protected long startTime;
+    private long startTime;
 
-    protected Collection<PConditional> nfc;
+    private Collection<PConditional> nfc;
 
-    protected Collection<PConditional> cnfc;
+    private Collection<PConditional> cnfc;
 
-    protected AbstractPairBuffer l;
+    private AbstractPairBuffer l;
 
-    protected AbstractKbWriter kbWriter;
+    private AbstractKbWriter kbWriter;
 
-    protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
-    protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
+    private BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
+    private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
     protected BlockingQueue<AbstractPair> inputPairsQueue = new ArrayBlockingQueue<>(500);
     protected BlockingQueue<AbstractPair> outputPairsQueue = new ArrayBlockingQueue<>(500);
@@ -80,7 +80,7 @@ public class SimpleCreator implements Runnable {
     }
 
 
-    protected List<AbstractPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
+    private List<AbstractPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
@@ -226,13 +226,13 @@ public class SimpleCreator implements Runnable {
         this.creatorStatus = CreatorStatus.STOPPED;
     }
 
-    public void finishAndStopLoop() {
+    private void finishAndStopLoop() {
         kbWriter.finishAndStopThreads();
         this.creatorStatus = CreatorStatus.FINISHED;
     }
 
 
-    protected void waitForWriterFinished() { //todo: this is only used in iteration 0! why? delete? use it in every iteration?
+    private void waitForWriterFinished() { //todo: this is only used in iteration 0! why? delete? use it in every iteration?
         while (!consistentWriterQueue.isEmpty())
             try {
                 Thread.sleep(200);
