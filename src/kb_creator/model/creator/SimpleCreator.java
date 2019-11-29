@@ -48,7 +48,7 @@ public class SimpleCreator extends AbstractCreator {
 
 
             //line  7
-            l.addNewList(new ArrayList<>());
+            l.addNewList(new ArrayList<>()); //todo: maybe combine this and l.prepareIteration() some lines before?
 
 
             //line 8
