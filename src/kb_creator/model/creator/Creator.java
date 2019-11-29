@@ -179,7 +179,7 @@ public class Creator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
-                        l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time
+                        l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time //todo: add to queue so thread can do that itself? could make this faster!
 
 
                     } else {
