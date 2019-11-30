@@ -114,7 +114,7 @@ public class CompressedPair extends AbstractPair {
         List<PConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
         sb.append("<(");
-        sb.append(knowledgeBase.toShortFileString());
+        sb.append(knowledgeBase.toShortFileString()); //todo: here get kb and put method in abstract? check other to string methods too!
         sb.append("), (");
         if (candidatesList.size() > 0) {
             for (int i = 0; i < candidatesList.size(); i++) {
