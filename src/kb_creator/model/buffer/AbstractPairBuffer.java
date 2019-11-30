@@ -36,7 +36,7 @@ public abstract class AbstractPairBuffer {
     public abstract void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd);
 
     //only parallel creator uses this.
-    public abstract void addPair(AbstractPair pair);
+    public abstract void addPair(AbstractPair pair); //todo: never used? remove and describe other!
 
     //get pair method
 
