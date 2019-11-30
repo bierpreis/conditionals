@@ -96,12 +96,6 @@ public class CompressedPair extends AbstractPair {
     public List<PConditional> getCandidatesList() {
         List<PConditional> candidatesList = new ArrayList<>();
         for (int[] candidateBounds : compressedCandidatesArray) {
-
-            //todo: why is this in loop? should be before!
-            //if it is 0, all candidates are found
-            if (candidateBounds[0] == 0) {
-                return candidatesList;
-            }
             for (int i = candidateBounds[0]; i <= candidateBounds[1]; i++) {
 
                 candidatesList.add(nfcMap.get(i));
@@ -111,12 +105,14 @@ public class CompressedPair extends AbstractPair {
         return candidatesList;
     }
 
+    //todo: this could be exactly in abstract!?
+    //this is only for debug purposes
     @Override
     public String toString() {
         List<PConditional> candidatesList = getCandidatesList();
         StringBuilder sb = new StringBuilder();
         sb.append("<(");
-        sb.append(knowledgeBase.toShortFileString()); //todo: here get kb and put method in abstract? check other to string methods too!
+        sb.append(knowledgeBase.toShortFileString());
         sb.append("), (");
         if (candidatesList.size() > 0) {
             for (int i = 0; i < candidatesList.size(); i++) {
@@ -135,15 +131,11 @@ public class CompressedPair extends AbstractPair {
         compressedCandidatesArray = null;
     }
 
-    @Override
-    public String toFileString() {
-        return toShortFileString();
-    } //todo: this is shit!
-
 
     //this method creates a file string compressed with the compression in this pair implementation
     //therefore the file is much shorter
-    private String toShortFileString() {
+    @Override
+    public String toFileString() {
         StringBuilder sb = new StringBuilder();
         sb.append("buffer");
         sb.append(knowledgeBase.getNumber());

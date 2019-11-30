@@ -75,6 +75,9 @@ public class BufferWriterThread implements Runnable {
             String fileName = String.format(numberOfDigitsString, writingFileNameCounter);
             writingFileNameCounter++;
 
+            //todo: wtf this triggered
+            //java.io.FileNotFoundException: /home/bierpreis/KBs/tmp/1/3945481.txt (Auf dem Gerät ist kein Speicherplatz mehr verfügbar)
+            //with buffering when hdd was full. close program in this case?
             PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
 
             StringBuilder sb = new StringBuilder();
