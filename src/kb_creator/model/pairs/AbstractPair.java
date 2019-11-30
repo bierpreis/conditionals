@@ -25,9 +25,11 @@ public abstract class AbstractPair {
 
     public abstract List<PConditional> getCandidatesList();
 
+    public abstract void clear();
+
+    //toString todo: make them concrete!
+
     public abstract String toString();
 
     public abstract String toFileString();
-
-    public abstract void clear();
 }

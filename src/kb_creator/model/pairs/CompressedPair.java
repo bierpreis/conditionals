@@ -127,14 +127,16 @@ public class CompressedPair extends AbstractPair {
         return sb.toString();
     }
 
+    @Override
     public void clear() {
         knowledgeBase = null;
         compressedCandidatesArray = null;
     }
 
+    @Override
     public String toFileString() {
         return toShortFileString();
-    }
+    } //todo: this is shit!
 
 
     //this method creates a file string compressed with the compression in this pair implementation
