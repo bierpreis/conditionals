@@ -179,6 +179,7 @@ public class Creator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //todo: idea: here the pairs could be added parallel and sorted. then kb writer gets the kbs from there! so only sorting stuff once
+                        //that would need some inconsistent kb collector to?!
                         //line 12
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time //todo: maybe make this better? make the 2 pairs more interchangable?
 
