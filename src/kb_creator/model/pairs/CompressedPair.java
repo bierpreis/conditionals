@@ -96,6 +96,8 @@ public class CompressedPair extends AbstractPair {
     public List<PConditional> getCandidatesList() {
         List<PConditional> candidatesList = new ArrayList<>();
         for (int[] candidateBounds : compressedCandidatesArray) {
+
+            //todo: why is this in loop? should be before!
             //if it is 0, all candidates are found
             if (candidateBounds[0] == 0) {
                 return candidatesList;
