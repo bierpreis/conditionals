@@ -178,8 +178,6 @@ public class Creator implements Runnable {
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
                                 candidatesToAdd.add(conditionalFromCandidates);
 
-                        //todo: idea: here the pairs could be added parallel and sorted. then kb writer gets the kbs from there! so only sorting stuff once
-                        //that would need some inconsistent kb collector to?!
                         //line 12
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time //todo: maybe make this better? make the 2 pairs more interchangable?
                         //idea: make own method to add pair with switch to choose which pair? or get compressed pair from real pair?
