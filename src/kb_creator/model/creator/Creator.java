@@ -181,6 +181,7 @@ public class Creator implements Runnable {
                         //line 12
                         l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time //todo: maybe make this better? make the 2 pairs more interchangable?
                         //idea: make own method to add pair with switch to choose which pair? or get compressed pair from real pair?
+                        //todo: pair queue for this? could make this faster
 
                     } else {
 
