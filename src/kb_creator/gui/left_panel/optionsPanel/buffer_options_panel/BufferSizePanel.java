@@ -14,7 +14,7 @@ public class BufferSizePanel extends JPanel {
 
     public BufferSizePanel() {
         descriptionLabel = new JLabel("Number of Candidates in File: ");
-        bufferSizeField = new JTextField("2000");
+        bufferSizeField = new JTextField("2000"); //todo: higher value
         bufferSizeField.setPreferredSize(new Dimension(64, 16));
         add(descriptionLabel);
         add(bufferSizeField);
@@ -26,7 +26,7 @@ public class BufferSizePanel extends JPanel {
                     Integer.parseInt(bufferSizeField.getText());
 
                 } catch (NumberFormatException e) {
-                    new SizeWarningDialog();
+                    new SizeWarningDialog(); //todo: warning with too high value
                 }
             }
         });
@@ -48,7 +48,9 @@ public class BufferSizePanel extends JPanel {
 
         }
 
-        if (Integer.parseInt(bufferSizeField.getText()) < 1) {
+        //too high values will cause lock
+        if (Integer.parseInt(bufferSizeField.getText()) < 1 || Integer.parseInt(bufferSizeField.getText())>80_000) { //todo: this should be no magic number?
+            bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.RED));
             new SizeWarningDialog();
             return false;
         }

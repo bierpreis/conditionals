@@ -20,7 +20,7 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean flushRequested = false;
 
-    private BlockingQueue<AbstractPair> cpQueueToWrite = new ArrayBlockingQueue<>(10_000);
+    private BlockingQueue<AbstractPair> cpQueueToWrite = new ArrayBlockingQueue<>(100_000);
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
 
