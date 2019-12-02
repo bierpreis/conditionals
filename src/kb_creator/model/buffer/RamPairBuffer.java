@@ -92,6 +92,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 e.printStackTrace();
             }
         running = false;
+        bufferThread.interrupt();
     }
 
     @Override
