@@ -14,7 +14,7 @@ public class BufferSizePanel extends JPanel {
 
     public BufferSizePanel() {
         descriptionLabel = new JLabel("Number of Candidates in File: ");
-        bufferSizeField = new JTextField("20000");  //todo: set by gui? experiment
+        bufferSizeField = new JTextField("20000"); //todo: this should have influence on pairs queue in creator button observer
         bufferSizeField.setPreferredSize(new Dimension(64, 16));
         add(descriptionLabel);
         add(bufferSizeField);
@@ -49,7 +49,8 @@ public class BufferSizePanel extends JPanel {
         }
 
         //too high values will cause lock
-        if (Integer.parseInt(bufferSizeField.getText()) < 1 || Integer.parseInt(bufferSizeField.getText())>80_000) { //todo: this should be no magic number?
+        //todo: this should be no magic number? //delete todo if this has influence on queue. maybe block insane numbers
+        if (Integer.parseInt(bufferSizeField.getText()) < 1 || Integer.parseInt(bufferSizeField.getText())>80_000) {
             bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.RED));
             new SizeWarningDialog();
             return false;
