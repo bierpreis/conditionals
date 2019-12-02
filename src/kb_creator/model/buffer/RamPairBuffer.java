@@ -27,7 +27,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
                 e.printStackTrace(); //todo: interrupt thread when finished
-            }//todo: start this thread! and interrupt this when iteration is done
+            }
         }
     }
 
