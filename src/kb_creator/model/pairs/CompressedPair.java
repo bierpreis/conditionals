@@ -62,6 +62,45 @@ public class CompressedPair extends AbstractPair {
         compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
     }
 
+    //todo: use this
+    public CompressedPair(RealPair originalPair) {
+        this.knowledgeBase = originalPair.getKnowledgeBase();
+
+        int lastConditionalNumber = 0;
+
+        List<List<Integer>> temporaryList = new ArrayList<>();
+
+        for (PConditional currentCandidate : originalPair.getCandidatesList()) {
+            if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
+
+                //this should not be executed in the firstNumber iteration
+                if (!temporaryList.isEmpty())
+                    temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
+
+
+                temporaryList.add(new ArrayList<>(2));
+                temporaryList.get(temporaryList.size() - 1).add(currentCandidate.getNumber());
+
+                lastConditionalNumber = currentCandidate.getNumber();
+            } else {
+                lastConditionalNumber++;
+            }
+
+        }
+
+        if (!temporaryList.isEmpty())
+            temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
+
+
+        compressedCandidatesArray = new int[temporaryList.size()][2];
+        for (int i = 0; i < temporaryList.size(); i++) {
+            compressedCandidatesArray[i][0] = temporaryList.get(i).get(0);
+            compressedCandidatesArray[i][1] = temporaryList.get(i).get(1);
+
+        }
+
+    }
+
     private int[][] createCandidatesArrayFromString(String stringFromFile) {
         String[] stringArray = stringFromFile.split(", ");
         int[][] arrayToReturn = new int[stringArray.length][2];
