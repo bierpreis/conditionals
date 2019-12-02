@@ -93,7 +93,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
         candidatePairList.add(listToAdd);
         Thread thisThread = new Thread(this);
-        thisThread.start();//todo: this works?
+        thisThread.start();
     }
 
 

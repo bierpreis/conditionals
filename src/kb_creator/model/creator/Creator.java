@@ -182,12 +182,11 @@ public class Creator implements Runnable {
 
                         //line 12
                         try {
-                            pairsQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd)); //this takes about 30 percent of time //todo: maybe make this better? make the 2 pairs more interchangable?
+                            pairsQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        //idea: add real pairs here. faster. then  buffer can make compressed out of it.
-                        //todo: pair queue for this? could make this faster
+
 
                     } else {
 
