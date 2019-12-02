@@ -29,10 +29,12 @@ public class RamPairBuffer extends AbstractPairBuffer {
             try {
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
+                System.out.println("!!interrupted");
                 //running = false;
                 //this is triggered when iteration is finished and thread stops
             }
         }
+        System.out.println("buffer thread closed!");
     }
 
 
@@ -65,7 +67,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
             candidatePairList.get(requestedK).clear();
     }
 
-    //todo: this can stop thread when queue is empty?
+
     @Override
     public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
@@ -76,8 +78,12 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+        //todo: buffer thread is not closed correctly?!
         running = false;
-        bufferThread.interrupt(); //todo: does this work?
+        bufferThread.interrupt();
+
+
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
         deleteOldData(requestedK - 1);
     }
@@ -112,7 +118,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
         bufferThread = new Thread(this);
         bufferThread.setName("buffer");
-        bufferThread.start(); //todo: this needs to be closed?!
+        bufferThread.start();
 
     }
 
@@ -122,6 +128,15 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public AbstractPair getNextPair(int k) {
         nextElementNumber++;
+        while (candidatePairList.get(k - 1).get(nextElementNumber - 1) == null) {
+            System.out.println("!!!was null!!!");
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         return candidatePairList.get(k - 1).get(nextElementNumber - 1);
     }
 

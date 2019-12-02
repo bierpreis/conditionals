@@ -156,9 +156,12 @@ public class Creator implements Runnable {
                 AbstractPair currentPair = l.getNextPair(k);
                 iterationPairCounter++;
 
-                //todo: this throws null pointer with ab when preparing iteration 6?! not always! happened at 8 again.
-                //pair is null? l.getpair returned null?!
+
                 //line 9
+                if(currentPair==null)
+                    System.out.println("pair was null!!!");
+                //todo: pair is sometimes null!!
+                //l.getNextPair returned null!!
                 for (PConditional r : currentPair.getCandidatesList()) {
 
 
