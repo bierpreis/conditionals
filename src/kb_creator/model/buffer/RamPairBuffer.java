@@ -5,6 +5,7 @@ import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedPair;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
@@ -19,7 +20,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
-        candidatePairList = new ArrayList<>(); //todo: maybe threading on this not threadsafe list is shit?
+        candidatePairList = Collections.synchronizedList(new ArrayList<>()); //todo: maybe threading on this not threadsafe list is shit?
         running = true;
     }
 
@@ -114,7 +115,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     public void addNewList(List listToAdd) {
         running = true;
 
-        candidatePairList.add(listToAdd);
+        candidatePairList.add(Collections.synchronizedList(listToAdd));
 
         bufferThread = new Thread(this);
         bufferThread.setName("buffer");
