@@ -5,8 +5,15 @@ import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractPairBuffer {
+    protected BlockingQueue<AbstractPair> inputQueue;
+
+    //todo: use
+    public AbstractPairBuffer(BlockingQueue<AbstractPair> inputQueue) {
+        this.inputQueue = inputQueue;
+    }
 
     //variables
 
