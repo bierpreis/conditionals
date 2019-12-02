@@ -20,7 +20,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
-        candidatePairList = Collections.synchronizedList(new ArrayList<>()); //todo: maybe threading on this not threadsafe list is shit?
+        candidatePairList = Collections.synchronizedList(new ArrayList<>());
         running = true;
     }
 
@@ -110,9 +110,9 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     // add pair methods
 
-    //todo: type? rename?!
+    //todo: type?!
     @Override
-    public void addNewList(List listToAdd) {
+    public void addListAndStartThread(List listToAdd) {
         running = true;
 
         candidatePairList.add(Collections.synchronizedList(listToAdd));

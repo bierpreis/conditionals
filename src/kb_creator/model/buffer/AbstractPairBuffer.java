@@ -33,7 +33,7 @@ public abstract class AbstractPairBuffer implements Runnable{
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
-    abstract public void addNewList(List<AbstractPair> pairToAdd);
+    abstract public void addListAndStartThread(List<AbstractPair> pairToAdd);
 
 
     //get pair method

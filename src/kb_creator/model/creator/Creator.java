@@ -132,7 +132,7 @@ public class Creator implements Runnable {
         kbWriter.newIteration(0); //actually this is iteration 0
 
         //line 3-5
-        l.addNewList(initOneElementKBs(nfc, cnfc));
+        l.addListAndStartThread(initOneElementKBs(nfc, cnfc));
         l.finishIteration(0);
 
 
@@ -146,7 +146,7 @@ public class Creator implements Runnable {
 
 
             //line  7
-            l.addNewList(new ArrayList<>());
+            l.addListAndStartThread(new ArrayList<>());
 
             int consistentKbCounter = 1;
             int inconsistentKbCounter = 1;
@@ -158,10 +158,6 @@ public class Creator implements Runnable {
 
 
                 //line 9
-                if(currentPair==null)
-                    throw new RuntimeException("pair was null!");
-                //todo: pair is sometimes null!!
-                //l.getNextPair returned null!!
                 for (PConditional r : currentPair.getCandidatesList()) {
 
 

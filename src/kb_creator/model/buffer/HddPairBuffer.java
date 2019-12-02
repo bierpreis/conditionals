@@ -107,7 +107,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void addNewList(List<AbstractPair> listToAdd) {
+    public void addListAndStartThread(List<AbstractPair> listToAdd) {
+        running = true;
         writerThreadObject.addList(listToAdd);
     }
 
@@ -129,6 +130,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void run() {
-        //todo
+        //intentionally nothing
     }
 }
