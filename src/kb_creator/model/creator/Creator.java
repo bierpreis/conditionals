@@ -159,7 +159,7 @@ public class Creator implements Runnable {
 
                 //line 9
                 if(currentPair==null)
-                    System.out.println("pair was null!!!");
+                    throw new RuntimeException("pair was null!");
                 //todo: pair is sometimes null!!
                 //l.getNextPair returned null!!
                 for (PConditional r : currentPair.getCandidatesList()) {

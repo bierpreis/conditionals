@@ -128,15 +128,13 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public AbstractPair getNextPair(int k) {
         nextElementNumber++;
-        while (candidatePairList.get(k - 1).get(nextElementNumber - 1) == null) {
-            System.out.println("!!!was null!!!");
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
 
+        if (candidatePairList.get(k - 1).get(nextElementNumber - 1) == null) {
+            System.out.println("number: " + (nextElementNumber - 1));
+            System.out.println("size: " + candidatePairList.get(k - 1).size());
+            System.out.println("null! next element: " + candidatePairList.get(k - 1).get(nextElementNumber));
+            System.out.println("null! next element +1: " + candidatePairList.get(k - 1).get(nextElementNumber + 1));
+        }
         return candidatePairList.get(k - 1).get(nextElementNumber - 1);
     }
 
