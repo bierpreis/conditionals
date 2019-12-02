@@ -43,9 +43,11 @@ public class Creator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
-        System.out.println("new simple creator");
+    private BlockingQueue<RealPair> pairsQueue;
 
+    public Creator(BlockingQueue<RealPair> pairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) { //todo: remove buffer but put queue?
+        System.out.println("new simple creator");
+        this.pairsQueue = pairsQueue;
 
         this.l = l;
         AbstractFormula.setSignature(signature);
@@ -179,7 +181,7 @@ public class Creator implements Runnable {
                                 candidatesToAdd.add(conditionalFromCandidates);
 
                         //line 12
-                        l.addPair(knowledgeBaseToAdd, candidatesToAdd); //this takes about 30 percent of time //todo: maybe make this better? make the 2 pairs more interchangable?
+                        pairsQueue.add(new RealPair(knowledgeBaseToAdd, candidatesToAdd)); //this takes about 30 percent of time //todo: maybe make this better? make the 2 pairs more interchangable?
                         //idea: add real pairs here. faster. then  buffer can make compressed out of it.
                         //todo: pair queue for this? could make this faster
 

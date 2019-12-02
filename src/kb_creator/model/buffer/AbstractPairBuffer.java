@@ -1,5 +1,6 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.pairs.RealPair;
 import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.PConditional;
@@ -7,11 +8,11 @@ import kb_creator.model.propositional_logic.PConditional;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public abstract class AbstractPairBuffer {
-    protected BlockingQueue<AbstractPair> inputQueue;
+public abstract class AbstractPairBuffer implements Runnable{
+    protected BlockingQueue<RealPair> inputQueue;
 
     //todo: use
-    public AbstractPairBuffer(BlockingQueue<AbstractPair> inputQueue) {
+    public AbstractPairBuffer(BlockingQueue<RealPair> inputQueue) {
         this.inputQueue = inputQueue;
     }
 
@@ -36,14 +37,7 @@ public abstract class AbstractPairBuffer {
     public abstract void setDeletingFiles(boolean deleteFiles);
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
-
-
-    //add pair methods
-
-    public abstract void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd);
-
-    //only parallel creator uses this.
-    public abstract void addPair(AbstractPair pair); //todo: never used? remove and describe other!
+    
 
     //get pair method
 

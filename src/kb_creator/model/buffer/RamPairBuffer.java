@@ -1,5 +1,6 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.pairs.RealPair;
 import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedPair;
@@ -7,14 +8,28 @@ import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
-    private List<List<AbstractPair>> candidatePairList;
+    private List<List<CompressedPair>> candidatePairList;
     private int k;
 
-    public RamPairBuffer() {
+    public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
+        super(pairsQueue);
         candidatePairList = new ArrayList<>();
+    }
+
+    @Override
+    public void run(){
+        while(!Thread.interrupted()){
+            try{
+            candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
+            }catch(InterruptedException e){
+                e.printStackTrace(); //todo: this or return or what
+            }
+
+        }
     }
 
 
@@ -54,7 +69,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void stopLoop() {
+    public void stopLoop() { //todo
         //nothing
     }
 
@@ -66,21 +81,12 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     // add pair methods
 
+    //todo: type?
     @Override
-    public void addNewList(List<AbstractPair> listToAdd) {
+    public void addNewList(List listToAdd) {
         candidatePairList.add(listToAdd);
     }
 
-
-    @Override
-    public void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
-        candidatePairList.get(k).add(new CompressedPair(knowledgeBase, candidatesToAdd));
-    }
-
-    @Override
-    public void addPair(AbstractPair pair) {
-        candidatePairList.get(k).add(pair);
-    }
 
 
     //getters

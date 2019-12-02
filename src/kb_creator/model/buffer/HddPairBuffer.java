@@ -7,6 +7,7 @@ import kb_creator.model.propositional_logic.PConditional;
 
 
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
 
 public class HddPairBuffer extends AbstractPairBuffer {
 
@@ -29,7 +30,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
 
 
-    public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+    public HddPairBuffer(BlockingQueue<RealPair> pairsQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+        super(pairsQueue);
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;
@@ -109,19 +111,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
         writerThreadObject.addList(listToAdd);
     }
 
-
-    //add pair methods
-    @Override
-    public void addPair(KnowledgeBase knowledgeBase, List<PConditional> candidatesToAdd) {
-        writerThreadObject.addPair(new RealPair(knowledgeBase, candidatesToAdd));
-    }
-
-    @Override
-    public void addPair(AbstractPair pairToAdd) {
-        writerThreadObject.addPair(pairToAdd);
-    }
-
-
     //getters
     @Override
     public int getReaderBufferSize() {
@@ -136,5 +125,10 @@ public class HddPairBuffer extends AbstractPairBuffer {
     @Override
     public AbstractPair getNextPair(int k) {
         return readerThreadObject.getNextPair(k);
+    }
+
+    @Override
+    public void run() {
+        //todo
     }
 }

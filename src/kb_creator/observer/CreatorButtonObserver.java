@@ -5,10 +5,14 @@ import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.buffer.HddPairBuffer;
 import kb_creator.model.buffer.RamPairBuffer;
 import kb_creator.model.creator.Creator;
+import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.pairs.RealPair;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
@@ -37,13 +41,15 @@ public class CreatorButtonObserver implements ActionListener {
             if (e.getActionCommand().equals("Start")) {
                 mainWindow.getRightPanel().setActive(true);
 
+                BlockingQueue<RealPair> pairsQueue = new ArrayBlockingQueue<>(10000);
+
                 if (mainWindow.isBufferingRequested())
-                    candidateBuffer = new HddPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
-                else candidateBuffer = new RamPairBuffer();
+                    candidateBuffer = new HddPairBuffer(pairsQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
+                else candidateBuffer = new RamPairBuffer(pairsQueue);
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
 
-                creatorThreadObject = new Creator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
+                creatorThreadObject = new Creator(pairsQueue, mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");
