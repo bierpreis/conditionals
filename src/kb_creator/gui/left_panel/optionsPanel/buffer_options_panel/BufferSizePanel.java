@@ -14,7 +14,7 @@ public class BufferSizePanel extends JPanel {
 
     public BufferSizePanel() {
         descriptionLabel = new JLabel("Number of Candidates in File: ");
-        bufferSizeField = new JTextField("2000"); //todo: higher value
+        bufferSizeField = new JTextField("20000");  //todo: set by gui? experiment
         bufferSizeField.setPreferredSize(new Dimension(64, 16));
         add(descriptionLabel);
         add(bufferSizeField);
@@ -26,7 +26,7 @@ public class BufferSizePanel extends JPanel {
                     Integer.parseInt(bufferSizeField.getText());
 
                 } catch (NumberFormatException e) {
-                    new SizeWarningDialog(); //todo: warning with too high value
+                    new SizeWarningDialog();
                 }
             }
         });
