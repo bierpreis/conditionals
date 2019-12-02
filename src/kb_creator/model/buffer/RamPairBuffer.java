@@ -13,11 +13,14 @@ public class RamPairBuffer extends AbstractPairBuffer {
     private List<List<CompressedPair>> candidatePairList;
     private int k;
 
-    private volatile boolean running = true;
+    private Thread bufferThread;
+
+    private volatile boolean running;
 
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
         candidatePairList = new ArrayList<>();
+        running = true;
     }
 
     @Override
@@ -26,7 +29,8 @@ public class RamPairBuffer extends AbstractPairBuffer {
             try {
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
-                e.printStackTrace(); //todo: interrupt thread when finished
+                //running = false;
+                //this is triggered when iteration is finished and thread stops
             }
         }
     }
@@ -65,6 +69,15 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
+        while (!inputQueue.isEmpty())
+            try {
+                System.out.println("sleeping. queue: " + inputQueue.size());
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        running = false;
+        bufferThread.interrupt(); //todo: does this work?
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
         deleteOldData(requestedK - 1);
     }
@@ -92,11 +105,14 @@ public class RamPairBuffer extends AbstractPairBuffer {
     //todo: type? rename?!
     @Override
     public void addNewList(List listToAdd) {
+        running = true;
 
         candidatePairList.add(listToAdd);
-        Thread thisThread = new Thread(this);
-        thisThread.setName("buffer");
-        thisThread.start(); //todo: this needs to be closed?!
+
+        bufferThread = new Thread(this);
+        bufferThread.setName("buffer");
+        bufferThread.start(); //todo: this needs to be closed?!
+
     }
 
 
