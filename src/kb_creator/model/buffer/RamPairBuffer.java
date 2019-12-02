@@ -112,7 +112,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     // add pair methods
 
-    //todo: type?!
+    //todo: type?! AND starting thread like this is shit!
     @Override
     public void addListAndStartThread(List listToAdd) {
         running = true;
