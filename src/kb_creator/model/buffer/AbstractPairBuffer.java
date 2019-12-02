@@ -1,9 +1,7 @@
 package kb_creator.model.buffer;
 
 import kb_creator.model.pairs.RealPair;
-import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.propositional_logic.PConditional;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

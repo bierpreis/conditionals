@@ -46,6 +46,9 @@ public class CreatorButtonObserver implements ActionListener {
                 if (mainWindow.isBufferingRequested())
                     candidateBuffer = new HddPairBuffer(pairsQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
                 else candidateBuffer = new RamPairBuffer(pairsQueue);
+                Thread bufferThread = new Thread(candidateBuffer);
+                bufferThread.setName("buffer");
+                bufferThread.start(); //todo: this should not be here?
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
 

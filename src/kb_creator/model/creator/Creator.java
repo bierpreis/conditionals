@@ -45,7 +45,7 @@ public class Creator implements Runnable {
 
     private BlockingQueue<RealPair> pairsQueue;
 
-    public Creator(BlockingQueue<RealPair> pairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) { //todo: remove buffer but put queue?
+    public Creator(BlockingQueue<RealPair> pairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         System.out.println("new simple creator");
         this.pairsQueue = pairsQueue;
 

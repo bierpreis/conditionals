@@ -28,7 +28,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace(); //todo: interrupt thread when finished
             }
-
+            System.out.println("running!"); //todo: start this thread! and interrupt this when iteration is done
         }
     }
 
