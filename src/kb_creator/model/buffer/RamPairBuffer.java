@@ -22,20 +22,22 @@ public class RamPairBuffer extends AbstractPairBuffer {
         super(pairsQueue);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
         running = true;
+        System.out.println("!!!new buffer object");
     }
 
     @Override
     public void run() {
+        System.out.println("!!!buffer thread started!");
         while (running) {
             try {
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
-                System.out.println("!!interrupted");
+                System.out.println("!!interrupted"); //todo. maybe close here?
                 //running = false;
                 //this is triggered when iteration is finished and thread stops
             }
         }
-        System.out.println("buffer thread closed!");
+        System.out.println("!!!buffer thread closed!");
     }
 
 
@@ -114,7 +116,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public void addListAndStartThread(List listToAdd) {
         running = true;
-
         candidatePairList.add(Collections.synchronizedList(listToAdd));
 
         bufferThread = new Thread(this);
@@ -129,13 +130,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public AbstractPair getNextPair(int k) {
         nextElementNumber++;
-
-        if (candidatePairList.get(k - 1).get(nextElementNumber - 1) == null) {
-            System.out.println("number: " + (nextElementNumber - 1));
-            System.out.println("size: " + candidatePairList.get(k - 1).size());
-            System.out.println("null! next element: " + candidatePairList.get(k - 1).get(nextElementNumber));
-            System.out.println("null! next element +1: " + candidatePairList.get(k - 1).get(nextElementNumber + 1));
-        }
         return candidatePairList.get(k - 1).get(nextElementNumber - 1);
     }
 
