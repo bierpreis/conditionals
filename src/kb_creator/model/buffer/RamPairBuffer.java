@@ -27,8 +27,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
                 e.printStackTrace(); //todo: interrupt thread when finished
-            }
-            System.out.println("running!"); //todo: start this thread! and interrupt this when iteration is done
+            }//todo: start this thread! and interrupt this when iteration is done
         }
     }
 
@@ -50,6 +49,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
         this.k = k;
+
     }
 
     @Override
@@ -90,7 +90,10 @@ public class RamPairBuffer extends AbstractPairBuffer {
     //todo: type?
     @Override
     public void addNewList(List listToAdd) {
+
         candidatePairList.add(listToAdd);
+        Thread thisThread = new Thread(this);
+        thisThread.start();//todo: this works?
     }
 
 

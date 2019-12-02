@@ -48,7 +48,7 @@ public class CreatorButtonObserver implements ActionListener {
                 else candidateBuffer = new RamPairBuffer(pairsQueue);
                 Thread bufferThread = new Thread(candidateBuffer);
                 bufferThread.setName("buffer");
-                bufferThread.start(); //todo: this should not be here?
+                //bufferThread.start(); //todo: this should not be here?
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
 
