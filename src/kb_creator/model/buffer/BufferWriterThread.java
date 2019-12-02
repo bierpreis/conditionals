@@ -17,7 +17,7 @@ public class BufferWriterThread implements Runnable {
     private int maxNumberOfPairsInFile;
     private int writingFileNameCounter;
 
-    private volatile int pairWriterCounter; //todo. volatile?
+    private volatile int pairWriterCounter;
 
     private volatile boolean flushRequested = false;
 
@@ -51,7 +51,6 @@ public class BufferWriterThread implements Runnable {
         folderToWrite.mkdirs();
     }
 
-    //todo: threads are never finished
     @Override
     public void run() {
         System.out.println("!!!buffer writer thread started for k " + requestedK);
