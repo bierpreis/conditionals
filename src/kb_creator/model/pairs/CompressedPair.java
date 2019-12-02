@@ -61,8 +61,7 @@ public class CompressedPair extends AbstractPair {
         knowledgeBase = new KnowledgeBase(splitString[0]);
         compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
     }
-
-    //todo: use this
+    
     public CompressedPair(RealPair originalPair) {
         this.knowledgeBase = originalPair.getKnowledgeBase();
 

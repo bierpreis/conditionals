@@ -11,7 +11,6 @@ import java.util.concurrent.BlockingQueue;
 public abstract class AbstractPairBuffer implements Runnable{
     protected BlockingQueue<RealPair> inputQueue;
 
-    //todo: use
     public AbstractPairBuffer(BlockingQueue<RealPair> inputQueue) {
         this.inputQueue = inputQueue;
     }
@@ -37,7 +36,7 @@ public abstract class AbstractPairBuffer implements Runnable{
     public abstract void setDeletingFiles(boolean deleteFiles);
 
     abstract public void addNewList(List<AbstractPair> pairToAdd);
-    
+
 
     //get pair method
 
