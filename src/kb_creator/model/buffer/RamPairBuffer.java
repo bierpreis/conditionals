@@ -18,6 +18,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     private volatile boolean running;
 
+    //todo: inner thread for this. the outer can then start it just like the hdd buffer.
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
