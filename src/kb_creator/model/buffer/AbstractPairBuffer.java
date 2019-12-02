@@ -6,7 +6,7 @@ import kb_creator.model.pairs.AbstractPair;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public abstract class AbstractPairBuffer implements Runnable{
+public abstract class AbstractPairBuffer{
     protected BlockingQueue<RealPair> inputQueue;
 
     public AbstractPairBuffer(BlockingQueue<RealPair> inputQueue) {
@@ -33,7 +33,7 @@ public abstract class AbstractPairBuffer implements Runnable{
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
-    abstract public void addListAndStartThread(List<RealPair> pairToAdd);
+    abstract public void addList(List<RealPair> pairToAdd);
 
 
     //get pair method

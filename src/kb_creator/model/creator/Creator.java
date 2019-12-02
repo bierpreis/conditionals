@@ -124,7 +124,7 @@ public class Creator implements Runnable {
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
         System.out.println("creator thread started");
-        l.prepareIteration(0);
+
 
         //line 2
         k = 1;
@@ -132,21 +132,25 @@ public class Creator implements Runnable {
         kbWriter.newIteration(0); //actually this is iteration 0
 
         //line 3-5
-        l.addListAndStartThread(initOneElementKBs(nfc, cnfc));
+        l.addList(initOneElementKBs(nfc, cnfc));
+        l.prepareIteration(0);
         l.finishIteration(0);
 
 
         //line 6
         while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
+
+            //line  7
+            l.addList(new ArrayList<>());
+
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration(k);
             iterationPairCounter = 0;
 
 
-            //line  7
-            l.addListAndStartThread(new ArrayList<>());
+
 
             int consistentKbCounter = 1;
             int inconsistentKbCounter = 1;

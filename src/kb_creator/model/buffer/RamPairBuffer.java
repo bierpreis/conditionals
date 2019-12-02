@@ -12,33 +12,14 @@ import java.util.concurrent.BlockingQueue;
 public class RamPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<CompressedPair>> candidatePairList;
-    private int k;
 
     private Thread bufferThread;
 
-    private volatile boolean running;
 
     //todo: inner thread for this. the outer can then start it just like the hdd buffer.
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
-        running = true;
-        System.out.println("!!!new buffer object");
-    }
-
-    @Override
-    public void run() {
-        System.out.println("!!!buffer thread started!");
-        while (running) {
-            try {
-                candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
-            } catch (InterruptedException e) {
-                System.out.println("!!interrupted"); //todo. maybe close here?
-                //running = false;
-                //this is triggered when iteration is finished and thread stops
-            }
-        }
-        System.out.println("!!!buffer thread closed!");
     }
 
 
@@ -56,9 +37,11 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int k) {
+        bufferThread = new Thread(new RamBufferThread(inputQueue, candidatePairList, k));
+        bufferThread.setName("buffer for k " + k);
+        bufferThread.start();
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
-        this.k = k;
 
     }
 
@@ -84,7 +67,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
             }
 
         //todo: buffer thread is not closed correctly?!
-        running = false;
         bufferThread.interrupt();
 
 
@@ -101,7 +83,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        running = false;
         bufferThread.interrupt();
     }
 
@@ -113,15 +94,11 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     // add pair methods
 
-    //todo: type?! AND starting thread like this is shit!
+    //todo: type?!
     @Override
-    public void addListAndStartThread(List listToAdd) {
-        running = true;
+    public void addList(List listToAdd) {
         candidatePairList.add(Collections.synchronizedList(listToAdd));
 
-        bufferThread = new Thread(this);
-        bufferThread.setName("buffer");
-        bufferThread.start();
 
     }
 

@@ -1,9 +1,7 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealPair;
-import kb_creator.model.propositional_logic.PConditional;
 
 
 import java.util.*;
@@ -107,7 +105,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-    public void addListAndStartThread(List<RealPair> listToAdd) {
+    public void addList(List<RealPair> listToAdd) {
         writerThreadObject.addList(listToAdd);
     }
 
@@ -127,8 +125,4 @@ public class HddPairBuffer extends AbstractPairBuffer {
         return readerThreadObject.getNextPair(k);
     }
 
-    @Override
-    public void run() {
-        //intentionally nothing
-    }
 }
