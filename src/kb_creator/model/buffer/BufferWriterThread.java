@@ -149,10 +149,10 @@ public class BufferWriterThread implements Runnable {
 
 
 
-    public void addList(List<AbstractPair> listToAdd) {
-        for (AbstractPair pair : listToAdd)
+    public void addList(List<RealPair> listToAdd) {
+        for (RealPair pair : listToAdd)
             try {
-                cpQueueToWrite.put((RealPair)pair); //todo: really casting?!
+                cpQueueToWrite.put(pair);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

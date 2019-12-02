@@ -53,9 +53,8 @@ public class BufferReaderThread implements Runnable {
                     try {
                         queueToReturn.put(pairToPut);
                     } catch (InterruptedException e) {
-                        //todo: remove
-                        throw new RuntimeException("LOLOLOOL");
-                        //return; //this is triggered by stop button in gui and will close this thread
+
+                        return; //this is ONLY triggered by stop button in gui and will close this thread
                     }
         }
     }

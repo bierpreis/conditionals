@@ -79,10 +79,10 @@ public class Creator implements Runnable {
     }
 
 
-    private List<AbstractPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
+    private List<RealPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
-        List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
+        List<RealPair> listToReturn = new ArrayList<>(cnfc.size());
         int numberCounter = 1;
 
         //line 3
