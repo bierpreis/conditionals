@@ -61,6 +61,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
             candidatePairList.get(requestedK).clear();
     }
 
+    //todo: this can stop thread when queue is empty?
     @Override
     public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
@@ -68,6 +69,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
         deleteOldData(requestedK - 1);
     }
 
+    //this is only called by gui stop button
     @Override
     public void stopLoop() {
         while (!inputQueue.isEmpty())
