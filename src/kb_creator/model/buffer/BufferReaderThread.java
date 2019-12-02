@@ -27,7 +27,7 @@ public class BufferReaderThread implements Runnable {
 
     public BufferReaderThread(String tmpFilePath, int requestedK, int numberOfDigits) {
         this.numberOfDigitsString = "%0" + numberOfDigits + "d";
-        this.queueToReturn = new ArrayBlockingQueue<>(500); //todo: bigger for better speed with ab?
+        this.queueToReturn = new ArrayBlockingQueue<>(1500); //todo: bigger for better speed with ab?
         this.tmpFilePath = tmpFilePath;
 
         System.out.println("prepare iteration " + requestedK);
@@ -53,7 +53,9 @@ public class BufferReaderThread implements Runnable {
                     try {
                         queueToReturn.put(pairToPut);
                     } catch (InterruptedException e) {
-                        return; //this is triggered by stop button in gui and will close this thread
+                        //todo: remove
+                        throw new RuntimeException("LOLOLOOL");
+                        //return; //this is triggered by stop button in gui and will close this thread
                     }
         }
     }

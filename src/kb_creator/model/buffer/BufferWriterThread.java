@@ -17,7 +17,7 @@ public class BufferWriterThread implements Runnable {
     private int maxNumberOfPairsInFile;
     private int writingFileNameCounter;
 
-    private int pairWriterCounter; //todo. volatile?
+    private volatile int pairWriterCounter; //todo. volatile?
 
     private volatile boolean flushRequested = false;
 
