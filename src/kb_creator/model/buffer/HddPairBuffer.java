@@ -63,7 +63,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new BufferWriterThread(tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
+        writerThreadObject = new BufferWriterThread(inputQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
         writerThread = new Thread(writerThreadObject);
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
@@ -108,7 +108,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void addListAndStartThread(List<AbstractPair> listToAdd) {
-        running = true;
         writerThreadObject.addList(listToAdd);
     }
 

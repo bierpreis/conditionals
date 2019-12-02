@@ -42,7 +42,9 @@ public class CreatorButtonObserver implements ActionListener {
             if (e.getActionCommand().equals("Start")) {
                 mainWindow.getRightPanel().setActive(true);
 
-                BlockingQueue<RealPair> pairsQueue = new LinkedBlockingQueue<>(10000); //todo: try implementations. array list sth else?
+                //todo: try implementations. array list sth else?
+                //todo: this size depends on file size. must be biggern than file size???!
+                BlockingQueue<RealPair> pairsQueue = new LinkedBlockingQueue<>(80000);
 
                 if (mainWindow.isBufferingRequested())
                     candidateBuffer = new HddPairBuffer(pairsQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());

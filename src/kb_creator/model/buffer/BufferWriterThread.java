@@ -1,6 +1,7 @@
 package kb_creator.model.buffer;
 
 import kb_creator.model.pairs.AbstractPair;
+import kb_creator.model.pairs.RealPair;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,12 +17,11 @@ public class BufferWriterThread implements Runnable {
     private int maxNumberOfPairsInFile;
     private int writingFileNameCounter;
 
-    private int pairWriterCounter;
+    private int pairWriterCounter; //todo. volatile?
 
     private volatile boolean flushRequested = false;
 
-    //todo: this should be the queue from creator?
-    private BlockingQueue<AbstractPair> cpQueueToWrite = new ArrayBlockingQueue<>(100_000);
+    private BlockingQueue<RealPair> cpQueueToWrite;
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
 
@@ -32,9 +32,10 @@ public class BufferWriterThread implements Runnable {
     private String numberOfDigitsString;
 
 
-    public BufferWriterThread(String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
+    public BufferWriterThread(BlockingQueue<RealPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
         numberOfDigitsString = "%0" + fileNameDigits + "d";
         this.requestedK = requestedK;
+        this.cpQueueToWrite = queueToWrite;
 
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
@@ -50,9 +51,10 @@ public class BufferWriterThread implements Runnable {
         folderToWrite.mkdirs();
     }
 
+    //todo: threads are never finished
     @Override
     public void run() {
-        System.out.println("buffer writer thread started for k " + requestedK);
+        System.out.println("!!!buffer writer thread started for k " + requestedK);
         while (running) {
             if (checkIfShouldWrite()) {
                 writeNextFile();
@@ -63,7 +65,7 @@ public class BufferWriterThread implements Runnable {
             }
 
         }
-        System.out.println("buffer writer thread finished for k " + requestedK);
+        System.out.println("!!!buffer writer thread finished for k " + requestedK);
     }
 
     public boolean checkIfShouldWrite() {
@@ -147,18 +149,11 @@ public class BufferWriterThread implements Runnable {
 
 
 
-    public void addPair(AbstractPair pairToAdd) {
-        try {
-            cpQueueToWrite.put(pairToAdd);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void addList(List<AbstractPair> listToAdd) {
         for (AbstractPair pair : listToAdd)
             try {
-                cpQueueToWrite.put(pair);
+                cpQueueToWrite.put((RealPair)pair); //todo: really casting?!
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
