@@ -87,13 +87,14 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     // add pair methods
 
-    //todo: type?
+    //todo: type? rename?!
     @Override
     public void addNewList(List listToAdd) {
 
         candidatePairList.add(listToAdd);
         Thread thisThread = new Thread(this);
-        thisThread.start();
+        thisThread.setName("buffer");
+        thisThread.start(); //todo: this needs to be closed?!
     }
 
 

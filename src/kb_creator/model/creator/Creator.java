@@ -156,7 +156,7 @@ public class Creator implements Runnable {
                 AbstractPair currentPair = l.getNextPair(k);
                 iterationPairCounter++;
 
-
+                //todo: this throws null pointer with ab when preparing iteration 6?!
                 //line 9
                 for (PConditional r : currentPair.getCandidatesList()) {
 
