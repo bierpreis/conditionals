@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
@@ -41,7 +42,7 @@ public class CreatorButtonObserver implements ActionListener {
             if (e.getActionCommand().equals("Start")) {
                 mainWindow.getRightPanel().setActive(true);
 
-                BlockingQueue<RealPair> pairsQueue = new ArrayBlockingQueue<>(10000);
+                BlockingQueue<RealPair> pairsQueue = new LinkedBlockingQueue<>(10000); //todo: try implementations. array list sth else?
 
                 if (mainWindow.isBufferingRequested())
                     candidateBuffer = new HddPairBuffer(pairsQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());

@@ -19,7 +19,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
-        candidatePairList = new ArrayList<>();
+        candidatePairList = new ArrayList<>(); //todo: maybe threading on this not threadsafe list is shit?
         running = true;
     }
 
