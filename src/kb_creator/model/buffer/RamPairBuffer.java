@@ -110,12 +110,12 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public int getQueueToWriteSize() {
-        return 0;
+        return newIterationQueue.size();
     }
 
 
     @Override
     public int getReaderBufferSize() {
-        return 0;
+        return lastIterationQueue.size();
     }
 }
