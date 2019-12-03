@@ -36,6 +36,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int k) {
+        candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
         bufferThread = new Thread(new RamBufferThread(inputQueue, candidatePairList, k));
         bufferThread.setName("buffer for k " + k);
         bufferThread.start();
@@ -86,7 +87,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     //todo: type?!
     @Override
     public void addList(List listToAdd) {
-        candidatePairList.add(Collections.synchronizedList(listToAdd));
+        candidatePairList.get(candidatePairList.size() - 1).addAll(listToAdd);
 
 
     }
