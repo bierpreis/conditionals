@@ -41,7 +41,7 @@ public class Creator implements Runnable {
     private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
     private BlockingQueue<AbstractPair> newIterationQueue;
-    private BlockingQueue<AbstractPair> lastIterationQueue; //todo: implement lastIterationQueue
+    private BlockingQueue<AbstractPair> lastIterationQueue;
 
     private AbstractPairBuffer l;
 
