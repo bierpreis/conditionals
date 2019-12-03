@@ -6,13 +6,13 @@ import kb_creator.model.pairs.CompressedPair;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public class NewIterationThread implements Runnable{
+public class NewIterationThread implements Runnable {
     private BlockingQueue<AbstractPair> inputQueue;
     private List<List<AbstractPair>> candidatePairList;
     private volatile boolean running = true;
     private int k;
 
-    public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, List<List<AbstractPair>> candidatePairList, int k){
+    public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.inputQueue = inputQueue;
         this.candidatePairList = candidatePairList;
         this.k = k;
@@ -20,13 +20,14 @@ public class NewIterationThread implements Runnable{
 
     @Override
     public void run() {
+        System.out.println("new iteration thread started for k " + k);
         while (running) {
             try {
-                System.out.println("new iteration thread running");
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
                 running = false;
             }
         }
+        System.out.println("new iteration thread finished for k " + k);
     }
 }

@@ -43,9 +43,13 @@ public class RamPairBuffer extends AbstractPairBuffer {
         newIterationThread.setName("new iteration thread for k " + k);
         newIterationThread.start();
 
-        lastIterationThread = new Thread(new LastIterationThread(lastIterationQueue, candidatePairList, k));
-        lastIterationThread.setName("last iteration thread for k + k");
-        lastIterationThread.start();
+        //don't start this for k = 0
+        //there is no last iteration for 0
+        if (k != 0) {
+            lastIterationThread = new Thread(new LastIterationThread(lastIterationQueue, candidatePairList, k));
+            lastIterationThread.setName("last iteration thread for k + k");
+            lastIterationThread.start();
+        }
 
         nextElementNumber = 0;
     }
@@ -82,7 +86,10 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        lastIterationThread.interrupt();
+
+        //avoid null pointer because at iteration 0 there is no last iteration
+        if (lastIterationThread != null)
+            lastIterationThread.interrupt();
 
 
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
