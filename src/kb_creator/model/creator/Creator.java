@@ -200,7 +200,7 @@ public class Creator implements Runnable {
                         try {
                             newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            e.printStackTrace(); //todo: triggered when pressing stop. return!?!
                         }
 
 

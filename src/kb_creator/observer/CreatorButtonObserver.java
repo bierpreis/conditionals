@@ -45,7 +45,7 @@ public class CreatorButtonObserver implements ActionListener {
                 mainWindow.getRightPanel().setActive(true);
 
                 //todo: try implementations. array list sth else?
-                //todo: this size depends on file size. must be biggern than file size???!
+                //todo: this size depends on file size. must be bigger than file size???!
                 BlockingQueue<AbstractPair> newIterationQueue = new LinkedBlockingQueue<>(80000);
                 BlockingQueue<AbstractPair> lastIterationQueue = new LinkedBlockingQueue<>(80000);
 
@@ -59,7 +59,7 @@ public class CreatorButtonObserver implements ActionListener {
                 creatorThreadObject = new Creator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 creatorThread = new Thread(creatorThreadObject);
-                creatorThread.setName("MainCreatorThread");  //todo: stop button does not stop main creator thread!!
+                creatorThread.setName("MainCreatorThread");
                 creatorThread.start();
 
                 creatorThread.setPriority(Thread.MAX_PRIORITY);
