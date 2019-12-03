@@ -44,10 +44,11 @@ public class CreatorButtonObserver implements ActionListener {
             if (e.getActionCommand().equals("Start")) {
                 mainWindow.getRightPanel().setActive(true);
 
-                //todo: try implementations. array list sth else?
+                //todo: this should be in abstractPairBuffer Constructor!
                 //todo: this size depends on file size. must be bigger than file size???!
-                BlockingQueue<AbstractPair> newIterationQueue = new LinkedBlockingQueue<>(80000);
-                BlockingQueue<AbstractPair> lastIterationQueue = new LinkedBlockingQueue<>(80000);
+                //it seems to be same performance if arrayblockingqueue or linkedblockingqueue
+                BlockingQueue<AbstractPair> newIterationQueue = new ArrayBlockingQueue<>(80000);
+                BlockingQueue<AbstractPair> lastIterationQueue = new ArrayBlockingQueue<>(80000);
 
                 if (mainWindow.isBufferingRequested())
                     candidateBuffer = new HddPairBuffer(newIterationQueue, lastIterationQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
@@ -85,7 +86,7 @@ public class CreatorButtonObserver implements ActionListener {
                 creatorThreadObject.stopLoop();
                 candidateBuffer.stopLoop();
 
-                creatorThread.interrupt(); //todo: test
+                creatorThread.interrupt();
             }
 
         }

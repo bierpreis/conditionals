@@ -17,6 +17,7 @@ import nfc_creator.model.NfcCreator;
 import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Creator implements Runnable {
 
@@ -37,8 +38,9 @@ public class Creator implements Runnable {
 
     private AbstractKbWriter kbWriter;
 
-    private BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
-    private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
+    //these 2 queue implementations have almost 0 influence on performance
+    private BlockingQueue<KnowledgeBase> consistentWriterQueue = new LinkedBlockingQueue<>(5000);
+    private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new LinkedBlockingQueue<>(5000);
 
     private BlockingQueue<AbstractPair> newIterationQueue;
     private BlockingQueue<AbstractPair> lastIterationQueue;
@@ -184,11 +186,12 @@ public class Creator implements Runnable {
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
                         consistentKbCounter++;
 
-                        //todo: this triggered when pressed stop. rethink and put return in there?
+
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            //this can only triggered by stop button in gui
+                            return;
                         }
 
                         List<PConditional> candidatesToAdd = new ArrayList<>();
@@ -200,7 +203,8 @@ public class Creator implements Runnable {
                         try {
                             newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                         } catch (InterruptedException e) {
-                            e.printStackTrace(); //todo: triggered when pressing stop. return!?!
+                            //this should only be triggered by gui stop button
+                            return;
                         }
 
 

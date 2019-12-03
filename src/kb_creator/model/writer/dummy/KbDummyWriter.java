@@ -89,6 +89,7 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
 
+    //todo: return real values!
     @Override
     public int getConsistentQueue() {
         return 0;
