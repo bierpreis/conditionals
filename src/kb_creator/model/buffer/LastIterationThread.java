@@ -11,6 +11,8 @@ public class LastIterationThread implements Runnable {
     private List<List<AbstractPair>> candidatePairList;
     private int k;
 
+    private volatile boolean hasMoreElements = true;
+
     public LastIterationThread(BlockingQueue<AbstractPair> lastIterationQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.lastIterationQueue = lastIterationQueue;
         this.candidatePairList = candidatePairList;
@@ -29,6 +31,11 @@ public class LastIterationThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        hasMoreElements = false;
         System.out.println("last iteration thread finished for k " + k);
+    }
+
+    public boolean hasMoreElements() {
+        return hasMoreElements;
     }
 }

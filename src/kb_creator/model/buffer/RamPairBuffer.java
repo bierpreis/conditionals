@@ -8,16 +8,17 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
-    private int nextElementNumber;
 
     private List<List<AbstractPair>> candidatePairList;
 
     private Thread newIterationThread;
     private Thread lastIterationThread;
 
+    private LastIterationThread lastIterationThreadObject;
+
 
     public RamPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue) {
-        super(newIterationQueue, lastIterationQueue); //todo. implement lastIterationQueue
+        super(newIterationQueue, lastIterationQueue);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
 
@@ -26,7 +27,9 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-        return (nextElementNumber) < (candidatePairList.get(k - 1).size());
+        if(!lastIterationQueue.isEmpty())
+            return true;
+        else return lastIterationThreadObject.hasMoreElements();
     }
 
     @Override
@@ -46,12 +49,13 @@ public class RamPairBuffer extends AbstractPairBuffer {
         //don't start this for k = 0
         //there is no last iteration for 0
         if (k != 0) {
-            lastIterationThread = new Thread(new LastIterationThread(lastIterationQueue, candidatePairList, k));
+
+            lastIterationThread = new Thread(lastIterationThreadObject = new LastIterationThread(lastIterationQueue, candidatePairList, k));
             lastIterationThread.setName("last iteration thread for k + k");
             lastIterationThread.start();
         }
 
-        nextElementNumber = 0;
+        System.out.println("finished preparing iteration: " + k);
     }
 
     @Override
@@ -78,7 +82,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
             }
         newIterationThread.interrupt();
 
-        //wait for and close last iterartion thread
+        //wait for and close last iteration thread
         while (!lastIterationQueue.isEmpty())
             try {
                 System.out.println("waiting for last iteration queue. items left : " + newIterationQueue.size());
