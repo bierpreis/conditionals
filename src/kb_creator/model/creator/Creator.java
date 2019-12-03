@@ -39,7 +39,7 @@ public class Creator implements Runnable {
 
     private BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
-    
+
     private BlockingQueue<AbstractPair> newIterationQueue;
     private BlockingQueue<AbstractPair> lastIterationQueue; //todo: implement lastIterationQueue
 
@@ -136,7 +136,7 @@ public class Creator implements Runnable {
         l.prepareIteration(0);
 
         //line 3-5
-        l.addList(initOneElementKBs(nfc, cnfc));
+        l.addList(initOneElementKBs(nfc, cnfc)); //todo: add to queue not list
 
         l.finishIteration(0);
 
@@ -146,7 +146,7 @@ public class Creator implements Runnable {
             long startTime = System.currentTimeMillis();
 
             //line  7
-            l.addList(new ArrayList<>());
+            l.addList(new ArrayList<>()); //todo: remove? put in prepare iteration?
 
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
@@ -161,7 +161,12 @@ public class Creator implements Runnable {
 
             //line 8
             while (l.hasMoreElementsForK(k)) {
-                AbstractPair currentPair = l.getNextPair(k);
+                AbstractPair currentPair = null;
+                try {
+                    currentPair = lastIterationQueue.take();
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
                 iterationPairCounter++;
 
 

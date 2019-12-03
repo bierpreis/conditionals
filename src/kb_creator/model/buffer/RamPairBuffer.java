@@ -11,7 +11,8 @@ public class RamPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
     private List<List<AbstractPair>> candidatePairList;
 
-    private Thread bufferThread;
+    private Thread newIterationThread;
+    private Thread lastIterationThread;
 
 
     public RamPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue) {
@@ -34,11 +35,15 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int k) {
-        candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
-        bufferThread = new Thread(new RamBufferThread(newIterationQueue, candidatePairList, k));
-        bufferThread.setName("buffer for k " + k);
-        bufferThread.start();
         System.out.println("preparing iteration: " + k);
+        candidatePairList.add(Collections.synchronizedList(new ArrayList<>())); //todo: this is the strange add list?!
+
+        newIterationThread = new Thread(new NewIterationThread(newIterationQueue, candidatePairList, k));
+        newIterationThread.setName("buffer for k " + k);
+        newIterationThread.start();
+
+        lastIterationThread = new Thread(new LastIterationThread(lastIterationQueue, candidatePairList, k));
+
         nextElementNumber = 0;
     }
 
@@ -63,7 +68,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 e.printStackTrace();
             }
 
-        bufferThread.interrupt();
+        newIterationThread.interrupt();
 
 
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
@@ -79,7 +84,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        bufferThread.interrupt();
+        newIterationThread.interrupt();
     }
 
     @Override

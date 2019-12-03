@@ -7,7 +7,7 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractPairBuffer{
 
-    private BlockingQueue<AbstractPair> lastIterationQueue;
+    protected BlockingQueue<AbstractPair> lastIterationQueue;
     protected BlockingQueue<AbstractPair> newIterationQueue;
 
     public AbstractPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue) {
@@ -35,6 +35,7 @@ public abstract class AbstractPairBuffer{
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
+    //todo: delete. add list in ram buffer in prepare iteration?! should be nothing in hdd buffer?
     abstract public void addList(List<AbstractPair> pairToAdd);
 
 
