@@ -43,9 +43,9 @@ public class Creator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    private BlockingQueue<RealPair> pairsQueue;
+    private BlockingQueue<AbstractPair> pairsQueue;
 
-    public Creator(BlockingQueue<RealPair> pairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+    public Creator(BlockingQueue<AbstractPair> pairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         System.out.println("new simple creator");
         this.pairsQueue = pairsQueue;
 
@@ -79,10 +79,10 @@ public class Creator implements Runnable {
     }
 
 
-    private List<RealPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
+    private List<AbstractPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
         System.out.println("creating 1 element kbs");
 
-        List<RealPair> listToReturn = new ArrayList<>(cnfc.size());
+        List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
         int numberCounter = 1;
 
         //line 3

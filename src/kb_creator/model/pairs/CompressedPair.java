@@ -62,7 +62,7 @@ public class CompressedPair extends AbstractPair {
         compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
     }
 
-    public CompressedPair(RealPair originalPair) {
+    public CompressedPair(AbstractPair originalPair) {
         this.knowledgeBase = originalPair.getKnowledgeBase();
 
         int lastConditionalNumber = 0;

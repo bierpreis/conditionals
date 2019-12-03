@@ -21,7 +21,7 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean flushRequested = false;
 
-    private BlockingQueue<RealPair> cpQueueToWrite;
+    private BlockingQueue<AbstractPair> cpQueueToWrite;
 
     private final Object FLUSH_WAIT_OBJECT = new Object();
 
@@ -30,7 +30,7 @@ public class BufferWriterThread implements Runnable {
     private String numberOfDigitsString;
 
 
-    public BufferWriterThread(BlockingQueue<RealPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
+    public BufferWriterThread(BlockingQueue<AbstractPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
         numberOfDigitsString = "%0" + fileNameDigits + "d";
         this.cpQueueToWrite = queueToWrite;
 
@@ -143,8 +143,8 @@ public class BufferWriterThread implements Runnable {
 
 
 
-    public void addList(List<RealPair> listToAdd) {
-        for (RealPair pair : listToAdd)
+    public void addList(List<AbstractPair> listToAdd) {
+        for (AbstractPair pair : listToAdd)
             try {
                 cpQueueToWrite.put(pair);
             } catch (InterruptedException e) {

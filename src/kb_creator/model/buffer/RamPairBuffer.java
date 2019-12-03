@@ -11,12 +11,12 @@ import java.util.concurrent.BlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
-    private List<List<CompressedPair>> candidatePairList;
+    private List<List<AbstractPair>> candidatePairList;
 
     private Thread bufferThread;
 
 
-    public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
+    public RamPairBuffer(BlockingQueue<AbstractPair> pairsQueue) {
         super(pairsQueue);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
@@ -83,10 +83,9 @@ public class RamPairBuffer extends AbstractPairBuffer {
             }
         bufferThread.interrupt();
     }
-
-    //todo: type?!
+    
     @Override
-    public void addList(List listToAdd) {
+    public void addList(List<AbstractPair> listToAdd) {
         candidatePairList.get(candidatePairList.size() - 1).addAll(listToAdd);
 
 

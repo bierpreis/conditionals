@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractPairBuffer{
-    protected BlockingQueue<RealPair> inputQueue;
+    protected BlockingQueue<AbstractPair> inputQueue;
 
-    public AbstractPairBuffer(BlockingQueue<RealPair> inputQueue) {
+    public AbstractPairBuffer(BlockingQueue<AbstractPair> inputQueue) {
         this.inputQueue = inputQueue;
     }
 
@@ -33,7 +33,7 @@ public abstract class AbstractPairBuffer{
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
-    abstract public void addList(List<RealPair> pairToAdd);
+    abstract public void addList(List<AbstractPair> pairToAdd);
 
 
     //get pair method

@@ -1,18 +1,18 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedPair;
-import kb_creator.model.pairs.RealPair;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class RamBufferThread implements Runnable{
-    private BlockingQueue<RealPair> inputQueue;
-    private List<List<CompressedPair>> candidatePairList;
+    private BlockingQueue<AbstractPair> inputQueue;
+    private List<List<AbstractPair>> candidatePairList;
     private volatile boolean running = true;
     private int k;
 
-    public RamBufferThread(BlockingQueue<RealPair> inputQueue, List<List<CompressedPair>> candidatePairList, int k){
+    public RamBufferThread(BlockingQueue<AbstractPair> inputQueue, List<List<AbstractPair>> candidatePairList, int k){
         this.inputQueue = inputQueue;
         this.candidatePairList = candidatePairList;
         this.k = k;
