@@ -26,8 +26,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
 
 
-    public HddPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
-        super(newIterationQueue, lastIterationQueue);
+    public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;

@@ -17,8 +17,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     private LastIterationThread lastIterationThreadObject;
 
 
-    public RamPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue) {
-        super(newIterationQueue, lastIterationQueue);
+    public RamPairBuffer() {
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
 
