@@ -165,7 +165,6 @@ public class Creator implements Runnable {
 
             //line 8
             while (l.hasMoreElementsForK(k)) { //todo: this returned true but actualy it was done?
-                System.out.println("in inner loop1");
                 AbstractPair currentPair = null;
                 try {
                     currentPair = lastIterationQueue.take(); //todo: stuck in here
@@ -174,7 +173,7 @@ public class Creator implements Runnable {
                 }
                 iterationPairCounter++;
 
-                System.out.println("in inner loop2");
+                
                 //line 9
                 for (PConditional r : currentPair.getCandidatesList()) {
 

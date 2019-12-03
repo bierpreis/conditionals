@@ -27,8 +27,8 @@ public class LastIterationThread implements Runnable {
                 //this should take compressed pairs from list and put real pairs in queue
                 lastIterationQueue.put(new RealPair(pair));
             } catch (InterruptedException e) {
-                //todo: return? this should ONLY be called when stop is pressed.
-                e.printStackTrace();
+                //this should only be called by gui stop button
+                return;
             }
         }
         hasMoreElements = false;
