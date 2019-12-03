@@ -3,7 +3,6 @@ package kb_creator.model.buffer;
 import kb_creator.model.pairs.AbstractPair;
 
 
-import java.util.*;
 import java.util.concurrent.BlockingQueue;
 
 public class HddPairBuffer extends AbstractPairBuffer {
@@ -24,11 +23,12 @@ public class HddPairBuffer extends AbstractPairBuffer {
     private int fileNameLength;
 
     //other
-    private volatile boolean hasNextIteration;
+    private volatile boolean hasNextIteration; //todo
 
 
-    public HddPairBuffer(BlockingQueue<AbstractPair> newIterationQueue,BlockingQueue<AbstractPair> lastIterationQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
-        super(newIterationQueue, lastIterationQueue); //todo: implement lastIterationQueue
+    public HddPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+        super(newIterationQueue, lastIterationQueue);
+        e
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;
@@ -48,7 +48,10 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-        return readerThreadObject.hasMoreElementsForK(k);
+        if (!lastIterationQueue.isEmpty())
+            return true;
+        else
+            return readerThreadObject.hasMoreElements();
     }
 
     @Override
@@ -56,6 +59,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
         return hasNextIteration;
     }
 
+
+    //todo
     @Override
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
@@ -65,7 +70,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();
 
-        readerThreadObject = new BufferReaderThread(tmpFilePath, requestedK, fileNameLength);
+        readerThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK, fileNameLength);
         readerThread = new Thread(readerThreadObject);
         readerThread.setName("buffer reader thread for k " + requestedK);
         readerThread.start();
@@ -73,6 +78,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
         System.out.println("prepare iteration finished " + requestedK);
     }
 
+
+    //todo
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
@@ -87,6 +94,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
         System.out.println("finished iteration: " + requestedK);
     }
 
+
+    //todo
     @Override
     public void stopLoop() {
         readerThread.interrupt();
@@ -97,7 +106,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
     }
 
     @Override
-
     public void setDeletingFiles(boolean deleteFiles) {
         System.out.println("set deleting buffer files: " + deleteFiles);
         this.deleteFiles = deleteFiles;

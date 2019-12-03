@@ -14,10 +14,12 @@ import java.util.regex.Pattern;
 
 public class BufferReaderThread implements Runnable {
 
-    private BlockingQueue<AbstractPair> queueToReturn;
+    private BlockingQueue<AbstractPair> lastIterationQueue;
 
     private int iterationNumberOfFiles;
     private int readingFileNameCounter;
+
+    private volatile boolean hasMoreElements = true;
 
     private File folderToRead;
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
@@ -25,9 +27,11 @@ public class BufferReaderThread implements Runnable {
     private String numberOfDigitsString;
 
 
-    public BufferReaderThread(String tmpFilePath, int requestedK, int numberOfDigits) {
+    public BufferReaderThread(BlockingQueue<AbstractPair> lastIterationQueue, String tmpFilePath, int requestedK, int numberOfDigits) {
         this.numberOfDigitsString = "%0" + numberOfDigits + "d";
-        this.queueToReturn = new ArrayBlockingQueue<>(2000);
+
+        this.lastIterationQueue = lastIterationQueue;
+
         this.tmpFilePath = tmpFilePath;
 
         System.out.println("prepare iteration " + requestedK);
@@ -51,12 +55,13 @@ public class BufferReaderThread implements Runnable {
             if (pairsList != null)
                 for (AbstractPair pairToPut : pairsList)
                     try {
-                        queueToReturn.put(pairToPut);
+                        lastIterationQueue.put(pairToPut);
                     } catch (InterruptedException e) {
 
                         return; //this is ONLY triggered by stop button in gui and will close this thread
                     }
         }
+        hasMoreElements = false;
     }
 
 
@@ -91,12 +96,8 @@ public class BufferReaderThread implements Runnable {
 
     //iteration change methods
 
-    public boolean hasMoreElementsForK(int k) {
-
-        if (!queueToReturn.isEmpty())
-            return true;
-
-        return (readingFileNameCounter < iterationNumberOfFiles);
+    public boolean hasMoreElements() {
+        return hasMoreElements;
     }
 
     public void deleteOldData(int requestedK) {
@@ -116,16 +117,7 @@ public class BufferReaderThread implements Runnable {
     //getters
 
     public int getQueueSize() {
-        return queueToReturn.size();
-    }
-
-    public AbstractPair getNextPair(int k) {
-        try {
-            return queueToReturn.take();
-        } catch (InterruptedException e) {
-            //intentionally nothing. when interrupted, the thread is supposed to shut down.
-        }
-        return null;
+        return lastIterationQueue.size();
     }
 
 }
