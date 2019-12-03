@@ -98,7 +98,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 e.printStackTrace();
             }
         newIterationThread.interrupt();
-            
+
         lastIterationThread.interrupt();
     }
 

@@ -57,7 +57,7 @@ public class CreatorButtonObserver implements ActionListener {
                 creatorThreadObject = new Creator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
-                creatorThread.setName("MainCreatorThread");
+                creatorThread.setName("MainCreatorThread");  //todo: stop button does not stop main creator thread!!
                 creatorThread.start();
 
                 creatorThread.setPriority(Thread.MAX_PRIORITY);

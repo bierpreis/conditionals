@@ -21,6 +21,7 @@ public class LastIterationThread implements Runnable {
     public void run() {
         for (AbstractPair pair : candidatePairList.get(k)) {
             try {
+                System.out.println("last iteration thread running");
                 //this should take compressed pairs from list and put real pairs in queue
                 lastIterationQueue.put(new RealPair(pair));
             } catch (InterruptedException e) {

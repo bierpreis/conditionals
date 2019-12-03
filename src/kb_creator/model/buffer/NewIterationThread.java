@@ -22,6 +22,7 @@ public class NewIterationThread implements Runnable{
     public void run() {
         while (running) {
             try {
+                System.out.println("new iteration thread running");
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
             } catch (InterruptedException e) {
                 running = false;
