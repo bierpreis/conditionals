@@ -184,6 +184,7 @@ public class Creator implements Runnable {
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
                         consistentKbCounter++;
 
+                        //todo: this triggered when pressed stop. rethink and put return in there?
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {

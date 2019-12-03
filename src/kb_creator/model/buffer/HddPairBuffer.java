@@ -28,7 +28,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     public HddPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
         super(newIterationQueue, lastIterationQueue);
-        e
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;
@@ -60,7 +59,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
     }
 
 
-    //todo
     @Override
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
@@ -79,10 +77,10 @@ public class HddPairBuffer extends AbstractPairBuffer {
     }
 
 
-    //todo
     @Override
     public void finishIteration(int requestedK) {
         lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
+
         writerThreadObject.finishIteration();
         writerThreadObject.stopLoop();
         writerThread.interrupt();
@@ -95,7 +93,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
     }
 
 
-    //todo
     @Override
     public void stopLoop() {
         readerThread.interrupt();
