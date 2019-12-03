@@ -164,16 +164,16 @@ public class Creator implements Runnable {
             int inconsistentKbCounter = 1;
 
             //line 8
-            while (l.hasMoreElementsForK(k)) { //todo: this returned true but actualy it was done?
+            while (l.hasMoreElementsForK(k)) {
                 AbstractPair currentPair = null;
                 try {
-                    currentPair = lastIterationQueue.take(); //todo: stuck in here
+                    currentPair = lastIterationQueue.take();
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }
                 iterationPairCounter++;
 
-                
+
                 //line 9
                 for (PConditional r : currentPair.getCandidatesList()) {
 
