@@ -83,6 +83,7 @@ public class GuiStatusThread implements Runnable {
         mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
         mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
 
+        //todo: put dummy writer status
         mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
     }
 

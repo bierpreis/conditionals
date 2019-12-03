@@ -35,7 +35,7 @@ public class KbDummyWriter extends AbstractKbWriter {
         inconsistentThread.setName("InconsistentDummyKbWriterThread");
         inconsistentThread.start();
 
-
+        status = WriterStatus.DUMMY_WRITER;
     }
 
 
@@ -89,15 +89,14 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
 
-    //todo: return real values!
     @Override
     public int getConsistentQueue() {
-        return 0;
+        return consistentThreadObject.getQueueSize();
     }
 
     @Override
     public int getInconsistentQueue() {
-        return 0;
+        return inconsistentThreadObject.getQueueSize();
     }
 
 
