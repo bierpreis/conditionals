@@ -63,13 +63,23 @@ public class RamPairBuffer extends AbstractPairBuffer {
         System.out.println("finishing iteration: " + requestedK);
         while (!newIterationQueue.isEmpty())
             try {
-                System.out.println("sleeping. queue: " + newIterationQueue.size());
-                Thread.sleep(100);
+                System.out.println("waiting for new iteration queue. items left : " + newIterationQueue.size());
+                Thread.sleep(80);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         newIterationThread.interrupt();
+
+        while (!lastIterationQueue.isEmpty())
+            try {
+                System.out.println("waiting for last iteration queue. items left : " + newIterationQueue.size());
+                Thread.sleep(80);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+        lastIterationThread.interrupt();
 
 
         lastIterationPairAmount = candidatePairList.get(requestedK).size();
