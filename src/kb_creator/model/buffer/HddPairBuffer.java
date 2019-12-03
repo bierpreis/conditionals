@@ -103,10 +103,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
         this.deleteFiles = deleteFiles;
     }
 
-    @Override
-    public void addList(List<AbstractPair> listToAdd) {
-        writerThreadObject.addList(listToAdd);
-    }
 
     //getters
     @Override
@@ -118,10 +114,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public int getQueueToWriteSize() {
         return writerThreadObject.getQueueSize();
     }
-
-    @Override
-    public AbstractPair getNextPair(int k) {
-        return readerThreadObject.getNextPair(k);
-    }
+    
 
 }

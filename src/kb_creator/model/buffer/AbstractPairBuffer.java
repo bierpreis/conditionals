@@ -35,14 +35,6 @@ public abstract class AbstractPairBuffer{
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
-    //todo: delete. add list in ram buffer in prepare iteration?! should be nothing in hdd buffer?
-    abstract public void addList(List<AbstractPair> pairToAdd);
-
-
-    //get pair method
-
-    abstract public AbstractPair getNextPair(int k);
-
     //other getters
     public abstract int getQueueToWriteSize();
 

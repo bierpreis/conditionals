@@ -136,7 +136,13 @@ public class Creator implements Runnable {
         l.prepareIteration(0);
 
         //line 3-5
-        l.addList(initOneElementKBs(nfc, cnfc)); //todo: add to queue not list
+        for(AbstractPair pair: initOneElementKBs(nfc, cnfc))
+            try {
+                newIterationQueue.put(pair);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+                //todo: return? should only be called by stop button
+            }
 
         l.finishIteration(0);
 
@@ -146,8 +152,6 @@ public class Creator implements Runnable {
             long startTime = System.currentTimeMillis();
 
             //line  7
-            l.addList(new ArrayList<>()); //todo: remove? put in prepare iteration?
-
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
             kbWriter.newIteration(k);

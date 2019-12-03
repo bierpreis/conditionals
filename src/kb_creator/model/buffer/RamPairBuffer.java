@@ -87,12 +87,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
         newIterationThread.interrupt();
     }
 
-    @Override
-    public void addList(List<AbstractPair> listToAdd) {
-        candidatePairList.get(candidatePairList.size() - 1).addAll(listToAdd);
-
-
-    }
 
     @Override
     public void setDeletingFiles(boolean deleteFiles) {
@@ -100,13 +94,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     }
 
 
-    //getters
-
-    @Override
-    public AbstractPair getNextPair(int k) {
-        nextElementNumber++;
-        return candidatePairList.get(k - 1).get(nextElementNumber - 1);
-    }
+    //getters for status info thread
 
     @Override
     public int getQueueToWriteSize() {
