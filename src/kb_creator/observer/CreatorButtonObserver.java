@@ -22,6 +22,8 @@ public class CreatorButtonObserver implements ActionListener {
     private Creator creatorThreadObject;
     private GuiStatusThread statusThreadObject;
 
+    private Thread creatorThread;
+
 
     public CreatorButtonObserver() {
 
@@ -56,7 +58,7 @@ public class CreatorButtonObserver implements ActionListener {
 
                 creatorThreadObject = new Creator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
-                Thread creatorThread = new Thread(creatorThreadObject);
+                creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");  //todo: stop button does not stop main creator thread!!
                 creatorThread.start();
 
@@ -82,6 +84,8 @@ public class CreatorButtonObserver implements ActionListener {
 
                 creatorThreadObject.stopLoop();
                 candidateBuffer.stopLoop();
+
+                creatorThread.interrupt(); //todo: test
             }
 
         }
