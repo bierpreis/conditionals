@@ -41,13 +41,15 @@ public class Creator implements Runnable {
     private BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
 
+    private BlockingQueue<AbstractPair> outputPairsQueue;
+    private BlockingQueue<AbstractPair> inputPairsQueue;
+
     private int iterationPairCounter = 0;
 
-    private BlockingQueue<AbstractPair> pairsQueue;
-
-    public Creator(BlockingQueue<AbstractPair> pairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+    public Creator(BlockingQueue<AbstractPair> outputPairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         System.out.println("new simple creator");
-        this.pairsQueue = pairsQueue;
+        this.outputPairsQueue = outputPairsQueue;
+        this.inputPairsQueue = inputPairsQueue;!
 
         this.l = l;
         AbstractFormula.setSignature(signature);
@@ -187,7 +189,7 @@ public class Creator implements Runnable {
 
                         //line 12
                         try {
-                            pairsQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
+                            outputPairsQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
