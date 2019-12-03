@@ -62,6 +62,8 @@ public class CompressedPair extends AbstractPair {
         compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
     }
 
+    //this is intended to be used with real pairs as input but would work with compressed too
+    //should be used by ram buffer to compress the real pairs from creator
     public CompressedPair(AbstractPair originalPair) {
         this.knowledgeBase = originalPair.getKnowledgeBase();
 

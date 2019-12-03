@@ -20,6 +20,13 @@ public class RealPair extends AbstractPair {
         this.candidatesList = candidates;
     }
 
+    //this is intended to be used with compressed pairs as input but will work with real pairs too
+    //it will be used by ram buffer to decompress compressed pairs to save time for creator thread
+    public RealPair(AbstractPair originalPair) {
+        this.knowledgeBase = originalPair.getKnowledgeBase();
+        this.candidatesList = originalPair.getCandidatesList();
+    }
+
     public RealPair(String stringFromFile) {
 
         //divide string into kb and candidates
