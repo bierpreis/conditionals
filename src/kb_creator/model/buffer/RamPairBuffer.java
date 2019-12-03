@@ -83,7 +83,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
             }
         bufferThread.interrupt();
     }
-    
+
     @Override
     public void addList(List<AbstractPair> listToAdd) {
         candidatePairList.get(candidatePairList.size() - 1).addAll(listToAdd);
