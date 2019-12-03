@@ -9,6 +9,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
     private int nextElementNumber;
+
     private List<List<AbstractPair>> candidatePairList;
 
     private Thread newIterationThread;
@@ -36,7 +37,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public void prepareIteration(int k) {
         System.out.println("preparing iteration: " + k);
-        candidatePairList.add(Collections.synchronizedList(new ArrayList<>())); //todo: this is the strange add list?!
+        candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
 
         newIterationThread = new Thread(new NewIterationThread(newIterationQueue, candidatePairList, k));
         newIterationThread.setName("buffer for k " + k);

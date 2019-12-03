@@ -114,6 +114,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public int getQueueToWriteSize() {
         return writerThreadObject.getQueueSize();
     }
-    
+
 
 }
