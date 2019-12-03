@@ -1,7 +1,6 @@
 package kb_creator.model.buffer;
 
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.RealPair;
 
 
 import java.util.*;
@@ -28,8 +27,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
     private volatile boolean hasNextIteration;
 
 
-    public HddPairBuffer(BlockingQueue<AbstractPair> pairsQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
-        super(pairsQueue);
+    public HddPairBuffer(BlockingQueue<AbstractPair> newIterationQueue,BlockingQueue<AbstractPair> lastIterationQueue, String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+        super(newIterationQueue, lastIterationQueue); //todo: implement lastIterationQueue
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;
@@ -61,7 +60,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new BufferWriterThread(inputQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
+        writerThreadObject = new BufferWriterThread(newIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
         writerThread = new Thread(writerThreadObject);
         writerThread.setName("buffer writer thread for k " + requestedK);
         writerThread.start();

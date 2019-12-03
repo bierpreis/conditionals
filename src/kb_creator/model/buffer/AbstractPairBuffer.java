@@ -1,16 +1,18 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.pairs.RealPair;
 import kb_creator.model.pairs.AbstractPair;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractPairBuffer{
-    protected BlockingQueue<AbstractPair> inputQueue;
 
-    public AbstractPairBuffer(BlockingQueue<AbstractPair> inputQueue) {
-        this.inputQueue = inputQueue;
+    private BlockingQueue<AbstractPair> lastIterationQueue;
+    protected BlockingQueue<AbstractPair> newIterationQueue;
+
+    public AbstractPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue) {
+        this.newIterationQueue = newIterationQueue;
+        this.lastIterationQueue = lastIterationQueue;
     }
 
     //variables
@@ -44,6 +46,14 @@ public abstract class AbstractPairBuffer{
     public abstract int getQueueToWriteSize();
 
     public abstract int getReaderBufferSize();
+
+    public BlockingQueue<AbstractPair> getLastIterationQueue(){
+        return lastIterationQueue;
+    }
+
+    public BlockingQueue<AbstractPair> getNewIterationQueue(){
+        return newIterationQueue;
+    }
 
 
 

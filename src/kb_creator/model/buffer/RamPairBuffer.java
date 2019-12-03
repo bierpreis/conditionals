@@ -1,8 +1,6 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.pairs.RealPair;
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.CompressedPair;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,8 +14,8 @@ public class RamPairBuffer extends AbstractPairBuffer {
     private Thread bufferThread;
 
 
-    public RamPairBuffer(BlockingQueue<AbstractPair> pairsQueue) {
-        super(pairsQueue);
+    public RamPairBuffer(BlockingQueue<AbstractPair> newIterationQueue, BlockingQueue<AbstractPair> lastIterationQueue) {
+        super(newIterationQueue, lastIterationQueue); //todo. implement lastIterationQueue
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
 
@@ -37,7 +35,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public void prepareIteration(int k) {
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
-        bufferThread = new Thread(new RamBufferThread(inputQueue, candidatePairList, k));
+        bufferThread = new Thread(new RamBufferThread(newIterationQueue, candidatePairList, k));
         bufferThread.setName("buffer for k " + k);
         bufferThread.start();
         System.out.println("preparing iteration: " + k);
@@ -57,9 +55,9 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
-        while (!inputQueue.isEmpty())
+        while (!newIterationQueue.isEmpty())
             try {
-                System.out.println("sleeping. queue: " + inputQueue.size());
+                System.out.println("sleeping. queue: " + newIterationQueue.size());
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -75,7 +73,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     //this is only called by gui stop button
     @Override
     public void stopLoop() {
-        while (!inputQueue.isEmpty())
+        while (!newIterationQueue.isEmpty())
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

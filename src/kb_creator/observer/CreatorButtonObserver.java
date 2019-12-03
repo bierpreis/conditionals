@@ -44,16 +44,17 @@ public class CreatorButtonObserver implements ActionListener {
 
                 //todo: try implementations. array list sth else?
                 //todo: this size depends on file size. must be biggern than file size???!
-                BlockingQueue<AbstractPair> outputPairsQueue = new LinkedBlockingQueue<>(80000);
+                BlockingQueue<AbstractPair> newIterationQueue = new LinkedBlockingQueue<>(80000);
+                BlockingQueue<AbstractPair> lastIterationQueue = new LinkedBlockingQueue<>(80000);
 
                 if (mainWindow.isBufferingRequested())
-                    candidateBuffer = new HddPairBuffer(outputPairsQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
-                else candidateBuffer = new RamPairBuffer(outputPairsQueue);
+                    candidateBuffer = new HddPairBuffer(newIterationQueue, lastIterationQueue, mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
+                else candidateBuffer = new RamPairBuffer(newIterationQueue, lastIterationQueue);
 
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
 
-                creatorThreadObject = new Creator(outputPairsQueue, mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
+                creatorThreadObject = new Creator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer);
 
                 Thread creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");

@@ -34,22 +34,23 @@ public class Creator implements Runnable {
 
     private Collection<PConditional> cnfc;
 
-    private AbstractPairBuffer l;
 
     private AbstractKbWriter kbWriter;
 
     private BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(500);
     private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(500);
+    
+    private BlockingQueue<AbstractPair> newIterationQueue;
+    private BlockingQueue<AbstractPair> lastIterationQueue; //todo: implement lastIterationQueue
 
-    private BlockingQueue<AbstractPair> outputPairsQueue;
-    private BlockingQueue<AbstractPair> inputPairsQueue;
+    private AbstractPairBuffer l;
 
     private int iterationPairCounter = 0;
 
-    public Creator(BlockingQueue<AbstractPair> outputPairsQueue, AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+    public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         System.out.println("new simple creator");
-        this.outputPairsQueue = outputPairsQueue;
-        this.inputPairsQueue = inputPairsQueue;!
+        this.newIterationQueue = l.getNewIterationQueue();
+        this.lastIterationQueue = l.getLastIterationQueue();
 
         this.l = l;
         AbstractFormula.setSignature(signature);
@@ -189,7 +190,7 @@ public class Creator implements Runnable {
 
                         //line 12
                         try {
-                            outputPairsQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
+                            newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
