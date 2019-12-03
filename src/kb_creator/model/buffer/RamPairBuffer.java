@@ -40,10 +40,12 @@ public class RamPairBuffer extends AbstractPairBuffer {
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
 
         newIterationThread = new Thread(new NewIterationThread(newIterationQueue, candidatePairList, k));
-        newIterationThread.setName("buffer for k " + k);
+        newIterationThread.setName("new iteration thread for k " + k);
         newIterationThread.start();
 
         lastIterationThread = new Thread(new LastIterationThread(lastIterationQueue, candidatePairList, k));
+        lastIterationThread.setName("last iteration thread for k + k");
+        lastIterationThread.start();
 
         nextElementNumber = 0;
     }
@@ -96,6 +98,8 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 e.printStackTrace();
             }
         newIterationThread.interrupt();
+            
+        lastIterationThread.interrupt();
     }
 
 
