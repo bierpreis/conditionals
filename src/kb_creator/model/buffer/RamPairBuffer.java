@@ -63,6 +63,8 @@ public class RamPairBuffer extends AbstractPairBuffer {
     @Override
     public void finishIteration(int requestedK) {
         System.out.println("finishing iteration: " + requestedK);
+
+        //wait for and close new iteration thread
         while (!newIterationQueue.isEmpty())
             try {
                 System.out.println("waiting for new iteration queue. items left : " + newIterationQueue.size());
@@ -70,9 +72,9 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         newIterationThread.interrupt();
 
+        //wait for and close last iterartion thread
         while (!lastIterationQueue.isEmpty())
             try {
                 System.out.println("waiting for last iteration queue. items left : " + newIterationQueue.size());
@@ -80,7 +82,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         lastIterationThread.interrupt();
 
 
