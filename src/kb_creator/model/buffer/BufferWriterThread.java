@@ -27,14 +27,11 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean running = true;
 
-    private int requestedK;
-
     private String numberOfDigitsString;
 
 
     public BufferWriterThread(BlockingQueue<RealPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
         numberOfDigitsString = "%0" + fileNameDigits + "d";
-        this.requestedK = requestedK;
         this.cpQueueToWrite = queueToWrite;
 
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
