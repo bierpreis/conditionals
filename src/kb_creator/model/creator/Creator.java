@@ -136,12 +136,12 @@ public class Creator implements Runnable {
         l.prepareIteration(0);
 
         //line 3-5
-        for(AbstractPair pair: initOneElementKBs(nfc, cnfc))
+        for (AbstractPair pair : initOneElementKBs(nfc, cnfc))
             try {
                 newIterationQueue.put(pair);
-            }catch(InterruptedException e){
-                e.printStackTrace();
-                //todo: return? should only be called by stop button
+            } catch (InterruptedException e) {
+                //should only be called by stop button in the first microseconds of running the program.
+                return;
             }
 
         l.finishIteration(0);
@@ -158,8 +158,6 @@ public class Creator implements Runnable {
             iterationPairCounter = 0;
 
 
-
-
             int consistentKbCounter = 1;
             int inconsistentKbCounter = 1;
 
@@ -168,7 +166,7 @@ public class Creator implements Runnable {
                 AbstractPair currentPair = null;
                 try {
                     currentPair = lastIterationQueue.take();
-                }catch(InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 iterationPairCounter++;
