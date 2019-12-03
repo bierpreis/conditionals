@@ -16,7 +16,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
     private Thread bufferThread;
 
 
-    //todo: inner thread for this. the outer can then start it just like the hdd buffer.
     public RamPairBuffer(BlockingQueue<RealPair> pairsQueue) {
         super(pairsQueue);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
@@ -42,7 +41,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
         bufferThread.start();
         System.out.println("preparing iteration: " + k);
         nextElementNumber = 0;
-
     }
 
     @Override
@@ -66,7 +64,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
                 e.printStackTrace();
             }
 
-        //todo: buffer thread is not closed correctly?!
         bufferThread.interrupt();
 
 
@@ -86,20 +83,17 @@ public class RamPairBuffer extends AbstractPairBuffer {
         bufferThread.interrupt();
     }
 
-    @Override
-    public void setDeletingFiles(boolean deleteFiles) {
-        //intentionally nothing
-    }
-
-
-    // add pair methods
-
     //todo: type?!
     @Override
     public void addList(List listToAdd) {
         candidatePairList.add(Collections.synchronizedList(listToAdd));
 
 
+    }
+
+    @Override
+    public void setDeletingFiles(boolean deleteFiles) {
+        //intentionally nothing
     }
 
 
@@ -121,5 +115,4 @@ public class RamPairBuffer extends AbstractPairBuffer {
     public int getReaderBufferSize() {
         return 0;
     }
-
 }

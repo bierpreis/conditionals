@@ -20,7 +20,6 @@ public class RamBufferThread implements Runnable{
 
     @Override
     public void run() {
-        System.out.println("!!!buffer thread started for k: " + k);
         while (running) {
             try {
                 candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
@@ -28,6 +27,5 @@ public class RamBufferThread implements Runnable{
                 running = false;
             }
         }
-        System.out.println("!!!buffer thread closed!");
     }
 }
