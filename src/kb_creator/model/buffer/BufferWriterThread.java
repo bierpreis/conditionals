@@ -53,7 +53,6 @@ public class BufferWriterThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("!!!buffer writer thread started for k " + requestedK);
         while (running) {
             if (checkIfShouldWrite()) {
                 writeNextFile();
@@ -62,9 +61,7 @@ public class BufferWriterThread implements Runnable {
             } catch (InterruptedException e) {
                 return; //this is triggered by stop button in gui
             }
-
         }
-        System.out.println("!!!buffer writer thread finished for k " + requestedK);
     }
 
     public boolean checkIfShouldWrite() {

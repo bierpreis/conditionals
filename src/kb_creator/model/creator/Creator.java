@@ -130,10 +130,11 @@ public class Creator implements Runnable {
         k = 1;
 
         kbWriter.newIteration(0); //actually this is iteration 0
+        l.prepareIteration(0);
 
         //line 3-5
         l.addList(initOneElementKBs(nfc, cnfc));
-        l.prepareIteration(0);
+
         l.finishIteration(0);
 
 
