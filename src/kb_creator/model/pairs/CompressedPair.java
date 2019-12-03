@@ -132,7 +132,6 @@ public class CompressedPair extends AbstractPair {
         return arrayToReturn;
     }
 
-    //todo: this is slow? profiler/sampler says this is slow! only with ram buffering. maybe recompress this in this thread?
     @Override
     public List<PConditional> getCandidatesList() {
         List<PConditional> candidatesList = new ArrayList<>();
