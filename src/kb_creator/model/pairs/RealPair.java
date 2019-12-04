@@ -102,52 +102,7 @@ public class RealPair extends AbstractPair {
     }
 
 
-    //this compression makes the file much shorter than simply writing all the numbers could be
-    @Override
-    public String toFileString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("KB\n");
-        sb.append(knowledgeBase.toShortFileString());
-        sb.append("\nC\n");
 
-
-        if (!candidatesList.isEmpty()) {
-
-            //init the first candidate in list
-            List<CandidateGroup> candidateGroupList = new ArrayList<>();
-            int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
-            candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber()));
-
-            //loop all the other candidates
-            for (PConditional currentCandidate : candidatesList) {
-
-                //increment lastConditionalNumber is candidate is 1 above the last
-                if (currentCandidate.getNumber() == lastConditionalNumber + 1)
-                    lastConditionalNumber = currentCandidate.getNumber();
-
-                    //else finish the group and start new group
-                else {
-                    candidateGroupList.get(candidateGroupList.size() - 1).setLastNumber(lastConditionalNumber);
-
-                    candidateGroupList.add(new CandidateGroup(currentCandidate.getNumber()));
-
-                    lastConditionalNumber = currentCandidate.getNumber();
-
-                }
-
-            }
-            candidateGroupList.get(candidateGroupList.size() - 1).setLastNumber(lastConditionalNumber);
-
-
-            for (int i = 0; i < candidateGroupList.size(); i++) {
-                sb.append(candidateGroupList.get(i).toString());
-                if (i != (candidateGroupList.size() - 1))
-                    sb.append(",");
-            }
-        } else sb.append("EMPTY");
-
-        return sb.toString();
-    }
 
     @Override
     public void clear() {
