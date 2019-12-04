@@ -12,6 +12,7 @@ public class CompressedPair extends AbstractPair {
 
     private int[][] compressedCandidatesArray;
 
+
     public CompressedPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
@@ -48,18 +49,6 @@ public class CompressedPair extends AbstractPair {
 
         }
 
-    }
-
-    //this is old and probably wont work anymore
-    public CompressedPair(String stringFromFile) {
-        String[] splitString = stringFromFile.split("candidates\n");
-        if (splitString.length != 2)
-            throw new RuntimeException("Invalid Candidate Pair File: " + splitString.length + "\n" + splitString[0] + "!!");
-
-        //divide string into kb and candidates
-        //create both from subString
-        knowledgeBase = new KnowledgeBase(splitString[0]);
-        compressedCandidatesArray = createCandidatesArrayFromString(splitString[1]);
     }
 
     //this is intended to be used with real pairs as input but would work with compressed too
