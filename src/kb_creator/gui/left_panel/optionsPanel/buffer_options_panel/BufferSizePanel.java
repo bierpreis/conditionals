@@ -48,9 +48,9 @@ public class BufferSizePanel extends JPanel {
 
         }
 
-        //too high values will cause lock
-        //todo: this should be no magic number? //delete todo if this has influence on queue. maybe block insane numbers
-        if (Integer.parseInt(bufferSizeField.getText()) < 1 || Integer.parseInt(bufferSizeField.getText())>80_000) {
+        //value should be useful
+        //ofc too low wont work. bigger than int max wont work too
+        if (Integer.parseInt(bufferSizeField.getText()) < 1 || Integer.parseInt(bufferSizeField.getText())>Integer.MAX_VALUE-1) {
             bufferSizeField.setBorder(BorderFactory.createLineBorder(Color.RED));
             new SizeWarningDialog();
             return false;
