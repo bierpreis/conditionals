@@ -10,8 +10,6 @@ public abstract class AbstractPairBuffer {
     //it seems to be same performance if arrayblockingqueue or linkedblockingqueue
     protected BlockingQueue<AbstractPair> lastIterationQueue;
     protected BlockingQueue<AbstractPair> newIterationQueue;
-    ;
-
 
     public AbstractPairBuffer(int maxNumberOfPairsInFile) {
 
@@ -21,7 +19,7 @@ public abstract class AbstractPairBuffer {
          newIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
     }
 
-    //variables
+    //variable
 
     protected int lastIterationPairAmount;
 
@@ -38,6 +36,8 @@ public abstract class AbstractPairBuffer {
     protected abstract void deleteOldData(int requestedK);
 
     public abstract void stopLoop();
+
+    //setting option
 
     public abstract void setDeletingFiles(boolean deleteFiles);
 
