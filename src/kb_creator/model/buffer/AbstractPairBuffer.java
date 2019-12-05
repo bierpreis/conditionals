@@ -7,16 +7,18 @@ import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractPairBuffer {
 
-
-    //todo: this size depends on file size. must be bigger than file size???!
     //it seems to be same performance if arrayblockingqueue or linkedblockingqueue
-    protected BlockingQueue<AbstractPair> lastIterationQueue = new ArrayBlockingQueue<>(80000);
-    protected BlockingQueue<AbstractPair> newIterationQueue = new ArrayBlockingQueue<>(80000);
+    protected BlockingQueue<AbstractPair> lastIterationQueue;
+    protected BlockingQueue<AbstractPair> newIterationQueue;
     ;
 
 
-    public AbstractPairBuffer() {
+    public AbstractPairBuffer(int maxNumberOfPairsInFile) {
 
+        //value time 2 works
+        //min value is maxNumberOfPairsInFile +1 else there will be a lock
+        lastIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
+         newIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
     }
 
     //variables

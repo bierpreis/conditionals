@@ -27,6 +27,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
 
     public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+        super(maxNumberOfPairsInFile);
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;

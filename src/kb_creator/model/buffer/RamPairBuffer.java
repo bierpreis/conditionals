@@ -18,6 +18,8 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
 
     public RamPairBuffer() {
+        //this is a number that works. ofc there is no max filesize here.
+        super(20_000);
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
 
