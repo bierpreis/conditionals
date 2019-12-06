@@ -2,22 +2,12 @@ package kb_creator.model.buffer;
 
 import kb_creator.model.pairs.AbstractPair;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public abstract class AbstractPairBuffer {
 
-    //it seems to be same performance if arrayblockingqueue or linkedblockingqueue
     protected BlockingQueue<AbstractPair> lastIterationQueue;
     protected BlockingQueue<AbstractPair> newIterationQueue;
-
-    public AbstractPairBuffer(int maxNumberOfPairsInFile) {
-
-        //value time 2 works
-        //min value is maxNumberOfPairsInFile +1 else there will be a lock
-        lastIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
-         newIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
-    }
 
     //variable
 

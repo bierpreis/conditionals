@@ -5,6 +5,7 @@ import kb_creator.model.pairs.AbstractPair;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
@@ -18,8 +19,11 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
 
     public RamPairBuffer() {
-        //this is a number that works. ofc there is no max filesize here.
-        super(20_000);
+
+        // 1000 is more than enough
+        lastIterationQueue = new ArrayBlockingQueue<>(1000);
+        newIterationQueue = new ArrayBlockingQueue<>(1000);
+
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
 
@@ -28,7 +32,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public boolean hasMoreElementsForK(int k) {
-        if(!lastIterationQueue.isEmpty())
+        if (!lastIterationQueue.isEmpty())
             return true;
         else return lastIterationThreadObject.hasMoreElements();
     }

@@ -3,6 +3,7 @@ package kb_creator.model.buffer;
 import kb_creator.model.pairs.AbstractPair;
 
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public class HddPairBuffer extends AbstractPairBuffer {
@@ -27,7 +28,13 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
 
     public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
-        super(maxNumberOfPairsInFile);
+
+        //value time 2 works
+        //min value is maxNumberOfPairsInFile +1 else there will be a lock
+        lastIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
+        newIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
+
+
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
         fileNameLength = bufferFileLength;
