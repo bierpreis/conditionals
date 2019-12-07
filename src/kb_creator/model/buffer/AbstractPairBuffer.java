@@ -12,7 +12,6 @@ public abstract class AbstractPairBuffer {
     protected Thread nextIterationThread;
     protected Thread lastIterationThread;
 
-    //todo: one implementation with standard list for demonstration purposes.
 
     //variable
 

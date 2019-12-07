@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class LastIterationThread implements Runnable {
-    private BlockingQueue<AbstractPair> lastIterationQueue;
-    private List<List<AbstractPair>> candidatePairList;
-    private int k;
+    protected BlockingQueue<AbstractPair> lastIterationQueue;
+    protected List<List<AbstractPair>> candidatePairList;
+    protected int k;
 
-    private volatile boolean hasMoreElements = true;
+    protected volatile boolean hasMoreElements = true;
 
     public LastIterationThread(BlockingQueue<AbstractPair> lastIterationQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.lastIterationQueue = lastIterationQueue;

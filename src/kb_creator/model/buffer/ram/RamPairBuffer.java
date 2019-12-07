@@ -10,10 +10,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
 
-    private List<List<AbstractPair>> candidatePairList;
+    protected List<List<AbstractPair>> candidatePairList;
 
 
-    private LastIterationThread lastIterationThreadObject;
+    protected LastIterationThread lastIterationThreadObject;
 
 
     public RamPairBuffer() {

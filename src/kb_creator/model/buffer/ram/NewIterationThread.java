@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class NewIterationThread implements Runnable {
-    private BlockingQueue<AbstractPair> inputQueue;
-    private List<List<AbstractPair>> candidatePairList;
-    private volatile boolean running = true;
-    private int k;
+    protected BlockingQueue<AbstractPair> inputQueue;
+    protected List<List<AbstractPair>> candidatePairList;
+    protected volatile boolean running = true;
+    protected int k;
 
     public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.inputQueue = inputQueue;
