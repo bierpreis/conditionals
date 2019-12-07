@@ -12,11 +12,13 @@ public abstract class AbstractPairBuffer {
     protected Thread nextIterationThread;
     protected Thread lastIterationThread;
 
+    //todo: one implementation with standard list for demonstration purposes.
+
     //variable
 
     protected int lastIterationPairAmount;
 
-    //loop methodsgit
+    //loop methods
 
     abstract public boolean hasMoreElementsForK(int k);
 
