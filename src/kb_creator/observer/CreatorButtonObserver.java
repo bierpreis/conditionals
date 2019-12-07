@@ -2,18 +2,13 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.buffer.AbstractPairBuffer;
-import kb_creator.model.buffer.HddPairBuffer;
-import kb_creator.model.buffer.RamPairBuffer;
+import kb_creator.model.buffer.hdd.HddPairBuffer;
+import kb_creator.model.buffer.ram.RamPairBuffer;
 import kb_creator.model.creator.Creator;
-import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.pairs.RealPair;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;

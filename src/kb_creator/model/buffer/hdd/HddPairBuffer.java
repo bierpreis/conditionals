@@ -1,5 +1,7 @@
-package kb_creator.model.buffer;
+package kb_creator.model.buffer.hdd;
 
+
+import kb_creator.model.buffer.AbstractPairBuffer;
 
 import java.util.concurrent.ArrayBlockingQueue;
 

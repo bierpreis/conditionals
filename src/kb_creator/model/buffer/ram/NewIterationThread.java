@@ -1,4 +1,4 @@
-package kb_creator.model.buffer;
+package kb_creator.model.buffer.ram;
 
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedPair;

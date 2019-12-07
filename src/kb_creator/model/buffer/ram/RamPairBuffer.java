@@ -1,5 +1,6 @@
-package kb_creator.model.buffer;
+package kb_creator.model.buffer.ram;
 
+import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.pairs.AbstractPair;
 
 import java.util.ArrayList;
