@@ -1,4 +1,4 @@
-package kb_creator.model.writer;
+package kb_creator.model.knowledge_base_writer;
 
 
 public abstract class AbstractKbWriter {

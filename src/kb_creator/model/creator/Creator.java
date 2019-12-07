@@ -8,9 +8,9 @@ import kb_creator.model.propositional_logic.PConditional;
 
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import kb_creator.model.writer.AbstractKbWriter;
-import kb_creator.model.writer.KbFileWriter;
-import kb_creator.model.writer.dummy.KbDummyWriter;
+import kb_creator.model.knowledge_base_writer.AbstractKbWriter;
+import kb_creator.model.knowledge_base_writer.real.KbFileWriter;
+import kb_creator.model.knowledge_base_writer.dummy.KbDummyWriter;
 import nfc_creator.model.NfcCreator;
 
 

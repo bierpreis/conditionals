@@ -1,4 +1,4 @@
-package kb_creator.model.writer;
+package kb_creator.model.knowledge_base_writer.real;
 
 import kb_creator.model.propositional_logic.KnowledgeBase;
 

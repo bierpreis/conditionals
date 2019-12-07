@@ -3,7 +3,7 @@ package kb_creator.observer;
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.CreatorStatus;
 import kb_creator.model.creator.Creator;
-import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.knowledge_base_writer.AbstractKbWriter;
 
 public class GuiStatusThread implements Runnable {
     private Creator creatorThread;
