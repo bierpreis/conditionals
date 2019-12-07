@@ -16,7 +16,6 @@ import nfc_creator.model.NfcCreator;
 
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class Creator implements Runnable {
 
@@ -37,9 +36,9 @@ public class Creator implements Runnable {
 
     private AbstractKbWriter kbWriter;
 
-    //these 2 queue implementations have almost 0 influence on performance
-    private BlockingQueue<KnowledgeBase> consistentWriterQueue = new LinkedBlockingQueue<>(5000);
-    private BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new LinkedBlockingQueue<>(5000);
+
+    private BlockingQueue<KnowledgeBase> consistentWriterQueue;
+    private BlockingQueue<KnowledgeBase> inconsistentWriterQueue;
 
     private BlockingQueue<AbstractPair> newIterationQueue;
     private BlockingQueue<AbstractPair> lastIterationQueue;
@@ -63,9 +62,13 @@ public class Creator implements Runnable {
 
         //kbFilePath is null when no buffering is requested
         if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath, consistentWriterQueue, inconsistentWriterQueue);
+            kbWriter = new KbFileWriter(kbFilePath);
         else
-            kbWriter = new KbDummyWriter(consistentWriterQueue, inconsistentWriterQueue);
+            kbWriter = new KbDummyWriter();
+
+        consistentWriterQueue = kbWriter.getConsistentQueue();
+
+        inconsistentWriterQueue = kbWriter.getInconsistentQueue();
 
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
@@ -133,7 +136,7 @@ public class Creator implements Runnable {
         //line 2
         k = 1;
 
-        kbWriter.newIteration(0); //actually this is iteration 0
+        kbWriter.prepareIteration(0); //actually this is iteration 0
         l.prepareIteration(0);
 
         //line 3-5
@@ -155,7 +158,7 @@ public class Creator implements Runnable {
             //line  7
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
-            kbWriter.newIteration(k);
+            kbWriter.prepareIteration(k);
             iterationPairCounter = 0;
 
 

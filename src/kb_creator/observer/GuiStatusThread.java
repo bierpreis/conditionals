@@ -80,8 +80,8 @@ public class GuiStatusThread implements Runnable {
         mainWindow.getRightPanel().getCreatorPanel().showIterationConsistentKBs(kbWriter.getIterationConsistentCounter());
         mainWindow.getRightPanel().getCreatorPanel().showIterationInconsistentKBs(kbWriter.getIterationInconsistentCounter());
 
-        mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue());
-        mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue());
+        mainWindow.getRightPanel().getWriterStatusPanel().showConsistentQueue(kbWriter.getConsistentQueue().size());
+        mainWindow.getRightPanel().getWriterStatusPanel().showInconsistentQueue(kbWriter.getInconsistentQueue().size());
 
         mainWindow.getRightPanel().getWriterStatusPanel().showStatus(kbWriter.getStatus());
     }

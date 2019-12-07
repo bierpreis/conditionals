@@ -1,11 +1,7 @@
 package kb_creator.model.knowledge_base_writer.dummy;
 
-
-import kb_creator.model.propositional_logic.KnowledgeBase;
 import kb_creator.model.knowledge_base_writer.AbstractKbWriter;
 import kb_creator.model.knowledge_base_writer.WriterStatus;
-
-import java.util.concurrent.BlockingQueue;
 
 
 //this class is a writer which throws all input away
@@ -14,17 +10,15 @@ public class KbDummyWriter extends AbstractKbWriter {
 
 
     private DummyWriterThread consistentThreadObject;
-    private Thread consistentThread;
 
     private DummyWriterThread inconsistentThreadObject;
-    private Thread inconsistentThread;
 
-    public KbDummyWriter(BlockingQueue<KnowledgeBase> consistentKbQueue, BlockingQueue<KnowledgeBase> inconsistentKbQueue) {
+    public KbDummyWriter() {
         System.out.println("new dummy KbWriter");
         status = WriterStatus.NOT_STARTED;
 
-        consistentThreadObject = new DummyWriterThread(consistentKbQueue);
-        inconsistentThreadObject = new DummyWriterThread(inconsistentKbQueue);
+        consistentThreadObject = new DummyWriterThread(consistentWriterQueue);
+        inconsistentThreadObject = new DummyWriterThread(inconsistentWriterQueue);
 
         consistentThread = new Thread(consistentThreadObject);
         consistentThread.setName("ConsistentDummyKbWriterThread");
@@ -60,7 +54,7 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
-    public void newIteration(int k) {
+    public void prepareIteration(int k) {
         inconsistentThreadObject.newIteration();
         consistentThreadObject.newIteration();
     }
@@ -85,17 +79,6 @@ public class KbDummyWriter extends AbstractKbWriter {
     @Override
     public int getTotalConsistentCounter() {
         return consistentThreadObject.getTotalCounter();
-    }
-
-
-    @Override
-    public int getConsistentQueue() {
-        return consistentThreadObject.getQueueSize();
-    }
-
-    @Override
-    public int getInconsistentQueue() {
-        return inconsistentThreadObject.getQueueSize();
     }
 
 
