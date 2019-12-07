@@ -28,6 +28,7 @@ public abstract class AbstractKbWriter {
     public abstract void prepareIteration(int k);
 
     //getters for counters
+
     public abstract int getTotalInconsistentCounter();
 
     public abstract int getTotalConsistentCounter();
@@ -35,6 +36,9 @@ public abstract class AbstractKbWriter {
     public abstract int getIterationConsistentCounter();
 
     public abstract int getIterationInconsistentCounter();
+
+
+    //other getters
 
     public WriterStatus getStatus() {
         return status;
@@ -44,7 +48,7 @@ public abstract class AbstractKbWriter {
         return consistentWriterQueue;
     }
 
-    public BlockingQueue<KnowledgeBase> getInconsistentQueue(){
+    public BlockingQueue<KnowledgeBase> getInconsistentQueue() {
         return inconsistentWriterQueue;
     }
 }
