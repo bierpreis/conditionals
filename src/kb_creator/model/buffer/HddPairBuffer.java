@@ -1,20 +1,14 @@
 package kb_creator.model.buffer;
 
-import kb_creator.model.pairs.AbstractPair;
-
 
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 
 public class HddPairBuffer extends AbstractPairBuffer {
 
     //threads
-    private Thread readerThread;
-    private Thread writerThread;
 
-
-    private BufferReaderThread readerThreadObject;
-    private BufferWriterThread writerThreadObject;
+    private BufferReaderThread lastIterationThreadObject;
+    private BufferWriterThread newIterationThreadObject;
 
 
     //options
@@ -47,7 +41,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
     @Override
     protected void deleteOldData(int requestedK) {
         if (deleteFiles && requestedK != 0) {
-            readerThreadObject.deleteOldData(requestedK);
+            lastIterationThreadObject.deleteOldData(requestedK);
         }
     }
 
@@ -57,7 +51,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
         if (!lastIterationQueue.isEmpty())
             return true;
         else
-            return readerThreadObject.hasMoreElements();
+            return lastIterationThreadObject.hasMoreElements();
     }
 
     @Override
@@ -70,15 +64,15 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        writerThreadObject = new BufferWriterThread(newIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
-        writerThread = new Thread(writerThreadObject);
-        writerThread.setName("buffer writer thread for k " + requestedK);
-        writerThread.start();
+        newIterationThreadObject = new BufferWriterThread(newIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
+        newIterationThread = new Thread(newIterationThreadObject);
+        newIterationThread.setName("new iteration thread for k " + requestedK);
+        newIterationThread.start();
 
-        readerThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK, fileNameLength);
-        readerThread = new Thread(readerThreadObject);
-        readerThread.setName("buffer reader thread for k " + requestedK);
-        readerThread.start();
+        lastIterationThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK, fileNameLength);
+        lastIterationThread = new Thread(lastIterationThreadObject);
+        lastIterationThread.setName("buffer reader thread for k " + requestedK);
+        lastIterationThread.start();
 
         System.out.println("prepare iteration finished " + requestedK);
     }
@@ -86,13 +80,13 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        lastIterationPairAmount = writerThreadObject.getPairWriterCounter();
+        lastIterationPairAmount = newIterationThreadObject.getPairWriterCounter();
 
-        writerThreadObject.finishIteration();
-        writerThreadObject.stopLoop();
-        writerThread.interrupt();
+        newIterationThreadObject.finishIteration();
+        newIterationThreadObject.stopLoop();
+        newIterationThread.interrupt();
 
-        hasNextIteration = writerThreadObject.hasNextIteration();
+        hasNextIteration = newIterationThreadObject.hasNextIteration();
 
         deleteOldData(requestedK);
 
@@ -102,11 +96,11 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void stopLoop() {
-        readerThread.interrupt();
+        lastIterationThread.interrupt();
 
 
-        writerThreadObject.stopLoop();
-        writerThread.interrupt();
+        newIterationThreadObject.stopLoop();
+        newIterationThread.interrupt();
     }
 
     @Override
@@ -119,12 +113,12 @@ public class HddPairBuffer extends AbstractPairBuffer {
     //getters
     @Override
     public int getReaderBufferSize() {
-        return readerThreadObject.getQueueSize();
+        return lastIterationThreadObject.getQueueSize();
     }
 
     @Override
     public int getQueueToWriteSize() {
-        return writerThreadObject.getQueueSize();
+        return newIterationThreadObject.getQueueSize();
     }
 
 

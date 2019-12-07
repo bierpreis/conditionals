@@ -9,6 +9,9 @@ public abstract class AbstractPairBuffer {
     protected BlockingQueue<AbstractPair> lastIterationQueue;
     protected BlockingQueue<AbstractPair> newIterationQueue;
 
+    protected Thread newIterationThread;
+    protected Thread lastIterationThread;
+
     //variable
 
     protected int lastIterationPairAmount;

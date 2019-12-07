@@ -12,8 +12,6 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     private List<List<AbstractPair>> candidatePairList;
 
-    private Thread newIterationThread;
-    private Thread lastIterationThread;
 
     private LastIterationThread lastIterationThreadObject;
 
