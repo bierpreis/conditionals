@@ -26,7 +26,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
         //value time 2 works
         //min value is maxNumberOfPairsInFile +1 else there will be a lock
         lastIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
-        newIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
+        nextIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
 
 
         this.tmpFilePath = filePath + "/tmp/";
@@ -64,10 +64,10 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        newIterationThreadObject = new BufferWriterThread(newIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
-        newIterationThread = new Thread(newIterationThreadObject);
-        newIterationThread.setName("new iteration thread for k " + requestedK);
-        newIterationThread.start();
+        newIterationThreadObject = new BufferWriterThread(nextIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
+        nextIterationThread = new Thread(newIterationThreadObject);
+        nextIterationThread.setName("new iteration thread for k " + requestedK);
+        nextIterationThread.start();
 
         lastIterationThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK, fileNameLength);
         lastIterationThread = new Thread(lastIterationThreadObject);
@@ -84,7 +84,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
         newIterationThreadObject.finishIteration();
         newIterationThreadObject.stopLoop();
-        newIterationThread.interrupt();
+        nextIterationThread.interrupt();
 
         hasNextIteration = newIterationThreadObject.hasNextIteration();
 
@@ -100,7 +100,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
 
         newIterationThreadObject.stopLoop();
-        newIterationThread.interrupt();
+        nextIterationThread.interrupt();
     }
 
     @Override

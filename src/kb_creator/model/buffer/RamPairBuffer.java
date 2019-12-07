@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 
 public class RamPairBuffer extends AbstractPairBuffer {
 
@@ -20,7 +19,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
         // 1000 is more than enough
         lastIterationQueue = new ArrayBlockingQueue<>(1000);
-        newIterationQueue = new ArrayBlockingQueue<>(1000);
+        nextIterationQueue = new ArrayBlockingQueue<>(1000);
 
         candidatePairList = Collections.synchronizedList(new ArrayList<>());
     }
@@ -45,9 +44,9 @@ public class RamPairBuffer extends AbstractPairBuffer {
         System.out.println("preparing iteration: " + k);
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
 
-        newIterationThread = new Thread(new NewIterationThread(newIterationQueue, candidatePairList, k));
-        newIterationThread.setName("new iteration thread for k " + k);
-        newIterationThread.start();
+        nextIterationThread = new Thread(new NewIterationThread(nextIterationQueue, candidatePairList, k));
+        nextIterationThread.setName("new iteration thread for k " + k);
+        nextIterationThread.start();
 
         //don't start this for k = 0
         //there is no last iteration for 0
@@ -76,19 +75,19 @@ public class RamPairBuffer extends AbstractPairBuffer {
         System.out.println("finishing iteration: " + requestedK);
 
         //wait for and close new iteration thread
-        while (!newIterationQueue.isEmpty())
+        while (!nextIterationQueue.isEmpty())
             try {
-                System.out.println("waiting for new iteration queue. items left : " + newIterationQueue.size());
+                System.out.println("waiting for new iteration queue. items left : " + nextIterationQueue.size());
                 Thread.sleep(80);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        newIterationThread.interrupt();
+        nextIterationThread.interrupt();
 
         //wait for and close last iteration thread
         while (!lastIterationQueue.isEmpty())
             try {
-                System.out.println("waiting for last iteration queue. items left : " + newIterationQueue.size());
+                System.out.println("waiting for last iteration queue. items left : " + nextIterationQueue.size());
                 Thread.sleep(80);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -106,13 +105,13 @@ public class RamPairBuffer extends AbstractPairBuffer {
     //this is only called by gui stop button
     @Override
     public void stopLoop() {
-        while (!newIterationQueue.isEmpty())
+        while (!nextIterationQueue.isEmpty())
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        newIterationThread.interrupt();
+        nextIterationThread.interrupt();
 
         lastIterationThread.interrupt();
     }
@@ -128,7 +127,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
 
     @Override
     public int getQueueToWriteSize() {
-        return newIterationQueue.size();
+        return nextIterationQueue.size();
     }
 
 

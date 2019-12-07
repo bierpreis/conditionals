@@ -15,7 +15,6 @@ import nfc_creator.model.NfcCreator;
 
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -51,7 +50,7 @@ public class Creator implements Runnable {
 
     public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
         System.out.println("new simple creator");
-        this.newIterationQueue = l.getNewIterationQueue();
+        this.newIterationQueue = l.getNextIterationQueue();
         this.lastIterationQueue = l.getLastIterationQueue();
 
         this.l = l;

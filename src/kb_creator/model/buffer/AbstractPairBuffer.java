@@ -7,20 +7,22 @@ import java.util.concurrent.BlockingQueue;
 public abstract class AbstractPairBuffer {
 
     protected BlockingQueue<AbstractPair> lastIterationQueue;
-    protected BlockingQueue<AbstractPair> newIterationQueue;
+    protected BlockingQueue<AbstractPair> nextIterationQueue;
 
-    protected Thread newIterationThread;
+    protected Thread nextIterationThread;
     protected Thread lastIterationThread;
 
     //variable
 
     protected int lastIterationPairAmount;
 
+    //loop methodsgit
 
-    //methods for iteration changes
     abstract public boolean hasMoreElementsForK(int k);
 
     abstract public boolean hasElementsForIteration(int k);
+
+    //methods for iteration changes
 
     public abstract void prepareIteration(int requestedK);
 
@@ -43,8 +45,8 @@ public abstract class AbstractPairBuffer {
         return lastIterationQueue;
     }
 
-    public BlockingQueue<AbstractPair> getNewIterationQueue() {
-        return newIterationQueue;
+    public BlockingQueue<AbstractPair> getNextIterationQueue() {
+        return nextIterationQueue;
     }
 
 
