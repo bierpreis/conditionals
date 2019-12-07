@@ -34,7 +34,7 @@ public abstract class AbstractKbWriter {
 
     public abstract int getIterationConsistentCounter();
 
-    public abstract int getIterationInconsistentCounter(); //todo: what is this? does it work or is it used?
+    public abstract int getIterationInconsistentCounter();
 
     public WriterStatus getStatus() {
         return status;

@@ -57,7 +57,4 @@ public class DummyWriterThread implements Runnable {
         return iterationCounter;
     }
 
-    public int getQueueSize(){
-        return queue.size();
-    }
 }
