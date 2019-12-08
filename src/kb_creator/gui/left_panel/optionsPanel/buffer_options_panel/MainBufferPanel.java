@@ -39,15 +39,16 @@ public class MainBufferPanel extends JPanel {
         add(bufferRadioBoxPanel);
 
         optionsPanel = new JPanel();
+        optionsPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
         optionsPanel.add(bufferLocationPanel);
 
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         optionsPanel.add(deleteTempFilesCheckbox);
 
+        optionsPanel.add(bufferSizePanel);
+        optionsPanel.add(fileNameLengthPanel);
 
         add(optionsPanel);
-        add(bufferSizePanel);
-        add(fileNameLengthPanel);
 
 
     }
@@ -58,14 +59,6 @@ public class MainBufferPanel extends JPanel {
 
     @Override
     public void setEnabled(boolean enabled) {
-        bufferRadioBoxPanel.setEnabled(enabled);
-        bufferLocationPanel.setEnabled(enabled);
-
-        deleteTempFilesCheckbox.setEnabled(enabled);
-        bufferSizePanel.setEnabled(enabled);
-        fileNameLengthPanel.setEnabled(enabled);
-
-
         super.setEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);
