@@ -84,6 +84,7 @@ public class BufferLocationPanel extends JPanel {
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
+
         saveButton.setEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);

@@ -9,14 +9,11 @@ import java.awt.*;
 
 public class MainBufferPanel extends JPanel {
 
-    private BufferLocationPanel bufferLocationPanel;
+
     private BufferRadioBoxPanel bufferRadioBoxPanel;
 
-    private JPanel optionsPanel;
-    private JCheckBox deleteTempFilesCheckbox;
+    private BufferOptionsPanel bufferOptionsPanel;
 
-    private BufferSizePanel bufferSizePanel;
-    private FileNameLengthPanel fileNameLengthPanel;
 
 
     public MainBufferPanel() {
@@ -26,32 +23,19 @@ public class MainBufferPanel extends JPanel {
 
         bufferRadioBoxPanel = new BufferRadioBoxPanel(this);
 
-        bufferLocationPanel = new BufferLocationPanel(this);
+        bufferOptionsPanel = new BufferOptionsPanel(this);
 
 
-
-        bufferSizePanel = new BufferSizePanel();
-
-        fileNameLengthPanel = new FileNameLengthPanel();
 
 
 
         add(bufferRadioBoxPanel);
+        add(bufferOptionsPanel);
 
-        optionsPanel = new JPanel();
-        optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
-        optionsPanel.setBorder(BorderFactory.createTitledBorder("Hdd buffer options"));
-        optionsPanel.add(bufferLocationPanel);
 
-        deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
-        optionsPanel.add(deleteTempFilesCheckbox);
 
-        optionsPanel.add(bufferSizePanel);
-        optionsPanel.add(fileNameLengthPanel);
 
-        add(optionsPanel);
 
-        optionsPanel.setEnabled(false);
 
 
     }
@@ -70,34 +54,27 @@ public class MainBufferPanel extends JPanel {
 
 
     public boolean isValueValid(){
-        return bufferSizePanel.isValueValid() && fileNameLengthPanel.isValueValid();
+        return bufferOptionsPanel.isValueValid();
     }
 
-    public void init(){
-        deleteTempFilesCheckbox.setSelected(true);
-        bufferRadioBoxPanel.setBoxSelected(false);
-        bufferRadioBoxPanel.setBoxEnabled(false);
-        bufferSizePanel.setEnabled(false);
-        fileNameLengthPanel.setEnabled(false);
-        deleteTempFilesCheckbox.setEnabled(false);
-    }
+
 
     //getters
 
     public BufferSizePanel getBufferSizePanel() {
-        return bufferSizePanel;
+        return bufferOptionsPanel.getBufferSizePanel();
     }
 
     public JCheckBox getDeleteCheckbox() {
-        return deleteTempFilesCheckbox;
+        return bufferOptionsPanel.getDeleteTempFilesCheckBox();
     }
 
     public FileNameLengthPanel getFileNameLengthPanel(){
-        return fileNameLengthPanel;
+        return bufferOptionsPanel.getFileNameLengthPanel();
     }
 
     public int getBufferSize() {
-        return bufferSizePanel.getBufferSize();
+        return bufferOptionsPanel.getBufferSizePanel().getBufferSize();
     }
 
     public BufferRadioBoxPanel getBufferRadioBoxPanel() {
@@ -105,11 +82,15 @@ public class MainBufferPanel extends JPanel {
     }
 
     public String getBufferFilePath() {
-        return bufferLocationPanel.getFilePath();
+        return bufferOptionsPanel.getBufferLocationPanel().getFilePath();
     }
 
     public BufferingType getBufferingType() {
         return bufferRadioBoxPanel.getBufferingType();
+    }
+
+    public void init(){
+        bufferOptionsPanel.initValues();
     }
 
 }
