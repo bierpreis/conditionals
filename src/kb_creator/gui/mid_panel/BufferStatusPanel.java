@@ -13,6 +13,7 @@ public class BufferStatusPanel extends JPanel {
     private JLabel writerLabel;
     private JLabel readerLabel;
 
+    //todo: show buffer type!
     public BufferStatusPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));

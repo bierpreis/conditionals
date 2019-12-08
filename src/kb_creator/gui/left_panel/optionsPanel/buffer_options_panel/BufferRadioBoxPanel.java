@@ -18,10 +18,13 @@ public class BufferRadioBoxPanel extends JPanel {
     private ButtonGroup buttonGroup = new ButtonGroup();
 
     BufferRadioBoxPanel(MainBufferPanel mainBufferPanel) {
+        setBorder(BorderFactory.createLineBorder(Color.RED));
 
         buttonGroup.add(simpleRamBufferButton);
         buttonGroup.add(compressedRamBufferButton);
         buttonGroup.add(hddBufferButton);
+
+        compressedRamBufferButton.setSelected(true);
 
         add(simpleRamBufferButton);
         add(compressedRamBufferButton);
@@ -29,13 +32,19 @@ public class BufferRadioBoxPanel extends JPanel {
 
         //add(buttonGroup);
 
-         //buttonGroup.addChangeListener(new CheckBoxActionListener());
+        //buttonGroup.addChangeListener(new CheckBoxActionListener());
         this.mainBufferPanel = mainBufferPanel;
     }
 
-
     public BufferingType getBufferingType() {
-        return BufferingType.COMPRESSED_RAM;
+        if (simpleRamBufferButton.isSelected())
+            return BufferingType.SIMPLE_RAM;
+        if (compressedRamBufferButton.isSelected())
+            return BufferingType.COMPRESSED_RAM;
+        if (hddBufferButton.isSelected())
+            return BufferingType.HDD;
+
+        throw new RuntimeException("something went wrong in buffer raadio box panel!");
     }
 
     public void setBoxEnabled(boolean active) {
@@ -57,18 +66,19 @@ public class BufferRadioBoxPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
+    //todo: use
     class CheckBoxActionListener implements ChangeListener {
 
 
         @Override
         public void stateChanged(ChangeEvent changeEvent) {
 
-/*            if (!saveCheckBox.isSelected()) {
+            if (!hddBufferButton.isSelected()) {
                 mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
-            }*/
+            }
 
 
         }
