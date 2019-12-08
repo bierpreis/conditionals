@@ -62,6 +62,8 @@ public class KBWriterThread implements Runnable {
         totalCounter++;
 
         PrintWriter writer;
+        //leading zeroes would look like this:
+        //File fileToRead = new File(folderToRead + "/" + String.format(numberOfDigitsString, readingFileNameCounter) + ".txt");
 
         //this will trigger when hdd space is full or there are too much files
         try {
