@@ -11,7 +11,7 @@ public class MainBufferPanel extends JPanel {
 
     private BufferLocationPanel bufferLocationPanel;
     private BufferRadioBoxPanel bufferRadioBoxPanel;
-    private JPanel descriptionPanel;
+
     private JPanel optionsPanel;
     private JCheckBox deleteTempFilesCheckbox;
 
@@ -33,10 +33,6 @@ public class MainBufferPanel extends JPanel {
         bufferSizePanel = new BufferSizePanel();
 
         fileNameLengthPanel = new FileNameLengthPanel();
-
-        descriptionPanel = new JPanel();
-        descriptionPanel.add( new JLabel("Choose how to save data structure"));
-        add(descriptionPanel);
 
 
 
@@ -69,7 +65,6 @@ public class MainBufferPanel extends JPanel {
         bufferSizePanel.setEnabled(enabled);
         fileNameLengthPanel.setEnabled(enabled);
 
-        descriptionPanel.getComponent(0).setEnabled(enabled);
 
         super.setEnabled(enabled);
         for (Component component : getComponents())

@@ -12,6 +12,9 @@ public abstract class AbstractPairBuffer {
     protected Thread nextIterationThread;
     protected Thread lastIterationThread;
 
+    public AbstractPairBuffer(){
+        System.out.println("new " + this.getClass().getSimpleName());
+    }
 
     //variable
 
