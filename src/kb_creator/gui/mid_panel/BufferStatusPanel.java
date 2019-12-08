@@ -33,6 +33,8 @@ public class BufferStatusPanel extends JPanel {
         showWriterQueue(0);
         showReaderBuffer(0);
 
+        bufferTypeLabel.setText("Buffer Type: ");
+
     }
 
 
@@ -52,6 +54,7 @@ public class BufferStatusPanel extends JPanel {
         for (Component component : getComponents())
             component.setEnabled(enabled);
 
+        bufferTypeLabel.setEnabled(enabled);
         readerLabel.setEnabled(enabled);
         writerLabel.setEnabled(enabled);
     }
