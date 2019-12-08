@@ -2,8 +2,9 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.buffer.hdd.HddPairBuffer;
-import kb_creator.model.buffer.ram.RamPairBuffer;
+import kb_creator.model.buffer.ram.CompressedRamBuffer;
 import kb_creator.model.buffer.simple_ram.SimpleRamBuffer;
 import kb_creator.model.creator.Creator;
 
@@ -40,12 +41,7 @@ public class CreatorButtonObserver implements ActionListener {
             if (e.getActionCommand().equals("Start")) {
                 mainWindow.getRightPanel().setActive(true);
 
-
-                //todo: implement all 3 options
-                if (mainWindow.isBufferingRequested())
-                    candidateBuffer = new HddPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
-                else candidateBuffer = new SimpleRamBuffer();
-
+                candidateBuffer = getCandidateBuffer(mainWindow);
 
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(false);
 
@@ -82,6 +78,16 @@ public class CreatorButtonObserver implements ActionListener {
             }
 
         }
+    }
+
+    private AbstractPairBuffer getCandidateBuffer(MainWindow mainWindow) {
+        AbstractPairBuffer buffer;
+        if (mainWindow.getBufferingType().equals(BufferingType.HDD))
+            buffer = new HddPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
+        else if (mainWindow.getBufferingType().equals(BufferingType.COMPRESSED_RAM))
+            buffer = new CompressedRamBuffer();
+        else buffer = new SimpleRamBuffer();
+        return buffer;
     }
 
 

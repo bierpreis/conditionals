@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 
-public class RamPairBuffer extends AbstractPairBuffer {
+public class CompressedRamBuffer extends AbstractPairBuffer {
 
     protected List<List<AbstractPair>> candidatePairList;
 
@@ -16,7 +16,7 @@ public class RamPairBuffer extends AbstractPairBuffer {
     protected LastIterationThread lastIterationThreadObject;
 
 
-    public RamPairBuffer() {
+    public CompressedRamBuffer() {
 
         // 1000 is more than enough
         lastIterationQueue = new ArrayBlockingQueue<>(1000);

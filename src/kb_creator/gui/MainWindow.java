@@ -1,6 +1,7 @@
 package kb_creator.gui;
 
 import kb_creator.gui.mid_panel.RightPanel;
+import kb_creator.model.buffer.BufferingType;
 import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.LeftPanel;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
@@ -50,8 +51,8 @@ public class MainWindow {
         return leftPanel.getKBPath();
     }
 
-    public boolean isBufferingRequested() {
-        return leftPanel.isBufferingRequested();
+    public BufferingType getBufferingType() {
+        return leftPanel.getBufferingType();
     }
 
     public String getCpFilePath() {

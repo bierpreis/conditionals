@@ -1,5 +1,6 @@
 package kb_creator.gui.left_panel;
 
+import kb_creator.model.buffer.BufferingType;
 import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.optionsPanel.MainOptionsPanel;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
@@ -41,8 +42,8 @@ public class LeftPanel extends JPanel {
         return mainOptionsPanel.getBufferPath();
     }
 
-    public boolean isBufferingRequested() {
-        return mainOptionsPanel.isBufferingRequested();
+    public BufferingType getBufferingType() {
+        return mainOptionsPanel.getBufferingType();
     }
 
     public ActionPanel getActionPanel() {

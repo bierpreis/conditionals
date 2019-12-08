@@ -1,6 +1,8 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
 
+import kb_creator.model.buffer.BufferingType;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -114,8 +116,8 @@ public class MainBufferPanel extends JPanel {
         return bufferLocationPanel.getFilePath();
     }
 
-    public boolean isBufferingRequested() {
-        return bufferCheckboxPanel.isSelected();
+    public BufferingType getBufferingType() {
+        return bufferCheckboxPanel.getBufferingType();
     }
 
 }

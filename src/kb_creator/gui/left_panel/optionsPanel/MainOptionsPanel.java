@@ -2,6 +2,7 @@ package kb_creator.gui.left_panel.optionsPanel;
 
 import kb_creator.gui.left_panel.optionsPanel.buffer_options_panel.MainBufferPanel;
 import kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel.MainKbSafePanel;
+import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.propositional_logic.signature.AB;
 import kb_creator.model.propositional_logic.signature.ABC;
 import kb_creator.model.propositional_logic.signature.AbstractSignature;
@@ -42,8 +43,8 @@ public class MainOptionsPanel extends JPanel {
         return mainBufferPanel.getBufferFilePath();
     }
 
-    public boolean isBufferingRequested() {
-        return mainBufferPanel.isBufferingRequested();
+    public BufferingType getBufferingType() {
+        return mainBufferPanel.getBufferingType();
     }
 
     public void setActive(boolean active) {

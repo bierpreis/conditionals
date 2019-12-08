@@ -1,6 +1,8 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
 
+import kb_creator.model.buffer.BufferingType;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -11,7 +13,7 @@ public class BufferCheckboxPanel extends JPanel {
     private MainBufferPanel mainBufferPanel;
 
     BufferCheckboxPanel(MainBufferPanel mainBufferPanel) {
-
+        //todo: button group
         saveCheckBox = new JCheckBox("Buffer Files to Disk");
         add(saveCheckBox);
 
@@ -22,8 +24,8 @@ public class BufferCheckboxPanel extends JPanel {
     }
 
 
-    public boolean isSelected() {
-        return saveCheckBox.isSelected();
+    public BufferingType getBufferingType() {
+        return BufferingType.COMPRESSED_RAM;
     }
 
     public void setBoxEnabled(boolean active) {

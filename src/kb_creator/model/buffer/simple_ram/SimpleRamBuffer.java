@@ -1,11 +1,11 @@
 package kb_creator.model.buffer.simple_ram;
 
-import kb_creator.model.buffer.ram.RamPairBuffer;
+import kb_creator.model.buffer.ram.CompressedRamBuffer;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SimpleRamBuffer extends RamPairBuffer {
+public class SimpleRamBuffer extends CompressedRamBuffer {
 
 
     @Override
