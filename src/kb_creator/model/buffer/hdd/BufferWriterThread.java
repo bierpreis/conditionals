@@ -120,14 +120,15 @@ public class BufferWriterThread implements Runnable {
                     FLUSH_WAIT_OBJECT.wait();
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace(); //todo: this happen when press stop while flush!
+                //this can happen when stop is pressed. should never happen
+                System.out.println("wait in buffer writer interrupted. this should only happen when stop was pressed!");
+                return;
             }
         }
         flushRequested = false;
         System.out.println("flushing finished in " + (System.currentTimeMillis() - timeBeforeWaiting) + "ms");
         writingFileNameCounter = 0;
     }
-
 
 
     public void finishIteration() {
@@ -138,9 +139,6 @@ public class BufferWriterThread implements Runnable {
     public boolean hasNextIteration() {
         return (folderToWrite.listFiles().length > 0);
     }
-
-
-
 
 
     public void addList(List<AbstractPair> listToAdd) {
