@@ -39,7 +39,8 @@ public class MainBufferPanel extends JPanel {
         add(bufferRadioBoxPanel);
 
         optionsPanel = new JPanel();
-        optionsPanel.setBorder(BorderFactory.createLineBorder(Color.RED));
+        optionsPanel.setLayout(new BoxLayout(optionsPanel, BoxLayout.Y_AXIS));
+        optionsPanel.setBorder(BorderFactory.createTitledBorder("Hdd buffer options"));
         optionsPanel.add(bufferLocationPanel);
 
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
@@ -49,6 +50,8 @@ public class MainBufferPanel extends JPanel {
         optionsPanel.add(fileNameLengthPanel);
 
         add(optionsPanel);
+
+        optionsPanel.setEnabled(false);
 
 
     }
