@@ -69,13 +69,14 @@ public class BufferReaderThread implements Runnable {
 
     private List<AbstractPair> readNextFile() {
         //read String
+        //todo: simplify. string format is useless. leading zeoroes are useless?
         File fileToRead = new File(folderToRead + "/" + String.format(numberOfDigitsString, readingFileNameCounter) + ".txt");
         System.out.println("reading file: " + fileToRead.getAbsolutePath());
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(fileToRead);
         } catch (FileNotFoundException e) {
-            return null;
+            return null; //todo: exception! this should not happen
         }
 
         StringBuilder sb = new StringBuilder();
