@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FileNameLengthPanel extends JPanel {
-    private JLabel descriptionLabel = new JLabel("File Name Number of Digits: ");
-    private JTextField numberOfDigitsField = new JTextField("6");
+    private JLabel descriptionLabel = new JLabel("Number of Leading Zeroes: ");
+    private JTextField numberOfDigitsField = new JTextField("0");
 
     public FileNameLengthPanel() {
         numberOfDigitsField.setPreferredSize(new Dimension(36, 16));
@@ -28,7 +28,7 @@ public class FileNameLengthPanel extends JPanel {
 
         }
 
-        if (Integer.parseInt(numberOfDigitsField.getText()) < 1) {
+        if (Integer.parseInt(numberOfDigitsField.getText()) < 0) {
             new SizeWarningDialog();
             return false;
         }

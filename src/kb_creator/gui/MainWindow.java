@@ -1,6 +1,6 @@
 package kb_creator.gui;
 
-import kb_creator.gui.mid_panel.RightPanel;
+import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.model.buffer.BufferingType;
 import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.LeftPanel;

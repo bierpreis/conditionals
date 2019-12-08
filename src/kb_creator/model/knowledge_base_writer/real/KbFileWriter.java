@@ -9,7 +9,7 @@ public class KbFileWriter extends AbstractKbWriter {
     private KBWriterThread consistentWriter;
     private KBWriterThread inconsistentWriter;
 
-
+    //todo: maybe leading zeroes option?
     public KbFileWriter(String filePathToSave) {
 
         this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentWriterQueue);

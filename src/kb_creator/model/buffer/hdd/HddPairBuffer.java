@@ -10,7 +10,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
     //threads
 
     private BufferReaderThread lastIterationThreadObject;
-    private BufferWriterThread newIterationThreadObject;
+    private BufferWriterThread nextIterationThreadObject;
 
 
     //options
@@ -66,8 +66,8 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        newIterationThreadObject = new BufferWriterThread(nextIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
-        nextIterationThread = new Thread(newIterationThreadObject);
+        nextIterationThreadObject = new BufferWriterThread(nextIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
+        nextIterationThread = new Thread(nextIterationThreadObject);
         nextIterationThread.setName("new iteration thread for k " + requestedK);
         nextIterationThread.start();
 
@@ -82,13 +82,13 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        lastIterationPairAmount = newIterationThreadObject.getPairWriterCounter();
+        lastIterationPairAmount = nextIterationThreadObject.getPairWriterCounter();
 
-        newIterationThreadObject.finishIteration();
-        newIterationThreadObject.stopLoop();
+        nextIterationThreadObject.finishIteration();
+        nextIterationThreadObject.stopLoop();
         nextIterationThread.interrupt();
 
-        hasNextIteration = newIterationThreadObject.hasNextIteration();
+        hasNextIteration = nextIterationThreadObject.hasNextIteration();
 
         deleteOldData(requestedK);
 
@@ -101,7 +101,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
         lastIterationThread.interrupt();
 
 
-        newIterationThreadObject.stopLoop();
+        nextIterationThreadObject.stopLoop();
         nextIterationThread.interrupt();
     }
 
@@ -120,7 +120,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public int getQueueToWriteSize() {
-        return newIterationThreadObject.getQueueSize();
+        return nextIterationThreadObject.getQueueSize();
     }
 
 
