@@ -93,4 +93,7 @@ public class MainBufferPanel extends JPanel {
         bufferOptionsPanel.initValues();
     }
 
+    public BufferOptionsPanel getBufferOptionsPanel() {
+        return bufferOptionsPanel;
+    }
 }
