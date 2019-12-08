@@ -38,6 +38,8 @@ public class BufferReaderThread implements Runnable {
         readingFileNameCounter = 0;
 
         folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
+
+        //todo: make this instance variable, sort and read this?
         File[] filesArray = folderToRead.listFiles();
 
         //files array is null when there are no files to read(this happens in iteration 0)
