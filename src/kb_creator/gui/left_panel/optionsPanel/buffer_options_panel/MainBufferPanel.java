@@ -10,7 +10,7 @@ import java.awt.*;
 public class MainBufferPanel extends JPanel {
 
     private BufferLocationPanel bufferLocationPanel;
-    private BufferCheckboxPanel bufferCheckboxPanel;
+    private BufferRadioBoxPanel bufferRadioBoxPanel;
     private JPanel descriptionPanel;
     private JPanel optionsPanel;
     private JCheckBox deleteTempFilesCheckbox;
@@ -23,9 +23,8 @@ public class MainBufferPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
 
-        descriptionPanel = new JPanel();
 
-        bufferCheckboxPanel = new BufferCheckboxPanel(this);
+        bufferRadioBoxPanel = new BufferRadioBoxPanel(this);
 
         bufferLocationPanel = new BufferLocationPanel(this);
 
@@ -34,12 +33,14 @@ public class MainBufferPanel extends JPanel {
         bufferSizePanel = new BufferSizePanel();
 
         fileNameLengthPanel = new FileNameLengthPanel();
-        
+
+        descriptionPanel = new JPanel();
+        descriptionPanel.add( new JLabel("Choose how to save data structure"));
         add(descriptionPanel);
-        descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save Main Memory"));
 
 
-        add(bufferCheckboxPanel);
+
+        add(bufferRadioBoxPanel);
 
         optionsPanel = new JPanel();
         optionsPanel.add(bufferLocationPanel);
@@ -61,7 +62,7 @@ public class MainBufferPanel extends JPanel {
 
     @Override
     public void setEnabled(boolean enabled) {
-        bufferCheckboxPanel.setEnabled(enabled);
+        bufferRadioBoxPanel.setEnabled(enabled);
         bufferLocationPanel.setEnabled(enabled);
 
         deleteTempFilesCheckbox.setEnabled(enabled);
@@ -83,8 +84,8 @@ public class MainBufferPanel extends JPanel {
 
     public void init(){
         deleteTempFilesCheckbox.setSelected(true);
-        bufferCheckboxPanel.setBoxSelected(false);
-        bufferCheckboxPanel.setBoxEnabled(false);
+        bufferRadioBoxPanel.setBoxSelected(false);
+        bufferRadioBoxPanel.setBoxEnabled(false);
         bufferSizePanel.setEnabled(false);
         fileNameLengthPanel.setEnabled(false);
         deleteTempFilesCheckbox.setEnabled(false);
@@ -108,8 +109,8 @@ public class MainBufferPanel extends JPanel {
         return bufferSizePanel.getBufferSize();
     }
 
-    public BufferCheckboxPanel getBufferCheckboxPanel() {
-        return bufferCheckboxPanel;
+    public BufferRadioBoxPanel getBufferRadioBoxPanel() {
+        return bufferRadioBoxPanel;
     }
 
     public String getBufferFilePath() {
@@ -117,7 +118,7 @@ public class MainBufferPanel extends JPanel {
     }
 
     public BufferingType getBufferingType() {
-        return bufferCheckboxPanel.getBufferingType();
+        return bufferRadioBoxPanel.getBufferingType();
     }
 
 }

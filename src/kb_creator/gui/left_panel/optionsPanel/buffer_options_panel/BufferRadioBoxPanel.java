@@ -8,19 +8,28 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 
-public class BufferCheckboxPanel extends JPanel {
-    private JCheckBox saveCheckBox;
+public class BufferRadioBoxPanel extends JPanel {
     private MainBufferPanel mainBufferPanel;
 
-    BufferCheckboxPanel(MainBufferPanel mainBufferPanel) {
-        setBorder(BorderFactory.createLineBorder(Color.RED));
-        //todo: button group
-        saveCheckBox = new JCheckBox("Buffer Files to Disk");
-        add(saveCheckBox);
+    private JRadioButton simpleRamBufferButton = new JRadioButton("Simple Ram");
+    private JRadioButton compressedRamBufferButton = new JRadioButton("Compressed Ram");
+    private JRadioButton hddBufferButton = new JRadioButton("Harddisk");
 
-        saveCheckBox.setEnabled(false);
+    private ButtonGroup buttonGroup = new ButtonGroup();
 
-        saveCheckBox.addChangeListener(new CheckBoxActionListener());
+    BufferRadioBoxPanel(MainBufferPanel mainBufferPanel) {
+
+        buttonGroup.add(simpleRamBufferButton);
+        buttonGroup.add(compressedRamBufferButton);
+        buttonGroup.add(hddBufferButton);
+
+        add(simpleRamBufferButton);
+        add(compressedRamBufferButton);
+        add(hddBufferButton);
+
+        //add(buttonGroup);
+
+         //buttonGroup.addChangeListener(new CheckBoxActionListener());
         this.mainBufferPanel = mainBufferPanel;
     }
 
@@ -30,17 +39,20 @@ public class BufferCheckboxPanel extends JPanel {
     }
 
     public void setBoxEnabled(boolean active) {
-        saveCheckBox.setEnabled(active);
+        //todo
+        //saveCheckBox.setEnabled(active);
     }
 
     public void setBoxSelected(boolean selected) {
-        saveCheckBox.setSelected(selected);
+        //todo
+        //aveCheckBox.setSelected(selected);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        saveCheckBox.setEnabled(enabled);
+        //todo
+        //saveCheckBox.setEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);
     }
@@ -50,12 +62,13 @@ public class BufferCheckboxPanel extends JPanel {
 
         @Override
         public void stateChanged(ChangeEvent changeEvent) {
-            if (!saveCheckBox.isSelected()) {
-                mainBufferPanel.getBufferCheckboxPanel().setBoxSelected(false);
+
+/*            if (!saveCheckBox.isSelected()) {
+                mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
-            }
+            }*/
 
 
         }
