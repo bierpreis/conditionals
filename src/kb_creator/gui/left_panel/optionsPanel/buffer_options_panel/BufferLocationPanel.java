@@ -43,8 +43,6 @@ public class BufferLocationPanel extends JPanel {
 
             //avoid null pointer exception when no file gets selected
             if (fileChooser.getSelectedFile() != null) {
-                mainBufferPanel.getBufferRadioBoxPanel().setBoxEnabled(true);
-                mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(true);
                 mainBufferPanel.getBufferSizePanel().setEnabled(true);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(true);
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(true);
@@ -55,8 +53,6 @@ public class BufferLocationPanel extends JPanel {
                 if (fileToSave.exists()) {
 
                     new AlreadyExistsDialog(filePathToSave);
-                    mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(false);
-                    mainBufferPanel.getBufferRadioBoxPanel().setBoxEnabled(false);
                     mainBufferPanel.getBufferSizePanel().setEnabled(false);
                     mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                     mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
@@ -65,8 +61,6 @@ public class BufferLocationPanel extends JPanel {
             }
             //this triggers when path is null so no file selected
             else {
-                mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(false);
-                mainBufferPanel.getBufferRadioBoxPanel().setBoxEnabled(false);
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(false);
                 mainBufferPanel.getFileNameLengthPanel().setEnabled(false);

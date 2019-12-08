@@ -51,21 +51,10 @@ public class BufferRadioBoxPanel extends JPanel {
         throw new RuntimeException("something went wrong in buffer raadio box panel!");
     }
 
-    public void setBoxEnabled(boolean active) {
-        //todo
-        //saveCheckBox.setEnabled(active);
-    }
-
-    public void setBoxSelected(boolean selected) {
-        //todo
-        //saveCheckBox.setSelected(selected);
-    }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        //todo
-        //saveCheckBox.setEnabled(enabled);
         for (Component component : getComponents())
             component.setEnabled(enabled);
     }
@@ -76,13 +65,7 @@ public class BufferRadioBoxPanel extends JPanel {
 
         @Override
         public void itemStateChanged(ItemEvent itemEvent) {
-
             mainBufferPanel.getBufferOptionsPanel().getBufferLocationPanel().setEnabled(hddBufferButton.isSelected());
-            mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(hddBufferButton.isSelected());
-            mainBufferPanel.getBufferSizePanel().setEnabled(hddBufferButton.isSelected());
-            mainBufferPanel.getDeleteCheckbox().setEnabled(hddBufferButton.isSelected());
-            mainBufferPanel.getFileNameLengthPanel().setEnabled(hddBufferButton.isSelected());
-
         }
     }
 }
