@@ -13,7 +13,6 @@ public class MainBufferPanel extends JPanel {
     private BufferCheckboxPanel bufferCheckboxPanel;
     private JPanel descriptionPanel;
     private JPanel optionsPanel;
-    private JPanel actionPanel;
     private JCheckBox deleteTempFilesCheckbox;
 
     private BufferSizePanel bufferSizePanel;
@@ -30,7 +29,7 @@ public class MainBufferPanel extends JPanel {
 
         bufferLocationPanel = new BufferLocationPanel(this);
 
-        actionPanel = new JPanel();
+
 
         bufferSizePanel = new BufferSizePanel();
 
@@ -39,14 +38,15 @@ public class MainBufferPanel extends JPanel {
         add(descriptionPanel);
         descriptionPanel.add(new JLabel("Buffer temp Files to Disk to save Main Memory"));
 
-        actionPanel.add(bufferLocationPanel);
-        actionPanel.add(add(bufferCheckboxPanel));
-        add(actionPanel);
+
+        add(bufferCheckboxPanel);
 
         optionsPanel = new JPanel();
+        optionsPanel.add(bufferLocationPanel);
 
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         optionsPanel.add(deleteTempFilesCheckbox);
+
 
         add(optionsPanel);
         add(bufferSizePanel);

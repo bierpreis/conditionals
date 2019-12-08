@@ -13,6 +13,7 @@ public class BufferCheckboxPanel extends JPanel {
     private MainBufferPanel mainBufferPanel;
 
     BufferCheckboxPanel(MainBufferPanel mainBufferPanel) {
+        setBorder(BorderFactory.createLineBorder(Color.RED));
         //todo: button group
         saveCheckBox = new JCheckBox("Buffer Files to Disk");
         add(saveCheckBox);
