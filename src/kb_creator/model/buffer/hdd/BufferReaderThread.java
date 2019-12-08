@@ -76,7 +76,7 @@ public class BufferReaderThread implements Runnable {
         try {
             fileScanner = new Scanner(fileToRead);
         } catch (FileNotFoundException e) {
-            return null; //todo: exception! this should not happen
+            throw new RuntimeException("WTF");
         }
 
         StringBuilder sb = new StringBuilder();

@@ -120,7 +120,7 @@ public class BufferWriterThread implements Runnable {
                     FLUSH_WAIT_OBJECT.wait();
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //todo: this happen when press stop while flush!
             }
         }
         flushRequested = false;
