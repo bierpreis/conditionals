@@ -24,6 +24,8 @@ public class BufferRadioBoxPanel extends JPanel {
         buttonGroup.add(compressedRamBufferButton);
         buttonGroup.add(hddBufferButton);
 
+        hddBufferButton.addChangeListener(new CheckBoxActionListener());
+
         compressedRamBufferButton.setSelected(true);
 
         add(simpleRamBufferButton);
@@ -54,7 +56,7 @@ public class BufferRadioBoxPanel extends JPanel {
 
     public void setBoxSelected(boolean selected) {
         //todo
-        //aveCheckBox.setSelected(selected);
+        //saveCheckBox.setSelected(selected);
     }
 
     @Override
@@ -66,19 +68,18 @@ public class BufferRadioBoxPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
-    //todo: use
+    //todo: rename
     class CheckBoxActionListener implements ChangeListener {
 
 
         @Override
         public void stateChanged(ChangeEvent changeEvent) {
 
-            if (!hddBufferButton.isSelected()) {
-                mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(false);
-                mainBufferPanel.getBufferSizePanel().setEnabled(false);
-                mainBufferPanel.getDeleteCheckbox().setEnabled(false);
-                mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
-            }
+                mainBufferPanel.getBufferRadioBoxPanel().setBoxSelected(hddBufferButton.isSelected());
+                mainBufferPanel.getBufferSizePanel().setEnabled(hddBufferButton.isSelected());
+                mainBufferPanel.getDeleteCheckbox().setEnabled(hddBufferButton.isSelected());
+                mainBufferPanel.getFileNameLengthPanel().setEnabled(hddBufferButton.isSelected());
+
 
 
         }
