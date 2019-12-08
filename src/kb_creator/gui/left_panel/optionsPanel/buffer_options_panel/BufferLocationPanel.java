@@ -45,7 +45,6 @@ public class BufferLocationPanel extends JPanel {
             if (fileChooser.getSelectedFile() != null) {
                 mainBufferPanel.getBufferSizePanel().setEnabled(true);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(true);
-                mainBufferPanel.getFileNameLengthPanel().setEnabled(true);
                 filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/KBs";
 
                 File fileToSave = new File(filePathToSave);
@@ -55,7 +54,6 @@ public class BufferLocationPanel extends JPanel {
                     new AlreadyExistsDialog(filePathToSave);
                     mainBufferPanel.getBufferSizePanel().setEnabled(false);
                     mainBufferPanel.getDeleteCheckbox().setEnabled(false);
-                    mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
                 }
 
             }
@@ -63,7 +61,6 @@ public class BufferLocationPanel extends JPanel {
             else {
                 mainBufferPanel.getBufferSizePanel().setEnabled(false);
                 mainBufferPanel.getDeleteCheckbox().setEnabled(false);
-                mainBufferPanel.getFileNameLengthPanel().setEnabled(false);
             }
         }
 

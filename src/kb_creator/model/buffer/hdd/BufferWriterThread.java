@@ -27,11 +27,8 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean running = true;
 
-    private String numberOfDigitsString;
 
-
-    public BufferWriterThread(BlockingQueue<AbstractPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK, int fileNameDigits) {
-        numberOfDigitsString = "%0" + fileNameDigits + "d";
+    public BufferWriterThread(BlockingQueue<AbstractPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK) {
         this.cpQueueToWrite = queueToWrite;
 
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
@@ -68,13 +65,12 @@ public class BufferWriterThread implements Runnable {
     private void writeNextFile() {
         try {
             //add leading zeros so the files can be sorted in correct order in their folder
-            String fileName = String.format(numberOfDigitsString, writingFileNameCounter);
-            writingFileNameCounter++;
+
 
             //this triggered. this happens when too much files?
             //java.io.FileNotFoundException: /home/bierpreis/KBs/tmp/1/3945481.txt (Auf dem Gerät ist kein Speicherplatz mehr verfügbar)
             //with buffering when hdd was full. close program in this case?
-            PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + fileName + ".txt", "UTF-8");
+            PrintWriter writer = new PrintWriter(folderToWrite.getAbsolutePath() + "/" + writingFileNameCounter + ".txt", "UTF-8");
 
             StringBuilder sb = new StringBuilder();
 
@@ -94,6 +90,8 @@ public class BufferWriterThread implements Runnable {
             writer.print(sb.toString());
             writer.flush();
             writer.close();
+
+            writingFileNameCounter++;
 
             if (flushRequested && cpQueueToWrite.isEmpty())
                 synchronized (FLUSH_WAIT_OBJECT) {

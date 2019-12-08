@@ -17,13 +17,12 @@ public class HddPairBuffer extends AbstractPairBuffer {
     private boolean deleteFiles;
     private int maxNumberOfPairsInFile;
     private String tmpFilePath;
-    private int fileNameLength;
 
     //other
     private volatile boolean hasNextIteration;
 
 
-    public HddPairBuffer(String filePath, int maxNumberOfPairsInFile, int bufferFileLength) {
+    public HddPairBuffer(String filePath, int maxNumberOfPairsInFile) {
 
         //value time 2 works
         //min value is maxNumberOfPairsInFile +1 else there will be a lock
@@ -33,7 +32,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
         this.tmpFilePath = filePath + "/tmp/";
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
-        fileNameLength = bufferFileLength;
         System.out.println("created parallel buffer for candidate pairs");
     }
 
@@ -66,12 +64,12 @@ public class HddPairBuffer extends AbstractPairBuffer {
     public void prepareIteration(int requestedK) {
         System.out.println("preparing iteration: " + requestedK);
 
-        nextIterationThreadObject = new BufferWriterThread(nextIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK, fileNameLength);
+        nextIterationThreadObject = new BufferWriterThread(nextIterationQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK);
         nextIterationThread = new Thread(nextIterationThreadObject);
         nextIterationThread.setName("new iteration thread for k " + requestedK);
         nextIterationThread.start();
 
-        lastIterationThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK, fileNameLength);
+        lastIterationThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK);
         lastIterationThread = new Thread(lastIterationThreadObject);
         lastIterationThread.setName("buffer reader thread for k " + requestedK);
         lastIterationThread.start();

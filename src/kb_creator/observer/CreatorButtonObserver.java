@@ -83,7 +83,7 @@ public class CreatorButtonObserver implements ActionListener {
     private AbstractPairBuffer getCandidateBuffer(MainWindow mainWindow) {
         AbstractPairBuffer buffer;
         if (mainWindow.getBufferingType().equals(BufferingType.HDD))
-            buffer = new HddPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getFileNameLengthPanel().getNumberOfDigits());
+            buffer = new HddPairBuffer(mainWindow.getCpFilePath(), mainWindow.getLeftPanel().getMainOptionsPanel().getBufferPanel().getBufferSize());
         else if (mainWindow.getBufferingType().equals(BufferingType.COMPRESSED_RAM))
             buffer = new CompressedRamBuffer();
         else buffer = new SimpleRamBuffer();

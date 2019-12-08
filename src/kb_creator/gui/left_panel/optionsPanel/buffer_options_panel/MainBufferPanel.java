@@ -69,9 +69,6 @@ public class MainBufferPanel extends JPanel {
         return bufferOptionsPanel.getDeleteTempFilesCheckBox();
     }
 
-    public FileNameLengthPanel getFileNameLengthPanel(){
-        return bufferOptionsPanel.getFileNameLengthPanel();
-    }
 
     public int getBufferSize() {
         return bufferOptionsPanel.getBufferSizePanel().getBufferSize();

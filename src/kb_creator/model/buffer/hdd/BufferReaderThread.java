@@ -24,11 +24,10 @@ public class BufferReaderThread implements Runnable {
     private File folderToRead;
     private final Pattern END_PAIR_PATTERN = Pattern.compile("\nEND\n");
     private String tmpFilePath;
-    private String numberOfDigitsString;
 
 
-    public BufferReaderThread(BlockingQueue<AbstractPair> lastIterationQueue, String tmpFilePath, int requestedK, int numberOfDigits) {
-        this.numberOfDigitsString = "%0" + numberOfDigits + "d";
+    public BufferReaderThread(BlockingQueue<AbstractPair> lastIterationQueue, String tmpFilePath, int requestedK) {
+
 
         this.lastIterationQueue = lastIterationQueue;
 
@@ -76,7 +75,7 @@ public class BufferReaderThread implements Runnable {
         try {
             fileScanner = new Scanner(fileToRead);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("File not found in Hdd Buffer!");
+            e.printStackTrace();
         }
 
         StringBuilder sb = new StringBuilder();

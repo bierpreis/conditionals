@@ -9,7 +9,6 @@ public class BufferOptionsPanel extends JPanel {
     private JCheckBox deleteTempFilesCheckbox;
 
     private BufferSizePanel bufferSizePanel;
-    private FileNameLengthPanel fileNameLengthPanel;
 
     public BufferOptionsPanel(MainBufferPanel mainBufferPanel) {
         bufferLocationPanel = new BufferLocationPanel(mainBufferPanel);
@@ -21,15 +20,11 @@ public class BufferOptionsPanel extends JPanel {
 
         bufferSizePanel = new BufferSizePanel();
 
-        fileNameLengthPanel = new FileNameLengthPanel();
-
 
         deleteTempFilesCheckbox = new JCheckBox("Delete temporary Files");
         add(deleteTempFilesCheckbox);
 
         add(bufferSizePanel);
-        add(fileNameLengthPanel);
-
         initValues();
 
     }
@@ -40,22 +35,18 @@ public class BufferOptionsPanel extends JPanel {
 
         bufferLocationPanel.setEnabled(false);
         bufferSizePanel.setEnabled(false);
-        fileNameLengthPanel.setEnabled(false);
         deleteTempFilesCheckbox.setEnabled(false);
     }
 
 
     public boolean isValueValid() {
-        return bufferSizePanel.isValueValid() && fileNameLengthPanel.isValueValid();
+        return bufferSizePanel.isValueValid();
     }
 
     public BufferSizePanel getBufferSizePanel() {
         return bufferSizePanel;
     }
 
-    public FileNameLengthPanel getFileNameLengthPanel() {
-        return fileNameLengthPanel;
-    }
 
     public BufferLocationPanel getBufferLocationPanel() {
         return bufferLocationPanel;
