@@ -92,6 +92,7 @@ public class GuiStatusThread implements Runnable {
 
             mainWindow.getRightPanel().getBufferStatusPanel().showReaderBuffer(creatorThread.getPairBuffer().getReaderBufferSize());
             mainWindow.getRightPanel().getBufferStatusPanel().showWriterQueue(creatorThread.getPairBuffer().getQueueToWriteSize());
+            mainWindow.getRightPanel().getBufferStatusPanel().showType(mainWindow.getBufferingType());
 
         }
     }

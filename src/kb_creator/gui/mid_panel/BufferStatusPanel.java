@@ -1,7 +1,7 @@
 package kb_creator.gui.mid_panel;
 
 
-import kb_creator.model.buffer.AbstractPairBuffer;
+import kb_creator.model.buffer.BufferingType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,11 +9,11 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class BufferStatusPanel extends JPanel {
-    private JLabel statusLabel;
+    private JLabel bufferTypeLabel;
     private JLabel writerLabel;
     private JLabel readerLabel;
 
-    //todo: show buffer type!
+
     public BufferStatusPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
         setBorder(BorderFactory.createTitledBorder("Candidates Buffer"));
@@ -22,10 +22,10 @@ public class BufferStatusPanel extends JPanel {
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
-        statusLabel = new JLabel();
+        bufferTypeLabel = new JLabel();
         writerLabel = new JLabel();
         readerLabel = new JLabel();
-        vBox.add(statusLabel);
+        vBox.add(bufferTypeLabel);
         vBox.add(new JLabel(" "));
         vBox.add(writerLabel);
         vBox.add(readerLabel);
@@ -34,7 +34,6 @@ public class BufferStatusPanel extends JPanel {
         showReaderBuffer(0);
 
     }
-
 
 
     public void showWriterQueue(int alreadyFinishedNumber) {
@@ -55,6 +54,10 @@ public class BufferStatusPanel extends JPanel {
 
         readerLabel.setEnabled(enabled);
         writerLabel.setEnabled(enabled);
+    }
+
+    public void showType(BufferingType bufferingType) {
+        bufferTypeLabel.setText("Buffer Type: " + bufferingType.toString());
     }
 
 }
