@@ -17,11 +17,15 @@ public class KBWriterThread implements Runnable {
     private int iterationCounter = 0;
     private int totalCounter = 0;
 
+    //todo: use
+    private int requestedFileNameLength;
+
     //todo: leading zeroes. option in gui for that.
-    public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue) {
+    public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
+        this.requestedFileNameLength = requestedFileNameLength;
     }
 
     @Override
@@ -63,7 +67,7 @@ public class KBWriterThread implements Runnable {
 
         PrintWriter writer;
         //leading zeroes would look like this:
-        //File fileToRead = new File(folderToRead + "/" + String.format(numberOfDigitsString, readingFileNameCounter) + ".txt");
+        //File fileToRead = new File(folderToRead + "/" + String.format(requestedFileNameLength, readingFileNameCounter) + ".txt");
 
         //this will trigger when hdd space is full or there are too much files
         try {

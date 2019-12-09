@@ -67,7 +67,9 @@ public class MainWindow {
         return leftPanel;
     }
 
-
+    public int getKbNameLength(){
+        return leftPanel.getKbNameLength();
+    }
 
 
 }

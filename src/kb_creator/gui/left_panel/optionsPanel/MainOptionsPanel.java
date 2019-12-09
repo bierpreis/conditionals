@@ -80,4 +80,8 @@ public class MainOptionsPanel extends JPanel {
         mainBufferPanel.init();
         mainKbSafePanel.init();
     }
+
+    public int getKbNameLength(){
+        return mainKbSafePanel.getKbNameLength();
+    }
 }

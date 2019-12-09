@@ -47,7 +47,7 @@ public class Creator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l) {
+    public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l, int requestedFileNameLength) {
         System.out.println("new simple creator");
         this.newIterationQueue = l.getNextIterationQueue();
         this.lastIterationQueue = l.getLastIterationQueue();
@@ -62,7 +62,7 @@ public class Creator implements Runnable {
 
         //kbFilePath is null when no buffering is requested
         if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath);
+            kbWriter = new KbFileWriter(kbFilePath, requestedFileNameLength);
         else
             kbWriter = new KbDummyWriter();
 

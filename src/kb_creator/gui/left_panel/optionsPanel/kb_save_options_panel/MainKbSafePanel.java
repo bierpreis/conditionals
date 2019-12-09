@@ -61,4 +61,8 @@ public class MainKbSafePanel extends JPanel {
     public KBCheckboxPanel getKbCheckboxPanel(){
         return kbCheckboxPanel;
     }
+
+    public int getKbNameLength(){
+        return nameLengthPanel.getLength();
+    }
 }

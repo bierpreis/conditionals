@@ -54,5 +54,9 @@ public class LeftPanel extends JPanel {
         return mainOptionsPanel;
     }
 
+    public int getKbNameLength(){
+        return mainOptionsPanel.getKbNameLength();
+    }
+
 
 }
