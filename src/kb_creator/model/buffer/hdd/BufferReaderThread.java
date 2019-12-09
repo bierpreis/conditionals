@@ -38,7 +38,6 @@ public class BufferReaderThread implements Runnable {
 
         folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");
 
-        //todo: make this instance variable, sort and read this?
         File[] filesArray = folderToRead.listFiles();
 
         //files array is null when there are no files to read(this happens in iteration 0)
@@ -52,15 +51,14 @@ public class BufferReaderThread implements Runnable {
     @Override
     public void run() {
         while (readingFileNameCounter < iterationNumberOfFiles) {
-            List<AbstractPair> pairsList = readNextFile();
-            if (pairsList != null)
-                for (AbstractPair pairToPut : pairsList)
-                    try {
-                        lastIterationQueue.put(pairToPut);
-                    } catch (InterruptedException e) {
+            for (AbstractPair pairToPut : readNextFile()) {
+                try {
+                    lastIterationQueue.put(pairToPut);
+                } catch (InterruptedException e) {
 
-                        return; //this is ONLY triggered by stop button in gui and will close this thread
-                    }
+                    return; //this is ONLY triggered by stop button in gui and will close this thread
+                }
+            }
         }
         hasMoreElements = false;
     }
