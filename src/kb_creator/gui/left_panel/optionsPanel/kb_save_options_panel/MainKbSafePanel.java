@@ -34,6 +34,7 @@ public class MainKbSafePanel extends JPanel {
 
     public void setButtonActive(boolean active) {
         kbCheckboxPanel.setBoxEnabled(active);
+        nameLengthPanel.setEnabled(active);
     }
 
     @Override
@@ -46,5 +47,6 @@ public class MainKbSafePanel extends JPanel {
     public void init() {
         kbCheckboxPanel.init();
         kbLocationPanel.init();
+        nameLengthPanel.setEnabled(false);
     }
 }
