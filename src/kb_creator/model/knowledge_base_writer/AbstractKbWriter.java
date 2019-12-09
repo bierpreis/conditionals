@@ -10,7 +10,7 @@ public abstract class AbstractKbWriter {
 
     protected volatile WriterStatus status;
 
-    //todo: test queues here and in pair writer again. is linked better?
+    //arrayblockingqueue works a bit better than linkedblockingqueue
     protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(5000);
     protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(5000);
 

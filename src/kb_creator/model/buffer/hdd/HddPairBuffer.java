@@ -26,6 +26,7 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
         //value time 2 works
         //min value is maxNumberOfPairsInFile +1 else there will be a lock
+        //arrayblockingqueue works a bit better than linkedblockingqueue
         lastIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
         nextIterationQueue = new ArrayBlockingQueue<>(maxNumberOfPairsInFile * 2);
 
