@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class NameLengthPanel extends JPanel {
-    JTextField lengthField = new JTextField("0");
-    JLabel descriptionLabel = new JLabel("File Name Length: ");
+    private JTextField lengthField = new JTextField("0");
+    private JLabel descriptionLabel = new JLabel("File Name Length: ");
 
 
     public NameLengthPanel() {
