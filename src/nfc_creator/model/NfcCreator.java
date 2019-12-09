@@ -1,9 +1,9 @@
 package nfc_creator.model;
 
 
-import kb_creator.model.propositional_logic.AbstractFormula;
-import kb_creator.model.propositional_logic.PConditional;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
+import kb_creator.model.logic.AbstractFormula;
+import kb_creator.model.logic.PConditional;
+import kb_creator.model.logic.signature.AbstractSignature;
 
 import java.util.*;
 

@@ -1,8 +1,8 @@
 package nfc_creator.view.menu.options;
 
-import kb_creator.model.propositional_logic.signature.AB;
-import kb_creator.model.propositional_logic.signature.ABC;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
+import kb_creator.model.logic.signature.AB;
+import kb_creator.model.logic.signature.ABC;
+import kb_creator.model.logic.signature.AbstractSignature;
 
 import javax.swing.*;
 

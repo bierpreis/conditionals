@@ -1,7 +1,7 @@
-package kb_creator.model.propositional_logic.signature.worlds;
+package kb_creator.model.logic.signature.worlds;
 
 
-import kb_creator.model.propositional_logic.Var;
+import kb_creator.model.logic.Var;
 
 public class ABWorld extends AbstractWorld {
     private boolean a;

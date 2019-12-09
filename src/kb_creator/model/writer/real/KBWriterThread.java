@@ -1,6 +1,6 @@
-package kb_creator.model.knowledge_base_writer.real;
+package kb_creator.model.writer.real;
 
-import kb_creator.model.propositional_logic.KnowledgeBase;
+import kb_creator.model.logic.KnowledgeBase;
 
 import java.io.*;
 import java.util.concurrent.BlockingQueue;
@@ -17,7 +17,7 @@ public class KBWriterThread implements Runnable {
     private int iterationCounter = 0;
     private int totalCounter = 0;
 
-
+    //todo: leading zeroes. option in gui for that.
     public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue) {
         this.subFolderName = subFolderName;
         this.queue = queue;

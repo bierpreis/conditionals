@@ -1,7 +1,7 @@
-package kb_creator.model.knowledge_base_writer;
+package kb_creator.model.writer;
 
 
-import kb_creator.model.propositional_logic.KnowledgeBase;
+import kb_creator.model.logic.KnowledgeBase;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

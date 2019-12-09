@@ -1,6 +1,6 @@
-package kb_creator.model.knowledge_base_writer.dummy;
+package kb_creator.model.writer.dummy;
 
-import kb_creator.model.propositional_logic.KnowledgeBase;
+import kb_creator.model.logic.KnowledgeBase;
 
 import java.util.concurrent.BlockingQueue;
 

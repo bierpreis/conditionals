@@ -2,15 +2,15 @@ package kb_creator.model.creator;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.pairs.RealPair;
-import kb_creator.model.propositional_logic.AbstractFormula;
-import kb_creator.model.propositional_logic.KnowledgeBase;
-import kb_creator.model.propositional_logic.PConditional;
+import kb_creator.model.logic.AbstractFormula;
+import kb_creator.model.logic.KnowledgeBase;
+import kb_creator.model.logic.PConditional;
 
 import kb_creator.model.pairs.AbstractPair;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
-import kb_creator.model.knowledge_base_writer.AbstractKbWriter;
-import kb_creator.model.knowledge_base_writer.real.KbFileWriter;
-import kb_creator.model.knowledge_base_writer.dummy.KbDummyWriter;
+import kb_creator.model.logic.signature.AbstractSignature;
+import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.real.KbFileWriter;
+import kb_creator.model.writer.dummy.KbDummyWriter;
 import nfc_creator.model.NfcCreator;
 
 

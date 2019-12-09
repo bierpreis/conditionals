@@ -1,9 +1,9 @@
 package nfc_creator.model;
 
-import kb_creator.model.propositional_logic.*;
-import kb_creator.model.propositional_logic.signature.AB;
-import kb_creator.model.propositional_logic.signature.ABC;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
+import kb_creator.model.logic.*;
+import kb_creator.model.logic.signature.AB;
+import kb_creator.model.logic.signature.ABC;
+import kb_creator.model.logic.signature.AbstractSignature;
 
 public class ConditionalTranslator {
     private ShortTranslationMap shortTranslationMap;

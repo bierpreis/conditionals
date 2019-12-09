@@ -1,7 +1,7 @@
-package kb_creator.model.knowledge_base_writer.dummy;
+package kb_creator.model.writer.dummy;
 
-import kb_creator.model.knowledge_base_writer.AbstractKbWriter;
-import kb_creator.model.knowledge_base_writer.WriterStatus;
+import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.WriterStatus;
 
 
 //this class is a writer which throws all input away

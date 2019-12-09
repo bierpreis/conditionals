@@ -1,7 +1,7 @@
 package kb_creator.model.pairs;
 
-import kb_creator.model.propositional_logic.PConditional;
-import kb_creator.model.propositional_logic.KnowledgeBase;
+import kb_creator.model.logic.PConditional;
+import kb_creator.model.logic.KnowledgeBase;
 
 import java.util.ArrayList;
 import java.util.List;

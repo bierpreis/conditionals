@@ -4,7 +4,7 @@ import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.model.buffer.BufferingType;
 import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.LeftPanel;
-import kb_creator.model.propositional_logic.signature.AbstractSignature;
+import kb_creator.model.logic.signature.AbstractSignature;
 
 
 import javax.swing.*;

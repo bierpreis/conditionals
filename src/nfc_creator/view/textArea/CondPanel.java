@@ -1,6 +1,6 @@
 package nfc_creator.view.textArea;
 
-import kb_creator.model.propositional_logic.AbstractFormula;
+import kb_creator.model.logic.AbstractFormula;
 import nfc_creator.model.WConditional;
 import nfc_creator.model.ConditionalList;
 import nfc_creator.model.WorldsList;

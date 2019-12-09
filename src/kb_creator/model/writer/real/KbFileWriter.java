@@ -1,7 +1,7 @@
-package kb_creator.model.knowledge_base_writer.real;
+package kb_creator.model.writer.real;
 
-import kb_creator.model.knowledge_base_writer.AbstractKbWriter;
-import kb_creator.model.knowledge_base_writer.WriterStatus;
+import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.WriterStatus;
 
 
 public class KbFileWriter extends AbstractKbWriter {

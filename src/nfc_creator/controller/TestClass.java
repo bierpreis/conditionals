@@ -1,7 +1,7 @@
 package nfc_creator.controller;
 
 
-import kb_creator.model.propositional_logic.signature.AB;
+import kb_creator.model.logic.signature.AB;
 import nfc_creator.model.NfcCreator;
 import nfc_creator.model.WorldsList;
 
