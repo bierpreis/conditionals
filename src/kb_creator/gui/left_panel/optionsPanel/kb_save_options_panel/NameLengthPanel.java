@@ -14,11 +14,10 @@ public class NameLengthPanel extends JPanel {
         add(lengthField);
     }
 
-    //todo: listener with this as warning for field
+    //todo: use this
     public boolean checkIfValuevalid() {
-        int value = 0;
         try {
-            value = Integer.parseInt(lengthField.getText());
+            Integer.parseInt(lengthField.getText());
         } catch (NumberFormatException e) {
             lengthField.setBorder(BorderFactory.createLineBorder(Color.RED));
             new InputWarningDialog();
@@ -38,4 +37,6 @@ public class NameLengthPanel extends JPanel {
         lengthField.setEnabled(enabled);
 
     }
+
+
 }

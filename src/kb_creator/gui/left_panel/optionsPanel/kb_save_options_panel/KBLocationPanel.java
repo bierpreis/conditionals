@@ -1,6 +1,5 @@
 package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
-
 import kb_creator.gui.left_panel.optionsPanel.warnings.AlreadyExistsDialog;
 
 import javax.swing.*;
@@ -12,53 +11,16 @@ import java.io.File;
 public class KBLocationPanel extends JPanel {
     private JButton saveButton;
     private String filePathToSave;
-    private KBCheckboxPanel checkboxPanel;
 
-    public KBLocationPanel(KBCheckboxPanel checkboxPanel) {
+
+    public KBLocationPanel(MainKbSafePanel mainKbSafePanel) {
         saveButton = new JButton("Choose Folder");
-        saveButton.addActionListener(new SaveButtonListener(this));
+        saveButton.addActionListener(new SaveButtonListener(mainKbSafePanel));
         add(saveButton);
 
         saveButton.setEnabled(true);
-        this.checkboxPanel = checkboxPanel;
     }
 
-    private class SaveButtonListener implements ActionListener {
-        KBLocationPanel kbLocationPanel;
-
-        public SaveButtonListener(KBLocationPanel kbLocationPanel) {
-            this.kbLocationPanel = kbLocationPanel;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            fileChooser.showDialog(kbLocationPanel, "Choose Folder");
-
-            //avoid null pointer exception when no file gets selected
-            if (fileChooser.getSelectedFile() != null) {
-                checkboxPanel.setBoxEnabled(true);
-                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/KBs/";
-                File fileToSave = new File(filePathToSave);
-                checkboxPanel.setBoxSelected(true);
-
-                if (fileToSave.exists()) {
-                    new AlreadyExistsDialog(filePathToSave);
-                    filePathToSave = null;
-                    checkboxPanel.setEnabled(false);
-                    checkboxPanel.setBoxSelected(false);
-                }
-            }
-            //deactivate if no path was selected
-            else {
-                checkboxPanel.setBoxSelected(false);
-                checkboxPanel.setBoxEnabled(false);
-                filePathToSave = null;
-            }
-
-        }
-    }
 
     public String getFilePath() {
         return filePathToSave;
@@ -71,8 +33,53 @@ public class KBLocationPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
-    public void init(){
+    public void init() {
         saveButton.setEnabled(true);
+    }
+
+
+    private class SaveButtonListener implements ActionListener {
+        private MainKbSafePanel mainKbSafePanel;
+
+        public SaveButtonListener(MainKbSafePanel mainKbSafePanel) {
+            this.mainKbSafePanel = mainKbSafePanel;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            fileChooser.showDialog(mainKbSafePanel.getKbLocationPanel(), "Choose Folder");
+
+            //avoid null pointer exception when no file gets selected
+            if (fileChooser.getSelectedFile() != null) {
+                mainKbSafePanel.getKbCheckboxPanel().setBoxEnabled(true);
+                filePathToSave = fileChooser.getSelectedFile().getAbsolutePath() + "/KBs/";
+                File fileToSave = new File(filePathToSave);
+                mainKbSafePanel.getKbCheckboxPanel().setBoxSelected(true);
+                mainKbSafePanel.getKbLocationPanel().setEnabled(true);
+                mainKbSafePanel.getKbLocationPanel().setEnabled(true);
+                mainKbSafePanel.getNameLengthPanel().setEnabled(true);
+
+                if (fileToSave.exists()) {
+                    new AlreadyExistsDialog(filePathToSave);
+                    filePathToSave = null;
+                    mainKbSafePanel.getKbCheckboxPanel().setEnabled(false);
+                    mainKbSafePanel.getKbCheckboxPanel().setBoxSelected(false);
+                    mainKbSafePanel.getKbLocationPanel().setEnabled(false);
+                    mainKbSafePanel.getNameLengthPanel().setEnabled(false);
+                }
+            }
+            //deactivate if no path was selected
+            else {
+                mainKbSafePanel.getKbCheckboxPanel().setBoxSelected(false);
+                mainKbSafePanel.getKbCheckboxPanel().setBoxEnabled(false);
+                filePathToSave = null;
+                mainKbSafePanel.getNameLengthPanel().setEnabled(false);
+
+            }
+
+        }
     }
 
 }

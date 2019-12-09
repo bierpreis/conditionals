@@ -16,7 +16,7 @@ public class MainKbSafePanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         kbCheckboxPanel = new KBCheckboxPanel(this);
-        kbLocationPanel = new KBLocationPanel(kbCheckboxPanel);
+        kbLocationPanel = new KBLocationPanel(this);
 
         nameLengthPanel = new NameLengthPanel();
 
@@ -48,5 +48,17 @@ public class MainKbSafePanel extends JPanel {
         kbCheckboxPanel.init();
         kbLocationPanel.init();
         nameLengthPanel.setEnabled(false);
+    }
+
+    public KBLocationPanel getKbLocationPanel() {
+        return kbLocationPanel;
+    }
+
+    public NameLengthPanel getNameLengthPanel(){
+        return nameLengthPanel;
+    }
+
+    public KBCheckboxPanel getKbCheckboxPanel(){
+        return kbCheckboxPanel;
     }
 }
