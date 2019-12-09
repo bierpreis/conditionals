@@ -8,14 +8,22 @@ public class MainKbSafePanel extends JPanel {
     private KBCheckboxPanel kbCheckboxPanel;
     private KBLocationPanel kbLocationPanel;
 
+    private NameLengthPanel nameLengthPanel;
+
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
+
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         kbCheckboxPanel = new KBCheckboxPanel(this);
         kbLocationPanel = new KBLocationPanel(kbCheckboxPanel);
 
+        nameLengthPanel = new NameLengthPanel();
+
         add(kbLocationPanel);
         add(kbCheckboxPanel);
+
+        add(nameLengthPanel);
 
     }
 

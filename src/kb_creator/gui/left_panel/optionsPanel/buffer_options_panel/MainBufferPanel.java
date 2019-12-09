@@ -15,7 +15,6 @@ public class MainBufferPanel extends JPanel {
     private BufferOptionsPanel bufferOptionsPanel;
 
 
-
     public MainBufferPanel() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createTitledBorder("Buffering"));
@@ -26,22 +25,11 @@ public class MainBufferPanel extends JPanel {
         bufferOptionsPanel = new BufferOptionsPanel(this);
 
 
-
-
-
         add(bufferRadioBoxPanel);
         add(bufferOptionsPanel);
 
 
-
-
-
-
-
     }
-
-
-
 
 
     @Override
@@ -52,11 +40,9 @@ public class MainBufferPanel extends JPanel {
     }
 
 
-
-    public boolean isValueValid(){
+    public boolean isValueValid() {
         return bufferOptionsPanel.isValueValid();
     }
-
 
 
     //getters
@@ -86,7 +72,7 @@ public class MainBufferPanel extends JPanel {
         return bufferRadioBoxPanel.getBufferingType();
     }
 
-    public void init(){
+    public void init() {
         bufferOptionsPanel.initValues();
     }
 
