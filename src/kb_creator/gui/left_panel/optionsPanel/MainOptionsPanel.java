@@ -68,12 +68,7 @@ public class MainOptionsPanel extends JPanel {
 
 
     public boolean areValuesValid() {
-        boolean valid = true;
-        if (!mainBufferPanel.isValueValid())
-            valid = false;
-
-
-        return valid;
+        return (mainBufferPanel.isValueValid() && mainKbSafePanel.isValueValid());
     }
 
     public void init(){
