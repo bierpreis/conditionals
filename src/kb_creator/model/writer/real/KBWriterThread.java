@@ -19,8 +19,7 @@ public class KBWriterThread implements Runnable {
 
     //todo: use
     private int requestedFileNameLength;
-
-    //todo: leading zeroes. option in gui for that.
+    
     public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength) {
         this.subFolderName = subFolderName;
         this.queue = queue;

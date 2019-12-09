@@ -16,9 +16,8 @@ public class NameLengthPanel extends JPanel {
         add(lengthField);
     }
 
-    //todo: use this
-    public boolean checkIfValuevalid() {
-        int value = -1;
+    public boolean checkIfValueValid() {
+        int value;
         try {
             value = Integer.parseInt(lengthField.getText());
         } catch (NumberFormatException e) {
