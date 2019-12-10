@@ -25,7 +25,7 @@ public class NameLengthPanel extends JPanel {
             new InputWarningDialog();
             return false;
         }
-        if (value < 0) {
+        if (value < 1) {
             lengthField.setBorder(BorderFactory.createLineBorder(Color.RED));
             new InputWarningDialog();
             return false;
