@@ -17,14 +17,13 @@ public class KBWriterThread implements Runnable {
     private int iterationCounter = 0;
     private int totalCounter = 0;
 
-    //todo: use
-    private int requestedFileNameLength;
-    
+    private String numberOfDigitsString;
+
     public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
-        this.requestedFileNameLength = requestedFileNameLength;
+        this.numberOfDigitsString = "%0" + requestedFileNameLength + "d";
     }
 
     @Override
@@ -70,7 +69,7 @@ public class KBWriterThread implements Runnable {
 
         //this will trigger when hdd space is full or there are too much files
         try {
-            writer = new PrintWriter(currentIterationFilePath + knowledgeBase.getNumber() + ".txt", "UTF-8");
+            writer = new PrintWriter(currentIterationFilePath + String.format(numberOfDigitsString, knowledgeBase.getNumber()) + ".txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
