@@ -73,6 +73,8 @@ public class Creator implements Runnable {
         creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
 
         NfcCreator nfcCreator = new NfcCreator(signature);
+
+        //todo: beschreiben, was genau vom nfc creator in den kb creator geht!
         nfc = Collections.unmodifiableCollection(nfcCreator.getpNfc());
         cnfc = Collections.unmodifiableCollection(nfcCreator.getpCnfc());
 
