@@ -53,7 +53,6 @@ public class KbFileWriter extends AbstractKbWriter {
 
     @Override
     public void finishIteration() {
-        //todo: this should interrupt thread and w8 until everything is written
         consistentWriter.finishIteration();
         consistentThread.interrupt();
         inconsistentWriter.finishIteration();

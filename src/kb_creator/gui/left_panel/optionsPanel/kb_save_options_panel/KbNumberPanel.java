@@ -18,7 +18,7 @@ public class KbNumberPanel extends JPanel{
         add(lengthField);
     }
 
-    //todo: use
+
     public boolean checkIfValueValid() {
         int value;
         try {
