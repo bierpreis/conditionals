@@ -28,13 +28,15 @@ public class Conjunction extends AbstractFormula {
         return true;
     }
 
-
-    //todo: anpassen
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (AbstractFormula formula : formulaList) {
-            sb.append(formula.toString());
+
+        for(int i = 0; i<formulaList.size(); i++){
+            sb.append(formulaList.get(i).toString());
+            if(i!=formulaList.size()-1)
+            sb.append(",");
         }
         return sb.toString();
     }
