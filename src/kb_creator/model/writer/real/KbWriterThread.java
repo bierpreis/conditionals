@@ -23,6 +23,8 @@ public class KbWriterThread implements Runnable {
 
     private int requestedKbNumber;
 
+    private volatile boolean flushRequested = false;
+
     public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
         this.subFolderName = subFolderName;
         this.queue = queue;
@@ -38,14 +40,13 @@ public class KbWriterThread implements Runnable {
         while (running) {
             List<KnowledgeBase> kbList = new ArrayList<>(requestedKbNumber);
 
-            boolean interrupted = false;
             int counter = 0;
-            while (counter < requestedKbNumber && !interrupted)
+            while (counter < requestedKbNumber && !flushRequested)
                 try {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
-                    interrupted = true;
+                    return;
                 }
             writeKbListToFile(kbList);
         }
@@ -53,7 +54,8 @@ public class KbWriterThread implements Runnable {
     }
 
 
-    public void flush() {
+    public void finishIteration() {
+
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);
@@ -62,9 +64,11 @@ public class KbWriterThread implements Runnable {
                 e.printStackTrace();
             }
         }
+        flushRequested = true;
     }
 
     public void newIteration(int k) {
+        flushRequested = false;
         iterationCounter = 0;
         currentIterationFilePath = rootFilePath + (k) + "/" + subFolderName + "/";
         File consistentFolder = new File(currentIterationFilePath);
@@ -74,7 +78,9 @@ public class KbWriterThread implements Runnable {
 
     private void writeKbListToFile(List<KnowledgeBase> kbList) {
 
-
+        //this will trigger in iteration 0 and inconsistent writer. the list will be empty!
+        if (kbList.isEmpty())
+            return;
 
         PrintWriter writer;
         try {

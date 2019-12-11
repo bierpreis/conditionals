@@ -52,10 +52,10 @@ public class KbFileWriter extends AbstractKbWriter {
 
 
     @Override
-    public void flush() {
+    public void finishIteration() {
         //todo: this should interrupt thread and w8 until everything is written
-        consistentWriter.flush();
-        inconsistentWriter.flush();
+        consistentWriter.finishIteration();
+        inconsistentWriter.finishIteration();
     }
 
     @Override
