@@ -102,7 +102,6 @@ public class KnowledgeBase {
         return conditionalList.toString();
     }
 
-    //todo: anpassen! signature muss raus in kb writer.
     //this creates infOcf file strings
     public String toFileString() {
 
