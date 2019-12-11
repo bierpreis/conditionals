@@ -23,7 +23,17 @@ public class KBLocationPanel extends JPanel {
 
 
     public String getFilePath() {
-        return filePathToSave;
+
+        //this complicated stuff resets filepath to null so it can be only transferred once to avoid problems with writer.
+        //not nice but no time to fix..
+        //at least it works
+        String filePathToReturn = null;
+        if (filePathToSave != null)
+            filePathToReturn = filePathToSave;
+
+        filePathToSave = null;
+
+        return filePathToReturn;
     }
 
     @Override
