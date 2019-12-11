@@ -60,7 +60,7 @@ public class KnowledgeBase {
         String[] splitString2 = KB_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
         this.number = Integer.parseInt(splitString3[0]);
-        
+
         String[] conditionalStringArray = COMMA_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
         conditionalList = new ArrayList<>(conditionalStringArray.length);
@@ -124,7 +124,6 @@ public class KnowledgeBase {
         return sb.toString();
     }
 
-    //todo: auch das anpassen
     //this creates shorter file strings. used by pair writer.
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();
