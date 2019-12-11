@@ -46,7 +46,7 @@ public class KbWriterThread implements Runnable {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
-                    return;
+                    flushRequested = true;
                 }
             writeKbListToFile(kbList);
         }
@@ -56,7 +56,7 @@ public class KbWriterThread implements Runnable {
 
     public void finishIteration() {
 
-        while (!queue.isEmpty()) {
+        while (queue.size() > requestedKbNumber) {
             try {
                 Thread.sleep(100);
                 System.out.println("writer finishing iteration..");
@@ -64,7 +64,17 @@ public class KbWriterThread implements Runnable {
                 e.printStackTrace();
             }
         }
+
         flushRequested = true;
+
+        while (!queue.isEmpty()) {
+            try {
+                Thread.sleep(100);
+                System.out.println("waiting for kb writer flush to happen...");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void newIteration(int k) {
