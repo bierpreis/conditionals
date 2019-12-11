@@ -101,7 +101,7 @@ public class KnowledgeBase {
         return conditionalList.toString();
     }
 
-
+    //todo: anpassen! signature muss raus in kb writer.
     //this creates infOcf file strings
     public String toFileString() {
 
@@ -123,6 +123,7 @@ public class KnowledgeBase {
         return sb.toString();
     }
 
+    //todo: auch das anpassen
     //this creates shorter file strings. used by pair writer.
     public String toShortFileString() {
         StringBuilder sb = new StringBuilder();

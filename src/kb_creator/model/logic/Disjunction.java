@@ -30,7 +30,7 @@ public class Disjunction extends AbstractFormula {
     }
 
 
-
+    //todo: anpassen
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
