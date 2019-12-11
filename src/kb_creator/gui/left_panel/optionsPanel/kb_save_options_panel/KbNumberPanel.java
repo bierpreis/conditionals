@@ -13,7 +13,7 @@ public class KbNumberPanel extends JPanel{
 
     public KbNumberPanel() {
         add(descriptionLabel);
-        //lengthField.setPreferredSize(new Dimension(24, 18));
+        lengthField.setPreferredSize(new Dimension(64, 16));
         add(lengthField);
     }
 
