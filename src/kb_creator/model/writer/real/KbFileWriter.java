@@ -53,9 +53,9 @@ public class KbFileWriter extends AbstractKbWriter {
 
 
     @Override
-    public void finishIteration() {
-        consistentWriter.finishIteration();
-        inconsistentWriter.finishIteration();
+    public void waitUntilAllKbsWritten() {
+        consistentWriter.waitUntilAllKbsWritten();
+        inconsistentWriter.waitUntilAllKbsWritten();
     }
 
     @Override

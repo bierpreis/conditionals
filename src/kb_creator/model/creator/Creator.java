@@ -229,7 +229,7 @@ public class Creator implements Runnable {
             }
             System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
             //line 13
-            kbWriter.finishIteration();
+            kbWriter.waitUntilAllKbsWritten();
             l.finishIteration(k);
             k = k + 1;
         }

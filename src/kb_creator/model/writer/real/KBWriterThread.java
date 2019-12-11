@@ -42,7 +42,8 @@ public class KBWriterThread implements Runnable {
         System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
 
-    public void finishIteration() {
+
+    public void waitUntilAllKbsWritten() {
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);

@@ -107,9 +107,13 @@ public class KnowledgeBase {
     public String toFileString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("signature\n");
-        sb.append(signature.toString().toLowerCase());
-        sb.append("\n\n");
+
+        //this was used for writing only 1 kb per file.
+       // sb.append("signature\n");
+        //sb.append(signature.toString().toLowerCase());
+        //sb.append("\n\n");
+
+
         sb.append("conditionals\n");
         sb.append(this.number);
         sb.append("{\n");
