@@ -60,6 +60,8 @@ public class KnowledgeBase {
         String[] splitString2 = KB_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
         this.number = Integer.parseInt(splitString3[0]);
+
+        //todo: comma?!
         String[] conditionalStringArray = COMMA_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
         conditionalList = new ArrayList<>(conditionalStringArray.length);
