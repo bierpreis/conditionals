@@ -60,7 +60,6 @@ public class CreatorButtonObserver implements ActionListener {
             }
         }
 
-        //todo: after stop and not choosing writer writer is active again! writer is closed but started again!
         if (e.getActionCommand().equals("Stop")) {
             UIManager.put("OptionPane.yesButtonText", "Yes, Stop.");
             UIManager.put("OptionPane.noButtonText", "No, Continue.");

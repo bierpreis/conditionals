@@ -23,6 +23,7 @@ public class KBWriterThread implements Runnable {
 
     private int requestedKbNumber;
 
+    //todo: renaming kb!
     public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
         this.subFolderName = subFolderName;
         this.queue = queue;
