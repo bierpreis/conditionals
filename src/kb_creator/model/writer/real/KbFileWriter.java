@@ -57,6 +57,7 @@ public class KbFileWriter extends AbstractKbWriter {
         consistentWriter.finishIteration();
         consistentThread.interrupt();
         inconsistentWriter.finishIteration();
+        inconsistentThread.interrupt();
     }
 
     @Override
