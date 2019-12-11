@@ -114,7 +114,7 @@ public class KnowledgeBase {
         //sb.append("\n\n");
 
 
-        sb.append("conditionals\n");
+        sb.append("\nconditionals\n");
         sb.append(this.number);
         sb.append("{\n");
 
