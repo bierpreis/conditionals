@@ -23,7 +23,7 @@ public abstract class AbstractKbWriter {
 
     public abstract void finishAndStopThreads();
 
-    public abstract void waitUntilAllKbsWritten();
+    public abstract void flush();
 
     public abstract void prepareIteration(int k);
 

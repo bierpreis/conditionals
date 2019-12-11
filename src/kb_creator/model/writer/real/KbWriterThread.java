@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public class KBWriterThread implements Runnable {
+public class KbWriterThread implements Runnable {
 
     private String subFolderName;
     private String rootFilePath;
@@ -23,8 +23,7 @@ public class KBWriterThread implements Runnable {
 
     private int requestedKbNumber;
 
-    //todo: renaming kb!
-    public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
+    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
@@ -54,7 +53,7 @@ public class KBWriterThread implements Runnable {
     }
 
 
-    public void waitUntilAllKbsWritten() {
+    public void flush() {
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);

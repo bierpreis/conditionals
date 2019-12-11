@@ -6,19 +6,19 @@ import kb_creator.model.writer.WriterStatus;
 
 public class KbFileWriter extends AbstractKbWriter {
 
-    private KBWriterThread consistentWriter;
-    private KBWriterThread inconsistentWriter;
+    private KbWriterThread consistentWriter;
+    private KbWriterThread inconsistentWriter;
 
 
     public KbFileWriter(String filePathToSave, int requestedFileNameLength, int requestedKbNumber) {
 
-        this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength, requestedKbNumber);
+        this.consistentWriter = new KbWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength, requestedKbNumber);
         consistentThread = new Thread(consistentWriter);
         consistentThread.setName("ConsistentKbWriter");
         consistentThread.start();
 
 
-        this.inconsistentWriter = new KBWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength, requestedKbNumber);
+        this.inconsistentWriter = new KbWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength, requestedKbNumber);
         inconsistentThread = new Thread(inconsistentWriter);
         inconsistentThread.setName("InconsistentKbWriter");
         inconsistentThread.start();
@@ -52,9 +52,10 @@ public class KbFileWriter extends AbstractKbWriter {
 
 
     @Override
-    public void waitUntilAllKbsWritten() {
-        consistentWriter.waitUntilAllKbsWritten();
-        inconsistentWriter.waitUntilAllKbsWritten();
+    public void flush() {
+        //todo: this should interrupt thread and w8 until everything is written
+        consistentWriter.flush();
+        inconsistentWriter.flush();
     }
 
     @Override

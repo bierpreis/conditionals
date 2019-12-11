@@ -49,7 +49,7 @@ public class KbDummyWriter extends AbstractKbWriter {
     }
 
     @Override
-    public void waitUntilAllKbsWritten() {
+    public void flush() {
         //intentionally nothing
     }
 
