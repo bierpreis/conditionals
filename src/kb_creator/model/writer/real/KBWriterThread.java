@@ -31,7 +31,7 @@ public class KBWriterThread implements Runnable {
         this.requestedKbNumber = requestedKbNumber;
     }
 
-    //todo: counters not working!
+
     @Override
     public void run() {
         System.out.println("new writer thread started for " + subFolderName + " kbs");
@@ -90,12 +90,12 @@ public class KBWriterThread implements Runnable {
         }
 
 
-        writer.println("signature\n");
+        writer.append("signature\n");
         writer.append(kbList.get(0).getSignature().toString().toLowerCase());
         writer.append("\n\n");
 
         for (KnowledgeBase knowledgeBase : kbList) {
-            writer.append(knowledgeBase.toFileString()); //todo: here was print. whats difference print vs append?
+            writer.append(knowledgeBase.toFileString());
             iterationCounter++;
             totalCounter++;
         }
