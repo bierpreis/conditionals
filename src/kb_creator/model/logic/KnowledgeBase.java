@@ -174,4 +174,8 @@ public class KnowledgeBase {
         this.number = number;
     }
 
+    public AbstractSignature getSignature(){
+        return signature;
+    }
+
 }
