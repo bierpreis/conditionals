@@ -10,6 +10,8 @@ public class MainKbSafePanel extends JPanel {
 
     private NameLengthPanel nameLengthPanel;
 
+    private KbNumberPanel kbNumberPanel;
+
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
@@ -18,11 +20,14 @@ public class MainKbSafePanel extends JPanel {
         kbCheckboxPanel = new KBCheckboxPanel(this);
         kbLocationPanel = new KBLocationPanel(this);
 
+        kbNumberPanel = new KbNumberPanel();
+
         nameLengthPanel = new NameLengthPanel();
 
         add(kbLocationPanel);
         add(kbCheckboxPanel);
 
+        add(kbNumberPanel);
         add(nameLengthPanel);
 
     }
@@ -35,6 +40,8 @@ public class MainKbSafePanel extends JPanel {
     public void setButtonActive(boolean active) {
         kbCheckboxPanel.setBoxEnabled(active);
         nameLengthPanel.setEnabled(active);
+
+        kbNumberPanel.setEnabled(active);
     }
 
     @Override
@@ -48,6 +55,7 @@ public class MainKbSafePanel extends JPanel {
         kbCheckboxPanel.init();
         kbLocationPanel.init();
         nameLengthPanel.setEnabled(false);
+        kbNumberPanel.setEnabled(false);
     }
 
     public KBLocationPanel getKbLocationPanel() {
@@ -68,5 +76,9 @@ public class MainKbSafePanel extends JPanel {
 
     public boolean isValueValid() {
         return nameLengthPanel.checkIfValueValid();
+    }
+
+    public KbNumberPanel getKbNumberPanel() {
+        return kbNumberPanel;
     }
 }
