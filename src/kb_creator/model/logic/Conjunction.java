@@ -28,7 +28,7 @@ public class Conjunction extends AbstractFormula {
         return true;
     }
 
-    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

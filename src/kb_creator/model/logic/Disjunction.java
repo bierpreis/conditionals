@@ -30,14 +30,14 @@ public class Disjunction extends AbstractFormula {
     }
 
 
-    //todo: anpassen
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < formulaList.size(); i++) {
             sb.append(formulaList.get(i).toString());
             if (i != (formulaList.size() - 1))
-                sb.append(", ");
+                sb.append(";");
         }
         return sb.toString();
     }
