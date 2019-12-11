@@ -3,6 +3,8 @@ package kb_creator.model.writer.real;
 import kb_creator.model.logic.KnowledgeBase;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 public class KBWriterThread implements Runnable {
@@ -29,15 +31,23 @@ public class KBWriterThread implements Runnable {
         this.requestedKbNumber = requestedKbNumber;
     }
 
+    //todo: counters not working!
     @Override
     public void run() {
         System.out.println("new writer thread started for " + subFolderName + " kbs");
         while (running) {
-            try {
-                writeKbToFile(queue.take());
-            } catch (InterruptedException e) {
-                //intentionally nothing
-            }
+            List<KnowledgeBase> kbList = new ArrayList<>(requestedKbNumber);
+
+            boolean interrupted = false;
+            int counter = 0;
+            while (counter < requestedKbNumber && !interrupted)
+                try {
+                    kbList.add(queue.take());
+                    counter++;
+                } catch (InterruptedException e) {
+                    interrupted = true;
+                }
+            writeKbListToFile(kbList);
         }
         System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
@@ -62,18 +72,15 @@ public class KBWriterThread implements Runnable {
     }
 
 
-    private void writeKbToFile(KnowledgeBase knowledgeBase) {
+    private void writeKbListToFile(List<KnowledgeBase> kbList) {
 
         iterationCounter++;
         totalCounter++;
 
         PrintWriter writer;
-        //leading zeroes would look like this:
-        //File fileToRead = new File(folderToRead + "/" + String.format(requestedFileNameLength, readingFileNameCounter) + ".txt");
-
-        //this will trigger when hdd space is full or there are too much files
         try {
-            writer = new PrintWriter(currentIterationFilePath + String.format(numberOfDigitsString, knowledgeBase.getNumber()) + ".txt", "UTF-8");
+            writer = new PrintWriter(currentIterationFilePath + String.format(numberOfDigitsString, kbList.get(0).getNumber()) + ".txt", "UTF-8");
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.exit(0);
@@ -82,7 +89,16 @@ public class KBWriterThread implements Runnable {
             ue.printStackTrace();
             return;
         }
-        writer.print(knowledgeBase.toFileString());
+
+
+        writer.println("signature\n");
+        writer.append(kbList.get(0).getSignature().toString().toLowerCase());
+        writer.append("\n\n");
+
+        for (KnowledgeBase knowledgeBase : kbList) {
+            writer.append(knowledgeBase.toFileString()); //todo: here was print. whats difference print vs append?
+        }
+        writer.flush();
         writer.close();
     }
 
