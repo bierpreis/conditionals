@@ -217,7 +217,8 @@ public class Creator implements Runnable {
                         try {
                             inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            //this can and should ONLY be triggered by gui stop button
+                            return;
                         }
                         inconsistentKbCounter++;
                     }
