@@ -75,7 +75,7 @@ public class MainKbSafePanel extends JPanel {
     }
 
     public boolean isValueValid() {
-        return nameLengthPanel.checkIfValueValid();
+        return nameLengthPanel.checkIfValueValid() && kbNumberPanel.checkIfValueValid();
     }
 
     public KbNumberPanel getKbNumberPanel() {

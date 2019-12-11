@@ -1,6 +1,7 @@
 package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
-import kb_creator.gui.left_panel.optionsPanel.warnings.InputWarningDialog;
+import kb_creator.gui.left_panel.optionsPanel.warnings.KbNumberWarningDialog;
+import kb_creator.gui.left_panel.optionsPanel.warnings.NameLengthWarningDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,18 +18,19 @@ public class KbNumberPanel extends JPanel{
         add(lengthField);
     }
 
+    //todo: use
     public boolean checkIfValueValid() {
         int value;
         try {
             value = Integer.parseInt(lengthField.getText());
         } catch (NumberFormatException e) {
             lengthField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            new InputWarningDialog();
+            new KbNumberWarningDialog();
             return false;
         }
         if (value < 1) {
             lengthField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            new InputWarningDialog();
+            new KbNumberWarningDialog();
             return false;
         }
 
