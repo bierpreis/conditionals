@@ -74,8 +74,7 @@ public class KBWriterThread implements Runnable {
 
     private void writeKbListToFile(List<KnowledgeBase> kbList) {
 
-        iterationCounter++;
-        totalCounter++;
+
 
         PrintWriter writer;
         try {
@@ -97,6 +96,8 @@ public class KBWriterThread implements Runnable {
 
         for (KnowledgeBase knowledgeBase : kbList) {
             writer.append(knowledgeBase.toFileString()); //todo: here was print. whats difference print vs append?
+            iterationCounter++;
+            totalCounter++;
         }
         writer.flush();
         writer.close();
