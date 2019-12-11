@@ -66,17 +66,20 @@ public class MainOptionsPanel extends JPanel {
     }
 
 
-
     public boolean areValuesValid() {
         return (mainBufferPanel.isValueValid() && mainKbSafePanel.isValueValid());
     }
 
-    public void init(){
+    public void init() {
         mainBufferPanel.init();
         mainKbSafePanel.init();
     }
 
-    public int getKbNameLength(){
+    public int getKbNameLength() {
         return mainKbSafePanel.getKbNameLength();
+    }
+
+    public int getKbNumber() {
+        return mainKbSafePanel.getKbNumberPanel().getNumber();
     }
 }

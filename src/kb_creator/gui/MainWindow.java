@@ -71,5 +71,9 @@ public class MainWindow {
         return leftPanel.getKbNameLength();
     }
 
+    public int getKbNumbmber(){
+        return leftPanel.getMainOptionsPanel().getKbNumber();
+    }
+
 
 }

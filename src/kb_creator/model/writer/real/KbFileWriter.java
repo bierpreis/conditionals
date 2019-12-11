@@ -11,15 +11,15 @@ public class KbFileWriter extends AbstractKbWriter {
 
 
     //todo: mehrere kbs pro file. anpassen! auch gui!
-    public KbFileWriter(String filePathToSave, int requestedFileNameLength) {
+    public KbFileWriter(String filePathToSave, int requestedFileNameLength, int requestedKbNumber) {
 
-        this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength);
+        this.consistentWriter = new KBWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength, requestedKbNumber);
         consistentThread = new Thread(consistentWriter);
         consistentThread.setName("ConsistentKbWriter");
         consistentThread.start();
 
 
-        this.inconsistentWriter = new KBWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength);
+        this.inconsistentWriter = new KBWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength, requestedKbNumber);
         inconsistentThread = new Thread(inconsistentWriter);
         inconsistentThread.setName("InconsistentKbWriter");
         inconsistentThread.start();

@@ -19,11 +19,14 @@ public class KBWriterThread implements Runnable {
 
     private String numberOfDigitsString;
 
-    public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength) {
+    private int requestedKbNumber;
+
+    public KBWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
         this.numberOfDigitsString = "%0" + requestedFileNameLength + "d";
+        this.requestedKbNumber = requestedKbNumber;
     }
 
     @Override
