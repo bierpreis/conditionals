@@ -225,7 +225,7 @@ public class KbCreator implements Runnable {
                             //this can and should ONLY be triggered by gui stop button
                             return;
                         }
-                        inconsistentKbCounter++; //todo: what is THIS counter?
+                        inconsistentKbCounter++; //counter is only for kb constructor
                     }
                 }
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
