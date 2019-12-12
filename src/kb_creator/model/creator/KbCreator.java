@@ -17,7 +17,7 @@ import nfc_creator.model.NfcCreator;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 
-public class Creator implements Runnable {
+public class KbCreator implements Runnable {
 
     private int currentPairAmount;
 
@@ -47,7 +47,7 @@ public class Creator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    public Creator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l, int requestedFileNameLength, int requestedKbNumber) {
+    public KbCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l, int requestedFileNameLength, int requestedKbNumber) {
         System.out.println("new simple creator");
         this.newIterationQueue = l.getNextIterationQueue();
         this.lastIterationQueue = l.getLastIterationQueue();
@@ -191,6 +191,7 @@ public class Creator implements Runnable {
                         consistentKbCounter++;
 
 
+                        //todo: can this be in l?
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {

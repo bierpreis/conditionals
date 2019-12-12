@@ -2,11 +2,11 @@ package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
 import kb_creator.model.creator.CreatorStatus;
-import kb_creator.model.creator.Creator;
+import kb_creator.model.creator.KbCreator;
 import kb_creator.model.writer.AbstractKbWriter;
 
 public class GuiStatusThread implements Runnable {
-    private Creator creatorThread;
+    private KbCreator creatorThread;
     private long sleepTime;
     private int lastKBAmount;
     private long lastTimeStamp;
@@ -109,7 +109,7 @@ public class GuiStatusThread implements Runnable {
         return kbPerSecond;
     }
 
-    public void setCreatorThread(Creator kbCreator) {
+    public void setCreatorThread(KbCreator kbCreator) {
         this.creatorThread = kbCreator;
         this.kbWriter = creatorThread.getKbWriterThread();
     }
