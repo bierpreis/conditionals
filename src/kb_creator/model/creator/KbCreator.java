@@ -169,6 +169,8 @@ public class KbCreator implements Runnable {
 
             //line 8
             while (l.hasMoreElementsForK(k)) {
+
+                //todo: own method
                 AbstractPair currentPair = null;
                 try {
                     currentPair = lastIterationQueue.take();
@@ -176,6 +178,7 @@ public class KbCreator implements Runnable {
                     e.printStackTrace();
                 }
                 iterationPairCounter++;
+
 
 
                 //line 9
@@ -190,8 +193,7 @@ public class KbCreator implements Runnable {
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
                         consistentKbCounter++;
 
-
-                        //todo: can this be in l?
+                        //todo. own method
                         try {
                             consistentWriterQueue.put(knowledgeBaseToAdd);
                         } catch (InterruptedException e) {
@@ -204,6 +206,7 @@ public class KbCreator implements Runnable {
                             if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
                                 candidatesToAdd.add(conditionalFromCandidates);
 
+                        //todo: own method
                         //line 12
                         try {
                             newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
@@ -215,13 +218,14 @@ public class KbCreator implements Runnable {
 
                     } else {
 
+                        //todo: own method
                         try {
                             inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
                         } catch (InterruptedException e) {
                             //this can and should ONLY be triggered by gui stop button
                             return;
                         }
-                        inconsistentKbCounter++;
+                        inconsistentKbCounter++; //todo: what is THIS counter?
                     }
                 }
                 if (creatorStatus.equals(CreatorStatus.STOPPED))
