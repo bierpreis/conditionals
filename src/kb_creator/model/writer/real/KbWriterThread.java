@@ -110,8 +110,13 @@ public class KbWriterThread implements Runnable {
         writer.append(kbList.get(0).getSignature().toString().toLowerCase());
         writer.append("\n\n");
 
+        //todo: really this here?
+        writer.append("\nconditionals\n");
+
         for (KnowledgeBase knowledgeBase : kbList) {
+            writer.append("\n");
             writer.append(knowledgeBase.toFileString());
+
             iterationCounter++;
             totalCounter++;
         }

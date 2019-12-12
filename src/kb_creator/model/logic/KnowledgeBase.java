@@ -12,6 +12,9 @@ public class KnowledgeBase {
     private static Map<Integer, PConditional> nfcMap;
     private static AbstractSignature signature;
 
+    //todo: set by gui
+    public final String PREFIX_STRING = "kb";
+
     private int number;
     private final List<PConditional> conditionalList;
 
@@ -112,8 +115,9 @@ public class KnowledgeBase {
         //sb.append(signature.toString().toLowerCase());
         //sb.append("\n\n");
 
-
-        sb.append("\nconditionals\n");
+        //todo: really remove this?
+        //sb.append("\nconditionals\n");
+        sb.append(PREFIX_STRING);
         sb.append(this.number);
         sb.append("{\n");
 
