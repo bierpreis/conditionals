@@ -74,6 +74,7 @@ public class KnowledgeBase {
 
     }
 
+    //todo: this is really diffrent in infocf
     public boolean isConsistentWith(PConditional conditionalToTest) {
 
         //hauptquelle:
@@ -82,8 +83,13 @@ public class KnowledgeBase {
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
         //todo
+        if(this.number == 1 && conditionalToTest.getNumber() == 5)
+            System.out.println("lel");
+        boolean toleratesConditionalToTest = false;
         for (AbstractWorld world : signature.getPossibleWorlds()) {
+
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
+                toleratesConditionalToTest = true;
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
                     if (!conditional.tolerates(world)) {
