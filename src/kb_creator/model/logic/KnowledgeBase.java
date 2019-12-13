@@ -92,10 +92,10 @@ public class KnowledgeBase {
                     }
                 }
                 if (toleratesAll)
-                    return true; //todo: debug here. this returns sometimes if it should not
+                    return true;
             }
         }
-        return false;
+        return false; //todo: this returns sometimes false when it should not
 
     }
 
