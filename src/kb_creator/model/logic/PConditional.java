@@ -46,7 +46,7 @@ public class PConditional {
 
     }
 
-
+    //todo?
     public boolean tolerates(AbstractWorld world) {
         return toleranceFormula.evaluate(world);
     }
