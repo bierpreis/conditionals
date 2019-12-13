@@ -1,5 +1,6 @@
 package kb_creator.model.logic;
 
+import kb_creator.gui.left_panel.optionsPanel.warnings.AbstractWarningDialog;
 import kb_creator.model.logic.signature.AbstractSignature;
 import kb_creator.model.logic.signature.worlds.AbstractWorld;
 
@@ -83,7 +84,7 @@ public class KnowledgeBase {
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
         //todo
-        if(this.number == 1 && conditionalToTest.getNumber() == 5)
+        if (this.number == 1 && conditionalToTest.getNumber() == 5)
             System.out.println("lel");
         boolean toleratesConditionalToTest = false;
         for (AbstractWorld world : signature.getPossibleWorlds()) {
@@ -105,6 +106,21 @@ public class KnowledgeBase {
 
     }
 
+    public boolean isConsistentWith2(PConditional conditionalToTest) {
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
+            if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
+                AbstractFormula tolerannceFormula = new Tautology();
+                for (PConditional conditional : conditionalList) {
+                    tolerannceFormula = tolerannceFormula.and(conditional.getAntecedent().neg().or(conditional.getConsequence()));
+                }
+                if(tolerannceFormula.evaluate(world))
+                    return true;
+            }
+
+        }
+        return false;
+    }
+
 
     @Override
     public String toString() {
@@ -117,7 +133,7 @@ public class KnowledgeBase {
         StringBuilder sb = new StringBuilder();
 
         //this was used for writing only 1 kb per file.
-       // sb.append("signature\n");
+        // sb.append("signature\n");
         //sb.append(signature.toString().toLowerCase());
         //sb.append("\n\n");
 
@@ -183,7 +199,7 @@ public class KnowledgeBase {
         this.number = number;
     }
 
-    public AbstractSignature getSignature(){
+    public AbstractSignature getSignature() {
         return signature;
     }
 
