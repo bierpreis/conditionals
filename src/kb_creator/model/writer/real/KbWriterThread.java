@@ -72,7 +72,7 @@ public class KbWriterThread implements Runnable {
                 Thread.sleep(100);
                 System.out.println("waiting for kb writer flush to happen...");
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                return; //this should only happen by gui stop button.
             }
         }
     }
