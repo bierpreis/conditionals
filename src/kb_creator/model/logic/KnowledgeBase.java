@@ -205,4 +205,8 @@ public class KnowledgeBase {
         namePrefixString = kbNamePrefix;
     }
 
+    public String getNamePrefix(){
+        return namePrefixString;
+    }
+
 }

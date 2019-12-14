@@ -25,15 +25,14 @@ public class KbWriterThread implements Runnable {
 
     private volatile boolean flushRequested = false;
 
-    private final String kbNamePrefix;
 
-    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber, String kbNamePrefix) {
+    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
         this.numberOfDigitsString = "%0" + requestedFileNameLength + "d";
         this.requestedKbNumber = requestedKbNumber;
-        this.kbNamePrefix = kbNamePrefix;
+
     }
 
 
@@ -45,7 +44,7 @@ public class KbWriterThread implements Runnable {
 
             int counter = 0;
             while (counter < requestedKbNumber) {
-                if(flushRequested && queue.isEmpty())
+                if (flushRequested && queue.isEmpty())
                     writeKbListToFile(kbList);
 
                 try {
@@ -106,7 +105,7 @@ public class KbWriterThread implements Runnable {
 
         PrintWriter writer;
         try {
-            writer = new PrintWriter(currentIterationFilePath + this.kbNamePrefix + String.format(numberOfDigitsString, kbList.get(0).getNumber()) + ".txt", "UTF-8");
+            writer = new PrintWriter(currentIterationFilePath + kbList.get(0).getNamePrefix() + String.format(numberOfDigitsString, kbList.get(0).getNumber()) + ".txt", "UTF-8");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

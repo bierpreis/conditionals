@@ -10,15 +10,15 @@ public class KbFileWriter extends AbstractKbWriter {
     private KbWriterThread inconsistentWriter;
 
 
-    public KbFileWriter(String filePathToSave, int requestedFileNameLength, int requestedKbNumber, String kbNamePrefix) {
+    public KbFileWriter(String filePathToSave, int requestedFileNameLength, int requestedKbNumber) {
 
-        this.consistentWriter = new KbWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength, requestedKbNumber, kbNamePrefix);
+        this.consistentWriter = new KbWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength, requestedKbNumber);
         consistentThread = new Thread(consistentWriter);
         consistentThread.setName("ConsistentKbWriter");
         consistentThread.start();
 
 
-        this.inconsistentWriter = new KbWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength, requestedKbNumber, kbNamePrefix);
+        this.inconsistentWriter = new KbWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength, requestedKbNumber);
         inconsistentThread = new Thread(inconsistentWriter);
         inconsistentThread.setName("InconsistentKbWriter");
         inconsistentThread.start();
