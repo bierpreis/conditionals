@@ -41,13 +41,18 @@ public class KbWriterThread implements Runnable {
             List<KnowledgeBase> kbList = new ArrayList<>(requestedKbNumber);
 
             int counter = 0;
-            while (counter < requestedKbNumber && !flushRequested)
+            while (counter < requestedKbNumber) {
+                if(flushRequested && queue.isEmpty())
+                    writeKbListToFile(kbList);
+
                 try {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
+                    System.out.println("!!!!interrupted and flush requested!");
                     flushRequested = true;
                 }
+            }
             writeKbListToFile(kbList);
         }
         System.out.println("writer thread closed for " + subFolderName + " kbs");
@@ -70,13 +75,13 @@ public class KbWriterThread implements Runnable {
 
         while (!queue.isEmpty()) {
             try {
-                //todo: sometimes this wont finish
-                Thread.sleep(500);
+                Thread.sleep(100);
                 System.out.println("waiting for kb writer flush to happen...!!!");
             } catch (InterruptedException e) {
                 return; //this should only happen by gui stop button.
             }
         }
+        flushRequested = false;
     }
 
     public void newIteration(int k) {
