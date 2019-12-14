@@ -75,7 +75,7 @@ public class KnowledgeBase {
 
     }
 
-    //todo: this is really diffrent in infocf
+
     public boolean isConsistentWith(PConditional conditionalToTest) {
 
         //hauptquelle:
@@ -200,7 +200,6 @@ public class KnowledgeBase {
         return signature;
     }
 
-    //todo: set by gui
     public static void setKbNamePrefix(String kbNamePrefix){
         namePrefixString = kbNamePrefix;
     }
