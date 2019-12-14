@@ -241,13 +241,14 @@ public class KbCreator implements Runnable {
     }
 
 
-    //iteration change methods
 
+    //this is only called by gui stop button
     public void stopLoop() {
         kbWriter.stopThreads();
         this.creatorStatus = CreatorStatus.STOPPED;
     }
 
+    //this is only called when all iterations have finished
     private void finishAndStopLoop() {
         kbWriter.finishAndStopThreads();
         this.creatorStatus = CreatorStatus.FINISHED;
