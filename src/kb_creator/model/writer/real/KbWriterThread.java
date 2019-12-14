@@ -58,7 +58,7 @@ public class KbWriterThread implements Runnable {
         System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
 
-
+    //todo: finish iteration causes file to be written even when not reached max number.
     public void finishIteration() {
 
         while (queue.size() > requestedKbNumber) {

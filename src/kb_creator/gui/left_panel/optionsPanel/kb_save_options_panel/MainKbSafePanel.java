@@ -12,6 +12,8 @@ public class MainKbSafePanel extends JPanel {
 
     private KbNumberPanel kbNumberPanel;
 
+    private NamePrefixPanel namePrefixPanel;
+
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
@@ -22,12 +24,15 @@ public class MainKbSafePanel extends JPanel {
 
         kbNumberPanel = new KbNumberPanel();
 
+        namePrefixPanel = new NamePrefixPanel();
+
         nameLengthPanel = new NameLengthPanel();
 
         add(kbLocationPanel);
         add(kbCheckboxPanel);
 
         add(kbNumberPanel);
+        add(namePrefixPanel);
         add(nameLengthPanel);
 
     }
@@ -72,6 +77,10 @@ public class MainKbSafePanel extends JPanel {
 
     public int getKbNameLength() {
         return nameLengthPanel.getLength();
+    }
+
+    public String getKbNamePrefix() {
+        return namePrefixPanel.getPrefix();
     }
 
     public boolean isValueValid() {
