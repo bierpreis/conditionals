@@ -82,4 +82,8 @@ public class MainOptionsPanel extends JPanel {
     public int getKbNumber() {
         return mainKbSafePanel.getKbNumberPanel().getNumber();
     }
+
+    public String getKbNamePrefix(){
+        return mainKbSafePanel.getKbNamePrefix();
+    }
 }
