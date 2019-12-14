@@ -59,6 +59,7 @@ public class KbWriterThread implements Runnable {
         while (queue.size() > requestedKbNumber) {
             try {
                 Thread.sleep(100);
+
                 System.out.println("writer finishing iteration..");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -69,8 +70,9 @@ public class KbWriterThread implements Runnable {
 
         while (!queue.isEmpty()) {
             try {
-                Thread.sleep(100);
-                System.out.println("waiting for kb writer flush to happen...");
+                //todo: sometimes this wont finish
+                Thread.sleep(500);
+                System.out.println("waiting for kb writer flush to happen...!!!");
             } catch (InterruptedException e) {
                 return; //this should only happen by gui stop button.
             }
