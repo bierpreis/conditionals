@@ -45,8 +45,7 @@ public class PConditional {
         return this.number == otherConditional.getNumber();
 
     }
-
-    //todo?
+    
     public boolean tolerates(AbstractWorld world) {
         return toleranceFormula.evaluate(world);
     }
