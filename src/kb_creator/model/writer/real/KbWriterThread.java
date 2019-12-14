@@ -25,12 +25,15 @@ public class KbWriterThread implements Runnable {
 
     private volatile boolean flushRequested = false;
 
-    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
+    private final String kbNamePrefix;
+
+    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber, String kbNamePrefix) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
         this.numberOfDigitsString = "%0" + requestedFileNameLength + "d";
         this.requestedKbNumber = requestedKbNumber;
+        this.kbNamePrefix = kbNamePrefix;
     }
 
 
@@ -49,6 +52,7 @@ public class KbWriterThread implements Runnable {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
+                    //todo: remov and rehink
                     System.out.println("!!!!interrupted and flush requested!");
                     flushRequested = true;
                 }
@@ -76,6 +80,7 @@ public class KbWriterThread implements Runnable {
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);
+                //todo: rethink and remove
                 System.out.println("waiting for kb writer flush to happen...!!!");
             } catch (InterruptedException e) {
                 return; //this should only happen by gui stop button.
@@ -101,7 +106,7 @@ public class KbWriterThread implements Runnable {
 
         PrintWriter writer;
         try {
-            writer = new PrintWriter(currentIterationFilePath + String.format(numberOfDigitsString, kbList.get(0).getNumber()) + ".txt", "UTF-8");
+            writer = new PrintWriter(currentIterationFilePath + this.kbNamePrefix + String.format(numberOfDigitsString, kbList.get(0).getNumber()) + ".txt", "UTF-8");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
