@@ -93,11 +93,10 @@ public class KnowledgeBase {
                 toleratesConditionalToTest = true;
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
-                    if (!conditional.tolerates(world)) {
-                        toleratesAll = false;
-                        break;
-                    }
+                    toleratesAll = (toleratesAll && conditional.tolerates(world));
+
                 }
+
                 if (toleratesAll)
                     return true;
             }
@@ -113,7 +112,7 @@ public class KnowledgeBase {
                 for (PConditional conditional : conditionalList) {
                     tolerannceFormula = tolerannceFormula.and(conditional.getAntecedent().neg().or(conditional.getConsequence()));
                 }
-                if(tolerannceFormula.evaluate(world))
+                if (tolerannceFormula.evaluate(world))
                     return true;
             }
 
