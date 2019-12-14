@@ -20,7 +20,7 @@ public class BufferRadioBoxPanel extends JPanel {
     private ButtonGroup buttonGroup = new ButtonGroup();
 
     BufferRadioBoxPanel(MainBufferPanel mainBufferPanel) {
-        setBorder(BorderFactory.createTitledBorder("data structure"));
+        setBorder(BorderFactory.createTitledBorder("Data Structure"));
 
         buttonGroup.add(simpleRamBufferButton);
         buttonGroup.add(compressedRamBufferButton);
