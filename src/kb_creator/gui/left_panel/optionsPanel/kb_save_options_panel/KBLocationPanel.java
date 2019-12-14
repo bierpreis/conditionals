@@ -71,6 +71,7 @@ public class KBLocationPanel extends JPanel {
                 mainKbSafePanel.getKbLocationPanel().setEnabled(true);
                 mainKbSafePanel.getNameLengthPanel().setEnabled(true);
                 mainKbSafePanel.getKbNumberPanel().setEnabled(true);
+                mainKbSafePanel.getKbNamePrefixPanel().setEnabled(true);
 
                 if (fileToSave.exists()) {
                     new AlreadyExistsDialog(filePathToSave);
@@ -80,6 +81,7 @@ public class KBLocationPanel extends JPanel {
                     mainKbSafePanel.getKbLocationPanel().setEnabled(false);
                     mainKbSafePanel.getNameLengthPanel().setEnabled(false);
                     mainKbSafePanel.getKbNumberPanel().setEnabled(false);
+                    mainKbSafePanel.getKbNamePrefixPanel().setEnabled(false);
                 }
             }
             //deactivate if no path was selected
@@ -89,6 +91,7 @@ public class KBLocationPanel extends JPanel {
                 filePathToSave = null;
                 mainKbSafePanel.getNameLengthPanel().setEnabled(false);
                 mainKbSafePanel.getKbNumberPanel().setEnabled(false);
+                mainKbSafePanel.getKbNamePrefixPanel().setEnabled(false);
 
             }
 

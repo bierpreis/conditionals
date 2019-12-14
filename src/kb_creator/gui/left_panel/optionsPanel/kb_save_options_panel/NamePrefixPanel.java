@@ -18,25 +18,6 @@ public class NamePrefixPanel extends JPanel {
         add(prefixInputField);
     }
 
-    //todo: delete?
-    public boolean checkIfValueValid() {
-        int value;
-        try {
-            value = Integer.parseInt(prefixInputField.getText());
-        } catch (NumberFormatException e) {
-            prefixInputField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            new NameLengthWarningDialog();
-            return false;
-        }
-        if (value < 1) {
-            prefixInputField.setBorder(BorderFactory.createLineBorder(Color.RED));
-            new NameLengthWarningDialog();
-            return false;
-        }
-
-        return true;
-    }
-
     public String getPrefix() {
         return prefixInputField.getText();
     }

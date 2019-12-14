@@ -61,6 +61,7 @@ public class MainKbSafePanel extends JPanel {
         kbLocationPanel.init();
         nameLengthPanel.setEnabled(false);
         kbNumberPanel.setEnabled(false);
+        namePrefixPanel.setEnabled(false);
     }
 
     public KBLocationPanel getKbLocationPanel() {
@@ -89,5 +90,9 @@ public class MainKbSafePanel extends JPanel {
 
     public KbNumberPanel getKbNumberPanel() {
         return kbNumberPanel;
+    }
+
+    public NamePrefixPanel getKbNamePrefixPanel(){
+        return namePrefixPanel;
     }
 }
