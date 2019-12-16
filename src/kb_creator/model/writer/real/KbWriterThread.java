@@ -53,7 +53,8 @@ public class KbWriterThread implements Runnable {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
-                    flushRequested = true;
+                    //this triggers when iteration is finished and thread gets interrupted
+                    flushRequested = true; //todo. why is this set here to true AND in finish iteration? should be only one spot!
                 }
             }
             writeKbListToFile(kbList);
@@ -61,7 +62,7 @@ public class KbWriterThread implements Runnable {
         System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
 
-    //todo: this is shit. this doesn't wait until everything is written!
+    //todo: this is shit. it should wait until kblist in write method is empty too. boolean for that?
     public void finishIteration() {
 
         while (queue.size() > requestedKbNumber) {
@@ -74,7 +75,7 @@ public class KbWriterThread implements Runnable {
             }
         }
 
-        flushRequested = true;
+        //flushRequested = true;
 
         while (!queue.isEmpty()) {
             try {
