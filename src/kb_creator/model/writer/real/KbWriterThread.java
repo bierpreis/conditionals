@@ -21,15 +21,15 @@ public class KbWriterThread implements Runnable {
 
     private String numberOfDigitsString;
 
-    private int requestedKbNumber; //todo. rename. amount not number?!
+    private int maxKbInFile;
 
 
-    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
+    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int maxKbInFile) {
         this.subFolderName = subFolderName;
         this.queue = queue;
         this.rootFilePath = rootFilePath;
         this.numberOfDigitsString = "%0" + requestedFileNameLength + "d";
-        this.requestedKbNumber = requestedKbNumber;
+        this.maxKbInFile = maxKbInFile;
 
     }
 
@@ -38,10 +38,10 @@ public class KbWriterThread implements Runnable {
     public void run() {
         System.out.println("new writer thread started for " + subFolderName + " kbs");
         while (running) {
-            List<KnowledgeBase> kbList = new ArrayList<>(requestedKbNumber);
+            List<KnowledgeBase> kbList = new ArrayList<>(maxKbInFile);
 
             int counter = 0;
-            while (counter < requestedKbNumber) {
+            while (counter < maxKbInFile) {
 
                 try {
                     kbList.add(queue.take());
