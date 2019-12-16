@@ -23,8 +23,6 @@ public class KbWriterThread implements Runnable {
 
     private int requestedKbNumber; //todo. rename. amount not number?!
 
-    private volatile boolean flushRequested = false;
-
 
     public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int requestedKbNumber) {
         this.subFolderName = subFolderName;
@@ -50,8 +48,7 @@ public class KbWriterThread implements Runnable {
                     counter++;
                 } catch (InterruptedException e) {
                     //this triggers when iteration is finished and thread gets interrupted
-                    flushRequested = true; //todo: delete variable? rethink
-                    break; //todo: this should set sth like is finished. maybe this sets some variable and writelist sets the real is finished variable
+                    break;
                 }
             }
             writeKbListToFile(kbList);
@@ -59,39 +56,24 @@ public class KbWriterThread implements Runnable {
         System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
 
-    //todo: this is shit. it should wait until kblist in write method is empty too. boolean for that?
+
     public void finishIteration() {
 
-        while (queue.size() > requestedKbNumber) {
-            try {
-                Thread.sleep(100);
-
-                System.out.println("writer finishing iteration..");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        //flushRequested = true;
-
+        //this will make the calling thread (creator) to wait until queue has been written
         while (!queue.isEmpty()) {
             try {
                 Thread.sleep(100);
-                //todo: rethink and remove
-                System.out.println("waiting for kb writer flush to happen...!!!");
             } catch (InterruptedException e) {
-                throw new RuntimeException("!!!Stop was pressed!!");
-                //return; //this should only happen by gui stop button. //todo put this back
+
+                return; //this should only happen by gui stop button.
             }
         }
-        flushRequested = false;
     }
 
     public void newIteration(int k) {
 
         if(!queue.isEmpty())
             throw new RuntimeException("new iteration when queue is not empty! last iteration did not finish correctly!");
-        flushRequested = false;
         iterationCounter = 0;
         currentIterationFilePath = rootFilePath + (k) + "/" + subFolderName + "/";
         File consistentFolder = new File(currentIterationFilePath);
