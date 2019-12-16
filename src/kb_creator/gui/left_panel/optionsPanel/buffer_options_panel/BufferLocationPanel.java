@@ -81,8 +81,13 @@ public class BufferLocationPanel extends JPanel {
             component.setEnabled(enabled);
     }
 
-    public boolean isValueValid(){
-        return filePathToSave!=null;
+    public boolean isValueValid() {
+        if (filePathToSave == null) {
+            saveButton.setBorder(BorderFactory.createLineBorder(Color.RED));
+            //todo: warning here
+            return false;
+        }
+        return true;
     }
 
 }

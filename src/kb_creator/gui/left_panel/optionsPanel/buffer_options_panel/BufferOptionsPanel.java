@@ -40,7 +40,7 @@ public class BufferOptionsPanel extends JPanel {
 
 
     public boolean isValueValid() {
-        return bufferSizePanel.isValueValid() && (bufferLocationPanel.isValueValid()); //todo: warning
+        return bufferSizePanel.isValueValid() && (bufferLocationPanel.isValueValid()); //todo: only when hdd buffering selected!!
     }
 
     public BufferSizePanel getBufferSizePanel() {
