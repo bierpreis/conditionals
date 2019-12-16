@@ -21,7 +21,7 @@ public class KbWriterThread implements Runnable {
 
     private String numberOfDigitsString;
 
-    private int requestedKbNumber;
+    private int requestedKbNumber; //todo. rename. amount not number?!
 
     private volatile boolean flushRequested = false;
 
@@ -61,7 +61,7 @@ public class KbWriterThread implements Runnable {
         System.out.println("writer thread closed for " + subFolderName + " kbs");
     }
 
-    //todo: finish iteration causes file to be written even when not reached max number.
+    //todo: this is shit. this doesn't wait until everything is written!
     public void finishIteration() {
 
         while (queue.size() > requestedKbNumber) {
@@ -90,6 +90,9 @@ public class KbWriterThread implements Runnable {
     }
 
     public void newIteration(int k) {
+
+        if(!queue.isEmpty())
+            throw new RuntimeException("new iteration when queue is not empty! last iteration did not finish correctly!");
         flushRequested = false;
         iterationCounter = 0;
         currentIterationFilePath = rootFilePath + (k) + "/" + subFolderName + "/";
