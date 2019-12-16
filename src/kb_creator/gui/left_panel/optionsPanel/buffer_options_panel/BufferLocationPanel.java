@@ -12,7 +12,7 @@ import java.io.File;
 
 public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
-    private String filePathToSave = null; //todo: if saving rejected because file exists it still overwrites!
+    private String filePathToSave = null;
     private MainBufferPanel mainBufferPanel;
 
     public BufferLocationPanel(MainBufferPanel mainBufferPanel) {
@@ -55,6 +55,7 @@ public class BufferLocationPanel extends JPanel {
                     new AlreadyExistsDialog(filePathToSave);
                     mainBufferPanel.getBufferSizePanel().setEnabled(false);
                     mainBufferPanel.getDeleteCheckbox().setEnabled(false);
+                    filePathToSave = null;
                 }
 
             }
