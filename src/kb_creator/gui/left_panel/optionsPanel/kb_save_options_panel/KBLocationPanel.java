@@ -73,12 +73,12 @@ public class KBLocationPanel extends JPanel {
                 mainKbSafePanel.getKbNumberPanel().setEnabled(true);
                 mainKbSafePanel.getKbNamePrefixPanel().setEnabled(true);
 
+
                 if (fileToSave.exists()) {
                     new AlreadyExistsDialog(filePathToSave);
                     filePathToSave = null;
                     mainKbSafePanel.getKbCheckboxPanel().setEnabled(false);
                     mainKbSafePanel.getKbCheckboxPanel().setBoxSelected(false);
-                    mainKbSafePanel.getKbLocationPanel().setEnabled(false);
                     mainKbSafePanel.getNameLengthPanel().setEnabled(false);
                     mainKbSafePanel.getKbNumberPanel().setEnabled(false);
                     mainKbSafePanel.getKbNamePrefixPanel().setEnabled(false);
