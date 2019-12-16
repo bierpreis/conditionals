@@ -21,11 +21,12 @@ public class RightPanel extends JPanel {
         mainCreatorPanel = new MainCreatorPanel(actionPanel);
         add(mainCreatorPanel);
 
-        writerStatusPanel = new WriterStatusPanel();
-        add(writerStatusPanel);
 
         bufferStatusPanel = new BufferStatusPanel();
         add(bufferStatusPanel);
+
+        writerStatusPanel = new WriterStatusPanel();
+        add(writerStatusPanel);
 
         memoryPanel = new MemoryPanel();
         add(memoryPanel);
