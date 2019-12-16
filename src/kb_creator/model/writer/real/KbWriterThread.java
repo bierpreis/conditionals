@@ -47,7 +47,7 @@ public class KbWriterThread implements Runnable {
 
                 //this should avoid waiting on queue when flush is requested
                 if (flushRequested && queue.isEmpty())
-                    writeKbListToFile(kbList);
+                    writeKbListToFile(kbList); //todo: this causes the problems
 
                 try {
                     kbList.add(queue.take());
