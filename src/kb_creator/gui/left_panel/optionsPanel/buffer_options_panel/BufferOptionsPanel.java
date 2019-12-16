@@ -40,7 +40,7 @@ public class BufferOptionsPanel extends JPanel {
 
 
     public boolean isValueValid() {
-        return bufferSizePanel.isValueValid();
+        return bufferSizePanel.isValueValid() && (bufferLocationPanel.isValueValid()); //todo: warning
     }
 
     public BufferSizePanel getBufferSizePanel() {
@@ -55,5 +55,6 @@ public class BufferOptionsPanel extends JPanel {
     public JCheckBox getDeleteTempFilesCheckBox() {
         return deleteTempFilesCheckbox;
     }
+
 
 }

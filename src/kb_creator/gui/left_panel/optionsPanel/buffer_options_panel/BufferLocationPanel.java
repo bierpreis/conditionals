@@ -11,7 +11,7 @@ import java.io.File;
 
 public class BufferLocationPanel extends JPanel {
     private JButton saveButton;
-    private String filePathToSave;
+    private String filePathToSave = null; //todo: if saving rejected because file exists it still overwrites!
     private MainBufferPanel mainBufferPanel;
 
     public BufferLocationPanel(MainBufferPanel mainBufferPanel) {
@@ -80,4 +80,9 @@ public class BufferLocationPanel extends JPanel {
         for (Component component : getComponents())
             component.setEnabled(enabled);
     }
+
+    public boolean isValueValid(){
+        return filePathToSave!=null;
+    }
+
 }
