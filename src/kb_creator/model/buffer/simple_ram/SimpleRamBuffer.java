@@ -26,6 +26,5 @@ public class SimpleRamBuffer extends CompressedRamBuffer {
             lastIterationThread.start();
         }
 
-        System.out.println("finished preparing iteration: " + k);
     }
 }

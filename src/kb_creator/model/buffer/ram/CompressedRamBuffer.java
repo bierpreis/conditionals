@@ -57,8 +57,6 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
             lastIterationThread.setName("last iteration thread for k + k");
             lastIterationThread.start();
         }
-
-        System.out.println("finished preparing iteration: " + k);
     }
 
     @Override
