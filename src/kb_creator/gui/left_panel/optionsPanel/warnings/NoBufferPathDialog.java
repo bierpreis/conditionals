@@ -5,7 +5,7 @@ public class NoBufferPathDialog extends AbstractWarningDialog {
     public NoBufferPathDialog() {
         super();
 
-        descriptionLabel.setText("No Path for HDD Buffer selected.");
+        descriptionLabel.setText("No Path for Hdd Buffer selected.");
         descriptionLabel3.setText("Choose valid Folder or use RAM for buffering.");
 
         repaint();
