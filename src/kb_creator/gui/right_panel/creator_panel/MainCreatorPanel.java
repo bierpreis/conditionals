@@ -13,7 +13,7 @@ public class MainCreatorPanel extends JPanel {
 
     public MainCreatorPanel(ActionPanel actionPanel) {
         setPreferredSize(new Dimension(350, 300));
-        setBorder(BorderFactory.createTitledBorder("KB Creator")); //todo: rename?
+        setBorder(BorderFactory.createTitledBorder("KB Creator Status"));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //add(Box.createVerticalGlue());
 
