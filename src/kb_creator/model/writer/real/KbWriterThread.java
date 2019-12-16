@@ -54,7 +54,8 @@ public class KbWriterThread implements Runnable {
                     counter++;
                 } catch (InterruptedException e) {
                     //this triggers when iteration is finished and thread gets interrupted
-                    flushRequested = true; //todo. why is this set here to true AND in finish iteration? should be only one spot!
+                    flushRequested = true; //todo. why is this set here to true AND in finish iteration? should be only one spot! maybe break here?
+                    break;
                 }
             }
             writeKbListToFile(kbList);
