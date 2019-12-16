@@ -65,7 +65,7 @@ public class MainOptionsPanel extends JPanel {
         return mainBufferPanel.getDeleteCheckbox().isSelected();
     }
 
-
+    //todo: check if hdd buffering is selected and file is chosen!!
     public boolean areValuesValid() {
         return (mainBufferPanel.isValueValid() && mainKbSafePanel.isValueValid());
     }

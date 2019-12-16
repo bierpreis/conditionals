@@ -47,7 +47,7 @@ public class BufferOptionsPanel extends JPanel {
         return bufferSizePanel;
     }
 
-
+    //
     public BufferLocationPanel getBufferLocationPanel() {
         return bufferLocationPanel;
     }
