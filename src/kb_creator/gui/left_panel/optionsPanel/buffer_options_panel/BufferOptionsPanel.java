@@ -15,7 +15,7 @@ public class BufferOptionsPanel extends JPanel {
 
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(BorderFactory.createTitledBorder("Hdd buffer options"));
+        setBorder(BorderFactory.createTitledBorder("Hdd Buffer Options"));
         add(bufferLocationPanel);
 
         bufferSizePanel = new BufferSizePanel();
