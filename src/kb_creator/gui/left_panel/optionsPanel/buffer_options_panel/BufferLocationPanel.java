@@ -1,6 +1,7 @@
 package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
 
 import kb_creator.gui.left_panel.optionsPanel.warnings.AlreadyExistsDialog;
+import kb_creator.gui.left_panel.optionsPanel.warnings.NoBufferPathDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -84,7 +85,7 @@ public class BufferLocationPanel extends JPanel {
     public boolean isValueValid() {
         if (filePathToSave == null) {
             saveButton.setBorder(BorderFactory.createLineBorder(Color.RED));
-            //todo: warning here
+            new NoBufferPathDialog();
             return false;
         }
         return true;
