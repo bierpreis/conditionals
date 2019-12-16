@@ -51,7 +51,7 @@ public class KbWriterThread implements Runnable {
                 } catch (InterruptedException e) {
                     //this triggers when iteration is finished and thread gets interrupted
                     flushRequested = true; //todo: delete variable? rethink
-                    break;
+                    break; //todo: this should set sth like is finished. maybe this sets some variable and writelist sets the real is finished variable
                 }
             }
             writeKbListToFile(kbList);
@@ -125,12 +125,13 @@ public class KbWriterThread implements Runnable {
 
         writer.append("\nconditionals\n");
 
+        //this should be a bit faster then incrementing counters in loop.
+        iterationCounter = iterationCounter + kbList.size();
+        totalCounter = totalCounter + kbList.size();
+
         for (KnowledgeBase knowledgeBase : kbList) {
             writer.append("\n");
             writer.append(knowledgeBase.toFileString());
-
-            iterationCounter++; //todo: take out of loop? atomic? volatile?
-            totalCounter++;
         }
         writer.flush();
         writer.close();
