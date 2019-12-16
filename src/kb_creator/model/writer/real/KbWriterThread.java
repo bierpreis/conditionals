@@ -82,7 +82,8 @@ public class KbWriterThread implements Runnable {
                 //todo: rethink and remove
                 System.out.println("waiting for kb writer flush to happen...!!!");
             } catch (InterruptedException e) {
-                return; //this should only happen by gui stop button.
+                throw new RuntimeException("!!!Stop was pressed!!");
+                //return; //this should only happen by gui stop button. //todo put this back
             }
         }
         flushRequested = false;
@@ -127,7 +128,7 @@ public class KbWriterThread implements Runnable {
             writer.append("\n");
             writer.append(knowledgeBase.toFileString());
 
-            iterationCounter++;
+            iterationCounter++; //todo: take out of loop? atomic? volatile?
             totalCounter++;
         }
         writer.flush();
