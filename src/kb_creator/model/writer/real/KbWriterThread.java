@@ -44,6 +44,8 @@ public class KbWriterThread implements Runnable {
 
             int counter = 0;
             while (counter < requestedKbNumber) {
+
+                //this should avoid waiting on queue when flush is requested
                 if (flushRequested && queue.isEmpty())
                     writeKbListToFile(kbList);
 
@@ -51,8 +53,6 @@ public class KbWriterThread implements Runnable {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
-                    //todo: remov and rehink
-                    System.out.println("!!!!interrupted and flush requested!");
                     flushRequested = true;
                 }
             }
