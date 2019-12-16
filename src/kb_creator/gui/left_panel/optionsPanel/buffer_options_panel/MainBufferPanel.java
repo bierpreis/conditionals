@@ -41,7 +41,12 @@ public class MainBufferPanel extends JPanel {
 
 
     public boolean isValueValid() {
-        return bufferOptionsPanel.isValueValid();
+        if (bufferRadioBoxPanel.getBufferingType().equals(BufferingType.HDD))
+            return bufferOptionsPanel.isValueValid();
+        else {
+            return true;
+
+        }
     }
 
 

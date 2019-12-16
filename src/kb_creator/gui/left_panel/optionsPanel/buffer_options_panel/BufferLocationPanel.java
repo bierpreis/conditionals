@@ -91,4 +91,8 @@ public class BufferLocationPanel extends JPanel {
         return true;
     }
 
+    public void resetWarningColor(){
+        saveButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    }
+
 }

@@ -66,6 +66,7 @@ public class BufferRadioBoxPanel extends JPanel {
         @Override
         public void itemStateChanged(ItemEvent itemEvent) {
             mainBufferPanel.getBufferOptionsPanel().getBufferLocationPanel().setEnabled(hddBufferButton.isSelected());
+            mainBufferPanel.getBufferOptionsPanel().resetWarningColor();
         }
     }
 }

@@ -40,7 +40,7 @@ public class BufferOptionsPanel extends JPanel {
 
 
     public boolean isValueValid() {
-        return bufferSizePanel.isValueValid() && (bufferLocationPanel.isValueValid()); //todo: only when hdd buffering selected!!
+        return bufferSizePanel.isValueValid() && (bufferLocationPanel.isValueValid());
     }
 
     public BufferSizePanel getBufferSizePanel() {
@@ -54,6 +54,10 @@ public class BufferOptionsPanel extends JPanel {
 
     public JCheckBox getDeleteTempFilesCheckBox() {
         return deleteTempFilesCheckbox;
+    }
+
+    public void resetWarningColor(){
+        bufferLocationPanel.resetWarningColor();
     }
 
 
