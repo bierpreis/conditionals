@@ -45,16 +45,12 @@ public class KbWriterThread implements Runnable {
             int counter = 0;
             while (counter < requestedKbNumber) {
 
-                //this should avoid waiting on queue when flush is requested
-                if (flushRequested && queue.isEmpty())
-                    writeKbListToFile(kbList); //todo: this causes the problems
-
                 try {
                     kbList.add(queue.take());
                     counter++;
                 } catch (InterruptedException e) {
                     //this triggers when iteration is finished and thread gets interrupted
-                    flushRequested = true; //todo. why is this set here to true AND in finish iteration? should be only one spot! maybe break here?
+                    flushRequested = true; //todo: delete variable? rethink
                     break;
                 }
             }
