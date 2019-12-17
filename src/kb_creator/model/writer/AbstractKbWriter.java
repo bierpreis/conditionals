@@ -11,7 +11,7 @@ public abstract class AbstractKbWriter {
     protected volatile WriterStatus status;
 
     //arrayblockingqueue works a bit better than linkedblockingqueue
-    //todo. queue should be set bigger then filesize?
+    //50k is a bit big. even 1 would work but slower
     protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(50000);
     protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(50000);
 
