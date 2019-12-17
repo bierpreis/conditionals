@@ -16,7 +16,7 @@ public class BufferStatusPanel extends JPanel {
 
     public BufferStatusPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
-        setBorder(BorderFactory.createTitledBorder("Buffering")); //todo: neuer screenshot mit dem hier und buffering über kb writer!
+        setBorder(BorderFactory.createTitledBorder("Buffering"));
 
 
         Box vBox = Box.createVerticalBox();
