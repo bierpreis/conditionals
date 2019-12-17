@@ -86,17 +86,13 @@ public class KnowledgeBase {
         //todo
         if (this.number == 1 && conditionalToTest.getNumber() == 5)
             System.out.println("lel");
-        boolean toleratesConditionalToTest = false;
         for (AbstractWorld world : signature.getPossibleWorlds()) {
 
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
-                toleratesConditionalToTest = true;
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
                     toleratesAll = (toleratesAll && conditional.tolerates(world));
-
                 }
-
                 if (toleratesAll)
                     return true;
             }
