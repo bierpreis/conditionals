@@ -75,7 +75,7 @@ public class KnowledgeBase {
 
     }
 
-
+    //todo: this should be called tolerates(conditional?). see goldszmit/pearl s 64 def 3
     public boolean isConsistentWith(PConditional conditionalToTest) {
 
         //hauptquelle:
