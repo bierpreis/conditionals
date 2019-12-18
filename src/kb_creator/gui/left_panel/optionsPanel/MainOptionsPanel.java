@@ -36,9 +36,6 @@ public class MainOptionsPanel extends JPanel {
         throw new RuntimeException("No valid Signature:" + signature);
     }
 
-    public String getKbPath() {
-        return mainKbSafePanel.getFileLocation();
-    }
 
     public String getBufferPath() {
         return mainBufferPanel.getBufferFilePath();
@@ -75,13 +72,6 @@ public class MainOptionsPanel extends JPanel {
         mainKbSafePanel.init();
     }
 
-    public int getKbNameLength() {
-        return mainKbSafePanel.getKbNameLength();
-    }
-
-    public int getKbNumber() {
-        return mainKbSafePanel.getKbNumberPanel().getNumber();
-    }
 
     public String getKbNamePrefix(){
         return mainKbSafePanel.getKbNamePrefix();

@@ -40,17 +40,13 @@ public class MainWindow {
 
     }
 
-    //todo: remove old writer stuff
+
     public AbstractSignature getSignature() {
         return leftPanel.getSignature();
     }
 
     public JFrame getMainWindow() {
         return mainWindow;
-    }
-
-    public String getKbFilePath() {
-        return leftPanel.getKBPath();
     }
 
     public BufferingType getBufferingType() {
@@ -69,13 +65,6 @@ public class MainWindow {
         return leftPanel;
     }
 
-    public int getKbNameLength(){
-        return leftPanel.getKbNameLength();
-    }
-
-    public int getKbNumber(){
-        return leftPanel.getMainOptionsPanel().getKbNumber();
-    }
 
     public String getKbNamePrefix(){
         return leftPanel.getKbnamePrefix();

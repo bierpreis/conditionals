@@ -39,10 +39,6 @@ public class MainKbSafePanel extends JPanel {
 
     }
 
-    public String getFileLocation() {
-        return kbLocationPanel.getFilePath();
-
-    }
 
     public void setButtonActive(boolean active) {
         kbCheckboxPanel.setBoxEnabled(active);
@@ -76,10 +72,6 @@ public class MainKbSafePanel extends JPanel {
 
     public KBCheckboxPanel getKbCheckboxPanel() {
         return kbCheckboxPanel;
-    }
-
-    public int getKbNameLength() {
-        return nameLengthPanel.getLength();
     }
 
     public String getKbNamePrefix() {

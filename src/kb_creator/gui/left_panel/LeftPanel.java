@@ -35,10 +35,6 @@ public class LeftPanel extends JPanel {
     }
 
 
-    public String getKBPath() {
-        return mainOptionsPanel.getKbPath();
-    }
-
     public String getCpFilePath() {
         return mainOptionsPanel.getBufferPath();
     }
@@ -55,9 +51,6 @@ public class LeftPanel extends JPanel {
         return mainOptionsPanel;
     }
 
-    public int getKbNameLength(){
-        return mainOptionsPanel.getKbNameLength();
-    }
 
     public String getKbnamePrefix(){
         return mainOptionsPanel.getKbNamePrefix();
