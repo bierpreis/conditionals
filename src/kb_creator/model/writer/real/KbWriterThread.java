@@ -114,6 +114,7 @@ public class KbWriterThread implements Runnable {
         iterationCounter = iterationCounter + kbList.size();
         totalCounter = totalCounter + kbList.size();
 
+        //todo. how to implement numbers saving?
         for (KnowledgeBase knowledgeBase : kbList) {
             writer.append("\n");
             writer.append(knowledgeBase.toFileString());
