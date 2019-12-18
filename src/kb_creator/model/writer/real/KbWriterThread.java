@@ -1,6 +1,7 @@
 package kb_creator.model.writer.real;
 
 import kb_creator.model.logic.KnowledgeBase;
+import kb_creator.model.writer.KbWriterOptions;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -24,12 +25,12 @@ public class KbWriterThread implements Runnable {
     private int maxKbInFile;
 
 
-    public KbWriterThread(String rootFilePath, String subFolderName, BlockingQueue<KnowledgeBase> queue, int requestedFileNameLength, int maxKbInFile) {
+    public KbWriterThread(String subFolderName, BlockingQueue<KnowledgeBase> queue, KbWriterOptions writerOptions) {
         this.subFolderName = subFolderName;
         this.queue = queue;
-        this.rootFilePath = rootFilePath;
-        this.numberOfDigitsString = "%0" + requestedFileNameLength + "d";
-        this.maxKbInFile = maxKbInFile;
+        this.rootFilePath = writerOptions.getFilePath();
+        this.numberOfDigitsString = "%0" + writerOptions.getFileNameLength() + "d";
+        this.maxKbInFile = writerOptions.getRequestedKbNumber();
 
     }
 

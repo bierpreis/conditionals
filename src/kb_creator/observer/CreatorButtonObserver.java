@@ -48,7 +48,7 @@ public class CreatorButtonObserver implements ActionListener {
 
                 KnowledgeBase.setKbNamePrefix(mainWindow.getKbNamePrefix());
 
-                creatorThreadObject = new KbCreator(mainWindow.getSignature(), mainWindow.getKbFilePath(), candidateBuffer, mainWindow.getKbNameLength(), mainWindow.getKbNumber());
+                creatorThreadObject = new KbCreator(mainWindow.getSignature(),  candidateBuffer, mainWindow.getWriterOptions());
 
                 creatorThread = new Thread(creatorThreadObject);
                 creatorThread.setName("MainCreatorThread");

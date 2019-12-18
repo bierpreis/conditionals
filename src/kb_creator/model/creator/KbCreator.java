@@ -9,6 +9,8 @@ import kb_creator.model.logic.PConditional;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.KbWriterOptions;
+import kb_creator.model.writer.WriterFactory;
 import kb_creator.model.writer.real.KbFileWriter;
 import kb_creator.model.writer.dummy.KbDummyWriter;
 import nfc_creator.model.NfcCreator;
@@ -47,7 +49,7 @@ public class KbCreator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    public KbCreator(AbstractSignature signature, String kbFilePath, AbstractPairBuffer l, int requestedFileNameLength, int requestedKbNumber) {
+    public KbCreator(AbstractSignature signature,  AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
         this.newIterationQueue = l.getNextIterationQueue();
         this.lastIterationQueue = l.getLastIterationQueue();
@@ -60,11 +62,7 @@ public class KbCreator implements Runnable {
         creatorStatus = CreatorStatus.NOT_STARTED;
         this.signature = signature;
 
-        //kbFilePath is null when no buffering is requested
-        if (kbFilePath != null)
-            kbWriter = new KbFileWriter(kbFilePath, requestedFileNameLength, requestedKbNumber);
-        else
-            kbWriter = new KbDummyWriter();
+        kbWriter = WriterFactory.getKbWriter(writerOptions);
 
         consistentWriterQueue = kbWriter.getConsistentQueue();
 
@@ -179,7 +177,6 @@ public class KbCreator implements Runnable {
                 iterationPairCounter++;
 
 
-
                 //line 9
                 for (PConditional r : currentPair.getCandidatesList()) {
 
@@ -239,7 +236,6 @@ public class KbCreator implements Runnable {
         creatorStatus = CreatorStatus.FINISHED;
         finishAndStopLoop();
     }
-
 
 
     //this is only called by gui stop button

@@ -1,6 +1,7 @@
 package kb_creator.gui.left_panel;
 
 import kb_creator.model.buffer.BufferingType;
+import kb_creator.model.writer.KbWriterOptions;
 import kb_creator.observer.CreatorButtonObserver;
 import kb_creator.gui.left_panel.optionsPanel.MainOptionsPanel;
 import kb_creator.model.logic.signature.AbstractSignature;
@@ -60,6 +61,10 @@ public class LeftPanel extends JPanel {
 
     public String getKbnamePrefix(){
         return mainOptionsPanel.getKbNamePrefix();
+    }
+
+    public KbWriterOptions getKbWriterOptions(){
+        return mainOptionsPanel.getKbWriterOptions();
     }
 
 

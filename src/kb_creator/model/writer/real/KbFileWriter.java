@@ -1,6 +1,7 @@
 package kb_creator.model.writer.real;
 
 import kb_creator.model.writer.AbstractKbWriter;
+import kb_creator.model.writer.KbWriterOptions;
 import kb_creator.model.writer.WriterStatus;
 
 
@@ -10,15 +11,17 @@ public class KbFileWriter extends AbstractKbWriter {
     private KbWriterThread inconsistentWriter;
 
 
-    public KbFileWriter(String filePathToSave, int requestedFileNameLength, int requestedKbNumber) {
+    public KbFileWriter(KbWriterOptions writerOptions) {
 
-        this.consistentWriter = new KbWriterThread(filePathToSave, "consistent", consistentWriterQueue, requestedFileNameLength, requestedKbNumber);
+
+
+        this.consistentWriter = new KbWriterThread( "consistent", consistentWriterQueue,  writerOptions);
         consistentThread = new Thread(consistentWriter);
         consistentThread.setName("ConsistentKbWriter");
         consistentThread.start();
 
 
-        this.inconsistentWriter = new KbWriterThread(filePathToSave, "inconsistent", inconsistentWriterQueue, requestedFileNameLength, requestedKbNumber);
+        this.inconsistentWriter = new KbWriterThread("inconsistent", inconsistentWriterQueue, writerOptions);
         inconsistentThread = new Thread(inconsistentWriter);
         inconsistentThread.setName("InconsistentKbWriter");
         inconsistentThread.start();

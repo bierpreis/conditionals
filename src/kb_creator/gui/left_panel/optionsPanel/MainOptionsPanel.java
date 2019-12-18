@@ -6,6 +6,7 @@ import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.logic.signature.AB;
 import kb_creator.model.logic.signature.ABC;
 import kb_creator.model.logic.signature.AbstractSignature;
+import kb_creator.model.writer.KbWriterOptions;
 
 import javax.swing.*;
 import java.awt.*;
@@ -84,5 +85,9 @@ public class MainOptionsPanel extends JPanel {
 
     public String getKbNamePrefix(){
         return mainKbSafePanel.getKbNamePrefix();
+    }
+
+    public KbWriterOptions getKbWriterOptions(){
+        return mainKbSafePanel.getKbWriterOptions();
     }
 }

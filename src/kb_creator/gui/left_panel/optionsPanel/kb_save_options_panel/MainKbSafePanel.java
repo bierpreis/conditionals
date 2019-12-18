@@ -1,6 +1,8 @@
 package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
 
+import kb_creator.model.writer.KbWriterOptions;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -92,7 +94,21 @@ public class MainKbSafePanel extends JPanel {
         return kbNumberPanel;
     }
 
-    public NamePrefixPanel getKbNamePrefixPanel(){
+    public NamePrefixPanel getKbNamePrefixPanel() {
         return namePrefixPanel;
+    }
+
+    public KbWriterOptions getKbWriterOptions() {
+        KbWriterOptions writerOptions = new KbWriterOptions();
+
+        writerOptions.setFileNameLength(nameLengthPanel.getLength());
+
+        writerOptions.setFilePath(kbLocationPanel.getFilePath());
+
+        writerOptions.setRequestedKbNumber(kbNumberPanel.getNumber());
+
+        writerOptions.setRealWriter(kbLocationPanel.getFilePath() == null);
+
+        return writerOptions;
     }
 }
