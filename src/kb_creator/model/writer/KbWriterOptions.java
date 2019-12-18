@@ -14,12 +14,12 @@ public class KbWriterOptions {
     private int requestedKbNumber;
 
 
-    public void setRealWriter(boolean isRealWriter){
-        this.realWriter = isRealWriter;
-    }
 
     public void setFilePath(String filePath){
         this.filePath = filePath;
+
+        //if path is null no real writer is requested
+        realWriter = filePath != null;
     }
 
     public void setFileNameLength(int requestedFileNameLength){

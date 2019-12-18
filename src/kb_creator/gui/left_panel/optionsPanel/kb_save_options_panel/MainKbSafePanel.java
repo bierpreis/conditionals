@@ -107,8 +107,6 @@ public class MainKbSafePanel extends JPanel {
 
         writerOptions.setRequestedKbNumber(kbNumberPanel.getNumber());
 
-        writerOptions.setRealWriter(kbLocationPanel.getFilePath() == null);
-
         return writerOptions;
     }
 }

@@ -73,6 +73,8 @@ public class KbWriterThread implements Runnable {
 
     public void newIteration(int k) {
 
+
+        //todo: this triggered once 18.12. maybe stop was pressed?
         if(!queue.isEmpty())
             throw new RuntimeException("new iteration when queue is not empty! last iteration did not finish correctly!");
         iterationCounter = 0;
