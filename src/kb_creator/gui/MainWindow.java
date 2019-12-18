@@ -40,6 +40,7 @@ public class MainWindow {
 
     }
 
+    //todo: remove old writer stuff
     public AbstractSignature getSignature() {
         return leftPanel.getSignature();
     }
