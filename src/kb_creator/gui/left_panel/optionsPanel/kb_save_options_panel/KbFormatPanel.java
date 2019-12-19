@@ -17,6 +17,8 @@ public class KbFormatPanel extends JPanel {
         add(infOfcButton);
 
         infOfcButton.setSelected(true);
+
+        setBorder(BorderFactory.createTitledBorder("KB Format:"));
     }
 
     public boolean isNumbersActive(){
