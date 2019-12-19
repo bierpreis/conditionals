@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class NameLengthPanel extends JPanel {
     private JTextField lengthField = new JTextField("1");
-    private JLabel descriptionLabel = new JLabel("File Name Length: ");
+    private JLabel descriptionLabel = new JLabel("Minimal Kb Name Length: ");
 
 
     public NameLengthPanel() {
