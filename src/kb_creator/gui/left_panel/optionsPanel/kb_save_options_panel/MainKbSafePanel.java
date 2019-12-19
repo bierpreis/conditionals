@@ -1,7 +1,6 @@
 package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
 
-import kb_creator.gui.left_panel.optionsPanel.buffer_options_panel.BufferFormatPanel;
 import kb_creator.model.writer.KbWriterOptions;
 
 import javax.swing.*;
@@ -17,7 +16,7 @@ public class MainKbSafePanel extends JPanel {
 
     private NamePrefixPanel namePrefixPanel;
 
-    private BufferFormatPanel bufferFormatPanel;
+    private KbFormatPanel kbFormatPanel;
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
@@ -32,7 +31,7 @@ public class MainKbSafePanel extends JPanel {
 
         nameLengthPanel = new NameLengthPanel();
 
-        bufferFormatPanel = new BufferFormatPanel();
+        kbFormatPanel = new KbFormatPanel();
 
         add(kbLocationPanel);
         add(kbCheckboxPanel);
@@ -41,7 +40,7 @@ public class MainKbSafePanel extends JPanel {
         add(namePrefixPanel);
         add(nameLengthPanel);
 
-        add(bufferFormatPanel);
+        add(kbFormatPanel);
 
     }
 
@@ -66,6 +65,7 @@ public class MainKbSafePanel extends JPanel {
         nameLengthPanel.setEnabled(false);
         kbNumberPanel.setEnabled(false);
         namePrefixPanel.setEnabled(false);
+        kbFormatPanel.setEnabled(false);
     }
 
     public KBLocationPanel getKbLocationPanel() {
@@ -96,6 +96,10 @@ public class MainKbSafePanel extends JPanel {
         return namePrefixPanel;
     }
 
+    public KbFormatPanel getKbFormatPanel(){
+        return kbFormatPanel;
+    }
+
     public KbWriterOptions getKbWriterOptions() {
         KbWriterOptions writerOptions = new KbWriterOptions();
 
@@ -105,7 +109,7 @@ public class MainKbSafePanel extends JPanel {
 
         writerOptions.setRequestedKbNumber(kbNumberPanel.getNumber());
 
-        writerOptions.setNumbersActive(bufferFormatPanel.isNumbersActive());
+        writerOptions.setNumbersActive(kbFormatPanel.isNumbersActive());
 
         return writerOptions;
     }

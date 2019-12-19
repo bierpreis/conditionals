@@ -72,6 +72,7 @@ public class KBLocationPanel extends JPanel {
                 mainKbSafePanel.getNameLengthPanel().setEnabled(true);
                 mainKbSafePanel.getKbNumberPanel().setEnabled(true);
                 mainKbSafePanel.getKbNamePrefixPanel().setEnabled(true);
+                mainKbSafePanel.getKbFormatPanel().setEnabled(true);
 
 
                 if (fileToSave.exists()) {
@@ -82,6 +83,7 @@ public class KBLocationPanel extends JPanel {
                     mainKbSafePanel.getNameLengthPanel().setEnabled(false);
                     mainKbSafePanel.getKbNumberPanel().setEnabled(false);
                     mainKbSafePanel.getKbNamePrefixPanel().setEnabled(false);
+                    mainKbSafePanel.getKbFormatPanel().setEnabled(false);
                 }
             }
             //deactivate if no path was selected
@@ -92,6 +94,7 @@ public class KBLocationPanel extends JPanel {
                 mainKbSafePanel.getNameLengthPanel().setEnabled(false);
                 mainKbSafePanel.getKbNumberPanel().setEnabled(false);
                 mainKbSafePanel.getKbNamePrefixPanel().setEnabled(false);
+                mainKbSafePanel.getKbFormatPanel().setEnabled(false);
 
             }
 

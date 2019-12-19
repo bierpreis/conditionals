@@ -1,14 +1,15 @@
-package kb_creator.gui.left_panel.optionsPanel.buffer_options_panel;
+package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class BufferFormatPanel extends JPanel {
+public class KbFormatPanel extends JPanel {
     private JRadioButton numbersButton = new JRadioButton("Numbers");
     private JRadioButton infOfcButton = new JRadioButton("InfOCF String");
 
     private ButtonGroup buttonGroup = new ButtonGroup();
 
-    public BufferFormatPanel(){
+    public KbFormatPanel(){
         buttonGroup.add(numbersButton);
         buttonGroup.add(infOfcButton);
 
@@ -20,5 +21,12 @@ public class BufferFormatPanel extends JPanel {
 
     public boolean isNumbersActive(){
         return numbersButton.isSelected();
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        for (Component component : getComponents())
+            component.setEnabled(enabled);
     }
 }
