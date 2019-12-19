@@ -1,6 +1,7 @@
 package kb_creator.gui.left_panel.optionsPanel.kb_save_options_panel;
 
 
+import kb_creator.gui.left_panel.optionsPanel.buffer_options_panel.BufferFormatPanel;
 import kb_creator.model.writer.KbWriterOptions;
 
 import javax.swing.*;
@@ -16,6 +17,7 @@ public class MainKbSafePanel extends JPanel {
 
     private NamePrefixPanel namePrefixPanel;
 
+    private BufferFormatPanel bufferFormatPanel;
     public MainKbSafePanel() {
         setBorder(BorderFactory.createTitledBorder("Knowledge Base Save Options"));
 
@@ -30,12 +32,16 @@ public class MainKbSafePanel extends JPanel {
 
         nameLengthPanel = new NameLengthPanel();
 
+        bufferFormatPanel = new BufferFormatPanel();
+
         add(kbLocationPanel);
         add(kbCheckboxPanel);
 
         add(kbNumberPanel);
         add(namePrefixPanel);
         add(nameLengthPanel);
+
+        add(bufferFormatPanel);
 
     }
 
@@ -98,6 +104,8 @@ public class MainKbSafePanel extends JPanel {
         writerOptions.setFilePath(kbLocationPanel.getFilePath());
 
         writerOptions.setRequestedKbNumber(kbNumberPanel.getNumber());
+
+        writerOptions.setNumbersActive(bufferFormatPanel.isNumbersActive());
 
         return writerOptions;
     }

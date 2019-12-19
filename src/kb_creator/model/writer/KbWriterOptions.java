@@ -3,7 +3,7 @@ package kb_creator.model.writer;
 public class KbWriterOptions {
 
 
-    //todo: numbers
+    private boolean isNumbersActive;
 
     private boolean realWriter;
 
@@ -26,6 +26,10 @@ public class KbWriterOptions {
         this.requestedFileNameLength = requestedFileNameLength;
     }
 
+    public void setNumbersActive(boolean isNumbersActive){
+        this.isNumbersActive = isNumbersActive;
+    }
+
     public void setRequestedKbNumber(int requestedKbNumber){
         this.requestedKbNumber = requestedKbNumber;
     }
@@ -44,5 +48,9 @@ public class KbWriterOptions {
 
     public boolean isRealWriter(){
         return realWriter;
+    }
+
+    public boolean isNumbersActive(){
+        return isNumbersActive;
     }
 }
