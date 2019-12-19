@@ -24,6 +24,8 @@ public class KbWriterThread implements Runnable {
 
     private int maxKbInFile;
 
+    private boolean numberFormat;
+
 
     public KbWriterThread(String subFolderName, BlockingQueue<KnowledgeBase> queue, KbWriterOptions writerOptions) {
         this.subFolderName = subFolderName;
@@ -31,6 +33,7 @@ public class KbWriterThread implements Runnable {
         this.rootFilePath = writerOptions.getFilePath();
         this.numberOfDigitsString = "%0" + writerOptions.getFileNameLength() + "d";
         this.maxKbInFile = writerOptions.getRequestedKbNumber();
+        this.numberFormat = writerOptions.isNumbersActive();
 
     }
 
@@ -75,7 +78,7 @@ public class KbWriterThread implements Runnable {
 
 
         //todo: this triggered once 18.12. maybe stop was pressed?
-        if(!queue.isEmpty())
+        if (!queue.isEmpty())
             throw new RuntimeException("new iteration when queue is not empty! last iteration did not finish correctly!");
         iterationCounter = 0;
         currentIterationFilePath = rootFilePath + (k) + "/" + subFolderName + "/";
@@ -114,11 +117,18 @@ public class KbWriterThread implements Runnable {
         iterationCounter = iterationCounter + kbList.size();
         totalCounter = totalCounter + kbList.size();
 
-        //todo. how to implement numbers saving?
-        for (KnowledgeBase knowledgeBase : kbList) {
-            writer.append("\n");
-            writer.append(knowledgeBase.toFileString());
-        }
+
+        if (numberFormat) {
+            for (KnowledgeBase knowledgeBase : kbList) {
+                writer.append("\n");
+                writer.append(knowledgeBase.toNumbersFileString());
+            }
+        } else
+            for (KnowledgeBase knowledgeBase : kbList) {
+                writer.append("\n");
+                writer.append(knowledgeBase.toStandardFileString());
+            }
+
         writer.flush();
         writer.close();
     }

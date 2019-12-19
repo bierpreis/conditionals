@@ -122,8 +122,9 @@ public class KnowledgeBase {
         return conditionalList.toString();
     }
 
+
     //this creates infOcf file strings
-    public String toFileString() {
+    public String toStandardFileString() {
 
         StringBuilder sb = new StringBuilder();
 
@@ -140,6 +141,29 @@ public class KnowledgeBase {
             sb.append(conditionalList.get(i));
             if (i != conditionalList.size() - 1)
                 sb.append(",\n");
+        }
+
+        sb.append("\n}");
+        return sb.toString();
+    }
+
+    public String toNumbersFileString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        //this was used for writing only 1 kb per file.
+        // sb.append("signature\n");
+        //sb.append(signature.toString().toLowerCase());
+        //sb.append("\n\n");
+
+        sb.append(namePrefixString);
+        sb.append(this.number);
+        sb.append("{\n");
+
+        for (int i = 0; i < conditionalList.size(); i++) {
+            sb.append(conditionalList.get(i).getNumber());
+            if (i != conditionalList.size() - 1)
+                sb.append(", ");
         }
 
         sb.append("\n}");
