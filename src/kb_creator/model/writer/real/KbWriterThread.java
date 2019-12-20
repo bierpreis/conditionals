@@ -92,7 +92,6 @@ public class KbWriterThread implements Runnable {
         //this will trigger in iteration 0 and inconsistent writer. the list will be empty!
         if (kbList.isEmpty())
             return;
-        //todo: cl files !!
         PrintWriter writer;
         try {
             writer = new PrintWriter(currentIterationFilePath + kbList.get(0).getNamePrefix() + String.format(numberOfDigitsString, kbList.get(0).getNumber()) + ".cl", "UTF-8");
