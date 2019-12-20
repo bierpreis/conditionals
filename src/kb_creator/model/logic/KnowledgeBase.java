@@ -30,6 +30,8 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
+    //todo: rethink if this all should be unmodifiable. makes it slower.
+
     //this is used for first iterations
     public KnowledgeBase(int number, PConditional conditional) {
         this.number = number;
@@ -72,10 +74,12 @@ public class KnowledgeBase {
 
         String[] conditionalStringArray = COMMA_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
-        conditionalList = new ArrayList<>(conditionalStringArray.length);
+        List<PConditional> newList = new ArrayList<>(conditionalStringArray.length);
 
         for (String candidateString : conditionalStringArray)
-            conditionalList.add(nfcMap.get(Integer.parseInt(candidateString)));
+            newList.add(nfcMap.get(Integer.parseInt(candidateString)));
+
+        conditionalList = Collections.unmodifiableList(newList);
 
 
     }
