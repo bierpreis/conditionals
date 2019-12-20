@@ -75,15 +75,15 @@ public class KnowledgeBase {
 
     }
 
-    //todo: this should be called tolerates(conditional?). see goldszmit/pearl s 64 def 3
-    public boolean isConsistentWith(PConditional conditionalToTest) {
+    //todo
+    public boolean tolerates(PConditional conditionalToTest) {
 
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
-        //todo
+
         if (this.number == 1 && conditionalToTest.getNumber() == 5)
             System.out.println("lel");
         for (AbstractWorld world : signature.getPossibleWorlds()) {
@@ -97,7 +97,7 @@ public class KnowledgeBase {
                     return true;
             }
         }
-        return false; //todo: this returns sometimes false when it should not
+        return false;
 
     }
 

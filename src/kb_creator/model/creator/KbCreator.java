@@ -11,8 +11,6 @@ import kb_creator.model.logic.signature.AbstractSignature;
 import kb_creator.model.writer.AbstractKbWriter;
 import kb_creator.model.writer.KbWriterOptions;
 import kb_creator.model.writer.WriterFactory;
-import kb_creator.model.writer.real.KbFileWriter;
-import kb_creator.model.writer.dummy.KbDummyWriter;
 import nfc_creator.model.NfcCreator;
 
 
@@ -182,7 +180,7 @@ public class KbCreator implements Runnable {
 
 
                     //line 10
-                    if (currentPair.getKnowledgeBase().isConsistentWith(r)) { //takes almost no time
+                    if (currentPair.getKnowledgeBase().tolerates(r)) { //takes almost no time
 
 
                         //next part is line 11 and 12
