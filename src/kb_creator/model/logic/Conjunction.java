@@ -6,7 +6,7 @@ import kb_creator.model.logic.signature.worlds.AbstractWorld;
 import java.util.*;
 
 public class Conjunction extends AbstractFormula {
-    private List<AbstractFormula> formulaList;
+    private final List<AbstractFormula> formulaList;
 
     public Conjunction(AbstractFormula... formulasToAdd) {
         formulaList = new ArrayList<>(formulasToAdd.length);
@@ -14,7 +14,7 @@ public class Conjunction extends AbstractFormula {
     }
 
     public Conjunction(List<AbstractFormula> formulaList) {
-        this.formulaList = formulaList;
+        this.formulaList = formulaList; //todo: unmodifiable
     }
 
     //if one of the list is false, the whole conjunction is false

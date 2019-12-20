@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Disjunction extends AbstractFormula {
 
-    private List<AbstractFormula> formulaList;
+    private final List<AbstractFormula> formulaList;
 
 
     public Disjunction(AbstractFormula... formulasToAdd) {
@@ -17,7 +17,7 @@ public class Disjunction extends AbstractFormula {
     }
 
     public Disjunction(List<AbstractFormula> formulaList) {
-        this.formulaList = formulaList;
+        this.formulaList = formulaList; //todo: unmodifiable
     }
 
     @Override
