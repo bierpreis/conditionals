@@ -17,7 +17,6 @@ public class BufferLocationPanel extends JPanel {
 
     public BufferLocationPanel(MainBufferPanel mainBufferPanel) {
 
-        //todo: why has button so small size?!?!?
         saveButton = new JButton("Choose Folder");
         saveButton.addActionListener(new BufferSaveButtonListener(this));
         add(saveButton);
@@ -93,6 +92,7 @@ public class BufferLocationPanel extends JPanel {
         return true;
     }
 
+    //todo: this changes button size!
     public void resetWarningColor(){
         saveButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
