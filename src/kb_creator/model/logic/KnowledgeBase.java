@@ -5,6 +5,7 @@ import kb_creator.model.logic.signature.AbstractSignature;
 import kb_creator.model.logic.signature.worlds.AbstractWorld;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -32,20 +33,21 @@ public class KnowledgeBase {
     //this is used for first iterations
     public KnowledgeBase(int number, PConditional conditional) {
         this.number = number;
-        this.conditionalList = new ArrayList<>(1);
-        this.conditionalList.add(conditional);
+        List<PConditional> newList = new ArrayList<>(1);
+        newList.add(conditional);
+        conditionalList = Collections.unmodifiableList(newList);
     }
 
     //this is used for all but first iteration
     public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.number = number;
 
-        this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
+        List<PConditional> newList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
 
-        conditionalList.addAll(knowledgeBase.getConditionalList());
-        conditionalList.add(conditionalToAdd);
+        newList.addAll(knowledgeBase.getConditionalList());
+        newList.add(conditionalToAdd);
 
-        //todo: test collections unmodifyable?
+        conditionalList = Collections.unmodifiableList(newList);
     }
 
     //this constructor takes almost no time
