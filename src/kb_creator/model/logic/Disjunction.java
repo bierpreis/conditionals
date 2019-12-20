@@ -4,6 +4,7 @@ import kb_creator.model.logic.signature.worlds.AbstractWorld;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Disjunction extends AbstractFormula {
@@ -17,7 +18,7 @@ public class Disjunction extends AbstractFormula {
     }
 
     public Disjunction(List<AbstractFormula> formulaList) {
-        this.formulaList = formulaList; //todo: unmodifiable
+        this.formulaList = Collections.unmodifiableList(formulaList);
     }
 
     @Override

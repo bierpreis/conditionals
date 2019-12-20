@@ -14,7 +14,7 @@ public class Conjunction extends AbstractFormula {
     }
 
     public Conjunction(List<AbstractFormula> formulaList) {
-        this.formulaList = formulaList; //todo: unmodifiable
+        this.formulaList = Collections.unmodifiableList(formulaList);
     }
 
     //if one of the list is false, the whole conjunction is false
