@@ -84,8 +84,10 @@ public class KnowledgeBase {
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
 
-        if (this.number == 1 && conditionalToTest.getNumber() == 5)
-            System.out.println("lel");
+
+
+/*        if (this.conditionalList.get(0).getNumber() == 1 && conditionalToTest.getNumber() == 5)
+            System.out.println("lel");*/
 
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
