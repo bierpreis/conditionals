@@ -86,19 +86,22 @@ public class KnowledgeBase {
 
         if (this.number == 1 && conditionalToTest.getNumber() == 5)
             System.out.println("lel");
-        for (AbstractWorld world : signature.getPossibleWorlds()) {
 
+
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
-                    toleratesAll = (toleratesAll && conditional.tolerates(world));
+                    if (!conditional.tolerates(world)) {
+                        toleratesAll = false;
+                        break;
+                    }
                 }
                 if (toleratesAll)
                     return true;
             }
         }
         return false;
-
     }
 
     public boolean isConsistentWith2(PConditional conditionalToTest) {
@@ -220,11 +223,11 @@ public class KnowledgeBase {
         return signature;
     }
 
-    public static void setKbNamePrefix(String kbNamePrefix){
+    public static void setKbNamePrefix(String kbNamePrefix) {
         namePrefixString = kbNamePrefix;
     }
 
-    public String getNamePrefix(){
+    public String getNamePrefix() {
         return namePrefixString;
     }
 
