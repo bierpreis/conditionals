@@ -36,14 +36,16 @@ public class KnowledgeBase {
         this.conditionalList.add(conditional);
     }
 
-    //todo: makes the order a diffrence? test with consistency test
     //this is used for all but first iteration
     public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.number = number;
 
         this.conditionalList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
+
         conditionalList.addAll(knowledgeBase.getConditionalList());
         conditionalList.add(conditionalToAdd);
+
+        //todo: test collections unmodifyable?
     }
 
     //this constructor takes almost no time
