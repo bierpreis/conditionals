@@ -29,7 +29,7 @@ public class PConditional {
         this.normalAntecedent = antecedent;
         this.number = number;
 
-        this.toleranceFormula = antecedent.neg().or(consequence);
+        this.toleranceFormula = antecedent.neg().or(consequence); //todo: use short formulas for this!!
 
     }
 
