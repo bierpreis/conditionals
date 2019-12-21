@@ -8,7 +8,7 @@ import kb_creator.model.logic.signature.AbstractSignature;
 public class ConditionalTranslator {
     private static ShortTranslationMap shortTranslationMap;
 
-    public static void init(AbstractSignature signature){
+    public static void init(AbstractSignature signature) {
         AbstractFormula.setSignature(signature);
         shortTranslationMap = new ShortTranslationMap(signature);
     }
@@ -20,13 +20,14 @@ public class ConditionalTranslator {
 
 
         PConditional pConditional = new PConditional(newConsequence, newAntecedent, wConditional.getNumber());
-        //todo: here set short formulas
 
+        pConditional.setShortAntecedent(ConditionalTranslator.tryToShortFormula(wConditional.getAntecedent()));
+        pConditional.setShortConsequence(ConditionalTranslator.tryToShortFormula(wConditional.getConsequence()));
 
         //todo: then test short formulas
         //this is a test that translation of short formulas really worked
         if (!newAntecedent.equals(worldToNormalFormula(wConditional.getAntecedent())))
-            throw new RuntimeException("Translating Worlds failed! " + newAntecedent + "  !=  " + worldToNormalFormula(wConditional.getAntecedent()) + " (line "+ wConditional.getAntecedent().getNumber() + ")");
+            throw new RuntimeException("Translating Worlds failed! " + newAntecedent + "  !=  " + worldToNormalFormula(wConditional.getAntecedent()) + " (line " + wConditional.getAntecedent().getNumber() + ")");
         if (!newConsequence.equals(worldToNormalFormula(wConditional.getConsequence())))
             throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + worldToNormalFormula(wConditional.getConsequence()) + " (line" + wConditional.getConsequence().getNumber() + ")");
 

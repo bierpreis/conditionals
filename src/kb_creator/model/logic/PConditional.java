@@ -11,6 +11,9 @@ public class PConditional {
     private final AbstractFormula normalAntecedent;
     private final AbstractFormula normalConsequence;
 
+    private AbstractFormula shortAntecedent;
+    private AbstractFormula shortConsequence;
+
 
     private final AbstractFormula toleranceFormula;
 
@@ -63,6 +66,14 @@ public class PConditional {
         if (this.eqConditionalsList.size() != 0)
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
+    }
+
+    public void setShortAntecedent(AbstractFormula shortAntecedent) {
+        this.shortAntecedent = shortAntecedent;
+    }
+
+    public void setShortConsequence(AbstractFormula shortConsequence) {
+        this.shortConsequence = shortConsequence;
     }
 
     //getters
