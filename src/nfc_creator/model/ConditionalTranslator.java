@@ -30,6 +30,7 @@ public class ConditionalTranslator {
     }
 
 
+    //todo: remake. world to normal formula and world to short formula?
     //this translates a world to a propositional formula
     public AbstractFormula worldToFormula(WorldsList world) {
 
