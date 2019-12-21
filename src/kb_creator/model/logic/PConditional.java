@@ -5,7 +5,7 @@ import kb_creator.model.logic.signature.worlds.AbstractWorld;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: test in debugger if new translating works. check what is written. and stuff.
+//todo: test in debugger if new translating works like it should.
 public class PConditional {
     private final int number;
 

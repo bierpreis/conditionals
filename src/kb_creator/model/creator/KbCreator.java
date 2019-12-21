@@ -135,6 +135,7 @@ public class KbCreator implements Runnable {
                 return;
             }
 
+        //todo: some of this doenst work. written folder 0 and 1 are fucked.
         kbWriter.finishIteration();
         l.finishIteration(0);
 
