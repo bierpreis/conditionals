@@ -234,7 +234,7 @@ public class NfcCreator {
         for (WConditional wConditional : wConditionalList) {
             PConditional pConditional = ConditionalTranslator.transLate(wConditional);
 
-            //todo: what will counter do with translations?
+
             pConditional.setCounterConditional(ConditionalTranslator.transLate(wConditional.getActualCounterConditional()));
             pConditionalList.add(pConditional);
 
