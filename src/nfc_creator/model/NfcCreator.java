@@ -234,7 +234,7 @@ public class NfcCreator {
         for (WConditional wConditional : wConditionalList) {
             PConditional pConditional = ConditionalTranslator.transLate(wConditional);
 
-
+            //this will set a basic counter conditional. it will be replaced soon by the real one
             pConditional.setCounterConditional(ConditionalTranslator.transLate(wConditional.getActualCounterConditional()));
             pConditionalList.add(pConditional);
 
