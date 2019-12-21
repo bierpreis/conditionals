@@ -13,7 +13,7 @@ public class ConditionalTranslator {
         shortTranslationMap = new ShortTranslationMap(signature);
     }
 
-
+    //todo: describe
     public static PConditional transLate(WConditional wConditional) {
         AbstractFormula newAntecedent = worldToNormalFormula(wConditional.getAntecedent());
         AbstractFormula newConsequence = worldToNormalFormula(wConditional.getConsequence());
@@ -24,20 +24,18 @@ public class ConditionalTranslator {
         pConditional.setShortAntecedent(ConditionalTranslator.tryToShortFormula(wConditional.getAntecedent()));
         pConditional.setShortConsequence(ConditionalTranslator.tryToShortFormula(wConditional.getConsequence()));
 
-        //todo: then test short formulas
         //this is a test that translation of short formulas really worked
-        if (!newAntecedent.equals(worldToNormalFormula(wConditional.getAntecedent())))
+        if (!newAntecedent.equals(pConditional.getAntecedent()))
             throw new RuntimeException("Translating Worlds failed! " + newAntecedent + "  !=  " + worldToNormalFormula(wConditional.getAntecedent()) + " (line " + wConditional.getAntecedent().getNumber() + ")");
-        if (!newConsequence.equals(worldToNormalFormula(wConditional.getConsequence())))
+        if (!newConsequence.equals(pConditional.getConsequence()))
             throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + worldToNormalFormula(wConditional.getConsequence()) + " (line" + wConditional.getConsequence().getNumber() + ")");
 
-        //todo: set real ones in constructor and translations after?!
+
         return pConditional;
     }
 
 
-    //todo: remake. world to normal formula and world to short formula?
-    //this translates a world to a propositional formula
+    //this tries to get a short formula and when none is available it returns a normal formula
     public static AbstractFormula tryToShortFormula(WorldsList world) {
 
         //if there is a short formula return this

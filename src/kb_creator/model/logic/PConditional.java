@@ -5,9 +5,11 @@ import kb_creator.model.logic.signature.worlds.AbstractWorld;
 import java.util.ArrayList;
 import java.util.List;
 
+//todo: test in debugger if new translating works. check what is written. and stuff.
 public class PConditional {
     private final int number;
 
+    //todo: describe
     private final AbstractFormula normalAntecedent;
     private final AbstractFormula normalConsequence;
 
@@ -82,14 +84,13 @@ public class PConditional {
         return counterConditional;
     }
 
-    //todo: should return short ones!
 
     public AbstractFormula getAntecedent() {
-        return normalAntecedent;
+        return shortAntecedent;
     }
 
     public AbstractFormula getConsequence() {
-        return normalConsequence;
+        return shortConsequence;
     }
 
     public int getNumber() {
