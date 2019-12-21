@@ -204,7 +204,7 @@
 204: ab!c, !bc, !ab
 205: ab!c, a!bc, !abc, !a!c
 206: ab!c, a!bc, !abc, !a!b
-207: b!c, a!bc, !a!b
+207: b!c, !bc, !a!b
 208: b!c, a!b!c, !ac
 209: !ab, !c
 210: a!c, !ac, !a!b!c
