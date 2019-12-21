@@ -16,10 +16,15 @@ public class ConditionalTranslator {
 
 
     public static PConditional transLate(WConditional oldConditional) {
+        //todo: set normal formulas
         AbstractFormula newAntecedent = worldToFormula(oldConditional.getAntecedent());
         AbstractFormula newConsequence = worldToFormula(oldConditional.getConsequence());
 
-        //this is a test that translation really works
+        //todo: here set short formulas
+
+
+        //todo: then test short formulas
+        //this is a test that translation of short formulas really worked
         if (!newAntecedent.equals(simpleWorldToFormula(oldConditional.getAntecedent())))
             throw new RuntimeException("Translating Worlds failed! " + newAntecedent + "  !=  " + simpleWorldToFormula(oldConditional.getAntecedent()) + " (line "+ oldConditional.getAntecedent().getNumber() + ")");
         if (!newConsequence.equals(simpleWorldToFormula(oldConditional.getConsequence())))
