@@ -27,14 +27,19 @@ public class NewIterationThread implements Runnable {
         System.out.println("new iteration thread started for k " + k);
 
         while (running) {
-            AbstractPair pairToAdd ;
+            AbstractPair pairToAdd;
             try {
                 pairToAdd = inputQueue.take();
             } catch (InterruptedException e) {
                 running = false;
                 break; //this is added new
             }
-            consistentQueue.add(pairToAdd.getKnowledgeBase());
+            try {
+                consistentQueue.put(pairToAdd.getKnowledgeBase());
+            } catch (InterruptedException e) {
+                running = false;
+                break; //this is added new
+            }
             //todo: counter
             candidatePairList.get(k).add(new CompressedPair(pairToAdd));
         }
