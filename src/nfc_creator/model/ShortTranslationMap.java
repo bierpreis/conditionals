@@ -19,7 +19,7 @@ public class ShortTranslationMap {
     //problem with short formulas: printing conditionals gets out short formulas not normal form!
     public AbstractFormula translate(int worldsNumber) {
         //return null to test what happens if nothing gets translated
-        return null;
-        //return translationMap.get(worldsNumber);
+        //return null;
+        return translationMap.get(worldsNumber);
     }
 }

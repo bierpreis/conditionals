@@ -222,7 +222,7 @@
 222: a, !(b==c)
 223: a, !a!c
 224: a, !a!b
-225: ac, b!c,  !abc, !a!bc
+225: ac, b!c, !ac
 226: ac, ab!c, !abc, !a!c
 227: ab, !abc, !bc, !a!b!c
 228: ab, a!bc, !ab!c, !a!b
@@ -232,10 +232,10 @@
 232: ab, a!b!c, !ab!c, !a!b
 233: !a, ab
 234: bc, a!b, !ab!c, !a!bc
-235: ac, ac, !ab, !b!c
+235: ac, !ab, !b!c
 236: !b, c
 237: !b, a==c
-238: ac,  !ab,  !a!b
+238: ac,  !a
 239: !a, b==c
 240: b!c, a!b, !ac,
 241: a!c, a!bc, !abc, !a!c
