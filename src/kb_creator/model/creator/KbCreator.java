@@ -135,9 +135,9 @@ public class KbCreator implements Runnable {
                 return;
             }
 
-        //todo: some of this doenst work. written folder 0 and 1 are fucked.
-        kbWriter.finishIteration();
+
         l.finishIteration(0);
+        kbWriter.finishIteration();
 
 
         //line 6
@@ -211,8 +211,10 @@ public class KbCreator implements Runnable {
             }
             System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
             //line 13
-            kbWriter.finishIteration();
+            
             l.finishIteration(k);
+            kbWriter.finishIteration();
+
             k = k + 1;
         }
         creatorStatus = CreatorStatus.FINISHED;
