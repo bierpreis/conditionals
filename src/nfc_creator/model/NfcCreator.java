@@ -19,15 +19,13 @@ public class NfcCreator {
 
     private final Map<Integer, PConditional> pNfcMap;
 
-    private final ConditionalTranslator conditionalTranslator;
-
 
     public NfcCreator(AbstractSignature signature) {
         System.out.println("now creating WConditionals");
 
         worldsList = createWorlds(signature);
 
-        conditionalTranslator = new ConditionalTranslator(signature);
+        ConditionalTranslator.init(signature);
 
         //this is basic conditional list in order from definition  2
         wConditionalList = createBasicConditionalList(worldsList);
@@ -234,9 +232,10 @@ public class NfcCreator {
         List<PConditional> pConditionalList = new ArrayList<>(wConditionalList.size());
 
         for (WConditional wConditional : wConditionalList) {
-            PConditional pConditional = conditionalTranslator.transLate(wConditional);
+            PConditional pConditional = ConditionalTranslator.transLate(wConditional);
 
-            pConditional.setCounterConditional(conditionalTranslator.transLate(wConditional.getActualCounterConditional()));
+            //todo: what will counter do with translations?
+            pConditional.setCounterConditional(ConditionalTranslator.transLate(wConditional.getActualCounterConditional()));
             pConditionalList.add(pConditional);
 
         }
@@ -295,7 +294,7 @@ public class NfcCreator {
     public Map<WorldsList, AbstractFormula> createWorldsFormulasMap() {
         Map<WorldsList, AbstractFormula> mapToReturn = new HashMap<>(worldsList.size());
         for (WorldsList world : worldsList) {
-            mapToReturn.put(world, conditionalTranslator.worldToFormula(world));
+            mapToReturn.put(world, ConditionalTranslator.worldToFormula(world));
         }
         return mapToReturn;
     }
