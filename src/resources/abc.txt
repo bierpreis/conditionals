@@ -187,7 +187,7 @@
 187: ac, a!b, !a!c
 188: ac, !b
 189: ac, !bc, !ab
-190: ac, a!bc, !ab, !a!b!c
+190: ac, !ab, !a!b!c
 191: !a!b, c
 192: ac, !a!c, !a!bc
 193: bc, a!b!c, !ab!c, !a!bc
@@ -199,8 +199,8 @@
 199: a!c, a!bc, !ac
 200: a!c, a!bc, !abc, !a!b!c
 201: a!c, !bc, !ab!c
-202: ab!c, a!b, !a!c
-203: a!c, a!bc, !a!b
+202: !c, a!bc
+203: ab!c, !b
 204: ab!c, !bc, !ab
 205: ab!c, a!bc, !abc, !a!c
 206: ab!c, a!bc, !abc, !a!b
