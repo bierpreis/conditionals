@@ -1,11 +1,9 @@
 package kb_creator.model.logic;
 
-import kb_creator.gui.left_panel.optionsPanel.warnings.AbstractWarningDialog;
 import kb_creator.model.logic.signature.AbstractSignature;
 import kb_creator.model.logic.signature.worlds.AbstractWorld;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -30,14 +28,12 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-    //todo: rethink if this all should be unmodifiable. makes it slower.
-
     //this is used for first iterations
     public KnowledgeBase(int number, PConditional conditional) {
         this.number = number;
         List<PConditional> newList = new ArrayList<>(1);
         newList.add(conditional);
-        conditionalList = Collections.unmodifiableList(newList);
+        conditionalList = newList;
     }
 
     //this is used for all but first iteration
@@ -49,7 +45,7 @@ public class KnowledgeBase {
         newList.addAll(knowledgeBase.getConditionalList());
         newList.add(conditionalToAdd);
 
-        conditionalList = Collections.unmodifiableList(newList);
+        conditionalList = newList;
     }
 
     //this constructor takes almost no time
@@ -79,7 +75,7 @@ public class KnowledgeBase {
         for (String candidateString : conditionalStringArray)
             newList.add(nfcMap.get(Integer.parseInt(candidateString)));
 
-        conditionalList = Collections.unmodifiableList(newList);
+        conditionalList = newList;
 
 
     }
