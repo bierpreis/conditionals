@@ -21,7 +21,7 @@ public class StartPanel extends JPanel {
 
         AbstractActionButton createWorldsButton = new AbstractActionButton(Action.WORLDS);
 
-        AbstractActionButton createWorldsFormulasButton = new AbstractActionButton(Action.WORLDS_FORMULAS);
+        AbstractActionButton createWorldsFormulasButton = new AbstractActionButton(Action.WORLDS_FORMULAS); //todo: worlds and formulas should show also short formulas
 
         AbstractActionButton createBasicConditional = new AbstractActionButton(Action.CONDITIONALS);
 
