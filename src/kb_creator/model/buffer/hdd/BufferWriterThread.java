@@ -89,7 +89,7 @@ public class BufferWriterThread implements Runnable {
                 try {
                     consistentQueue.put(pairToWrite.getKnowledgeBase());
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    return; //can be triggered by gui top button
                 }
 
                 sb.append(pairToWrite.toFileString());
