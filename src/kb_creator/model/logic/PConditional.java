@@ -7,8 +7,11 @@ import java.util.List;
 
 public class PConditional {
     private final int number;
-    private final AbstractFormula antecedent;
-    private final AbstractFormula consequence;
+
+    private final AbstractFormula normalAntecedent;
+    private final AbstractFormula normalConsequence;
+
+
     private final AbstractFormula toleranceFormula;
 
     private PConditional counterConditional;
@@ -17,8 +20,8 @@ public class PConditional {
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
     public PConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
-        this.consequence = consequence;
-        this.antecedent = antecedent;
+        this.normalConsequence = consequence;
+        this.normalAntecedent = antecedent;
         this.number = number;
 
         this.toleranceFormula = antecedent.neg().or(consequence);
@@ -26,7 +29,7 @@ public class PConditional {
     }
 
     public String toString() {
-        return "(" + consequence + " | " + antecedent + ")";
+        return "(" + normalConsequence + " | " + normalAntecedent + ")";
     }
 
 
@@ -68,12 +71,14 @@ public class PConditional {
         return counterConditional;
     }
 
+    //todo: should return short ones!
+
     public AbstractFormula getAntecedent() {
-        return antecedent;
+        return normalAntecedent;
     }
 
     public AbstractFormula getConsequence() {
-        return consequence;
+        return normalConsequence;
     }
 
     public int getNumber() {

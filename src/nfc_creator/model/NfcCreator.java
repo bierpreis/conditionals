@@ -294,7 +294,7 @@ public class NfcCreator {
     public Map<WorldsList, AbstractFormula> createWorldsFormulasMap() {
         Map<WorldsList, AbstractFormula> mapToReturn = new HashMap<>(worldsList.size());
         for (WorldsList world : worldsList) {
-            mapToReturn.put(world, ConditionalTranslator.worldToFormula(world));
+            mapToReturn.put(world, ConditionalTranslator.tryToShortFormula(world));
         }
         return mapToReturn;
     }
