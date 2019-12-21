@@ -116,14 +116,14 @@
 116: ac, !a!c
 117: ac, !a!b
 118: bc, a!b!c, !ab!c
-119: bc, a!b!c, bc, !a!bc
+119: bc, a!b!c, !a!bc
 120: bc, !b!c
 121: abc, a!b!c, !ab!c, !a!bc
 122: abc, a!b!c, !a!c
 123: abc, !a!bc, !b!c
 124: abc, !ab, !a!bc
 125: abc, !ab, !a!b!c
-126: bc, bc, !a!b
+126: bc, !a!b
 127: abc, !ab!c, !a!b
 128: ab!c, a!b, !abc
 129: b!c, a!b
