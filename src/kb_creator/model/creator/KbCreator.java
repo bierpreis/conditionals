@@ -36,8 +36,6 @@ public class KbCreator implements Runnable {
 
     private AbstractKbWriter kbWriter;
 
-
-    private BlockingQueue<KnowledgeBase> consistentWriterQueue;
     private BlockingQueue<KnowledgeBase> inconsistentWriterQueue;
 
     private BlockingQueue<AbstractPair> newIterationQueue;
@@ -62,7 +60,7 @@ public class KbCreator implements Runnable {
 
         kbWriter = WriterFactory.getKbWriter(writerOptions);
 
-        consistentWriterQueue = kbWriter.getConsistentQueue();
+        l.setConsistentQueue(kbWriter.getConsistentQueue());
 
         inconsistentWriterQueue = kbWriter.getInconsistentQueue();
 
@@ -112,14 +110,6 @@ public class KbCreator implements Runnable {
             listToReturn.add(new RealPair(rKB, candidatesList));
         }
 
-        for (AbstractPair candidatePair : listToReturn) {
-            try {
-                consistentWriterQueue.put(candidatePair.getKnowledgeBase());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
@@ -187,13 +177,6 @@ public class KbCreator implements Runnable {
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
                         consistentKbCounter++;
 
-
-                        try {
-                            consistentWriterQueue.put(knowledgeBaseToAdd);
-                        } catch (InterruptedException e) {
-                            //this can only triggered by stop button in gui
-                            return;
-                        }
 
                         List<PConditional> candidatesToAdd = new ArrayList<>();
                         for (PConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)

@@ -1,5 +1,6 @@
 package kb_creator.model.buffer.hdd;
 
+import kb_creator.model.logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealPair;
 
@@ -27,9 +28,12 @@ public class BufferWriterThread implements Runnable {
 
     private volatile boolean running = true;
 
+    private BlockingQueue<KnowledgeBase> consistentQueue;
 
-    public BufferWriterThread(BlockingQueue<AbstractPair> queueToWrite, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK) {
+
+    public BufferWriterThread(BlockingQueue<AbstractPair> queueToWrite, BlockingQueue<KnowledgeBase> consistentQueue, String tmpFilePath, int maxNumberOfPairsInFile, int requestedK) {
         this.cpQueueToWrite = queueToWrite;
+        this.consistentQueue = consistentQueue;
 
         this.maxNumberOfPairsInFile = maxNumberOfPairsInFile;
 
@@ -81,6 +85,13 @@ public class BufferWriterThread implements Runnable {
                 } catch (InterruptedException e) {
                     return; //can be triggered by gui top button
                 }
+
+                try {
+                    consistentQueue.put(pairToWrite.getKnowledgeBase());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 sb.append(pairToWrite.toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
                     sb.append("\nEND\n");

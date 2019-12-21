@@ -1,5 +1,6 @@
 package kb_creator.model.buffer;
 
+import kb_creator.model.logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 
 import java.util.concurrent.BlockingQueue;
@@ -8,6 +9,8 @@ public abstract class AbstractPairBuffer {
 
     protected BlockingQueue<AbstractPair> lastIterationQueue;
     protected BlockingQueue<AbstractPair> nextIterationQueue;
+
+    protected BlockingQueue<KnowledgeBase> consistentQueue;
 
     protected Thread nextIterationThread;
     protected Thread lastIterationThread;
@@ -51,6 +54,10 @@ public abstract class AbstractPairBuffer {
 
     public BlockingQueue<AbstractPair> getNextIterationQueue() {
         return nextIterationQueue;
+    }
+
+    public void setConsistentQueue(BlockingQueue<KnowledgeBase> consistentQueue){
+        this.consistentQueue = consistentQueue;
     }
 
 
