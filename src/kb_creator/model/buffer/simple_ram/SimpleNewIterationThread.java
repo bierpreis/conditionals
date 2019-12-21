@@ -1,6 +1,7 @@
 package kb_creator.model.buffer.simple_ram;
 
 import kb_creator.model.buffer.ram.NewIterationThread;
+import kb_creator.model.logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedPair;
 import kb_creator.model.pairs.RealPair;
@@ -10,8 +11,8 @@ import java.util.concurrent.BlockingQueue;
 
 public class SimpleNewIterationThread extends NewIterationThread {
 
-    public SimpleNewIterationThread(BlockingQueue<AbstractPair> inputQueue, List<List<AbstractPair>> candidatePairList, int k) {
-        super(inputQueue, candidatePairList, k);
+    public SimpleNewIterationThread(BlockingQueue<AbstractPair> inputQueue, BlockingQueue<KnowledgeBase> consistentQueue, List<List<AbstractPair>> candidatePairList, int k) {
+        super(inputQueue, consistentQueue, candidatePairList, k);
     }
 
     @Override

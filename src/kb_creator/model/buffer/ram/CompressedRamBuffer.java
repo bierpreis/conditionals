@@ -45,7 +45,7 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
         System.out.println("preparing iteration: " + k);
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
 
-        nextIterationThread = new Thread(new NewIterationThread(nextIterationQueue, candidatePairList, k));
+        nextIterationThread = new Thread(new NewIterationThread(nextIterationQueue, consistentQueue, candidatePairList, k));
         nextIterationThread.setName("new iteration thread for k " + k);
         nextIterationThread.start();
 

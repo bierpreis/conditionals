@@ -1,5 +1,6 @@
 package kb_creator.model.buffer.ram;
 
+import kb_creator.model.logic.KnowledgeBase;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.CompressedPair;
 
@@ -12,8 +13,11 @@ public class NewIterationThread implements Runnable {
     protected volatile boolean running = true;
     protected int k;
 
-    public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, List<List<AbstractPair>> candidatePairList, int k) {
+    BlockingQueue<KnowledgeBase> consistentQueue;
+
+    public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, BlockingQueue<KnowledgeBase> consistentQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.inputQueue = inputQueue;
+        this.consistentQueue = consistentQueue;
         this.candidatePairList = candidatePairList;
         this.k = k;
     }
@@ -21,12 +25,18 @@ public class NewIterationThread implements Runnable {
     @Override
     public void run() {
         System.out.println("new iteration thread started for k " + k);
+
         while (running) {
+            AbstractPair pairToAdd ;
             try {
-                candidatePairList.get(k).add(new CompressedPair(inputQueue.take()));
+                pairToAdd = inputQueue.take();
             } catch (InterruptedException e) {
                 running = false;
+                break; //this is added new
             }
+            consistentQueue.add(pairToAdd.getKnowledgeBase());
+            //todo: counter
+            candidatePairList.get(k).add(new CompressedPair(pairToAdd));
         }
         System.out.println("new iteration thread finished for k " + k);
     }
