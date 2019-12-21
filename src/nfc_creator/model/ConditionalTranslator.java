@@ -25,6 +25,7 @@ public class ConditionalTranslator {
         if (!newConsequence.equals(simpleWorldToFormula(oldConditional.getConsequence())))
             throw new RuntimeException("Translating worlds failed! + " + newConsequence + "  !=  " + simpleWorldToFormula(oldConditional.getConsequence()) + " (line" + oldConditional.getConsequence().getNumber() + ")");
 
+        //todo: set real ones in constructor and translations after?!
         return new PConditional(newConsequence, newAntecedent, oldConditional.getNumber());
     }
 
