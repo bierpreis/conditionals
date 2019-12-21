@@ -85,7 +85,7 @@
 85: !abc, !b!c
 86: a!b!c, !ab!c, !a!bc
 87: a!b!c, !a!c
-88: a!b!c, !a!b
+88: !b!c, !a!b
 89: !ab, !a!bc
 90: !ab, !a!b!c
 91: !abc, !a!b
