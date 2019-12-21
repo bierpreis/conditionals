@@ -164,29 +164,29 @@
 164: a, b!c
 165: a, !bc
 166: a, !b!c
-167: ab, a!bc, !ab
+167: b, a!bc
 168: ab, c
 169: ab, a!bc, !abc, !a!b!c
 170: ac, b!c, !bc
 171: ab, a!bc, !a!c
 172: ab, a!bc, !a!b
-173: ab, a!b!c, !ab
+173: b, a!b!c
 174: ab, a!b!c, !ac
 175: bc, a!c, !a!b!c
 176: ab, a!b!c, !ab!c, !a!bc
 177: ab, !c
 178: ab, a!b!c, !a!b
-179: ab, !ab, !a!bc
-180: ab,  !ab, !a!b!c
+179: b, !a!bc
+180: b, !a!b!c
 181: ab, !ac, !a!b!c
 182: ab, !ab!c, !a!b
 183: ac,  a!b!c, !ab
-184: ac, a!b!c, !ac
+184: c, a!b!c,
 185: ac, a!bc, !b!c, !abc
 186: ac, a!b!c, !ab!c, !a!bc
 187: ac, a!b, !a!c
 188: ac, !b
-189: ac, !bc, !ab
+189: c, !ab
 190: ac, !ab, !a!b!c
 191: !a!b, c
 192: ac, !a!c, !a!bc
