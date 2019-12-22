@@ -204,7 +204,7 @@ public class KbCreator implements Runnable {
                         inconsistentKbCounter++; //counter is only for kb constructor
                     }
                 }
-                if (creatorStatus.equals(CreatorStatus.STOPPED))
+                if (creatorStatus.equals(CreatorStatus.STOPPED)) //todo: stop button doesnt rly work. why is that?
                     return;
                 currentPair.clear(); //saves a lot of memory and takes almost no time
 
