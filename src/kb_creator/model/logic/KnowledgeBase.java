@@ -82,6 +82,7 @@ public class KnowledgeBase {
 
     //todo
     public boolean tolerates(PConditional conditionalToTest) {
+    //idea: some recursive method with list<conditionals> as parameter. return false if not or if sth found call same method without this conditional
 
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
