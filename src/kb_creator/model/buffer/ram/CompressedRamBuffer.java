@@ -79,7 +79,7 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
                 System.out.println("waiting for new iteration queue. items left : " + nextIterationQueue.size());
                 Thread.sleep(80);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //todo: this can be triggered by stop button on creator thread?!
             }
         nextIterationThread.interrupt();
 
@@ -89,7 +89,7 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
                 System.out.println("waiting for last iteration queue. items left : " + nextIterationQueue.size());
                 Thread.sleep(80);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //todo: this can be triggered by stop button on creator thread?!
             }
 
         //avoid null pointer because at iteration 0 there is no last iteration

@@ -161,7 +161,8 @@ public class KbCreator implements Runnable {
                 try {
                     currentPair = lastIterationQueue.take();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    System.out.println("!!!interrupted queue take");
+                    e.printStackTrace(); //todo: wtf. why? is this the problem?
                 }
                 iterationPairCounter++;
 
@@ -190,6 +191,7 @@ public class KbCreator implements Runnable {
                             newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
                         } catch (InterruptedException e) {
                             //this should only be triggered by gui stop button
+                            System.out.println("!!!interrupted newqueue put");
                             return;
                         }
 
@@ -199,6 +201,7 @@ public class KbCreator implements Runnable {
                             inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
                         } catch (InterruptedException e) {
                             //this can and should ONLY be triggered by gui stop button
+                            System.out.println("!!!interrupted inconsistent put");
                             return;
                         }
                         inconsistentKbCounter++; //counter is only for kb constructor
