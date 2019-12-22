@@ -32,6 +32,7 @@ public class PConditional {
         this.normalAntecedent = antecedent;
         this.shortAntecedent = shortAntecedent;
 
+        //todo: test this twisted
         this.toleranceFormula = shortAntecedent.neg().or(shortConsequence);
 
         this.number = number;
