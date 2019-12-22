@@ -1,6 +1,7 @@
 package kb_creator.model.logic;
 
 import kb_creator.model.logic.signature.worlds.AbstractWorld;
+import nfc_creator.model.ConditionalTranslator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,21 +14,28 @@ public class PConditional {
     private final AbstractFormula normalAntecedent;
     private final AbstractFormula normalConsequence;
 
-    private AbstractFormula shortAntecedent;
-    private AbstractFormula shortConsequence;
+    private final AbstractFormula shortAntecedent;
+    private final AbstractFormula shortConsequence;
 
 
-    private AbstractFormula toleranceFormula;
+    private final AbstractFormula toleranceFormula;
 
     private PConditional counterConditional;
 
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
-    public PConditional(AbstractFormula consequence, AbstractFormula antecedent, int number) {
+    public PConditional(AbstractFormula consequence, AbstractFormula shortConsequence, AbstractFormula antecedent, AbstractFormula shortAntecedent, int number) {
         this.normalConsequence = consequence;
+        this.shortConsequence = shortConsequence;
+
         this.normalAntecedent = antecedent;
+        this.shortAntecedent = shortAntecedent;
+
+        this.toleranceFormula = shortAntecedent.neg().or(shortConsequence);
+
         this.number = number;
+
     }
 
     public String toString() {
@@ -67,11 +75,6 @@ public class PConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
-    public void setShortFormulas(AbstractFormula shortConsequence, AbstractFormula shortAntecedent) {
-        this.shortConsequence = shortConsequence;
-        this.shortAntecedent = shortAntecedent;
-        this.toleranceFormula = shortAntecedent.neg().or(shortConsequence);
-    }
 
 
     //getters

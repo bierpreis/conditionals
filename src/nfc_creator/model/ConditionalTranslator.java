@@ -16,17 +16,18 @@ public class ConditionalTranslator {
     //todo: describe
     public static PConditional transLate(WConditional wConditional) {
         AbstractFormula normalAntecedent = worldToNormalFormula(wConditional.getAntecedent());
+        AbstractFormula shortAntecedent = worldToNormalFormula(wConditional.getAntecedent());
+
         AbstractFormula normalConsequence = worldToNormalFormula(wConditional.getConsequence());
+        AbstractFormula shortConsequence = worldToNormalFormula(wConditional.getConsequence());
 
+        PConditional pConditional = new PConditional(normalConsequence, shortConsequence, normalAntecedent, shortAntecedent, wConditional.getNumber());
 
-        PConditional pConditional = new PConditional(normalConsequence, normalAntecedent, wConditional.getNumber());
-
-        pConditional.setShortFormulas(tryToShortFormula(wConditional.getConsequence()), tryToShortFormula(wConditional.getAntecedent()));
 
         //this is a test that translation of short formulas really worked
-        if (!normalAntecedent.equals(pConditional.getAntecedent()))
+        if (!normalAntecedent.equals(shortAntecedent))
             throw new RuntimeException("Translating Worlds failed! " + normalAntecedent + "  !=  " + worldToNormalFormula(wConditional.getAntecedent()) + " (line " + wConditional.getAntecedent().getNumber() + ")");
-        if (!normalConsequence.equals(pConditional.getConsequence()))
+        if (!normalConsequence.equals(shortConsequence))
             throw new RuntimeException("Translating worlds failed! + " + normalConsequence + "  !=  " + worldToNormalFormula(wConditional.getConsequence()) + " (line" + wConditional.getConsequence().getNumber() + ")");
 
 
