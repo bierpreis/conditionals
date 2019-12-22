@@ -17,7 +17,7 @@ public class PConditional {
     private AbstractFormula shortConsequence;
 
 
-    private final AbstractFormula toleranceFormula;
+    private AbstractFormula toleranceFormula;
 
     private PConditional counterConditional;
 
@@ -28,9 +28,6 @@ public class PConditional {
         this.normalConsequence = consequence;
         this.normalAntecedent = antecedent;
         this.number = number;
-
-        this.toleranceFormula = antecedent.neg().or(consequence); //todo: use short formulas for this!!
-
     }
 
     public String toString() {
@@ -70,13 +67,12 @@ public class PConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
-    public void setShortAntecedent(AbstractFormula shortAntecedent) {
+    public void setShortFormulas(AbstractFormula shortConsequence, AbstractFormula shortAntecedent) {
+        this.shortConsequence = shortConsequence;
         this.shortAntecedent = shortAntecedent;
+        this.toleranceFormula = shortAntecedent.neg().or(shortConsequence);
     }
 
-    public void setShortConsequence(AbstractFormula shortConsequence) {
-        this.shortConsequence = shortConsequence;
-    }
 
     //getters
 

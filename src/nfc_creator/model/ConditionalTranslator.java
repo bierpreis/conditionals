@@ -21,8 +21,8 @@ public class ConditionalTranslator {
 
         PConditional pConditional = new PConditional(newConsequence, newAntecedent, wConditional.getNumber());
 
-        pConditional.setShortAntecedent(ConditionalTranslator.tryToShortFormula(wConditional.getAntecedent()));
-        pConditional.setShortConsequence(ConditionalTranslator.tryToShortFormula(wConditional.getConsequence()));
+        //todo: twist
+        pConditional.setShortFormulas(tryToShortFormula(wConditional.getConsequence()), tryToShortFormula(wConditional.getAntecedent()));
 
         //this is a test that translation of short formulas really worked
         if (!newAntecedent.equals(pConditional.getAntecedent()))
