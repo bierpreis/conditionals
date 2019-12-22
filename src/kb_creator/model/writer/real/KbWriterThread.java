@@ -52,6 +52,7 @@ public class KbWriterThread implements Runnable {
                     counter++;
                 } catch (InterruptedException e) {
                     //this triggers when iteration is finished and thread gets interrupted
+                    System.out.println("kb writer thread interrupted but not closed!");
                     break;
                 }
             }

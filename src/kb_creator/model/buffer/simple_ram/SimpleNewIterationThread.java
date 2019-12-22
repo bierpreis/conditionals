@@ -23,6 +23,7 @@ public class SimpleNewIterationThread extends NewIterationThread {
                 candidatePairList.get(k).add(new RealPair(inputQueue.take()));
             } catch (InterruptedException e) {
                 running = false;
+                System.out.println("new iteration thread interrupted");
             }
         }
         System.out.println("new iteration thread finished for k " + k);

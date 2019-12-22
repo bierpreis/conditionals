@@ -31,6 +31,7 @@ public class NewIterationThread implements Runnable {
             try {
                 pairToAdd = inputQueue.take();
             } catch (InterruptedException e) {
+                System.out.println("new iteration thread interrupted.");
                 running = false;
                 break; //this is added new
             }

@@ -84,6 +84,7 @@ public class BufferWriterThread implements Runnable {
                 try {
                     pairToWrite = cpQueueToWrite.take();
                 } catch (InterruptedException e) {
+                    System.out.println("buffer writer thread interrupted by gui.");
                     return; //can be triggered by gui top button
                 }
 
