@@ -13,7 +13,7 @@ public class NewIterationThread implements Runnable {
     protected volatile boolean running = true;
     protected int k;
 
-    BlockingQueue<KnowledgeBase> consistentQueue;
+    private BlockingQueue<KnowledgeBase> consistentQueue;
 
     public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, BlockingQueue<KnowledgeBase> consistentQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.inputQueue = inputQueue;
