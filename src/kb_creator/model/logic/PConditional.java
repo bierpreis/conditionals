@@ -17,10 +17,6 @@ public class PConditional {
     private final AbstractFormula shortAntecedent;
     private final AbstractFormula shortConsequence;
 
-    //todo: experiment with random object of some size
-    
-    private final AbstractFormula toleranceFormula;
-
     private PConditional counterConditional;
 
     //empty list as default for all conditionals who will not have any equivalent conditionals
@@ -33,8 +29,6 @@ public class PConditional {
         this.normalAntecedent = antecedent;
         this.shortAntecedent = shortAntecedent;
 
-        //todo: test as method?!
-        this.toleranceFormula = shortAntecedent.neg().or(shortConsequence);
 
         this.number = number;
 
@@ -62,7 +56,7 @@ public class PConditional {
     }
 
     public boolean tolerates(AbstractWorld world) {
-        return toleranceFormula.evaluate(world);
+        return (shortConsequence.evaluate(world) || !shortAntecedent.evaluate(world));
     }
 
 
