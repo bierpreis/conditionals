@@ -13,7 +13,7 @@ public class ConditionalTranslator {
         shortTranslationMap = new ShortTranslationMap(signature);
     }
 
-    //todo: describe
+    //todo: describe when finished
     public static PConditional transLate(WConditional wConditional) {
         AbstractFormula normalAntecedent = worldToNormalFormula(wConditional.getAntecedent());
         AbstractFormula shortAntecedent = worldToNormalFormula(wConditional.getAntecedent());

@@ -33,14 +33,14 @@ public class DummyWriterThread implements Runnable {
         System.out.println("dummy kbWriter thread finished");
     }
 
-
+    //this should only be called by gui
     public void stopLoop() {
         while (!queue.isEmpty()) {
             try {
                 System.out.println("dummy writer sleeping");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
-                e.printStackTrace(); //todo: really?
+                e.printStackTrace();
             }
         }
         running = false;
