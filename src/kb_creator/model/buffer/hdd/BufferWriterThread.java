@@ -57,6 +57,7 @@ public class BufferWriterThread implements Runnable {
             } else try {
                 Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
             } catch (InterruptedException e) {
+                System.out.println("hdd buffer interrupted hdd buffer. stop was pressed.");
                 return; //this is triggered by stop button in gui
             }
         }
@@ -89,6 +90,7 @@ public class BufferWriterThread implements Runnable {
                 try {
                     consistentQueue.put(pairToWrite.getKnowledgeBase());
                 } catch (InterruptedException e) {
+                    System.out.println("buffer writer thread inrerrupted by gui.");
                     return; //can be triggered by gui top button
                 }
 
@@ -149,7 +151,7 @@ public class BufferWriterThread implements Runnable {
         return (folderToWrite.listFiles().length > 0);
     }
 
-
+    //todo: delete?
     public void addList(List<AbstractPair> listToAdd) {
         for (AbstractPair pair : listToAdd)
             try {

@@ -68,7 +68,7 @@ public class KbWriterThread implements Runnable {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-
+                System.out.println("real writer interrupted. stop was pressed.");
                 return; //this should only happen by gui stop button.
             }
         }

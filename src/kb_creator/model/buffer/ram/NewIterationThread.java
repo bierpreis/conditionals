@@ -37,6 +37,7 @@ public class NewIterationThread implements Runnable {
             try {
                 consistentQueue.put(pairToAdd.getKnowledgeBase());
             } catch (InterruptedException e) {
+                System.out.println("new iteration thread interrupted.");
                 running = false;
                 break; //this is added new
             }

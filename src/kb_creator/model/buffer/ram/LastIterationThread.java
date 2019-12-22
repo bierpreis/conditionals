@@ -28,6 +28,7 @@ public class LastIterationThread implements Runnable {
                 lastIterationQueue.put(new RealPair(pair));
             } catch (InterruptedException e) {
                 //this should only be called by gui stop button
+                System.out.println("last iteration thread interrupted by gui.");
                 return;
             }
         }

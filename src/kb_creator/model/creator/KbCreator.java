@@ -132,6 +132,7 @@ public class KbCreator implements Runnable {
                 newIterationQueue.put(pair);
             } catch (InterruptedException e) {
                 //should only be called by stop button in the first microseconds of running the program.
+                System.out.println("kb creator interrupted by gui.");
                 return;
             }
 

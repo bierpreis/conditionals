@@ -55,7 +55,7 @@ public class BufferReaderThread implements Runnable {
                 try {
                     lastIterationQueue.put(pairToPut);
                 } catch (InterruptedException e) {
-
+                    System.out.println("buffer reader thread interrupted by gui.");
                     return; //this is ONLY triggered by stop button in gui and will close this thread
                 }
             }
