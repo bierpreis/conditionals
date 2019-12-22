@@ -82,7 +82,7 @@ public class KnowledgeBase {
 
     //todo
     public boolean tolerates(PConditional conditionalToTest) {
-    //idea: some recursive method with list<conditionals> as parameter. return false if not or if sth found call same method without this conditional
+        //idea: some recursive method with list<conditionals> as parameter. return false if not or if sth found call same method without this conditional
 
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
@@ -106,6 +106,14 @@ public class KnowledgeBase {
                     }
                 }
                 if (toleratesAll)
+                    return true;
+            }
+        }
+
+        //todo: remove. this is just a test for k = 1
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
+            if (conditionalList.get(0).getAntecedent().evaluate(world) && (conditionalList.get(0).getConsequence().evaluate(world))) {
+                if (conditionalToTest.tolerates(world))
                     return true;
             }
         }
