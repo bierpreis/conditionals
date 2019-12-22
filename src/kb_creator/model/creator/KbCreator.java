@@ -233,6 +233,7 @@ public class KbCreator implements Runnable {
 
     //this is only called when all iterations have finished
     private void finishAndStopLoop() {
+        System.out.println("!!!before finish");
         kbWriter.finishAndStopThreads();
         this.creatorStatus = CreatorStatus.FINISHED;
     }

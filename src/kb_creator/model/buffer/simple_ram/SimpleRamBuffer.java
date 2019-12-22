@@ -22,7 +22,7 @@ public class SimpleRamBuffer extends CompressedRamBuffer {
         if (k != 0) {
 
             lastIterationThread = new Thread(lastIterationThreadObject = new SimpleLastIterationThread(lastIterationQueue, candidatePairList, k));
-            lastIterationThread.setName("last iteration thread for k + k");
+            lastIterationThread.setName("last iteration thread for k " + k);
             lastIterationThread.start();
         }
 
