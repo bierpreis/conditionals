@@ -85,16 +85,16 @@ public class BufferLocationPanel extends JPanel {
 
     public boolean isValueValid() {
         if (filePathToSave == null) {
-            saveButton.setBorder(BorderFactory.createLineBorder(Color.RED));
+            this.setBorder(BorderFactory.createLineBorder(Color.RED));
             new NoBufferPathDialog();
             return false;
         }
         return true;
     }
 
-    //todo: this changes button size!
     public void resetWarningColor(){
-        saveButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.setBorder(BorderFactory.createEmptyBorder());
+        saveButton.repaint();
     }
 
 }
