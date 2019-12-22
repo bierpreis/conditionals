@@ -26,7 +26,7 @@ public class DummyWriterThread implements Runnable {
                 totalCounter++;
             } catch (InterruptedException e) {
                 running = false;
-                System.out.println("dummy writer interrupted!!!"); //todo: always if i see this stop wont work
+                System.out.println("dummy writer interrupted");
                 break;
             }
         }
@@ -37,9 +37,10 @@ public class DummyWriterThread implements Runnable {
     public void stopLoop() {
         while (!queue.isEmpty()) {
             try {
+                System.out.println("dummy writer sleeping");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //todo: really?
             }
         }
         running = false;

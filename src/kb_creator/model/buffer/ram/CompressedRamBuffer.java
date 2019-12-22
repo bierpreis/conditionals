@@ -104,12 +104,7 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
     //this is only called by gui stop button
     @Override
     public void stopLoop() {
-        while (!nextIterationQueue.isEmpty())
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         nextIterationThread.interrupt();
 
         lastIterationThread.interrupt();
