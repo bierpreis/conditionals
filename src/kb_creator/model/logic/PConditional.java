@@ -6,11 +6,10 @@ import nfc_creator.model.ConditionalTranslator;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: test in debugger if new translating works like it should.
 public class PConditional {
     private final int number;
 
-    //todo: describe
+    //todo: describe when rdy.
     private final AbstractFormula normalAntecedent;
     private final AbstractFormula normalConsequence;
 
