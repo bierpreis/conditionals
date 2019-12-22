@@ -40,7 +40,6 @@ public class NewIterationThread implements Runnable {
                 running = false;
                 break; //this is added new
             }
-            //todo: counter
             candidatePairList.get(k).add(new CompressedPair(pairToAdd));
         }
         System.out.println("new iteration thread finished for k " + k);
