@@ -17,7 +17,8 @@ public class PConditional {
     private final AbstractFormula shortAntecedent;
     private final AbstractFormula shortConsequence;
 
-
+    //todo: experiment with random object of some size
+    
     private final AbstractFormula toleranceFormula;
 
     private PConditional counterConditional;
