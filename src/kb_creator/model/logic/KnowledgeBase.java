@@ -93,9 +93,9 @@ public class KnowledgeBase {
 
     }
 
-
+    //todo: this can never return true!
     private boolean isConsistent(List<PConditional> conditionals) {
-        for (int i = 1; i < conditionals.size(); i++) {
+        for (int i = 0; i < conditionals.size(); i++) {
             List<PConditional> restOfList = new ArrayList<>(conditionals);
             restOfList.remove(i);
             if (tolerates(conditionals.get(i), restOfList))
