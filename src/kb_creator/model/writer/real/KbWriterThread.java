@@ -75,6 +75,7 @@ public class KbWriterThread implements Runnable {
         }
     }
 
+    //todo: this creates file. only do this when needed? or delete empty file at end?
     public void newIteration(int k) {
 
 
