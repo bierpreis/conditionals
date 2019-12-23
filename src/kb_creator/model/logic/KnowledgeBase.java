@@ -80,20 +80,22 @@ public class KnowledgeBase {
 
     }
 
-    public boolean isConsistent(PConditional conditionalToTest){
-        return tolerates(conditionalToTest, this.conditionalList);
+    public boolean isConsistent(PConditional conditionalToTest) {
+        if (tolerates(conditionalToTest, this.conditionalList))
+            return true;
+        //todo
+
+
+        return false;
     }
 
-    //todo: this is tolerates and it actually is tolerates. but should be private and isConsistent as recursive function should be public
-    public boolean tolerates(PConditional conditionalToTest, List<PConditional> conditionalList) {
-        //idea: some recursive method with list<conditionals> as parameter. return false if not or if sth found call same method without this conditional
-        //this should call another method (
+    private boolean tolerates(PConditional conditionalToTest, List<PConditional> conditionalList) {
+
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
-
 
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
@@ -111,7 +113,6 @@ public class KnowledgeBase {
         }
         return false;
     }
-
 
 
     @Override
