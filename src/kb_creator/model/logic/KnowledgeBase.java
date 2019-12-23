@@ -80,6 +80,7 @@ public class KnowledgeBase {
 
     }
 
+    //todo
     public boolean isConsistent(PConditional conditionalToTest) {
         if (tolerates(conditionalToTest, this.conditionalList))
             return true;
