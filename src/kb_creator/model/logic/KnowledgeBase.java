@@ -80,20 +80,20 @@ public class KnowledgeBase {
 
     }
 
-    //todo
-    public boolean tolerates(PConditional conditionalToTest) {
-        //idea: some recursive method with list<conditionals> as parameter. return false if not or if sth found call same method without this conditional
+    public boolean isConsistent(PConditional conditionalToTest){
+        return tolerates(conditionalToTest, this.conditionalList);
+    }
 
+    //todo: this is tolerates and it actually is tolerates. but should be private and isConsistent as recursive function should be public
+    public boolean tolerates(PConditional conditionalToTest, List<PConditional> conditionalList) {
+        //idea: some recursive method with list<conditionals> as parameter. return false if not or if sth found call same method without this conditional
+        //this should call another method (
         //hauptquelle:
         //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
         //
         // nicht so wichtig dazu, vlt comment streichen:
         // siehe auch infofc s 4 dazu. auch s 9 dort.
 
-
-
-/*        if (this.conditionalList.get(0).getNumber() == 1 && conditionalToTest.getNumber() == 5)
-            System.out.println("lel");*/
 
 
         for (AbstractWorld world : signature.getPossibleWorlds()) {
@@ -109,31 +109,9 @@ public class KnowledgeBase {
                     return true;
             }
         }
-
-        //todo: remove. this is just a test for k = 1
-        for (AbstractWorld world : signature.getPossibleWorlds()) {
-            if (conditionalList.get(0).getAntecedent().evaluate(world) && (conditionalList.get(0).getConsequence().evaluate(world))) {
-                if (conditionalToTest.tolerates(world))
-                    return true;
-            }
-        }
         return false;
     }
 
-    public boolean isConsistentWith2(PConditional conditionalToTest) {
-        for (AbstractWorld world : signature.getPossibleWorlds()) {
-            if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
-                AbstractFormula tolerannceFormula = new Tautology();
-                for (PConditional conditional : conditionalList) {
-                    tolerannceFormula = tolerannceFormula.and(conditional.getAntecedent().neg().or(conditional.getConsequence()));
-                }
-                if (tolerannceFormula.evaluate(world))
-                    return true;
-            }
-
-        }
-        return false;
-    }
 
 
     @Override

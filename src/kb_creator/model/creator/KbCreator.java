@@ -172,7 +172,7 @@ public class KbCreator implements Runnable {
 
 
                     //line 10
-                    if (currentPair.getKnowledgeBase().tolerates(r)) { //takes almost no time
+                    if (currentPair.getKnowledgeBase().isConsistent(r)) { //takes almost no time
 
 
                         //next part is line 11 and 12
