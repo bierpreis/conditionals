@@ -240,8 +240,7 @@ public class NfcCreator {
 
         }
 
-        //todo: this doesnt work?
-        //this takes the basic counter conditional and replaces it with the actual counter conditional reference
+        //this takes the basic counter conditional and replaces it with the actual counter conditional object
         //this saves some memory space, but not very much.
         for (PConditional conditional : pConditionalList) {
             for (PConditional possibleCounterConditional : pConditionalList) {
