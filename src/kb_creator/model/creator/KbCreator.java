@@ -140,7 +140,8 @@ public class KbCreator implements Runnable {
         l.finishIteration(0);
         kbWriter.finishIteration();
 
-
+//todo: with dummy writer this causes an iteration +1 to start which has no elements!
+        //either l.hasElements is wrong or the last iteration has no candidates!
         //line 6
         while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
@@ -148,6 +149,10 @@ public class KbCreator implements Runnable {
             //line  7
             l.prepareIteration(k);
             currentPairAmount = kbWriter.getIterationConsistentCounter();
+
+            if(k == 25)
+                System.out.println("lol"); //todo: debug here when is consistent works
+
             kbWriter.prepareIteration(k);
             iterationPairCounter = 0;
 
