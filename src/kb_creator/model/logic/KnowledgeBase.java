@@ -83,9 +83,23 @@ public class KnowledgeBase {
     public boolean isConsistent(PConditional conditionalToTest) {
         if (tolerates(conditionalToTest, this.conditionalList))
             return true;
-        //todo
+
+        List<PConditional> completeList = new ArrayList<>(this.conditionalList.size() + 1);
+        completeList.addAll(this.conditionalList);
+        completeList.add(conditionalToTest);
+
+        return isConsistent(completeList);
+
+    }
 
 
+    private boolean isConsistent(List<PConditional> conditionals) {
+        for (int i = 1; i < conditionals.size(); i++) {
+            List<PConditional> restOfList = new ArrayList<>(conditionals);
+            restOfList.remove(i);
+            if (tolerates(conditionals.get(i), restOfList))
+                return isConsistent(restOfList);
+        }
         return false;
     }
 

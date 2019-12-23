@@ -7,14 +7,13 @@ import java.awt.*;
 
 public class NamePrefixPanel extends JPanel {
 
-    private JTextField prefixInputField = new JTextField("1");
+    private JTextField prefixInputField = new JTextField("kb");
     private JLabel descriptionLabel = new JLabel("File Name Prefix: ");
 
 
     public NamePrefixPanel() {
         add(descriptionLabel);
-        prefixInputField.setPreferredSize(new Dimension(24, 18));
-        prefixInputField.setText("");
+        prefixInputField.setPreferredSize(new Dimension(64, 18));
         add(prefixInputField);
     }
 
