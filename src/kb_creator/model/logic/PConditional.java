@@ -1,5 +1,6 @@
 package kb_creator.model.logic;
 
+import kb_creator.model.logic.signature.AbstractSignature;
 import kb_creator.model.logic.signature.worlds.AbstractWorld;
 import nfc_creator.model.ConditionalTranslator;
 
@@ -68,6 +69,24 @@ public class PConditional {
         if (this.eqConditionalsList.size() != 0)
             throw new RuntimeException("Eq Conditionals set twice! This should not happen.");
         this.eqConditionalsList = eqConditionalsList;
+    }
+
+    //todo: use
+    public boolean tolerates(List<PConditional> conditionalList, AbstractSignature signature){
+        for(AbstractWorld world: signature.getPossibleWorlds()){
+            if(this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)){
+                boolean toleratesAll = true;
+                for(PConditional conditional : conditionalList){
+                    if(!conditional.tolerates(world)){
+                        toleratesAll = false;
+                        break;
+                    }
+                }
+                if(toleratesAll)
+                    return true;
+            }
+        }
+        return false;
     }
 
 
