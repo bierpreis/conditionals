@@ -92,7 +92,7 @@ public class KnowledgeBase {
         return isConsistent(completeList);
 
     }
-
+    //todo: test: 31 wrong in 2cnd iteration. how many in 3rd? is this a value of 2cnd?
     //todo: this can never return true!
     private boolean isConsistent(List<PConditional> conditionals) {
         for (int i = 0; i < conditionals.size(); i++) {
@@ -102,6 +102,16 @@ public class KnowledgeBase {
                 return isConsistent(restOfList);
         }
         return false;
+    }
+
+    //todo: this is wrong. istToTest is r. whiler.isnNOTEmpty() missing
+    public boolean newIsConsistent(){
+        List<PConditional> listToTest = new ArrayList<>(this.conditionalList);
+
+        for(PConditional conditional: conditionalList){
+            if(conditional.tolerates(listToTest, signature))
+                listToTest.remove(conditional);
+        }
     }
 
     private boolean tolerates(PConditional conditionalToTest, List<PConditional> conditionalList) {
