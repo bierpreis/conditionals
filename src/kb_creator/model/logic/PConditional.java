@@ -72,7 +72,7 @@ public class PConditional {
     }
 
     //todo: use
-    public boolean tolerates(List<PConditional> conditionalList, AbstractSignature signature){
+    public boolean isTolerated(List<PConditional> conditionalList, AbstractSignature signature){
         for(AbstractWorld world: signature.getPossibleWorlds()){
             if(this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)){
                 boolean toleratesAll = true;
