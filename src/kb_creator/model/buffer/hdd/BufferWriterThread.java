@@ -56,6 +56,11 @@ public class BufferWriterThread implements Runnable {
                 writeNextFile();
             } else try {
                 System.out.println("buffer writer sleeping"); //todo: here should be some take loop and no sleep!
+                //idea: while(list<size){
+                //list.add(queue.take)
+                //catch interrupt
+                //write file
+
                 Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
             } catch (InterruptedException e) {
                 System.out.println("hdd buffer interrupted hdd buffer. stop was pressed.");
