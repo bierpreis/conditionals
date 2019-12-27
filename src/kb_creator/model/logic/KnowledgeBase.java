@@ -99,18 +99,16 @@ public class KnowledgeBase {
         List<PConditional> listToTest = new ArrayList<>(conditionalList);
 
         while (!listToTest.isEmpty()) {
-            System.out.println(listToTest.size());
             List<PConditional> listToRemove = new ArrayList<>();
             for (PConditional conditional : listToTest) {
                 if (conditional.isTolerated(listToTest, signature)) {
                     listToRemove.add(conditional);
                 }
             }
-            if (listToTest.isEmpty())
+            if (listToRemove.isEmpty())
                 return false;
             listToTest.removeAll(listToRemove);
         }
-        System.out.println("consistent");
         return true;
     }
 
