@@ -80,16 +80,16 @@ public class KnowledgeBase {
 
     }
 
-    //todo
+    //todo: rename to is consistent with?!
     public boolean isConsistent(PConditional conditionalToTest) {
-        if (tolerates(conditionalToTest, this.conditionalList))
-            return true;
+/*        if (tolerates(conditionalToTest, this.conditionalList))
+            return true;*/
 
         List<PConditional> completeList = new ArrayList<>(this.conditionalList.size() + 1);
         completeList.addAll(this.conditionalList);
         completeList.add(conditionalToTest);
 
-        return isConsistent(completeList);
+        return newIsConsistent(completeList);
 
     }
 
@@ -105,28 +105,34 @@ public class KnowledgeBase {
         return false;
     }
 
-    //todo: this is wrong.
-    public boolean newIsConsistent() {
-        List<PConditional> listToTest = new ArrayList<>(this.conditionalList);
+    //todo: test
+    public boolean newIsConsistent(List<PConditional> conditionalList) {
+        List<PConditional> listToTest = new ArrayList<>(conditionalList);
 
         while (!listToTest.isEmpty()) {
+            System.out.println(listToTest.size());
+            List<PConditional> listToRemove = new ArrayList<>();
             for (PConditional conditional : listToTest) {
-                if (conditional.isTolerated(listToTest, signature)) //todo: here should be ISToleratedBY?!
-                    listToTest.remove(conditional);
+                if (conditional.isTolerated(listToTest, signature)) {
+                    listToRemove.add(conditional);
+                }
             }
-
+            if (listToTest.isEmpty())
+                return false;
+            listToTest.removeAll(listToRemove);
         }
+        System.out.println("consistent");
+        return true;
     }
 
+    //hauptquelle:
+    //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
+    //
+    // nicht so wichtig dazu, vlt comment streichen:
+    // siehe auch infofc s 4 dazu. auch s 9 dort.
+
+    //this is the original tolerates but only with the extra conditional list parameter
     private boolean tolerates(PConditional conditionalToTest, List<PConditional> conditionalList) {
-
-        //hauptquelle:
-        //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
-        //
-        // nicht so wichtig dazu, vlt comment streichen:
-        // siehe auch infofc s 4 dazu. auch s 9 dort.
-
-
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
                 boolean toleratesAll = true;
