@@ -85,8 +85,7 @@ public class KnowledgeBase {
 /*        if (tolerates(conditionalToTest, this.conditionalList))
             return true;*/
 
-        List<PConditional> listToTest = new ArrayList<>(this.conditionalList.size() + 1);
-        listToTest.addAll(this.conditionalList); //todo: this together with step before?
+        List<PConditional> listToTest = new ArrayList<>(this.conditionalList);
         listToTest.add(conditionalToTest);
 
         while (!listToTest.isEmpty()) {
