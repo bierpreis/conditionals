@@ -80,7 +80,7 @@ public class KnowledgeBase {
 
     }
 
-    //todo: rename to is consistent with?!
+    //todo: put together
     public boolean isConsistentWith(PConditional conditionalToTest) {
 /*        if (tolerates(conditionalToTest, this.conditionalList))
             return true;*/
@@ -94,7 +94,7 @@ public class KnowledgeBase {
     }
 
 
-    //todo: test
+    //todo: put together
     public boolean newIsConsistent(List<PConditional> conditionalList) {
         List<PConditional> listToTest = new ArrayList<>(conditionalList);
 
@@ -117,24 +117,6 @@ public class KnowledgeBase {
     //
     // nicht so wichtig dazu, vlt comment streichen:
     // siehe auch infofc s 4 dazu. auch s 9 dort.
-
-    //this is the original tolerates but only with the extra conditional list parameter
-    private boolean tolerates(PConditional conditionalToTest, List<PConditional> conditionalList) {
-        for (AbstractWorld world : signature.getPossibleWorlds()) {
-            if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
-                boolean toleratesAll = true;
-                for (PConditional conditional : conditionalList) {
-                    if (!conditional.tolerates(world)) {
-                        toleratesAll = false;
-                        break;
-                    }
-                }
-                if (toleratesAll)
-                    return true;
-            }
-        }
-        return false;
-    }
 
 
     //this is the original tolerates but only with the extra conditional list parameter

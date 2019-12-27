@@ -71,7 +71,7 @@ public class PConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
-    //todo: use
+    //todo: describe. maybe remove signature?
     public boolean isTolerated(List<PConditional> conditionalList, AbstractSignature signature){
         for(AbstractWorld world: signature.getPossibleWorlds()){
             if(this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)){
