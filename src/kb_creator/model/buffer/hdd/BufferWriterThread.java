@@ -55,7 +55,7 @@ public class BufferWriterThread implements Runnable {
             if (checkIfShouldWrite()) {
                 writeNextFile();
             } else try {
-                System.out.println("buffer writer sleeping");
+                System.out.println("buffer writer sleeping"); //todo: this happens all the time. shit?!
                 Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
             } catch (InterruptedException e) {
                 System.out.println("hdd buffer interrupted hdd buffer. stop was pressed.");
