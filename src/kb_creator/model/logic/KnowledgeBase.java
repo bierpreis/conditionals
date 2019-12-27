@@ -151,7 +151,7 @@ public class KnowledgeBase {
 
 
     //this is the original tolerates but only with the extra conditional list parameter
-    private boolean tolerates(PConditional conditionalToTest) {
+    public boolean tolerates(PConditional conditionalToTest) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (conditionalToTest.getAntecedent().evaluate(world) && conditionalToTest.getConsequence().evaluate(world)) {
                 boolean toleratesAll = true;
