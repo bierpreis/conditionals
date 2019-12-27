@@ -81,7 +81,7 @@ public class KnowledgeBase {
     }
 
     //todo: rename to is consistent with?!
-    public boolean isConsistent(PConditional conditionalToTest) {
+    public boolean isConsistentWith(PConditional conditionalToTest) {
 /*        if (tolerates(conditionalToTest, this.conditionalList))
             return true;*/
 
@@ -93,17 +93,6 @@ public class KnowledgeBase {
 
     }
 
-    //todo: test: 31 wrong in 2cnd iteration. how many in 3rd? is this a value of 2cnd?
-    //todo: this can never return true!
-    private boolean isConsistent(List<PConditional> conditionals) {
-        for (int i = 0; i < conditionals.size(); i++) {
-            List<PConditional> restOfList = new ArrayList<>(conditionals);
-            restOfList.remove(i);
-            if (tolerates(conditionals.get(i), restOfList))
-                return isConsistent(restOfList);
-        }
-        return false;
-    }
 
     //todo: test
     public boolean newIsConsistent(List<PConditional> conditionalList) {
