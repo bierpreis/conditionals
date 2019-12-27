@@ -80,23 +80,14 @@ public class KnowledgeBase {
 
     }
 
-    //todo: put together
+    //todo: beschreiben in tex. auch laufzeit: beginnt schnell, wird schnell langsam.
     public boolean isConsistentWith(PConditional conditionalToTest) {
 /*        if (tolerates(conditionalToTest, this.conditionalList))
             return true;*/
 
-        List<PConditional> completeList = new ArrayList<>(this.conditionalList.size() + 1);
-        completeList.addAll(this.conditionalList);
-        completeList.add(conditionalToTest);
-
-        return newIsConsistent(completeList);
-
-    }
-
-
-    //todo: put together
-    public boolean newIsConsistent(List<PConditional> conditionalList) {
-        List<PConditional> listToTest = new ArrayList<>(conditionalList);
+        List<PConditional> listToTest = new ArrayList<>(this.conditionalList.size() + 1);
+        listToTest.addAll(this.conditionalList); //todo: this together with step before?
+        listToTest.add(conditionalToTest);
 
         while (!listToTest.isEmpty()) {
             List<PConditional> listToRemove = new ArrayList<>();
