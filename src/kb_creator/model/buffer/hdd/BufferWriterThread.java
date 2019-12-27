@@ -52,7 +52,7 @@ public class BufferWriterThread implements Runnable {
     @Override
     public void run() {
         while (running) {
-            if (checkIfShouldWrite()) {
+            if (checkIfShouldWrite()) { //this causes the fucking jumping stuff. counter should be in while loop
                 writeNextFile();
             } else try {
                 System.out.println("buffer writer sleeping"); //todo: here should be some take loop and no sleep!
