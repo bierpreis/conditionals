@@ -67,12 +67,12 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
         nextIterationThreadObject = new BufferWriterThread(nextIterationQueue, consistentQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK);
         nextIterationThread = new Thread(nextIterationThreadObject);
-        nextIterationThread.setName("new iteration thread for k " + requestedK); //todo: rename
+        nextIterationThread.setName("buffer writer thread for k " + requestedK);
         nextIterationThread.start();
 
         lastIterationThreadObject = new BufferReaderThread(lastIterationQueue, tmpFilePath, requestedK);
         lastIterationThread = new Thread(lastIterationThreadObject);
-        lastIterationThread.setName("buffer reader thread for k " + requestedK); //todo: rename
+        lastIterationThread.setName("buffer reader thread for k " + requestedK);
         lastIterationThread.start();
 
         System.out.println("prepare iteration finished " + requestedK);
