@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class KbNumberPanel extends JPanel{
 
-    private JTextField lengthField = new JTextField("1000");
+    private JTextField lengthField = new JTextField("10000");
     private JLabel descriptionLabel = new JLabel("Number of KBs per File: ");
 
 
