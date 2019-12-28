@@ -80,7 +80,7 @@ public class KnowledgeBase {
 
     }
 
-    //todo: beschreiben in tex. auch laufzeit: beginnt schnell, wird schnell langsam.
+    //describe: first fast, gets slower with increasing n
     public boolean isConsistentWith(PConditional conditionalToTest) {
         List<PConditional> listToTest = new ArrayList<>(this.conditionalList);
         listToTest.add(conditionalToTest);
