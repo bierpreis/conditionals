@@ -19,6 +19,8 @@ public class PConditional {
 
     private PConditional counterConditional;
 
+    private static AbstractSignature signature;
+
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
@@ -28,7 +30,6 @@ public class PConditional {
 
         this.normalAntecedent = antecedent;
         this.shortAntecedent = shortAntecedent;
-
 
         this.number = number;
 
@@ -71,12 +72,16 @@ public class PConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
+    public static void setSignature(AbstractSignature signatureToSet){
+        signature = signatureToSet;
+    }
+
 
     //quelle zu isToleratedBy:
     //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
 
-    //todo: describe. maybe remove signature?
-    public boolean isToleratedBy(List<PConditional> conditionalList, AbstractSignature signature) {
+    //todo: describe.
+    public boolean isToleratedBy(List<PConditional> conditionalList) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)) {
                 boolean toleratesAll = true;

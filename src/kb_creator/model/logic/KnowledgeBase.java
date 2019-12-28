@@ -89,7 +89,7 @@ public class KnowledgeBase {
         while (!listToTest.isEmpty()) {
             List<PConditional> listToRemove = new ArrayList<>();
             for (PConditional conditional : listToTest) {
-                if (conditional.isToleratedBy(listToTest, signature)) {
+                if (conditional.isToleratedBy(listToTest)) {
                     listToRemove.add(conditional);
                 }
             }
@@ -99,8 +99,6 @@ public class KnowledgeBase {
         }
         return true;
     }
-
-
 
 
     //this is the original tolerates but only with the extra conditional list parameter

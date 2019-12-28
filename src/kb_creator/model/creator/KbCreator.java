@@ -45,7 +45,7 @@ public class KbCreator implements Runnable {
 
     private int iterationPairCounter = 0;
 
-    public KbCreator(AbstractSignature signature,  AbstractPairBuffer l, KbWriterOptions writerOptions) {
+    public KbCreator(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
         this.newIterationQueue = l.getNextIterationQueue();
         this.lastIterationQueue = l.getLastIterationQueue();
@@ -53,6 +53,7 @@ public class KbCreator implements Runnable {
         this.l = l;
         AbstractFormula.setSignature(signature);
         KnowledgeBase.setSignature(signature);
+        PConditional.setSignature(signature);
 
 
         creatorStatus = CreatorStatus.NOT_STARTED;
@@ -215,7 +216,7 @@ public class KbCreator implements Runnable {
             }
             System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
             //line 13
-            
+
             l.finishIteration(k);
             kbWriter.finishIteration();
 
