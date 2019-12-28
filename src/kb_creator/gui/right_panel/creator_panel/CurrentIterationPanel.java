@@ -55,6 +55,7 @@ public class CurrentIterationPanel extends JPanel {
         currentKLabel.setText("Current k value: " + currentK);
     }
 
+    //todo: fix speed or remove
     public void showSpeed(int speed) {
 
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
