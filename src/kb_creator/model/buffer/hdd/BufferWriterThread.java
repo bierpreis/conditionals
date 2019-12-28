@@ -52,7 +52,7 @@ public class BufferWriterThread implements Runnable {
     @Override
     public void run() {
         while (running) {
-            if (checkIfShouldWrite()) { //todo: this causes the fucking jumping stuff. change.
+            if (checkIfShouldWrite()) { //this causes jumping speed. but changing is is complicated.
                 writeNextFile();
             } else try {
 

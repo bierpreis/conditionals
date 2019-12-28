@@ -82,8 +82,6 @@ public class KnowledgeBase {
 
     //todo: beschreiben in tex. auch laufzeit: beginnt schnell, wird schnell langsam.
     public boolean isConsistentWith(PConditional conditionalToTest) {
-/*        if (tolerates(conditionalToTest, this.conditionalList))
-            return true;*/
 
         List<PConditional> listToTest = new ArrayList<>(this.conditionalList);
         listToTest.add(conditionalToTest);
@@ -91,7 +89,7 @@ public class KnowledgeBase {
         while (!listToTest.isEmpty()) {
             List<PConditional> listToRemove = new ArrayList<>();
             for (PConditional conditional : listToTest) {
-                if (conditional.isTolerated(listToTest, signature)) {
+                if (conditional.isToleratedBy(listToTest, signature)) {
                     listToRemove.add(conditional);
                 }
             }
