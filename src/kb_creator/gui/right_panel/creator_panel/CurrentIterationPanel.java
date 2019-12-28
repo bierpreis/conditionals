@@ -9,7 +9,6 @@ import java.util.Locale;
 public class CurrentIterationPanel extends JPanel {
     private JLabel iterationConsistentLabel;
     private JLabel iterationInconsistentLabel;
-    private JLabel speedLabel;
     private JLabel currentKLabel;
     private JLabel candidatePairsLabel;
     private JLabel progressLabel;
@@ -29,10 +28,6 @@ public class CurrentIterationPanel extends JPanel {
         vBox.add(progressLabel);
 
 
-        speedLabel = new JLabel();
-        vBox.add(speedLabel);
-
-
         iterationConsistentLabel = new JLabel();
         vBox.add(iterationConsistentLabel);
 
@@ -47,7 +42,6 @@ public class CurrentIterationPanel extends JPanel {
 
         showIterationConsistentAmount(0);
         //showCandidatePairs(0);
-        showSpeed(0);
         showCurrentK(0);
     }
 
@@ -55,12 +49,7 @@ public class CurrentIterationPanel extends JPanel {
         currentKLabel.setText("Current k value: " + currentK);
     }
 
-    //todo: fix speed or remove
-    public void showSpeed(int speed) {
 
-        NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        speedLabel.setText("Speed (KBs/Second): " + formatter.format(speed));
-    }
 
     public void showIterationConsistentAmount(int amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
@@ -93,7 +82,6 @@ public class CurrentIterationPanel extends JPanel {
 
         iterationConsistentLabel.setEnabled(enabled);
         iterationInconsistentLabel.setEnabled(enabled);
-        speedLabel.setEnabled(enabled);
         currentKLabel.setEnabled(enabled);
         candidatePairsLabel.setEnabled(enabled);
         progressLabel.setEnabled(enabled);

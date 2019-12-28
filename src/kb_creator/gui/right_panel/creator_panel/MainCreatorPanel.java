@@ -59,10 +59,6 @@ public class MainCreatorPanel extends JPanel {
         overallStatusPanel.showStatus(creatorStatus);
     }
 
-    public void showSpeed(int speed) {
-        currentIterationPanel.showSpeed(speed);
-    }
-
     public void showCurrentCandidatePairs(int candidatePairs) {
         currentIterationPanel.showCandidatePairs(candidatePairs);
     }
