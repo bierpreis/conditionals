@@ -72,7 +72,7 @@ public class PConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
-    public static void setSignature(AbstractSignature signatureToSet){
+    public static void setSignature(AbstractSignature signatureToSet) {
         signature = signatureToSet;
     }
 
@@ -80,7 +80,6 @@ public class PConditional {
     //quelle zu isToleratedBy:
     //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
 
-    //todo: describe.
     public boolean isToleratedBy(List<PConditional> conditionalList) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
             if (this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)) {
