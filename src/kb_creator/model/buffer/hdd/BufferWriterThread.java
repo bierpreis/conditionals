@@ -1,12 +1,14 @@
 package kb_creator.model.buffer.hdd;
 
 import kb_creator.model.logic.KnowledgeBase;
+import kb_creator.model.logic.PConditional;
 import kb_creator.model.pairs.AbstractPair;
 import kb_creator.model.pairs.RealPair;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -49,31 +51,48 @@ public class BufferWriterThread implements Runnable {
         folderToWrite.mkdirs();
     }
 
+
     @Override
     public void run() {
         while (running) {
-            if (checkIfShouldWrite()) { //this causes the fucking jumping stuff. counter should be in while loop
-                writeNextFile();
-            } else try {
-                System.out.println("buffer writer sleeping"); //todo: here should be some take loop and no sleep!
-                //idea: while(list<size){
-                //list.add(queue.take)
-                //catch interrupt
-                //write file
+            List<AbstractPair> listToWrite = new ArrayList<>(maxNumberOfPairsInFile);
 
-                Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
-            } catch (InterruptedException e) {
-                System.out.println("hdd buffer interrupted hdd buffer. stop was pressed.");
-                return; //this is triggered by stop button in gui
+            while (listToWrite.size() < maxNumberOfPairsInFile) {
+
+                //take pair from queue
+                AbstractPair pairToWrite;
+                try {
+                    pairToWrite = cpQueueToWrite.take();
+                } catch (InterruptedException e) {
+                    System.out.println("buffer writer thread interrupted by gui.");
+                    running = false;
+                    break;
+                }
+
+
+                //put kb to consistent queue
+                try {
+                    consistentQueue.put(pairToWrite.getKnowledgeBase());
+                } catch (InterruptedException e) {
+                    System.out.println("buffer writer thread inrerrupted by gui.");
+                    running = false;
+                    break;
+                }
+
+                listToWrite.add(pairToWrite);
+
+                //check if iteration should finish
+                if ((flushRequested && cpQueueToWrite.size() > 0))
+                    break;
+
             }
+
+            writeNextFile(listToWrite);
         }
     }
 
-    public boolean checkIfShouldWrite() {
-        return (cpQueueToWrite.size() > maxNumberOfPairsInFile || (flushRequested && cpQueueToWrite.size() > 0));
-    }
 
-    private void writeNextFile() {
+    private void writeNextFile(List<AbstractPair> listToWrite) {
         try {
             //add leading zeros so the files can be sorted in correct order in their folder
 
@@ -85,23 +104,8 @@ public class BufferWriterThread implements Runnable {
 
             StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < maxNumberOfPairsInFile && !cpQueueToWrite.isEmpty(); i++) {
-                AbstractPair pairToWrite;
-                try {
-                    pairToWrite = cpQueueToWrite.take();
-                } catch (InterruptedException e) {
-                    System.out.println("buffer writer thread interrupted by gui.");
-                    return; //can be triggered by gui top button
-                }
-
-                try {
-                    consistentQueue.put(pairToWrite.getKnowledgeBase());
-                } catch (InterruptedException e) {
-                    System.out.println("buffer writer thread inrerrupted by gui.");
-                    return; //can be triggered by gui top button
-                }
-
-                sb.append(pairToWrite.toFileString());
+            for (int i = 0; i < listToWrite.size(); i++) {
+                sb.append(listToWrite.get(i).toFileString());
                 if (i != maxNumberOfPairsInFile - 1)
                     sb.append("\nEND\n");
                 pairWriterCounter++;
