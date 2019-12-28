@@ -100,11 +100,7 @@ public class KnowledgeBase {
         return true;
     }
 
-    //hauptquelle:
-    //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
-    //
-    // nicht so wichtig dazu, vlt comment streichen:
-    // siehe auch infofc s 4 dazu. auch s 9 dort.
+
 
 
     //this is the original tolerates but only with the extra conditional list parameter

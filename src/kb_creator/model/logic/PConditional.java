@@ -71,24 +71,27 @@ public class PConditional {
         this.eqConditionalsList = eqConditionalsList;
     }
 
+
+    //quelle zu isToleratedBy:
+    //this test is written in goldszmit/pearl 1996 p 64 (tolerance)
+
     //todo: describe. maybe remove signature?
-    public boolean isToleratedBy(List<PConditional> conditionalList, AbstractSignature signature){
-        for(AbstractWorld world: signature.getPossibleWorlds()){
-            if(this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)){
+    public boolean isToleratedBy(List<PConditional> conditionalList, AbstractSignature signature) {
+        for (AbstractWorld world : signature.getPossibleWorlds()) {
+            if (this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)) {
                 boolean toleratesAll = true;
-                for(PConditional conditional : conditionalList){
-                    if(!conditional.tolerates(world)){
+                for (PConditional conditional : conditionalList) {
+                    if (!conditional.tolerates(world)) {
                         toleratesAll = false;
                         break;
                     }
                 }
-                if(toleratesAll)
+                if (toleratesAll)
                     return true;
             }
         }
         return false;
     }
-
 
 
     //getters
