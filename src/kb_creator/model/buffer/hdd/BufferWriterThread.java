@@ -81,6 +81,7 @@ public class BufferWriterThread implements Runnable {
 
                 listToWrite.add(pairToWrite);
 
+                //todo: this causes the 1 element files!
                 //check if iteration should finish
                 if ((flushRequested && cpQueueToWrite.size() > 0))
                     break;
@@ -154,6 +155,10 @@ public class BufferWriterThread implements Runnable {
 
 
     public void finishIteration() {
+        //todo
+        //idea: all stuff in here
+        //wait until queuq<maxnumber
+        //then final flush of queue
         flushWritingElements();
 
     }
