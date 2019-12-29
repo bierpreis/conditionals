@@ -10,14 +10,14 @@ import java.util.Map;
 public abstract class AbstractPair {
 
     protected KnowledgeBase knowledgeBase;
-    protected static Map<Long, PConditional> nfcMap;
+    protected static Map<Integer, PConditional> nfcMap;
 
     //concrete methods
     public KnowledgeBase getKnowledgeBase() {
         return knowledgeBase;
     }
 
-    public static void setNfc(Map<Long, PConditional> nfc) {
+    public static void setNfc(Map<Integer, PConditional> nfc) {
         nfcMap = nfc;
     }
 

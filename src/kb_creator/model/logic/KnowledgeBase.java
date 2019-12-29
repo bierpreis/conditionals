@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class KnowledgeBase {
-    private static Map<Long, PConditional> nfcMap;
+    private static Map<Integer, PConditional> nfcMap;
     private static AbstractSignature signature;
 
 
@@ -72,7 +72,7 @@ public class KnowledgeBase {
         List<PConditional> newList = new ArrayList<>(conditionalStringArray.length);
 
         for (String candidateString : conditionalStringArray)
-            newList.add(nfcMap.get(Long.parseLong(candidateString)));
+            newList.add(nfcMap.get(Integer.parseInt(candidateString)));
 
         conditionalList = newList;
 
@@ -87,7 +87,7 @@ public class KnowledgeBase {
         while (!listToTest.isEmpty()) {
             List<PConditional> listToRemove = new ArrayList<>();
             for (PConditional conditional : listToTest) {
-                if (conditional.isToleratedBy(listToTest)) {
+                if (conditional.isToleratedBy(listToTest)) { //todo: null pointer
                     listToRemove.add(conditional);
                 }
             }
@@ -184,7 +184,7 @@ public class KnowledgeBase {
 
     //setters
 
-    public static void setNfcMap(Map<Long, PConditional> nfcMapToAdd) {
+    public static void setNfcMap(Map<Integer, PConditional> nfcMapToAdd) {
         nfcMap = nfcMapToAdd;
     }
 

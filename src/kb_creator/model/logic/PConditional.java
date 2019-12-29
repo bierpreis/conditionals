@@ -113,7 +113,7 @@ public class PConditional {
         return shortConsequence;
     }
 
-    public long getNumber() {
+    public int getNumber() {
         return number;
     }
 
