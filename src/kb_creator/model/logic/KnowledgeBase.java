@@ -87,7 +87,7 @@ public class KnowledgeBase {
         while (!listToTest.isEmpty()) {
             List<PConditional> listToRemove = new ArrayList<>();
             for (PConditional conditional : listToTest) {
-                if (conditional.isToleratedBy(listToTest)) { //todo: null pointer
+                if (conditional.isToleratedBy(listToTest)) {
                     listToRemove.add(conditional);
                 }
             }

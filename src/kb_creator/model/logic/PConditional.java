@@ -85,7 +85,7 @@ public class PConditional {
             if (this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)) {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
-                    if (!conditional.tolerates(world)) { //todo: wtf why null pointer
+                    if (!conditional.tolerates(world)) {
                         toleratesAll = false;
                         break;
                     }
