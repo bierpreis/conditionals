@@ -19,7 +19,7 @@ import java.util.concurrent.BlockingQueue;
 
 public class KbCreator implements Runnable {
 
-    private int currentPairAmount;
+    private long currentPairAmount;
 
     private volatile CreatorStatus creatorStatus;
 
@@ -43,7 +43,7 @@ public class KbCreator implements Runnable {
 
     private AbstractPairBuffer l;
 
-    private long iterationPairCounter = 0; //todo: update tex?
+    private long iterationPairCounter = 0;
 
     public KbCreator(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
@@ -154,8 +154,8 @@ public class KbCreator implements Runnable {
             iterationPairCounter = 0;
 
 
-            int consistentKbCounter = 1;
-            int inconsistentKbCounter = 1;
+            long consistentKbCounter = 1;
+            long inconsistentKbCounter = 1;
 
             //line 8
             while (l.hasMoreElementsForK(k)) {
@@ -255,7 +255,7 @@ public class KbCreator implements Runnable {
         return k;
     }
 
-    public int getTotalKbAmount() {
+    public long getTotalKbAmount() {
         return kbWriter.getTotalConsistentCounter();
     }
 
@@ -264,7 +264,7 @@ public class KbCreator implements Runnable {
         return creatorStatus;
     }
 
-    public int getCurrentPairAmount() {
+    public long getCurrentPairAmount() {
         return currentPairAmount;
     }
 
@@ -272,7 +272,7 @@ public class KbCreator implements Runnable {
         return startTime;
     }
 
-    public int getTotalInconsistentAmount() {
+    public long getTotalInconsistentAmount() {
         return kbWriter.getTotalInconsistentCounter();
     }
 

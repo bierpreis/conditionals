@@ -51,20 +51,20 @@ public class CurrentIterationPanel extends JPanel {
 
 
 
-    public void showIterationConsistentAmount(int amount) {
+    public void showIterationConsistentAmount(long amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
         iterationConsistentLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
-    public void showIterationInconsistentAmount(int amount){
+    public void showIterationInconsistentAmount(long amount){
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
 
         iterationInconsistentLabel.setText("Inconsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
 
-    public void showCandidatePairs(int candidatePairs) {
+    public void showCandidatePairs(long candidatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         candidatePairsLabel.setText("Candidate pairs: " + formatter.format(candidatePairs));
     }

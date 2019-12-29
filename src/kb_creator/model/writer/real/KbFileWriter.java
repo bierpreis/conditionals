@@ -72,23 +72,23 @@ public class KbFileWriter extends AbstractKbWriter {
     //getters
 
     @Override
-    public int getIterationConsistentCounter() {
+    public long getIterationConsistentCounter() {
         return consistentWriter.getIterationCounter();
     }
 
     @Override
-    public int getIterationInconsistentCounter() {
+    public long getIterationInconsistentCounter() {
         return inconsistentWriter.getIterationCounter();
     }
 
 
     @Override
-    public int getTotalConsistentCounter() {
+    public long getTotalConsistentCounter() {
         return consistentWriter.getTotalCounter();
     }
 
     @Override
-    public int getTotalInconsistentCounter() {
+    public long getTotalInconsistentCounter() {
         return inconsistentWriter.getTotalCounter();
     }
 }

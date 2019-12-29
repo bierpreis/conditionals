@@ -30,13 +30,13 @@ public abstract class AbstractKbWriter {
 
     //getters for counters
 
-    public abstract int getTotalInconsistentCounter();
+    public abstract long getTotalInconsistentCounter();
 
-    public abstract int getTotalConsistentCounter();
+    public abstract long getTotalConsistentCounter();
 
-    public abstract int getIterationConsistentCounter();
+    public abstract long getIterationConsistentCounter();
 
-    public abstract int getIterationInconsistentCounter();
+    public abstract long getIterationInconsistentCounter();
 
 
     //other getters

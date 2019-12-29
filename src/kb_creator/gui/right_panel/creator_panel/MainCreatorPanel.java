@@ -39,19 +39,19 @@ public class MainCreatorPanel extends JPanel {
         currentIterationPanel.showCurrentK(currentK);
     }
 
-    public void showIterationConsistentKBs(int iterationConsistentAmount) {
+    public void showIterationConsistentKBs(long iterationConsistentAmount) {
         currentIterationPanel.showIterationConsistentAmount(iterationConsistentAmount);
     }
 
-    public void showIterationInconsistentKBs(int inconsistentIterationAmount){
+    public void showIterationInconsistentKBs(long inconsistentIterationAmount){
         currentIterationPanel.showIterationInconsistentAmount(inconsistentIterationAmount);
     }
 
-    public void showTotalConsistentKBAmount(int kbAmount) {
+    public void showTotalConsistentKBAmount(long kbAmount) {
         overallStatusPanel.showConsistentKBAmount(kbAmount);
     }
 
-    public void showTotalInconsistentKBAmount(int kbAmount) {
+    public void showTotalInconsistentKBAmount(long kbAmount) {
         overallStatusPanel.showInconsistentKBAmount(kbAmount);
     }
 
@@ -59,7 +59,7 @@ public class MainCreatorPanel extends JPanel {
         overallStatusPanel.showStatus(creatorStatus);
     }
 
-    public void showCurrentCandidatePairs(int candidatePairs) {
+    public void showCurrentCandidatePairs(long candidatePairs) {
         currentIterationPanel.showCandidatePairs(candidatePairs);
     }
 
@@ -71,7 +71,7 @@ public class MainCreatorPanel extends JPanel {
         overallStatusPanel.showRunningTime(startTime);
     }
 
-    public void showAverageSpeed(int kbAmount, long startTime){overallStatusPanel.showAverageSpeed(kbAmount, startTime);}
+    public void showAverageSpeed(long kbAmount, long startTime){overallStatusPanel.showAverageSpeed(kbAmount, startTime);}
 
     @Override
     public void setEnabled(boolean enabled) {

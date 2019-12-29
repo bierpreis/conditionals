@@ -8,8 +8,8 @@ public class DummyWriterThread implements Runnable {
     private volatile boolean running = true;
     private BlockingQueue<KnowledgeBase> queue;
 
-    private int iterationCounter;
-    private int totalCounter;
+    private long iterationCounter;
+    private long totalCounter;
 
     public DummyWriterThread(BlockingQueue<KnowledgeBase> queue) {
         this.queue = queue;
@@ -52,11 +52,11 @@ public class DummyWriterThread implements Runnable {
 
     //getter
 
-    public int getTotalCounter() {
+    public long getTotalCounter() {
         return totalCounter;
     }
 
-    public int getIterationCounter() {
+    public long getIterationCounter() {
         return iterationCounter;
     }
 

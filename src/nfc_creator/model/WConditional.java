@@ -3,7 +3,6 @@ package nfc_creator.model;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo: long!
 public class WConditional implements Comparable {
     private final WorldsList antecedent;
     private final WorldsList consequence;

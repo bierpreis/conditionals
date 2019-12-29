@@ -62,22 +62,22 @@ public class KbDummyWriter extends AbstractKbWriter {
     //getter
 
     @Override
-    public int getIterationConsistentCounter() {
+    public long getIterationConsistentCounter() {
         return consistentThreadObject.getIterationCounter();
     }
 
     @Override
-    public int getIterationInconsistentCounter() {
+    public long getIterationInconsistentCounter() {
         return inconsistentThreadObject.getIterationCounter();
     }
 
     @Override
-    public int getTotalInconsistentCounter() {
+    public long getTotalInconsistentCounter() {
         return inconsistentThreadObject.getTotalCounter();
     }
 
     @Override
-    public int getTotalConsistentCounter() {
+    public long getTotalConsistentCounter() {
         return consistentThreadObject.getTotalCounter();
     }
 

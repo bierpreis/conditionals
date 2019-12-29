@@ -17,8 +17,8 @@ public class KbWriterThread implements Runnable {
     private BlockingQueue<KnowledgeBase> queue;
     private boolean running = true;
 
-    private int iterationCounter = 0;
-    private int totalCounter = 0;
+    private long iterationCounter = 0;
+    private long totalCounter = 0;
 
     private String numberOfDigitsString;
 
@@ -155,11 +155,11 @@ public class KbWriterThread implements Runnable {
 
     //getters
 
-    public int getIterationCounter() {
+    public long getIterationCounter() {
         return iterationCounter;
     }
 
-    public int getTotalCounter() {
+    public long getTotalCounter() {
         return totalCounter;
     }
 

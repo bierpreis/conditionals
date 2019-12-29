@@ -53,7 +53,7 @@ public class OverallStatusPanel extends JPanel {
 
     }
 
-    public void showAverageSpeed(int kbAmount, long startTime) {
+    public void showAverageSpeed(long kbAmount, long startTime) {
         long timeInSeconds = (System.currentTimeMillis() - startTime) / 1000;
 
         //avoid division by zero
@@ -69,14 +69,14 @@ public class OverallStatusPanel extends JPanel {
         actionPanel.updateButtons(creatorStatus);
     }
 
-    public void showConsistentKBAmount(int amount) {
+    public void showConsistentKBAmount(long amount) {
 
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         consistentAmountLabel.setText("Consistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
 
 
-    public void showInconsistentKBAmount(int amount) {
+    public void showInconsistentKBAmount(long amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
         inconsistentAmountLabel.setText("Inconsistent Knowledge Bases: " + formatter.format(amount) + "\n");
     }
