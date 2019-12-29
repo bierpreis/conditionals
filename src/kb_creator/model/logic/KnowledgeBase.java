@@ -36,7 +36,7 @@ public class KnowledgeBase {
     }
 
     //this is used for all but first iteration
-    public KnowledgeBase(long number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
+    public KnowledgeBase(long number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {//todo: update tex
         this.number = number;
 
         List<PConditional> newList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
@@ -72,7 +72,7 @@ public class KnowledgeBase {
         List<PConditional> newList = new ArrayList<>(conditionalStringArray.length);
 
         for (String candidateString : conditionalStringArray)
-            newList.add(nfcMap.get(Integer.parseInt(candidateString)));
+            newList.add(nfcMap.get(Long.parseLong(candidateString)));
 
         conditionalList = newList;
 
