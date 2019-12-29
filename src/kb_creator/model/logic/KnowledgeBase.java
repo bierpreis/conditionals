@@ -14,7 +14,7 @@ public class KnowledgeBase {
 
     private static String namePrefixString = "kb";
 
-    private long number; //todo: update tex
+    private long number;
     private final List<PConditional> conditionalList;
 
     //making these patterns static saves A LOT of memory
@@ -27,8 +27,8 @@ public class KnowledgeBase {
 
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
-    //this is used for first iterations
-    public KnowledgeBase(long number, PConditional conditional) { //todo: update tex
+    //this is used for first iteration
+    public KnowledgeBase(long number, PConditional conditional) {
         this.number = number;
         List<PConditional> newList = new ArrayList<>(1);
         newList.add(conditional);
@@ -36,7 +36,7 @@ public class KnowledgeBase {
     }
 
     //this is used for all but first iteration
-    public KnowledgeBase(long number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {//todo: update tex
+    public KnowledgeBase(long number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.number = number;
 
         List<PConditional> newList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
