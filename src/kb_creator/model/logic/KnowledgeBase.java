@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class KnowledgeBase {
-    private static Map<Integer, PConditional> nfcMap;
+    private static Map<Long, PConditional> nfcMap;
     private static AbstractSignature signature;
 
 
@@ -184,7 +184,7 @@ public class KnowledgeBase {
 
     //setters
 
-    public static void setNfcMap(Map<Integer, PConditional> nfcMapToAdd) {
+    public static void setNfcMap(Map<Long, PConditional> nfcMapToAdd) {
         nfcMap = nfcMapToAdd;
     }
 

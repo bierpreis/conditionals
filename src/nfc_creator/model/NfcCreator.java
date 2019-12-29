@@ -17,7 +17,7 @@ public class NfcCreator {
     private final List<PConditional> pNfc;
     private final List<PConditional> pCnfc;
 
-    private final Map<Integer, PConditional> pNfcMap;
+    private final Map<Long, PConditional> pNfcMap;
 
 
     public NfcCreator(AbstractSignature signature) {
@@ -201,12 +201,12 @@ public class NfcCreator {
 
     //this adds the numbers of equivalent conditionals to every new nfc conditional
     //this list is needed to reduce the possible candidates when initialising candidate pairs
-    private void setEquivalentListToPConditionals(List<WConditional> wNfc, Map<Integer, PConditional> wNfcMap) {
+    private void setEquivalentListToPConditionals(List<WConditional> wNfc, Map<Long, PConditional> wNfcMap) {
         for (WConditional conditional : wNfc) {
             List<PConditional> tempEqList = new ArrayList<>(conditional.getRealEqList().size());
             for (WConditional eqConditional : conditional.getRealEqList())
-                tempEqList.add(this.pNfcMap.get(eqConditional.getNumber()));
-            wNfcMap.get(conditional.getNumber()).setEqList(tempEqList);
+                tempEqList.add(this.pNfcMap.get((long)eqConditional.getNumber()));
+            wNfcMap.get((long)conditional.getNumber()).setEqList(tempEqList);
         }
     }
 
@@ -278,13 +278,14 @@ public class NfcCreator {
         return null;
     }
 
-    private Map<Integer, PConditional> createNfcMap(Collection<PConditional> nfc) {
-        Map<Integer, PConditional> conditionalMap = new HashMap<>(nfc.size());
+    //todo. describe long not int
+    private Map<Long, PConditional> createNfcMap(Collection<PConditional> nfc) {
+        Map<Long, PConditional> conditionalMap = new HashMap<>(nfc.size());
         for (PConditional conditional : nfc) {
             if (conditionalMap.containsKey(conditional.getNumber())) {
                 throw new RuntimeException("Double conditional detected! (" + conditional.getNumber() + ")");
             }
-            conditionalMap.put((int)conditional.getNumber(), conditional);
+            conditionalMap.put(conditional.getNumber(), conditional);
         }
 
         //make it unmodifiable so no accidentally changed to this map can happen
@@ -324,7 +325,7 @@ public class NfcCreator {
 
     //getters for creator
 
-    public Map<Integer, PConditional> getNfcMap() {
+    public Map<Long, PConditional> getNfcMap() {
         return pNfcMap;
     }
 

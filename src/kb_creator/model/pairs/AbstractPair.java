@@ -59,7 +59,7 @@ public abstract class AbstractPair {
 
             //init the first candidate in list
             List<CandidateGroup> candidateGroupList = new ArrayList<>();
-            int lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
+            long lastConditionalNumber = candidatesList.get(0).getNumber() - 1;
             candidateGroupList.add(new CandidateGroup(candidatesList.get(0).getNumber()));
 
             //loop all the other candidates

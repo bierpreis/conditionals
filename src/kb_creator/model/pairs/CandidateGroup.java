@@ -1,14 +1,14 @@
 package kb_creator.model.pairs;
 
 class CandidateGroup {
-    private int firstNumber, lastNumber;
+    private long firstNumber, lastNumber;
 
-    public CandidateGroup(int firstNumber) {
+    public CandidateGroup(long firstNumber) {
         this.firstNumber = firstNumber;
     }
 
 
-    public void setLastNumber(int lastNumber) {
+    public void setLastNumber(long lastNumber) {
         this.lastNumber = lastNumber;
     }
 
