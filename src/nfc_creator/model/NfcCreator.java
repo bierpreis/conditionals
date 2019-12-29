@@ -284,7 +284,7 @@ public class NfcCreator {
             if (conditionalMap.containsKey(conditional.getNumber())) {
                 throw new RuntimeException("Double conditional detected! (" + conditional.getNumber() + ")");
             }
-            conditionalMap.put(conditional.getNumber(), conditional);
+            conditionalMap.put((int)conditional.getNumber(), conditional);
         }
 
         //make it unmodifiable so no accidentally changed to this map can happen

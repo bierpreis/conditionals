@@ -1,7 +1,6 @@
 package kb_creator.model.logic;
 
 import kb_creator.model.logic.signature.AbstractSignature;
-import kb_creator.model.logic.signature.worlds.AbstractWorld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ public class KnowledgeBase {
 
     private static String namePrefixString = "kb";
 
-    private int number;
+    private long number; //todo: update tex
     private final List<PConditional> conditionalList;
 
     //making these patterns static saves A LOT of memory
@@ -29,7 +28,7 @@ public class KnowledgeBase {
     private static final Pattern COMMA_PATTERN = Pattern.compile(",");
 
     //this is used for first iterations
-    public KnowledgeBase(int number, PConditional conditional) {
+    public KnowledgeBase(long number, PConditional conditional) { //todo: update tex
         this.number = number;
         List<PConditional> newList = new ArrayList<>(1);
         newList.add(conditional);
@@ -37,7 +36,7 @@ public class KnowledgeBase {
     }
 
     //this is used for all but first iteration
-    public KnowledgeBase(int number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
+    public KnowledgeBase(long number, KnowledgeBase knowledgeBase, PConditional conditionalToAdd) {
         this.number = number;
 
         List<PConditional> newList = new ArrayList<>(knowledgeBase.getConditionalList().size() + 1);
@@ -66,7 +65,7 @@ public class KnowledgeBase {
 
         String[] splitString2 = KB_PATTERN.split(stringFromFile);
         String[] splitString3 = CURLY_BRACKET_START.split(splitString2[1]);
-        this.number = Integer.parseInt(splitString3[0]);
+        this.number = Long.parseLong(splitString3[0]);
 
         String[] conditionalStringArray = COMMA_PATTERN.split(CURLY_BRACKET_STOP.matcher(splitString3[1]).replaceAll(""));
 
@@ -174,7 +173,7 @@ public class KnowledgeBase {
         return conditionalList;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 
@@ -193,11 +192,6 @@ public class KnowledgeBase {
         signature = signatureToSet;
     }
 
-    public void setNumber(int number) {
-        if (this.number != 0)//exception to make sure numbers are set only once
-            throw new RuntimeException("Cant set kb number two times!");
-        this.number = number;
-    }
 
     public AbstractSignature getSignature() {
         return signature;

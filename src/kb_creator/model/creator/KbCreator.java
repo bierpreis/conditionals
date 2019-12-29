@@ -43,7 +43,7 @@ public class KbCreator implements Runnable {
 
     private AbstractPairBuffer l;
 
-    private int iterationPairCounter = 0;
+    private long iterationPairCounter = 0; //todo: update tex?
 
     public KbCreator(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
@@ -86,7 +86,7 @@ public class KbCreator implements Runnable {
         System.out.println("creating 1 element kbs");
 
         List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
-        int numberCounter = 1;
+        long numberCounter = 1;
 
         //line 3
         for (PConditional r : cnfc) {

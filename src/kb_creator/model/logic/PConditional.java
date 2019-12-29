@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PConditional {
-    private final int number;
+    private final long number; //todo: update tex
 
     //todo: describe when rdy.
     private final AbstractFormula normalAntecedent;
@@ -24,7 +24,7 @@ public class PConditional {
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
-    public PConditional(AbstractFormula consequence, AbstractFormula shortConsequence, AbstractFormula antecedent, AbstractFormula shortAntecedent, int number) {
+    public PConditional(AbstractFormula consequence, AbstractFormula shortConsequence, AbstractFormula antecedent, AbstractFormula shortAntecedent, long number) {
         this.normalConsequence = consequence;
         this.shortConsequence = shortConsequence;
 
@@ -113,7 +113,7 @@ public class PConditional {
         return shortConsequence;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 

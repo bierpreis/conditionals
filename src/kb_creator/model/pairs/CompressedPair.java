@@ -10,15 +10,15 @@ import java.util.List;
 
 public class CompressedPair extends AbstractPair {
 
-    private int[][] compressedCandidatesArray;
+    private long[][] compressedCandidatesArray; //todo tex
 
 
     public CompressedPair(KnowledgeBase knowledgeBase, List<PConditional> candidates) {
         this.knowledgeBase = knowledgeBase;
 
-        int lastConditionalNumber = 0;
+        long lastConditionalNumber = 0;
 
-        List<List<Integer>> temporaryList = new ArrayList<>();
+        List<List<Long>> temporaryList = new ArrayList<>();
 
         for (PConditional currentCandidate : candidates) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
@@ -42,7 +42,7 @@ public class CompressedPair extends AbstractPair {
             temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
 
 
-        compressedCandidatesArray = new int[temporaryList.size()][2];
+        compressedCandidatesArray = new long[temporaryList.size()][2];
         for (int i = 0; i < temporaryList.size(); i++) {
             compressedCandidatesArray[i][0] = temporaryList.get(i).get(0);
             compressedCandidatesArray[i][1] = temporaryList.get(i).get(1);
@@ -56,9 +56,9 @@ public class CompressedPair extends AbstractPair {
     public CompressedPair(AbstractPair originalPair) {
         this.knowledgeBase = originalPair.getKnowledgeBase();
 
-        int lastConditionalNumber = 0;
+        long lastConditionalNumber = 0;
 
-        List<List<Integer>> temporaryList = new ArrayList<>();
+        List<List<Long>> temporaryList = new ArrayList<>();
 
         for (PConditional currentCandidate : originalPair.getCandidatesList()) {
             if (currentCandidate.getNumber() != lastConditionalNumber + 1) {
@@ -82,7 +82,7 @@ public class CompressedPair extends AbstractPair {
             temporaryList.get(temporaryList.size() - 1).add(lastConditionalNumber);
 
 
-        compressedCandidatesArray = new int[temporaryList.size()][2];
+        compressedCandidatesArray = new long[temporaryList.size()][2];
         for (int i = 0; i < temporaryList.size(); i++) {
             compressedCandidatesArray[i][0] = temporaryList.get(i).get(0);
             compressedCandidatesArray[i][1] = temporaryList.get(i).get(1);
@@ -124,8 +124,8 @@ public class CompressedPair extends AbstractPair {
     @Override
     public List<PConditional> getCandidatesList() {
         List<PConditional> candidatesList = new ArrayList<>();
-        for (int[] candidateBounds : compressedCandidatesArray) {
-            for (int i = candidateBounds[0]; i <= candidateBounds[1]; i++) {
+        for (long[] candidateBounds : compressedCandidatesArray) {
+            for (long i = candidateBounds[0]; i <= candidateBounds[1]; i++) {
 
                 candidatesList.add(nfcMap.get(i));
             }
