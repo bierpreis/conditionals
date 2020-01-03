@@ -10,7 +10,7 @@ import java.util.List;
 public class PConditional {
     private final int number;
 
-    //todo: describe when rdy.
+    //todo: remove short. only normal can be done by translator.
     private final AbstractFormula normalAntecedent;
     private final AbstractFormula normalConsequence;
 
