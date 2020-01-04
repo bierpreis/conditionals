@@ -114,7 +114,7 @@ public class KbCreator implements Runnable {
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
-
+    //todo: catch interrupted excetptions outside! will make code more ez!
     @Override
     public void run() {
         creatorStatus = CreatorStatus.RUNNING;
