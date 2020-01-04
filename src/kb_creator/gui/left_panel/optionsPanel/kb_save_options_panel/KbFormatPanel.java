@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class KbFormatPanel extends JPanel {
     private JRadioButton numbersButton = new JRadioButton("Numbers");
-    private JRadioButton infOfcButton = new JRadioButton("InfOCF String");
+    private JRadioButton infOfcButton = new JRadioButton("InfOCF Format");
 
     private ButtonGroup buttonGroup = new ButtonGroup();
 
