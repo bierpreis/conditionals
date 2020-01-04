@@ -114,116 +114,100 @@ public class KbCreator implements Runnable {
         System.out.println("finished 1 element kbs");
         return listToReturn;
     }
-    //todo: catch interrupted excetptions outside! will make code more ez!
+
     @Override
     public void run() {
-        creatorStatus = CreatorStatus.RUNNING;
-        System.out.println("creator thread started");
+
+        try {
+            creatorStatus = CreatorStatus.RUNNING;
+            System.out.println("creator thread started");
 
 
-        //line 2
-        k = 1;
+            //line 2
+            k = 1;
 
-        kbWriter.prepareIteration(0); //actually this is iteration 0
-        l.prepareIteration(0);
+            kbWriter.prepareIteration(0); //actually this is iteration 0
+            l.prepareIteration(0);
 
-        //line 3-5
-        for (AbstractPair pair : initOneElementKBs(nfc, cnfc))
-            try {
+            //line 3-5
+            for (AbstractPair pair : initOneElementKBs(nfc, cnfc))
                 newIterationQueue.put(pair);
-            } catch (InterruptedException e) {
-                //should only be called by stop button in the first microseconds of running the program.
-                System.out.println("kb creator interrupted by gui.");
-                return;
-            }
 
 
-        l.finishIteration(0);
-        kbWriter.finishIteration();
-
-        //line 6
-        while (l.hasElementsForIteration(k)) {
-            long startTime = System.currentTimeMillis();
-
-            //line  7
-            l.prepareIteration(k);
-            currentPairAmount = kbWriter.getIterationConsistentCounter();
-
-
-            kbWriter.prepareIteration(k);
-            iterationPairCounter = 0;
-
-
-            long consistentKbCounter = 1;
-            long inconsistentKbCounter = 1;
-
-            //line 8
-            while (l.hasMoreElementsForK(k)) {
-
-                AbstractPair currentPair = null;
-                try {
-                    currentPair = lastIterationQueue.take();
-                } catch (InterruptedException e) {
-                    System.out.println("kbcreator interrupted by gui.");
-                }
-                iterationPairCounter++;
-
-
-                //line 9
-                for (PConditional r : currentPair.getCandidatesList()) {
-
-
-                    //line 10
-                    if (currentPair.getKnowledgeBase().isConsistentWith(r)) { //takes almost no time
-
-
-                        //next part is line 11 and 12
-                        KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
-                        consistentKbCounter++;
-
-
-                        List<PConditional> candidatesToAdd = new ArrayList<>();
-                        for (PConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
-                            if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
-                                candidatesToAdd.add(conditionalFromCandidates);
-
-
-                        //line 12
-                        try {
-                            newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
-                        } catch (InterruptedException e) {
-                            //this should only be triggered by gui stop button
-                            System.out.println("kbcreator interrupted by gui.");
-                            return;
-                        }
-
-
-                    } else {
-                        try {
-                            inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
-                        } catch (InterruptedException e) {
-                            //this can and should ONLY be triggered by gui stop button
-                            System.out.println("kbcreator interrupted by gui.");
-                            return;
-                        }
-                        inconsistentKbCounter++; //counter is only for kb constructor
-                    }
-                }
-                if (creatorStatus.equals(CreatorStatus.STOPPED))
-                    return;
-                currentPair.clear(); //saves a lot of memory and takes almost no time
-
-            }
-            System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
-            //line 13
-
-            l.finishIteration(k);
+            l.finishIteration(0);
             kbWriter.finishIteration();
 
-            k = k + 1;
+            //line 6
+            while (l.hasElementsForIteration(k)) {
+                long startTime = System.currentTimeMillis();
+
+                //line  7
+                l.prepareIteration(k);
+                currentPairAmount = kbWriter.getIterationConsistentCounter();
+
+
+                kbWriter.prepareIteration(k);
+                iterationPairCounter = 0;
+
+
+                long consistentKbCounter = 1;
+                long inconsistentKbCounter = 1;
+
+                //line 8
+                while (l.hasMoreElementsForK(k)) {
+
+                    AbstractPair currentPair = lastIterationQueue.take();
+
+                    iterationPairCounter++;
+
+
+                    //line 9
+                    for (PConditional r : currentPair.getCandidatesList()) {
+
+
+                        //line 10
+                        if (currentPair.getKnowledgeBase().isConsistentWith(r)) { //takes almost no time
+
+
+                            //next part is line 11 and 12
+                            KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
+                            consistentKbCounter++;
+
+
+                            List<PConditional> candidatesToAdd = new ArrayList<>();
+                            for (PConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
+                                if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
+                                    candidatesToAdd.add(conditionalFromCandidates);
+
+
+                            //line 12
+                            newIterationQueue.put(new RealPair(knowledgeBaseToAdd, candidatesToAdd));
+
+
+                        } else {
+                            inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
+
+                            inconsistentKbCounter++; //counter is only for kb constructor
+                        }
+                    }
+                    if (creatorStatus.equals(CreatorStatus.STOPPED)) //todo: remove??
+                        return;
+                    currentPair.clear(); //saves a lot of memory and takes almost no time
+
+                }
+                System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
+                //line 13
+
+                l.finishIteration(k);
+                kbWriter.finishIteration();
+
+                k = k + 1;
+            }
+            creatorStatus = CreatorStatus.FINISHED;
+            finishAndStopLoop();
+        } catch (InterruptedException e) {
+            return;
         }
-        creatorStatus = CreatorStatus.FINISHED;
-        finishAndStopLoop();
     }
 
 
