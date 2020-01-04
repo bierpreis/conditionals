@@ -24,26 +24,22 @@ public class NewIterationThread implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("new iteration thread started for k " + k);
 
         while (running) {
             AbstractPair pairToAdd;
             try {
                 pairToAdd = inputQueue.take();
             } catch (InterruptedException e) {
-                System.out.println("new iteration thread interrupted.");
                 running = false;
                 break; //this is added new
             }
             try {
                 consistentQueue.put(pairToAdd.getKnowledgeBase());
             } catch (InterruptedException e) {
-                System.out.println("new iteration thread interrupted.");
                 running = false;
                 break; //this is added new
             }
             candidatePairList.get(k).add(new CompressedPair(pairToAdd));
         }
-        System.out.println("new iteration thread finished for k " + k);
     }
 }
