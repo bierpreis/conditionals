@@ -144,7 +144,6 @@ public class KbCreator implements Runnable {
         //line 6
         while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
-            //todo: repot system.gc
 
             //line  7
             l.prepareIteration(k);
