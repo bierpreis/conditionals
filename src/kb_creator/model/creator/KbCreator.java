@@ -45,6 +45,7 @@ public class KbCreator implements Runnable {
 
     private long iterationPairCounter = 0;
 
+    //todo: rename genkb?
     public KbCreator(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
         this.newIterationQueue = l.getNextIterationQueue();
