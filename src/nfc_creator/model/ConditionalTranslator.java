@@ -13,22 +13,21 @@ public class ConditionalTranslator {
         shortTranslationMap = new ShortTranslationMap(signature);
     }
 
-    //todo: describe when finished
     public static PConditional transLate(WConditional wConditional) {
         AbstractFormula normalAntecedent = worldToNormalFormula(wConditional.getAntecedent());
-        AbstractFormula shortAntecedent = worldToNormalFormula(wConditional.getAntecedent());
 
         AbstractFormula normalConsequence = worldToNormalFormula(wConditional.getConsequence());
-        AbstractFormula shortConsequence = worldToNormalFormula(wConditional.getConsequence());
 
-        PConditional pConditional = new PConditional(normalConsequence, shortConsequence, normalAntecedent, shortAntecedent, wConditional.getNumber());
+        PConditional pConditional = new PConditional(normalAntecedent, normalConsequence, wConditional.getNumber());
 
 
         //this is a test that translation of short formulas really worked
+/*
         if (!normalAntecedent.equals(shortAntecedent))
             throw new RuntimeException("Translating Worlds failed! " + normalAntecedent + "  !=  " + worldToNormalFormula(wConditional.getAntecedent()) + " (line " + wConditional.getAntecedent().getNumber() + ")");
         if (!normalConsequence.equals(shortConsequence))
             throw new RuntimeException("Translating worlds failed! + " + normalConsequence + "  !=  " + worldToNormalFormula(wConditional.getConsequence()) + " (line" + wConditional.getConsequence().getNumber() + ")");
+*/
 
 
         return pConditional;
@@ -36,6 +35,7 @@ public class ConditionalTranslator {
 
 
     //this tries to get a short formula and when none is available it returns a normal formula
+    //is not used anymore. but it could be used! when use it, unmute the test in translate method to be sure it worked
     public static AbstractFormula tryToShortFormula(WorldsList world) {
 
         //if there is a short formula return this

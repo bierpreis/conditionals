@@ -10,12 +10,9 @@ import java.util.List;
 public class PConditional {
     private final int number;
 
-    //todo: remove short. only normal can be done by translator.
-    private final AbstractFormula normalAntecedent;
-    private final AbstractFormula normalConsequence;
+    private final AbstractFormula antecedent;
+    private final AbstractFormula consequence;
 
-    private final AbstractFormula shortAntecedent;
-    private final AbstractFormula shortConsequence;
 
     private PConditional counterConditional;
 
@@ -24,19 +21,17 @@ public class PConditional {
     //empty list as default for all conditionals who will not have any equivalent conditionals
     private List<PConditional> eqConditionalsList = new ArrayList<>(0);
 
-    public PConditional(AbstractFormula consequence, AbstractFormula shortConsequence, AbstractFormula antecedent, AbstractFormula shortAntecedent, int number) {
-        this.normalConsequence = consequence;
-        this.shortConsequence = shortConsequence;
+    public PConditional(AbstractFormula antecedent, AbstractFormula consequence, int number) {
+        this.antecedent = antecedent;
 
-        this.normalAntecedent = antecedent;
-        this.shortAntecedent = shortAntecedent;
+        this.consequence = consequence;
 
         this.number = number;
 
     }
 
     public String toString() {
-        return "(" + normalConsequence + " | " + normalAntecedent + ")";
+        return "(" + consequence + " | " + antecedent + ")";
     }
 
 
@@ -57,7 +52,7 @@ public class PConditional {
     }
 
     public boolean tolerates(AbstractWorld world) {
-        return (shortConsequence.evaluate(world) || !shortAntecedent.evaluate(world));
+        return (consequence.evaluate(world) || !antecedent.evaluate(world));
     }
 
 
@@ -82,7 +77,7 @@ public class PConditional {
 
     public boolean isToleratedBy(List<PConditional> conditionalList) {
         for (AbstractWorld world : signature.getPossibleWorlds()) {
-            if (this.shortAntecedent.evaluate(world) && this.shortConsequence.evaluate(world)) {
+            if (this.antecedent.evaluate(world) && this.consequence.evaluate(world)) {
                 boolean toleratesAll = true;
                 for (PConditional conditional : conditionalList) {
                     if (!conditional.tolerates(world)) {
@@ -106,11 +101,11 @@ public class PConditional {
 
 
     public AbstractFormula getAntecedent() {
-        return shortAntecedent;
+        return antecedent;
     }
 
     public AbstractFormula getConsequence() {
-        return shortConsequence;
+        return consequence;
     }
 
     public int getNumber() {
