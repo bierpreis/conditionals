@@ -186,12 +186,10 @@ public class KbCreator implements Runnable {
 
                         } else {
                             inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
-
                             inconsistentKbCounter++; //counter is only for kb constructor
                         }
                     }
-                    if (creatorStatus.equals(CreatorStatus.STOPPED)) //todo: remove??
-                        return;
+
                     currentPair.clear(); //saves a lot of memory and takes almost no time
 
                 }
