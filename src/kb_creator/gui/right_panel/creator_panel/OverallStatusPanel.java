@@ -1,6 +1,6 @@
 package kb_creator.gui.right_panel.creator_panel;
 
-import kb_creator.model.creator.CreatorStatus;
+import kb_creator.model.genkb.GenKbStatus;
 import kb_creator.gui.left_panel.ActionPanel;
 
 import javax.swing.*;
@@ -64,9 +64,9 @@ public class OverallStatusPanel extends JPanel {
         } else averageSpeedLabel.setText("Average speed (consistent kb/s): " + 0);
     }
 
-    public void showStatus(CreatorStatus creatorStatus) {
-        statusLabel.setText("Status: " + creatorStatus.toString());
-        actionPanel.updateButtons(creatorStatus);
+    public void showStatus(GenKbStatus genKbStatus) {
+        statusLabel.setText("Status: " + genKbStatus.toString());
+        actionPanel.updateButtons(genKbStatus);
     }
 
     public void showConsistentKBAmount(long amount) {

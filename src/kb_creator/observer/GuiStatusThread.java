@@ -1,8 +1,8 @@
 package kb_creator.observer;
 
 import kb_creator.gui.MainWindow;
-import kb_creator.model.creator.CreatorStatus;
-import kb_creator.model.creator.GenKB;
+import kb_creator.model.genkb.GenKbStatus;
+import kb_creator.model.genkb.GenKB;
 import kb_creator.model.writer.AbstractKbWriter;
 
 public class GuiStatusThread implements Runnable {
@@ -51,7 +51,7 @@ public class GuiStatusThread implements Runnable {
     }
 
     private void checkIfFinished() {
-        if (creatorThread.getCreatorStatus().equals(CreatorStatus.FINISHED)) {
+        if (creatorThread.getCreatorStatus().equals(GenKbStatus.FINISHED)) {
             mainWindow.getRightPanel().setActive(false);
             mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
         }
@@ -69,7 +69,7 @@ public class GuiStatusThread implements Runnable {
         mainWindow.getRightPanel().getCreatorPanel().showCurrentCandidatePairs(creatorThread.getCurrentPairAmount());
 
 
-        if (creatorThread.getCreatorStatus().equals(CreatorStatus.RUNNING)) {
+        if (creatorThread.getCreatorStatus().equals(GenKbStatus.RUNNING)) {
             mainWindow.getRightPanel().getCreatorPanel().showTime(creatorThread.getStartTime());
             mainWindow.getRightPanel().getCreatorPanel().showAverageSpeed(creatorThread.getTotalKbAmount(), creatorThread.getStartTime());
         }

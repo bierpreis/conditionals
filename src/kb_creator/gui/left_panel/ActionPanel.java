@@ -1,7 +1,7 @@
 package kb_creator.gui.left_panel;
 
 
-import kb_creator.model.creator.CreatorStatus;
+import kb_creator.model.genkb.GenKbStatus;
 import kb_creator.observer.CreatorButtonObserver;
 
 import javax.swing.*;
@@ -27,8 +27,8 @@ public class ActionPanel extends JPanel {
         revalidate();
     }
     
-    public void updateButtons(CreatorStatus creatorStatus) {
-        switch (creatorStatus) {
+    public void updateButtons(GenKbStatus genKbStatus) {
+        switch (genKbStatus) {
             case CREATING_CONDITIONALS:
                 startButton.setEnabled(false);
                 stopButton.setEnabled(false);
@@ -44,7 +44,7 @@ public class ActionPanel extends JPanel {
                 stopButton.setEnabled(false);
                 break;
             default:
-                throw new RuntimeException("Unknown CreatorStatus: " + creatorStatus.toString());
+                throw new RuntimeException("Unknown CreatorStatus: " + genKbStatus.toString());
 
         }
     }

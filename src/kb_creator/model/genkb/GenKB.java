@@ -1,4 +1,4 @@
-package kb_creator.model.creator;
+package kb_creator.model.genkb;
 
 import kb_creator.model.buffer.AbstractPairBuffer;
 import kb_creator.model.pairs.RealPair;
@@ -21,7 +21,7 @@ public class GenKB implements Runnable {
 
     private long currentPairAmount;
 
-    private volatile CreatorStatus creatorStatus;
+    private volatile GenKbStatus genKbStatus;
 
     protected AbstractSignature signature;
 
@@ -57,7 +57,7 @@ public class GenKB implements Runnable {
         PConditional.setSignature(signature);
 
 
-        creatorStatus = CreatorStatus.NOT_STARTED;
+        genKbStatus = GenKbStatus.NOT_STARTED;
         this.signature = signature;
 
         kbWriter = WriterFactory.getKbWriter(writerOptions);
@@ -66,7 +66,7 @@ public class GenKB implements Runnable {
 
         inconsistentWriterQueue = kbWriter.getInconsistentQueue();
 
-        creatorStatus = CreatorStatus.CREATING_CONDITIONALS;
+        genKbStatus = GenKbStatus.CREATING_CONDITIONALS;
 
         NfcCreator nfcCreator = new NfcCreator(signature);
 
@@ -120,7 +120,7 @@ public class GenKB implements Runnable {
     public void run() {
 
         try {
-            creatorStatus = CreatorStatus.RUNNING;
+            genKbStatus = GenKbStatus.RUNNING;
             System.out.println("creator thread started");
 
 
@@ -202,7 +202,7 @@ public class GenKB implements Runnable {
 
                 k = k + 1;
             }
-            creatorStatus = CreatorStatus.FINISHED;
+            genKbStatus = GenKbStatus.FINISHED;
             finishAndStopLoop();
         } catch (InterruptedException e) {
             return;
@@ -213,14 +213,14 @@ public class GenKB implements Runnable {
     //this is only called by gui stop button
     public void stopLoop() {
         kbWriter.stopThreads();
-        this.creatorStatus = CreatorStatus.STOPPED;
+        this.genKbStatus = GenKbStatus.STOPPED;
     }
 
     //this is only called when all iterations have finished
     private void finishAndStopLoop() {
         System.out.println("!!!before finish");
         kbWriter.finishAndStopThreads();
-        this.creatorStatus = CreatorStatus.FINISHED;
+        this.genKbStatus = GenKbStatus.FINISHED;
     }
 
 
@@ -243,8 +243,8 @@ public class GenKB implements Runnable {
     }
 
 
-    public CreatorStatus getCreatorStatus() {
-        return creatorStatus;
+    public GenKbStatus getCreatorStatus() {
+        return genKbStatus;
     }
 
     public long getCurrentPairAmount() {

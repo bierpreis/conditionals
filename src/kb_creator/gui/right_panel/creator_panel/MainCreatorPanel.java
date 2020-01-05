@@ -1,6 +1,6 @@
 package kb_creator.gui.right_panel.creator_panel;
 
-import kb_creator.model.creator.CreatorStatus;
+import kb_creator.model.genkb.GenKbStatus;
 import kb_creator.gui.left_panel.ActionPanel;
 
 import javax.swing.*;
@@ -24,7 +24,7 @@ public class MainCreatorPanel extends JPanel {
         add(currentIterationPanel);
 
 
-        showStatus(CreatorStatus.NOT_STARTED);
+        showStatus(GenKbStatus.NOT_STARTED);
 
         showTotalConsistentKBAmount(0);
 
@@ -55,8 +55,8 @@ public class MainCreatorPanel extends JPanel {
         overallStatusPanel.showInconsistentKBAmount(kbAmount);
     }
 
-    public void showStatus(CreatorStatus creatorStatus) {
-        overallStatusPanel.showStatus(creatorStatus);
+    public void showStatus(GenKbStatus genKbStatus) {
+        overallStatusPanel.showStatus(genKbStatus);
     }
 
     public void showCurrentCandidatePairs(long candidatePairs) {

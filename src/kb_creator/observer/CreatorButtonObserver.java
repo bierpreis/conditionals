@@ -6,7 +6,7 @@ import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.buffer.hdd.HddPairBuffer;
 import kb_creator.model.buffer.ram.CompressedRamBuffer;
 import kb_creator.model.buffer.simple_ram.SimpleRamBuffer;
-import kb_creator.model.creator.GenKB;
+import kb_creator.model.genkb.GenKB;
 import kb_creator.model.logic.KnowledgeBase;
 
 import javax.swing.*;
