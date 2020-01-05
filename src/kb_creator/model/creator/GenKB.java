@@ -17,7 +17,7 @@ import nfc_creator.model.NfcCreator;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 
-public class KbCreator implements Runnable {
+public class GenKB implements Runnable {
 
     private long currentPairAmount;
 
@@ -45,8 +45,8 @@ public class KbCreator implements Runnable {
 
     private long iterationPairCounter = 0;
 
-    //todo: rename genkb?
-    public KbCreator(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
+
+    public GenKB(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
         this.newIterationQueue = l.getNextIterationQueue();
         this.lastIterationQueue = l.getLastIterationQueue();

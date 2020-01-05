@@ -6,7 +6,7 @@ import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.buffer.hdd.HddPairBuffer;
 import kb_creator.model.buffer.ram.CompressedRamBuffer;
 import kb_creator.model.buffer.simple_ram.SimpleRamBuffer;
-import kb_creator.model.creator.KbCreator;
+import kb_creator.model.creator.GenKB;
 import kb_creator.model.logic.KnowledgeBase;
 
 import javax.swing.*;
@@ -17,7 +17,7 @@ public class CreatorButtonObserver implements ActionListener {
     private MainWindow mainWindow;
     private AbstractPairBuffer candidateBuffer;
 
-    private KbCreator creatorThreadObject;
+    private GenKB genKb;
     private GuiStatusThread statusThreadObject;
 
     private Thread creatorThread;
@@ -48,17 +48,17 @@ public class CreatorButtonObserver implements ActionListener {
 
                 KnowledgeBase.setKbNamePrefix(mainWindow.getKbNamePrefix());
 
-                creatorThreadObject = new KbCreator(mainWindow.getSignature(),  candidateBuffer, mainWindow.getWriterOptions());
+                genKb = new GenKB(mainWindow.getSignature(),  candidateBuffer, mainWindow.getWriterOptions());
 
-                creatorThread = new Thread(creatorThreadObject);
-                creatorThread.setName("MainCreatorThread");
+                creatorThread = new Thread(genKb);
+                creatorThread.setName("GenKb");
                 creatorThread.start();
 
                 creatorThread.setPriority(Thread.MAX_PRIORITY);
 
-                statusThreadObject.setCreatorThread(creatorThreadObject);
+                statusThreadObject.setCreatorThread(genKb);
 
-                creatorThreadObject.getPairBuffer().setDeletingFiles(mainWindow.getLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
+                genKb.getPairBuffer().setDeletingFiles(mainWindow.getLeftPanel().getMainOptionsPanel().isDeletingBufferFilesRequested());
 
             }
         }
@@ -74,7 +74,7 @@ public class CreatorButtonObserver implements ActionListener {
                 mainWindow.getLeftPanel().getMainOptionsPanel().setActive(true);
                 mainWindow.getLeftPanel().getMainOptionsPanel().init();
 
-                creatorThreadObject.stopLoop();
+                genKb.stopLoop();
                 candidateBuffer.stopLoop();
 
                 creatorThread.interrupt();
