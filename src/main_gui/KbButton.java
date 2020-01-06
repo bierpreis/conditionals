@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class KbButton extends JButton {
 
     public KbButton(MainFrame mainFrame) {
-        setText("Create Knowledge Bases");
+        setText("Generate Knowledge Bases");
         addActionListener(new KbButtonListener(mainFrame));
 
     }
