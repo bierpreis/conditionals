@@ -3,7 +3,7 @@ package kb_creator.gui;
 import kb_creator.gui.right_panel.RightPanel;
 import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.writer.KbWriterOptions;
-import kb_creator.observer.CreatorButtonObserver;
+import kb_creator.observer.KbCreatorObserver;
 import kb_creator.gui.left_panel.LeftPanel;
 import kb_creator.model.logic.signature.AbstractSignature;
 
@@ -19,7 +19,7 @@ public class MainWindow {
     private LeftPanel leftPanel;
     private RightPanel rightPanel;
 
-    public MainWindow(CreatorButtonObserver observer) {
+    public MainWindow(KbCreatorObserver observer) {
         mainWindow = new JFrame("Knowledge Base Creator");
         mainWindow.setLayout(new BorderLayout());
 

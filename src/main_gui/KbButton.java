@@ -1,6 +1,6 @@
 package main_gui;
 
-import nfc_creator.controller.NfcCreatorObserver;
+import kb_creator.observer.KbCreatorObserver;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +25,6 @@ class KbButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         mainFrame.dispose();
-        new NfcCreatorObserver();
+        new KbCreatorObserver();
     }
 }

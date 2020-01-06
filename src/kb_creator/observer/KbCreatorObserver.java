@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CreatorButtonObserver implements ActionListener {
+public class KbCreatorObserver implements ActionListener {
     private MainWindow mainWindow;
     private AbstractPairBuffer candidateBuffer;
 
@@ -22,8 +22,7 @@ public class CreatorButtonObserver implements ActionListener {
 
     private Thread creatorThread;
 
-
-    public CreatorButtonObserver() {
+    public KbCreatorObserver() {
 
         mainWindow = new MainWindow(this);
         statusThreadObject = new GuiStatusThread(mainWindow);

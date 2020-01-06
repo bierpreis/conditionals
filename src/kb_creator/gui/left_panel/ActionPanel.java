@@ -2,7 +2,7 @@ package kb_creator.gui.left_panel;
 
 
 import kb_creator.model.genkb.GenKbStatus;
-import kb_creator.observer.CreatorButtonObserver;
+import kb_creator.observer.KbCreatorObserver;
 
 import javax.swing.*;
 
@@ -12,7 +12,7 @@ public class ActionPanel extends JPanel {
 
     private JButton stopButton;
 
-    public ActionPanel(CreatorButtonObserver observer) {
+    public ActionPanel(KbCreatorObserver observer) {
 
         setBorder(BorderFactory.createTitledBorder("Actions"));
 

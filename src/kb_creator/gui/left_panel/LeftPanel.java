@@ -2,7 +2,7 @@ package kb_creator.gui.left_panel;
 
 import kb_creator.model.buffer.BufferingType;
 import kb_creator.model.writer.KbWriterOptions;
-import kb_creator.observer.CreatorButtonObserver;
+import kb_creator.observer.KbCreatorObserver;
 import kb_creator.gui.left_panel.optionsPanel.MainOptionsPanel;
 import kb_creator.model.logic.signature.AbstractSignature;
 
@@ -16,7 +16,7 @@ public class LeftPanel extends JPanel {
     private MainOptionsPanel mainOptionsPanel;
 
 
-    public LeftPanel(CreatorButtonObserver observer) {
+    public LeftPanel(KbCreatorObserver observer) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         actionPanel = new ActionPanel(observer);
