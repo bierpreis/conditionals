@@ -5,6 +5,6 @@ public class KbCreatorMain {
     public static void main(String[] args) {
         new CreatorButtonObserver();
 
-
+        //todo: real main gui
     }
 }
