@@ -176,9 +176,9 @@ public class GenKB implements Runnable {
 
 
                             List<PConditional> candidatesToAdd = new ArrayList<>();
-                            for (PConditional conditionalFromCandidates : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
-                                if (conditionalFromCandidates.getNumber() > r.getNumber() && !conditionalFromCandidates.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
-                                    candidatesToAdd.add(conditionalFromCandidates);
+                            for (PConditional candidate : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
+                                if (candidate.getNumber() > r.getNumber() && !candidate.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
+                                    candidatesToAdd.add(candidate);
 
 
                             //line 12
