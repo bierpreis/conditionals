@@ -29,9 +29,9 @@ public class GenKB implements Runnable {
 
     private long startTime;
 
-    private Collection<PConditional> nfc;
+    private List<PConditional> nfc;
 
-    private Collection<PConditional> cnfc;
+    private List<PConditional> cnfc;
 
 
     private AbstractKbWriter kbWriter;
@@ -70,8 +70,8 @@ public class GenKB implements Runnable {
 
         NfcCreator nfcCreator = new NfcCreator(signature);
 
-        nfc = Collections.unmodifiableCollection(nfcCreator.getpNfc());
-        cnfc = Collections.unmodifiableCollection(nfcCreator.getpCnfc());
+        nfc = Collections.unmodifiableList(nfcCreator.getpNfc());
+        cnfc = Collections.unmodifiableList(nfcCreator.getpCnfc());
 
         AbstractPair.setNfc(nfcCreator.getNfcMap());
         KnowledgeBase.setNfcMap(nfcCreator.getNfcMap());
