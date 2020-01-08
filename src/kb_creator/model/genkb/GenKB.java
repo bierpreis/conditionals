@@ -132,13 +132,17 @@ public class GenKB implements Runnable {
         //line 1
         startIteration(0);
 
+        
         //line 2
         k = 1;
 
+
         long numberCounter = 1;
+
 
         //line 3
         for (PConditional r : cnfc) {
+
 
             //line 4 and 5
             KnowledgeBase rKB = new KnowledgeBase(numberCounter, r);
@@ -154,16 +158,18 @@ public class GenKB implements Runnable {
         }
         finishIteration(0);
 
+
         //line 6
         while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
 
+
             //line  7
             startIteration(k);
-
             //counters for numbering the knowledge bases
             long consistentKbCounter = 1;
             long inconsistentKbCounter = 1;
+
 
             //line 8
             while (l.hasMoreElementsForK(k)) {
