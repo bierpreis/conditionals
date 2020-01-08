@@ -118,6 +118,8 @@ public class GenKB implements Runnable {
 
     @Override
     public void run() {
+        genKbStatus = GenKbStatus.RUNNING;
+        System.out.println("creator thread started");
         try {
             generateKbs();
         } catch (InterruptedException e) {
@@ -127,10 +129,7 @@ public class GenKB implements Runnable {
 
 
     public void generateKbs() throws InterruptedException {
-
-        genKbStatus = GenKbStatus.RUNNING;
-        System.out.println("creator thread started");
-
+        //todo: one method
         //line 1
         kbWriter.prepareIteration(0);
         l.prepareIteration(0);
