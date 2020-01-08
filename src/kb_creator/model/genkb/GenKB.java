@@ -123,12 +123,14 @@ public class GenKB implements Runnable {
             genKbStatus = GenKbStatus.RUNNING;
             System.out.println("creator thread started");
 
+            //line 1
+            kbWriter.prepareIteration(0); //actually this is iteration 0
+            l.prepareIteration(0);
 
             //line 2
             k = 1;
 
-            kbWriter.prepareIteration(0); //actually this is iteration 0
-            l.prepareIteration(0);
+
 
             //line 3-5
             for (AbstractPair pair : initOneElementKBs(nfc, cnfc))
