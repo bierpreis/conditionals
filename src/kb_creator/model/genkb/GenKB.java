@@ -132,11 +132,9 @@ public class GenKB implements Runnable {
         //line 1
         startIteration(0);
 
-        
+
         //line 2
         k = 1;
-
-
         long numberCounter = 1;
 
 
@@ -185,7 +183,7 @@ public class GenKB implements Runnable {
                     if (currentPair.getKnowledgeBase().isConsistentWith(r)) {
 
 
-                        //next part is line 11 and 12
+                        //line 11 and 12
                         KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r);
                         consistentKbCounter++;
                         List<PConditional> candidatesToAdd = new ArrayList<>();
@@ -212,7 +210,6 @@ public class GenKB implements Runnable {
             finishIteration(k);
             k = k + 1;
         }
-        genKbStatus = GenKbStatus.FINISHED;
         finishAndStopLoop();
     }
 
