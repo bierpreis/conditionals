@@ -100,7 +100,8 @@ public class GenKB implements Runnable {
 
         //line 2
         k = 1;
-        long numberCounter = 1; //todo
+        long consistentKbCounter = 1;
+        long inconsistentKbCounter = 1;
 
 
         //line 3
@@ -108,8 +109,8 @@ public class GenKB implements Runnable {
 
 
             //line 4 and 5
-            KnowledgeBase rKB = new KnowledgeBase(numberCounter, r);
-            numberCounter++;
+            KnowledgeBase rKB = new KnowledgeBase(consistentKbCounter, r);
+            consistentKbCounter++;
             List<PConditional> candidatesList = new ArrayList<>();
             for (PConditional conditional : nfc) {
                 if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
@@ -130,8 +131,8 @@ public class GenKB implements Runnable {
             //line  7
             startIteration(k);
             //counters for numbering the knowledge bases
-            long consistentKbCounter = 1;
-            long inconsistentKbCounter = 1;
+            consistentKbCounter = 1;
+            inconsistentKbCounter = 1;
 
 
             //line 8
