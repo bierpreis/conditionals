@@ -173,13 +173,13 @@ public class GenKB implements Runnable {
 
 
                             //next part is line 11 and 12
-                            KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r); //takes little time
+                            KnowledgeBase knowledgeBaseToAdd = new KnowledgeBase(consistentKbCounter, currentPair.getKnowledgeBase(), r);
                             consistentKbCounter++;
 
 
                             List<PConditional> candidatesToAdd = new ArrayList<>();
-                            for (PConditional candidate : currentPair.getCandidatesList()) //loop takes most of the time (70 percent)
-                                if (candidate.getNumber() > r.getNumber() && !candidate.equals(r.getCounterConditional())) //equals is faster then comparing numbers here.
+                            for (PConditional candidate : currentPair.getCandidatesList())
+                                if (candidate.getNumber() > r.getNumber() && !candidate.equals(r.getCounterConditional()))
                                     candidatesToAdd.add(candidate);
 
 
