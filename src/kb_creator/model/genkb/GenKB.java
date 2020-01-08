@@ -36,7 +36,7 @@ public class GenKB implements Runnable {
 
     private AbstractKbWriter kbWriter;
 
-    private BlockingQueue<KnowledgeBase> inconsistentWriterQueue;
+    private BlockingQueue<KnowledgeBase> inconsistentQueue;
 
     private BlockingQueue<AbstractPair> newIterationQueue;
     private BlockingQueue<AbstractPair> lastIterationQueue;
@@ -64,7 +64,7 @@ public class GenKB implements Runnable {
 
         l.setConsistentQueue(kbWriter.getConsistentQueue());
 
-        inconsistentWriterQueue = kbWriter.getInconsistentQueue();
+        inconsistentQueue = kbWriter.getInconsistentQueue();
 
         genKbStatus = GenKbStatus.CREATING_CONDITIONALS;
 
@@ -163,7 +163,7 @@ public class GenKB implements Runnable {
 
 
                     } else {
-                        inconsistentWriterQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
+                        inconsistentQueue.put(new KnowledgeBase(inconsistentKbCounter, currentPair.getKnowledgeBase(), r));
                         inconsistentKbCounter++; //counter is only for kb constructor
                     }
                 }
