@@ -81,41 +81,6 @@ public class GenKB implements Runnable {
         startTime = System.currentTimeMillis();
 
     }
-
-
-    private List<AbstractPair> initOneElementKBs(Collection<PConditional> nfc, Collection<PConditional> cnfc) {
-        System.out.println("creating 1 element kbs");
-
-        List<AbstractPair> listToReturn = new ArrayList<>(cnfc.size());
-        long numberCounter = 1;
-
-        //line 3
-        for (PConditional r : cnfc) {
-
-            //line 4 and 5
-            KnowledgeBase rKB = new KnowledgeBase(numberCounter, r);
-            numberCounter++;
-
-            //create candidates
-            List<PConditional> candidatesList = new ArrayList<>();
-
-            for (PConditional conditional : nfc) {
-                if (!(conditional.getEqConditionalsList().get(0).getNumber() < r.getNumber()))
-                    if (!(conditional.equals(r)))
-                        if (!(conditional.equals(r.getCounterConditional())))
-                            candidatesList.add(conditional);
-
-            }
-
-
-            //no buffering for first iteration because it almost makes no difference
-            listToReturn.add(new RealPair(rKB, candidatesList));
-        }
-
-        System.out.println("finished 1 element kbs");
-        return listToReturn;
-    }
-
     @Override
     public void run() {
         genKbStatus = GenKbStatus.RUNNING;
@@ -135,7 +100,7 @@ public class GenKB implements Runnable {
 
         //line 2
         k = 1;
-        long numberCounter = 1;
+        long numberCounter = 1; //todo
 
 
         //line 3
