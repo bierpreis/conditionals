@@ -197,11 +197,11 @@ public class GenKB implements Runnable {
 
                 }
                 System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
-                //line 13
 
+
+                //line 13
                 l.finishIteration(k);
                 kbWriter.finishIteration();
-
                 k = k + 1;
             }
             genKbStatus = GenKbStatus.FINISHED;
@@ -220,7 +220,7 @@ public class GenKB implements Runnable {
 
     //this is only called when all iterations have finished
     private void finishAndStopLoop() {
-        System.out.println("!!!before finish");
+        System.out.println("genkb finished");
         kbWriter.finishAndStopThreads();
         this.genKbStatus = GenKbStatus.FINISHED;
     }
