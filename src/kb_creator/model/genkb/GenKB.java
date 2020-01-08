@@ -128,15 +128,12 @@ public class GenKB implements Runnable {
     }
 
 
-    public void generateKbs() throws InterruptedException {
-        //todo: one method
+    private void generateKbs() throws InterruptedException {
         //line 1
-        kbWriter.prepareIteration(0);
-        l.prepareIteration(0);
+        startIteration(0);
 
         //line 2
         k = 1;
-
 
         long numberCounter = 1;
 
@@ -152,27 +149,17 @@ public class GenKB implements Runnable {
                     if (!(conditional.equals(r)))
                         if (!(conditional.equals(r.getCounterConditional())))
                             candidatesList.add(conditional);
-
             }
             newIterationQueue.put(new RealPair(rKB, candidatesList));
         }
-
-        //one method
-        System.out.println("finished 1 element kbs");
-        l.finishIteration(0);
-        kbWriter.finishIteration();
+        finishIteration(0);
 
         //line 6
         while (l.hasElementsForIteration(k)) {
             long startTime = System.currentTimeMillis();
 
             //line  7
-            l.prepareIteration(k);
-            currentPairAmount = kbWriter.getIterationConsistentCounter();
-
-
-            kbWriter.prepareIteration(k);
-            iterationPairCounter = 0;
+            startIteration(k);
 
             //counters for numbering the knowledge bases
             long consistentKbCounter = 1;
@@ -210,22 +197,37 @@ public class GenKB implements Runnable {
                         inconsistentKbCounter++; //counter is only for kb constructor
                     }
                 }
-
                 currentPair.clear(); //saves a lot of memory and takes almost no time
-
             }
             System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
 
 
             //line 13
-            l.finishIteration(k);
-            kbWriter.finishIteration();
+            finishIteration(k);
             k = k + 1;
         }
         genKbStatus = GenKbStatus.FINISHED;
         finishAndStopLoop();
+    }
+
+    private void startIteration(int k) {
+        System.out.println("start iteration for k: " + k);
 
 
+        l.prepareIteration(k);
+        currentPairAmount = kbWriter.getIterationConsistentCounter();
+
+
+        kbWriter.prepareIteration(k);
+        iterationPairCounter = 0;
+
+
+    }
+
+    private void finishIteration(int k) {
+        l.finishIteration(k);
+        kbWriter.finishIteration();
+        System.out.println("finished iteration for k: " + k);
     }
 
 
