@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class KnowledgeBase {
     private static Map<Integer, PConditional> nfcMap;
-    private static AbstractSignature signature; //todo: is this ever used? y for writing kbs
+    private static AbstractSignature signature;
 
 
     private static String namePrefixString = "kb";
