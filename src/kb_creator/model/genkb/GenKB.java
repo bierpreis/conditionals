@@ -45,6 +45,8 @@ public class GenKB implements Runnable {
 
     private long iterationPairCounter = 0;
 
+    private long iterationStartTime;
+
 
     public GenKB(AbstractSignature signature, AbstractPairBuffer l, KbWriterOptions writerOptions) {
         System.out.println("new simple creator");
@@ -81,6 +83,7 @@ public class GenKB implements Runnable {
         startTime = System.currentTimeMillis();
 
     }
+
     @Override
     public void run() {
         genKbStatus = GenKbStatus.RUNNING;
@@ -95,7 +98,7 @@ public class GenKB implements Runnable {
     //todo: test old and new time
     private void generateKbs() throws InterruptedException {
         //line 1
-        startIteration(0); //todo: counter in here
+        startIteration(0);
 
 
         //line 2
@@ -125,7 +128,6 @@ public class GenKB implements Runnable {
 
         //line 6
         while (l.hasElementsForIteration(k)) {
-            long startTime = System.currentTimeMillis();
 
 
             //line  7
@@ -169,7 +171,6 @@ public class GenKB implements Runnable {
                 }
                 currentPair.clear(); //saves a lot of memory and takes almost no time
             }
-            System.out.println("time for iteration " + k + ": " + (System.currentTimeMillis() - startTime) / 1000 + "s");
 
 
             //line 13
@@ -180,6 +181,7 @@ public class GenKB implements Runnable {
     }
 
     private void startIteration(int k) {
+        iterationStartTime = System.currentTimeMillis();
         System.out.println("start iteration for k: " + k);
 
 
@@ -196,7 +198,7 @@ public class GenKB implements Runnable {
     private void finishIteration(int k) {
         l.finishIteration(k);
         kbWriter.finishIteration();
-        System.out.println("finished iteration for k: " + k);
+        System.out.println("finished iteration for k: " + k + " in " + (System.currentTimeMillis() - iterationStartTime) / 1000 + "s");
     }
 
 
