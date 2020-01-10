@@ -63,7 +63,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int requestedK) {
-        System.out.println("preparing iteration: " + requestedK);
 
         nextIterationThreadObject = new BufferWriterThread(nextIterationQueue, consistentQueue, tmpFilePath, maxNumberOfPairsInFile, requestedK);
         nextIterationThread = new Thread(nextIterationThreadObject);
@@ -75,7 +74,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
         lastIterationThread.setName("buffer reader thread for k " + requestedK);
         lastIterationThread.start();
 
-        System.out.println("prepare iteration finished " + requestedK);
     }
 
 
@@ -91,7 +89,6 @@ public class HddPairBuffer extends AbstractPairBuffer {
 
         deleteOldData(requestedK);
 
-        System.out.println("finished iteration: " + requestedK);
     }
 
 

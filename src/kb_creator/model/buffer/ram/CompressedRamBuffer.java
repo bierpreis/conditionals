@@ -42,7 +42,6 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
 
     @Override
     public void prepareIteration(int k) {
-        System.out.println("preparing iteration: " + k);
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
 
         nextIterationThread = new Thread(new NewIterationThread(nextIterationQueue, consistentQueue, candidatePairList, k));
@@ -71,7 +70,6 @@ public class CompressedRamBuffer extends AbstractPairBuffer {
 
     @Override
     public void finishIteration(int requestedK) {
-        System.out.println("finishing iteration: " + requestedK);
 
         //wait for and close new iteration thread
         while (!nextIterationQueue.isEmpty())

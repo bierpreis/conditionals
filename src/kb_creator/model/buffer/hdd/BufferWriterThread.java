@@ -58,7 +58,6 @@ public class BufferWriterThread implements Runnable {
 
                 Thread.sleep(50); //50 seems to be a good value. lower or higher values only change a little bit
             } catch (InterruptedException e) {
-                System.out.println("hdd buffer interrupted hdd buffer. stop was pressed.");
                 return; //this is triggered by stop button in gui
             }
         }

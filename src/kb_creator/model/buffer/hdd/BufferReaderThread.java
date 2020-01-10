@@ -33,7 +33,6 @@ public class BufferReaderThread implements Runnable {
 
         this.tmpFilePath = tmpFilePath;
 
-        System.out.println("prepare iteration " + requestedK);
         readingFileNameCounter = 0;
 
         folderToRead = new File(tmpFilePath + "/" + (requestedK - 1) + "/");

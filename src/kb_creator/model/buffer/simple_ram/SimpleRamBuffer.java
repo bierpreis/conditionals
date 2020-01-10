@@ -10,7 +10,6 @@ public class SimpleRamBuffer extends CompressedRamBuffer {
 
     @Override
     public void prepareIteration(int k) {
-        System.out.println("preparing iteration: " + k);
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
 
         nextIterationThread = new Thread(new SimpleNewIterationThread(nextIterationQueue, consistentQueue, candidatePairList, k));
