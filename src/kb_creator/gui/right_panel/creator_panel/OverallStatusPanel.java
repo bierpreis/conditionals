@@ -24,7 +24,7 @@ public class OverallStatusPanel extends JPanel {
         this.actionPanel = actionPanel;
 
 
-        setBorder(BorderFactory.createTitledBorder("Overall CreatorStatus"));
+        setBorder(BorderFactory.createTitledBorder("Overall Status"));
 
         Box vBox = Box.createVerticalBox();
         add(vBox);
@@ -60,8 +60,8 @@ public class OverallStatusPanel extends JPanel {
         if (timeInSeconds != 0) {
             int speed = (int) (kbAmount / timeInSeconds);
             NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-            averageSpeedLabel.setText("Average speed (consistent kb/s): " + formatter.format(speed));
-        } else averageSpeedLabel.setText("Average speed (consistent kb/s): " + 0);
+            averageSpeedLabel.setText("Average Speed (consistent kb/s): " + formatter.format(speed));
+        } else averageSpeedLabel.setText("Average Speed (consistent kb/s): " + 0);
     }
 
     public void showStatus(GenKbStatus genKbStatus) {

@@ -15,7 +15,7 @@ public class CurrentIterationPanel extends JPanel {
 
     public CurrentIterationPanel() {
         setLayout(new FlowLayout(FlowLayout.LEFT));
-        setBorder(BorderFactory.createTitledBorder("Current Iteration CreatorStatus"));
+        setBorder(BorderFactory.createTitledBorder("Current Iteration Status"));
         Box vBox = Box.createVerticalBox();
         add(vBox);
 
@@ -46,7 +46,7 @@ public class CurrentIterationPanel extends JPanel {
     }
 
     public void showCurrentK(int currentK) {
-        currentKLabel.setText("Current k value: " + currentK);
+        currentKLabel.setText("Current k Value: " + currentK);
     }
 
 
@@ -66,7 +66,7 @@ public class CurrentIterationPanel extends JPanel {
 
     public void showCandidatePairs(long candidatePairs) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        candidatePairsLabel.setText("Candidate pairs: " + formatter.format(candidatePairs));
+        candidatePairsLabel.setText("Candidate Pairs: " + formatter.format(candidatePairs));
     }
 
 

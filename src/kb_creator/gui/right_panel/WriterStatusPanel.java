@@ -47,13 +47,13 @@ public class WriterStatusPanel extends JPanel {
 
     public void showConsistentQueue(int consistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        consistentLabel.setText("Consistent Queue length: " + formatter.format(consistentQueue));
+        consistentLabel.setText("Consistent Queue Length: " + formatter.format(consistentQueue));
     }
 
 
     public void showInconsistentQueue(int inConsistentQueue) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("de_DE"));
-        inconsistentLabel.setText("Inconsistent Queue length: " + formatter.format(inConsistentQueue));
+        inconsistentLabel.setText("Inconsistent Queue Length: " + formatter.format(inConsistentQueue));
     }
 
 
