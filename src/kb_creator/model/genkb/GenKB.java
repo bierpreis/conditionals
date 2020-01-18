@@ -95,7 +95,7 @@ public class GenKB implements Runnable {
         }
     }
 
-    //todo: test old and new time
+
     private void generateKbs() throws InterruptedException {
         //line 1
         startIteration(0);
