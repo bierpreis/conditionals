@@ -12,8 +12,8 @@ public abstract class AbstractKbWriter {
 
     //arrayblockingqueue works a bit better than linkedblockingqueue
     //50k is a bit big. even 1 would work but slower
-    protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(50000);
-    protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(50000);
+    protected BlockingQueue<KnowledgeBase> consistentWriterQueue = new ArrayBlockingQueue<>(50_000);
+    protected BlockingQueue<KnowledgeBase> inconsistentWriterQueue = new ArrayBlockingQueue<>(50_000);
 
     protected Thread consistentThread;
     protected Thread inconsistentThread;
