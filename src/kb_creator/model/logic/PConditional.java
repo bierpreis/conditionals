@@ -1,8 +1,7 @@
 package kb_creator.model.logic;
 
 import kb_creator.model.logic.signature.AbstractSignature;
-import kb_creator.model.logic.signature.worlds.AbstractWorld;
-import nfc_creator.model.ConditionalTranslator;
+import kb_creator.model.logic.world.AbstractWorld;
 
 import java.util.ArrayList;
 import java.util.List;

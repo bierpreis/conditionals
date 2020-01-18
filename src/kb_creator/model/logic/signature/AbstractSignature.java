@@ -1,6 +1,6 @@
 package kb_creator.model.logic.signature;
 
-import kb_creator.model.logic.signature.worlds.AbstractWorld;
+import kb_creator.model.logic.world.AbstractWorld;
 
 import java.util.List;
 

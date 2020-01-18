@@ -1,7 +1,7 @@
 package kb_creator.model.logic.signature;
 
 
-import kb_creator.model.logic.signature.worlds.ABWorld;
+import kb_creator.model.logic.world.ABWorld;
 
 import java.util.ArrayList;
 

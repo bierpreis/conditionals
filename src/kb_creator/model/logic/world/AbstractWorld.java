@@ -1,4 +1,4 @@
-package kb_creator.model.logic.signature.worlds;
+package kb_creator.model.logic.world;
 
 import kb_creator.model.logic.Var;
 

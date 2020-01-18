@@ -1,7 +1,7 @@
 package kb_creator.model.logic;
 
 import kb_creator.model.logic.signature.AbstractSignature;
-import kb_creator.model.logic.signature.worlds.AbstractWorld;
+import kb_creator.model.logic.world.AbstractWorld;
 
 
 public abstract class AbstractFormula {
