@@ -20,11 +20,12 @@ public class NewIterationThread implements Runnable {
         this.consistentQueue = consistentQueue;
         this.candidatePairList = candidatePairList;
         this.k = k;
+        System.out.println("new newIterationThread!!!");
     }
 
     @Override
     public void run() {
-
+        System.out.println("!!!!!new newiterationthread started"); //todo: this is not triggered by simple ram buffer
         while (running) {
             AbstractPair pairToAdd;
             try {
