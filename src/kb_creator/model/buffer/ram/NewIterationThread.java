@@ -13,19 +13,17 @@ public class NewIterationThread implements Runnable {
     protected volatile boolean running = true;
     protected int k;
 
-    private BlockingQueue<KnowledgeBase> consistentQueue;
+    protected BlockingQueue<KnowledgeBase> consistentQueue;
 
     public NewIterationThread(BlockingQueue<AbstractPair> inputQueue, BlockingQueue<KnowledgeBase> consistentQueue, List<List<AbstractPair>> candidatePairList, int k) {
         this.inputQueue = inputQueue;
         this.consistentQueue = consistentQueue;
         this.candidatePairList = candidatePairList;
         this.k = k;
-        System.out.println("new newIterationThread!!!");
     }
 
     @Override
     public void run() {
-        System.out.println("!!!!!new newiterationthread started"); //todo: this is not triggered by simple ram buffer
         while (running) {
             AbstractPair pairToAdd;
             try {
