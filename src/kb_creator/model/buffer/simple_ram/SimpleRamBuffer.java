@@ -8,6 +8,7 @@ import java.util.Collections;
 public class SimpleRamBuffer extends CompressedRamBuffer {
 
     //todo: consistent counter doesnt work in simple buffer
+    //problem: they are not put to consistent writer. but why?
     @Override
     public void prepareIteration(int k) {
         candidatePairList.add(Collections.synchronizedList(new ArrayList<>()));
