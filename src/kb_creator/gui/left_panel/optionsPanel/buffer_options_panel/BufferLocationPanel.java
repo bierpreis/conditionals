@@ -85,6 +85,7 @@ public class BufferLocationPanel extends JPanel {
 
     public boolean isValueValid() {
         if (filePathToSave == null) {
+            //todo: this is not reset!
             this.setBorder(BorderFactory.createLineBorder(Color.RED));
             new NoBufferPathDialog();
             return false;
