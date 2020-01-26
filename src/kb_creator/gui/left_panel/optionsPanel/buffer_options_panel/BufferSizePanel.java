@@ -14,7 +14,7 @@ public class BufferSizePanel extends JPanel {
 
     public BufferSizePanel() {
         descriptionLabel = new JLabel("Number of Candidates in File: ");
-        bufferSizeField = new JTextField("80000");
+        bufferSizeField = new JTextField("10000");
         bufferSizeField.setPreferredSize(new Dimension(64, 16));
         add(descriptionLabel);
         add(bufferSizeField);
