@@ -89,7 +89,7 @@ public class BufferLocationPanel extends JPanel {
             new NoBufferPathDialog();
             return false;
         }
-        this.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        this.setBorder(BorderFactory.createEmptyBorder());
         return true;
     }
 
